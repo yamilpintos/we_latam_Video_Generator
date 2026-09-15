@@ -1,0 +1,25 @@
+{
+  "_comentario": "Hojas de modelo con vueltas: el personaje de frente, tres cuartos, perfil y espalda en una sola imagen. Es la práctica estándar de animación y le da al modelo los ángulos resueltos en vez de que los invente. Reemplazan a las hojas de una sola vista, que dejaban derivar la faja, los parches y el volumen del pelo entre planos.",
+  "assets": [
+    {
+      "id": "m_aladino",
+      "refs": ["assets/p_aladino.png"],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR FULL-BODY VIEWS of the SAME character in a single horizontal row, evenly spaced, all at IDENTICAL height and scale, plain flat warm-gray background, even flat lighting, no cast shadows:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nCHARACTER, identical in all four: the young man from the reference. Tousled dark hair, lean build. Patched knee-length tunic in faded ochre with visible cloth patches at the chest and left hip, a frayed DARK RED sash tied at the waist with a short tail hanging on his LEFT side, loose brown trousers, worn leather sandals. No jewellery.\nKeep the costume details IDENTICAL across the four views: same patch positions, same sash length, same hair volume."
+    },
+    {
+      "id": "m_mago",
+      "refs": ["assets/p_mago.png"],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR FULL-BODY VIEWS of the SAME character in a single horizontal row, evenly spaced, all at IDENTICAL height and scale, plain flat warm-gray background, even flat lighting, no cast shadows:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nCHARACTER, identical in all four: the tall gaunt older man from the reference. Long grey beard reaching mid-chest, sharp features, deep-set eyes. Heavy robes of dark indigo with faded gold embroidery at the hem and cuffs, a long black travelling cloak that falls to the ankles, one broad ring on the right hand.\nKeep the costume details IDENTICAL across the four views: same beard length, same embroidery pattern, same cloak fall."
+    },
+    {
+      "id": "m_princesa",
+      "refs": ["assets/p_princesa.png"],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR FULL-BODY VIEWS of the SAME character in a single horizontal row, evenly spaced, all at IDENTICAL height and scale, plain flat warm-gray background, even flat lighting, no cast shadows:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nCHARACTER, identical in all four: the young woman from the reference. Dark hair in TWO braids falling forward over the shoulders. Long cream and gold embroidered silk dress reaching the floor, with a decorated band at the waist holding a blue-green gem, wide embroidered cuffs, embroidered slippers.\nKeep the costume details IDENTICAL across the four views: same braid placement, same embroidery pattern, same gem."
+    },
+    {
+      "id": "m_genio",
+      "refs": ["assets/p_genio.png"],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET of a fantasy creature, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR VIEWS of the SAME creature in a single horizontal row, evenly spaced, all at IDENTICAL scale, plain flat warm-gray background, even flat lighting:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nSUBJECT, identical in all four: the smoke spirit from the reference. Broad blue-violet upper body, glowing gold geometric markings on the forearms and chest, heavy gold collar, wide gold cuffs on both wrists, a topknot of dark hair, thick brows. Below the waist there is no solid form: the shape trails into a swirling column of dark smoke.\nKeep the markings, the collar and the cuffs IDENTICAL across the four views."
+    }
+  ]
+}

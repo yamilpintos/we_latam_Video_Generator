@@ -1,0 +1,18 @@
+EL FARERO — voz en off para ElevenLabs
+==============================================
+
+No la genera H3: va grabada aparte y montada encima. Así queda
+idéntica en todas las líneas, que es lo que H3 no sabe resolver.
+
+     0.3 s  (S01)   Cuarenta años sin apagarse.
+     3.3 s  (S02)   Hoy la cambio yo. Con tormenta.
+     6.4 s  (S03)   Son doscientos doce escalones.
+    10.2 s  (S04)   A mitad de subida se me apaga la linterna.
+    14.6 s  (S05)   Sigo a oscuras hasta arriba. Y ahí está: casi muerta.
+    20.1 s  (S06)   Abajo, en la tormenta, hay barcos que dependen de esta luz.
+    26.0 s  (S07)   Saco la vieja todavía caliente. La nueva pesa veinte kilos.
+    32.8 s  (S08)   La enciendo... y nada. Todo queda negro.
+    38.6 s  (S09)   A ciegas, la giro medio punto más. Y pruebo otra vez.
+    43.9 s  (S10)   [whispers] Despacito... arranca.
+    49.8 s  (S11)   Cuarenta años. Y esta noche también hay luz en el mar.
+    55.2 s  (S12)   El año que viene subo de nuevo. ¿Vos subirías?

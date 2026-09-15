@@ -1,0 +1,109 @@
+{
+  "nombre": "short-90",
+  "formato": "short",
+  "duracion_objetivo": 90,
+  "tolerancia": 5,
+  "plataformas": ["TikTok", "Instagram Reels"],
+  "retencion_objetivo": 0.45,
+  "interrupcion_cada": 12,
+  "notas": [
+    "LEY: Estructuras_Contenido_Alta_Retencion_2026.docx. Es el formato de GUARDADOS y comunidad, no de alcance puro: 45-90 s favorece que la gente guarde y comparta, mientras que 15-30 s maximiza descubrimiento entre no seguidores.",
+    "OJO CON LA PLATAFORMA: a 90 s esto NO es un YouTube Short (el límite es 60) y queda al borde de Explorar en Reels (menos de 90). Donde rinde es en TikTok, que premia 60-90 s porque sostiene más tiempo de visualización dentro de la app. Si el video va a las tres plataformas, usá `short` de 60.",
+    "La retención objetivo baja a ~45 % porque el compromiso de tiempo es mayor: la exigencia del algoritmo escala con la duración, pero el tiempo absoluto de visualización pesa más.",
+    "Este es el formato para explicar algo, no para un golpe de efecto. Si la idea se cuenta en 20 s, contarla en 90 la arruina: el relleno se castiga más que la brevedad.",
+    "Con 90 s hay que sostener siete u ocho interrupciones de patrón. Es lo que más cuesta y donde se pierde a la gente."
+  ],
+  "tramos": [
+    {
+      "id": "HOOK", "nombre": "Gancho", "desde": 0, "hasta": 3,
+      "objetivo": "La ventana crítica no cambia porque el video sea más largo: siguen siendo los primeros 3 s. Brecha de información con el resultado por delante.",
+      "exige": [
+        "Un solo plano, corte de 1,5 a 3 s",
+        "TRIPLE REFUERZO: imagen, sonido y texto en pantalla",
+        "El texto antepone el resultado concreto",
+        "Sin fundido, sin presentarse, sin establecer"
+      ],
+      "corte_min": 1.5, "corte_max": 3.0,
+      "tamanos": ["PP", "PD"],
+      "interrupcion": true,
+      "texto_pantalla": "El resultado concreto, menos de 8 palabras.",
+      "prompt_frame": "The very first frame of a vertical short-form video: reads as a thumbnail instantly, one clear subject, strong contrast, something visibly wrong or surprising already in frame. Upper third relatively clear for a post overlay."
+    },
+    {
+      "id": "PROMESA", "nombre": "Promesa y contrato", "desde": 3, "hasta": 10,
+      "objetivo": "Con 90 s por delante hay que decir explícitamente qué se va a entregar y cuándo. Es el contrato: lo que compra los 80 s que siguen.",
+      "exige": [
+        "1 o 2 planos, cortes de 3 a 5 s",
+        "Se declara qué va a entregar el video, en concreto",
+        "Cambio de tamaño de plano respecto del gancho"
+      ],
+      "corte_min": 3.0, "corte_max": 5.0,
+      "tamanos": ["PG", "PGE", "PM"]
+    },
+    {
+      "id": "PASO_1", "nombre": "Primer bloque", "desde": 10, "hasta": 30,
+      "objetivo": "El primer tramo de valor. Cierra su propia micro-promesa y abre la siguiente: nunca se llega al final de un bloque sin que haya otra razón para seguir.",
+      "exige": [
+        "3 planos, cortes de 5 a 7 s",
+        "Una interrupción de patrón por bloque, como mínimo",
+        "Termina con un loop abierto hacia el bloque siguiente"
+      ],
+      "corte_min": 4.5, "corte_max": 7.0, "planos_min": 3,
+      "interrupcion": true
+    },
+    {
+      "id": "PASO_2", "nombre": "Segundo bloque", "desde": 30, "hasta": 50,
+      "objetivo": "El bloque del medio es donde más gente se va. Va acá lo más fuerte que quede después del gancho, no lo más aburrido.",
+      "exige": [
+        "3 planos, cortes de 5 a 7 s",
+        "El material más fuerte del cuerpo va en este bloque, no reservado para el final",
+        "Cambio de locación, luz o ritmo respecto del bloque anterior"
+      ],
+      "corte_min": 4.5, "corte_max": 7.0, "planos_min": 3,
+      "interrupcion": true
+    },
+    {
+      "id": "GIRO", "nombre": "Interrupción de patrón", "desde": 50, "hasta": 62,
+      "objetivo": "A dos tercios, el cambio que reordena lo visto. Es lo que evita que el último tercio se sienta como más de lo mismo.",
+      "exige": [
+        "2 planos, cortes de 5 a 7 s",
+        "Cambio visual fuerte: luz, color o dirección de cámara",
+        "El audio cambia con la imagen"
+      ],
+      "corte_min": 4.5, "corte_max": 7.0, "planos_min": 2,
+      "interrupcion": true,
+      "prompt_frame": "A strong visual break from everything before it: a new colour of light, a new light source or an impossible detail, clearly visible in the frame."
+    },
+    {
+      "id": "PASO_3", "nombre": "Tercer bloque", "desde": 62, "hasta": 78,
+      "objetivo": "Se cierra lo que quedó abierto, con la información que ahora sí se entiende gracias al giro.",
+      "exige": [
+        "2 o 3 planos, cortes de 5 a 7 s",
+        "Todos los loops abiertos antes se cierran acá o en el pago"
+      ],
+      "corte_min": 4.5, "corte_max": 7.0, "planos_min": 2
+    },
+    {
+      "id": "PAGO", "nombre": "Pago", "desde": 78, "hasta": 86,
+      "objetivo": "La recompensa completa de lo que prometió el gancho. Con 90 s, el espectador que llegó hasta acá invirtió mucho: el pago tiene que estar a la altura.",
+      "exige": [
+        "1 o 2 planos, cortes de 4 a 7 s",
+        "Entrega literalmente lo que el texto del gancho prometió",
+        "Vuelve al tamaño de plano del gancho"
+      ],
+      "corte_min": 4.0, "corte_max": 7.0,
+      "tamanos": ["PP", "PD"]
+    },
+    {
+      "id": "BUCLE", "nombre": "Cierre en bucle", "desde": 86, "hasta": 90,
+      "objetivo": "Abrir algo más grande en el último segundo y dejar una pregunta contestable en una frase. El replay y el comentario largo son las dos señales que más pesan.",
+      "exige": [
+        "Un plano, corte de 3 a 5 s",
+        "Termina en negro o empalmando con el fotograma 1",
+        "Sin llamado a la acción hablado"
+      ],
+      "corte_min": 3.0, "corte_max": 5.0,
+      "interrupcion": true
+    }
+  ]
+}

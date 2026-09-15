@@ -1,0 +1,18 @@
+EL DRON DEL VOLCÁN — voz en off para ElevenLabs
+==============================================
+
+No la genera H3: va grabada aparte y montada encima. Así queda
+idéntica en todas las líneas, que es lo que H3 no sabe resolver.
+
+     0.3 s  (S01)   Ayer el volcán se tragó nuestro dron.
+     3.3 s  (S02)   Esta mañana volvió a transmitir. Bajamos a buscarlo.
+     6.4 s  (S03)   Cien metros. Ciento veinte. El calor ya golpea la cámara.
+    10.2 s  (S04)   Y de golpe, nada. Ni cielo, ni paredes. Sólo el gas.
+    14.6 s  (S05)   Ahí. Un brillo que no es lava.
+    20.1 s  (S06)   Está en una cornisa, a cuarenta metros del lago. Y el lago está vivo.
+    26.0 s  (S07)   [surprised] Es él. Quemado, torcido... y la cámara sigue grabando.
+    32.8 s  (S08)   ¡Se despertó el lago! Treinta segundos de aire caliente, o lo perdemos de nuevo.
+    38.6 s  (S09)   Un intento. El gancho, la ceniza, el pulso.
+    43.9 s  (S10)   [whispers] Lo tengo. Y cuando lo levanto... su cámara gira, y me mira.
+    49.8 s  (S11)   Grabó toda la noche. El lago subió doce metros mientras el pueblo dormía.
+    55.3 s  (S12)   Mañana bajamos otra vez, más abajo. ¿Vos hasta dónde bajarías?

@@ -1,0 +1,830 @@
+[
+ {
+  "id": "VO01",
+  "t": 0.1,
+  "ventana": 3.4,
+  "dur": 4.3,
+  "factor": 1.266,
+  "chars": 73,
+  "texto": "Mientras recogía la ropa, la mujer descubrió que le faltaban unas bragas."
+ },
+ {
+  "id": "VO02",
+  "t": 3.5,
+  "ventana": 6.2,
+  "dur": 8.02,
+  "factor": 1.294,
+  "chars": 140,
+  "texto": "Al principio, no le dio importancia, pero al día siguiente, al volver del cole con su hija, descubrió que su marido no había ido a Shanghái."
+ },
+ {
+  "id": "VO03",
+  "t": 9.7,
+  "ventana": 2.1,
+  "dur": 2.48,
+  "factor": 1.181,
+  "chars": 48,
+  "texto": "Llevaba todo ese tiempo escondido en el armario."
+ },
+ {
+  "id": "VO04",
+  "t": 11.8,
+  "ventana": 2.3,
+  "dur": 2.68,
+  "factor": 1.167,
+  "chars": 55,
+  "texto": "Al principio pensó que la niña se lo estaba inventando."
+ },
+ {
+  "id": "VO05",
+  "t": 14.1,
+  "ventana": 4.3,
+  "dur": 5.52,
+  "factor": 1.284,
+  "chars": 94,
+  "texto": "Su marido llevaba más de dos meses fuera y la semana anterior hasta le había enviado un osito."
+ },
+ {
+  "id": "VO06",
+  "t": 18.4,
+  "ventana": 1.7,
+  "dur": 2.57,
+  "factor": 1.511,
+  "chars": 40,
+  "texto": "Pero lo que dijo después la dejó helada."
+ },
+ {
+  "id": "VO07",
+  "t": 20.1,
+  "ventana": 2.3,
+  "dur": 2.88,
+  "factor": 1.251,
+  "chars": 51,
+  "texto": "Papá no ha ido a Shanghái, está dentro del armario."
+ },
+ {
+  "id": "VO08",
+  "t": 22.4,
+  "ventana": 1.2,
+  "dur": 1.28,
+  "factor": 1.067,
+  "chars": 19,
+  "texto": "No digas tonterías."
+ },
+ {
+  "id": "VO09",
+  "t": 23.6,
+  "ventana": 1.7,
+  "dur": 1.62,
+  "factor": 0.952,
+  "chars": 30,
+  "texto": "Papá lleva dos meses de viaje."
+ },
+ {
+  "id": "VO10",
+  "t": 25.3,
+  "ventana": 2.0,
+  "dur": 2.13,
+  "factor": 1.064,
+  "chars": 41,
+  "texto": "La semana pasada hasta te mandó un osito."
+ },
+ {
+  "id": "VO11",
+  "t": 27.3,
+  "ventana": 1.3,
+  "dur": 0.64,
+  "factor": 0.492,
+  "chars": 14,
+  "texto": "Pero yo lo vi."
+ },
+ {
+  "id": "VO12",
+  "t": 28.6,
+  "ventana": 1.5,
+  "dur": 1.8,
+  "factor": 1.202,
+  "chars": 31,
+  "texto": "Vive dentro del armario grande."
+ },
+ {
+  "id": "VO13",
+  "t": 30.1,
+  "ventana": 3.5,
+  "dur": 4.4,
+  "factor": 1.257,
+  "chars": 80,
+  "texto": "Por la noche me levanté para ir al baño y vi a papá salir del dormitorio grande."
+ },
+ {
+  "id": "VO14",
+  "t": 33.6,
+  "ventana": 1.4,
+  "dur": 1.67,
+  "factor": 1.19,
+  "chars": 29,
+  "texto": "Fue a beber agua a la cocina."
+ },
+ {
+  "id": "VO15",
+  "t": 35.0,
+  "ventana": 3.2,
+  "dur": 4.4,
+  "factor": 1.375,
+  "chars": 74,
+  "texto": "Al verme, dijo que jugaba al escondite y me pidió que guardara el secreto."
+ },
+ {
+  "id": "VO16",
+  "t": 38.2,
+  "ventana": 0.9,
+  "dur": 1.25,
+  "factor": 1.389,
+  "chars": 16,
+  "texto": "Llevo la cuenta."
+ },
+ {
+  "id": "VO17",
+  "t": 39.1,
+  "ventana": 2.5,
+  "dur": 2.8,
+  "factor": 1.12,
+  "chars": 54,
+  "texto": "Me pidió que guardara el secreto durante sesenta días."
+ },
+ {
+  "id": "VO18",
+  "t": 41.6,
+  "ventana": 1.6,
+  "dur": 1.51,
+  "factor": 0.946,
+  "chars": 21,
+  "texto": "Sesenta días enteros."
+ },
+ {
+  "id": "VO19",
+  "t": 43.2,
+  "ventana": 2.4,
+  "dur": 3.91,
+  "factor": 1.63,
+  "chars": 57,
+  "texto": "Lin Cheng llevaba fuera de casa exactamente sesenta días."
+ },
+ {
+  "id": "VO20",
+  "t": 45.6,
+  "ventana": 1.1,
+  "dur": 1.61,
+  "factor": 1.466,
+  "chars": 22,
+  "texto": "No le des más vueltas."
+ },
+ {
+  "id": "VO21",
+  "t": 46.7,
+  "ventana": 2.2,
+  "dur": 2.33,
+  "factor": 1.057,
+  "chars": 47,
+  "texto": "Los niños confunden los sueños con la realidad."
+ },
+ {
+  "id": "VO22",
+  "t": 48.9,
+  "ventana": 1.8,
+  "dur": 2.59,
+  "factor": 1.44,
+  "chars": 42,
+  "texto": "Quizá solo soñó que su padre había vuelto."
+ },
+ {
+  "id": "VO23",
+  "t": 50.7,
+  "ventana": 0.7,
+  "dur": 0.47,
+  "factor": 0.665,
+  "chars": 3,
+  "texto": "No."
+ },
+ {
+  "id": "VO24",
+  "t": 51.4,
+  "ventana": 3.8,
+  "dur": 5.2,
+  "factor": 1.368,
+  "chars": 85,
+  "texto": "Habló de beber agua en la cocina, del escondite y hasta clavó lo de los sesenta días."
+ },
+ {
+  "id": "VO25",
+  "t": 55.2,
+  "ventana": 3.7,
+  "dur": 4.1,
+  "factor": 1.107,
+  "chars": 69,
+  "texto": "Una niña de cinco años no podría inventarse una mentira tan concreta."
+ },
+ {
+  "id": "VO26",
+  "t": 58.9,
+  "ventana": 2.6,
+  "dur": 3.04,
+  "factor": 1.169,
+  "chars": 63,
+  "texto": "Lin Cheng mandó hacer este armario a medida durante la reforma."
+ },
+ {
+  "id": "VO27",
+  "t": 61.5,
+  "ventana": 2.9,
+  "dur": 4.6,
+  "factor": 1.588,
+  "chars": 68,
+  "texto": "Dijo que debía ser más grande y profundo para colgar abrigos largos."
+ },
+ {
+  "id": "VO28",
+  "t": 64.4,
+  "ventana": 2.4,
+  "dur": 2.56,
+  "factor": 1.067,
+  "chars": 57,
+  "texto": "En aquel momento hasta le dije que había pensado en todo."
+ },
+ {
+  "id": "VO29",
+  "t": 66.8,
+  "ventana": 1.4,
+  "dur": 1.58,
+  "factor": 1.131,
+  "chars": 22,
+  "texto": "Si es Lin Cheng, vale."
+ },
+ {
+  "id": "VO30",
+  "t": 68.2,
+  "ventana": 1.3,
+  "dur": 2.0,
+  "factor": 1.538,
+  "chars": 29,
+  "texto": "Pero ¿y si es un desconocido?"
+ },
+ {
+  "id": "VO31",
+  "t": 69.5,
+  "ventana": 1.8,
+  "dur": 1.6,
+  "factor": 0.887,
+  "chars": 35,
+  "texto": "¿Cómo va a haber alguien escondido?"
+ },
+ {
+  "id": "VO32",
+  "t": 71.3,
+  "ventana": 3.1,
+  "dur": 3.8,
+  "factor": 1.225,
+  "chars": 68,
+  "texto": "Últimamente estoy demasiado estresada y me estoy montando películas."
+ },
+ {
+  "id": "VO33",
+  "t": 74.4,
+  "ventana": 1.4,
+  "dur": 2.1,
+  "factor": 1.499,
+  "chars": 28,
+  "texto": "Mamá, ¿papá ya no me quiere?"
+ },
+ {
+  "id": "VO34",
+  "t": 75.8,
+  "ventana": 1.1,
+  "dur": 1.11,
+  "factor": 1.006,
+  "chars": 21,
+  "texto": "¿Por qué piensas eso?"
+ },
+ {
+  "id": "VO35",
+  "t": 76.9,
+  "ventana": 3.8,
+  "dur": 4.49,
+  "factor": 1.182,
+  "chars": 89,
+  "texto": "Porque siempre sale a escondidas, no juega conmigo y me manda volver enseguida a la cama."
+ },
+ {
+  "id": "VO36",
+  "t": 80.7,
+  "ventana": 3.4,
+  "dur": 4.23,
+  "factor": 1.246,
+  "chars": 80,
+  "texto": "Quiero que me cuente un cuento, pero dice que no puede porque mamá se enteraría."
+ },
+ {
+  "id": "VO37",
+  "t": 84.1,
+  "ventana": 1.5,
+  "dur": 1.6,
+  "factor": 1.067,
+  "chars": 32,
+  "texto": "¿Ha dicho que mamá se enteraría?"
+ },
+ {
+  "id": "VO38",
+  "t": 85.6,
+  "ventana": 0.6,
+  "dur": 0.4,
+  "factor": 0.667,
+  "chars": 3,
+  "texto": "Sí."
+ },
+ {
+  "id": "VO39",
+  "t": 86.2,
+  "ventana": 3.3,
+  "dur": 4.52,
+  "factor": 1.369,
+  "chars": 78,
+  "texto": "Dice que es una misión secreta y que si mamá lo descubre, la misión fracasará."
+ },
+ {
+  "id": "VO40",
+  "t": 89.5,
+  "ventana": 1.1,
+  "dur": 1.57,
+  "factor": 1.43,
+  "chars": 23,
+  "texto": "Mamá, ¿te has enfadado?"
+ },
+ {
+  "id": "VO41",
+  "t": 90.6,
+  "ventana": 5.5,
+  "dur": 6.94,
+  "factor": 1.262,
+  "chars": 114,
+  "texto": "Si Duoduo se lo estuviera inventando, con solo cinco años jamás diría: «Si mamá lo descubre, la misión fracasará»."
+ },
+ {
+  "id": "VO42",
+  "t": 96.1,
+  "ventana": 1.6,
+  "dur": 1.92,
+  "factor": 1.2,
+  "chars": 33,
+  "texto": "Esa forma de pensar es de adulto."
+ },
+ {
+  "id": "VO43",
+  "t": 97.7,
+  "ventana": 1.7,
+  "dur": 2.47,
+  "factor": 1.454,
+  "chars": 38,
+  "texto": "Lin Cheng publicó esto hace dos horas."
+ },
+ {
+  "id": "VO44",
+  "t": 99.4,
+  "ventana": 1.3,
+  "dur": 1.99,
+  "factor": 1.528,
+  "chars": 25,
+  "texto": "He terminado de trabajar."
+ },
+ {
+  "id": "VO45",
+  "t": 100.7,
+  "ventana": 1.1,
+  "dur": 1.28,
+  "factor": 1.164,
+  "chars": 27,
+  "texto": "He salido a dar una vuelta."
+ },
+ {
+  "id": "VO46",
+  "t": 101.8,
+  "ventana": 1.1,
+  "dur": 1.01,
+  "factor": 0.917,
+  "chars": 17,
+  "texto": "Os echo de menos."
+ },
+ {
+  "id": "VO47",
+  "t": 102.9,
+  "ventana": 4.2,
+  "dur": 4.88,
+  "factor": 1.162,
+  "chars": 78,
+  "texto": "Todas sus publicaciones estaban ubicadas en Shanghái y mostraban su día a día."
+ },
+ {
+  "id": "VO48",
+  "t": 107.1,
+  "ventana": 2.3,
+  "dur": 3.13,
+  "factor": 1.36,
+  "chars": 51,
+  "texto": "Entonces, ¿por qué había dicho Duoduo todo aquello?"
+ },
+ {
+  "id": "VO49",
+  "t": 109.4,
+  "ventana": 1.5,
+  "dur": 1.37,
+  "factor": 0.915,
+  "chars": 28,
+  "texto": "Había alguien en el armario."
+ },
+ {
+  "id": "VO50",
+  "t": 110.9,
+  "ventana": 1.5,
+  "dur": 1.68,
+  "factor": 1.12,
+  "chars": 24,
+  "texto": "De verdad había alguien."
+ },
+ {
+  "id": "VO51",
+  "t": 112.4,
+  "ventana": 2.7,
+  "dur": 3.44,
+  "factor": 1.275,
+  "chars": 57,
+  "texto": "No era una alucinación ni Duoduo se lo estaba inventando."
+ },
+ {
+  "id": "VO52",
+  "t": 115.1,
+  "ventana": 1.6,
+  "dur": 2.43,
+  "factor": 1.517,
+  "chars": 32,
+  "texto": "Mamá, tienes los ojos muy rojos."
+ },
+ {
+  "id": "VO53",
+  "t": 116.7,
+  "ventana": 1.8,
+  "dur": 2.51,
+  "factor": 1.396,
+  "chars": 43,
+  "texto": "He tenido una pesadilla, pero no pasa nada."
+ },
+ {
+  "id": "VO54",
+  "t": 118.5,
+  "ventana": 1.2,
+  "dur": 0.85,
+  "factor": 0.708,
+  "chars": 16,
+  "texto": "¿Qué has soñado?"
+ },
+ {
+  "id": "VO55",
+  "t": 119.7,
+  "ventana": 1.6,
+  "dur": 1.89,
+  "factor": 1.184,
+  "chars": 40,
+  "texto": "Que a mamá se le había quemado la tarta."
+ },
+ {
+  "id": "VO56",
+  "t": 121.3,
+  "ventana": 1.1,
+  "dur": 1.76,
+  "factor": 1.6,
+  "chars": 21,
+  "texto": "Mamá, qué torpe eres."
+ },
+ {
+  "id": "VO57",
+  "t": 122.4,
+  "ventana": 2.0,
+  "dur": 2.69,
+  "factor": 1.347,
+  "chars": 41,
+  "texto": "Duoduo, dices que papá salía del armario."
+ },
+ {
+  "id": "VO58",
+  "t": 124.4,
+  "ventana": 0.9,
+  "dur": 1.02,
+  "factor": 1.131,
+  "chars": 18,
+  "texto": "¿Qué ropa llevaba?"
+ },
+ {
+  "id": "VO59",
+  "t": 125.3,
+  "ventana": 3.0,
+  "dur": 3.99,
+  "factor": 1.329,
+  "chars": 66,
+  "texto": "A veces el pijama y otras veces la ropa que se pone para trabajar."
+ },
+ {
+  "id": "VO60",
+  "t": 128.3,
+  "ventana": 0.8,
+  "dur": 0.96,
+  "factor": 1.2,
+  "chars": 15,
+  "texto": "La del trabajo."
+ },
+ {
+  "id": "VO61",
+  "t": 129.1,
+  "ventana": 0.8,
+  "dur": 0.88,
+  "factor": 1.1,
+  "chars": 12,
+  "texto": "¿Una camisa?"
+ },
+ {
+  "id": "VO62",
+  "t": 129.9,
+  "ventana": 1.2,
+  "dur": 1.73,
+  "factor": 1.44,
+  "chars": 24,
+  "texto": "También llevaba corbata."
+ },
+ {
+  "id": "VO63",
+  "t": 131.1,
+  "ventana": 1.6,
+  "dur": 2.48,
+  "factor": 1.55,
+  "chars": 40,
+  "texto": "¿Se ponía la corbata dentro del armario?"
+ },
+ {
+  "id": "VO64",
+  "t": 132.7,
+  "ventana": 1.7,
+  "dur": 2.32,
+  "factor": 1.365,
+  "chars": 42,
+  "texto": "¿Y qué hacía después de salir del armario?"
+ },
+ {
+  "id": "VO65",
+  "t": 134.4,
+  "ventana": 1.6,
+  "dur": 2.0,
+  "factor": 1.25,
+  "chars": 34,
+  "texto": "Iba a la cocina a comer o al baño."
+ },
+ {
+  "id": "VO66",
+  "t": 136.0,
+  "ventana": 1.9,
+  "dur": 2.11,
+  "factor": 1.108,
+  "chars": 42,
+  "texto": "Una vez lo vi usando un móvil en el salón."
+ },
+ {
+  "id": "VO67",
+  "t": 137.9,
+  "ventana": 1.1,
+  "dur": 1.12,
+  "factor": 1.016,
+  "chars": 19,
+  "texto": "¿El móvil de quién?"
+ },
+ {
+  "id": "VO68",
+  "t": 139.0,
+  "ventana": 0.5,
+  "dur": 1.04,
+  "factor": 2.077,
+  "chars": 9,
+  "texto": "No lo sé."
+ },
+ {
+  "id": "VO69",
+  "t": 139.5,
+  "ventana": 1.7,
+  "dur": 2.24,
+  "factor": 1.318,
+  "chars": 36,
+  "texto": "Estaba muy oscuro y no se veía bien."
+ },
+ {
+  "id": "VO70",
+  "t": 141.2,
+  "ventana": 1.6,
+  "dur": 1.79,
+  "factor": 1.12,
+  "chars": 30,
+  "texto": "Tenía que confirmar dos cosas."
+ },
+ {
+  "id": "VO71",
+  "t": 142.8,
+  "ventana": 2.4,
+  "dur": 2.74,
+  "factor": 1.143,
+  "chars": 49,
+  "texto": "Primero, si la persona del armario era Lin Cheng."
+ },
+ {
+  "id": "VO72",
+  "t": 145.2,
+  "ventana": 3.1,
+  "dur": 3.52,
+  "factor": 1.135,
+  "chars": 48,
+  "texto": "Segundo, si era él, ¿por qué hacía todo aquello?"
+ },
+ {
+  "id": "VO73",
+  "t": 148.3,
+  "ventana": 1.9,
+  "dur": 2.08,
+  "factor": 1.095,
+  "chars": 42,
+  "texto": "Quiero una cámara que se conecte al móvil."
+ },
+ {
+  "id": "VO74",
+  "t": 150.2,
+  "ventana": 1.9,
+  "dur": 1.92,
+  "factor": 1.011,
+  "chars": 26,
+  "texto": "Cuanto más pequeña, mejor."
+ },
+ {
+  "id": "VO75",
+  "t": 152.1,
+  "ventana": 1.6,
+  "dur": 1.72,
+  "factor": 1.075,
+  "chars": 29,
+  "texto": "Mira, esta es la más pequeña."
+ },
+ {
+  "id": "VO76",
+  "t": 153.7,
+  "ventana": 4.1,
+  "dur": 5.76,
+  "factor": 1.404,
+  "chars": 87,
+  "texto": "Es magnética, graba de noche, puedes verla desde la app y tiene detector de movimiento."
+ },
+ {
+  "id": "VO77",
+  "t": 157.8,
+  "ventana": 0.6,
+  "dur": 0.62,
+  "factor": 1.039,
+  "chars": 14,
+  "texto": "Me llevo esta."
+ },
+ {
+  "id": "VO78",
+  "t": 158.4,
+  "ventana": 0.5,
+  "dur": 1.04,
+  "factor": 2.08,
+  "chars": 8,
+  "texto": "Cóbrame."
+ },
+ {
+  "id": "VO79",
+  "t": 158.9,
+  "ventana": 1.2,
+  "dur": 0.95,
+  "factor": 0.793,
+  "chars": 21,
+  "texto": "¿De qué tienes miedo?"
+ },
+ {
+  "id": "VO80",
+  "t": 160.1,
+  "ventana": 0.7,
+  "dur": 0.99,
+  "factor": 1.412,
+  "chars": 16,
+  "texto": "No seas cobarde."
+ },
+ {
+  "id": "VO81",
+  "t": 160.8,
+  "ventana": 0.9,
+  "dur": 1.25,
+  "factor": 1.388,
+  "chars": 16,
+  "texto": "Esta es tu casa."
+ },
+ {
+  "id": "VO82",
+  "t": 161.7,
+  "ventana": 2.1,
+  "dur": 2.8,
+  "factor": 1.333,
+  "chars": 45,
+  "texto": "La cámara podía grabar justo todo el armario."
+ },
+ {
+  "id": "VO83",
+  "t": 163.8,
+  "ventana": 1.6,
+  "dur": 2.39,
+  "factor": 1.493,
+  "chars": 35,
+  "texto": "La semana pasada compré seis cajas."
+ },
+ {
+  "id": "VO84",
+  "t": 165.4,
+  "ventana": 1.4,
+  "dur": 1.85,
+  "factor": 1.323,
+  "chars": 24,
+  "texto": "Duoduo y yo bebimos dos."
+ },
+ {
+  "id": "VO85",
+  "t": 166.8,
+  "ventana": 1.1,
+  "dur": 1.33,
+  "factor": 1.205,
+  "chars": 26,
+  "texto": "¿Por qué solo quedan tres?"
+ },
+ {
+  "id": "VO86",
+  "t": 167.9,
+  "ventana": 0.9,
+  "dur": 0.93,
+  "factor": 1.028,
+  "chars": 10,
+  "texto": "Falta una."
+ },
+ {
+  "id": "VO87",
+  "t": 168.8,
+  "ventana": 3.1,
+  "dur": 3.3,
+  "factor": 1.066,
+  "chars": 62,
+  "texto": "Compré doce huevos y usé cuatro, así que deberían quedar ocho."
+ },
+ {
+  "id": "VO88",
+  "t": 171.9,
+  "ventana": 2.4,
+  "dur": 2.11,
+  "factor": 0.88,
+  "chars": 15,
+  "texto": "Uno, dos, seis."
+ },
+ {
+  "id": "VO89",
+  "t": 174.3,
+  "ventana": 0.8,
+  "dur": 0.64,
+  "factor": 0.8,
+  "chars": 11,
+  "texto": "Faltan dos."
+ },
+ {
+  "id": "VO90",
+  "t": 175.1,
+  "ventana": 2.6,
+  "dur": 3.76,
+  "factor": 1.446,
+  "chars": 64,
+  "texto": "Siempre dejo los cuencos boca abajo, pero este está boca arriba."
+ },
+ {
+  "id": "VO91",
+  "t": 177.7,
+  "ventana": 1.9,
+  "dur": 2.51,
+  "factor": 1.321,
+  "chars": 46,
+  "texto": "Alguien usa mi cocina cuando no estoy en casa."
+ },
+ {
+  "id": "VO92",
+  "t": 179.6,
+  "ventana": 1.8,
+  "dur": 2.16,
+  "factor": 1.2,
+  "chars": 42,
+  "texto": "Pulsa abajo para ver la historia completa."
+ }
+]

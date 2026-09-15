@@ -1,0 +1,179 @@
+{
+  "titulo": "ESTANQUE DE KOI",
+  "slug": "lofi-koi",
+  "formato": "largo",
+  "estructura": "loop",
+  "duracion_objetivo": 62,
+  "negativos": false,
+  "_concepto": "Segundo loop ambiente (11/9/2026). Un jardín japonés de noche bajo una lluvia fina: un estanque negro con koi naranjas y blancos, un farol de piedra con vela, farolitos rojos de papel, musgo, un arce. Doce encuadres del mismo jardín, cámara fija, un movimiento lento por plano. Lecciones de LLUVIA EN LA VENTANA aplicadas: negativos:false, primeros planos de objeto, nada abstracto, ninguna ventana con ciudad, ninguna silla vacía. El bucle se cierra en el corte K12 → K01.",
+  "_planta": "El estanque en el centro; un deck de madera oscura en primer término (desde donde mira K01); al fondo a la IZQUIERDA el farol de piedra con su vela; a la DERECHA un arce de hojas rojas del que cuelgan dos farolitos rojos de papel; piedras con musgo en el borde; nenúfares a la derecha; un caño de bambú que gotea agua al estanque a la izquierda.",
+  "estilo_imagen": "Hand-painted 2D animation background art for a calm night-time lo-fi music video: soft painterly brushwork, gentle film grain, a Japanese garden at night in fine rain. Deep blue-black water, warm orange and white koi, glowing red paper lanterns, the soft yellow flame of a stone lantern, wet green moss and dark red maple leaves. Muted but rich palette: ink black, vermilion, warm orange, moss green. Clean readable shapes, soft edges. Everything is still and quiet; fine rain draws small rings on the water. Nobody anywhere in the picture. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind.",
+  "medio": "hand-painted 2D animated film with soft painterly textures, calm, slow and quiet",
+  "personajes": {},
+  "locaciones": {
+    "jardin": {
+      "imagen": "l_jardin",
+      "descripcion": "a small Japanese garden at night in fine rain: a dark koi pond in the centre, a dark wooden deck in the foreground, a lit stone lantern at the back left, a red-leaved maple at the right with two glowing red paper lanterns hanging from it, mossy stones around the edge, lily pads at the right, a bamboo water spout dripping into the pond at the left"
+    }
+  },
+  "madre": [
+    {
+      "id": "l_jardin",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Hand-painted 2D animation background art, wide 16:9 landscape frame, calm night-time lo-fi illustration style: soft painterly brushwork, gentle film grain. WIDE SHOT of a small Japanese garden at night in fine rain, seen from a dark wooden deck in the foreground. In the centre a still koi pond of deep blue-black water with small rain rings on its surface and four orange-and-white koi gliding just under the surface. At the back LEFT a stone lantern with a small warm candle flame glowing inside it, moss on its roof. At the RIGHT a maple tree with dark red leaves, and two glowing red paper lanterns hanging from its branches, reflected in the water. Mossy wet stones around the edge of the pond, a few lily pads at the right, a bamboo water spout dripping into the pond at the left. Beyond, only dark wet foliage and mist. Nobody in the garden. No text, no letters, no signs anywhere. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    }
+  ],
+  "planos": [
+    {
+      "id": "K01",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": "jardin",
+      "personajes": [],
+      "funcion": "ARRANQUE DEL BUCLE. El estanque entero desde el deck: farol, farolitos, koi bajo el agua, lluvia fina.",
+      "ve": "WIDE SHOT of the whole garden from the wooden deck, the SAME view as the reference location picture: the dark koi pond in the centre with small rain rings and four orange-and-white koi gliding under the surface, the lit stone lantern at the back left, the maple with its two glowing red paper lanterns at the right and their reflections in the water, mossy stones, lily pads, the bamboo spout at the left. Fine rain, mist beyond. Nobody in the garden.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. Only slow ambient motion: the koi glide slowly under the surface, small rain rings appear and fade on the water, the lantern reflections wobble gently, the candle flame in the stone lantern breathes. The rain keeps falling for the whole shot and it stays night. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water, a soft steady drip from the bamboo spout, and distant night insects."
+    },
+    {
+      "id": "K02",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [],
+      "personajes": [],
+      "funcion": "La superficie del agua: anillos de lluvia y el reflejo rojo de un farolito.",
+      "ve": "One single picture filling the whole frame, seen from directly above: the still black water surface of a pond at night, filling the ENTIRE frame edge to edge, with many small concentric rain rings spreading and overlapping across it, and across the water the wobbling red reflection of a paper lantern and a thin warm reflection of a candle flame, both broken by the ripples. Only water, rain rings and reflected light: no fish, no plants, no shore.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Rain rings appear, spread and fade across the surface; the red reflection wobbles slowly with the ripples. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water and distant night insects."
+    },
+    {
+      "id": "K03",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "jardin",
+      "personajes": [],
+      "funcion": "Un koi solo, naranja y blanco, pasando justo bajo la superficie.",
+      "ve": "CLOSE UP from above of one large orange-and-white koi gliding slowly just under the dark water surface, its body filling most of the frame, fins spread, small rain rings on the surface above it, the red reflection of a lantern at one corner. Only the one fish and the water.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The koi glides slowly from one side of the frame toward the other with gentle sweeps of its tail and fins, staying just under the surface; rain rings appear and fade above it. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water and a soft swirl of water from the fish."
+    },
+    {
+      "id": "K04",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_jardin"
+      ],
+      "personajes": [],
+      "funcion": "El farol de piedra: la vela adentro, el musgo, la lluvia goteando del techito.",
+      "ve": "CLOSE UP of the old stone lantern at night: its carved stone roof covered in wet moss, rain dripping from its edges, and inside its opening a small warm candle flame glowing steadily. Behind, out of focus, dark wet foliage and a soft red glow of a paper lantern. Only the stone lantern, the flame and the rain.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The candle flame breathes gently inside the lantern; drops of rain fall from the edge of the stone roof one after another; the moss glistens. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on stone and leaves and a soft steady drip."
+    },
+    {
+      "id": "K05",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_jardin"
+      ],
+      "personajes": [],
+      "funcion": "Un farolito rojo de papel encendido, con gotas resbalando y hojas de arce.",
+      "ve": "CLOSE UP of one glowing red paper lantern hanging from a maple branch at night: the warm light through the red paper, raindrops sliding down its surface, dark red maple leaves around it with drops on their tips. Behind, out of focus, the dark garden and a faint second red glow. Only the lantern, the leaves and the rain.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The lantern sways very slightly; raindrops slide slowly down the paper; the leaves tremble as drops fall from their tips; the light inside breathes gently. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on paper and leaves and distant night insects."
+    },
+    {
+      "id": "K06",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "jardin",
+      "personajes": [],
+      "funcion": "Dos koi pasando bajo los nenúfares.",
+      "ve": "CLOSE UP from above of two koi, one white with orange patches and one deep orange, gliding slowly under three round lily pads on the dark water, small rain rings on the surface, a faint red lantern reflection at the edge. Only the fish, the lily pads and the water.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The two koi glide slowly under the lily pads with gentle tail sweeps, one following the other; rain rings appear and fade; the lily pads rock very slightly. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water and a soft swirl of water."
+    },
+    {
+      "id": "K07",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [],
+      "personajes": [],
+      "funcion": "El caño de bambú goteando al estanque, piedras con musgo, el resplandor del farol detrás.",
+      "ve": "WIDE SHOT, low and close to the water, of a bamboo water spout at the edge of a dark koi pond at night: a thin thread of water falls from the bamboo into the pond making rings, wet mossy stones around it, ferns; behind and out of focus the warm glow of a stone lantern and a red paper lantern reflected in the black water. Fine rain. Nobody in the garden.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The thin thread of water falls steadily from the bamboo and makes rings on the pond; rain rings appear around it; the lantern reflections wobble gently. The rain keeps falling for the whole shot and it stays night. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are a steady thin trickle of water into the pond, fine rain, and distant night insects."
+    },
+    {
+      "id": "K08",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_jardin"
+      ],
+      "personajes": [],
+      "funcion": "Una rama de arce: hojas rojas mojadas, gotas que caen al estanque borroso abajo.",
+      "ve": "CLOSE UP of a maple branch at night: dark red wet leaves in the foreground with raindrops gathering at their tips, and below, out of focus, the dark pond with soft orange and red lantern reflections. Only the branch, the leaves and the blurred water.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Drops gather at the leaf tips and fall one by one; the leaves tremble slightly with each drop; the blurred reflections below wobble. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on leaves and single drops falling into water."
+    },
+    {
+      "id": "K09",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "jardin",
+      "personajes": [],
+      "funcion": "Un koi blanco y naranja girando lento bajo el reflejo del farol de piedra.",
+      "ve": "CLOSE UP from above of one white koi with orange patches turning slowly in the dark water, seen through the warm wobbling reflection of the stone lantern's flame on the surface, small rain rings around it. Only the fish, the reflection and the water.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The koi turns slowly in a lazy curve under the surface with gentle fin movements; the warm reflection wobbles over it; rain rings appear and fade. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water and a soft swirl of water."
+    },
+    {
+      "id": "K10",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_jardin"
+      ],
+      "personajes": [],
+      "funcion": "Una taza de té de cerámica en el borde del deck mojado, con la lluvia haciendo anillos adentro.",
+      "ve": "CLOSE UP of a small ceramic tea cup standing on the edge of the wet dark wooden deck at night, rain rings forming on the tea inside it, drops on the wood around it, and beyond, out of focus, the black pond with a red lantern reflection. Only the cup, the wet wood and the blurred water.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Rain rings appear on the surface of the tea; drops land on the wet wood around the cup; the red reflection beyond wobbles gently. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on wood and water and distant night insects."
+    },
+    {
+      "id": "K11",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [],
+      "personajes": [],
+      "funcion": "El estanque a ras del agua: el farol de piedra y los farolitos reflejados, siluetas de koi pasando.",
+      "ve": "WIDE SHOT from very low, right at water level, across a dark koi pond at night: the lit stone lantern and two glowing red paper lanterns in the background, their long reflections stretching across the black water toward the camera, small rain rings everywhere, and the dark shapes of two koi passing just under the surface in the foreground. Fine rain and mist. Nobody in the garden.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The koi shapes glide slowly through the foreground; the long reflections wobble and stretch with the ripples; rain rings appear and fade; the lantern flames breathe. The rain keeps falling for the whole shot and it stays night. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water, a soft steady drip, and distant night insects."
+    },
+    {
+      "id": "K12",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_jardin"
+      ],
+      "personajes": [],
+      "funcion": "CIERRE DEL BUCLE. La cola de un koi perdiéndose en el agua negra, anillos de lluvia. Corta a K01.",
+      "ve": "EXTREME CLOSE UP of the dark water surface: the orange tail and back of a koi sinking slowly away into the black depth at one side of the frame, small rain rings on the surface, and a faint warm reflection of lantern light. Only the water, the fading fish and the rain.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The koi sinks slowly deeper and fades into the dark with one gentle tail sweep; rain rings appear and fade on the surface; the warm reflection wobbles. The rain keeps falling for the whole shot. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are fine rain on still water and a soft swirl of water."
+    }
+  ]
+}

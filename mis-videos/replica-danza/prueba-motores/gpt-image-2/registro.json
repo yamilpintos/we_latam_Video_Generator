@@ -1,0 +1,74 @@
+[
+ {
+  "cuadro": "1-hoja-hannah",
+  "estado": "ok",
+  "segundos": 34.8,
+  "usage": {
+   "input_tokens": 273,
+   "input_tokens_details": {
+    "image_tokens": 0,
+    "text_tokens": 273
+   },
+   "output_tokens": 1372,
+   "output_tokens_details": {
+    "image_tokens": 1372,
+    "text_tokens": 0
+   },
+   "total_tokens": 1645
+  }
+ },
+ {
+  "cuadro": "2-hoja-jack",
+  "estado": "ok",
+  "segundos": 35.5,
+  "usage": {
+   "input_tokens": 262,
+   "input_tokens_details": {
+    "image_tokens": 0,
+    "text_tokens": 262
+   },
+   "output_tokens": 1372,
+   "output_tokens_details": {
+    "image_tokens": 1372,
+    "text_tokens": 0
+   },
+   "total_tokens": 1634
+  }
+ },
+ {
+  "cuadro": "3-encuadre-B",
+  "estado": "ok",
+  "segundos": 88.4,
+  "usage": {
+   "input_tokens": 1856,
+   "input_tokens_details": {
+    "image_tokens": 1536,
+    "text_tokens": 320
+   },
+   "output_tokens": 5488,
+   "output_tokens_details": {
+    "image_tokens": 5488,
+    "text_tokens": 0
+   },
+   "total_tokens": 7344
+  }
+ },
+ {
+  "cuadro": "4-perfiles",
+  "estado": "ok",
+  "segundos": 96.6,
+  "usage": {
+   "input_tokens": 3482,
+   "input_tokens_details": {
+    "image_tokens": 3072,
+    "text_tokens": 410
+   },
+   "output_tokens": 5488,
+   "output_tokens_details": {
+    "image_tokens": 5488,
+    "text_tokens": 0
+   },
+   "total_tokens": 8970
+  }
+ }
+]

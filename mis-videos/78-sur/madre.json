@@ -1,0 +1,13 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_base",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a single Antarctic modular research station, shot in flat overcast light with light blowing snow. Vertical frame.\nTHE STATION, to be reused as the reference for every other shot: one ORANGE rectangular module with rounded corners, raised about three metres on eight grey steel legs with cross-bracing, a row of THREE small square windows along its long side with the MIDDLE ONE LIT WARM AMBER, a single grey steel door at the left end reached by an open metal stair with a handrail, and two thin antenna masts on the roof. A snowdrift piled against the right end.\nFull three-quarter view, the whole module visible, centred, nothing cropped. No people, no vehicles, no other buildings.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

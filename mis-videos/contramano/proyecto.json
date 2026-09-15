@@ -1,0 +1,285 @@
+{
+  "titulo": "CONTRAMANO",
+  "slug": "contramano",
+  "formato": "short",
+  "estructura": "short",
+  "_concepto": "Un rider entra en contramano a un túnel de tren para escapar. Una operadora de control intenta sacarlo antes de que llegue el formación. Decisiones técnicas: el casco integral resuelve la cara del protagonista sin renunciar al diálogo (habla por radio, no se le ve la boca); el túnel con luces estroboscópicas y polvo es un entorno que perdona; y tres bloques de planos van ENCADENADOS —cada uno arranca en el último fotograma del anterior— para que la persecución tenga inercia real en vez de reiniciarse en cada corte.",
+  "_encadenado": "S05→S06→S07 es una toma continua de 18 s (la persecución) y S09→S10 otra de 11 s (la maniobra). Máximo tres eslabones por cadena: al tercero la identidad empieza a degradarse.",
+  "estilo_imagen": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.",
+  "estilo_video": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.",
+  "cierre_video": "Keep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+  "personajes": {
+    "rider": {
+      "hoja": "m_rider",
+      "descripcion": "the rider on the motorcycle: a black full-face helmet with a scratched dark visor down, a worn dark grey jacket with reflective piping on the sleeves, black gloves — the face is NEVER visible, always behind the visor"
+    },
+    "operadora": {
+      "hoja": "m_operadora",
+      "descripcion": "the control room operator: a woman in her thirties with dark hair tied back, a headset with a boom microphone, a navy uniform shirt with a small patch on the shoulder"
+    }
+  },
+  "locaciones": {
+    "tunel": {
+      "imagen": "l_tunel",
+      "descripcion": "the railway tunnel at night, sodium lamps and haze"
+    },
+    "control": {
+      "imagen": "l_control",
+      "descripcion": "the small night control room, wall of monitors"
+    }
+  },
+  "voces": {
+    "rider": "JXKQ929SO0LLl7spbEAI",
+    "operadora": "EYBbN7OENxAX5QX56IiW"
+  },
+  "_voces_nota": "rider = Pablo (argentino, mediana edad). operadora = Kate (close and natural, sirve para radio). H3 va a inventar una voz distinta en cada clip: estas dos se montan después con isocronía sobre la boca que el modelo animó.",
+  "madre": [
+    {
+      "id": "l_tunel",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph looking straight down the length of a working railway tunnel at night. Vertical frame. Twin steel rails running away from camera on concrete sleepers, wet and throwing hard highlights. Hard sodium-orange service lamps mounted on the left wall every few metres, receding into black. Thick concrete dust and haze hanging in every beam. Cable trays and conduit along both walls. No people, no vehicles, no train. High ISO grain, deep blacks. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_control",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a small night-shift railway control room. Vertical frame. A curved desk with three CRT-era monitors showing track diagrams in green and amber, a analog clock on the wall, a coffee cup, a red handset on a coiled cord. The only light is the monitors and one desk lamp. Empty chair. No people. High ISO grain, warm amber and green cast against deep shadow. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_rider",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A motorcycle rider seen from the chest up, wearing a matte black full-face helmet with a SCRATCHED DARK VISOR FULLY DOWN so the face is completely hidden, a worn dark grey textile jacket with thin reflective piping along the sleeves, and black gloves. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_operadora",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A woman in her thirties from the chest up: dark hair tied back tightly, a black headset with a boom microphone at the corner of her mouth, a navy uniform shirt with a small embroidered patch on the shoulder. Calm, alert expression, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ],
+  "planos": [
+    {
+      "id": "S01",
+      "tipo": "PP",
+      "corta": 3.0,
+      "segundos": 5.2,
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "refs": [
+        "m_rider",
+        "l_tunel"
+      ],
+      "funcion": "HOOK. Un faro que crece en el visor y una voz que grita. Cero contexto.",
+      "texto": "iba en contramano",
+      "dialogo": "¡Salí de ahí ahora! ¡Viene el de las nueve, salí ya!",
+      "ventana_dialogo": 2.61,
+      "ve": "EXTREME CLOSE UP on a scratched black motorcycle visor filling the vertical frame. Reflected across the curved plastic, a single blinding white railway headlight far down a tunnel, small but unmistakable. Sodium-orange lamps streak across the visor as speed blurs them. Dust in the air.",
+      "mueve": "The reflected headlight grows fast in the visor as the distance closes. The orange lamp streaks accelerate. The head jerks once to the left, checking. Everything shakes with the road.",
+      "audio": "[SFX] a motorcycle engine screaming at high revs, very close. [Foley] wind roar and helmet buffeting. [Speech] a woman's voice through a crackling radio speaker, urgent and compressed.",
+      "voz_de": "operadora"
+    },
+    {
+      "id": "S02",
+      "tipo": "PGE",
+      "corta": 2.5,
+      "segundos": 5.2,
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "refs": [
+        "l_tunel",
+        "m_rider"
+      ],
+      "funcion": "PROMESA. Dónde está: un túnel de tren, y él entrando igual.",
+      "ve": "EXTREME WIDE SHOT from inside the tunnel mouth looking out toward a lit city street. The motorcycle is a small dark silhouette against that opening, already past the barrier, riding INTO the tunnel toward camera between the rails. The tunnel walls frame it on both sides.",
+      "mueve": "The motorcycle accelerates hard toward camera and the opening behind it shrinks. The headlight flares as it approaches. Dust lifts off the sleepers in its wake.",
+      "audio": "[SFX] the engine note dropping as it passes camera, doppler. [Ambient] the huge reverberant space of the tunnel swallowing the sound."
+    },
+    {
+      "id": "S03",
+      "tipo": "PD",
+      "corta": 4.0,
+      "segundos": 5.2,
+      "loc": "control",
+      "personajes": [
+        "operadora"
+      ],
+      "refs": [
+        "l_control",
+        "m_operadora"
+      ],
+      "funcion": "BARRA DE PROGRESO. El diagrama de vías: dos puntos que se acercan.",
+      "texto": "vía 2 · ocupada",
+      "dialogo": "Vía dos, ocupada.",
+      "ventana_dialogo": 1.5,
+      "interrupcion": true,
+      "ve": "CLOSE on a control room monitor showing a green track diagram. Two markers on the same line: one moving up from the bottom, one coming down from the top. Between them, a numeric readout counting down. The operator's face is reflected faintly in the glass, headset mic at the corner of her mouth.",
+      "mueve": "The two markers close on each other steadily. The countdown drops. Her reflection leans in toward the glass and speaks into the boom mic. The screen flashes red once.",
+      "audio": "[Foley] fingers hitting a keyboard hard, a chair rolling. [SFX] an alarm tone starting, low and insistent. [Speech] the woman speaking into her headset, tight and controlled."
+    },
+    {
+      "id": "S04",
+      "tipo": "PG",
+      "corta": 4.5,
+      "segundos": 5.2,
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "refs": [
+        "l_tunel",
+        "m_rider"
+      ],
+      "funcion": "TENSIÓN POR AUSENCIA. El túnel vacío y negro por delante: no hay salida.",
+      "ve": "WIDE SHOT from behind and above the motorcycle, low, running between the rails deeper into the tunnel. Ahead of it the tunnel curves away into total black — no exit visible, no light at the end. Sodium lamps rush past on the left wall.",
+      "mueve": "The motorcycle rides away from camera into the dark and the lamps sweep past faster and faster. The headlight reaches nothing. The tunnel curve swallows it and there is only black ahead.",
+      "audio": "[SFX] the engine, and the tunnel throwing it back as a wall of reverb. [Ambient] under everything, a low rumble that was not there before."
+    },
+    {
+      "id": "S05",
+      "tipo": "PGE",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "refs": [
+        "l_tunel",
+        "m_rider"
+      ],
+      "funcion": "ESCALERA 1 · arranca la toma continua: el rumbo se vuelve luz.",
+      "ve": "Low tracking shot beside the motorcycle at rail height, moving with it, the sleepers strobing past underneath. Ahead and far down the tunnel, a faint white glow is starting to define the curve of the wall — something is coming the other way.",
+      "mueve": "The camera holds beside the bike as it accelerates. Ahead, the white glow on the tunnel wall brightens steadily and starts to define a shape. The rider's head lifts toward it.",
+      "audio": "[SFX] engine at full throttle, chain noise, the rails singing. [Foley] rapid breathing inside a helmet."
+    },
+    {
+      "id": "S06",
+      "tipo": "PGE",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "sigue_de": "S05",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "funcion": "ESCALERA 2 · MISMA TOMA: la luz se vuelve un tren.",
+      "dialogo": "¡No hay salida por acá! ¡No puedo frenar, no puedo frenar, no!",
+      "ventana_dialogo": 3.48,
+      "ve": "",
+      "mueve": "The same unbroken tracking shot continues at the same speed and height. The white glow ahead resolves into a single blinding headlight and then into the flat front of a train filling the tunnel, closing fast. The rider's head snaps left, looking for anything. The camera shakes harder.",
+      "audio": "[SFX] a train horn tearing through the tunnel, enormous. [Foley] the engine still screaming. [Speech] a man's voice inside the helmet, breathless and fast."
+    },
+    {
+      "id": "S07",
+      "tipo": "PGE",
+      "corta": 5.5,
+      "segundos": 5.9,
+      "sigue_de": "S06",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "funcion": "LA REVELACIÓN · MISMA TOMA: hay un nicho de servicio en la pared.",
+      "ve": "",
+      "mueve": "The same unbroken shot continues. As the train fills the frame, the camera whips right and a shallow rectangular service alcove cut into the tunnel wall passes — the only gap in a hundred metres of concrete. The motorcycle leans violently toward it. The train light washes everything white.",
+      "audio": "[SFX] the horn at maximum, the roar of displaced air, tyres screaming on wet concrete.",
+      "_nota_vram": "bajado de 7,3 a 5,9 s: a 7,3 y encadenado no entra en 32 GB"
+    },
+    {
+      "id": "S08",
+      "tipo": "PD",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "loc": "control",
+      "personajes": [
+        "operadora"
+      ],
+      "refs": [
+        "l_control",
+        "m_operadora"
+      ],
+      "funcion": "INTERRUPCIÓN DE PATRÓN: se corta el estruendo y estamos en silencio, mirando una pantalla.",
+      "texto": "frenado de emergencia",
+      "dialogo": "Frená ahora mismo. Tirate a la derecha, que hay un nicho de servicio.",
+      "ventana_dialogo": 3.73,
+      "interrupcion": true,
+      "ve": "CLOSE on the operator's face lit only by the monitors, headset mic at her mouth, eyes fixed on the screen. Green and amber light across her skin. Behind her the control room is dark. She is completely still.",
+      "mueve": "She watches without blinking, then speaks into the mic once, hard. Her hand comes up and slams a red button off frame. The screen light on her face flashes from green to red and holds.",
+      "audio": "[Ambient] the quiet room tone of the control room, almost silent after the tunnel. [Foley] a heavy switch thrown. [Speech] the woman, low and hard."
+    },
+    {
+      "id": "S09",
+      "tipo": "PP",
+      "corta": 5.0,
+      "segundos": 5.9,
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "refs": [
+        "m_rider",
+        "l_tunel"
+      ],
+      "funcion": "CONTACTO · arranca la segunda toma continua: la maniobra.",
+      "ve": "CLOSE on the rider from the front, low angle, the black visor filling most of the frame and the train headlight behind him blowing out the entire background to white. His gloved hands are locked on the bars. Everything is vibrating.",
+      "mueve": "He throws his weight hard to the right and the bike goes over with him, the horizon tilting violently. The white light behind him grows until it consumes the frame edges.",
+      "audio": "[SFX] the train horn, enormous and close. [Foley] a glove creaking on the grip, one sharp breath in."
+    },
+    {
+      "id": "S10",
+      "tipo": "PG",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "sigue_de": "S09",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "funcion": "LO IMPOSIBLE · MISMA TOMA: entra al nicho y el tren pasa a centímetros.",
+      "ve": "",
+      "mueve": "The same unbroken shot continues through the lean: the motorcycle slides sideways off the rails and into the shallow service alcove, and half a second later the train passes across the entire frame at speed, a wall of steel and windows centimetres away, strobing the alcove with light. Dust and grit blast horizontally past the lens.",
+      "audio": "[SFX] the train passing at full speed, a wall of noise and pressure. [Foley] metal grinding on concrete, then only the train."
+    },
+    {
+      "id": "S11",
+      "tipo": "PP",
+      "corta": 5.5,
+      "segundos": 5.9,
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "refs": [
+        "m_rider",
+        "l_tunel"
+      ],
+      "funcion": "EL PAGO. Quieto por primera vez en un minuto. Y contesta.",
+      "dialogo": "Estoy adentro. Ya pasó.",
+      "ventana_dialogo": 2.44,
+      "ve": "CLOSE on the rider pressed flat into the service alcove, still on the fallen bike, the train carriages strobing past behind him and throwing bands of light across the black visor. He is not moving. Dust hangs everywhere in the beams.",
+      "mueve": "The last carriages strobe past behind him and the light steadies into the dull orange of the service lamps. His shoulders drop. His head tips back against the concrete. Dust settles slowly through the frame.",
+      "audio": "[SFX] the last of the train receding, the tunnel returning to silence. [Foley] very heavy breathing inside a helmet, and a radio clicking. [Speech] a man's voice, exhausted, close on the radio."
+    },
+    {
+      "id": "S12",
+      "tipo": "PGE",
+      "corta": 5.5,
+      "segundos": 5.9,
+      "loc": "tunel",
+      "personajes": [],
+      "refs": [
+        "l_tunel"
+      ],
+      "funcion": "CIERRE EN BUCLE. Otra luz, del otro lado. No terminó.",
+      "ve": "EXTREME WIDE SHOT looking down the empty tunnel from far away, the service lamps receding into the dark. The fallen motorcycle and the small figure in the alcove are tiny at the bottom of frame, lit orange. The tunnel is otherwise completely empty and still, dust drifting.",
+      "mueve": "Everything is still for a beat. Then, far down the tunnel in the OTHER direction, a second white headlight appears and begins to grow. The dust starts moving again. Frame cuts to black before it arrives.",
+      "audio": "[Ambient] tunnel silence, dust settling, a dripping somewhere. [SFX] far away, a second set of rails beginning to sing, then cut to complete silence."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_azotea",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the open laundry terrace of a flat in a southern Chinese city, vertical frame, late afternoon. Metal drying racks hung with white shirts, towels and underwear; a low parapet; behind it a dense skyline of pale apartment blocks and green hills, hazy. Soft overcast daylight. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_colegio",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the gate of a Chinese kindergarten on a city street, vertical frame, afternoon. A colourful arch over the gate with cartoon shapes, a low fence, parents waiting on the pavement, electric scooters parked along the kerb, plane trees. Warm flat daylight. Figures blurred and far away, nobody in focus. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_salon",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the living room of a modern Chinese flat, vertical frame, afternoon. Pink-beige walls, a cream fabric sofa with soft toys, a round pouffe, a low wooden table, sheer white curtains glowing with daylight, a framed print. Warm, soft, slightly out of focus at the back. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_auto",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the inside of a small family car seen from the passenger seat, vertical frame, daytime. Grey fabric seats, a black steering wheel, a child safety seat visible in the back, seat belts, the windscreen showing a blurred tree-lined avenue. Flat daylight. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_pasillo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the corridor of a flat at night, vertical frame. Dark wooden floor, two doors, one half open with a thin strip of pale light falling across the floor, a framed picture on the wall, everything else in deep shadow. Almost no light. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_dormitorio",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the main bedroom of a modern Chinese flat, vertical frame, dusk. A whole wall taken by a huge dark-wood sliding wardrobe, floor to ceiling, its two panels closed; a bed with pale linen at the edge of frame; a window with grey light behind sheer curtains. Cold, quiet. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_bano",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a bathroom in a modern Chinese flat, vertical frame, night. A deep cream bathtub under a small window, chrome taps, a large mirror, folded towels, warm tungsten light, faint steam in the air. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_tienda",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a small electronics shop, vertical frame. Long glass counters with cameras and gadgets under the glass, walls covered in hanging blister packs of cables and accessories, blue and white signage, cold fluorescent light. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_cocina",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the kitchen of a modern Chinese flat, vertical frame, daytime. A tall two-door fridge, pale cabinets, a window over the sink with daylight, a steel dish rack with white bowls stacked upside down, a kettle. Clean and quiet. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_cosmos",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic astronomical photograph of a deep purple and blue nebula with a bright warm core low in the frame, vertical, dense with stars and dust lanes. No planets, no spaceships. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_mama",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, from the knees up, beige trousers, small stud earrings. She is thirty and looks it: the face of a young television drama lead, smooth skin, no lines, but tired around the eyes. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_duoduo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, standing full figure, white tights and small white shoes, a calm open face. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_vendedora",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card, from the knees up, dark trousers, a polite professional expression. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ]
+}

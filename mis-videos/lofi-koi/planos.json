@@ -1,0 +1,252 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes.",
+  "titulo": "ESTANQUE DE KOI",
+  "slug": "lofi-koi",
+  "formato": "largo",
+  "fps": 24,
+  "ancho": 1344,
+  "alto": 768,
+  "estructura": "loop-ambiente",
+  "planos": [
+    {
+      "id": "K01",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": "jardin",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "ARRANQUE DEL BUCLE. El estanque entero desde el deck: farol, farolitos, koi bajo el agua, lluvia fina.",
+      "first_frame": "assets/sb_K01.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. Only slow ambient motion: the koi glide slowly under the surface, small rain rings appear and fade on the water, the lantern reflections wobble gently, the candle flame in the stone lantern breathes. The rain keeps falling for the whole shot and it stays night. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water, a soft steady drip from the bamboo spout, and distant night insects.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        0.0,
+        5.17
+      ]
+    },
+    {
+      "id": "K02",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La superficie del agua: anillos de lluvia y el reflejo rojo de un farolito.",
+      "first_frame": "assets/sb_K02.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Rain rings appear, spread and fade across the surface; the red reflection wobbles slowly with the ripples. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water and distant night insects.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        5.17,
+        10.33
+      ]
+    },
+    {
+      "id": "K03",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "jardin",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Un koi solo, naranja y blanco, pasando justo bajo la superficie.",
+      "first_frame": "assets/sb_K03.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The koi glides slowly from one side of the frame toward the other with gentle sweeps of its tail and fins, staying just under the surface; rain rings appear and fade above it. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water and a soft swirl of water from the fish.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        10.33,
+        15.5
+      ]
+    },
+    {
+      "id": "K04",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El farol de piedra: la vela adentro, el musgo, la lluvia goteando del techito.",
+      "first_frame": "assets/sb_K04.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The candle flame breathes gently inside the lantern; drops of rain fall from the edge of the stone roof one after another; the moss glistens. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on stone and leaves and a soft steady drip.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        15.5,
+        20.67
+      ]
+    },
+    {
+      "id": "K05",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Un farolito rojo de papel encendido, con gotas resbalando y hojas de arce.",
+      "first_frame": "assets/sb_K05.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The lantern sways very slightly; raindrops slide slowly down the paper; the leaves tremble as drops fall from their tips; the light inside breathes gently. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on paper and leaves and distant night insects.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        20.67,
+        25.84
+      ]
+    },
+    {
+      "id": "K06",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "jardin",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Dos koi pasando bajo los nenúfares.",
+      "first_frame": "assets/sb_K06.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The two koi glide slowly under the lily pads with gentle tail sweeps, one following the other; rain rings appear and fade; the lily pads rock very slightly. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water and a soft swirl of water.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        25.84,
+        31.0
+      ]
+    },
+    {
+      "id": "K07",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El caño de bambú goteando al estanque, piedras con musgo, el resplandor del farol detrás.",
+      "first_frame": "assets/sb_K07.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The thin thread of water falls steadily from the bamboo and makes rings on the pond; rain rings appear around it; the lantern reflections wobble gently. The rain keeps falling for the whole shot and it stays night. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a steady thin trickle of water into the pond, fine rain, and distant night insects.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        31.0,
+        36.17
+      ]
+    },
+    {
+      "id": "K08",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Una rama de arce: hojas rojas mojadas, gotas que caen al estanque borroso abajo.",
+      "first_frame": "assets/sb_K08.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Drops gather at the leaf tips and fall one by one; the leaves tremble slightly with each drop; the blurred reflections below wobble. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on leaves and single drops falling into water.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        36.17,
+        41.34
+      ]
+    },
+    {
+      "id": "K09",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "jardin",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Un koi blanco y naranja girando lento bajo el reflejo del farol de piedra.",
+      "first_frame": "assets/sb_K09.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The koi turns slowly in a lazy curve under the surface with gentle fin movements; the warm reflection wobbles over it; rain rings appear and fade. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water and a soft swirl of water.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        41.34,
+        46.5
+      ]
+    },
+    {
+      "id": "K10",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Una taza de té de cerámica en el borde del deck mojado, con la lluvia haciendo anillos adentro.",
+      "first_frame": "assets/sb_K10.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Rain rings appear on the surface of the tea; drops land on the wet wood around the cup; the red reflection beyond wobbles gently. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on wood and water and distant night insects.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        46.5,
+        51.67
+      ]
+    },
+    {
+      "id": "K11",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El estanque a ras del agua: el farol de piedra y los farolitos reflejados, siluetas de koi pasando.",
+      "first_frame": "assets/sb_K11.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The koi shapes glide slowly through the foreground; the long reflections wobble and stretch with the ripples; rain rings appear and fade; the lantern flames breathe. The rain keeps falling for the whole shot and it stays night. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water, a soft steady drip, and distant night insects.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        51.67,
+        56.84
+      ]
+    },
+    {
+      "id": "K12",
+      "escena": "LOFI-KOI",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "CIERRE DEL BUCLE. La cola de un koi perdiéndose en el agua negra, anillos de lluvia. Corta a K01.",
+      "first_frame": "assets/sb_K12.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The koi sinks slowly deeper and fades into the dark with one gentle tail sweep; rain rings appear and fade on the surface; the warm reflection wobbles. The rain keeps falling for the whole shot. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are fine rain on still water and a soft swirl of water.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        56.84,
+        62.0
+      ]
+    }
+  ]
+}

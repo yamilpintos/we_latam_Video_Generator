@@ -1,0 +1,13 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "16:9",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_modulo",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Hand-painted 2D animation background art, wide 16:9 landscape frame, calm lo-fi illustration style: soft painterly brushwork, gentle film grain. WIDE SHOT down the length of a small cylindrical orbital greenhouse module, seen from the hatch at one end. Two rows of white hydroponic trays full of green plants (tomato, strawberry, lettuce, herbs) run along both sides under long magenta-violet grow-light tubes that bathe the leaves in pink light. At the far end a BIG round porthole fills the wall, and through it the blue Earth with white swirls of cloud and a thin glowing atmosphere line, casting cool blue light into the module. On the LEFT wall a vent grille with a small fan. On the RIGHT a metal watering can held by a strap and a bundle of dried herbs hanging. White and grey panels, a few tidy cables, tiny dust motes in the light. Nobody in the module. No text, no letters, no labels, no screens anywhere. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    }
+  ]
+}

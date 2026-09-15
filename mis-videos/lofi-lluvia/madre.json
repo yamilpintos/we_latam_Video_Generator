@@ -1,0 +1,19 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "16:9",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_cuarto",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Hand-painted 2D animation background art, wide 16:9 landscape frame, calm night-time lo-fi illustration style: soft painterly brushwork, gentle film grain, warm amber interior light against a cool blue-violet rainy night. WIDE SHOT of a small cosy study room seen from the doorway at the back of the room. On the far wall a BIG window streaked with rain; outside, a night city that is only soft blurred discs of amber, teal and violet light, no readable signs. Under the window a wooden desk: a small brass desk lamp with a dark green glass shade switched on at the LEFT corner casting a warm pool of light, a ceramic mug and an open notebook with a pencil at the RIGHT, a pair of headphones beside the notebook. To the LEFT of the desk a record player on a low wooden shelf with a record on the turntable. To the RIGHT a wide windowsill with a folded burgundy wool blanket and two green potted plants. An armchair in the right foreground, a worn rug on the floorboards, a bookshelf full of books along the left wall. The chair at the desk is empty. NOBODY is in the room and there is NO animal in the room. No text, no letters, no signs, no labels anywhere. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    },
+    {
+      "id": "m_gato",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Character model sheet in hand-painted 2D animation style, wide 16:9 landscape frame, plain neutral warm-grey background, even soft light. THREE views of the SAME cat asleep, side by side: from the side, from three-quarter front, and from above. The cat is a plump grey tabby with darker grey stripes, a white chest and white paws, curled up tightly asleep on a folded burgundy wool blanket, eyes closed, tail wrapped over its paws, ears relaxed. Same size, same colours, same blanket in all three views. Every detail sharp and readable: this is the reference for every other shot. No text, no labels, no arrows. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    }
+  ]
+}

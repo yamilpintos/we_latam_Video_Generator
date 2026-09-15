@@ -1,0 +1,2121 @@
+{
+  "titulo": "REPLICA JCFDLW 7678030150944001310",
+  "slug": "replica-jcfdlw",
+  "formato": "short",
+  "_concepto": "BENCHMARK INTERNO, NO SE PUBLICA. Réplica plano a plano del video 7678030150944001310 de @jcfdlw (3:01, 48.300 vistas): mismo texto literal de la transcripción, mismas tomas con la misma duración medida, mismo contenido de imagen — lo único que cambia son las imágenes, generadas por nosotros. El guion es de ellos: sirve para comparar lado a lado qué puede producir el pipeline, no para publicar.",
+  "_original": "referencias/jcfdlw/7678030150944001310.mp4 · 181,40 s · 30 fps · cuadro real 1080×1440 dentro de 1080×1920. El mapa de las 77 tomas está en MAPA-ORIGINAL.md y en tomas.py; los cortes salen de la detección de escenas de ffmpeg y se verificaron mirando el fotograma medio de cada toma.",
+  "_desvios": "1) Ellos encuadran 3:4 con barras negras; nosotros generamos 9:16 a sangre, porque el módulo genera a la resolución nativa de H3. 2) Las tomas 6 y 14 (6,47 s) se parten en dos planos: son los dos únicos cortes agregados. 3) La voz es Kate, no la de ellos, y corre a ~16,7 cps naturales contra los 20,6 cps del original: el desvío por línea se mide y se anota, el texto NO se reescribe.",
+  "estructura": {
+    "nombre": "replica-jcfdlw-7678030150944001310",
+    "formato": "short",
+    "duracion_objetivo": 185.78,
+    "tolerancia": 0.5,
+    "plataformas": [
+      "TikTok"
+    ],
+    "interrupcion_cada": 0,
+    "notas": [
+      "ESTO NO ES UNA LEY DE GÉNERO: es el timing medido de un video ajeno, escrito como estructura para que `construir` pueda verificar que la réplica lo reproduce. Para escribir un video propio se usa `recap`.",
+      "Los cortes van de 0,50 a 3,24 s (media 2,30). Nuestra grilla no baja de 5,17 s por clip, así que casi todos los planos generan de más y se usan cortos: 412 s generados para 181 s de línea.",
+      "Las dos tomas de 6,47 s (la 6 y la 14) son las únicas partidas en dos planos: 6,47 no entra en la grilla con colchón suficiente y 7,3 es apuesta (regla 38). Son los dos únicos cortes que la réplica agrega al original."
+    ],
+    "tramos": [
+      {
+        "id": "GANCHO",
+        "nombre": "La ropa que falta y la vuelta del cole",
+        "desde": 0.0,
+        "hasta": 7.35,
+        "objetivo": "Reproducir las tomas 1-3 del original con su duración exacta.",
+        "corte_min": 0.48,
+        "corte_max": 5.18,
+        "planos_min": 3
+      },
+      {
+        "id": "LA_NENA",
+        "nombre": "La nena dice que papá vive en el armario",
+        "desde": 7.35,
+        "hasta": 29.82,
+        "objetivo": "Reproducir las tomas 4-10 del original con su duración exacta.",
+        "corte_min": 1.12,
+        "corte_max": 5.27,
+        "planos_min": 8
+      },
+      {
+        "id": "SESENTA_DIAS",
+        "nombre": "Los sesenta días contados con los dedos",
+        "desde": 29.82,
+        "hasta": 46.3,
+        "objetivo": "Reproducir las tomas 11-14 del original con su duración exacta.",
+        "corte_min": 1.12,
+        "corte_max": 3.55,
+        "planos_min": 6
+      },
+      {
+        "id": "AUTO_1",
+        "nombre": "El primer viaje: la duda",
+        "desde": 46.3,
+        "hasta": 60.16,
+        "objetivo": "Reproducir las tomas 15-20 del original con su duración exacta.",
+        "corte_min": 0.87,
+        "corte_max": 4.75,
+        "planos_min": 6
+      },
+      {
+        "id": "EL_ARMARIO",
+        "nombre": "El pasillo, el cuchillo y el alivio falso",
+        "desde": 60.16,
+        "hasta": 75.94,
+        "objetivo": "Reproducir las tomas 21-25 del original con su duración exacta.",
+        "corte_min": 2.36,
+        "corte_max": 4.68,
+        "planos_min": 5
+      },
+      {
+        "id": "EL_BANO",
+        "nombre": "La misión secreta",
+        "desde": 75.94,
+        "hasta": 99.58,
+        "objetivo": "Reproducir las tomas 26-35 del original con su duración exacta.",
+        "corte_min": 0.87,
+        "corte_max": 4.01,
+        "planos_min": 10
+      },
+      {
+        "id": "EL_MOVIL",
+        "nombre": "Las publicaciones y la certeza",
+        "desde": 99.58,
+        "hasta": 117.3,
+        "objetivo": "Reproducir las tomas 36-42 del original con su duración exacta.",
+        "corte_min": 0.52,
+        "corte_max": 3.93,
+        "planos_min": 7
+      },
+      {
+        "id": "LA_MANANA",
+        "nombre": "Disimular delante de la nena",
+        "desde": 117.3,
+        "hasta": 125.01,
+        "objetivo": "Reproducir las tomas 43-47 del original con su duración exacta.",
+        "corte_min": 0.75,
+        "corte_max": 2.02,
+        "planos_min": 5
+      },
+      {
+        "id": "INTERROGATORIO",
+        "nombre": "El segundo viaje: la camisa y la corbata",
+        "desde": 125.01,
+        "hasta": 152.32,
+        "objetivo": "Reproducir las tomas 48-59 del original con su duración exacta.",
+        "corte_min": 1.05,
+        "corte_max": 2.99,
+        "planos_min": 13
+      },
+      {
+        "id": "LA_CAMARA",
+        "nombre": "La tienda y la minicámara",
+        "desde": 152.32,
+        "hasta": 167.75,
+        "objetivo": "Reproducir las tomas 60-69 del original con su duración exacta.",
+        "corte_min": 0.45,
+        "corte_max": 3.54,
+        "planos_min": 10
+      },
+      {
+        "id": "LA_COCINA",
+        "nombre": "Las cuentas que no dan",
+        "desde": 167.75,
+        "hasta": 183.8,
+        "objetivo": "Reproducir las tomas 70-76 del original con su duración exacta.",
+        "corte_min": 0.86,
+        "corte_max": 5.28,
+        "planos_min": 7
+      },
+      {
+        "id": "CIERRE",
+        "nombre": "La placa final",
+        "desde": 183.8,
+        "hasta": 185.78,
+        "objetivo": "Reproducir las tomas 77-77 del original con su duración exacta.",
+        "corte_min": 1.78,
+        "corte_max": 1.88,
+        "planos_min": 1
+      }
+    ]
+  },
+  "estilo_imagen": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.",
+  "estilo_video": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.",
+  "cierre_video": "Keep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+  "solo_sonidos": "room tone, the city outside the window, cloth, water and the small sounds of a flat",
+  "personajes": {
+    "mama": {
+      "hoja": "m_mama",
+      "descripcion": "Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater"
+    },
+    "duoduo": {
+      "hoja": "m_duoduo",
+      "descripcion": "Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan"
+    },
+    "vendedora": {
+      "hoja": "m_vendedora",
+      "descripcion": "the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card"
+    }
+  },
+  "locaciones": {
+    "azotea": {
+      "imagen": "l_azotea",
+      "descripcion": "the open laundry terrace of a city flat, drying racks, the skyline behind"
+    },
+    "colegio": {
+      "imagen": "l_colegio",
+      "descripcion": "the gate of a kindergarten on a city street"
+    },
+    "salon": {
+      "imagen": "l_salon",
+      "descripcion": "the living room of the flat, warm pink-beige, sheer curtains"
+    },
+    "auto": {
+      "imagen": "l_auto",
+      "descripcion": "the inside of a small family car with a child seat in the back"
+    },
+    "pasillo": {
+      "imagen": "l_pasillo",
+      "descripcion": "the corridor of the flat at night, doors half open"
+    },
+    "dormitorio": {
+      "imagen": "l_dormitorio",
+      "descripcion": "the main bedroom with a huge dark-wood sliding wardrobe"
+    },
+    "bano": {
+      "imagen": "l_bano",
+      "descripcion": "the bathroom, a deep cream bathtub under a window"
+    },
+    "tienda": {
+      "imagen": "l_tienda",
+      "descripcion": "an electronics shop with glass counters and walls of accessories"
+    },
+    "cocina": {
+      "imagen": "l_cocina",
+      "descripcion": "the kitchen, a tall fridge, a window over the sink, a steel dish rack"
+    },
+    "cosmos": {
+      "imagen": "l_cosmos",
+      "descripcion": "a deep purple and blue nebula full of stars"
+    }
+  },
+  "voces": {
+    "narrador": "EYBbN7OENxAX5QX56IiW"
+  },
+  "madre": [
+    {
+      "id": "l_azotea",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the open laundry terrace of a flat in a southern Chinese city, vertical frame, late afternoon. Metal drying racks hung with white shirts, towels and underwear; a low parapet; behind it a dense skyline of pale apartment blocks and green hills, hazy. Soft overcast daylight. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_colegio",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the gate of a Chinese kindergarten on a city street, vertical frame, afternoon. A colourful arch over the gate with cartoon shapes, a low fence, parents waiting on the pavement, electric scooters parked along the kerb, plane trees. Warm flat daylight. Figures blurred and far away, nobody in focus. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_salon",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the living room of a modern Chinese flat, vertical frame, afternoon. Pink-beige walls, a cream fabric sofa with soft toys, a round pouffe, a low wooden table, sheer white curtains glowing with daylight, a framed print. Warm, soft, slightly out of focus at the back. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_auto",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the inside of a small family car seen from the passenger seat, vertical frame, daytime. Grey fabric seats, a black steering wheel, a child safety seat visible in the back, seat belts, the windscreen showing a blurred tree-lined avenue. Flat daylight. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_pasillo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the corridor of a flat at night, vertical frame. Dark wooden floor, two doors, one half open with a thin strip of pale light falling across the floor, a framed picture on the wall, everything else in deep shadow. Almost no light. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_dormitorio",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the main bedroom of a modern Chinese flat, vertical frame, dusk. A whole wall taken by a huge dark-wood sliding wardrobe, floor to ceiling, its two panels closed; a bed with pale linen at the edge of frame; a window with grey light behind sheer curtains. Cold, quiet. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_bano",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a bathroom in a modern Chinese flat, vertical frame, night. A deep cream bathtub under a small window, chrome taps, a large mirror, folded towels, warm tungsten light, faint steam in the air. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_tienda",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a small electronics shop, vertical frame. Long glass counters with cameras and gadgets under the glass, walls covered in hanging blister packs of cables and accessories, blue and white signage, cold fluorescent light. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_cocina",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of the kitchen of a modern Chinese flat, vertical frame, daytime. A tall two-door fridge, pale cabinets, a window over the sink with daylight, a steel dish rack with white bowls stacked upside down, a kettle. Clean and quiet. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_cosmos",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic astronomical photograph of a deep purple and blue nebula with a bright warm core low in the frame, vertical, dense with stars and dust lanes. No planets, no spaceships. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_mama",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, from the knees up, beige trousers, small stud earrings. She is thirty and looks it: the face of a young television drama lead, smooth skin, no lines, but tired around the eyes. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_duoduo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, standing full figure, white tights and small white shoes, a calm open face. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_vendedora",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card, from the knees up, dark trousers, a polite professional expression. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ],
+  "planos": [
+    {
+      "id": "S01",
+      "tipo": "PA",
+      "corta": 5.13,
+      "loc": "azotea",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 1 del original · 0.00→5.13 s",
+      "ve": "WIDE-ISH SHOT on the laundry terrace, vertical frame, late afternoon. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater stands at the drying rack with her back three-quarters to camera, taking down white clothes. She holds a small piece of white underwear in both hands and looks along the empty pegs. The hazy city behind her.",
+      "mueve": "She unpins one more garment, folds it against her chest, then stops and runs her eyes slowly along the rack, counting. She lifts a hanger, looks behind it, and lets her hands drop.",
+      "audio": "[Ambient] a quiet high terrace, distant traffic. [Foley] plastic pegs, cloth being folded, a hanger sliding on metal.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        5.13
+      ]
+    },
+    {
+      "id": "S02",
+      "tipo": "PG",
+      "corta": 1.84,
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 2 del original · 5.13→6.97 s",
+      "ve": "WIDE SHOT at the kindergarten gate, vertical frame, afternoon. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack runs towards camera down the middle of the pavement, laughing, other parents and children blurred on both sides, the colourful arch above.",
+      "mueve": "She runs straight at the camera with her arms starting to open, her backpack bouncing. Behind her a parent turns to watch. The crowd drifts across the frame.",
+      "audio": "[Ambient] a schoolyard emptying, children, scooters. [Foley] small running shoes on pavement.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.84
+      ]
+    },
+    {
+      "id": "S03",
+      "tipo": "PM",
+      "corta": 0.53,
+      "loc": "colegio",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "funcion": "toma 3 del original · 6.97→7.50 s",
+      "ve": "MEDIUM SHOT at the kindergarten gate, vertical frame. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater has just lifted Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack onto her hip; the girl's arms are round her neck, both faces close together, the blurred gate behind.",
+      "mueve": "The mother lifts her the last few centimetres and turns a quarter to the side with the movement. The girl presses her cheek against her mother's.",
+      "audio": "[Ambient] the street outside a school. [Foley] cloth, a backpack strap creaking.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        0.53
+      ]
+    },
+    {
+      "id": "S04",
+      "tipo": "PA",
+      "corta": 1.17,
+      "loc": "salon",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "funcion": "toma 4 del original · 7.50→8.67 s",
+      "ve": "WIDE SHOT of the living room, vertical frame, late afternoon. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan sits on a round pouffe holding a pale balloon; Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater sits on the floor beside her, legs folded, a phone face down on the rug.",
+      "mueve": "The girl turns the balloon in her hands and says something; the mother leans in slightly, still smiling, not yet listening properly.",
+      "audio": "[Ambient] a quiet flat, faint traffic through glass. [Foley] a balloon squeaking, clothes on a rug.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.17
+      ]
+    },
+    {
+      "id": "S05",
+      "tipo": "PM",
+      "corta": 3.1,
+      "loc": "salon",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "funcion": "toma 5 del original · 8.67→11.77 s",
+      "ve": "MEDIUM SHOT in profile of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan and Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater facing each other in the living room, vertical frame, both in soft window light, the room dissolved behind them.",
+      "mueve": "The girl talks steadily, her mouth working; the mother's smile flattens by degrees as she listens, her head tilting a few centimetres to one side.",
+      "audio": "[Ambient] the quiet room. [Foley] small movements of cloth.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.1
+      ]
+    },
+    {
+      "id": "S06a",
+      "tipo": "PP",
+      "corta": 3.23,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 6 del original · 11.77→18.23 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the living room, vertical frame, warm window light on her face. She is mid-sentence, one index finger raised; the dark back of the girl's head is a soft shape at the left edge of frame. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "She talks, the raised finger moving with the rhythm of what she says, then lowers it and puts the hand flat on her own knee.",
+      "audio": "[Ambient] the quiet room. [Foley] cloth, a hand settling on fabric.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.23
+      ]
+    },
+    {
+      "id": "S06b",
+      "tipo": "PM",
+      "corta": 3.23,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 6 del original · 11.77→18.23 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the living room, vertical frame, framed from the waist up and filling most of the frame, sitting and talking; the back of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan's head is a large dark out-of-focus shape in the bottom left corner. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "She keeps talking, more softly now, and reaches out to smooth the girl's hair, leaving her hand resting on the small head.",
+      "audio": "[Ambient] the quiet room. [Foley] a hand on hair, cloth.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.23
+      ]
+    },
+    {
+      "id": "S07",
+      "tipo": "PP",
+      "corta": 1.95,
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 7 del original · 18.23→19.93 s",
+      "ve": "CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack, vertical frame, the living room dissolved to warm colour behind her. Her mouth is open, eyes wide and completely serious.",
+      "mueve": "She looks straight up at her mother and says a short sentence; her eyebrows go up at the end of it. She does not blink.",
+      "audio": "[Ambient] the quiet room. [Foley] the small sounds of a child breathing.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.95
+      ]
+    },
+    {
+      "id": "S08",
+      "tipo": "PP",
+      "corta": 1.83,
+      "loc": "salon",
+      "personajes": [
+        "duoduo",
+        "mama"
+      ],
+      "funcion": "toma 8 del original · 19.93→21.73 s",
+      "ve": "CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack in profile, vertical frame, speaking; the edge of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's face enters the right edge of frame, out of focus.",
+      "mueve": "The girl talks with her chin lifted; the blurred face at the edge of frame turns towards her.",
+      "audio": "[Ambient] the quiet room.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.83
+      ]
+    },
+    {
+      "id": "S09",
+      "tipo": "PM",
+      "corta": 5.22,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 9 del original · 21.73→27.03 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater holding Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack, vertical frame; the girl has her back to camera with the pink backpack still on, the mother's face visible over her shoulder. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "The mother rocks her once, side to side, talking over the girl's shoulder in a light voice, and her eyes go somewhere else, past the camera.",
+      "audio": "[Ambient] the quiet room. [Foley] cloth, a backpack strap.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        5.22
+      ]
+    },
+    {
+      "id": "S10",
+      "tipo": "PP",
+      "corta": 2.74,
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 10 del original · 27.03→29.97 s",
+      "ve": "CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack, vertical frame, eyes half closed, her mouth moving.",
+      "mueve": "She speaks with her eyes almost shut, tired, then opens them and looks up.",
+      "audio": "[Ambient] the quiet room.",
+      "clip_de": "S07",
+      "usa": [
+        1.95,
+        4.69
+      ]
+    },
+    {
+      "id": "S11",
+      "tipo": "PA",
+      "corta": 2.66,
+      "loc": "colegio",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "funcion": "toma 11 del original · 29.97→32.63 s",
+      "ve": "WIDE-ISH SHOT at the kindergarten gate, vertical frame, afternoon. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater crouches in front of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack under the colourful arch, straightening the backpack straps with both hands, other parents blurred behind.",
+      "mueve": "She pulls one strap straight, then the other, and looks up into the girl's face with a question. The girl nods once.",
+      "audio": "[Ambient] the street outside a school. [Foley] backpack buckles, footsteps.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.66
+      ]
+    },
+    {
+      "id": "S12a",
+      "tipo": "PM",
+      "corta": 2.83,
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 12 del original · 32.63→38.10 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack on the pavement, vertical frame, parked scooters blurred behind her. She is looking down at her own hands, counting on her fingers.",
+      "mueve": "She folds down one finger at a time, lips moving with the count, absolutely absorbed; a scooter passes behind her, out of focus.",
+      "audio": "[Ambient] a busy pavement, a scooter passing. [Foley] nothing but the traffic.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.83
+      ]
+    },
+    {
+      "id": "S12b",
+      "tipo": "PP",
+      "corta": 2.82,
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 12 del original · 32.63→38.10 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack on the pavement, vertical frame, parked scooters blurred behind her. She is looking down at her own hands, counting on her fingers. Framed a little tighter than before, the same moment continuing.",
+      "mueve": "She folds down one finger at a time, lips moving with the count, absolutely absorbed; a scooter passes behind her, out of focus.",
+      "audio": "[Ambient] a busy pavement, a scooter passing. [Foley] nothing but the traffic.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.82
+      ]
+    },
+    {
+      "id": "S13",
+      "tipo": "PD",
+      "corta": 1.17,
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 13 del original · 38.10→39.20 s",
+      "ve": "EXTREME CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack's face on the pavement, vertical frame, eyes and mouth filling the frame. She lifts her eyes from her fingers straight up at her mother. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "Her hands stop below the frame. She raises her chin and says two words, flat and certain.",
+      "audio": "[Ambient] a busy pavement.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.17
+      ]
+    },
+    {
+      "id": "S14a",
+      "tipo": "PM",
+      "corta": 3.5,
+      "loc": "colegio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 14 del original · 39.20→45.67 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, alone, standing still on the pavement outside the school, vertical frame, framed from the waist up and filling the centre of the frame, the street blurred behind her. Her face has stopped: eyes wide, mouth slightly open, not breathing.",
+      "mueve": "She does not move. Only her eyes shift a few millimetres, doing a sum. A bus passes far behind her, out of focus.",
+      "audio": "[Ambient] a busy street, a bus. [Foley] nothing near.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.5
+      ]
+    },
+    {
+      "id": "S14b",
+      "tipo": "PP",
+      "corta": 3.5,
+      "loc": "colegio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 14 del original · 39.20→45.67 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater on the pavement, vertical frame, tighter on her face, the street a wash of colour behind her.",
+      "mueve": "Her eyes fill without her face moving at all. She swallows once, and her jaw sets.",
+      "audio": "[Ambient] a busy street.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.5
+      ]
+    },
+    {
+      "id": "S15",
+      "tipo": "PD",
+      "corta": 3.06,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 15 del original · 45.67→48.60 s",
+      "ve": "DETAIL SHOT inside the car, vertical frame, daytime. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's hand on the black steering wheel and her torso with the seat belt across it; her face is cut off above the frame. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The hand tightens on the wheel until the knuckles go pale, then loosens. The windscreen light moves across the sleeve.",
+      "audio": "[Ambient] a car interior at speed, tyres, muffled traffic.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.06
+      ]
+    },
+    {
+      "id": "S16",
+      "tipo": "PM",
+      "corta": 2.31,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 16 del original · 48.60→50.73 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen in profile from the passenger side, the blurred avenue running past the window behind her. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She glances at the rear-view mirror, then back at the road, then at the mirror again, quicker.",
+      "audio": "[Ambient] a car interior, indicator ticking once.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.31
+      ]
+    },
+    {
+      "id": "S17",
+      "tipo": "PP",
+      "corta": 1.61,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 17 del original · 50.73→52.50 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving in profile, vertical frame, the street outside the window completely out of focus behind her cheek. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She talks to herself under her breath, barely moving her lips, eyes fixed forward.",
+      "audio": "[Ambient] a car interior at speed.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.61
+      ]
+    },
+    {
+      "id": "S18",
+      "tipo": "PD",
+      "corta": 1.26,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 18 del original · 52.50→53.70 s",
+      "ve": "DETAIL SHOT inside the car, vertical frame: the hand gripping the wheel and the seat belt crossing the ivory sweater, low angle. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The fingers open and close once on the wheel; the belt shifts as she breathes in.",
+      "audio": "[Ambient] a car interior, a turn signal.",
+      "clip_de": "S15",
+      "usa": [
+        3.06,
+        4.32
+      ]
+    },
+    {
+      "id": "S19",
+      "tipo": "PM",
+      "corta": 0.92,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 19 del original · 53.70→54.57 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, three-quarters towards camera, vertical frame, her shoulders and the head rest in frame, looking straight ahead at the road. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "Her eyes move from the road down to nothing and back up. She blinks hard, twice.",
+      "audio": "[Ambient] a car interior at speed.",
+      "clip_de": "S16",
+      "usa": [
+        2.31,
+        3.23
+      ]
+    },
+    {
+      "id": "S20",
+      "tipo": "PP",
+      "corta": 4.7,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 20 del original · 54.57→59.23 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater from in front, through the top of the steering wheel, vertical frame, the windscreen glare behind her. Her eyes are enormous, her face coming apart. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "Her mouth opens slightly. Her eyes go wet and she does not wipe them; she keeps driving, staring forward.",
+      "audio": "[Ambient] a car interior at speed. [Foley] a single unsteady breath.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        4.7
+      ]
+    },
+    {
+      "id": "S21",
+      "tipo": "PG",
+      "corta": 2.84,
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 21 del original · 59.23→61.97 s",
+      "ve": "WIDE SHOT down the dark corridor of the flat at night, vertical frame. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater stands with her back to camera in front of the bedroom door, small in the frame, a kitchen knife hanging point-down in her right hand. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "She stands still, then takes one step towards the door. The blade catches the little light there is.",
+      "audio": "[Ambient] a flat at night, a fridge humming far away. [Foley] one bare footstep on wood.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.84
+      ]
+    },
+    {
+      "id": "S22",
+      "tipo": "PA",
+      "corta": 2.93,
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 22 del original · 61.97→64.37 s",
+      "ve": "MEDIUM-WIDE SHOT from behind Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, vertical frame: the back of her head and shoulders silhouetted against the closed dark-wood sliding wardrobe that fills the whole wall in front of her. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "She stands in front of the wardrobe without moving, her shoulders rising and falling once, twice.",
+      "audio": "[Ambient] a bedroom at night, absolute quiet. [Foley] breathing.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.93
+      ]
+    },
+    {
+      "id": "S23",
+      "tipo": "PM",
+      "corta": 2.41,
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 23 del original · 64.37→66.77 s",
+      "ve": "CLOSE SHOT from behind Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, vertical frame, tighter: the back of her neck and her hand rising towards the recessed handle of the wardrobe panel. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "Her hand comes up slowly and stops a few centimetres from the handle, fingers spread, and hangs there.",
+      "audio": "[Ambient] a bedroom at night. [Foley] cloth, breathing.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.41
+      ]
+    },
+    {
+      "id": "S24",
+      "tipo": "PA",
+      "corta": 2.97,
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 24 del original · 66.77→69.50 s",
+      "ve": "MEDIUM-WIDE SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater standing in the bedroom in profile, vertical frame, looking at the wardrobe; the window behind her with grey night light through sheer curtains.",
+      "mueve": "She lowers the hand and turns her head away from the wardrobe, then back to it, arguing with herself.",
+      "audio": "[Ambient] a bedroom at night, a distant car.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.97
+      ]
+    },
+    {
+      "id": "S25",
+      "tipo": "PM",
+      "corta": 4.63,
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 25 del original · 69.50→74.33 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the bedroom, vertical frame, half turned to camera. She pushes her hand up through her hair at the temple and laughs at herself, an embarrassed, relieved laugh.",
+      "mueve": "She rubs her forehead, shakes her head, breathes out through her nose and half laughs, and lets her shoulders drop.",
+      "audio": "[Ambient] a bedroom at night. [Foley] a short breath of laughter.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        4.63
+      ]
+    },
+    {
+      "id": "S26",
+      "tipo": "PG",
+      "corta": 1.54,
+      "loc": "bano",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "funcion": "toma 26 del original · 74.33→75.67 s",
+      "ve": "WIDE SHOT of the bathroom at night, vertical frame. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan sits in the deep tub among foam with a yellow rubber duck; Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping sits on the rim beside her, one hand washing the girl's hair, warm light.",
+      "mueve": "The mother works shampoo into the small head with both hands; the girl tips her chin up and says something. Foam slides down.",
+      "audio": "[Ambient] a bathroom, water. [Foley] hands in wet hair, foam, small splashes.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.54
+      ]
+    },
+    {
+      "id": "S27",
+      "tipo": "PM",
+      "corta": 1.22,
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 27 del original · 75.67→76.87 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping crouched beside the tub, vertical frame, reaching across the water for the yellow duck; the girl out of focus at the edge.",
+      "mueve": "She stretches, catches the duck, and holds it up in front of the girl, playing.",
+      "audio": "[Ambient] a bathroom. [Foley] water, plastic on water.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.22
+      ]
+    },
+    {
+      "id": "S28",
+      "tipo": "PP",
+      "corta": 3.96,
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 28 del original · 76.87→80.83 s",
+      "ve": "CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the bath, vertical frame, wet hair flat on her forehead, the yellow duck held in both hands at her chest; her mother's hand at the edge of frame in her hair.",
+      "mueve": "She turns the duck over in her hands and talks down at it instead of at her mother, her mouth pulled to one side.",
+      "audio": "[Ambient] a bathroom. [Foley] water dripping, plastic squeaking.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.96
+      ]
+    },
+    {
+      "id": "S29",
+      "tipo": "PG",
+      "corta": 2.0,
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 29 del original · 80.83→82.83 s",
+      "ve": "WIDE SHOT of the bathroom from the other side, vertical frame: the chrome taps large in the foreground, Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan small in the tub beyond them, foam everywhere.",
+      "mueve": "The girl pushes the duck under the foam and lets it pop back up, talking the whole time.",
+      "audio": "[Ambient] a bathroom. [Foley] splashing, foam.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.0
+      ]
+    },
+    {
+      "id": "S30",
+      "tipo": "PP",
+      "corta": 2.44,
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 30 del original · 82.83→85.27 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping kneeling by the tub, vertical frame, framed from the shoulders up with her face filling most of the frame. Her eyes are very wide and completely still; the warm bathroom light behind her, the room out of focus.",
+      "mueve": "Everything stops in her face. She does not blink for a long moment, then her eyelids come down slowly, once.",
+      "audio": "[Ambient] a bathroom, water settling.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.44
+      ]
+    },
+    {
+      "id": "S31",
+      "tipo": "PM",
+      "corta": 3.18,
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 31 del original · 85.27→88.53 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the bath, vertical frame, holding the duck up, mouth open, telling something important.",
+      "mueve": "She lifts the duck as she talks and shakes it for emphasis; water runs off it into the bath.",
+      "audio": "[Ambient] a bathroom. [Foley] water, plastic.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.18
+      ]
+    },
+    {
+      "id": "S32",
+      "tipo": "PP",
+      "corta": 0.92,
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 32 del original · 88.53→89.40 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping, vertical frame, looking down and away from the tub, her mouth slightly open.",
+      "mueve": "Her gaze drops to the water. Her lips move once without any sound.",
+      "audio": "[Ambient] a bathroom.",
+      "clip_de": "S30",
+      "usa": [
+        2.44,
+        3.36
+      ]
+    },
+    {
+      "id": "S33",
+      "tipo": "PM",
+      "corta": 1.17,
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 33 del original · 89.40→90.47 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the bath looking up, vertical frame, her mother's hands rinsing her hair from above the frame.",
+      "mueve": "Water pours over the small head; the girl squeezes her eyes shut and then opens them, looking up.",
+      "audio": "[Ambient] a bathroom. [Foley] a jug of water poured over hair.",
+      "clip_de": "S31",
+      "usa": [
+        3.18,
+        4.35
+      ]
+    },
+    {
+      "id": "S34",
+      "tipo": "PM",
+      "corta": 3.51,
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 34 del original · 90.47→93.97 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping leaning over the tub, vertical frame, close to the camera and framed from the waist up, smiling at the girl with a smile that is being held in place on purpose. The bathroom is out of focus behind her.",
+      "mueve": "She smiles and nods at whatever is being said, and her free hand grips the rim of the tub out of the child's sight.",
+      "audio": "[Ambient] a bathroom. [Foley] a hand tightening on porcelain.",
+      "clip_de": "S27",
+      "usa": [
+        1.22,
+        4.73
+      ]
+    },
+    {
+      "id": "S35",
+      "tipo": "PP",
+      "corta": 3.7,
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 35 del original · 93.97→97.67 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping, vertical frame, very tight; her eyes down, the smile gone now, warm light on one side of her face.",
+      "mueve": "The smile leaves her face entirely, from the eyes down. She breathes in through her nose and holds it.",
+      "audio": "[Ambient] a bathroom, water dripping.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.7
+      ]
+    },
+    {
+      "id": "S36",
+      "tipo": "PP",
+      "corta": 2.05,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 36 del original · 97.67→99.50 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping at night, vertical frame, her face lit blue from below by a phone screen, the dark living room behind her.",
+      "mueve": "Her eyes move across the screen, line by line, and stop.",
+      "audio": "[Ambient] a flat at night, deep quiet.",
+      "clip_de": "S06a",
+      "usa": [
+        3.23,
+        5.28
+      ]
+    },
+    {
+      "id": "S37",
+      "tipo": "PD",
+      "corta": 3.43,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 37 del original · 99.50→102.80 s",
+      "ve": "DETAIL SHOT of a phone held in two hands, vertical frame, filling most of the frame: a messaging app open on a photograph of the Shanghai skyline at night, lit towers over black water, with a short message under it. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The thumb scrolls the message up a few centimetres and stops on the photograph. The screen light flickers on the fingers.",
+      "audio": "[Ambient] a flat at night. [Foley] a thumb on glass.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.43
+      ]
+    },
+    {
+      "id": "S38",
+      "tipo": "PP",
+      "corta": 2.22,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 38 del original · 102.80→105.03 s",
+      "ve": "CLOSE SHOT of the hand and forearm holding the phone, vertical frame, the screen showing a grid of posts with small photographs and the same location label repeated under each one.",
+      "mueve": "The thumb drags the grid upwards, post after post, faster, and then stops dead.",
+      "audio": "[Ambient] a flat at night. [Foley] a thumb dragging on glass.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.22
+      ]
+    },
+    {
+      "id": "S39",
+      "tipo": "PM",
+      "corta": 3.88,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 39 del original · 105.03→108.83 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping sitting on the sofa in the dark living room, vertical frame, the phone in both hands, her face and chest lit blue, everything else black.",
+      "mueve": "She lowers the phone into her lap and looks up into the dark room, towards the corridor.",
+      "audio": "[Ambient] a flat at night, a clock. [Foley] cloth on a sofa.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        3.88
+      ]
+    },
+    {
+      "id": "S40",
+      "tipo": "PG",
+      "corta": 0.57,
+      "loc": "pasillo",
+      "personajes": [],
+      "funcion": "toma 40 del original · 108.83→109.37 s",
+      "ve": "WIDE SHOT of the corridor at night, vertical frame, empty: a door standing half open with a thin strip of pale light across the floorboards.",
+      "mueve": "Nothing moves. The strip of light shifts a few millimetres, as if the door had been touched.",
+      "audio": "[Ambient] a flat at night. [Foley] a floorboard settling.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        0.57
+      ]
+    },
+    {
+      "id": "S41",
+      "tipo": "PA",
+      "corta": 1.83,
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 41 del original · 109.37→111.33 s",
+      "ve": "WIDE-ISH SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping ALONE in the dark corridor, vertical frame, seen from behind as she walks away from the camera: only her back, her bun and her shoulders are visible, never her face. The lit phone hangs in one hand and throws light on the wall. Nobody else is in the corridor.",
+      "mueve": "She walks slowly, one hand trailing along the wall, and stops at the bedroom door.",
+      "audio": "[Ambient] a flat at night. [Foley] bare feet on wood, cloth.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.83
+      ]
+    },
+    {
+      "id": "S42",
+      "tipo": "PM",
+      "corta": 3.74,
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 42 del original · 111.33→115.07 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping in profile at the bedroom door, vertical frame, one hand on the handle, the lit phone in the other, her chin down.",
+      "mueve": "Her hand closes on the handle and stays there. Her breathing goes shallow and she does not push.",
+      "audio": "[Ambient] a flat at night. [Foley] a hand on a metal handle, breathing.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.74
+      ]
+    },
+    {
+      "id": "S43",
+      "tipo": "PM",
+      "corta": 1.86,
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 43 del original · 115.07→116.67 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan kneeling up on the sofa in daylight, vertical frame, talking towards camera; the back of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping's head and shoulder in the near foreground, out of focus. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "The girl leans forward and puts a small hand on her mother's arm, peering into her face.",
+      "audio": "[Ambient] a flat in the morning, birds outside. [Foley] cloth on a sofa.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.86
+      ]
+    },
+    {
+      "id": "S44",
+      "tipo": "PM",
+      "corta": 1.97,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 44 del original · 116.67→118.50 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping in the morning living room, vertical frame, smiling with dark circles under her eyes; the back of the girl's head in the foreground. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.",
+      "mueve": "She smiles and waves it away with one hand, then rubs her eye with the back of her wrist.",
+      "audio": "[Ambient] a flat in the morning.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.97
+      ]
+    },
+    {
+      "id": "S45",
+      "tipo": "PM",
+      "corta": 0.8,
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 45 del original · 118.50→119.63 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan on the sofa, vertical frame, both hands on her mother's knees, asking something.",
+      "mueve": "She shakes her mother's knees gently, insisting, her head tipped to one side.",
+      "audio": "[Ambient] a flat in the morning. [Foley] small hands on cloth.",
+      "clip_de": "S43",
+      "usa": [
+        1.86,
+        2.66
+      ]
+    },
+    {
+      "id": "S46",
+      "tipo": "PM",
+      "corta": 1.58,
+      "loc": "salon",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "funcion": "toma 46 del original · 119.63→121.23 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping on the sofa, vertical frame, one finger raised, telling a story with mock seriousness.",
+      "mueve": "She raises the finger, draws a small shape in the air with it, and widens her eyes to make the girl laugh.",
+      "audio": "[Ambient] a flat in the morning.",
+      "clip_de": "S05",
+      "usa": [
+        3.1,
+        4.68
+      ]
+    },
+    {
+      "id": "S47",
+      "tipo": "PP",
+      "corta": 1.5,
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 47 del original · 121.23→122.47 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping on the sofa, vertical frame, laughing with both hands over her mouth, framed alone.",
+      "mueve": "She laughs behind her hands, and the laugh keeps going a beat longer than it should, and her eyes stay flat.",
+      "audio": "[Ambient] a flat in the morning. [Foley] a laugh into cupped hands.",
+      "clip_de": "S38",
+      "usa": [
+        2.22,
+        3.72
+      ]
+    },
+    {
+      "id": "S48",
+      "tipo": "PM",
+      "corta": 2.93,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 48 del original · 122.47→125.33 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen from the passenger seat, the blurred avenue through the windscreen. She is talking towards the back seat without turning her head. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She talks over her shoulder to the child seat behind, then checks the rear-view mirror.",
+      "audio": "[Ambient] a car at speed, indicator.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.93
+      ]
+    },
+    {
+      "id": "S49",
+      "tipo": "PM",
+      "corta": 2.94,
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 49 del original · 125.33→128.20 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan strapped into the child seat, vertical frame, a white plush rabbit in her arms, the car window behind her. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She talks to the rabbit's ears while she answers, pulling one of them straight.",
+      "audio": "[Ambient] a car at speed. [Foley] a seat belt, plush fabric.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.94
+      ]
+    },
+    {
+      "id": "S50",
+      "tipo": "PM",
+      "corta": 1.6,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 50 del original · 128.20→129.80 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen from the passenger seat, the blurred avenue through the windscreen. Her eyes are locked on the road; she asks a short question. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She asks without turning, and her hands adjust on the wheel.",
+      "audio": "[Ambient] a car at speed.",
+      "clip_de": "S48",
+      "usa": [
+        2.93,
+        4.53
+      ]
+    },
+    {
+      "id": "S51",
+      "tipo": "PM",
+      "corta": 1.21,
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 51 del original · 129.80→130.90 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the child seat hugging the rabbit, vertical frame, answering brightly. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She squeezes the rabbit against her chest and nods twice as she answers.",
+      "audio": "[Ambient] a car at speed. [Foley] plush fabric.",
+      "clip_de": "S49",
+      "usa": [
+        2.94,
+        4.15
+      ]
+    },
+    {
+      "id": "S52",
+      "tipo": "PP",
+      "corta": 1.97,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 52 del original · 130.90→132.57 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the car, vertical frame, very tight on her face in profile, jaw locked. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "Her jaw tightens visibly. She does not look away from the road.",
+      "audio": "[Ambient] a car at speed.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.97
+      ]
+    },
+    {
+      "id": "S53",
+      "tipo": "PM",
+      "corta": 1.83,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 53 del original · 132.57→134.30 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen from the passenger seat, the blurred avenue through the windscreen. One arm is stretched out to the wheel; she is asking a longer question towards the mirror. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She talks to the rear-view mirror, watching the child's face in it instead of the road.",
+      "audio": "[Ambient] a car at speed.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.83
+      ]
+    },
+    {
+      "id": "S54",
+      "tipo": "PM",
+      "corta": 1.98,
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 54 del original · 134.30→136.27 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the child seat looking down, vertical frame, playing with the rabbit's ears while she answers. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She folds the rabbit's ears over its eyes, bored, and answers without looking up.",
+      "audio": "[Ambient] a car at speed. [Foley] plush fabric.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.98
+      ]
+    },
+    {
+      "id": "S55",
+      "tipo": "PP",
+      "corta": 1.53,
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 55 del original · 136.27→137.80 s",
+      "ve": "CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the child seat, vertical frame, lifting her face towards the mirror, suddenly remembering something. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She lifts her chin, her eyes widen a little, and she adds one more thing.",
+      "audio": "[Ambient] a car at speed.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.53
+      ]
+    },
+    {
+      "id": "S56",
+      "tipo": "PM",
+      "corta": 1.1,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 56 del original · 137.80→138.90 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen from the passenger seat, the blurred avenue through the windscreen. She turns her head a few degrees, in profile, asking who. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "Her head turns just enough to break the profile, and comes back.",
+      "audio": "[Ambient] a car at speed.",
+      "clip_de": "S53",
+      "usa": [
+        1.83,
+        2.93
+      ]
+    },
+    {
+      "id": "S57",
+      "tipo": "PM",
+      "corta": 2.52,
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "funcion": "toma 57 del original · 138.90→141.10 s",
+      "ve": "MEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the child seat, vertical frame, shrugging with the rabbit held against her. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She shrugs with both shoulders, pulls a face, and shakes her head.",
+      "audio": "[Ambient] a car at speed. [Foley] a seat belt.",
+      "clip_de": "S54",
+      "usa": [
+        1.98,
+        4.5
+      ]
+    },
+    {
+      "id": "S58",
+      "tipo": "PD",
+      "corta": 2.1,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 58 del original · 141.10→143.20 s",
+      "ve": "DETAIL SHOT of the rear-view mirror, vertical frame: Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's eyes reflected in it, the road behind out of focus and reflected upside down at the edges. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The reflected eyes move from the mirror to the road and back. Traffic lights slide past out of focus.",
+      "audio": "[Ambient] a car at a junction, an indicator.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        2.1
+      ]
+    },
+    {
+      "id": "S59a",
+      "tipo": "PP",
+      "corta": 2.8,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 59 del original · 143.20→148.80 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater from in front, through the top of the steering wheel, vertical frame, seated at the wheel INSIDE the car, the windscreen glare and the blurred avenue behind her. Her face has settled and she is counting two things out loud. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.",
+      "mueve": "She counts two things; with the second one her chin comes up and her hands close on the wheel. She stays seated, facing forward, driving.",
+      "audio": "[Ambient] a car at speed.",
+      "clip_de": "S52",
+      "usa": [
+        1.97,
+        4.77
+      ]
+    },
+    {
+      "id": "S59b",
+      "tipo": "PD",
+      "corta": 2.8,
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 59 del original · 143.20→148.80 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater from in front, through the top of the steering wheel, vertical frame, seated at the wheel INSIDE the car, the windscreen glare and the blurred avenue behind her. Her face has settled and she is counting two things out loud. Framed much tighter than before: an extreme close-up on her eyes and mouth, the same moment continuing. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "She counts two things; with the second one her chin comes up and her hands close on the wheel. She stays seated, facing forward, driving.",
+      "audio": "[Ambient] a car at speed.",
+      "clip_de": "S58",
+      "usa": [
+        2.1,
+        4.9
+      ]
+    },
+    {
+      "id": "S60",
+      "tipo": "PM",
+      "corta": 1.33,
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 60 del original · 148.80→150.13 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater leaning over the glass counter of an electronics shop, vertical frame, cold fluorescent light, walls of accessories behind her.",
+      "mueve": "She leans in over the glass and asks for something, tapping the counter twice with one finger.",
+      "audio": "[Ambient] a small shop, fluorescent hum, distant chatter. [Foley] a fingertip on glass.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.33
+      ]
+    },
+    {
+      "id": "S61",
+      "tipo": "PA",
+      "corta": 1.94,
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 61 del original · 150.13→152.07 s",
+      "ve": "WIDE-ISH SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater at the shop counter, vertical frame, the aisle and the racks of packaged accessories visible around her.",
+      "mueve": "She holds her thumb and finger apart to show a size, then makes the gap smaller, and smaller again.",
+      "audio": "[Ambient] a small shop. [Foley] nothing near.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.94
+      ]
+    },
+    {
+      "id": "S62",
+      "tipo": "PM",
+      "corta": 0.5,
+      "loc": "tienda",
+      "personajes": [
+        "vendedora"
+      ],
+      "funcion": "toma 62 del original · 152.07→152.57 s",
+      "ve": "MEDIUM SHOT of the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card behind the glass counter, vertical frame, bending to slide open the back of the display case.",
+      "mueve": "She slides the case open and reaches in among the boxes.",
+      "audio": "[Ambient] a small shop. [Foley] a glass door sliding, boxes.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "id": "S63",
+      "tipo": "PP",
+      "corta": 0.76,
+      "loc": "tienda",
+      "personajes": [
+        "vendedora"
+      ],
+      "funcion": "toma 63 del original · 152.57→153.33 s",
+      "ve": "CLOSE UP of the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card behind the counter, vertical frame, holding a tiny black cube of a camera up between two fingers.",
+      "mueve": "She turns the little camera between her fingers so its lens catches the light, explaining.",
+      "audio": "[Ambient] a small shop. [Foley] a small plastic object handled.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        0.76
+      ]
+    },
+    {
+      "id": "S64",
+      "tipo": "PA",
+      "corta": 1.2,
+      "loc": "tienda",
+      "personajes": [
+        "vendedora"
+      ],
+      "funcion": "toma 64 del original · 153.33→154.47 s",
+      "ve": "WIDE-ISH SHOT of the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card behind the counter, vertical frame, her arm stretched out across the glass with a tiny black cube of a camera —no bigger than a thumbnail, not a normal photo camera— flat on her open palm.",
+      "mueve": "She holds the palm out and taps the camera once with her other hand, listing what it does.",
+      "audio": "[Ambient] a small shop.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.2
+      ]
+    },
+    {
+      "id": "S65",
+      "tipo": "PD",
+      "corta": 3.49,
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 65 del original · 154.47→157.70 s",
+      "ve": "EXTREME DETAIL SHOT, vertical frame: Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's hand fills the frame, holding a tiny black cube of a camera, no bigger than a thumbnail, between finger and thumb against the shop's overhead light. The shop behind is a blur of blue and white; nothing else is in focus and no other part of her is visible. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "She turns it over, finds the magnet on its back, and presses it against a metal edge of the counter, where it sticks.",
+      "audio": "[Ambient] a small shop. [Foley] a small magnetic click.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.49
+      ]
+    },
+    {
+      "id": "S66",
+      "tipo": "PM",
+      "corta": 1.51,
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 66 del original · 157.70→158.90 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater leaning on the glass counter INSIDE THE ELECTRONICS SHOP, vertical frame, the lit display case under her elbows and the wall of hanging blister packs behind her. The little black camera is in one hand and her phone in the other, and she compares them.",
+      "mueve": "She looks from the camera to the phone screen and back, then puts the camera down flat on the glass and pushes it forward.",
+      "audio": "[Ambient] a small shop. [Foley] a phone on glass.",
+      "clip_de": "S60",
+      "usa": [
+        1.33,
+        2.84
+      ]
+    },
+    {
+      "id": "S67",
+      "tipo": "PP",
+      "corta": 2.6,
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 67 del original · 158.90→161.63 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the corridor of the flat, vertical frame, warm interior light behind her, the bedroom door out of focus. She is talking to herself, giving herself an order.",
+      "mueve": "She talks herself into it: her chin lifts, she nods once, hard, and her mouth sets.",
+      "audio": "[Ambient] a flat, quiet.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.6
+      ]
+    },
+    {
+      "id": "S68",
+      "tipo": "PP",
+      "corta": 0.9,
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 68 del original · 161.63→162.50 s",
+      "ve": "CLOSE UP, vertical frame: Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's neck and chest and the orange phone held up in one hand, her face cut off above the frame.",
+      "mueve": "The hand raises the phone slowly into the frame until the screen is lit.",
+      "audio": "[Ambient] a flat, quiet. [Foley] cloth.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        0.9
+      ]
+    },
+    {
+      "id": "S69",
+      "tipo": "PD",
+      "corta": 1.2,
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 69 del original · 162.50→163.67 s",
+      "ve": "DETAIL SHOT of the orange phone's screen filling the frame, vertical: a live camera view of the dim bedroom, the whole dark-wood wardrobe inside the frame, with a small recording dot and a timestamp. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The live image refreshes with a faint stutter; nothing in the room moves. The timestamp counts up.",
+      "audio": "[Ambient] a flat, quiet. [Foley] a phone speaker hiss.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        1.2
+      ]
+    },
+    {
+      "id": "S70",
+      "tipo": "PM",
+      "corta": 5.23,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 70 del original · 163.67→168.63 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater crouched in front of the open fridge, vertical frame, its cold light on her face, cartons of milk on the shelf in front of her.",
+      "mueve": "She counts the cartons with a finger, touching each one, then goes back and counts them again.",
+      "audio": "[Ambient] a kitchen, a fridge compressor. [Foley] a fridge door seal, cardboard cartons.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        5.23
+      ]
+    },
+    {
+      "id": "S71",
+      "tipo": "PA",
+      "corta": 2.94,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 71 del original · 168.63→171.57 s",
+      "ve": "WIDE-ISH SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in profile at the open fridge door, vertical frame, bent over the egg tray set into the door.",
+      "mueve": "She touches the eggs one by one, stops, straightens up an inch, and starts the count again from the beginning.",
+      "audio": "[Ambient] a kitchen, a fridge compressor. [Foley] eggshell on plastic.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.94
+      ]
+    },
+    {
+      "id": "S72",
+      "tipo": "PP",
+      "corta": 3.06,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 72 del original · 171.57→175.07 s",
+      "ve": "CLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater standing in front of the OPEN FRIDGE, vertical frame, the lit shelves of the fridge filling the background right beside her and its cold white light falling on one side of her face. Her mouth is open.",
+      "mueve": "Her lips move on the numbers and then stop between two of them. Her eyes go up and to the side.",
+      "audio": "[Ambient] a kitchen, a fridge compressor.",
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.06
+      ]
+    },
+    {
+      "id": "S73",
+      "tipo": "PM",
+      "corta": 1.33,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 73 del original · 175.07→176.27 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater straightening up in the kitchen, vertical frame, the open fridge still throwing light behind her, turning her head towards the sink.",
+      "mueve": "She stands up out of the crouch and turns her head slowly towards the window and the dish rack.",
+      "audio": "[Ambient] a kitchen. [Foley] a fridge door, a floor.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.33
+      ]
+    },
+    {
+      "id": "S74",
+      "tipo": "PD",
+      "corta": 1.59,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 74 del original · 176.27→177.70 s",
+      "ve": "EXTREME DETAIL SHOT, vertical frame, of five identical white bowls in a steel dish rack by a window, seen from the side at bowl height, daylight raking across them. Four of the bowls are FACE DOWN: domes of smooth white porcelain, no hollow visible. The bowl in the centre is FACE UP: you can see straight into its empty hollow, and there is a drop of water in it. The contrast between the four domes and the one open bowl is the whole shot. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The daylight moves a little across the rim of the one bowl that is the wrong way up. Nothing else changes.",
+      "audio": "[Ambient] a kitchen, quiet. [Foley] a tap dripping once.",
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        1.59
+      ]
+    },
+    {
+      "id": "S75",
+      "tipo": "PM",
+      "corta": 0.99,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 75 del original · 177.70→178.67 s",
+      "ve": "MEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater standing in the kitchen, vertical frame, holding the single bowl in one hand, looking off to the side; a bead of sweat at her temple.",
+      "mueve": "She turns the bowl over in her hand, and her eyes go to the corridor without her head following.",
+      "audio": "[Ambient] a kitchen. [Foley] ceramic in a hand.",
+      "clip_de": "S73",
+      "usa": [
+        1.33,
+        2.32
+      ]
+    },
+    {
+      "id": "S76",
+      "tipo": "PD",
+      "corta": 0.91,
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "funcion": "toma 76 del original · 178.67→179.57 s",
+      "ve": "EXTREME DETAIL SHOT, vertical frame: a fingertip running slowly around the inside of the white bowl, warm shallow light, everything else out of focus. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.",
+      "mueve": "The fingertip goes round the inside of the bowl once and stops, and stays there.",
+      "audio": "[Ambient] a kitchen, silence. [Foley] skin on dry ceramic.",
+      "clip_de": "S74",
+      "usa": [
+        1.59,
+        2.5
+      ]
+    },
+    {
+      "id": "S77",
+      "tipo": "PGE",
+      "corta": 1.83,
+      "loc": "cosmos",
+      "personajes": [],
+      "funcion": "toma 77 del original · 179.57→181.40 s",
+      "ve": "A deep purple and blue nebula filling the ENTIRE vertical frame edge to edge, dense with stars, a warm bright core low in the frame. This is outer space seen directly: ABSOLUTELY NO PERSON, no silhouette, no face, no room, no window, no furniture, no foreground object of any kind. Only the nebula and the stars. No text.",
+      "mueve": "Only the starfield drifts slowly upwards and the core pulses once, very softly. Nothing and nobody enters the frame.",
+      "audio": "[Ambient] a low cosmic drone.",
+      "clip_de": "PLACA",
+      "usa": [
+        0.0,
+        1.83
+      ]
+    }
+  ],
+  "voz": [
+    {
+      "t": 0.1,
+      "texto": "Mientras recogía la ropa, la mujer descubrió que le faltaban unas bragas."
+    },
+    {
+      "t": 3.5,
+      "texto": "Al principio, no le dio importancia, pero al día siguiente, al volver del cole con su hija, descubrió que su marido no había ido a Shanghái."
+    },
+    {
+      "t": 9.7,
+      "texto": "Llevaba todo ese tiempo escondido en el armario."
+    },
+    {
+      "t": 11.8,
+      "texto": "Al principio pensó que la niña se lo estaba inventando."
+    },
+    {
+      "t": 14.1,
+      "texto": "Su marido llevaba más de dos meses fuera y la semana anterior hasta le había enviado un osito."
+    },
+    {
+      "t": 18.4,
+      "texto": "Pero lo que dijo después la dejó helada."
+    },
+    {
+      "t": 20.1,
+      "texto": "Papá no ha ido a Shanghái, está dentro del armario."
+    },
+    {
+      "t": 22.4,
+      "texto": "No digas tonterías."
+    },
+    {
+      "t": 23.6,
+      "texto": "Papá lleva dos meses de viaje."
+    },
+    {
+      "t": 25.3,
+      "texto": "La semana pasada hasta te mandó un osito."
+    },
+    {
+      "t": 27.3,
+      "texto": "Pero yo lo vi."
+    },
+    {
+      "t": 28.6,
+      "texto": "Vive dentro del armario grande."
+    },
+    {
+      "t": 30.1,
+      "texto": "Por la noche me levanté para ir al baño y vi a papá salir del dormitorio grande."
+    },
+    {
+      "t": 33.6,
+      "texto": "Fue a beber agua a la cocina."
+    },
+    {
+      "t": 35.0,
+      "texto": "Al verme, dijo que jugaba al escondite y me pidió que guardara el secreto."
+    },
+    {
+      "t": 38.2,
+      "texto": "Llevo la cuenta."
+    },
+    {
+      "t": 39.1,
+      "texto": "Me pidió que guardara el secreto durante sesenta días."
+    },
+    {
+      "t": 41.6,
+      "texto": "Sesenta días enteros."
+    },
+    {
+      "t": 43.2,
+      "texto": "Lin Cheng llevaba fuera de casa exactamente sesenta días."
+    },
+    {
+      "t": 45.6,
+      "texto": "No le des más vueltas."
+    },
+    {
+      "t": 46.7,
+      "texto": "Los niños confunden los sueños con la realidad."
+    },
+    {
+      "t": 48.9,
+      "texto": "Quizá solo soñó que su padre había vuelto."
+    },
+    {
+      "t": 50.7,
+      "texto": "No."
+    },
+    {
+      "t": 51.4,
+      "texto": "Habló de beber agua en la cocina, del escondite y hasta clavó lo de los sesenta días."
+    },
+    {
+      "t": 55.2,
+      "texto": "Una niña de cinco años no podría inventarse una mentira tan concreta."
+    },
+    {
+      "t": 58.9,
+      "texto": "Lin Cheng mandó hacer este armario a medida durante la reforma."
+    },
+    {
+      "t": 61.5,
+      "texto": "Dijo que debía ser más grande y profundo para colgar abrigos largos."
+    },
+    {
+      "t": 64.4,
+      "texto": "En aquel momento hasta le dije que había pensado en todo."
+    },
+    {
+      "t": 66.8,
+      "texto": "Si es Lin Cheng, vale."
+    },
+    {
+      "t": 68.2,
+      "texto": "Pero ¿y si es un desconocido?"
+    },
+    {
+      "t": 69.5,
+      "texto": "¿Cómo va a haber alguien escondido?"
+    },
+    {
+      "t": 71.3,
+      "texto": "Últimamente estoy demasiado estresada y me estoy montando películas."
+    },
+    {
+      "t": 74.4,
+      "texto": "Mamá, ¿papá ya no me quiere?"
+    },
+    {
+      "t": 75.8,
+      "texto": "¿Por qué piensas eso?"
+    },
+    {
+      "t": 76.9,
+      "texto": "Porque siempre sale a escondidas, no juega conmigo y me manda volver enseguida a la cama."
+    },
+    {
+      "t": 80.7,
+      "texto": "Quiero que me cuente un cuento, pero dice que no puede porque mamá se enteraría."
+    },
+    {
+      "t": 84.1,
+      "texto": "¿Ha dicho que mamá se enteraría?"
+    },
+    {
+      "t": 85.6,
+      "texto": "Sí."
+    },
+    {
+      "t": 86.2,
+      "texto": "Dice que es una misión secreta y que si mamá lo descubre, la misión fracasará."
+    },
+    {
+      "t": 89.5,
+      "texto": "Mamá, ¿te has enfadado?"
+    },
+    {
+      "t": 90.6,
+      "texto": "Si Duoduo se lo estuviera inventando, con solo cinco años jamás diría: «Si mamá lo descubre, la misión fracasará»."
+    },
+    {
+      "t": 96.1,
+      "texto": "Esa forma de pensar es de adulto."
+    },
+    {
+      "t": 97.7,
+      "texto": "Lin Cheng publicó esto hace dos horas."
+    },
+    {
+      "t": 99.4,
+      "texto": "He terminado de trabajar."
+    },
+    {
+      "t": 100.7,
+      "texto": "He salido a dar una vuelta."
+    },
+    {
+      "t": 101.8,
+      "texto": "Os echo de menos."
+    },
+    {
+      "t": 102.9,
+      "texto": "Todas sus publicaciones estaban ubicadas en Shanghái y mostraban su día a día."
+    },
+    {
+      "t": 107.1,
+      "texto": "Entonces, ¿por qué había dicho Duoduo todo aquello?"
+    },
+    {
+      "t": 109.4,
+      "texto": "Había alguien en el armario."
+    },
+    {
+      "t": 110.9,
+      "texto": "De verdad había alguien."
+    },
+    {
+      "t": 112.4,
+      "texto": "No era una alucinación ni Duoduo se lo estaba inventando."
+    },
+    {
+      "t": 115.1,
+      "texto": "Mamá, tienes los ojos muy rojos."
+    },
+    {
+      "t": 116.7,
+      "texto": "He tenido una pesadilla, pero no pasa nada."
+    },
+    {
+      "t": 118.5,
+      "texto": "¿Qué has soñado?"
+    },
+    {
+      "t": 119.7,
+      "texto": "Que a mamá se le había quemado la tarta."
+    },
+    {
+      "t": 121.3,
+      "texto": "Mamá, qué torpe eres."
+    },
+    {
+      "t": 122.4,
+      "texto": "Duoduo, dices que papá salía del armario."
+    },
+    {
+      "t": 124.4,
+      "texto": "¿Qué ropa llevaba?"
+    },
+    {
+      "t": 125.3,
+      "texto": "A veces el pijama y otras veces la ropa que se pone para trabajar."
+    },
+    {
+      "t": 128.3,
+      "texto": "La del trabajo."
+    },
+    {
+      "t": 129.1,
+      "texto": "¿Una camisa?"
+    },
+    {
+      "t": 129.9,
+      "texto": "También llevaba corbata."
+    },
+    {
+      "t": 131.1,
+      "texto": "¿Se ponía la corbata dentro del armario?"
+    },
+    {
+      "t": 132.7,
+      "texto": "¿Y qué hacía después de salir del armario?"
+    },
+    {
+      "t": 134.4,
+      "texto": "Iba a la cocina a comer o al baño."
+    },
+    {
+      "t": 136.0,
+      "texto": "Una vez lo vi usando un móvil en el salón."
+    },
+    {
+      "t": 137.9,
+      "texto": "¿El móvil de quién?"
+    },
+    {
+      "t": 139.0,
+      "texto": "No lo sé."
+    },
+    {
+      "t": 139.5,
+      "texto": "Estaba muy oscuro y no se veía bien."
+    },
+    {
+      "t": 141.2,
+      "texto": "Tenía que confirmar dos cosas."
+    },
+    {
+      "t": 142.8,
+      "texto": "Primero, si la persona del armario era Lin Cheng."
+    },
+    {
+      "t": 145.2,
+      "texto": "Segundo, si era él, ¿por qué hacía todo aquello?"
+    },
+    {
+      "t": 148.3,
+      "texto": "Quiero una cámara que se conecte al móvil."
+    },
+    {
+      "t": 150.2,
+      "texto": "Cuanto más pequeña, mejor."
+    },
+    {
+      "t": 152.1,
+      "texto": "Mira, esta es la más pequeña."
+    },
+    {
+      "t": 153.7,
+      "texto": "Es magnética, graba de noche, puedes verla desde la app y tiene detector de movimiento."
+    },
+    {
+      "t": 157.8,
+      "texto": "Me llevo esta."
+    },
+    {
+      "t": 158.4,
+      "texto": "Cóbrame."
+    },
+    {
+      "t": 158.9,
+      "texto": "¿De qué tienes miedo?"
+    },
+    {
+      "t": 160.1,
+      "texto": "No seas cobarde."
+    },
+    {
+      "t": 160.8,
+      "texto": "Esta es tu casa."
+    },
+    {
+      "t": 161.7,
+      "texto": "La cámara podía grabar justo todo el armario."
+    },
+    {
+      "t": 163.8,
+      "texto": "La semana pasada compré seis cajas."
+    },
+    {
+      "t": 165.4,
+      "texto": "Duoduo y yo bebimos dos."
+    },
+    {
+      "t": 166.8,
+      "texto": "¿Por qué solo quedan tres?"
+    },
+    {
+      "t": 167.9,
+      "texto": "Falta una."
+    },
+    {
+      "t": 168.8,
+      "texto": "Compré doce huevos y usé cuatro, así que deberían quedar ocho."
+    },
+    {
+      "t": 171.9,
+      "texto": "Uno, dos, seis."
+    },
+    {
+      "t": 174.3,
+      "texto": "Faltan dos."
+    },
+    {
+      "t": 175.1,
+      "texto": "Siempre dejo los cuencos boca abajo, pero este está boca arriba."
+    },
+    {
+      "t": 177.7,
+      "texto": "Alguien usa mi cocina cuando no estoy en casa."
+    },
+    {
+      "t": 179.6,
+      "texto": "Pulsa abajo para ver la historia completa."
+    }
+  ]
+}

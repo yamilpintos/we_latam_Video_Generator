@@ -1,0 +1,21 @@
+GUÍA DE SONIDO
+============================================================
+
+[00:00 - 00:45]  SFX: Mar calmo, gaviotas lejanas, pasos en arena mojada, red al agua. MÚSICA: Nada, o un drone muy bajo. Dejar respirar el amanecer.
+[00:45 - 01:45]  SFX: Cuerda tensa, moscas sobre el burro, cerámica rota, mar contra roca. MÚSICA: Ney o flauta sola, resignada, muy tenue. Sube apenas en cada tirada fallida.
+[01:45 - 02:30]  SFX: Metal pesado arrastrado, agua escurriendo, plomo raspando. MÚSICA: Cuerdas graves entrando de a poco, curiosidad, tensión que crece. Cortar seco justo antes de que salte el sello.
+[02:30 - 03:30]  SFX: Siseo del humo, viento en aumento, trueno grave, brasas. MÚSICA: Golpe orquestal en la aparición del efrit, después percusión grave sostenida. Es el pico de la película.
+[03:30 - 04:30]  SFX: Rugido grave bajo la voz del efrit, viento fuerte. MÚSICA: Tensión sostenida en cuerdas, bajar en el plano del pescador para que se escuche su miedo, subir con el relato de los siglos.
+[04:30 - 05:00]  SFX: Humo succionado al metal, plomo golpeando bronce. MÚSICA: Corte abrupto al sellar la jarra. Silencio total dos segundos.
+[05:00 - 05:15]  SFX: Lanzamiento, chapoteo lejano, olas de atardecer. MÚSICA: Oud solo, tema del pescador, resolución tranquila. Dejar que termine sobre el mar vacío.
+
+------------------------------------------------------------
+Diálogos por clip (para referencia de doblaje):
+
+[00:01:00,000]  clip 005  Cuatro veces echo la red cada día. Ni una más. Que el mar decida mi suerte.
+[00:02:30,000]  clip 011  Plomo sellado. Esto lo vendo en el zoco y como un mes entero.
+[00:03:30,000]  clip 015  Prepárate a morir, pescador. Elige de qué manera quieres que te mate.
+[00:03:45,000]  clip 016  ¿Por qué? Yo te he liberado. Fui yo quien rompió el sello que te encerraba.
+[00:04:00,000]  clip 017  Cien años juré enriquecer a quien me abriera. Nadie vino. Cuatrocientos esperé. Y juré matar al que llegara.
+[00:04:15,000]  clip 018  Antes de morir, respóndeme algo. Ese cuerpo tuyo no cabe en esta jarra. ¿Cómo voy a creerte?
+[00:05:00,000]  clip 021  Ahora vuelve al mar, y esta vez quédate hasta el fin de los tiempos.

@@ -1,0 +1,37 @@
+{
+  "_comentario": "Imágenes madre para Aladino. Las referencias de estilo son las dos que ya existían (Princesa y Palacio): de ahí salen paleta, grosor de línea y tratamiento. Los personajes van en hoja de personaje sobre fondo plano, que es lo que mejor lee Ref2VA; las locaciones van como plano general SIN gente, para que el modelo ponga a los personajes donde el prompt del clip diga.",
+  "refs": [
+    "C:/Users/Yamil/Desktop/youtube proyect/Imagenes de referencia/Princesa.png",
+    "C:/Users/Yamil/Desktop/youtube proyect/Imagenes de referencia/Palacio.png"
+  ],
+  "assets": [
+    {
+      "id": "p_aladino",
+      "prompt": "Generate an original 2D animated character illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nFull body, single figure standing facing the viewer, plain dark warm-gray background, even soft lighting, no props.\nCHARACTER: a young man of about twenty, lean and wiry, tousled dark hair, alert eyes, a faint confident half-smile. He wears a patched knee-length tunic of faded ochre and dusty brown, a frayed dark red sash at the waist, loose brown trousers and worn leather sandals. Poor clothing, no jewellery, nothing ornate. Confident, light-footed posture."
+    },
+    {
+      "id": "p_mago",
+      "prompt": "Generate an original 2D animated character illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nFull body, single figure standing facing the viewer, plain dark warm-gray background, even soft lighting.\nCHARACTER: a tall gaunt older man, long grey beard, sharp features, deep-set watchful eyes. He wears heavy robes of dark indigo with faded gold embroidery at the hem and cuffs, a long black travelling cloak, and a broad ring on one hand. Dignified but cold. Hands clasped in front of him."
+    },
+    {
+      "id": "p_genio",
+      "prompt": "Generate an original 2D animated fantasy creature illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nSingle figure centred, plain dark warm-gray background.\nSUBJECT: a mythical spirit of smoke and fire from Arabian folklore. Broad shouldered upper form in deep blue-violet, marked with faint glowing golden geometric patterns. A heavy gold collar and wide gold cuffs. A topknot of dark hair, thick brows, an amused knowing expression. Below the waist there is no solid form at all: the shape trails away into a swirling column of dark smoke that widens toward the bottom of the frame. Arms folded. Stylised and cartoonish, clearly a fantasy creature."
+    },
+    {
+      "id": "l_bazar",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading, ornate detail and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of a crowded Persian bazaar at midday. Narrow street of stone flags, striped canvas awnings strung overhead casting hard shafts of sunlight, stalls piled with spices in cones of red and yellow, hanging carpets and lanterns, arched doorways with geometric tilework, a stone archway at the far end. Warm dusty light, deep shadow under the awnings.\nNO PEOPLE in the image. Empty set."
+    },
+    {
+      "id": "l_desierto",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of an empty desert at dusk. Rolling dunes, a rocky outcrop of dark stone in the middle ground, scattered boulders, a deep amber and violet sky with the last of the sun low on the horizon, long blue shadows across the sand.\nNO PEOPLE in the image. Empty landscape."
+    },
+    {
+      "id": "l_cueva",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading, ornate detail and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of a vast underground treasure cavern. Carved stone arches and pillars covered in geometric relief, mounds of gold coins, goblets, chests spilling jewels, hanging chains. Everything lit by a cold blue-green glow from below and warm gold reflections off the treasure. A narrow stone stair descends from a square of daylight far above. Dust motes in the air.\nNO PEOPLE in the image. Empty set."
+    },
+    {
+      "id": "l_alcoba",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading, ornate detail and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of an opulent Persian palace bedchamber at night. Intricate geometric tilework on the walls, hanging brass lanterns and dozens of candles, heavy silk curtains in teal and gold, a large low bed with embroidered covers, a carved wooden screen, a patterned carpet, an arched window open to a dark blue night sky.\nNO PEOPLE in the image. Empty set."
+    }
+  ]
+}

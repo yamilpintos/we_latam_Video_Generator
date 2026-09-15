@@ -1,0 +1,210 @@
+{
+ "tomas": [
+  {
+   "id": "MA04",
+   "quien": "jack",
+   "semilla": 101,
+   "frase": "Stay quiet, and do exactly what I tell you.",
+   "dicho": "Stay quiet and do exactly what I tell you.",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 1.540000000000001,
+   "habla_fin": 5.02,
+   "f0_hz": 89.9,
+   "genero_ok": true,
+   "snr_db": 33.8,
+   "puntaje": 104.6,
+   "clip": "MA04_00001_.mp4",
+   "recorte": [
+    1.39,
+    5.17
+   ],
+   "segundos_ref": 3.775,
+   "archivo_ref": "voz_jack_MA04.wav"
+  },
+  {
+   "id": "MA05",
+   "quien": "jack",
+   "semilla": 202,
+   "frase": "Stay quiet, and do exactly what I tell you.",
+   "dicho": "Stay quiet and do exactly what I tell you.",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 1.3400000000000025,
+   "habla_fin": 5.02,
+   "f0_hz": 83.0,
+   "genero_ok": false,
+   "snr_db": 29.6,
+   "puntaje": 46.5,
+   "clip": "MA05_00001_.mp4",
+   "recorte": [
+    1.19,
+    5.17
+   ],
+   "segundos_ref": 3.975,
+   "archivo_ref": "voz_jack_MA05.wav"
+  },
+  {
+   "id": "MA06",
+   "quien": "hannah",
+   "semilla": 101,
+   "frase": "Please, I don't know who you are. I just want to go home.",
+   "dicho": "Please, I don't know who you are. I just want to go home.",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 0.8200000000000001,
+   "habla_fin": 4.18,
+   "f0_hz": 288.3,
+   "genero_ok": false,
+   "snr_db": 17.8,
+   "puntaje": 44.1,
+   "clip": "MA06_00001_.mp4",
+   "recorte": [
+    0.67,
+    4.33
+   ],
+   "segundos_ref": 3.65,
+   "archivo_ref": "voz_hannah_MA06.wav"
+  },
+  {
+   "id": "MA07",
+   "quien": "hannah",
+   "semilla": 202,
+   "frase": "Please, I don't know who you are. I just want to go home.",
+   "dicho": "Please, I don't know who you are. I just want to go home.",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 0.6800000000000002,
+   "habla_fin": 3.88,
+   "f0_hz": 278.3,
+   "genero_ok": false,
+   "snr_db": 22.9,
+   "puntaje": 44.4,
+   "clip": "MA07_00001_.mp4",
+   "recorte": [
+    0.53,
+    4.03
+   ],
+   "segundos_ref": 3.5,
+   "archivo_ref": "voz_hannah_MA07.wav"
+  },
+  {
+   "id": "MA08",
+   "quien": "luka",
+   "semilla": 101,
+   "frase": "Search every car! He's on this train, and I want him found!",
+   "dicho": "Search every car! He's on this train and I want him found!",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 0.0,
+   "habla_fin": 4.7,
+   "f0_hz": 323.2,
+   "genero_ok": false,
+   "snr_db": 20.2,
+   "puntaje": 26.7,
+   "clip": "MA08_00001_.mp4",
+   "recorte": [
+    0.0,
+    4.85
+   ],
+   "segundos_ref": 4.85,
+   "archivo_ref": "voz_luka_MA08.wav"
+  },
+  {
+   "id": "MA09",
+   "quien": "luka",
+   "semilla": 202,
+   "frase": "Search every car! He's on this train, and I want him found!",
+   "dicho": "Search every car! He's on this train and I want him found!",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 0.0,
+   "habla_fin": 4.88,
+   "f0_hz": 304.8,
+   "genero_ok": false,
+   "snr_db": 28.6,
+   "puntaje": 29.5,
+   "clip": "MA09_00001_.mp4",
+   "recorte": [
+    0.0,
+    5.03
+   ],
+   "segundos_ref": 5.025,
+   "archivo_ref": "voz_luka_MA09.wav"
+  },
+  {
+   "id": "MA10",
+   "quien": "wady",
+   "semilla": 101,
+   "frase": "Boss, listen to me, this guy is not normal, okay?",
+   "dicho": "Boss, listen to me. This guy is not normal, okay?",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 1.44,
+   "habla_fin": 5.02,
+   "f0_hz": 182.9,
+   "genero_ok": false,
+   "snr_db": 18.5,
+   "puntaje": 41.8,
+   "clip": "MA10_00001_.mp4",
+   "recorte": [
+    1.29,
+    5.17
+   ],
+   "segundos_ref": 3.875,
+   "archivo_ref": "voz_wady_MA10.wav"
+  },
+  {
+   "id": "MA11",
+   "quien": "wady",
+   "semilla": 202,
+   "frase": "Boss, listen to me, this guy is not normal, okay?",
+   "dicho": "Boss, listen to me, this guy is not normal, okay?",
+   "palabras_de_mas": 0,
+   "palabras_que_faltan": 0,
+   "habla_ini": 1.6400000000000006,
+   "habla_fin": 5.06,
+   "f0_hz": 179.8,
+   "genero_ok": true,
+   "snr_db": 18.5,
+   "puntaje": 99.8,
+   "clip": "MA11_00001_.mp4",
+   "recorte": [
+    1.49,
+    5.18
+   ],
+   "segundos_ref": 3.675,
+   "archivo_ref": "voz_wady_MA11.wav"
+  }
+ ],
+ "sugerida": {
+  "jack": {
+   "id": "MA04",
+   "archivo": "voz_jack_MA04.wav",
+   "puntaje": 104.6,
+   "f0_hz": 89.9,
+   "dicho": "Stay quiet and do exactly what I tell you."
+  },
+  "luka": {
+   "id": "MA09",
+   "archivo": "voz_luka_MA09.wav",
+   "puntaje": 29.5,
+   "f0_hz": 304.8,
+   "dicho": "Search every car! He's on this train and I want him found!"
+  },
+  "wady": {
+   "id": "MA11",
+   "archivo": "voz_wady_MA11.wav",
+   "puntaje": 99.8,
+   "f0_hz": 179.8,
+   "dicho": "Boss, listen to me, this guy is not normal, okay?"
+  },
+  "hannah": {
+   "id": "MA07",
+   "archivo": "voz_hannah_MA07.wav",
+   "puntaje": 44.4,
+   "f0_hz": 278.3,
+   "dicho": "Please, I don't know who you are. I just want to go home."
+  }
+ }
+}

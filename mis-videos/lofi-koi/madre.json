@@ -1,0 +1,13 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "16:9",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_jardin",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Hand-painted 2D animation background art, wide 16:9 landscape frame, calm night-time lo-fi illustration style: soft painterly brushwork, gentle film grain. WIDE SHOT of a small Japanese garden at night in fine rain, seen from a dark wooden deck in the foreground. In the centre a still koi pond of deep blue-black water with small rain rings on its surface and four orange-and-white koi gliding just under the surface. At the back LEFT a stone lantern with a small warm candle flame glowing inside it, moss on its roof. At the RIGHT a maple tree with dark red leaves, and two glowing red paper lanterns hanging from its branches, reflected in the water. Mossy wet stones around the edge of the pond, a few lily pads at the right, a bamboo water spout dripping into the pond at the left. Beyond, only dark wet foliage and mist. Nobody in the garden. No text, no letters, no signs anywhere. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    }
+  ]
+}

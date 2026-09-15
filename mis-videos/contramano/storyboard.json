@@ -1,0 +1,88 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "CONTRAMANO",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_rider.png",
+        "assets/l_tunel.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nEXTREME CLOSE UP on a scratched black motorcycle visor filling the vertical frame. Reflected across the curved plastic, a single blinding white railway headlight far down a tunnel, small but unmistakable. Sodium-orange lamps streak across the visor as speed blurs them. Dust in the air.\nNARRATIVE INTENT OF THIS FRAME: This is the very first frame of a vertical short-form video and must read instantly as a thumbnail: one clear subject, strong contrast, something visibly wrong or surprising already present in the frame. Leave the upper third relatively clear: an on-screen text overlay goes there in post.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tunel.png",
+        "assets/m_rider.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nEXTREME WIDE SHOT from inside the tunnel mouth looking out toward a lit city street. The motorcycle is a small dark silhouette against that opening, already past the barrier, riding INTO the tunnel toward camera between the rails. The tunnel walls frame it on both sides.\nNARRATIVE INTENT OF THIS FRAME: Establishing frame: the whole space and the scale of the subject within it are readable at a glance.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_control.png",
+        "assets/m_operadora.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nCLOSE on a control room monitor showing a green track diagram. Two markers on the same line: one moving up from the bottom, one coming down from the top. Between them, a numeric readout counting down. The operator's face is reflected faintly in the glass, headset mic at the corner of her mouth.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tunel.png",
+        "assets/m_rider.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nWIDE SHOT from behind and above the motorcycle, low, running between the rails deeper into the tunnel. Ahead of it the tunnel curves away into total black — no exit visible, no light at the end. Sodium lamps rush past on the left wall.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tunel.png",
+        "assets/m_rider.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nLow tracking shot beside the motorcycle at rail height, moving with it, the sleepers strobing past underneath. Ahead and far down the tunnel, a faint white glow is starting to define the curve of the wall — something is coming the other way.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_control.png",
+        "assets/m_operadora.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nCLOSE on the operator's face lit only by the monitors, headset mic at her mouth, eyes fixed on the screen. Green and amber light across her skin. Behind her the control room is dark. She is completely still.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_rider.png",
+        "assets/l_tunel.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nCLOSE on the rider from the front, low angle, the black visor filling most of the frame and the train headlight behind him blowing out the entire background to white. His gloved hands are locked on the bars. Everything is vibrating.\nNARRATIVE INTENT OF THIS FRAME: A strong visual break from everything before it: a new colour of light, a new light source or an impossible detail, clearly visible in the frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_rider.png",
+        "assets/l_tunel.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nCLOSE on the rider pressed flat into the service alcove, still on the fallen bike, the train carriages strobing past behind him and throwing bands of light across the black visor. He is not moving. Dust hangs everywhere in the beams.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tunel.png"
+      ],
+      "prompt": "Photorealistic cinematic footage inside a working railway tunnel at night, shot on a full-frame camera with a fast wide lens. Hard sodium-orange service lamps every few metres strobing past, deep black between them, thick concrete dust and diesel haze hanging in the air catching every beam. Wet rails throwing hard specular highlights. High ISO grain, heavy motion blur, handheld instability.\nEXTREME WIDE SHOT looking down the empty tunnel from far away, the service lamps receding into the dark. The fallen motorcycle and the small figure in the alcove are tiny at the bottom of frame, lit orange. The tunnel is otherwise completely empty and still, dust drifting.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

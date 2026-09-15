@@ -1,0 +1,1749 @@
+{
+ "text": " Antes de morir, mi madre arregló mi matrimonio con Elliot Hargrove para asegurar mi futuro como bailarina de la compañía de Ballet Hargrove. Contra su voluntad, mi padre y mi madrastra me enviaron a vivir a una granja en Indiana, pero nunca dejé de entrenar, esperando a casarme con Elliot y finalmente vivir el sueño que me robaron. Papá me quiere en Nueva York para romper mi compromiso, pero no dejaré que arruine mis sueños otra vez. ¡Oye! ¿Qué estás... ¡Shhh! ¡Cuidado! ¡Se mueve! ¡Vívola! ¿Dónde estás? ¿Qué...? ¡Shhh! Bien, ahora gime para mí. O... te corto tu lindo cuello. Pero no puedo, no sé cómo... ¿Cuántos años tienes? Veintidós. Entonces no te hagas la inocente. ¡No! ¡Se escapará otra vez! Jefe, él es la Vívola, el asesino más letal del planeta. Mató a catorce de nuestros mejores hombres y no pudimos hacer nada. Si no puedes hacerlo, ¡cincuenta millones para quien me traiga la cabeza de Vívola! De acuerdo. ¡Vamos, quítense! ¡Vamos! Dije que... gimas... o te haré gemir. Ok, ok. ¡Ah!",
+ "segments": [
+  {
+   "id": 0,
+   "seek": 0,
+   "start": 2.1400000000000032,
+   "end": 11.06,
+   "text": " Antes de morir, mi madre arregló mi matrimonio con Elliot Hargrove para asegurar mi futuro como bailarina de la compañía de Ballet Hargrove.",
+   "tokens": [
+    50364,
+    39325,
+    368,
+    1896,
+    347,
+    11,
+    2752,
+    32966,
+    594,
+    3375,
+    75,
+    812,
+    2752,
+    3803,
+    5565,
+    266,
+    1004,
+    416,
+    38986,
+    3653,
+    17427,
+    303,
+    1690,
+    38174,
+    28586,
+    2752,
+    23953,
+    2617,
+    19313,
+    37512,
+    368,
+    635,
+    29953,
+    2686,
+    368,
+    10744,
+    302,
+    3653,
+    17427,
+    303,
+    13,
+    50914
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.13114879057579434,
+   "compression_ratio": 1.5294117647058822,
+   "no_speech_prob": 0.5071207284927368,
+   "words": [
+    {
+     "word": " Antes",
+     "start": 2.1400000000000032,
+     "end": 2.7,
+     "probability": 0.35246625542640686
+    },
+    {
+     "word": " de",
+     "start": 2.7,
+     "end": 2.92,
+     "probability": 0.9970154762268066
+    },
+    {
+     "word": " morir,",
+     "start": 2.92,
+     "end": 3.74,
+     "probability": 0.9940078258514404
+    },
+    {
+     "word": " mi",
+     "start": 4.0,
+     "end": 4.12,
+     "probability": 0.943665087223053
+    },
+    {
+     "word": " madre",
+     "start": 4.12,
+     "end": 4.34,
+     "probability": 0.9845834970474243
+    },
+    {
+     "word": " arregló",
+     "start": 4.34,
+     "end": 4.78,
+     "probability": 0.9818859398365021
+    },
+    {
+     "word": " mi",
+     "start": 4.78,
+     "end": 5.0,
+     "probability": 0.9958439469337463
+    },
+    {
+     "word": " matrimonio",
+     "start": 5.0,
+     "end": 5.5,
+     "probability": 0.9983749687671661
+    },
+    {
+     "word": " con",
+     "start": 5.5,
+     "end": 5.76,
+     "probability": 0.9922375082969666
+    },
+    {
+     "word": " Elliot",
+     "start": 5.76,
+     "end": 6.08,
+     "probability": 0.6612042784690857
+    },
+    {
+     "word": " Hargrove",
+     "start": 6.08,
+     "end": 6.76,
+     "probability": 0.9618058403333029
+    },
+    {
+     "word": " para",
+     "start": 6.76,
+     "end": 7.1,
+     "probability": 0.7317652106285095
+    },
+    {
+     "word": " asegurar",
+     "start": 7.1,
+     "end": 7.5,
+     "probability": 0.9978335201740265
+    },
+    {
+     "word": " mi",
+     "start": 7.5,
+     "end": 7.7,
+     "probability": 0.9950729012489319
+    },
+    {
+     "word": " futuro",
+     "start": 7.7,
+     "end": 8.06,
+     "probability": 0.9989120960235596
+    },
+    {
+     "word": " como",
+     "start": 8.06,
+     "end": 8.34,
+     "probability": 0.9891989827156067
+    },
+    {
+     "word": " bailarina",
+     "start": 8.34,
+     "end": 8.88,
+     "probability": 0.9878446161746979
+    },
+    {
+     "word": " de",
+     "start": 8.88,
+     "end": 9.06,
+     "probability": 0.9885697960853577
+    },
+    {
+     "word": " la",
+     "start": 9.06,
+     "end": 9.22,
+     "probability": 0.9915732741355896
+    },
+    {
+     "word": " compañía",
+     "start": 9.22,
+     "end": 9.62,
+     "probability": 0.9451532065868378
+    },
+    {
+     "word": " de",
+     "start": 9.62,
+     "end": 9.8,
+     "probability": 0.9926504492759705
+    },
+    {
+     "word": " Ballet",
+     "start": 9.8,
+     "end": 10.06,
+     "probability": 0.7731255888938904
+    },
+    {
+     "word": " Hargrove.",
+     "start": 10.06,
+     "end": 11.06,
+     "probability": 0.9701023499170939
+    }
+   ]
+  },
+  {
+   "id": 1,
+   "seek": 0,
+   "start": 11.32,
+   "end": 22.88,
+   "text": " Contra su voluntad, mi padre y mi madrastra me enviaron a vivir a una granja en Indiana, pero nunca dejé de entrenar, esperando a casarme con Elliot y finalmente vivir el sueño que me robaron.",
+   "tokens": [
+    50914,
+    4839,
+    424,
+    459,
+    17911,
+    345,
+    11,
+    2752,
+    34781,
+    288,
+    2752,
+    5244,
+    4148,
+    424,
+    385,
+    2267,
+    72,
+    6372,
+    257,
+    39656,
+    257,
+    2002,
+    9370,
+    2938,
+    465,
+    21858,
+    11,
+    4768,
+    13768,
+    21259,
+    526,
+    368,
+    45069,
+    289,
+    11,
+    46587,
+    257,
+    3058,
+    35890,
+    416,
+    38986,
+    288,
+    35577,
+    39656,
+    806,
+    20416,
+    7716,
+    631,
+    385,
+    3870,
+    6372,
+    13,
+    51514
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.13114879057579434,
+   "compression_ratio": 1.5294117647058822,
+   "no_speech_prob": 0.5071207284927368,
+   "words": [
+    {
+     "word": " Contra",
+     "start": 11.32,
+     "end": 11.5,
+     "probability": 0.9791502356529236
+    },
+    {
+     "word": " su",
+     "start": 11.5,
+     "end": 11.68,
+     "probability": 0.9980481863021851
+    },
+    {
+     "word": " voluntad,",
+     "start": 11.68,
+     "end": 12.48,
+     "probability": 0.9984320402145386
+    },
+    {
+     "word": " mi",
+     "start": 12.7,
+     "end": 12.76,
+     "probability": 0.9890885949134827
+    },
+    {
+     "word": " padre",
+     "start": 12.76,
+     "end": 13.0,
+     "probability": 0.9883471131324768
+    },
+    {
+     "word": " y",
+     "start": 13.0,
+     "end": 13.18,
+     "probability": 0.9962077140808105
+    },
+    {
+     "word": " mi",
+     "start": 13.18,
+     "end": 13.34,
+     "probability": 0.9808525443077087
+    },
+    {
+     "word": " madrastra",
+     "start": 13.34,
+     "end": 13.84,
+     "probability": 0.9907476504643759
+    },
+    {
+     "word": " me",
+     "start": 13.84,
+     "end": 14.02,
+     "probability": 0.9889292120933533
+    },
+    {
+     "word": " enviaron",
+     "start": 14.02,
+     "end": 14.38,
+     "probability": 0.9964483181635538
+    },
+    {
+     "word": " a",
+     "start": 14.38,
+     "end": 14.54,
+     "probability": 0.9980792999267578
+    },
+    {
+     "word": " vivir",
+     "start": 14.54,
+     "end": 14.74,
+     "probability": 0.99604731798172
+    },
+    {
+     "word": " a",
+     "start": 14.74,
+     "end": 14.92,
+     "probability": 0.9322794079780579
+    },
+    {
+     "word": " una",
+     "start": 14.92,
+     "end": 15.14,
+     "probability": 0.9922614693641663
+    },
+    {
+     "word": " granja",
+     "start": 15.14,
+     "end": 15.5,
+     "probability": 0.9914675354957581
+    },
+    {
+     "word": " en",
+     "start": 15.5,
+     "end": 15.78,
+     "probability": 0.9858672022819519
+    },
+    {
+     "word": " Indiana,",
+     "start": 15.78,
+     "end": 16.1,
+     "probability": 0.9290407299995422
+    },
+    {
+     "word": " pero",
+     "start": 16.42,
+     "end": 16.72,
+     "probability": 0.9857510328292847
+    },
+    {
+     "word": " nunca",
+     "start": 16.72,
+     "end": 17.06,
+     "probability": 0.9966250658035278
+    },
+    {
+     "word": " dejé",
+     "start": 17.06,
+     "end": 17.36,
+     "probability": 0.9659720361232758
+    },
+    {
+     "word": " de",
+     "start": 17.36,
+     "end": 17.52,
+     "probability": 0.9989129304885864
+    },
+    {
+     "word": " entrenar,",
+     "start": 17.52,
+     "end": 18.24,
+     "probability": 0.9993038773536682
+    },
+    {
+     "word": " esperando",
+     "start": 18.42,
+     "end": 18.66,
+     "probability": 0.9918767213821411
+    },
+    {
+     "word": " a",
+     "start": 18.66,
+     "end": 18.88,
+     "probability": 0.9878694415092468
+    },
+    {
+     "word": " casarme",
+     "start": 18.88,
+     "end": 19.18,
+     "probability": 0.9805558919906616
+    },
+    {
+     "word": " con",
+     "start": 19.18,
+     "end": 19.46,
+     "probability": 0.9990668892860413
+    },
+    {
+     "word": " Elliot",
+     "start": 19.46,
+     "end": 19.74,
+     "probability": 0.9723338484764099
+    },
+    {
+     "word": " y",
+     "start": 19.74,
+     "end": 20.2,
+     "probability": 0.8675910830497742
+    },
+    {
+     "word": " finalmente",
+     "start": 20.2,
+     "end": 20.9,
+     "probability": 0.9438796043395996
+    },
+    {
+     "word": " vivir",
+     "start": 20.9,
+     "end": 21.2,
+     "probability": 0.9822433590888977
+    },
+    {
+     "word": " el",
+     "start": 21.2,
+     "end": 21.46,
+     "probability": 0.9962512850761414
+    },
+    {
+     "word": " sueño",
+     "start": 21.46,
+     "end": 21.8,
+     "probability": 0.9996031820774078
+    },
+    {
+     "word": " que",
+     "start": 21.8,
+     "end": 21.92,
+     "probability": 0.9957855343818665
+    },
+    {
+     "word": " me",
+     "start": 21.92,
+     "end": 22.14,
+     "probability": 0.9986405968666077
+    },
+    {
+     "word": " robaron.",
+     "start": 22.14,
+     "end": 22.88,
+     "probability": 0.9977298378944397
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "seek": 2288,
+   "start": 24.299999999999997,
+   "end": 34.14,
+   "text": " Papá me quiere en Nueva York para romper mi compromiso, pero no dejaré que arruine mis sueños otra vez.",
+   "tokens": [
+    50414,
+    15919,
+    842,
+    385,
+    23877,
+    465,
+    47970,
+    2757,
+    3609,
+    1690,
+    7438,
+    610,
+    2752,
+    11482,
+    19227,
+    11,
+    4768,
+    572,
+    24391,
+    526,
+    631,
+    594,
+    894,
+    533,
+    3346,
+    20416,
+    8242,
+    13623,
+    5715,
+    13,
+    50714
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.1414782723715139,
+   "compression_ratio": 1.1111111111111112,
+   "no_speech_prob": 0.11714363098144531,
+   "words": [
+    {
+     "word": " Papá",
+     "start": 24.299999999999997,
+     "end": 24.88,
+     "probability": 0.7850668132305145
+    },
+    {
+     "word": " me",
+     "start": 24.88,
+     "end": 25.14,
+     "probability": 0.961225152015686
+    },
+    {
+     "word": " quiere",
+     "start": 25.14,
+     "end": 25.3,
+     "probability": 0.9928072690963745
+    },
+    {
+     "word": " en",
+     "start": 25.3,
+     "end": 25.48,
+     "probability": 0.48375317454338074
+    },
+    {
+     "word": " Nueva",
+     "start": 25.48,
+     "end": 25.78,
+     "probability": 0.9528845548629761
+    },
+    {
+     "word": " York",
+     "start": 25.78,
+     "end": 26.0,
+     "probability": 0.9971964359283447
+    },
+    {
+     "word": " para",
+     "start": 26.0,
+     "end": 26.3,
+     "probability": 0.9295956492424011
+    },
+    {
+     "word": " romper",
+     "start": 26.3,
+     "end": 26.78,
+     "probability": 0.9964460730552673
+    },
+    {
+     "word": " mi",
+     "start": 26.78,
+     "end": 27.06,
+     "probability": 0.9883819222450256
+    },
+    {
+     "word": " compromiso,",
+     "start": 27.06,
+     "end": 27.66,
+     "probability": 0.9987210631370544
+    },
+    {
+     "word": " pero",
+     "start": 27.72,
+     "end": 28.06,
+     "probability": 0.9369685053825378
+    },
+    {
+     "word": " no",
+     "start": 28.06,
+     "end": 28.28,
+     "probability": 0.9918245673179626
+    },
+    {
+     "word": " dejaré",
+     "start": 28.28,
+     "end": 28.64,
+     "probability": 0.9858868718147278
+    },
+    {
+     "word": " que",
+     "start": 28.64,
+     "end": 28.8,
+     "probability": 0.9925535321235657
+    },
+    {
+     "word": " arruine",
+     "start": 28.8,
+     "end": 29.08,
+     "probability": 0.9839837153752645
+    },
+    {
+     "word": " mis",
+     "start": 29.08,
+     "end": 29.32,
+     "probability": 0.9851625561714172
+    },
+    {
+     "word": " sueños",
+     "start": 29.32,
+     "end": 29.64,
+     "probability": 0.998211681842804
+    },
+    {
+     "word": " otra",
+     "start": 29.64,
+     "end": 29.94,
+     "probability": 0.989991307258606
+    },
+    {
+     "word": " vez.",
+     "start": 29.94,
+     "end": 34.14,
+     "probability": 0.996429979801178
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "seek": 2288,
+   "start": 39.04,
+   "end": 40.72,
+   "text": " ¡Oye! ¿Qué estás...",
+   "tokens": [
+    51164,
+    6514,
+    46,
+    1200,
+    0,
+    3841,
+    15137,
+    24389,
+    485,
+    51214
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.1414782723715139,
+   "compression_ratio": 1.1111111111111112,
+   "no_speech_prob": 0.11714363098144531,
+   "words": [
+    {
+     "word": " ¡Oye!",
+     "start": 39.04,
+     "end": 39.62,
+     "probability": 0.8117744127909342
+    },
+    {
+     "word": " ¿Qué",
+     "start": 39.66,
+     "end": 39.92,
+     "probability": 0.7882054448127747
+    },
+    {
+     "word": " estás...",
+     "start": 39.92,
+     "end": 40.72,
+     "probability": 0.5220094621181488
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "seek": 4072,
+   "start": 40.72,
+   "end": 41.3,
+   "text": " ¡Shhh!",
+   "tokens": [
+    50364,
+    6514,
+    50,
+    12614,
+    0,
+    50414
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.34642668774253443,
+   "compression_ratio": 0.971830985915493,
+   "no_speech_prob": 0.045037318021059036,
+   "words": [
+    {
+     "word": " ¡Shhh!",
+     "start": 40.72,
+     "end": 41.3,
+     "probability": 0.24323898860408613
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "seek": 4072,
+   "start": 51.72,
+   "end": 53.92,
+   "text": " ¡Cuidado! ¡Se mueve!",
+   "tokens": [
+    50914,
+    6514,
+    35222,
+    327,
+    1573,
+    0,
+    6514,
+    10637,
+    49532,
+    303,
+    0,
+    51014
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.34642668774253443,
+   "compression_ratio": 0.971830985915493,
+   "no_speech_prob": 0.045037318021059036,
+   "words": [
+    {
+     "word": " ¡Cuidado!",
+     "start": 51.559999999999995,
+     "end": 52.26,
+     "probability": 0.8748772889375687
+    },
+    {
+     "word": " ¡Se",
+     "start": 52.48,
+     "end": 52.72,
+     "probability": 0.6024439334869385
+    },
+    {
+     "word": " mueve!",
+     "start": 52.72,
+     "end": 53.92,
+     "probability": 0.6957042515277863
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "seek": 4072,
+   "start": 58.72,
+   "end": 61.64,
+   "text": " ¡Vívola! ¿Dónde estás?",
+   "tokens": [
+    51264,
+    6514,
+    53,
+    45096,
+    4711,
+    0,
+    3841,
+    35,
+    812,
+    16404,
+    24389,
+    30,
+    51414
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.34642668774253443,
+   "compression_ratio": 0.971830985915493,
+   "no_speech_prob": 0.045037318021059036,
+   "words": [
+    {
+     "word": " ¡Vívola!",
+     "start": 58.72,
+     "end": 59.56,
+     "probability": 0.5562238842248917
+    },
+    {
+     "word": " ¿Dónde",
+     "start": 60.32,
+     "end": 60.94,
+     "probability": 0.8771133124828339
+    },
+    {
+     "word": " estás?",
+     "start": 60.94,
+     "end": 61.64,
+     "probability": 0.7976842522621155
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "seek": 4072,
+   "start": 65.6,
+   "end": 67.0,
+   "text": " ¿Qué...?",
+   "tokens": [
+    51514,
+    3841,
+    15137,
+    8964,
+    51564
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.34642668774253443,
+   "compression_ratio": 0.971830985915493,
+   "no_speech_prob": 0.045037318021059036,
+   "words": [
+    {
+     "word": " ¿Qué...?",
+     "start": 65.6,
+     "end": 67.0,
+     "probability": 0.5690404176712036
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "seek": 6700,
+   "start": 67.0,
+   "end": 68.0,
+   "text": " ¡Shhh!",
+   "tokens": [
+    50364,
+    6514,
+    50,
+    12614,
+    0,
+    50464
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " ¡Shhh!",
+     "start": 67.0,
+     "end": 68.0,
+     "probability": 0.20724183383087316
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "seek": 6700,
+   "start": 70.42,
+   "end": 73.84,
+   "text": " Bien, ahora gime para mí.",
+   "tokens": [
+    50514,
+    16956,
+    11,
+    9923,
+    290,
+    1312,
+    1690,
+    14692,
+    13,
+    50664
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " Bien,",
+     "start": 70.42,
+     "end": 71.06,
+     "probability": 0.4715512990951538
+    },
+    {
+     "word": " ahora",
+     "start": 72.1,
+     "end": 72.36,
+     "probability": 0.9424259662628174
+    },
+    {
+     "word": " gime",
+     "start": 72.36,
+     "end": 72.74,
+     "probability": 0.8607107400894165
+    },
+    {
+     "word": " para",
+     "start": 72.74,
+     "end": 73.08,
+     "probability": 0.9921090006828308
+    },
+    {
+     "word": " mí.",
+     "start": 73.08,
+     "end": 73.84,
+     "probability": 0.4899880886077881
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "seek": 6700,
+   "start": 75.32,
+   "end": 77.78,
+   "text": " O... te corto tu lindo cuello.",
+   "tokens": [
+    50714,
+    422,
+    485,
+    535,
+    11278,
+    78,
+    2604,
+    48436,
+    22656,
+    1913,
+    13,
+    50864
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " O...",
+     "start": 75.32,
+     "end": 75.96,
+     "probability": 0.39887835085392
+    },
+    {
+     "word": " te",
+     "start": 75.96,
+     "end": 76.2,
+     "probability": 0.3810804784297943
+    },
+    {
+     "word": " corto",
+     "start": 76.2,
+     "end": 76.44,
+     "probability": 0.9862653017044067
+    },
+    {
+     "word": " tu",
+     "start": 76.44,
+     "end": 76.66,
+     "probability": 0.9915902018547058
+    },
+    {
+     "word": " lindo",
+     "start": 76.66,
+     "end": 77.18,
+     "probability": 0.9869808554649353
+    },
+    {
+     "word": " cuello.",
+     "start": 77.18,
+     "end": 77.78,
+     "probability": 0.9981072247028351
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "seek": 6700,
+   "start": 77.96,
+   "end": 80.16,
+   "text": " Pero no puedo, no sé cómo...",
+   "tokens": [
+    50864,
+    9377,
+    572,
+    21612,
+    11,
+    572,
+    7910,
+    12826,
+    485,
+    50964
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " Pero",
+     "start": 77.96,
+     "end": 78.12,
+     "probability": 0.7895117402076721
+    },
+    {
+     "word": " no",
+     "start": 78.12,
+     "end": 78.38,
+     "probability": 0.9439846277236938
+    },
+    {
+     "word": " puedo,",
+     "start": 78.38,
+     "end": 78.7,
+     "probability": 0.9954606890678406
+    },
+    {
+     "word": " no",
+     "start": 79.04,
+     "end": 79.36,
+     "probability": 0.905834972858429
+    },
+    {
+     "word": " sé",
+     "start": 79.36,
+     "end": 79.64,
+     "probability": 0.2365347146987915
+    },
+    {
+     "word": " cómo...",
+     "start": 79.64,
+     "end": 80.16,
+     "probability": 0.65216925740242
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "seek": 6700,
+   "start": 80.16,
+   "end": 81.04,
+   "text": " ¿Cuántos años tienes?",
+   "tokens": [
+    50964,
+    3841,
+    35222,
+    27525,
+    329,
+    11424,
+    20716,
+    30,
+    51014
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " ¿Cuántos",
+     "start": 80.16,
+     "end": 80.48,
+     "probability": 0.9590661227703094
+    },
+    {
+     "word": " años",
+     "start": 80.48,
+     "end": 80.72,
+     "probability": 0.9986293315887451
+    },
+    {
+     "word": " tienes?",
+     "start": 80.72,
+     "end": 81.04,
+     "probability": 0.9949840307235718
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "seek": 6700,
+   "start": 81.5,
+   "end": 82.14,
+   "text": " Veintidós.",
+   "tokens": [
+    51014,
+    9706,
+    686,
+    327,
+    12994,
+    13,
+    51114
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " Veintidós.",
+     "start": 81.5,
+     "end": 82.14,
+     "probability": 0.8190724030137062
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "seek": 6700,
+   "start": 82.8,
+   "end": 85.1,
+   "text": " Entonces no te hagas la inocente.",
+   "tokens": [
+    51114,
+    15097,
+    572,
+    535,
+    324,
+    10549,
+    635,
+    294,
+    905,
+    1576,
+    13,
+    51214
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " Entonces",
+     "start": 82.8,
+     "end": 83.16,
+     "probability": 0.9344978928565979
+    },
+    {
+     "word": " no",
+     "start": 83.16,
+     "end": 83.36,
+     "probability": 0.9102818965911865
+    },
+    {
+     "word": " te",
+     "start": 83.36,
+     "end": 83.64,
+     "probability": 0.9971153736114502
+    },
+    {
+     "word": " hagas",
+     "start": 83.64,
+     "end": 83.86,
+     "probability": 0.9954924583435059
+    },
+    {
+     "word": " la",
+     "start": 83.86,
+     "end": 84.02,
+     "probability": 0.9873078465461731
+    },
+    {
+     "word": " inocente.",
+     "start": 84.02,
+     "end": 85.1,
+     "probability": 0.9369990030924479
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "seek": 6700,
+   "start": 91.52,
+   "end": 93.9,
+   "text": " ¡No! ¡Se escapará otra vez!",
+   "tokens": [
+    51564,
+    6514,
+    4540,
+    0,
+    6514,
+    10637,
+    12663,
+    2181,
+    842,
+    13623,
+    5715,
+    0,
+    51664
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.22253764117205585,
+   "compression_ratio": 1.1927710843373494,
+   "no_speech_prob": 0.008773579262197018,
+   "words": [
+    {
+     "word": " ¡No!",
+     "start": 91.52,
+     "end": 92.16,
+     "probability": 0.6927827298641205
+    },
+    {
+     "word": " ¡Se",
+     "start": 92.4,
+     "end": 92.56,
+     "probability": 0.8751436471939087
+    },
+    {
+     "word": " escapará",
+     "start": 92.56,
+     "end": 93.16,
+     "probability": 0.946997066338857
+    },
+    {
+     "word": " otra",
+     "start": 93.16,
+     "end": 93.58,
+     "probability": 0.989862322807312
+    },
+    {
+     "word": " vez!",
+     "start": 93.58,
+     "end": 93.9,
+     "probability": 0.9975548386573792
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "seek": 9390,
+   "start": 93.9,
+   "end": 98.02,
+   "text": " Jefe, él es la Vívola, el asesino más letal del planeta.",
+   "tokens": [
+    50364,
+    2588,
+    2106,
+    11,
+    11810,
+    785,
+    635,
+    691,
+    45096,
+    4711,
+    11,
+    806,
+    382,
+    279,
+    2982,
+    3573,
+    718,
+    304,
+    1103,
+    34186,
+    13,
+    50564
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.16187678745814732,
+   "compression_ratio": 1.4046511627906977,
+   "no_speech_prob": 0.07577549666166306,
+   "words": [
+    {
+     "word": " Jefe,",
+     "start": 93.9,
+     "end": 94.58,
+     "probability": 0.8518328964710236
+    },
+    {
+     "word": " él",
+     "start": 94.86,
+     "end": 95.1,
+     "probability": 0.8974690437316895
+    },
+    {
+     "word": " es",
+     "start": 95.1,
+     "end": 95.3,
+     "probability": 0.996831476688385
+    },
+    {
+     "word": " la",
+     "start": 95.3,
+     "end": 95.5,
+     "probability": 0.8487783670425415
+    },
+    {
+     "word": " Vívola,",
+     "start": 95.5,
+     "end": 95.8,
+     "probability": 0.20943403590839202
+    },
+    {
+     "word": " el",
+     "start": 96.04,
+     "end": 96.24,
+     "probability": 0.9468935132026672
+    },
+    {
+     "word": " asesino",
+     "start": 96.24,
+     "end": 96.72,
+     "probability": 0.9863738417625427
+    },
+    {
+     "word": " más",
+     "start": 96.72,
+     "end": 97.1,
+     "probability": 0.9292820692062378
+    },
+    {
+     "word": " letal",
+     "start": 97.1,
+     "end": 97.44,
+     "probability": 0.9948188960552216
+    },
+    {
+     "word": " del",
+     "start": 97.44,
+     "end": 97.62,
+     "probability": 0.9941873550415039
+    },
+    {
+     "word": " planeta.",
+     "start": 97.62,
+     "end": 98.02,
+     "probability": 0.994345486164093
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "seek": 9390,
+   "start": 98.42,
+   "end": 101.36,
+   "text": " Mató a catorce de nuestros mejores hombres y no pudimos hacer nada.",
+   "tokens": [
+    50564,
+    6789,
+    812,
+    257,
+    269,
+    1639,
+    384,
+    368,
+    24099,
+    42284,
+    37988,
+    288,
+    572,
+    14166,
+    8372,
+    6720,
+    8096,
+    13,
+    50714
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.16187678745814732,
+   "compression_ratio": 1.4046511627906977,
+   "no_speech_prob": 0.07577549666166306,
+   "words": [
+    {
+     "word": " Mató",
+     "start": 98.42,
+     "end": 98.5,
+     "probability": 0.9192801415920258
+    },
+    {
+     "word": " a",
+     "start": 98.5,
+     "end": 98.68,
+     "probability": 0.9954360127449036
+    },
+    {
+     "word": " catorce",
+     "start": 98.68,
+     "end": 99.06,
+     "probability": 0.7871160407861074
+    },
+    {
+     "word": " de",
+     "start": 99.06,
+     "end": 99.22,
+     "probability": 0.9966588020324707
+    },
+    {
+     "word": " nuestros",
+     "start": 99.22,
+     "end": 99.5,
+     "probability": 0.995090126991272
+    },
+    {
+     "word": " mejores",
+     "start": 99.5,
+     "end": 99.84,
+     "probability": 0.9957548379898071
+    },
+    {
+     "word": " hombres",
+     "start": 99.84,
+     "end": 100.18,
+     "probability": 0.9965251088142395
+    },
+    {
+     "word": " y",
+     "start": 100.18,
+     "end": 100.4,
+     "probability": 0.7319823503494263
+    },
+    {
+     "word": " no",
+     "start": 100.4,
+     "end": 100.56,
+     "probability": 0.9814172387123108
+    },
+    {
+     "word": " pudimos",
+     "start": 100.56,
+     "end": 100.84,
+     "probability": 0.9891997575759888
+    },
+    {
+     "word": " hacer",
+     "start": 100.84,
+     "end": 101.12,
+     "probability": 0.9971357583999634
+    },
+    {
+     "word": " nada.",
+     "start": 101.12,
+     "end": 101.36,
+     "probability": 0.994597315788269
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "seek": 9390,
+   "start": 101.56,
+   "end": 106.4,
+   "text": " Si no puedes hacerlo, ¡cincuenta millones para quien me traiga la cabeza de Vívola!",
+   "tokens": [
+    50714,
+    4909,
+    572,
+    19010,
+    32039,
+    11,
+    6514,
+    20021,
+    12032,
+    8938,
+    22416,
+    1690,
+    20108,
+    385,
+    944,
+    9900,
+    635,
+    34615,
+    368,
+    691,
+    45096,
+    4711,
+    0,
+    50964
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.16187678745814732,
+   "compression_ratio": 1.4046511627906977,
+   "no_speech_prob": 0.07577549666166306,
+   "words": [
+    {
+     "word": " Si",
+     "start": 101.56,
+     "end": 101.8,
+     "probability": 0.770193874835968
+    },
+    {
+     "word": " no",
+     "start": 101.8,
+     "end": 102.14,
+     "probability": 0.9958657026290894
+    },
+    {
+     "word": " puedes",
+     "start": 102.14,
+     "end": 102.6,
+     "probability": 0.98301100730896
+    },
+    {
+     "word": " hacerlo,",
+     "start": 102.6,
+     "end": 103.26,
+     "probability": 0.9952131509780884
+    },
+    {
+     "word": " ¡cincuenta",
+     "start": 103.56,
+     "end": 104.12,
+     "probability": 0.5542736649513245
+    },
+    {
+     "word": " millones",
+     "start": 104.12,
+     "end": 104.46,
+     "probability": 0.9859520196914673
+    },
+    {
+     "word": " para",
+     "start": 104.46,
+     "end": 104.78,
+     "probability": 0.9481117129325867
+    },
+    {
+     "word": " quien",
+     "start": 104.78,
+     "end": 104.88,
+     "probability": 0.8664613366127014
+    },
+    {
+     "word": " me",
+     "start": 104.88,
+     "end": 105.1,
+     "probability": 0.9636286497116089
+    },
+    {
+     "word": " traiga",
+     "start": 105.1,
+     "end": 105.32,
+     "probability": 0.8819373250007629
+    },
+    {
+     "word": " la",
+     "start": 105.32,
+     "end": 105.5,
+     "probability": 0.9859596490859985
+    },
+    {
+     "word": " cabeza",
+     "start": 105.5,
+     "end": 105.78,
+     "probability": 0.9938943982124329
+    },
+    {
+     "word": " de",
+     "start": 105.78,
+     "end": 105.98,
+     "probability": 0.9919875860214233
+    },
+    {
+     "word": " Vívola!",
+     "start": 105.98,
+     "end": 106.4,
+     "probability": 0.9712138374646505
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "seek": 9390,
+   "start": 107.02,
+   "end": 109.5,
+   "text": " De acuerdo. ¡Vamos, quítense! ¡Vamos!",
+   "tokens": [
+    51014,
+    1346,
+    28113,
+    13,
+    6514,
+    53,
+    2151,
+    11,
+    421,
+    6712,
+    1288,
+    0,
+    6514,
+    53,
+    2151,
+    0,
+    51114
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.16187678745814732,
+   "compression_ratio": 1.4046511627906977,
+   "no_speech_prob": 0.07577549666166306,
+   "words": [
+    {
+     "word": " De",
+     "start": 107.02,
+     "end": 107.38,
+     "probability": 0.6824190616607666
+    },
+    {
+     "word": " acuerdo.",
+     "start": 107.38,
+     "end": 107.72,
+     "probability": 0.9983772039413452
+    },
+    {
+     "word": " ¡Vamos,",
+     "start": 107.94,
+     "end": 108.26,
+     "probability": 0.9656388560930887
+    },
+    {
+     "word": " quítense!",
+     "start": 108.4,
+     "end": 108.8,
+     "probability": 0.7929118871688843
+    },
+    {
+     "word": " ¡Vamos!",
+     "start": 109.02,
+     "end": 109.5,
+     "probability": 0.9871870477994283
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "seek": 9390,
+   "start": 113.52000000000001,
+   "end": 117.26,
+   "text": " Dije que... gimas... o te haré gemir.",
+   "tokens": [
+    51314,
+    413,
+    37697,
+    631,
+    485,
+    27071,
+    296,
+    485,
+    277,
+    535,
+    2233,
+    526,
+    7173,
+    347,
+    13,
+    51514
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.16187678745814732,
+   "compression_ratio": 1.4046511627906977,
+   "no_speech_prob": 0.07577549666166306,
+   "words": [
+    {
+     "word": " Dije",
+     "start": 113.52000000000001,
+     "end": 114.10000000000001,
+     "probability": 0.784311056137085
+    },
+    {
+     "word": " que...",
+     "start": 114.10000000000001,
+     "end": 114.68,
+     "probability": 0.7372613549232483
+    },
+    {
+     "word": " gimas...",
+     "start": 114.68,
+     "end": 116.2,
+     "probability": 0.44280920426050824
+    },
+    {
+     "word": " o",
+     "start": 116.2,
+     "end": 116.38,
+     "probability": 0.4789123237133026
+    },
+    {
+     "word": " te",
+     "start": 116.38,
+     "end": 116.48,
+     "probability": 0.9983506202697754
+    },
+    {
+     "word": " haré",
+     "start": 116.48,
+     "end": 116.64,
+     "probability": 0.9041906595230103
+    },
+    {
+     "word": " gemir.",
+     "start": 116.64,
+     "end": 117.26,
+     "probability": 0.9830611646175385
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "seek": 9390,
+   "start": 118.68,
+   "end": 119.62,
+   "text": " Ok, ok.",
+   "tokens": [
+    51564,
+    3477,
+    11,
+    3133,
+    13,
+    51614
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.16187678745814732,
+   "compression_ratio": 1.4046511627906977,
+   "no_speech_prob": 0.07577549666166306,
+   "words": [
+    {
+     "word": " Ok,",
+     "start": 118.68,
+     "end": 118.92,
+     "probability": 0.46759045124053955
+    },
+    {
+     "word": " ok.",
+     "start": 118.94,
+     "end": 119.62,
+     "probability": 0.9652136564254761
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "seek": 12390,
+   "start": 124.58,
+   "end": 125.98,
+   "text": " ¡Ah!",
+   "tokens": [
+    50414,
+    6514,
+    10844,
+    0,
+    50464
+   ],
+   "temperature": 0.0,
+   "avg_logprob": -0.5271788040796915,
+   "compression_ratio": 0.38461538461538464,
+   "no_speech_prob": 0.9034979343414307,
+   "words": [
+    {
+     "word": " ¡Ah!",
+     "start": 124.58,
+     "end": 125.98,
+     "probability": 0.14845705032348633
+    }
+   ]
+  }
+ ],
+ "language": "es"
+}

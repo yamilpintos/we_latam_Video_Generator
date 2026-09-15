@@ -1,0 +1,562 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "REPLICA JCFDLW 7678030150944001310",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_azotea.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE-ISH SHOT on the laundry terrace, vertical frame, late afternoon. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater stands at the drying rack with her back three-quarters to camera, taking down white clothes. She holds a small piece of white underwear in both hands and looks along the empty pegs. The hazy city behind her.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE SHOT at the kindergarten gate, vertical frame, afternoon. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack runs towards camera down the middle of the pavement, laughing, other parents and children blurred on both sides, the colourful arch above.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_mama.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT at the kindergarten gate, vertical frame. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater has just lifted Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack onto her hip; the girl's arms are round her neck, both faces close together, the blurred gate behind.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE SHOT of the living room, vertical frame, late afternoon. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan sits on a round pouffe holding a pale balloon; Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater sits on the floor beside her, legs folded, a phone face down on the rug.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT in profile of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan and Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater facing each other in the living room, vertical frame, both in soft window light, the room dissolved behind them.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06a",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the living room, vertical frame, warm window light on her face. She is mid-sentence, one index finger raised; the dark back of the girl's head is a soft shape at the left edge of frame. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06b",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the living room, vertical frame, framed from the waist up and filling most of the frame, sitting and talking; the back of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan's head is a large dark out-of-focus shape in the bottom left corner. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S07",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack, vertical frame, the living room dissolved to warm colour behind her. Her mouth is open, eyes wide and completely serious.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_duoduo.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack in profile, vertical frame, speaking; the edge of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's face enters the right edge of frame, out of focus.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater holding Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack, vertical frame; the girl has her back to camera with the pink backpack still on, the mother's face visible over her shoulder. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_mama.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE-ISH SHOT at the kindergarten gate, vertical frame, afternoon. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater crouches in front of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack under the colourful arch, straightening the backpack straps with both hands, other parents blurred behind.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12a",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack on the pavement, vertical frame, parked scooters blurred behind her. She is looking down at her own hands, counting on her fingers.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12b",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack on the pavement, vertical frame, parked scooters blurred behind her. She is looking down at her own hands, counting on her fingers. Framed a little tighter than before, the same moment continuing.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S13",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nEXTREME CLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan, wearing a bright pink school backpack's face on the pavement, vertical frame, eyes and mouth filling the frame. She lifts her eyes from her fingers straight up at her mother. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S14a",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, alone, standing still on the pavement outside the school, vertical frame, framed from the waist up and filling the centre of the frame, the street blurred behind her. Her face has stopped: eyes wide, mouth slightly open, not breathing.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S14b",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_colegio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater on the pavement, vertical frame, tighter on her face, the street a wash of colour behind her.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S15",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nDETAIL SHOT inside the car, vertical frame, daytime. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's hand on the black steering wheel and her torso with the seat belt across it; her face is cut off above the frame. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S16",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen in profile from the passenger side, the blurred avenue running past the window behind her. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S17",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving in profile, vertical frame, the street outside the window completely out of focus behind her cheek. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S20",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater from in front, through the top of the steering wheel, vertical frame, the windscreen glare behind her. Her eyes are enormous, her face coming apart. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S21",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE SHOT down the dark corridor of the flat at night, vertical frame. Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater stands with her back to camera in front of the bedroom door, small in the frame, a kitchen knife hanging point-down in her right hand. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S22",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_dormitorio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM-WIDE SHOT from behind Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, vertical frame: the back of her head and shoulders silhouetted against the closed dark-wood sliding wardrobe that fills the whole wall in front of her. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S23",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_dormitorio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE SHOT from behind Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater, vertical frame, tighter: the back of her neck and her hand rising towards the recessed handle of the wardrobe panel. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S24",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_dormitorio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM-WIDE SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater standing in the bedroom in profile, vertical frame, looking at the wardrobe; the window behind her with grey night light through sheer curtains.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S25",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_dormitorio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the bedroom, vertical frame, half turned to camera. She pushes her hand up through her hair at the temple and laughs at herself, an embarrassed, relieved laugh.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S26",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_mama.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE SHOT of the bathroom at night, vertical frame. Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan sits in the deep tub among foam with a yellow rubber duck; Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping sits on the rim beside her, one hand washing the girl's hair, warm light.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S27",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping crouched beside the tub, vertical frame, reaching across the water for the yellow duck; the girl out of focus at the edge.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S28",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the bath, vertical frame, wet hair flat on her forehead, the yellow duck held in both hands at her chest; her mother's hand at the edge of frame in her hair.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S29",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE SHOT of the bathroom from the other side, vertical frame: the chrome taps large in the foreground, Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan small in the tub beyond them, foam everywhere.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S30",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping kneeling by the tub, vertical frame, framed from the shoulders up with her face filling most of the frame. Her eyes are very wide and completely still; the warm bathroom light behind her, the room out of focus.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S31",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the bath, vertical frame, holding the duck up, mouth open, telling something important.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S35",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_bano.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping, vertical frame, very tight; her eyes down, the smile gone now, warm light on one side of her face.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S37",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nDETAIL SHOT of a phone held in two hands, vertical frame, filling most of the frame: a messaging app open on a photograph of the Shanghai skyline at night, lit towers over black water, with a short message under it. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S38",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE SHOT of the hand and forearm holding the phone, vertical frame, the screen showing a grid of posts with small photographs and the same location label repeated under each one.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S39",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping sitting on the sofa in the dark living room, vertical frame, the phone in both hands, her face and chest lit blue, everything else black.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S40",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE SHOT of the corridor at night, vertical frame, empty: a door standing half open with a thin strip of pale light across the floorboards.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S41",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE-ISH SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping ALONE in the dark corridor, vertical frame, seen from behind as she walks away from the camera: only her back, her bun and her shoulders are visible, never her face. The lit phone hangs in one hand and throws light on the wall. Nobody else is in the corridor.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S42",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping in profile at the bedroom door, vertical frame, one hand on the handle, the lit phone in the other, her chin down.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S43",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan kneeling up on the sofa in daylight, vertical frame, talking towards camera; the back of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping's head and shoulder in the near foreground, out of focus. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S44",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_salon.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in white silk pyjamas with dark piping in the morning living room, vertical frame, smiling with dark circles under her eyes; the back of the girl's head in the foreground. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape occupying part of the frame: do not turn them towards camera and do not move them into the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S48",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen from the passenger seat, the blurred avenue through the windscreen. She is talking towards the back seat without turning her head. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S49",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan strapped into the child seat, vertical frame, a white plush rabbit in her arms, the car window behind her. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S52",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the car, vertical frame, very tight on her face in profile, jaw locked. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S53",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater driving, vertical frame, seen from the passenger seat, the blurred avenue through the windscreen. One arm is stretched out to the wheel; she is asking a longer question towards the mirror. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S54",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the child seat looking down, vertical frame, playing with the rabbit's ears while she answers. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S55",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_duoduo.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Duoduo, 5, a black bob with a blunt fringe and round cheeks, in a pale pink ruffled dress and a pink cardigan in the child seat, vertical frame, lifting her face towards the mirror, suddenly remembering something. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S58",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_auto.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nDETAIL SHOT of the rear-view mirror, vertical frame: Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's eyes reflected in it, the road behind out of focus and reflected upside down at the edges. This happens INSIDE THE MOVING CAR: the car interior is visible around the subject — door card, window with the street sliding past, head rests, seat belts, the roof lining. Never a room, never a house. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S60",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tienda.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater leaning over the glass counter of an electronics shop, vertical frame, cold fluorescent light, walls of accessories behind her.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S61",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tienda.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE-ISH SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater at the shop counter, vertical frame, the aisle and the racks of packaged accessories visible around her.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S62",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tienda.png",
+        "assets/m_vendedora.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card behind the glass counter, vertical frame, bending to slide open the back of the display case.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S63",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tienda.png",
+        "assets/m_vendedora.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card behind the counter, vertical frame, holding a tiny black cube of a camera up between two fingers.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S64",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tienda.png",
+        "assets/m_vendedora.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE-ISH SHOT of the shop assistant, 28, black hair in a low bun, a black blazer over a white shirt, a company lanyard with an ID card behind the counter, vertical frame, her arm stretched out across the glass with a tiny black cube of a camera —no bigger than a thumbnail, not a normal photo camera— flat on her open palm.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S65",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_tienda.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nEXTREME DETAIL SHOT, vertical frame: Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's hand fills the frame, holding a tiny black cube of a camera, no bigger than a thumbnail, between finger and thumb against the shop's overhead light. The shop behind is a blur of blue and white; nothing else is in focus and no other part of her is visible. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S67",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in the corridor of the flat, vertical frame, warm interior light behind her, the bedroom door out of focus. She is talking to herself, giving herself an order.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S68",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_dormitorio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP, vertical frame: Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater's neck and chest and the orange phone held up in one hand, her face cut off above the frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S69",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_dormitorio.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nDETAIL SHOT of the orange phone's screen filling the frame, vertical: a live camera view of the dim bedroom, the whole dark-wood wardrobe inside the frame, with a small recording dot and a timestamp. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S70",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cocina.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater crouched in front of the open fridge, vertical frame, its cold light on her face, cartons of milk on the shelf in front of her.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S71",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cocina.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nWIDE-ISH SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater in profile at the open fridge door, vertical frame, bent over the egg tray set into the door.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S72",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cocina.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nCLOSE UP of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater standing in front of the OPEN FRIDGE, vertical frame, the lit shelves of the fridge filling the background right beside her and its cold white light falling on one side of her face. Her mouth is open.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S73",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cocina.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nMEDIUM SHOT of Li Wen, 30, a young Chinese woman with a soft oval face, clear fair skin and large dark expressive eyes, black hair in a loose bun with strands falling around her face, a soft red lip and no other makeup, in an ivory ribbed knit sweater straightening up in the kitchen, vertical frame, the open fridge still throwing light behind her, turning her head towards the sink.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S74",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cocina.png",
+        "assets/m_mama.png"
+      ],
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, the look of a streaming short-drama series: modern flats in a southern Chinese city, clean warm interiors in pink-beige and ivory, big soft daylight through sheer curtains, shallow depth of field, faces sharp and everything behind them dissolved. Natural skin, no glamour retouching, restrained and believable performances. Shot on a full-frame digital cinema camera, 50mm and 85mm, gentle contrast, a trace of grain.\nEXTREME DETAIL SHOT, vertical frame, of five identical white bowls in a steel dish rack by a window, seen from the side at bowl height, daylight raking across them. Four of the bowls are FACE DOWN: domes of smooth white porcelain, no hollow visible. The bowl in the centre is FACE UP: you can see straight into its empty hollow, and there is a drop of water in it. The contrast between the four domes and the one open bowl is the whole shot. FRAMING IS THE POINT: this is an insert of that detail and nothing else. Everything outside it is cut off by the edges of the frame, faces included. Do not open the shot out to show the whole person.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

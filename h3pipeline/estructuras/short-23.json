@@ -1,0 +1,60 @@
+{
+  "nombre": "short-23",
+  "formato": "short",
+  "duracion_objetivo": 23,
+  "tolerancia": 2,
+  "plataformas": ["Instagram Reels", "TikTok", "YouTube Shorts"],
+  "retencion_objetivo": 0.65,
+  "interrupcion_cada": 8,
+  "notas": [
+    "LEY: la regla 3/8/12 de Estructuras_Contenido_Alta_Retencion_2026.docx. Tres segundos de gancho, ocho de desarrollo del interés, doce de cierre. Es el formato de ALCANCE: maximiza descubrimiento entre no seguidores.",
+    "El umbral es más exigente que en el de 60: en Shorts de menos de 30 s hace falta ~65 % de retención para que la plataforma lo empuje. Con 23 s eso significa que el espectador medio tiene que llegar al segundo 15.",
+    "Elegí este formato cuando la idea se cuenta entera en una imagen y un giro. Si necesita tres peldaños de revelación, no entra: usá `short`.",
+    "El problema técnico de este formato: H3 no baja de 5,17 s por plano, así que un corte de 1,5 s desperdicia 3,7 s de generación. Son 5 planos generados (~28 s) para usar 23. Sigue siendo barato, pero conviene saberlo.",
+    "TRIPLE REFUERZO en el gancho: imagen, sonido y texto en pantalla dicen lo mismo. El texto va como overlay en post."
+  ],
+  "tramos": [
+    {
+      "id": "HOOK", "nombre": "Gancho", "desde": 0, "hasta": 3,
+      "objetivo": "Tres segundos para interrumpir el scroll. Una brecha de información abierta de golpe, con el resultado concreto por delante.",
+      "exige": [
+        "Un solo plano, corte de 1,5 a 3 s",
+        "TRIPLE REFUERZO: imagen, sonido y texto en pantalla, los tres",
+        "El texto antepone el RESULTADO, no la promesa: «esta landing convierte al 14 %», no «hoy te enseño cómo»",
+        "El primer fotograma funciona como miniatura: un sujeto, contraste alto",
+        "Sin fundido, sin establecer, sin presentarse"
+      ],
+      "corte_min": 1.5, "corte_max": 3.0,
+      "tamanos": ["PP", "PD"],
+      "interrupcion": true,
+      "texto_pantalla": "El resultado concreto, menos de 8 palabras.",
+      "prompt_frame": "The very first frame of a vertical short-form video, and it has to read as a thumbnail in a third of a second: one clear subject, strong contrast, something visibly wrong or surprising already in frame. Leave the upper third relatively clear for a text overlay added in post.",
+      "audio": "Un sonido concreto y cercano en el primer cuarto de segundo."
+    },
+    {
+      "id": "DESARROLLO", "nombre": "Desarrollo del interés", "desde": 3, "hasta": 11,
+      "objetivo": "Ocho segundos para sostener lo que el gancho abrió. Micro-tensiones: cada plano entrega una parte y promete la siguiente. Nada de contexto ni de explicación.",
+      "exige": [
+        "2 planos, cortes de 3 a 4,5 s",
+        "Cada plano cambia tamaño o ángulo respecto del anterior",
+        "Una interrupción de patrón dentro del tramo: son 8 s y el ojo se acomoda rápido",
+        "Ninguno de los dos resuelve la pregunta del gancho"
+      ],
+      "corte_min": 3.0, "corte_max": 4.5, "planos_min": 2,
+      "interrupcion": true
+    },
+    {
+      "id": "CIERRE", "nombre": "Cierre y bucle", "desde": 11, "hasta": 23,
+      "objetivo": "Doce segundos: se entrega la recompensa prometida y se cierra el bucle. El final conecta con el principio para disparar el replay, y deja una pregunta contestable en una frase.",
+      "exige": [
+        "2 o 3 planos, cortes de 4 a 6 s",
+        "El pago llega antes del segundo 20: no dejarlo para el último plano",
+        "Termina en negro o en una imagen que empalma con el fotograma 1",
+        "Sin llamado a la acción hablado; la pregunta abierta hace ese trabajo",
+        "La última imagen vuelve al tamaño de plano del gancho"
+      ],
+      "corte_min": 4.0, "corte_max": 6.0, "planos_min": 2,
+      "interrupcion": true
+    }
+  ]
+}

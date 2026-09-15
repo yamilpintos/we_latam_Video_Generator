@@ -1,0 +1,105 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "EL DRON DEL VOLCÁN",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_piloto.png",
+        "assets/l_borde.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nEXTREME CLOSE UP on bulky black FPV goggles filling the lower two thirds of the vertical frame, worn over a grey dust buff. Across both curved lenses, the hard orange glow of a volcanic crater and a rising gas column are reflected, with a tiny green signal indicator light reflected in one corner. Fine ash drifts past. The upper third of the frame is dark pre-dawn sky, kept clear.\nNARRATIVE INTENT OF THIS FRAME: This is the very first frame of a vertical short-form video and must read instantly as a thumbnail: one clear subject, strong contrast, something visibly wrong or surprising already present in the frame. Leave the upper third relatively clear: an on-screen text overlay goes there in post.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_borde.png",
+        "assets/m_piloto.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nEXTREME WIDE SHOT on the ash ridge of the crater rim at dawn. The pilot in the high-visibility orange jacket stands at the very edge, small in the lower part of the vertical frame — his full height is about ONE SEVENTH of the image height, clearly smaller than the gas column is wide. Beyond him the crater mouth and its huge fibrous, wind-torn gas column lit orange from inside, towering over everything. A small dark quadcopter hangs in the air just past the rim, about to drop in.\nNARRATIVE INTENT OF THIS FRAME: Establishing frame: the whole space and the scale of the subject within it are readable at a glance.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_crater.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nFPV POV diving steeply down inside the crater, the camera tilted forward. A sheer dark rock wall streaked with yellow sulfur rushes upward past the right side of the vertical frame, layers of thin grey gas below, and at the very bottom a faint orange glow. Slight wide-angle distortion, heat shimmer at the edges.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nFPV POV completely inside dense grey-brown volcanic gas, vertical frame. Almost nothing visible: fine fibrous, wind-torn haze in every direction, never rounded cartoon puffs, faint darker swirls, drifting ash flakes catching a weak light. Very low contrast, claustrophobic, no walls, no glow, no horizon.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_crater.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nFPV POV in thinning volcanic gas, vertical frame. Ahead and below, a narrow rock ledge is starting to resolve out of the haze on the crater wall, lit faintly orange from beneath. On the ledge, one small metallic glint — a hard, angular reflection that does not belong to rock. Sulfur streaks on the wall behind.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_crater.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nEXTREME WIDE POV inside the crater, vertical frame used at full height. The sheer rock wall fills the frame top to bottom; the narrow ledge with the tiny metallic glint is a dot partway down, and FAR below, at the very bottom of the frame, the lava lake glows hard orange with black crust cracking into bright seams. The glinting object on the ledge is about ONE FORTIETH of the image height: the scale must feel crushing. Thin gas layers drift between camera and wall.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S07",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_dron_caido.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nFPV POV close on the rock ledge, vertical frame. Sitting in a drift of ash: the lost quadcopter — matte black carbon frame visibly warped and scorched, two propellers melted into curls, ash caked into every joint — and underneath it, intact, a small gimbal camera with a clean round lens and a tiny red LED blinking beside it. It must read as real scorched equipment, heavy and damaged, never as a clean product render, never as a toy. Orange light from below catches its edges.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_crater.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nWIDE POV looking down the crater shaft from beside the ledge, vertical frame. The lava lake below in mid-eruption: a fountain of bright orange lava bursting upward from the broken crust, embers and glowing fragments rising in a column, the rock walls flooding with hard orange light from beneath. Gas layers above lit from below like ceilings on fire. The gas and smoke are fibrous and wind-torn, never rounded cartoon puffs.\nNARRATIVE INTENT OF THIS FRAME: A strong visual break from everything before it: a new colour of light, a new light source or an impossible detail, clearly visible in the frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_dron_caido.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nFPV POV straight down over the scorched quadcopter on the ledge, vertical frame. From the bottom edge of the frame, a thin black recovery hook on a short cable — part of the camera drone itself — hangs into view just above the warped carbon frame. Embers stream upward through the shot, orange light pulsing from below, ash whipping off the ledge.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S10",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_dron_caido.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nCLOSE SHOT, vertical frame: the scorched quadcopter hanging from the taut cable against the orange chaos of the crater, filling the middle of the frame, slowly spinning. Its warped black frame and melted propellers read clearly. Under it, the small intact gimbal camera with its clean round lens and blinking red LED. Embers and lit gas layers drift behind.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_piloto.png",
+        "assets/l_borde.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nEXTREME CLOSE UP matching the first shot: the bulky black FPV goggles over the grey dust buff, vertical frame, now flooded with warm orange light from the crater side. Reflected across both lenses, the scorched quadcopter hanging from its cable being lowered into a gloved open hand. Ash drifts slower now. The upper third of the frame is dawn sky, kept clear.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_borde.png"
+      ],
+      "prompt": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.\nEXTREME WIDE SHOT of the crater rim at dawn from the ash ridge, matching the framing of the earlier wide shot, vertical frame. The crater mouth and its gas column — but the column is now TWICE as tall and twice as wide, glowing a deeper orange from inside, leaning over the ridge. No people, no drone. Wind-blown ash crossing the frame. The gas is fibrous and wind-torn, never rounded cartoon puffs.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

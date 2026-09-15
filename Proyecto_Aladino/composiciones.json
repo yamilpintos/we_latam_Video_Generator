@@ -1,0 +1,55 @@
+{
+  "_comentario": "Una imagen de composición por escena: el personaje YA PUESTO en la locación a escala correcta. Resuelve el problema de que los personajes salían gigantes, porque las hojas de personaje llenaban el cuadro y las locaciones no tenían ninguna figura que diera escala. Cada una se genera pasando la locación y los personajes como referencia.",
+  "assets": [
+    {
+      "id": "c_E01_robo",
+      "refs": ["assets/l_bazar.png", "assets/p_aladino.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location and the character design of <Picture 2>.\nWIDE SHOT of the bazaar exactly as in <Picture 1>, same framing and same light. Place the young man from <Picture 2> in the middle of the aisle, seen from behind, running away from camera toward the far archway.\nCRITICAL SCALE: he is SMALL in frame — his full height is about ONE SIXTH of the image height. The awnings and the stone archway tower far above him. He must read as a normal-sized person inside a large market, not as a giant."
+    },
+    {
+      "id": "c_E02_mago",
+      "refs": ["assets/l_bazar.png", "assets/p_aladino.png", "assets/p_mago.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location, and the character designs of <Picture 2> and <Picture 3>.\nWIDE SHOT of the bazaar exactly as in <Picture 1>. The tall old man from <Picture 3> stands in the middle of the aisle facing camera. The young man from <Picture 2> crouches by a stack of baskets at the right edge of frame.\nCRITICAL SCALE: both figures are SMALL — the old man is about ONE FIFTH of the image height, the crouching young man smaller still. The awnings tower above them. Normal-sized people in a large market."
+    },
+    {
+      "id": "c_E03_puerta",
+      "refs": ["assets/l_desierto.png", "assets/p_aladino.png", "assets/p_mago.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location, and the character designs of <Picture 2> and <Picture 3>.\nWIDE LANDSCAPE SHOT of the desert at dusk exactly as in <Picture 1>. Place two figures at the base of the dark rocky outcrop in the middle ground: the young man from <Picture 2> and the tall old man from <Picture 3>, standing side by side.\nCRITICAL SCALE: they are TINY — each about ONE TENTH of the image height, dwarfed by the dunes and the rock. The vastness of the landscape is the point."
+    },
+    {
+      "id": "c_E04_lampara",
+      "refs": ["assets/l_cueva.png", "assets/p_aladino.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location and the character design of <Picture 2>.\nWIDE SHOT of the treasure cavern exactly as in <Picture 1>, same framing and same blue-green and gold light. Place the young man from <Picture 2> at the bottom of the stone stair at the back of frame, standing still, looking out at the treasure.\nCRITICAL SCALE: he is SMALL — about ONE SEVENTH of the image height. The carved arches and the mounds of gold dwarf him."
+    },
+    {
+      "id": "c_E05_encierro",
+      "refs": ["assets/l_cueva.png", "assets/p_aladino.png", "assets/p_mago.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location, and the character designs of <Picture 2> and <Picture 3>.\nWIDE SHOT of the treasure cavern from <Picture 1>, looking up the stone stair toward a square of daylight far above. The young man from <Picture 2> stands at the foot of the stair holding a small brass lamp. Far up in the square of light, the silhouette of the old man from <Picture 3> leans in with one arm reaching down.\nCRITICAL SCALE: the young man is SMALL, about ONE SIXTH of the image height. The silhouette above is smaller still, because it is far away. The height of the cavern is the point."
+    },
+    {
+      "id": "c_E06_genio",
+      "refs": ["assets/l_cueva.png", "assets/p_aladino.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location and the character design of <Picture 2>.\nWIDE SHOT of the treasure cavern from <Picture 1> in cold blue-green light. Place the young man from <Picture 2> sitting on the floor with his back against a carved pillar, knees up, holding a small brass lamp in both hands.\nCRITICAL SCALE: he is SMALL — about ONE SEVENTH of the image height. The pillar behind him rises far out of frame above him."
+    },
+    {
+      "id": "c_E07_llegada",
+      "refs": ["assets/l_palacio.png", "assets/p_aladino.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location and the character design of <Picture 2>.\nWIDE SHOT of the great palace courtyard exactly as in <Picture 1>, same framing and same dusk light, the lit fountain in the middle ground and the enormous ornate archway behind. Place the young man from <Picture 2> standing beside the fountain, now dressed in fine embroidered robes of deep teal and gold, looking up at the facade.\nCRITICAL SCALE: this is the important part. He is VERY SMALL in frame — his full height is about ONE EIGHTH of the image height, and clearly SHORTER than the fountain is wide. The archway behind him is many times his height. He must read as one person standing in an enormous courtyard, absolutely not as a giant. His feet are ON the stone paving, beside the fountain, never on top of it."
+    },
+    {
+      "id": "c_E08_encuentro",
+      "refs": ["assets/l_palacio.png", "assets/p_aladino.png", "assets/p_princesa.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location, and the character designs of <Picture 2> and <Picture 3>.\nWIDE SHOT of the palace courtyard exactly as in <Picture 1>. Place two figures standing a few paces apart beside the lit fountain: the young woman from <Picture 3> in her cream and gold dress, and the young man from <Picture 2> in fine teal robes.\nCRITICAL SCALE: both are VERY SMALL — each about ONE EIGHTH of the image height, shorter than the fountain is wide, dwarfed by the arcades and the great archway. Their feet are ON the stone paving beside the fountain, never on top of it. Two people in an enormous courtyard."
+    },
+    {
+      "id": "c_E09_engano",
+      "refs": ["assets/l_alcoba.png", "assets/p_princesa.png", "assets/p_mago.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location, and the character designs of <Picture 2> and <Picture 3>.\nWIDE SHOT of the candlelit palace bedchamber exactly as in <Picture 1>. Place the young woman from <Picture 2> standing beside a carved side table with a small brass lamp on it. The old man from <Picture 3> stands in the open doorway, hunched, dressed as a pedlar with a tray.\nCRITICAL SCALE: both are normal-sized people in a large room — each about ONE QUARTER of the image height. The ceiling and the hanging lanterns are well above their heads."
+    },
+    {
+      "id": "c_E10_final",
+      "refs": ["assets/l_palacio.png", "assets/p_aladino.png", "assets/p_mago.png"],
+      "prompt": "Original 2D animated illustration. Use <Picture 1> as the location, and the character designs of <Picture 2> and <Picture 3>.\nWIDE SHOT of the palace courtyard exactly as in <Picture 1>, at dawn in cold blue light. Place two figures facing each other across the fountain, about ten paces apart: the old man from <Picture 3> holding a brass lamp raised in one hand, and the young man from <Picture 2> in teal robes.\nCRITICAL SCALE: this is the important part. Both are VERY SMALL — each about ONE EIGHTH of the image height, clearly shorter than the fountain is wide, dwarfed by the arcades and the great archway behind them. Their feet are ON the stone paving, never on the fountain. Two people in an enormous courtyard, absolutely not giants."
+    }
+  ]
+}

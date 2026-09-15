@@ -1,0 +1,176 @@
+{
+  "nombre": "largo-narrativo",
+  "formato": "largo",
+  "duracion_objetivo": 300,
+  "tolerancia": 20,
+  "notas": [
+    "LEY: Estructuras_Contenido_Alta_Retención_2026.docx, sección 2.1. La caída más pronunciada de la curva ocurre en los primeros 30 s: el gancho decide si YouTube recomienda el video o no.",
+    "Retención saludable por duración: 1-5 min -> 70-85 % (por debajo de 55 % hay un problema); 5-15 min -> 40-60 %, con 50 % en un video de 10 min como sólido; 15-30 min -> más de 40 % ya indica muy buena estructura. `retención_objetivo` de esta estructura es 50 %, que corresponde al rango 5-15 min.",
+    "YouTube evalúa el TIEMPO DE VISUALIZACIÓN ABSOLUTO, no solo el porcentaje: un video de 10 min visto al 70 % puede superar a uno de 2 min visto entero. La duración se elige por la profundidad del tema, no por llegar a un número.",
+    "LOOPS DE CURIOSIDAD ABIERTOS: anunciar algo que se muestra más adelante y cumplirlo. Es la técnica de mayor impacto documentado para el formato largo, y el módulo la chequea: cada loop que se abre tiene que cerrarse.",
+    "RE-ENGANCHE cada 60-90 s: una revelación, una pregunta nueva o una imagen inesperada. Sin eso la curva cae parejo y no hay donde agarrarse.",
+    "ELIMINAR LA FRICCIÓN INICIAL: nada de presentarse, agradecer ni de introducciones lentas. Se abre con el momento más interesante o con la conclusión contraintuitiva que se va a demostrar.",
+    "Los tramos en fracción (`desde_pct`) se estiran solos: la misma estructura sirve para 5 y para 8 minutos (`Estructura.con_duración(480)`).",
+    "H3 genera lo que nace y muere dentro del plano; ElevenLabs, todo lo que cruza el corte.",
+    "Una sola voz por plano y como mucho doce palabras. El contraplano es otro plano.",
+    "El tamaño de plano va en el dibujo Y en el prompt; y no se corta entre dos planos del mismo tamaño, locación y reparto."
+  ],
+  "tramos": [
+    {
+      "id": "APERTURA",
+      "nombre": "Apertura fría",
+      "desde": 0,
+      "hasta": 15,
+      "objetivo": "La imagen más fuerte del video, adelantada y sin contexto. NO presentarse, NO agradecer, NO explicar de que va: se abre con el momento más interesante o con la conclusión contraintuitiva que se va a demostrar. La caída más pronunciada de la curva esta en estos primeros 30 s.",
+      "exige": [
+        "Plano general o detalle, nunca un plano medio neutro",
+        "Acción o imagen, no narración explicativa",
+        "Corta antes del segundo 15",
+        "Cero fricción: ni intro, ni saludo, ni logo, ni 'en el video de hoy'",
+        "Abre un loop de curiosidad que el video promete cerrar"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 10.2,
+      "tamanos": [
+        "PGE",
+        "PG",
+        "PD"
+      ],
+      "prompt_frame": "The single strongest image of the whole film: high contrast, one readable subject, something happening that raises a question.",
+      "interrupcion": true
+    },
+    {
+      "id": "PLANTEO",
+      "nombre": "Planteo",
+      "desde": 15,
+      "hasta_pct": 0.2,
+      "objetivo": "Quién, dónde, qué quiere y qué se lo impide. El protagonista en su mundo, en una acción que lo defina.",
+      "exige": [
+        "Cada personaje entra con un plano que lo presenta entero (PA o PG) antes de sus primeros planos",
+        "Una locación por escena",
+        "Establecer la regla del mundo que después se rompe",
+        "Se declara que va a entregar el video, en concreto y no en genérico"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 10.2,
+      "planos_min": 3
+    },
+    {
+      "id": "DETONANTE",
+      "nombre": "Detonante",
+      "desde_pct": 0.2,
+      "hasta_pct": 0.3,
+      "objetivo": "El hecho que saca al protagonista de su rutina. Es una escena, no un plano, y termina en una decisión.",
+      "exige": [
+        "Cambio de locación o de luz respecto del planteo",
+        "Diálogo: una sola voz por plano",
+        "Termina en una decisión visible",
+        "Re-enganche: acá cae la primera revelación o pregunta nueva"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 12.2,
+      "planos_min": 2,
+      "interrupcion": true
+    },
+    {
+      "id": "DESARROLLO",
+      "nombre": "Desarrollo con re-enganches",
+      "desde_pct": 0.3,
+      "hasta_pct": 0.5,
+      "objetivo": "Escalada. Cada 60-90 s un elemento nuevo que cambia lo que el espectador cree que está viendo.",
+      "exige": [
+        "Un re-enganche cada 60-90 s: una revelación, una pregunta nueva o una imagen inesperada",
+        "No más de dos planos seguidos del mismo tamaño",
+        "Duración media de plano entre 7 y 9 s",
+        "Un loop de curiosidad abierto que se cierra más adelante, anunciado explícitamente"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 15.1,
+      "planos_min": 4,
+      "interrupcion": true
+    },
+    {
+      "id": "PUNTO_MEDIO",
+      "nombre": "Punto medio",
+      "desde_pct": 0.5,
+      "hasta_pct": 0.58,
+      "objetivo": "Giro: lo que parecía una cosa es otra. Cambia la meta o cambia el enemigo.",
+      "exige": [
+        "Una escena entera dedicada al giro",
+        "Un plano de reacción (PP) del protagonista",
+        "El audio marca el cambio: entra o se corta un ambiente",
+        "Es el re-enganche más fuerte del video: va a la mitad exacta, donde la curva se aplana o cae"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 12.2,
+      "planos_min": 2,
+      "interrupcion": true
+    },
+    {
+      "id": "COMPLICACION",
+      "nombre": "Complicación",
+      "desde_pct": 0.58,
+      "hasta_pct": 0.75,
+      "objetivo": "Todo se pone peor y el antagonista toma la delantera. Ritmo más rápido: planos más cortos que en el desarrollo.",
+      "exige": [
+        "Duración media de plano menor que en el desarrollo",
+        "Un plano detalle (PD) que después paga en el clímax",
+        "Ritmo más rápido: los cortes se acortan respecto del desarrollo"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 10.2,
+      "planos_min": 3,
+      "interrupcion": true
+    },
+    {
+      "id": "CLIMAX",
+      "nombre": "Clímax",
+      "desde_pct": 0.75,
+      "hasta_pct": 0.9,
+      "objetivo": "El enfrentamiento. La imagen de la apertura fría vuelve, ahora con contexto.",
+      "exige": [
+        "Reencuadrar la imagen de la apertura",
+        "Los planos más cortos del video",
+        "Diálogo mínimo: una línea que decide",
+        "Se cierran todos los loops abiertos que queden"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 8.8,
+      "planos_min": 3,
+      "interrupcion": true
+    },
+    {
+      "id": "RESOLUCION",
+      "nombre": "Resolución",
+      "desde_pct": 0.9,
+      "hasta_pct": 0.97,
+      "objetivo": "Qué quedó distinto. Un plano largo y quieto después de la tormenta.",
+      "exige": [
+        "Planos largos, de 8 a 15 s",
+        "Volver a una locación del planteo, cambiada"
+      ],
+      "corte_min": 7.9,
+      "corte_max": 15.1
+    },
+    {
+      "id": "SALIDA",
+      "nombre": "Salida",
+      "desde_pct": 0.97,
+      "hasta_pct": 1.0,
+      "objetivo": "Última imagen: una pregunta abierta o el eco de la primera. Es donde YouTube pone la pantalla final: dejar aire, sin diálogo.",
+      "exige": [
+        "Un solo plano",
+        "Sin diálogo",
+        "Deja 8-10 s de aire para la pantalla final",
+        "Adelantar lo que viene después genera expectativa y mejora la retención ENTRE videos, no solo dentro de uno"
+      ],
+      "corte_min": 7.9,
+      "corte_max": 15.1
+    }
+  ],
+  "plataformas": [
+    "YouTube"
+  ],
+  "retencion_objetivo": 0.5,
+  "interrupcion_cada": 75
+}

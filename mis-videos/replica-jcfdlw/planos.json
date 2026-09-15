@@ -1,0 +1,2121 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "REPLICA JCFDLW 7678030150944001310",
+  "slug": "replica-jcfdlw",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "replica-jcfdlw-7678030150944001310",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "GANCHO",
+      "tipo": "PA",
+      "loc": "azotea",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 1 del original · 0.00→5.13 s",
+      "first_frame": "assets/sb_S01.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She unpins one more garment, folds it against her chest, then stops and runs her eyes slowly along the rack, counting. She lifts a hanger, looks behind it, and lets her hands drop.\nAUDIO: [Ambient] a quiet high terrace, distant traffic. [Foley] plastic pegs, cloth being folded, a hanger sliding on metal.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.13
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        5.13
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "GANCHO",
+      "tipo": "PG",
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 2 del original · 5.13→6.97 s",
+      "first_frame": "assets/sb_S02.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She runs straight at the camera with her arms starting to open, her backpack bouncing. Behind her a parent turns to watch. The crowd drifts across the frame.\nAUDIO: [Ambient] a schoolyard emptying, children, scooters. [Foley] small running shoes on pavement.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.84
+      ],
+      "en_linea_de_tiempo": [
+        5.13,
+        6.97
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "GANCHO",
+      "tipo": "PM",
+      "loc": "colegio",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 3 del original · 6.97→7.50 s",
+      "first_frame": "assets/sb_S03.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The mother lifts her the last few centimetres and turns a quarter to the side with the movement. The girl presses her cheek against her mother's.\nAUDIO: [Ambient] the street outside a school. [Foley] cloth, a backpack strap creaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.53
+      ],
+      "en_linea_de_tiempo": [
+        6.97,
+        7.5
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PA",
+      "loc": "salon",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 4 del original · 7.50→8.67 s",
+      "first_frame": "assets/sb_S04.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The girl turns the balloon in her hands and says something; the mother leans in slightly, still smiling, not yet listening properly.\nAUDIO: [Ambient] a quiet flat, faint traffic through glass. [Foley] a balloon squeaking, clothes on a rug.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.17
+      ],
+      "en_linea_de_tiempo": [
+        7.5,
+        8.67
+      ]
+    },
+    {
+      "id": "S05",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 5 del original · 8.67→11.77 s",
+      "first_frame": "assets/sb_S05.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The girl talks steadily, her mouth working; the mother's smile flattens by degrees as she listens, her head tilting a few centimetres to one side.\nAUDIO: [Ambient] the quiet room. [Foley] small movements of cloth.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.1
+      ],
+      "en_linea_de_tiempo": [
+        8.67,
+        11.77
+      ]
+    },
+    {
+      "id": "S06a",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 6 del original · 11.77→18.23 s",
+      "first_frame": "assets/sb_S06a.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She talks, the raised finger moving with the rhythm of what she says, then lowers it and puts the hand flat on her own knee.\nAUDIO: [Ambient] the quiet room. [Foley] cloth, a hand settling on fabric.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.23
+      ],
+      "en_linea_de_tiempo": [
+        11.77,
+        15.0
+      ]
+    },
+    {
+      "id": "S06b",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 6 del original · 11.77→18.23 s",
+      "first_frame": "assets/sb_S06b.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She keeps talking, more softly now, and reaches out to smooth the girl's hair, leaving her hand resting on the small head.\nAUDIO: [Ambient] the quiet room. [Foley] a hand on hair, cloth.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.23
+      ],
+      "en_linea_de_tiempo": [
+        15.0,
+        18.23
+      ]
+    },
+    {
+      "id": "S07",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 7 del original · 18.23→19.93 s",
+      "first_frame": "assets/sb_S07.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She looks straight up at her mother and says a short sentence; her eyebrows go up at the end of it. She does not blink.\nAUDIO: [Ambient] the quiet room. [Foley] the small sounds of a child breathing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.95
+      ],
+      "en_linea_de_tiempo": [
+        18.23,
+        20.18
+      ]
+    },
+    {
+      "id": "S08",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "duoduo",
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 8 del original · 19.93→21.73 s",
+      "first_frame": "assets/sb_S08.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The girl talks with her chin lifted; the blurred face at the edge of frame turns towards her.\nAUDIO: [Ambient] the quiet room.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.83
+      ],
+      "en_linea_de_tiempo": [
+        20.18,
+        22.01
+      ]
+    },
+    {
+      "id": "S09",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 9 del original · 21.73→27.03 s",
+      "first_frame": "assets/sb_S09.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The mother rocks her once, side to side, talking over the girl's shoulder in a light voice, and her eyes go somewhere else, past the camera.\nAUDIO: [Ambient] the quiet room. [Foley] cloth, a backpack strap.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.22
+      ],
+      "en_linea_de_tiempo": [
+        22.01,
+        27.23
+      ]
+    },
+    {
+      "id": "S10",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_NENA",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 10 del original · 27.03→29.97 s",
+      "first_frame": null,
+      "clip_de": "S07",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She speaks with her eyes almost shut, tired, then opens them and looks up.\nAUDIO: [Ambient] the quiet room.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.95,
+        4.69
+      ],
+      "en_linea_de_tiempo": [
+        27.23,
+        29.97
+      ]
+    },
+    {
+      "id": "S11",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "SESENTA_DIAS",
+      "tipo": "PA",
+      "loc": "colegio",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 11 del original · 29.97→32.63 s",
+      "first_frame": "assets/sb_S11.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She pulls one strap straight, then the other, and looks up into the girl's face with a question. The girl nods once.\nAUDIO: [Ambient] the street outside a school. [Foley] backpack buckles, footsteps.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.66
+      ],
+      "en_linea_de_tiempo": [
+        29.97,
+        32.63
+      ]
+    },
+    {
+      "id": "S12a",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "SESENTA_DIAS",
+      "tipo": "PM",
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 12 del original · 32.63→38.10 s",
+      "first_frame": "assets/sb_S12a.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She folds down one finger at a time, lips moving with the count, absolutely absorbed; a scooter passes behind her, out of focus.\nAUDIO: [Ambient] a busy pavement, a scooter passing. [Foley] nothing but the traffic.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.83
+      ],
+      "en_linea_de_tiempo": [
+        32.63,
+        35.46
+      ]
+    },
+    {
+      "id": "S12b",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "SESENTA_DIAS",
+      "tipo": "PP",
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 12 del original · 32.63→38.10 s",
+      "first_frame": "assets/sb_S12b.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She folds down one finger at a time, lips moving with the count, absolutely absorbed; a scooter passes behind her, out of focus.\nAUDIO: [Ambient] a busy pavement, a scooter passing. [Foley] nothing but the traffic.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.82
+      ],
+      "en_linea_de_tiempo": [
+        35.46,
+        38.28
+      ]
+    },
+    {
+      "id": "S13",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "SESENTA_DIAS",
+      "tipo": "PD",
+      "loc": "colegio",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 13 del original · 38.10→39.20 s",
+      "first_frame": "assets/sb_S13.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her hands stop below the frame. She raises her chin and says two words, flat and certain.\nAUDIO: [Ambient] a busy pavement.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.17
+      ],
+      "en_linea_de_tiempo": [
+        38.28,
+        39.45
+      ]
+    },
+    {
+      "id": "S14a",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "SESENTA_DIAS",
+      "tipo": "PM",
+      "loc": "colegio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 14 del original · 39.20→45.67 s",
+      "first_frame": "assets/sb_S14a.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She does not move. Only her eyes shift a few millimetres, doing a sum. A bus passes far behind her, out of focus.\nAUDIO: [Ambient] a busy street, a bus. [Foley] nothing near.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.5
+      ],
+      "en_linea_de_tiempo": [
+        39.45,
+        42.95
+      ]
+    },
+    {
+      "id": "S14b",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "SESENTA_DIAS",
+      "tipo": "PP",
+      "loc": "colegio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 14 del original · 39.20→45.67 s",
+      "first_frame": "assets/sb_S14b.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her eyes fill without her face moving at all. She swallows once, and her jaw sets.\nAUDIO: [Ambient] a busy street.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.5
+      ],
+      "en_linea_de_tiempo": [
+        42.95,
+        46.45
+      ]
+    },
+    {
+      "id": "S15",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "AUTO_1",
+      "tipo": "PD",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 15 del original · 45.67→48.60 s",
+      "first_frame": "assets/sb_S15.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The hand tightens on the wheel until the knuckles go pale, then loosens. The windscreen light moves across the sleeve.\nAUDIO: [Ambient] a car interior at speed, tyres, muffled traffic.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.06
+      ],
+      "en_linea_de_tiempo": [
+        46.45,
+        49.51
+      ]
+    },
+    {
+      "id": "S16",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "AUTO_1",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 16 del original · 48.60→50.73 s",
+      "first_frame": "assets/sb_S16.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She glances at the rear-view mirror, then back at the road, then at the mirror again, quicker.\nAUDIO: [Ambient] a car interior, indicator ticking once.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.31
+      ],
+      "en_linea_de_tiempo": [
+        49.51,
+        51.82
+      ]
+    },
+    {
+      "id": "S17",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "AUTO_1",
+      "tipo": "PP",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 17 del original · 50.73→52.50 s",
+      "first_frame": "assets/sb_S17.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She talks to herself under her breath, barely moving her lips, eyes fixed forward.\nAUDIO: [Ambient] a car interior at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.61
+      ],
+      "en_linea_de_tiempo": [
+        51.82,
+        53.43
+      ]
+    },
+    {
+      "id": "S18",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "AUTO_1",
+      "tipo": "PD",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 18 del original · 52.50→53.70 s",
+      "first_frame": null,
+      "clip_de": "S15",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The fingers open and close once on the wheel; the belt shifts as she breathes in.\nAUDIO: [Ambient] a car interior, a turn signal.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        3.06,
+        4.32
+      ],
+      "en_linea_de_tiempo": [
+        53.43,
+        54.69
+      ]
+    },
+    {
+      "id": "S19",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "AUTO_1",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 19 del original · 53.70→54.57 s",
+      "first_frame": null,
+      "clip_de": "S16",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her eyes move from the road down to nothing and back up. She blinks hard, twice.\nAUDIO: [Ambient] a car interior at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        2.31,
+        3.23
+      ],
+      "en_linea_de_tiempo": [
+        54.69,
+        55.61
+      ]
+    },
+    {
+      "id": "S20",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "AUTO_1",
+      "tipo": "PP",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 20 del original · 54.57→59.23 s",
+      "first_frame": "assets/sb_S20.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her mouth opens slightly. Her eyes go wet and she does not wipe them; she keeps driving, staring forward.\nAUDIO: [Ambient] a car interior at speed. [Foley] a single unsteady breath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        4.7
+      ],
+      "en_linea_de_tiempo": [
+        55.61,
+        60.31
+      ]
+    },
+    {
+      "id": "S21",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_ARMARIO",
+      "tipo": "PG",
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 21 del original · 59.23→61.97 s",
+      "first_frame": "assets/sb_S21.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She stands still, then takes one step towards the door. The blade catches the little light there is.\nAUDIO: [Ambient] a flat at night, a fridge humming far away. [Foley] one bare footstep on wood.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.84
+      ],
+      "en_linea_de_tiempo": [
+        60.31,
+        63.15
+      ]
+    },
+    {
+      "id": "S22",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_ARMARIO",
+      "tipo": "PA",
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 22 del original · 61.97→64.37 s",
+      "first_frame": "assets/sb_S22.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She stands in front of the wardrobe without moving, her shoulders rising and falling once, twice.\nAUDIO: [Ambient] a bedroom at night, absolute quiet. [Foley] breathing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.93
+      ],
+      "en_linea_de_tiempo": [
+        63.15,
+        66.08
+      ]
+    },
+    {
+      "id": "S23",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_ARMARIO",
+      "tipo": "PM",
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 23 del original · 64.37→66.77 s",
+      "first_frame": "assets/sb_S23.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her hand comes up slowly and stops a few centimetres from the handle, fingers spread, and hangs there.\nAUDIO: [Ambient] a bedroom at night. [Foley] cloth, breathing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.41
+      ],
+      "en_linea_de_tiempo": [
+        66.08,
+        68.49
+      ]
+    },
+    {
+      "id": "S24",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_ARMARIO",
+      "tipo": "PA",
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 24 del original · 66.77→69.50 s",
+      "first_frame": "assets/sb_S24.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She lowers the hand and turns her head away from the wardrobe, then back to it, arguing with herself.\nAUDIO: [Ambient] a bedroom at night, a distant car.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.97
+      ],
+      "en_linea_de_tiempo": [
+        68.49,
+        71.46
+      ]
+    },
+    {
+      "id": "S25",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_ARMARIO",
+      "tipo": "PM",
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 25 del original · 69.50→74.33 s",
+      "first_frame": "assets/sb_S25.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She rubs her forehead, shakes her head, breathes out through her nose and half laughs, and lets her shoulders drop.\nAUDIO: [Ambient] a bedroom at night. [Foley] a short breath of laughter.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        4.63
+      ],
+      "en_linea_de_tiempo": [
+        71.46,
+        76.09
+      ]
+    },
+    {
+      "id": "S26",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PG",
+      "loc": "bano",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 26 del original · 74.33→75.67 s",
+      "first_frame": "assets/sb_S26.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The mother works shampoo into the small head with both hands; the girl tips her chin up and says something. Foam slides down.\nAUDIO: [Ambient] a bathroom, water. [Foley] hands in wet hair, foam, small splashes.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.54
+      ],
+      "en_linea_de_tiempo": [
+        76.09,
+        77.63
+      ]
+    },
+    {
+      "id": "S27",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PM",
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 27 del original · 75.67→76.87 s",
+      "first_frame": "assets/sb_S27.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She stretches, catches the duck, and holds it up in front of the girl, playing.\nAUDIO: [Ambient] a bathroom. [Foley] water, plastic on water.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.22
+      ],
+      "en_linea_de_tiempo": [
+        77.63,
+        78.85
+      ]
+    },
+    {
+      "id": "S28",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PP",
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 28 del original · 76.87→80.83 s",
+      "first_frame": "assets/sb_S28.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She turns the duck over in her hands and talks down at it instead of at her mother, her mouth pulled to one side.\nAUDIO: [Ambient] a bathroom. [Foley] water dripping, plastic squeaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.96
+      ],
+      "en_linea_de_tiempo": [
+        78.85,
+        82.81
+      ]
+    },
+    {
+      "id": "S29",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PG",
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 29 del original · 80.83→82.83 s",
+      "first_frame": "assets/sb_S29.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The girl pushes the duck under the foam and lets it pop back up, talking the whole time.\nAUDIO: [Ambient] a bathroom. [Foley] splashing, foam.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.0
+      ],
+      "en_linea_de_tiempo": [
+        82.81,
+        84.81
+      ]
+    },
+    {
+      "id": "S30",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PP",
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 30 del original · 82.83→85.27 s",
+      "first_frame": "assets/sb_S30.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Everything stops in her face. She does not blink for a long moment, then her eyelids come down slowly, once.\nAUDIO: [Ambient] a bathroom, water settling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.44
+      ],
+      "en_linea_de_tiempo": [
+        84.81,
+        87.25
+      ]
+    },
+    {
+      "id": "S31",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PM",
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 31 del original · 85.27→88.53 s",
+      "first_frame": "assets/sb_S31.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She lifts the duck as she talks and shakes it for emphasis; water runs off it into the bath.\nAUDIO: [Ambient] a bathroom. [Foley] water, plastic.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.18
+      ],
+      "en_linea_de_tiempo": [
+        87.25,
+        90.43
+      ]
+    },
+    {
+      "id": "S32",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PP",
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 32 del original · 88.53→89.40 s",
+      "first_frame": null,
+      "clip_de": "S30",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her gaze drops to the water. Her lips move once without any sound.\nAUDIO: [Ambient] a bathroom.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        2.44,
+        3.36
+      ],
+      "en_linea_de_tiempo": [
+        90.43,
+        91.35
+      ]
+    },
+    {
+      "id": "S33",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PM",
+      "loc": "bano",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 33 del original · 89.40→90.47 s",
+      "first_frame": null,
+      "clip_de": "S31",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Water pours over the small head; the girl squeezes her eyes shut and then opens them, looking up.\nAUDIO: [Ambient] a bathroom. [Foley] a jug of water poured over hair.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        3.18,
+        4.35
+      ],
+      "en_linea_de_tiempo": [
+        91.35,
+        92.52
+      ]
+    },
+    {
+      "id": "S34",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PM",
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 34 del original · 90.47→93.97 s",
+      "first_frame": null,
+      "clip_de": "S27",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She smiles and nods at whatever is being said, and her free hand grips the rim of the tub out of the child's sight.\nAUDIO: [Ambient] a bathroom. [Foley] a hand tightening on porcelain.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.22,
+        4.73
+      ],
+      "en_linea_de_tiempo": [
+        92.52,
+        96.03
+      ]
+    },
+    {
+      "id": "S35",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_BANO",
+      "tipo": "PP",
+      "loc": "bano",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 35 del original · 93.97→97.67 s",
+      "first_frame": "assets/sb_S35.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The smile leaves her face entirely, from the eyes down. She breathes in through her nose and holds it.\nAUDIO: [Ambient] a bathroom, water dripping.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.7
+      ],
+      "en_linea_de_tiempo": [
+        96.03,
+        99.73
+      ]
+    },
+    {
+      "id": "S36",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 36 del original · 97.67→99.50 s",
+      "first_frame": null,
+      "clip_de": "S06a",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her eyes move across the screen, line by line, and stop.\nAUDIO: [Ambient] a flat at night, deep quiet.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        3.23,
+        5.17
+      ],
+      "en_linea_de_tiempo": [
+        99.73,
+        101.67
+      ]
+    },
+    {
+      "id": "S37",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PD",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 37 del original · 99.50→102.80 s",
+      "first_frame": "assets/sb_S37.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The thumb scrolls the message up a few centimetres and stops on the photograph. The screen light flickers on the fingers.\nAUDIO: [Ambient] a flat at night. [Foley] a thumb on glass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.43
+      ],
+      "en_linea_de_tiempo": [
+        101.67,
+        105.1
+      ]
+    },
+    {
+      "id": "S38",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 38 del original · 102.80→105.03 s",
+      "first_frame": "assets/sb_S38.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The thumb drags the grid upwards, post after post, faster, and then stops dead.\nAUDIO: [Ambient] a flat at night. [Foley] a thumb dragging on glass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.22
+      ],
+      "en_linea_de_tiempo": [
+        105.1,
+        107.32
+      ]
+    },
+    {
+      "id": "S39",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 39 del original · 105.03→108.83 s",
+      "first_frame": "assets/sb_S39.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She lowers the phone into her lap and looks up into the dark room, towards the corridor.\nAUDIO: [Ambient] a flat at night, a clock. [Foley] cloth on a sofa.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.88
+      ],
+      "en_linea_de_tiempo": [
+        107.32,
+        111.2
+      ]
+    },
+    {
+      "id": "S40",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PG",
+      "loc": "pasillo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 40 del original · 108.83→109.37 s",
+      "first_frame": "assets/sb_S40.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Nothing moves. The strip of light shifts a few millimetres, as if the door had been touched.\nAUDIO: [Ambient] a flat at night. [Foley] a floorboard settling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.57
+      ],
+      "en_linea_de_tiempo": [
+        111.2,
+        111.77
+      ]
+    },
+    {
+      "id": "S41",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PA",
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 41 del original · 109.37→111.33 s",
+      "first_frame": "assets/sb_S41.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She walks slowly, one hand trailing along the wall, and stops at the bedroom door.\nAUDIO: [Ambient] a flat at night. [Foley] bare feet on wood, cloth.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.83
+      ],
+      "en_linea_de_tiempo": [
+        111.77,
+        113.6
+      ]
+    },
+    {
+      "id": "S42",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "EL_MOVIL",
+      "tipo": "PM",
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 42 del original · 111.33→115.07 s",
+      "first_frame": "assets/sb_S42.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her hand closes on the handle and stays there. Her breathing goes shallow and she does not push.\nAUDIO: [Ambient] a flat at night. [Foley] a hand on a metal handle, breathing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.74
+      ],
+      "en_linea_de_tiempo": [
+        113.6,
+        117.34
+      ]
+    },
+    {
+      "id": "S43",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_MANANA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 43 del original · 115.07→116.67 s",
+      "first_frame": "assets/sb_S43.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The girl leans forward and puts a small hand on her mother's arm, peering into her face.\nAUDIO: [Ambient] a flat in the morning, birds outside. [Foley] cloth on a sofa.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.86
+      ],
+      "en_linea_de_tiempo": [
+        117.34,
+        119.2
+      ]
+    },
+    {
+      "id": "S44",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_MANANA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 44 del original · 116.67→118.50 s",
+      "first_frame": "assets/sb_S44.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She smiles and waves it away with one hand, then rubs her eye with the back of her wrist.\nAUDIO: [Ambient] a flat in the morning.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.97
+      ],
+      "en_linea_de_tiempo": [
+        119.2,
+        121.17
+      ]
+    },
+    {
+      "id": "S45",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_MANANA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 45 del original · 118.50→119.63 s",
+      "first_frame": null,
+      "clip_de": "S43",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She shakes her mother's knees gently, insisting, her head tipped to one side.\nAUDIO: [Ambient] a flat in the morning. [Foley] small hands on cloth.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.86,
+        2.66
+      ],
+      "en_linea_de_tiempo": [
+        121.17,
+        121.97
+      ]
+    },
+    {
+      "id": "S46",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_MANANA",
+      "tipo": "PM",
+      "loc": "salon",
+      "personajes": [
+        "mama",
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 46 del original · 119.63→121.23 s",
+      "first_frame": null,
+      "clip_de": "S05",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She raises the finger, draws a small shape in the air with it, and widens her eyes to make the girl laugh.\nAUDIO: [Ambient] a flat in the morning.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        3.1,
+        4.68
+      ],
+      "en_linea_de_tiempo": [
+        121.97,
+        123.55
+      ]
+    },
+    {
+      "id": "S47",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_MANANA",
+      "tipo": "PP",
+      "loc": "salon",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 47 del original · 121.23→122.47 s",
+      "first_frame": null,
+      "clip_de": "S38",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She laughs behind her hands, and the laugh keeps going a beat longer than it should, and her eyes stay flat.\nAUDIO: [Ambient] a flat in the morning. [Foley] a laugh into cupped hands.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        2.22,
+        3.72
+      ],
+      "en_linea_de_tiempo": [
+        123.55,
+        125.05
+      ]
+    },
+    {
+      "id": "S48",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 48 del original · 122.47→125.33 s",
+      "first_frame": "assets/sb_S48.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She talks over her shoulder to the child seat behind, then checks the rear-view mirror.\nAUDIO: [Ambient] a car at speed, indicator.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.93
+      ],
+      "en_linea_de_tiempo": [
+        125.05,
+        127.98
+      ]
+    },
+    {
+      "id": "S49",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 49 del original · 125.33→128.20 s",
+      "first_frame": "assets/sb_S49.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She talks to the rabbit's ears while she answers, pulling one of them straight.\nAUDIO: [Ambient] a car at speed. [Foley] a seat belt, plush fabric.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.94
+      ],
+      "en_linea_de_tiempo": [
+        127.98,
+        130.92
+      ]
+    },
+    {
+      "id": "S50",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 50 del original · 128.20→129.80 s",
+      "first_frame": null,
+      "clip_de": "S48",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She asks without turning, and her hands adjust on the wheel.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        2.93,
+        4.53
+      ],
+      "en_linea_de_tiempo": [
+        130.92,
+        132.52
+      ]
+    },
+    {
+      "id": "S51",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 51 del original · 129.80→130.90 s",
+      "first_frame": null,
+      "clip_de": "S49",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She squeezes the rabbit against her chest and nods twice as she answers.\nAUDIO: [Ambient] a car at speed. [Foley] plush fabric.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        2.94,
+        4.15
+      ],
+      "en_linea_de_tiempo": [
+        132.52,
+        133.73
+      ]
+    },
+    {
+      "id": "S52",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PP",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 52 del original · 130.90→132.57 s",
+      "first_frame": "assets/sb_S52.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her jaw tightens visibly. She does not look away from the road.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.97
+      ],
+      "en_linea_de_tiempo": [
+        133.73,
+        135.7
+      ]
+    },
+    {
+      "id": "S53",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 53 del original · 132.57→134.30 s",
+      "first_frame": "assets/sb_S53.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She talks to the rear-view mirror, watching the child's face in it instead of the road.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.83
+      ],
+      "en_linea_de_tiempo": [
+        135.7,
+        137.53
+      ]
+    },
+    {
+      "id": "S54",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 54 del original · 134.30→136.27 s",
+      "first_frame": "assets/sb_S54.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She folds the rabbit's ears over its eyes, bored, and answers without looking up.\nAUDIO: [Ambient] a car at speed. [Foley] plush fabric.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.98
+      ],
+      "en_linea_de_tiempo": [
+        137.53,
+        139.51
+      ]
+    },
+    {
+      "id": "S55",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PP",
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 55 del original · 136.27→137.80 s",
+      "first_frame": "assets/sb_S55.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She lifts her chin, her eyes widen a little, and she adds one more thing.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.53
+      ],
+      "en_linea_de_tiempo": [
+        139.51,
+        141.04
+      ]
+    },
+    {
+      "id": "S56",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 56 del original · 137.80→138.90 s",
+      "first_frame": null,
+      "clip_de": "S53",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her head turns just enough to break the profile, and comes back.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.83,
+        2.93
+      ],
+      "en_linea_de_tiempo": [
+        141.04,
+        142.14
+      ]
+    },
+    {
+      "id": "S57",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PM",
+      "loc": "auto",
+      "personajes": [
+        "duoduo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 57 del original · 138.90→141.10 s",
+      "first_frame": null,
+      "clip_de": "S54",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She shrugs with both shoulders, pulls a face, and shakes her head.\nAUDIO: [Ambient] a car at speed. [Foley] a seat belt.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.98,
+        4.5
+      ],
+      "en_linea_de_tiempo": [
+        142.14,
+        144.66
+      ]
+    },
+    {
+      "id": "S58",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PD",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 58 del original · 141.10→143.20 s",
+      "first_frame": "assets/sb_S58.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The reflected eyes move from the mirror to the road and back. Traffic lights slide past out of focus.\nAUDIO: [Ambient] a car at a junction, an indicator.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.1
+      ],
+      "en_linea_de_tiempo": [
+        144.66,
+        146.76
+      ]
+    },
+    {
+      "id": "S59a",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PP",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 59 del original · 143.20→148.80 s",
+      "first_frame": null,
+      "clip_de": "S52",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She counts two things; with the second one her chin comes up and her hands close on the wheel. She stays seated, facing forward, driving.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.97,
+        4.77
+      ],
+      "en_linea_de_tiempo": [
+        146.76,
+        149.56
+      ]
+    },
+    {
+      "id": "S59b",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "INTERROGATORIO",
+      "tipo": "PD",
+      "loc": "auto",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 59 del original · 143.20→148.80 s",
+      "first_frame": null,
+      "clip_de": "S58",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She counts two things; with the second one her chin comes up and her hands close on the wheel. She stays seated, facing forward, driving.\nAUDIO: [Ambient] a car at speed.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        2.1,
+        4.9
+      ],
+      "en_linea_de_tiempo": [
+        149.56,
+        152.36
+      ]
+    },
+    {
+      "id": "S60",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PM",
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 60 del original · 148.80→150.13 s",
+      "first_frame": "assets/sb_S60.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She leans in over the glass and asks for something, tapping the counter twice with one finger.\nAUDIO: [Ambient] a small shop, fluorescent hum, distant chatter. [Foley] a fingertip on glass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.33
+      ],
+      "en_linea_de_tiempo": [
+        152.36,
+        153.69
+      ]
+    },
+    {
+      "id": "S61",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PA",
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 61 del original · 150.13→152.07 s",
+      "first_frame": "assets/sb_S61.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She holds her thumb and finger apart to show a size, then makes the gap smaller, and smaller again.\nAUDIO: [Ambient] a small shop. [Foley] nothing near.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.94
+      ],
+      "en_linea_de_tiempo": [
+        153.69,
+        155.63
+      ]
+    },
+    {
+      "id": "S62",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PM",
+      "loc": "tienda",
+      "personajes": [
+        "vendedora"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 62 del original · 152.07→152.57 s",
+      "first_frame": "assets/sb_S62.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She slides the case open and reaches in among the boxes.\nAUDIO: [Ambient] a small shop. [Foley] a glass door sliding, boxes.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.5
+      ],
+      "en_linea_de_tiempo": [
+        155.63,
+        156.13
+      ]
+    },
+    {
+      "id": "S63",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PP",
+      "loc": "tienda",
+      "personajes": [
+        "vendedora"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 63 del original · 152.57→153.33 s",
+      "first_frame": "assets/sb_S63.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She turns the little camera between her fingers so its lens catches the light, explaining.\nAUDIO: [Ambient] a small shop. [Foley] a small plastic object handled.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.76
+      ],
+      "en_linea_de_tiempo": [
+        156.13,
+        156.89
+      ]
+    },
+    {
+      "id": "S64",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PA",
+      "loc": "tienda",
+      "personajes": [
+        "vendedora"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 64 del original · 153.33→154.47 s",
+      "first_frame": "assets/sb_S64.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She holds the palm out and taps the camera once with her other hand, listing what it does.\nAUDIO: [Ambient] a small shop.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.2
+      ],
+      "en_linea_de_tiempo": [
+        156.89,
+        158.09
+      ]
+    },
+    {
+      "id": "S65",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PD",
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 65 del original · 154.47→157.70 s",
+      "first_frame": "assets/sb_S65.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She turns it over, finds the magnet on its back, and presses it against a metal edge of the counter, where it sticks.\nAUDIO: [Ambient] a small shop. [Foley] a small magnetic click.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.49
+      ],
+      "en_linea_de_tiempo": [
+        158.09,
+        161.58
+      ]
+    },
+    {
+      "id": "S66",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PM",
+      "loc": "tienda",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 66 del original · 157.70→158.90 s",
+      "first_frame": null,
+      "clip_de": "S60",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She looks from the camera to the phone screen and back, then puts the camera down flat on the glass and pushes it forward.\nAUDIO: [Ambient] a small shop. [Foley] a phone on glass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.33,
+        2.84
+      ],
+      "en_linea_de_tiempo": [
+        161.58,
+        163.09
+      ]
+    },
+    {
+      "id": "S67",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PP",
+      "loc": "pasillo",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 67 del original · 158.90→161.63 s",
+      "first_frame": "assets/sb_S67.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She talks herself into it: her chin lifts, she nods once, hard, and her mouth sets.\nAUDIO: [Ambient] a flat, quiet.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.6
+      ],
+      "en_linea_de_tiempo": [
+        163.09,
+        165.69
+      ]
+    },
+    {
+      "id": "S68",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PP",
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 68 del original · 161.63→162.50 s",
+      "first_frame": "assets/sb_S68.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The hand raises the phone slowly into the frame until the screen is lit.\nAUDIO: [Ambient] a flat, quiet. [Foley] cloth.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.9
+      ],
+      "en_linea_de_tiempo": [
+        165.69,
+        166.59
+      ]
+    },
+    {
+      "id": "S69",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_CAMARA",
+      "tipo": "PD",
+      "loc": "dormitorio",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 69 del original · 162.50→163.67 s",
+      "first_frame": "assets/sb_S69.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The live image refreshes with a faint stutter; nothing in the room moves. The timestamp counts up.\nAUDIO: [Ambient] a flat, quiet. [Foley] a phone speaker hiss.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.2
+      ],
+      "en_linea_de_tiempo": [
+        166.59,
+        167.79
+      ]
+    },
+    {
+      "id": "S70",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PM",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 70 del original · 163.67→168.63 s",
+      "first_frame": "assets/sb_S70.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She counts the cartons with a finger, touching each one, then goes back and counts them again.\nAUDIO: [Ambient] a kitchen, a fridge compressor. [Foley] a fridge door seal, cardboard cartons.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.23
+      ],
+      "en_linea_de_tiempo": [
+        167.79,
+        173.02
+      ]
+    },
+    {
+      "id": "S71",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PA",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 71 del original · 168.63→171.57 s",
+      "first_frame": "assets/sb_S71.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She touches the eggs one by one, stops, straightens up an inch, and starts the count again from the beginning.\nAUDIO: [Ambient] a kitchen, a fridge compressor. [Foley] eggshell on plastic.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.94
+      ],
+      "en_linea_de_tiempo": [
+        173.02,
+        175.96
+      ]
+    },
+    {
+      "id": "S72",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PP",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 72 del original · 171.57→175.07 s",
+      "first_frame": "assets/sb_S72.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Her lips move on the numbers and then stop between two of them. Her eyes go up and to the side.\nAUDIO: [Ambient] a kitchen, a fridge compressor.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.06
+      ],
+      "en_linea_de_tiempo": [
+        175.96,
+        179.02
+      ]
+    },
+    {
+      "id": "S73",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PM",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 73 del original · 175.07→176.27 s",
+      "first_frame": "assets/sb_S73.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She stands up out of the crouch and turns her head slowly towards the window and the dish rack.\nAUDIO: [Ambient] a kitchen. [Foley] a fridge door, a floor.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.33
+      ],
+      "en_linea_de_tiempo": [
+        179.02,
+        180.35
+      ]
+    },
+    {
+      "id": "S74",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PD",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "toma 74 del original · 176.27→177.70 s",
+      "first_frame": "assets/sb_S74.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The daylight moves a little across the rim of the one bowl that is the wrong way up. Nothing else changes.\nAUDIO: [Ambient] a kitchen, quiet. [Foley] a tap dripping once.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.59
+      ],
+      "en_linea_de_tiempo": [
+        180.35,
+        181.94
+      ]
+    },
+    {
+      "id": "S75",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PM",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 75 del original · 177.70→178.67 s",
+      "first_frame": null,
+      "clip_de": "S73",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: She turns the bowl over in her hand, and her eyes go to the corridor without her head following.\nAUDIO: [Ambient] a kitchen. [Foley] ceramic in a hand.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.33,
+        2.32
+      ],
+      "en_linea_de_tiempo": [
+        181.94,
+        182.93
+      ]
+    },
+    {
+      "id": "S76",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "LA_COCINA",
+      "tipo": "PD",
+      "loc": "cocina",
+      "personajes": [
+        "mama"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 76 del original · 178.67→179.57 s",
+      "first_frame": null,
+      "clip_de": "S74",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: The fingertip goes round the inside of the bowl once and stops, and stays there.\nAUDIO: [Ambient] a kitchen, silence. [Foley] skin on dry ceramic.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        1.59,
+        2.5
+      ],
+      "en_linea_de_tiempo": [
+        182.93,
+        183.84
+      ]
+    },
+    {
+      "id": "S77",
+      "escena": "REPLICA-JCFDLW",
+      "tramo": "CIERRE",
+      "tipo": "PGE",
+      "loc": "cosmos",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 77 del original · 179.57→181.40 s",
+      "first_frame": null,
+      "clip_de": "PLACA",
+      "sigue_de": null,
+      "prompt": "Photorealistic contemporary Chinese urban melodrama, vertical 9:16, the look of a streaming short-drama series. Restrained, natural movement; the camera barely moves.\nMOTION: Only the starfield drifts slowly upwards and the core pulses once, very softly. Nothing and nobody enters the frame.\nAUDIO: [Ambient] a low cosmic drone.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are room tone, the city outside the window, cloth, water and the small sounds of a flat.\nKeep the framing of the first frame. Photographic and cinematic, shallow depth of field, natural skin. Not animated, not illustrated, not CGI-looking, not a video game. NO subtitles, NO captions, NO on-screen text, NO watermark, NO logos of any kind.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.83
+      ],
+      "en_linea_de_tiempo": [
+        183.84,
+        185.67
+      ]
+    }
+  ]
+}

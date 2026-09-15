@@ -1,0 +1,2192 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "REPLICA DANZA PELIGROSA EP1",
+  "slug": "replica-danza",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "replica-danza-peligrosa-ep1",
+  "planos": [
+    {
+      "id": "T01",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 01 del original · 0.00→1.99 s · E01 · pradera verde con vacas pastando, cielo azul",
+      "first_frame": "assets/sb_T01.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The cows graze slowly; one in front lifts its head and chews; a light wind moves the grass in waves. The camera drifts gently sideways.\nAUDIO: [Ambient] open prairie wind, distant cattle. [SFX] a cow lowing once far away.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.99
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        1.99
+      ]
+    },
+    {
+      "id": "T02",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PD",
+      "loc": "campo",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 02 del original · 1.99→3.99 s · E02 · piernas en medias y botas texanas caminando sobre el pasto",
+      "first_frame": "assets/sb_T02.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Step after step the boots come towards camera through the grass, the camera tracking backwards just ahead of them, the low sun flaring between the legs.\nAUDIO: [Foley] boots crunching dry grass, a canvas bag swinging.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.0
+      ],
+      "en_linea_de_tiempo": [
+        1.99,
+        3.99
+      ]
+    },
+    {
+      "id": "T03",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PD",
+      "loc": "campo",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 03 del original · 3.99→5.99 s · E03 · torso: cuelga las puntas de ballet de la bolsa de lona",
+      "first_frame": "assets/sb_T03.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Her fingers loop the satin ribbons over the bag strap and let the pointe shoes swing against the canvas as she keeps walking.\nAUDIO: [Foley] satin ribbons, canvas, footsteps in grass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.0
+      ],
+      "en_linea_de_tiempo": [
+        3.99,
+        5.99
+      ]
+    },
+    {
+      "id": "T04",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PM",
+      "loc": "campo",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 04 del original · 5.99→9.20 s · E04 · Hannah camina hacia cámara al atardecer · placa HANNAH THATCHER",
+      "first_frame": "assets/sb_T04.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She walks steadily towards camera, the camera backing away at her pace; she turns her head to look at something off to the side, then back ahead; loose strands of hair lift in the wind.\nAUDIO: [Ambient] warm evening wind, a distant train horn. [Foley] footsteps in grass, the bag swinging.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "HANNAH THATCHER",
+      "usa": [
+        0.0,
+        3.21
+      ],
+      "en_linea_de_tiempo": [
+        5.99,
+        9.2
+      ]
+    },
+    {
+      "id": "T05",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PA",
+      "loc": "campo",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 05 del original · 9.20→10.70 s · E05 · contrapicado de Hannah contra el cielo blanco, ramas secas",
+      "first_frame": "assets/sb_T05.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She looks up at the sky, takes a breath and pulls the shirt closer around her; the wind moves her hair and the dry branches.\nAUDIO: [Ambient] wind across an open field.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.5
+      ],
+      "en_linea_de_tiempo": [
+        9.2,
+        10.7
+      ]
+    },
+    {
+      "id": "T06",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PGE",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 06 del original · 10.70→12.66 s · E06 · el tren celeste cruza el campo al atardecer, desde lo alto",
+      "first_frame": "assets/sb_T06.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The train runs smoothly from left to right along the curve; the camera pans slowly to follow it.\nAUDIO: [Ambient] a distant train rolling on rails, wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.96
+      ],
+      "en_linea_de_tiempo": [
+        10.7,
+        12.66
+      ]
+    },
+    {
+      "id": "T07",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 07 del original · 12.66→13.82 s · E07 · se ata las puntas sentada en el sillón",
+      "first_frame": "assets/sb_T07.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Her fingers cross the ribbons around the ankle, pull them tight and tuck the knot in.\nAUDIO: [Foley] satin ribbon pulled tight, velvet. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.16
+      ],
+      "en_linea_de_tiempo": [
+        12.66,
+        13.82
+      ]
+    },
+    {
+      "id": "T08",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 08 del original · 13.82→15.32 s · E08 · Hannah sentada, ojos bajos",
+      "first_frame": "assets/sb_T08.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She breathes out slowly, lifts her eyes for a moment towards the window, and lowers them again.\nAUDIO: [Ambient] the train rolling, the carriage creaking softly.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.5
+      ],
+      "en_linea_de_tiempo": [
+        13.82,
+        15.32
+      ]
+    },
+    {
+      "id": "T09",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 09 del original · 15.32→16.41 s · E09 · pies en punta sobre la alfombra roja, calentadores",
+      "first_frame": "assets/sb_T09.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The feet rise onto full pointe, hold, and come down softly, then rise again.\nAUDIO: [Foley] satin shoes on carpet, a soft creak of the floor. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.09
+      ],
+      "en_linea_de_tiempo": [
+        15.32,
+        16.41
+      ]
+    },
+    {
+      "id": "T10",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 10 del original · 16.41→17.66 s · E10 · contrapicado: brazo arriba, contraluz de ventana",
+      "first_frame": "assets/sb_T10.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She reaches higher, arches her back and lets her head fall back, breathing out, then slowly brings the arm down.\nAUDIO: [Foley] a long controlled breath, fabric. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.25
+      ],
+      "en_linea_de_tiempo": [
+        16.41,
+        17.66
+      ]
+    },
+    {
+      "id": "T11",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PA",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 11 del original · 17.66→18.91 s · E11 · estira sobre la pierna apoyada en la barra",
+      "first_frame": "assets/sb_T11.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She folds deeper over the extended leg, reaching for her foot, then slowly rises.\nAUDIO: [Foley] a slow breath, fabric sliding on brass. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.25
+      ],
+      "en_linea_de_tiempo": [
+        17.66,
+        18.91
+      ]
+    },
+    {
+      "id": "T12",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PG",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 12 del original · 18.91→23.45 s · E12 · la cabina entera: estira y hace un port de bras",
+      "first_frame": "assets/sb_T12.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She folds forward over the raised leg, rises, sweeps one arm up over her head in a graceful port de bras, then bends down to the leg again.\nAUDIO: [Ambient] the train rolling, the carriage swaying. [Foley] soft breathing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        4.54
+      ],
+      "en_linea_de_tiempo": [
+        18.91,
+        23.45
+      ]
+    },
+    {
+      "id": "T13",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 13 del original · 23.45→24.50 s · E13 · la mano agarra el teléfono del alféizar",
+      "first_frame": "assets/sb_T13.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The phone vibrates on the sill; the hand picks it up and lifts it out of frame.\nAUDIO: [SFX] a phone vibrating on wood. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.05
+      ],
+      "en_linea_de_tiempo": [
+        23.45,
+        24.5
+      ]
+    },
+    {
+      "id": "T14a",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 14a del original · 24.50→27.41 s · E14a · mira el teléfono, seria",
+      "first_frame": "assets/sb_T14a.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She reads the screen, her jaw tightening; she pushes a loose strand of hair back and keeps staring at the phone.\nAUDIO: [SFX] the phone still buzzing. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.91
+      ],
+      "en_linea_de_tiempo": [
+        24.5,
+        27.41
+      ]
+    },
+    {
+      "id": "T14b",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PASADO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 14b del original · 27.41→30.32 s · E14b · mira el teléfono, más cerca",
+      "first_frame": "assets/sb_T14b.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Her eyes narrow at the screen; she presses her lips together and lets the call ring out.\nAUDIO: [Ambient] the train rolling. [SFX] the phone buzzing, then stopping.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.91
+      ],
+      "en_linea_de_tiempo": [
+        27.41,
+        30.32
+      ]
+    },
+    {
+      "id": "T15",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PD",
+      "loc": "cabina_puerta",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 15 del original · 30.32→31.07 s · E15 · la puerta de dos hojas se abre de golpe",
+      "first_frame": "assets/sb_T15.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The doors burst open violently towards camera, both leaves swinging, a dark figure blurring through the gap.\nAUDIO: [SFX] gunshots in the corridor, the doors banging open.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.75
+      ],
+      "en_linea_de_tiempo": [
+        30.32,
+        31.07
+      ]
+    },
+    {
+      "id": "T16",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PG",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 16 del original · 31.07→32.61 s · E16 · Jack avanza con sombrero y sobretodo bajo las arañas",
+      "first_frame": "assets/sb_T16.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He walks steadily and silently towards camera, the coat swinging; the camera backs away slowly. As he gets closer he lifts his chin and his eyes appear under the brim.\nAUDIO: [Foley] heavy footsteps on carpet, a coat moving. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.54
+      ],
+      "en_linea_de_tiempo": [
+        31.07,
+        32.61
+      ]
+    },
+    {
+      "id": "T17",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PP",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 17 del original · 32.61→34.07 s · E17 · el ala del sombrero le tapa los ojos, sangre en el cuello",
+      "first_frame": "assets/sb_T17.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He lowers his head a little further so the brim covers even more, then stops walking.\nAUDIO: [Foley] breathing, leather gloves creaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.46
+      ],
+      "en_linea_de_tiempo": [
+        32.61,
+        34.07
+      ]
+    },
+    {
+      "id": "T18",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 18 del original · 34.07→35.24 s · E18 · Hannah se da vuelta de la ventana, susto",
+      "first_frame": "assets/sb_T18.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She spins around from the window, her hair flying, and freezes facing camera, eyes wide, lips parted, her hand still gripping the window frame.\nAUDIO: [Foley] a sharp gasp, fabric. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.17
+      ],
+      "en_linea_de_tiempo": [
+        34.07,
+        35.24
+      ]
+    },
+    {
+      "id": "T19",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PM",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 19 del original · 35.24→37.49 s · E16 · Jack llega a cámara y levanta la vista · placa JACK",
+      "first_frame": null,
+      "clip_de": "T16",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "JACK \"THE VIPER\" HARGROVE",
+      "usa": [
+        1.54,
+        3.79
+      ],
+      "en_linea_de_tiempo": [
+        35.24,
+        37.49
+      ]
+    },
+    {
+      "id": "T20",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 20 del original · 37.49→38.61 s · E18 · Hannah contra la ventana, boca abierta",
+      "first_frame": null,
+      "clip_de": "T18",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        3.42,
+        4.54
+      ],
+      "en_linea_de_tiempo": [
+        37.49,
+        38.61
+      ]
+    },
+    {
+      "id": "T21",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PA",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 21 del original · 38.61→39.45 s · E21 · Jack se saca el sombrero; nuca de Hannah en primer término",
+      "first_frame": "assets/sb_T21.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He sweeps the hat off, tosses it aside and takes a quick step towards her.\nAUDIO: [Foley] a hat landing on velvet, footsteps.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.84
+      ],
+      "en_linea_de_tiempo": [
+        38.61,
+        39.45
+      ]
+    },
+    {
+      "id": "T22",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 22 del original · 39.45→40.74 s · E22 · Hannah grita y la mano enguantada le tapa la boca",
+      "first_frame": "assets/sb_T22.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She stays silent for about one second, then shouts the line at him — and on the last word the black-gloved hand clamps over her mouth, muffling her.\nAUDIO: VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman shouting, frightened, cut off by a hand. [Foley] a leather glove on skin.\nSPOKEN LINE, in English, exactly this: \"Hey! What are you—\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Hey! What are you—",
+      "ventana_dialogo": 1.64,
+      "usa": [
+        1.41,
+        2.7
+      ],
+      "en_linea_de_tiempo": [
+        39.45,
+        40.74
+      ]
+    },
+    {
+      "id": "T23",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PP",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 23 del original · 40.74→43.28 s · E23 · Jack con sangre por encima del hombro de ella: «Shh»",
+      "first_frame": "assets/sb_T23.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds still and silent for about one second, then brings his lips close and hushes her with a long soft 'shh', eyes locked on hers.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man hushing softly, very close. [Ambient] the train rolling.\nSPOKEN LINE, in English, exactly this: \"Shh.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Shh.",
+      "ventana_dialogo": 0.58,
+      "usa": [
+        1.02,
+        3.56
+      ],
+      "en_linea_de_tiempo": [
+        40.74,
+        43.28
+      ]
+    },
+    {
+      "id": "T24",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_abrigo",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 24 del original · 43.28→45.32 s · E24 · los dos contra la ventana, dedo en los labios de ella",
+      "first_frame": "assets/sb_T24.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He keeps the finger on her lips and glances towards the door; her chest rises and falls fast; neither of them speaks.\nAUDIO: [Foley] fast breathing, a leather glove. [SFX] muffled gunshots somewhere in the train.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.04
+      ],
+      "en_linea_de_tiempo": [
+        43.28,
+        45.32
+      ]
+    },
+    {
+      "id": "T25",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PG",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_abrigo",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 25 del original · 45.32→45.86 s · E25 · la cabina entera: él la acorrala contra la ventana",
+      "first_frame": "assets/sb_T25.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He pushes her back against the window and turns his head towards the door.\nAUDIO: [Foley] a body against glass. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.54
+      ],
+      "en_linea_de_tiempo": [
+        45.32,
+        45.86
+      ]
+    },
+    {
+      "id": "T26",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PD",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 26 del original · 45.86→46.57 s · E26 · la mano enguantada gira el cerrojo de bronce",
+      "first_frame": "assets/sb_T26.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The gloved hand slams the brass bolt across, locking the door with one hard push.\nAUDIO: [SFX] a brass bolt shooting home, metallic and loud.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.71
+      ],
+      "en_linea_de_tiempo": [
+        45.86,
+        46.57
+      ]
+    },
+    {
+      "id": "T27",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_abrigo",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 27 del original · 46.57→48.07 s · E27 · los dos giran la cabeza hacia la puerta",
+      "first_frame": "assets/sb_T27.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Both heads turn slowly to look at the door; he tightens his grip on her arm; they hold their breath.\nAUDIO: [SFX] footsteps and shouting getting closer outside. [Foley] held breath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.5
+      ],
+      "en_linea_de_tiempo": [
+        46.57,
+        48.07
+      ]
+    },
+    {
+      "id": "T28",
+      "escena": "REPLICA-DANZA",
+      "tramo": "VIBORA",
+      "tipo": "PA",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_abrigo",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 28 del original · 48.07→48.82 s · E28 · Jack de espaldas asoma por la cortina; ella fuera de foco",
+      "first_frame": "assets/sb_T28.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He pulls the curtain an inch aside, looks out, and lets it fall back.\nAUDIO: [Foley] heavy curtain fabric. [SFX] shouting in the corridor.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.75
+      ],
+      "en_linea_de_tiempo": [
+        48.07,
+        48.82
+      ]
+    },
+    {
+      "id": "T29",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PG",
+      "loc": "pasillo",
+      "personajes": [
+        "pasajeros"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 29 del original · 48.82→50.32 s · E29 · pasillo holandés, pasajeros cruzan, un armado al fondo",
+      "first_frame": "assets/sb_T29.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Passengers rush across the frame in a blur; at the end of the corridor an armed man steps out and advances.\nAUDIO: [Ambient] panicked passengers, screams. [Foley] running footsteps.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.5
+      ],
+      "en_linea_de_tiempo": [
+        48.82,
+        50.32
+      ]
+    },
+    {
+      "id": "T30",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PM",
+      "loc": "pasillo",
+      "personajes": [
+        "luka"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 30 del original · 50.32→53.53 s · E30 · Luka dispara el AK al techo · placa LUKA",
+      "first_frame": "assets/sb_T30.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: For about a second and a half he fires a burst into the ceiling, muzzle flash lighting his face; then he swings the rifle down and shouts the line at the passengers.\nAUDIO: VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [SFX] a burst of AK-47 fire, deafening. [Speech] a man shouting in rage.\nSPOKEN LINE, in English, exactly this: \"Nobody move!\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Nobody move!",
+      "texto": "LUKA RIVALCHEK",
+      "ventana_dialogo": 2.14,
+      "usa": [
+        0.26,
+        3.47
+      ],
+      "en_linea_de_tiempo": [
+        50.32,
+        53.53
+      ]
+    },
+    {
+      "id": "T31",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "matones"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 31 del original · 53.53→54.99 s · E31 · un matón con AK entra por una puerta blanca",
+      "first_frame": "assets/sb_T31.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He shoves the door open with his shoulder and sweeps the rifle across the carriage.\nAUDIO: [Foley] a door banging, boots. [Ambient] screams.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.46
+      ],
+      "en_linea_de_tiempo": [
+        53.53,
+        54.99
+      ]
+    },
+    {
+      "id": "T32",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PA",
+      "loc": "pasillo",
+      "personajes": [
+        "luka"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 32 del original · 54.99→55.91 s · E36 · Luka en el pasillo, holandés",
+      "first_frame": "assets/sb_T32.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He pushes off the wall, holds a silent beat for about one second, then shouts the line up the corridor, glaring into camera, and goes quiet, breathing hard.\nAUDIO: VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [Speech] a man shouting a short question. [Ambient] the train rolling.\nSPOKEN LINE, in English, exactly this: \"Where are you?\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Where are you?",
+      "ventana_dialogo": 1.32,
+      "usa": [
+        2.54,
+        3.46
+      ],
+      "en_linea_de_tiempo": [
+        54.99,
+        55.91
+      ]
+    },
+    {
+      "id": "T33",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PM",
+      "loc": "pasillo",
+      "personajes": [
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 33 del original · 55.91→56.99 s · E33 · Wady sonriente, pistola en alto · placa WADY",
+      "first_frame": "assets/sb_T33.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He grins, cocks his head and waves the pistol, enjoying the chaos.\nAUDIO: [Foley] a pistol slide racked. [Ambient] panic in the corridor.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "WADY POLANSKI",
+      "usa": [
+        0.0,
+        1.08
+      ],
+      "en_linea_de_tiempo": [
+        55.91,
+        56.99
+      ]
+    },
+    {
+      "id": "T34",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PM",
+      "loc": "pasillo",
+      "personajes": [
+        "pasajeros"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 34 del original · 56.99→58.16 s · E34 · pasajera con anteojos grita y huye por una puerta",
+      "first_frame": "assets/sb_T34.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She screams, turns and flees back through the doorway, slamming into the frame.\nAUDIO: [Speech] a woman screaming, no words. [Foley] a door slamming.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.17
+      ],
+      "en_linea_de_tiempo": [
+        56.99,
+        58.16
+      ]
+    },
+    {
+      "id": "T35",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PA",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "matones"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 35 del original · 58.16→59.61 s · E35 · matones de espaldas revisan compartimentos",
+      "first_frame": "assets/sb_T35.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: They move off down the carriage, one kicking a door open, another checking behind a curtain.\nAUDIO: [Foley] boots, a door kicked open. [Speech] a man shouting one word off camera.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.45
+      ],
+      "en_linea_de_tiempo": [
+        58.16,
+        59.61
+      ]
+    },
+    {
+      "id": "T36",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PA",
+      "loc": "pasillo",
+      "personajes": [
+        "luka"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 36 del original · 59.61→60.11 s · E36 · Luka apoyado en la pared del pasillo",
+      "first_frame": null,
+      "clip_de": "T32",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.29,
+        0.79
+      ],
+      "en_linea_de_tiempo": [
+        59.61,
+        60.11
+      ]
+    },
+    {
+      "id": "T37",
+      "escena": "REPLICA-DANZA",
+      "tramo": "MATONES",
+      "tipo": "PA",
+      "loc": "pasillo",
+      "personajes": [
+        "luka"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 37 del original · 60.11→61.86 s · E36 · Luka mira a cámara: «¿En dónde estás?»",
+      "first_frame": null,
+      "clip_de": "T32",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.79,
+        2.54
+      ],
+      "en_linea_de_tiempo": [
+        60.11,
+        61.86
+      ]
+    },
+    {
+      "id": "T38",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PM",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 38 del original · 61.86→62.61 s · E38 · Jack de espaldas se saca el sobretodo: tiradores y cartuchera",
+      "first_frame": "assets/sb_T38.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He shrugs the coat off in one move and lets it drop.\nAUDIO: [Foley] a heavy wool coat sliding off, leather straps creaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.75
+      ],
+      "en_linea_de_tiempo": [
+        61.86,
+        62.61
+      ]
+    },
+    {
+      "id": "T39",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 39 del original · 62.61→63.53 s · E39 · Hannah por detrás del hombro de él, desconcertada",
+      "first_frame": "assets/sb_T39.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She watches him, frowning, takes half a step back against the window.\nAUDIO: [Foley] fabric, a nervous breath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.92
+      ],
+      "en_linea_de_tiempo": [
+        62.61,
+        63.53
+      ]
+    },
+    {
+      "id": "T40",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PA",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 40 del original · 63.53→64.49 s · E40 · Jack gira hacia ella; nuca de ella en primer término",
+      "first_frame": "assets/sb_T40.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He turns round towards her with purpose and strides forward.\nAUDIO: [Foley] footsteps, leather harness creaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.96
+      ],
+      "en_linea_de_tiempo": [
+        63.53,
+        64.49
+      ]
+    },
+    {
+      "id": "T41",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PG",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 41 del original · 64.49→65.03 s · E41 · la cabina: la alza y ella lo rodea con las piernas",
+      "first_frame": "assets/sb_T41.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He swings her up off the floor in one move and turns with her; she clings to his neck, startled.\nAUDIO: [Foley] a gasp, fabric, a body lifted.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.54
+      ],
+      "en_linea_de_tiempo": [
+        64.49,
+        65.03
+      ]
+    },
+    {
+      "id": "T42",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 42 del original · 65.03→65.61 s · E42 · espalda de él con tiradores, brazos de ella al cuello",
+      "first_frame": "assets/sb_T42.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Her hands grip his shoulders as he turns; the harness straps tighten across his back.\nAUDIO: [Foley] leather creaking, fabric.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.58
+      ],
+      "en_linea_de_tiempo": [
+        65.03,
+        65.61
+      ]
+    },
+    {
+      "id": "T43",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 43 del original · 65.61→67.70 s · E43 · la baja; él saca el cuchillo; ella: «¿Qué…?»",
+      "first_frame": "assets/sb_T43.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She stays silent for about one second, then asks the line, bewildered, as the black knife comes up between them.\nAUDIO: VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman asking, breathless. [Foley] a knife drawn from a sheath.\nSPOKEN LINE, in English, exactly this: \"What...?\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "What...?",
+      "ventana_dialogo": 1.4,
+      "usa": [
+        1.01,
+        3.1
+      ],
+      "en_linea_de_tiempo": [
+        65.61,
+        67.7
+      ]
+    },
+    {
+      "id": "T44",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 44 del original · 67.70→69.28 s · E44 · Jack a tres cuartos, cuchillo en alto: «Shh, shh»",
+      "first_frame": "assets/sb_T44.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then hushes her softly — 'shh, shh' — bringing the knife up.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man hushing softly twice, close. [Ambient] the train rolling.\nSPOKEN LINE, in English, exactly this: \"Shh, shh...\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Shh, shh...",
+      "ventana_dialogo": 1.0,
+      "usa": [
+        1.7,
+        3.28
+      ],
+      "en_linea_de_tiempo": [
+        67.7,
+        69.28
+      ]
+    },
+    {
+      "id": "T45",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 45 del original · 69.28→70.41 s · E45 · contrapicado de Hannah: la hoja sobre los labios",
+      "first_frame": "assets/sb_T45.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She holds perfectly still, trembling, eyes darting down to the blade.\nAUDIO: [Foley] shaky breathing. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.13
+      ],
+      "en_linea_de_tiempo": [
+        69.28,
+        70.41
+      ]
+    },
+    {
+      "id": "T46",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 46 del original · 70.41→71.78 s · E46 · los dos de perfil cara a cara, cuchillo entre ellos: «Bien»",
+      "first_frame": "assets/sb_T46.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then murmurs a single word with a slow smile, and keeps staring at her; later his eyes flick towards the door.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man murmuring one word. [Foley] breathing.\nSPOKEN LINE, in English, exactly this: \"Good.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Good.",
+      "ventana_dialogo": 0.64,
+      "usa": [
+        0.99,
+        2.36
+      ],
+      "en_linea_de_tiempo": [
+        70.41,
+        71.78
+      ]
+    },
+    {
+      "id": "T47",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 47 del original · 71.78→73.41 s · E47 · encuadre A: Jack a tres cuartos: «Ahora, gime para mí»",
+      "first_frame": "assets/sb_T47.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then says the line low and slow, almost tender, with a dangerous half smile.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man speaking low and slow, intimate and menacing.\nSPOKEN LINE, in English, exactly this: \"Now moan for me.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Now moan for me.",
+      "ventana_dialogo": 1.74,
+      "usa": [
+        0.68,
+        2.31
+      ],
+      "en_linea_de_tiempo": [
+        71.78,
+        73.41
+      ]
+    },
+    {
+      "id": "T48",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 48 del original · 73.41→74.61 s · E48 · Hannah de perfil, la hoja delante de la boca",
+      "first_frame": "assets/sb_T48.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She trembles, then slowly tips her head back as the blade slides down under her chin, her eyes closing.\nAUDIO: [Foley] a shaky breath. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.2
+      ],
+      "en_linea_de_tiempo": [
+        73.41,
+        74.61
+      ]
+    },
+    {
+      "id": "T49",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 49 del original · 74.61→75.61 s · E49 · encuadre A: «O te corto…»",
+      "first_frame": "assets/sb_T49.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then says the line slowly, with a pause after the first word, eyes cold.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man threatening, slow and quiet.\nSPOKEN LINE, in English, exactly this: \"Or... I cut that pretty throat.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Or... I cut that pretty throat.",
+      "ventana_dialogo": 2.46,
+      "usa": [
+        0.29,
+        1.29
+      ],
+      "en_linea_de_tiempo": [
+        74.61,
+        75.61
+      ]
+    },
+    {
+      "id": "T50",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 50 del original · 75.61→76.91 s · E48 · Hannah echa la cabeza atrás, la hoja bajo el mentón",
+      "first_frame": null,
+      "clip_de": "T48",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        2.2,
+        3.5
+      ],
+      "en_linea_de_tiempo": [
+        75.61,
+        76.91
+      ]
+    },
+    {
+      "id": "T51",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 51 del original · 76.91→77.95 s · E49 · encuadre A: «…tu lindo cuello»",
+      "first_frame": null,
+      "clip_de": "T49",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        2.59,
+        3.63
+      ],
+      "en_linea_de_tiempo": [
+        76.91,
+        77.95
+      ]
+    },
+    {
+      "id": "T52",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 52 del original · 77.95→79.91 s · E52 · encuadre B: Hannah llorando: «Pero no puedo»",
+      "first_frame": "assets/sb_T52.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She stays silent for about one second, then pleads the line through tears, her voice breaking.\nAUDIO: VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman pleading through tears.\nSPOKEN LINE, in English, exactly this: \"But I can't... I don't know how...\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "But I can't... I don't know how...",
+      "ventana_dialogo": 1.86,
+      "usa": [
+        0.99,
+        2.95
+      ],
+      "en_linea_de_tiempo": [
+        77.95,
+        79.91
+      ]
+    },
+    {
+      "id": "T53",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 53 del original · 79.91→81.03 s · E53 · encuadre A: «¿Cuántos años tienes?»",
+      "first_frame": "assets/sb_T53.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then asks the line quickly, tilting his head.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man asking a short question.\nSPOKEN LINE, in English, exactly this: \"How old are you?\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "How old are you?",
+      "ventana_dialogo": 0.88,
+      "usa": [
+        0.75,
+        1.87
+      ],
+      "en_linea_de_tiempo": [
+        79.91,
+        81.03
+      ]
+    },
+    {
+      "id": "T54",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 54 del original · 81.03→82.41 s · E54 · encuadre B: «22»",
+      "first_frame": "assets/sb_T54.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She stays silent for about one second, then answers with a single word, voice shaking.\nAUDIO: VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman answering in one word, shaking.\nSPOKEN LINE, in English, exactly this: \"Twenty-two.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Twenty-two.",
+      "ventana_dialogo": 0.64,
+      "usa": [
+        0.53,
+        1.91
+      ],
+      "en_linea_de_tiempo": [
+        81.03,
+        82.41
+      ]
+    },
+    {
+      "id": "T55",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 55 del original · 82.41→84.53 s · E55 · encuadre A, sonríe: «Entonces no te hagas la inocente»",
+      "first_frame": "assets/sb_T55.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then breaks into a wolfish smile and says the line.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man speaking with amusement.\nSPOKEN LINE, in English, exactly this: \"Then don't play innocent.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Then don't play innocent.",
+      "ventana_dialogo": 2.3,
+      "usa": [
+        0.61,
+        2.73
+      ],
+      "en_linea_de_tiempo": [
+        82.41,
+        84.53
+      ]
+    },
+    {
+      "id": "T56",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 56 del original · 84.53→86.70 s · E56 · encuadre B, callada, llorando",
+      "first_frame": "assets/sb_T56.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She cries without a sound, swallowing, her eyes searching his face.\nAUDIO: [Foley] a trembling breath. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.17
+      ],
+      "en_linea_de_tiempo": [
+        84.53,
+        86.7
+      ]
+    },
+    {
+      "id": "T57",
+      "escena": "REPLICA-DANZA",
+      "tramo": "CUCHILLO",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 57 del original · 86.70→88.16 s · E46 · los dos de perfil, él mira hacia la puerta",
+      "first_frame": null,
+      "clip_de": "T46",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        2.36,
+        3.82
+      ],
+      "en_linea_de_tiempo": [
+        86.7,
+        88.16
+      ]
+    },
+    {
+      "id": "T58",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PA",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "luka",
+        "pasajeros"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 58 del original · 88.16→89.82 s · E58 · por detrás de un pasajero pelado, Luka entra por la puerta",
+      "first_frame": "assets/sb_T58.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Luka barges through the door and points the rifle at the passenger, who shrinks back.\nAUDIO: [Foley] a door banging, boots. [Speech] a frightened gasp.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.66
+      ],
+      "en_linea_de_tiempo": [
+        88.16,
+        89.82
+      ]
+    },
+    {
+      "id": "T59",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "luka",
+        "pasajeros"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 59 del original · 89.82→90.90 s · E59 · Luka empuja al pasajero, que levanta las manos",
+      "first_frame": "assets/sb_T59.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Luka shoves the man hard with his forearm; the man stumbles back with his hands up.\nAUDIO: [Foley] a shove, a grunt. [Speech] a man whimpering.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.08
+      ],
+      "en_linea_de_tiempo": [
+        89.82,
+        90.9
+      ]
+    },
+    {
+      "id": "T60",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PG",
+      "loc": "pasillo",
+      "personajes": [
+        "matones",
+        "pasajeros"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 60 del original · 90.90→91.82 s · E60 · pasillo holandés: los matones arrinconan pasajeros",
+      "first_frame": "assets/sb_T60.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: A gunman shoves a passenger against the wall and presses the rifle to him; the others hold their hands up.\nAUDIO: [Ambient] panic, crying. [Foley] bodies against wood.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.92
+      ],
+      "en_linea_de_tiempo": [
+        90.9,
+        91.82
+      ]
+    },
+    {
+      "id": "T61",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "luka"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 61 del original · 91.82→94.11 s · E61 · Luka furioso, Wady de espaldas: «¡No se escapará otra vez!»",
+      "first_frame": "assets/sb_T61.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Luka paces, holds a silent beat for about one second, then spits the line out in fury, jabbing a finger.\nAUDIO: VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [Speech] a man shouting in fury.\nSPOKEN LINE, in English, exactly this: \"No! He's not getting away again!\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "No! He's not getting away again!",
+      "ventana_dialogo": 2.14,
+      "usa": [
+        1.3,
+        3.59
+      ],
+      "en_linea_de_tiempo": [
+        91.82,
+        94.11
+      ]
+    },
+    {
+      "id": "T62",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 62 del original · 94.11→96.20 s · E62 · Wady asustado: «Jefe, él es la Víbora…»",
+      "first_frame": "assets/sb_T62.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then says the line fast and nervous, gesturing with his free hand.\nAUDIO: VOICE of Wady, identical in every shot: a man in his early thirties, a mid-pitched, reedy, jittery voice that speeds up when scared, General American accent. [Speech] a man talking fast, nervous.\nSPOKEN LINE, in English, exactly this: \"Boss, he's the Viper. The deadliest killer on the planet.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Boss, he's the Viper. The deadliest killer on the planet.",
+      "ventana_dialogo": 3.6,
+      "usa": [
+        1.21,
+        3.3
+      ],
+      "en_linea_de_tiempo": [
+        94.11,
+        96.2
+      ]
+    },
+    {
+      "id": "T63",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "luka",
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 63 del original · 96.20→98.20 s · E63 · Luka escucha, Wady de espaldas",
+      "first_frame": "assets/sb_T63.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Luka listens without a word, breathing through his nose; at the end he shoves Wady hard in the chest.\nAUDIO: [Foley] heavy breathing, a shove.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.0
+      ],
+      "en_linea_de_tiempo": [
+        96.2,
+        98.2
+      ]
+    },
+    {
+      "id": "T64",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 64 del original · 98.20→101.11 s · E64 · Wady: «Mató a catorce de nuestros mejores hombres…»",
+      "first_frame": "assets/sb_T64.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then says the line very fast, counting on his fingers, panicking.\nAUDIO: VOICE of Wady, identical in every shot: a man in his early thirties, a mid-pitched, reedy, jittery voice that speeds up when scared, General American accent. [Speech] a man talking very fast, panicking.\nSPOKEN LINE, in English, exactly this: \"He took out fourteen of our best men and we couldn't do a thing.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "He took out fourteen of our best men and we couldn't do a thing.",
+      "ventana_dialogo": 2.94,
+      "usa": [
+        0.78,
+        3.69
+      ],
+      "en_linea_de_tiempo": [
+        98.2,
+        101.11
+      ]
+    },
+    {
+      "id": "T65",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "luka"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 65 del original · 101.11→104.53 s · E65 · Luka lo agarra del saco: «¡50 millones…»",
+      "first_frame": "assets/sb_T65.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: Luka yanks him in, holds a silent beat for about one second, then growls the line into his face and shouts the end of it.\nAUDIO: VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [Speech] a man growling, then shouting.\nSPOKEN LINE, in English, exactly this: \"If you can't do it, fifty million to whoever brings me the Viper's head!\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "If you can't do it, fifty million to whoever brings me the Viper's head!",
+      "ventana_dialogo": 4.54,
+      "usa": [
+        0.55,
+        3.97
+      ],
+      "en_linea_de_tiempo": [
+        101.11,
+        104.53
+      ]
+    },
+    {
+      "id": "T66",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "pasillo",
+      "personajes": [
+        "matones"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 66 del original · 104.53→106.36 s · E66 · matón pelado con musculosa y AK en el pasillo",
+      "first_frame": "assets/sb_T66.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He turns his head sharply, grips the rifle and steps forward.\nAUDIO: [Foley] boots, a rifle strap.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.83
+      ],
+      "en_linea_de_tiempo": [
+        104.53,
+        106.36
+      ]
+    },
+    {
+      "id": "T67",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PM",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "luka",
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 67 del original · 106.36→106.99 s · E63 · Luka empuja a Wady",
+      "first_frame": null,
+      "clip_de": "T63",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        2.0,
+        2.63
+      ],
+      "en_linea_de_tiempo": [
+        106.36,
+        106.99
+      ]
+    },
+    {
+      "id": "T68",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PA",
+      "loc": "vagon_blanco",
+      "personajes": [
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 68 del original · 106.99→107.99 s · E68 · Wady sale corriendo por la puerta: «¡Vamos, quítense!»",
+      "first_frame": "assets/sb_T68.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He stays silent for about one second, then shouts the line and bolts through the door.\nAUDIO: VOICE of Wady, identical in every shot: a man in his early thirties, a mid-pitched, reedy, jittery voice that speeds up when scared, General American accent. [Speech] a man shouting orders. [Foley] running footsteps.\nSPOKEN LINE, in English, exactly this: \"Okay. Move! Out of the way! Go!\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Okay. Move! Out of the way! Go!",
+      "ventana_dialogo": 1.9,
+      "usa": [
+        0.97,
+        1.97
+      ],
+      "en_linea_de_tiempo": [
+        106.99,
+        107.99
+      ]
+    },
+    {
+      "id": "T69",
+      "escena": "REPLICA-DANZA",
+      "tramo": "RECOMPENSA",
+      "tipo": "PG",
+      "loc": "pasillo",
+      "personajes": [
+        "matones",
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 69 del original · 107.99→109.61 s · E69 · pasillo holandés: los matones corren hacia cámara",
+      "first_frame": "assets/sb_T69.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: They charge down the corridor towards camera, shoving through.\nAUDIO: [Foley] running boots, weapons rattling. [Speech] a man shouting one word.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.62
+      ],
+      "en_linea_de_tiempo": [
+        107.99,
+        109.61
+      ]
+    },
+    {
+      "id": "T70",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 70 del original · 109.61→110.99 s · E70 · le baja la camisa del hombro: queda el tirante",
+      "first_frame": "assets/sb_T70.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: His hand pushes the shirt down off her shoulder slowly; she holds her breath and does not move.\nAUDIO: [Foley] flannel sliding, a held breath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.38
+      ],
+      "en_linea_de_tiempo": [
+        109.61,
+        110.99
+      ]
+    },
+    {
+      "id": "T71",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 71 del original · 110.99→112.32 s · E71 · encuadre A, él mira el hombro de ella",
+      "first_frame": "assets/sb_T71.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: His eyes move down to her shoulder and back up to her face; a slow breath.\nAUDIO: [Foley] breathing. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.33
+      ],
+      "en_linea_de_tiempo": [
+        110.99,
+        112.32
+      ]
+    },
+    {
+      "id": "T72",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 72 del original · 112.32→114.32 s · E72 · la hoja se desliza bajo el tirante",
+      "first_frame": "assets/sb_T72.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The blade lifts the strap away from the skin and slices it; the strap springs loose and falls onto the shoulder. The leotard stays in place.\nAUDIO: [SFX] a sharp slice of fabric. [Foley] a gasp.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.0
+      ],
+      "en_linea_de_tiempo": [
+        112.32,
+        114.32
+      ]
+    },
+    {
+      "id": "T73",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 73 del original · 114.32→115.78 s · E73 · encuadre A: «…gimas…»",
+      "first_frame": "assets/sb_T73.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then says the line slowly, leaving a pause between the words.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man speaking slowly, menacing and intimate.\nSPOKEN LINE, in English, exactly this: \"I said... moan...\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "I said... moan...",
+      "ventana_dialogo": 2.68,
+      "usa": [
+        1.8,
+        3.26
+      ],
+      "en_linea_de_tiempo": [
+        114.32,
+        115.78
+      ]
+    },
+    {
+      "id": "T74",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 74 del original · 115.78→116.91 s · E74 · los dos de perfil, la agarra del hombro: «o te haré gemir»",
+      "first_frame": "assets/sb_T74.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He holds a silent beat for about one second, then finishes the threat in a whisper; after that his eyes slide towards the door while she trembles.\nAUDIO: VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man whispering a short threat.\nSPOKEN LINE, in English, exactly this: \"...or I'll make you.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "...or I'll make you.",
+      "ventana_dialogo": 1.06,
+      "usa": [
+        0.58,
+        1.71
+      ],
+      "en_linea_de_tiempo": [
+        115.78,
+        116.91
+      ]
+    },
+    {
+      "id": "T75",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 75 del original · 116.91→118.78 s · E75 · encuadre B, asiente: «Okay, okay»",
+      "first_frame": "assets/sb_T75.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She holds her breath for about two seconds, then nods quickly and whispers the line, giving in.\nAUDIO: VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman whispering, giving in.\nSPOKEN LINE, in English, exactly this: \"Okay, okay.\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Okay, okay.",
+      "ventana_dialogo": 0.92,
+      "usa": [
+        2.14,
+        4.01
+      ],
+      "en_linea_de_tiempo": [
+        116.91,
+        118.78
+      ]
+    },
+    {
+      "id": "T76",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PM",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 76 del original · 118.78→120.61 s · E74 · los dos de perfil, él mira la puerta",
+      "first_frame": null,
+      "clip_de": "T74",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: (reusa el clip)\nAUDIO: \nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        2.26,
+        4.09
+      ],
+      "en_linea_de_tiempo": [
+        118.78,
+        120.61
+      ]
+    },
+    {
+      "id": "T77",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PA",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah",
+        "jack_camisa"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 77 del original · 120.61→121.91 s · E77 · ella sentada a horcajadas sobre él, de espaldas",
+      "first_frame": "assets/sb_T77.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He pulls her in closer and she clutches his shoulders, rocking slightly with the train.\nAUDIO: [Foley] fabric, velvet creaking. [Ambient] the train rolling.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.3
+      ],
+      "en_linea_de_tiempo": [
+        120.61,
+        121.91
+      ]
+    },
+    {
+      "id": "T78",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "jack_camisa",
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 78 del original · 121.91→122.95 s · E78 · mano enguantada en la cadera, sobre el short",
+      "first_frame": "assets/sb_T78.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: The gloved hand presses in and draws her closer; the flannel creases under the fingers.\nAUDIO: [Foley] a leather glove on flannel.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.04
+      ],
+      "en_linea_de_tiempo": [
+        121.91,
+        122.95
+      ]
+    },
+    {
+      "id": "T79",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PA",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "wady"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 79 del original · 122.95→123.74 s · E79 · Wady patea la puerta y atraviesa la cortina",
+      "first_frame": "assets/sb_T79.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: He smashes through with a kick, the curtain whipping aside.\nAUDIO: [SFX] a door kicked in, wood splintering.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        0.79
+      ],
+      "en_linea_de_tiempo": [
+        122.95,
+        123.74
+      ]
+    },
+    {
+      "id": "T80",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PG",
+      "loc": "cabina_puerta",
+      "personajes": [
+        "wady",
+        "matones"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 80 del original · 123.74→125.11 s · E80 · POV de la puerta: los armados apuntando",
+      "first_frame": "assets/sb_T80.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: They push in and level their guns at camera; Wady grins.\nAUDIO: [Foley] guns cocked, boots. [Speech] a woman's gasp off camera.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the train rolling on the rails, fabric, footsteps and breathing.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        1.37
+      ],
+      "en_linea_de_tiempo": [
+        123.74,
+        125.11
+      ]
+    },
+    {
+      "id": "T81",
+      "escena": "REPLICA-DANZA",
+      "tramo": "PATADA",
+      "tipo": "PP",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "toma 81 del original · 125.11→126.92 s · E81 · Hannah de perfil con la boca abierta: corte",
+      "first_frame": "assets/sb_T81.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.\nMOTION: She stays still for about one second, then gasps loudly, mouth open, eyes wide towards the door.\nAUDIO: VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman gasping loudly.\nSPOKEN LINE, in English, exactly this: \"Ah!\"\nSPOKEN LANGUAGE: ENGLISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in English. If any voice appears at all, it is English.\nKeep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": "Ah!",
+      "ventana_dialogo": 1.4,
+      "usa": [
+        1.53,
+        3.34
+      ],
+      "en_linea_de_tiempo": [
+        125.11,
+        126.92
+      ]
+    }
+  ]
+}

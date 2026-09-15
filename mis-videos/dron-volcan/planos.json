@@ -1,0 +1,301 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "EL DRON DEL VOLCÁN",
+  "slug": "dron-volcan",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "short-60",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "DRON-VOLCAN",
+      "tramo": "HOOK",
+      "tipo": "PD",
+      "loc": "borde",
+      "personajes": [
+        "piloto"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "HOOK. Las antiparras se encienden de naranja: algo volvió a emitir ahí abajo.",
+      "first_frame": "assets/sb_S01.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The orange reflection in the lenses flares suddenly as a pulse of light comes up from the crater, and the green indicator reflection starts blinking fast. The head snaps down toward the crater. Ash streaks accelerate across the frame with a gust.\nAUDIO: [SFX] a sharp radio lock-on beep repeating, close and dry. [Ambient] deep volcanic rumble underneath, wind gusting over rock.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "volvió a transmitir a las 6 AM",
+      "usa": [
+        0.0,
+        3.0
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        3.0
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "DRON-VOLCAN",
+      "tramo": "PROMESA",
+      "tipo": "PGE",
+      "loc": "borde",
+      "personajes": [
+        "piloto"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "PROMESA. Dónde estamos y qué está en juego: una persona diminuta contra un cráter humeando, y el dron entrando.",
+      "first_frame": "assets/sb_S02.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The quadcopter tips forward and dives into the crater mouth, shrinking fast to a dot against the glow. The gas column leans with the wind. The pilot's jacket flaps hard but he does not move.\nAUDIO: [SFX] four drone motors spinning up to a scream, then doppler-fading down into the crater. [Ambient] wind at full force over the ridge, the low rumble underneath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.5
+      ],
+      "en_linea_de_tiempo": [
+        3.0,
+        5.5
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "DRON-VOLCAN",
+      "tramo": "PROGRESO",
+      "tipo": "PG",
+      "loc": "crater",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "BARRA DE PROGRESO. El descenso con número: la pared cayendo a toda velocidad, el contador en post.",
+      "first_frame": "assets/sb_S03.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The camera plunges: the rock wall streams past faster and faster, thin gas layers punch past the lens one after another, and the orange glow below grows steadily. The image vibrates with the motors and the wind buffeting.\nAUDIO: [SFX] drone motors whining under load, pitch rising with the dive. [Foley] wind ripping past the microphone in bursts. [Ambient] the rumble getting closer and heavier.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "−120 m · 68 °C",
+      "usa": [
+        0.0,
+        4.2
+      ],
+      "en_linea_de_tiempo": [
+        5.5,
+        9.7
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "DRON-VOLCAN",
+      "tramo": "PROGRESO",
+      "tipo": "PD",
+      "loc": "crater",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "TENSIÓN POR AUSENCIA. Entra al gas y no hay nada. Cambio de régimen: el sonido se apaga, la luz se apaga.",
+      "first_frame": "assets/sb_S04.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The camera pushes slowly forward through the gas, swirls parting around the lens. Ash flakes drift past. For a long moment nothing appears at all — then the tiniest red blink, far away and low, barely there, once.\nAUDIO: [Ambient] the wind and rumble suddenly muffled to almost nothing, as if wrapped in cloth. [SFX] the drone motors close and lonely, and one faint electronic blip, far away.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "señal 12 %",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        4.3
+      ],
+      "en_linea_de_tiempo": [
+        9.7,
+        14.0
+      ]
+    },
+    {
+      "id": "S05",
+      "escena": "DRON-VOLCAN",
+      "tramo": "REVELACION",
+      "tipo": "PG",
+      "loc": "crater",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "ESCALERA 1. Del gas sale una forma: un brillo metálico en una cornisa. Todavía no se sabe qué es.",
+      "first_frame": "assets/sb_S05.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The gas thins in waves: with each wave the ledge sharpens and the metallic glint blinks in and out of view. The camera drifts closer and lower, careful now, the shaking almost gone. The glint holds steady for the last beat.\nAUDIO: [SFX] the motors dropping to a slow hover note. [Ambient] the rumble returning, deeper now, and gas hissing somewhere on the wall.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        14.0,
+        19.5
+      ]
+    },
+    {
+      "id": "S06",
+      "escena": "DRON-VOLCAN",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": "crater",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "ESCALERA 2 · ESCALA. El plano vertical juega: la cornisa diminuta contra la pared entera y el lago de lava abajo.",
+      "first_frame": "assets/sb_S06.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The camera slowly tilts down from the ledge to the lava lake and back up, connecting the two. The lake's crust splits and a bright seam widens, throwing more orange light up the wall. Embers rise past the lens.\nAUDIO: [Ambient] the full voice of the volcano: deep rumble, rock cracking far below, gas venting. [SFX] a slow, heavy bubble of lava bursting somewhere beneath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        19.5,
+        25.5
+      ]
+    },
+    {
+      "id": "S07",
+      "escena": "DRON-VOLCAN",
+      "tramo": "REVELACION",
+      "tipo": "PD",
+      "loc": "crater",
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "LA REVELACIÓN, al final del tramo. Es el dron perdido: quemado, torcido — y con la cámara todavía grabando.",
+      "first_frame": "assets/sb_S07.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The camera eases in slowly across the ledge. Ash slides off the scorched frame in a thin stream with the rotor wash. The red LED keeps blinking, steady. Nothing else on the ledge moves.\nAUDIO: [SFX] a soft repeating electronic blip, very close now, in rhythm with the blinking. [Foley] ash grains hissing across rock under rotor wash. [Ambient] the rumble, patient, underneath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.5
+      ],
+      "en_linea_de_tiempo": [
+        25.5,
+        32.0
+      ]
+    },
+    {
+      "id": "S08",
+      "escena": "DRON-VOLCAN",
+      "tramo": "GIRO",
+      "tipo": "PGE",
+      "loc": "crater",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "GIRO, a la mitad exacta. El lago revienta: entra una luz nueva de abajo y un rugido que no estaba. Ahora hay reloj.",
+      "first_frame": "assets/sb_S08.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The fountain surges taller and the whole frame floods brighter, shadows on the wall wheeling upward. A pressure wave of hot air slams the camera — the image kicks, tilts, and barely recovers. Embers stream up past the lens, faster and faster.\nAUDIO: [SFX] a sudden roar from below, huge, like a furnace door opening. [Foley] the drone frame rattling, motors surging to fight the hot air. [Ambient] rock cracking, debris hissing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "el lago despertó",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        32.0,
+        38.1
+      ]
+    },
+    {
+      "id": "S09",
+      "escena": "DRON-VOLCAN",
+      "tramo": "CONTACTO",
+      "tipo": "PD",
+      "loc": "crater",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CONTACTO físico. El gancho baja y agarra el chasis quemado, con las brasas subiendo alrededor.",
+      "first_frame": "assets/sb_S09.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The hook lowers, swings once with the hot wind, misses, swings back and seats into the scorched frame. The cable snaps taut and the burned drone shifts in the ash, tipping toward the camera. Embers rush past faster.\nAUDIO: [Foley] the metal hook scraping carbon, twice, then a clean click as it seats. [SFX] motors screaming under new load. [Ambient] the eruption roar below, continuous now.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.2
+      ],
+      "en_linea_de_tiempo": [
+        38.1,
+        43.3
+      ]
+    },
+    {
+      "id": "S10",
+      "escena": "DRON-VOLCAN",
+      "tramo": "CONTACTO",
+      "tipo": "PP",
+      "loc": "crater",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "EL DETALLE IMPOSIBLE, sostenido para que se lea: colgado del cable, su cámara gira sola y queda mirando al lente.",
+      "first_frame": "assets/sb_S10.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The hanging drone turns slowly on the cable — and as it turns, its small gimbal camera rotates smoothly the OTHER way, holding its lens pointed straight at us the whole time, level and deliberate, red LED blinking. The spin stops. The lens stays fixed on camera.\nAUDIO: [SFX] the tiny gimbal motor whirring, close and clean against the huge roar below. [Foley] the cable creaking with the swing. [Ambient] the eruption, slightly farther now.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        43.3,
+        49.3
+      ]
+    },
+    {
+      "id": "S11",
+      "escena": "DRON-VOLCAN",
+      "tramo": "PAGO",
+      "tipo": "PD",
+      "loc": "borde",
+      "personajes": [
+        "piloto"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "EL PAGO. Vuelta al tamaño del gancho: las antiparras naranjas, el dron quemado ya en la mano. La voz suelta el dato que reordena todo.",
+      "first_frame": "assets/sb_S11.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: In the reflection, the burned drone settles into the glove and the cable goes slack. The goggles tilt down toward it. The orange light on the lenses pulses once, softly, with the crater breathing behind.\nAUDIO: [SFX] motors winding down from a scream to a whisper, then off. [Foley] carbon settling into a glove, a strap creaking. [Ambient] the rumble, distant again, and the wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.6
+      ],
+      "en_linea_de_tiempo": [
+        49.3,
+        54.9
+      ]
+    },
+    {
+      "id": "S12",
+      "escena": "DRON-VOLCAN",
+      "tramo": "BUCLE",
+      "tipo": "PGE",
+      "loc": "borde",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CIERRE EN BUCLE. La misma boca del cráter del segundo 3 — pero la columna es el doble de alta. Empalma con el arranque y corta a negro.",
+      "first_frame": "assets/sb_S12.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.\nMOTION: The gas column swells and brightens from inside, pulse by pulse, each pulse stronger. Ash streams faster across the ridge. On the brightest pulse the frame cuts to black.\nAUDIO: [Ambient] the rumble rising steadily until it fills everything. [SFX] one sharp radio lock-on beep, identical to the opening, then total silence on the cut to black.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the drone motors and the volcano.\nKeep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        5.1
+      ],
+      "en_linea_de_tiempo": [
+        54.9,
+        60.0
+      ]
+    }
+  ]
+}

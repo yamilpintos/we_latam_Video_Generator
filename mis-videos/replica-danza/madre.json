@@ -1,0 +1,81 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "m_hannah",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_jack_camisa",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_jack_abrigo",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Use the reference image for the face, hair, beard, tattoos and blood: the SAME man. Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves. Only the clothes change from the reference. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_luka",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_wady",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_matones",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER LINE-UP on a plain mid-grey studio background with even soft light: three different men standing side by side, full body, facing camera — gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest. Each one clearly distinct. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_pasajeros",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER LINE-UP on a plain mid-grey studio background with even soft light: two different people standing side by side, full body, facing camera — ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_campo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. a golden-hour grassy field beside railway tracks, utility poles and power lines, distant low industrial buildings and a few palm trees, hazy warm sky. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_cabina_ventana",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. Looking at the window wall of the private compartment of a restored vintage luxury train car: glossy mahogany wall panels, tall windows with white lace curtains and red-and-cream striped side drapes glowing with bright daylight, a brass handrail under the windows like a ballet barre, a mustard-gold tufted velvet banquette with red fringe, deep red carpet, a coffered dark wood ceiling with cream panels and a brass ceiling fan. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_cabina_puerta",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. Looking at the door wall of the door end of the same luxury train car: a double mahogany door with a heavy brass sliding bolt, framed by heavy gold brocade curtains draped with garlands of dark red silk roses, ornate gold-and-crystal chandeliers, coffered mahogany ceiling, deep red carpet. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_pasillo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. Looking straight down the narrow side corridor of a vintage train: polished honey-coloured wood paneling and compartment doors on one side, windows with cream pleated curtains on the other, a red carpet runner, ceiling vents, bright overcast daylight. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_vagon_blanco",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. a vintage train carriage painted cream-white: panelled walls and doors with brass fittings, small stained-glass transom windows, gold curtains, red velvet seats, flat bright daylight. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    }
+  ]
+}

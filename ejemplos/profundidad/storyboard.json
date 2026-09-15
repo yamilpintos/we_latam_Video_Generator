@@ -1,0 +1,80 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "PROFUNDIDAD",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nEXTREME CLOSE UP on the curved glass port of a black diving mask filling the frame. Behind the glass, a pair of wide human eyes, lit from below by a cold torch. Condensation on the inside of the glass. Black water behind. No mouth visible, the rebreather loop crosses the bottom of frame.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nNARRATIVE INTENT OF THIS FRAME: This is the very first frame of a vertical short-form video and must read instantly as a thumbnail: one clear subject, strong contrast, something visibly wrong or surprising already present in the frame. Leave the upper third relatively clear: an on-screen text overlay goes there in post.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nLooking straight UP from below at the surface of the sea, far above. The diver's silhouette hangs against a small pale disc of daylight. Shafts of light stab down through the dark and die before reaching the camera.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nNARRATIVE INTENT OF THIS FRAME: Establishing frame: the whole space and the scale of the subject within it are readable at a glance.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nEXTREME CLOSE UP of a wrist-mounted dive computer strapped over a black drysuit sleeve, its screen glowing pale green. Water and particles drift across the glass. Behind the wrist, black water and a torch beam.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nThe beam of a powerful dive torch cutting into total blackness, seen from just behind the diver's shoulder. The beam is a solid cone of light full of drifting particles and reaches nothing. Empty black on all sides.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nThe torch beam holding on a distant hard-edged shape in the black water. Something metallic, riveted and pale, too straight and too regular to be rock. Most of it is still lost in the dark. The diver is small at the bottom edge of frame, seen from behind.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nCloser. A vast pale metal wall filling most of the vertical frame, riveted panels streaked with rust and marine growth, a line of round windows running up it. The torch light only reaches a fraction of it. The diver is TINY at the bottom of frame for scale.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S07",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nWide from a distance, low angle. UNMISTAKABLY A COMMERCIAL PASSENGER AIRLINER resting on the seabed and tilted at an angle: the cockpit nose and its row of angled windscreen panes clearly visible at the left, a long line of small round cabin windows running down the fuselage, and the tall vertical TAIL FIN rising up into the black at the right. One wing is broken off and half buried in silt beside it. This must read instantly as an aeroplane and never as a submarine or a pipe. The diver's single torch is a pinprick of light beside the nose, giving the scale.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nA row of small round aircraft windows in the dark metal hull, seen close and slightly from below. WARM YELLOW LIGHT is coming out of every single one of them, cutting through the black water in solid beams.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nNARRATIVE INTENT OF THIS FRAME: A strong visual break from everything before it: a new colour of light, a new light source or an impossible detail, clearly visible in the frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nCLOSE. A black-gloved hand pressing flat against the thick glass of a lit aircraft window, seen from outside. Warm yellow light from inside spills around the fingers. Reflected in the glass, the curved port of the diving mask.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S10",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nThe view through the cleared aircraft window into a lit cabin. Rows of dry passenger seats in warm yellow light. Every seatbelt is fastened across an empty seat. Overhead lockers closed. No water inside. No people.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nEXTREME CLOSE UP on the diving mask again, the same curved glass port. The eyes behind it are lit warm yellow now from the window instead of cold. Wide. The reflection of the lit cabin curves across the glass.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.\nLooking straight UP from the seabed into the black water above. Very far up, a single small cold light is descending through the dark, alone. It is the only thing in the frame besides black.\nTHE SUBJECT, identical in every shot: a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "_comentario": "Se generan 75 s para usar 60. H3 no baja de 5.2 s por plano y un Short necesita cortes de 1.5 a 2.5 s al principio, asi que se recorta en el montaje. Cada plano lleva 'usa' con el tramo que va a la linea.",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        3.0
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        3.0
+      ],
+      "funcion": "HOOK. Bucle abierto: la voz en off promete algo y no lo entrega.",
+      "first_frame": "assets/sb_S01.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The eyes flick left, then right, then lock forward. A slow blink. The torch light on the glass brightens as something below comes closer.\nAUDIO: [Foley] slow heavy breathing through a rebreather, very close and dry. [Ambient] deep water pressure hum, almost silence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S02",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        2.5
+      ],
+      "en_linea_de_tiempo": [
+        3.0,
+        5.5
+      ],
+      "funcion": "Descenso. El corte rapido mantiene el pulso alto.",
+      "first_frame": "assets/sb_S02.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The disc of daylight shrinks and dims as the diver descends toward camera. Bubbles rise past the lens in strings.\nAUDIO: [Foley] a burst of exhaled bubbles rushing upward past the ear. [Ambient] the surface noise fading out with depth.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S03",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        4.0
+      ],
+      "en_linea_de_tiempo": [
+        5.5,
+        9.5
+      ],
+      "funcion": "BARRA DE PROGRESO. El numero que sube le da al ojo algo que seguir.",
+      "first_frame": "assets/sb_S03.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The wrist turns slowly toward camera as the diver keeps descending. Particles stream UPWARD past the lens, fast, selling the speed of the descent. The screen backlight flickers once. The torch beam behind swings across the dark.\nAUDIO: [Foley] the tick of a dive computer, breathing slower now. [SFX] a low creak of pressure on the suit.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S04",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "usa": [
+        0.0,
+        4.5
+      ],
+      "en_linea_de_tiempo": [
+        9.5,
+        14.0
+      ],
+      "funcion": "TENSION POR AUSENCIA. Cuatro segundos de nada antes del hallazgo.",
+      "first_frame": "assets/sb_S04.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The beam sweeps slowly left to right across the void and finds nothing. Particles stream through it. At the very end of the sweep the beam catches a hard edge far away and the diver stops it there.\nAUDIO: [Ambient] deep water hum, nothing else. [Foley] one slow breath in, held.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S05",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        14.0,
+        20.0
+      ],
+      "funcion": "ESCALERA 1: de la nada a algo.",
+      "first_frame": "assets/sb_S05.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The diver swims slowly toward it and the shape resolves a little more with every metre. Two rows of small dark rectangles become visible along its side.\nAUDIO: [Foley] fins beating slowly, breathing quickening. [SFX] a distant groan of stressed metal.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S06",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        20.0,
+        26.0
+      ],
+      "funcion": "ESCALERA 2: la escala. Que sea vertical juega a favor aca.",
+      "first_frame": "assets/sb_S06.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The camera cranes slowly upward along the metal wall, and it keeps going, and going, past the top of the frame. The diver stays tiny at the bottom.\nAUDIO: [SFX] the deep groan of a large metal structure settling. [Foley] breathing loud and fast now.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S07",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        26.0,
+        32.0
+      ],
+      "funcion": "LA REVELACION.",
+      "first_frame": "assets/sb_S07.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The diver's tiny light drifts from the nose along the row of cabin windows toward the tail, giving the scale away. Silt lifts off the seabed in slow clouds.\nAUDIO: [SFX] a long low resonance, like a struck bell underwater. [Ambient] pressure hum.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S08",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        32.0,
+        38.0
+      ],
+      "funcion": "INTERRUPCION DE PATRON, justo a la mitad, donde cae la retencion.",
+      "first_frame": "assets/sb_S08.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The camera drifts slowly along the lit windows. The warm light flickers once, all the windows at the same time, then steadies.\nAUDIO: [SFX] a faint electrical hum that should not exist down here. [Foley] the breathing stops for a beat.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S09",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "en_linea_de_tiempo": [
+        38.0,
+        43.0
+      ],
+      "funcion": "ESCALERA 3: el contacto. El golpe desde adentro es el gancho del tramo.",
+      "first_frame": "assets/sb_S09.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The hand presses harder and wipes marine growth off the glass in one slow arc, clearing a view into the cabin. The reflection of the mask leans in closer.\nAUDIO: [Foley] a glove squeaking on wet glass, breathing held. [SFX] one dull knock from inside the hull.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S10",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        43.0,
+        49.0
+      ],
+      "funcion": "LO IMPOSIBLE. Seco por dentro es el detalle que lo vuelve inexplicable.",
+      "first_frame": "assets/sb_S10.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The camera pushes slowly toward the glass and further into the cabin. Nothing moves inside. Then, far down the aisle, one overhead reading light clicks on by itself.\nAUDIO: [SFX] the electrical hum, a single click of a switch. [Ambient] the muffled quiet of a dry room heard through glass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S11",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        49.0,
+        54.5
+      ],
+      "funcion": "EL PAGO. La voz en off suelta el dato que reordena todo.",
+      "first_frame": "assets/sb_S11.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The eyes go wide and hold. Then they shift focus, from what is in front of the glass to something reflected in it, coming from above and behind.\nAUDIO: [Foley] one sharp breath in through the rebreather. [SFX] the hum dropping away to nothing.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    },
+    {
+      "id": "S12",
+      "escena": "PROFUNDIDAD",
+      "tipo": "SHORT",
+      "loc": "fondo",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        54.5,
+        60.0
+      ],
+      "funcion": "CIERRE EN BUCLE. No cerramos la historia: abrimos una mas grande en el ultimo segundo. Eso es lo que dispara el rewatch.",
+      "first_frame": "assets/sb_S12.png",
+      "prompt": "Photorealistic cinematic underwater footage, vertical 9:16.\nMOTION: The light above grows slowly larger as it descends toward camera. Nothing else moves. Frame goes to black before it arrives.\nAUDIO: [Foley] breathing, fast and shallow. [SFX] a low tone rising, then cut to complete silence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the breathing apparatus, the water and the structure.\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null
+    }
+  ]
+}

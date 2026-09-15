@@ -1,0 +1,110 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "EL FARERO",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nEXTREME CLOSE UP on a large old incandescent lighthouse bulb inside the concentric glass rings of a fresnel lens, filling the lower two thirds of the vertical frame. The filament glows a weak, tired amber. Rain streaks the dark window glass behind it, a flash of blue lightning far away. The upper third of the frame is dark glass and storm, kept clear.\nNARRATIVE INTENT OF THIS FRAME: This is the very first frame of a vertical short-form video and must read instantly as a thumbnail: one clear subject, strong contrast, something visibly wrong or surprising already present in the frame. Leave the upper third relatively clear: an on-screen text overlay goes there in post.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_faro.png",
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nEXTREME WIDE SHOT of the lighthouse on its black rock in the night storm, towering in the vertical frame, waves exploding white against the base. The keeper in the dark green rain coat is a TINY figure at the base door — his full height about ONE TWELFTH of the image height — carrying a wooden crate, leaning into the wind. The lamp room glows weak amber at the top.\nNARRATIVE INTENT OF THIS FRAME: Establishing frame: the whole space and the scale of the subject within it are readable at a glance.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_escalera.png",
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nLooking straight DOWN the center of the spiral stone staircase, vertical frame, the steps winding down into darkness. Far below, the keeper climbs steadily — a small figure in the dark green coat, his headlamp beam sweeping the curved wall, the wooden crate under one arm. Blue lightning pulses through the small round windows.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nCLOSE UP on the keeper's gloved hand smacking the headlamp he has taken off, its beam flickering weakly, the spiral staircase behind him falling into darkness. His hooded head is bowed over the lamp, face completely in shadow. Rain trails run down a small round window beside him, lit blue by lightning.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png",
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nWIDE SHOT of the lamp room from the stair opening, vertical frame. The keeper in the wet green coat stands just inside, dripping, hood up, seen from behind. In front of him the tall fresnel lens towers to the ceiling, and inside it the old bulb pulses a weak, dying amber — the only light in the room. Storm rain streaks all the wrap-around windows.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_faro.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nEXTREME WIDE SHOT from high above the sea, vertical frame used at full height: the black storm ocean fills almost everything, waves long and white-veined, and in the lower part the lighthouse with its tiny weak amber lamp room — the whole tower about ONE EIGHTH of the image height. Lightning veins the clouds at the top of the frame. The amber glow is the only warm thing in a world of black water.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S07",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png",
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nCLOSE UP inside the open fresnel lens housing, vertical frame. Two worn black rubber gloves hold the OLD bulb just lifted from its brass socket — its glass smoked dark, a thin wisp of heat-steam rising off it in the cold air. Below in the frame, resting in the open wooden crate, the NEW bulb: clean clear glass, heavy, waiting. Lightning light through the lens rings cuts both into blue slices.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png",
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nWIDE SHOT of the lamp room, vertical frame: the keeper's silhouette stands at a brass switch panel beside the towering fresnel lens, hand on the lever, hood up, seen from the side. The room is lit ONLY by cold blue storm light through the rain-streaked windows — the lamp inside the lens is dark, dead glass. Everything warm is gone from the frame.\nNARRATIVE INTENT OF THIS FRAME: A strong visual break from everything before it: a new colour of light, a new light source or an impossible detail, clearly visible in the frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png",
+        "assets/m_farero.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nEXTREME CLOSE UP on the two rubber gloves back inside the lens housing, gripping the new bulb's base at the brass socket, in near-total darkness — the scene readable only in the strobing blue of lightning flashes through the glass rings. Rain shadows crawl over everything.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S10",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nMACRO CLOSE UP on the dead filament inside the new bulb's clear glass, vertical frame, in blue storm darkness. The coiled filament is a thin grey thread. Beyond the glass, out of focus, the blurred rings of the fresnel lens and the rain-streaked window.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_sala.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nEXTREME CLOSE UP matching the first shot: the lighthouse bulb inside the fresnel lens rings filling the lower two thirds of the vertical frame — but now blazing FULL white-gold, hard light rays fanning through the concentric glass rings. The window behind still streaked with rain, the storm now lit by the beam. Upper third kept clear.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_faro.png"
+      ],
+      "prompt": "Photorealistic cinematic footage at an old stone lighthouse in a violent night storm, shot on a full-frame camera. Hard rain streaking through every light source, sea spray and fog, deep blacks. Warm tungsten glow from the lamp room against cold blue lightning. Wet stone and brass textures, film grain, handheld weight.\nEXTREME WIDE SHOT of the lighthouse on its rock at night, vertical frame, the storm still heaving — but now a POWERFUL white beam sweeps out from the lamp room across the black sea, cutting through rain and spray. Far out near the horizon, the tiny running lights of a cargo ship, barely dots in the dark.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

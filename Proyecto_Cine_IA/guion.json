@@ -1,0 +1,63 @@
+{
+  "assets_requeridos": {
+    "personajes": {
+      "p_sherezade": "Cinematic portrait of a beautiful Persian woman, 25 years old, wise and calm expression, wearing ornate teal and gold silk robes, intricate jewelry, neutral dark gray background, highly detailed face, 8k resolution, photorealistic, 35mm lens.",
+      "p_shahriar": "Cinematic portrait of a stern Persian King, 35 years old, dark thick beard, brooding and intimidating expression, wearing heavy royal crimson and black garments with gold embroidery, neutral dark gray background, dramatic rim lighting, 8k, photorealistic."
+    },
+    "locaciones": {
+      "l_alcoba_real": "Cinematic wide establishing shot of an ancient opulent Persian royal bedroom at night. Lit by hundreds of glowing candles, large silk curtains, intricate geometric tile patterns, large luxurious bed in the center, warm mysterious atmosphere, masterpiece.",
+      "l_pasillo_palacio": "Cinematic establishing shot of a dark stone palace corridor at night. Moonlight shining through arched windows, shadows on the walls, lonely and tense atmosphere, 8k, photorealistic."
+    }
+  },
+  "timeline": [
+    {
+      "clip_id": 1,
+      "locacion_id": "l_pasillo_palacio",
+      "personajes_presentes": ["p_sherezade"],
+      "prompt_video_minimax": "Wide shot. The camera slowly pushes in as Sherezade walks alone down the dark corridor. Her expression is brave but tense. Flowing silk robes.",
+      "prompt_audio_minimax": "[Foley] Slow footsteps on stone floor. [Ambient] Cold night wind howling outside. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 2,
+      "locacion_id": "l_pasillo_palacio",
+      "personajes_presentes": ["p_sherezade"],
+      "prompt_video_minimax": "Close up shot on Sherezade's face. The camera tracks backwards as she keeps walking. She takes a deep breath.",
+      "prompt_audio_minimax": "[Foley] Fabric rustling, a deep nervous breath. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 3,
+      "locacion_id": "l_alcoba_real",
+      "personajes_presentes": ["p_shahriar"],
+      "prompt_video_minimax": "Medium shot. King Shahriar is sitting on the edge of his bed, looking down at his hands, brooding. Camera pans slowly to the right.",
+      "prompt_audio_minimax": "[Foley] Heavy sigh. [Ambient] Fire crackling from the candles, warm room tone. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 4,
+      "locacion_id": "l_alcoba_real",
+      "personajes_presentes": ["p_sherezade", "p_shahriar"],
+      "prompt_video_minimax": "Over the shoulder shot from the King's perspective. Sherezade enters the room gracefully and bows her head.",
+      "prompt_audio_minimax": "[Foley] Soft footsteps on Persian rug, fabric rustling. NO MUSIC.",
+      "texto_dialogo_limpio": "Mi señor, he venido a acompañarte esta noche.",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 5,
+      "locacion_id": "l_alcoba_real",
+      "personajes_presentes": ["p_sherezade"],
+      "prompt_video_minimax": "Close up on Sherezade. She looks directly at the camera with gentle, captivating eyes. Gentle flickering candle light on her face.",
+      "prompt_audio_minimax": "[Speech] 'Hear me, my King, for the tale I bring tonight is unlike any other.' [Ambient] Soft fire crackling. NO MUSIC.",
+      "texto_dialogo_limpio": "Escucha mi rey, pues la historia que traigo esta noche no se parece a ninguna otra.",
+      "tipo_transicion": "continuous_frame"
+    }
+  ],
+  "hoja_de_ruta_sonora": [
+    {"rango_tiempo": "00:00 - 00:30", "instruccion": "SFX: Pasos de Sherezade, viento frío. MÚSICA: Tensión oscura, cuerdas graves (Intro)."},
+    {"rango_tiempo": "00:30 - 01:00", "instruccion": "SFX: Fuego crujiendo. MÚSICA: Cambio a un Oud o Duduk misterioso, la tensión baja pero la intriga sube cuando ella habla."}
+  ]
+}

@@ -1,0 +1,699 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "REPLICA DANZA PELIGROSA EP1",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_T01",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nWIDE SHOT of a vast bright green prairie under a deep blue sky with a few white clouds, a herd of brown-and-white cattle grazing in a line across the middle distance, three cows close in the foreground, one lifting its head. No people, no buildings. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_campo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_campo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. EXTREME CLOSE INSERT, camera almost on the ground: ONLY a woman's lower legs from just above the knees down, in pale pink tights and worn tan embroidered cowboy boots, one boot stepping towards camera through the grass; the top edge of the frame cuts above the knees, so no shorts, no hands, no bag, no body above the knees; blurred railway buildings behind. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. LIGHT: soft late-afternoon golden hour, the sun low but out of frame, a pale blue-white hazy sky, gentle warm light on skin; not an orange sunset. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_campo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_campo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT of a young woman's torso while she walks: the open plaid flannel shirt over the pale pink leotard, her hands hooking a pair of worn pink pointe shoes by their ribbons onto a canvas tote bag on her shoulder; her face cut off above the frame; warm backlight. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights and worn tan embroidered cowboy boots, a canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. LIGHT: soft late-afternoon golden hour, the sun low but out of frame, a pale blue-white hazy sky, gentle warm light on skin; not an orange sunset. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T04",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_campo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_campo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights and worn tan embroidered cowboy boots, a canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons, walking towards camera through a golden-hour field beside the railway, utility poles and power lines behind her, hazy low sun on her hair. She looks off to the side, determined and a little sad. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. LIGHT: soft late-afternoon golden hour, the sun low but out of frame, a pale blue-white hazy sky, gentle warm light on skin; not an orange sunset. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_campo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_campo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT from a very LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights and worn tan embroidered cowboy boots, a canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons, standing in the field, seen against a flat pale white sky, dry bare branches at the lower edge of frame. She looks up and away, the plaid shirt moving in the wind. LIGHT: soft late-afternoon golden hour, the sun low but out of frame, a pale blue-white hazy sky, gentle warm light on skin; not an orange sunset. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T06",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nEXTREME WIDE SHOT from high above: a sky-blue and white passenger train running along a curving track through golden scrubland and green bushes at sunset, long warm shadows. The train is small in the frame. No people visible. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T07",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, sitting on the banquette in the train compartment, eyes lowered, lost in thought, a red-and-cream striped drape and a brass lamp softly out of focus behind her. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T10",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT from a LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, stretching one arm high above her head in front of a bright window, backlit, head tilted back, eyes half closed, the plaid shirt falling open from her raised arm. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T11",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM-WIDE SHOT from the knees up in the train compartment of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, one leg extended along the brass handrail under the lace-curtained window like a ballet barre, folding her body down over the leg, her face close to her knee. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T12",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT of the whole train compartment: Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers stands at the window with one leg raised onto the brass handrail, stretching; the mustard velvet banquette with red fringe along the left, two tall bright windows with white lace curtains, deep red carpet, a phone lying on the banquette. She is small in the frame, about one third of the image height. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T13",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T14a",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, standing by a dark mahogany wall in the train compartment, looking down at the phone in her hand, her other hand at her hair, her face serious and annoyed, lit by soft window light. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T14b",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, looking down at the phone in her hand, eyes cold and determined, a dark mahogany wall behind her. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T15",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT: a pair of dark mahogany double doors with brass handles, closed, filling the frame, gold curtains at both edges. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T16",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_abrigo.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_abrigo. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT down the luxury train car towards its double doors: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves walks towards camera between heavy gold curtains with red rose garlands, under gold-and-crystal chandeliers, a pistol low in his gloved hand, the fedora brim hiding his eyes. He is about one third of the image height. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T17",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_abrigo.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_abrigo. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of the man's face under a black fedora brim: the brim hides his eyes, only his bearded jaw, the blood on the left side of his face and the tattoos on his neck are visible, gold curtains out of focus. He is Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T18",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers at the bright lace-curtained window of the train compartment, one hand on the window frame, turning sharply away from the glass towards camera, startled. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T21",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_abrigo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT over the shoulder of Hannah towards the door end of the train car: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves stands under the chandeliers between gold curtains and pulls off his fedora with one gloved hand; the back of Hannah's head and her plaid shirt fill the right edge of the frame, out of focus. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T22",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_abrigo.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_abrigo. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers against the bright window, frightened, mouth open to shout; at the left edge of frame the black-gloved hand of a man is coming towards her face. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T23",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_abrigo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP over Hannah's shoulder of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves, very close to her, blood on his face, gold curtains and a chandelier out of focus behind him; the back of her head blurred at the right edge. He looks straight at her. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T24",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_abrigo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT at the bright lace window: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves pins Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers against the window frame, one gloved finger pressed on her lips; she stares at him with wide eyes, breathing hard. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T25",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_abrigo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT of the whole compartment: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves crowds Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers against the far window between the brass rail and the lace curtains, the mustard banquette on the left, red carpet. Both about one third of the image height. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T26",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_abrigo.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_abrigo. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT of a heavy brass sliding bolt on a mahogany door: a black fingerless-gloved hand grabs the knob of the bolt. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T27",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_abrigo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT at the bright window: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves and Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers pressed together, both turning their heads towards the door off camera, alert and frozen. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T28",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_abrigo.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves seen from behind at the door end of the car, peering out through a gap in the heavy gold curtain; Hannah's shoulder in plaid out of focus in the right foreground. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T29",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_pasajeros.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_pasajeros. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT down the narrow side corridor of a vintage train: polished honey-coloured wood paneling and compartment doors on one side, windows with cream pleated curtains on the other, a red carpet runner, ceiling vents, bright overcast daylight; blurred panicking passengers cross the foreground, and far down the corridor a gunman appears. The people are ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T30",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_luka.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_luka. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT from a LOW ANGLE of Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle, standing in the train corridor, raising the AK-47 towards the ceiling, face twisted with rage. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T31",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_matones.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_matones. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT: a gunman bursts through a cream-white door into the carriage, rifle raised, scanning. He is one of the gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T32",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_luka.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_luka. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT of Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle, leaning against the polished wood wall of the train corridor, rifle hanging from his hand, looking straight at camera. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T33",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol, in the train corridor, grinning wildly, pistol raised next to his face. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T34",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_pasajeros.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_pasajeros. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the train corridor: a terrified passenger peeks out of a compartment door and screams. She is from the ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T35",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_matones.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_matones. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT from behind: gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest push into compartments along the cream-white carriage, rifles raised, backs to camera. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T38",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT from behind of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, at the door end of the car between gold curtains, shrugging the long black overcoat off his shoulders, revealing the white shirt and the black shoulder-holster harness. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T39",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT over his shoulder: Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers stands by the bright window watching him, confused and scared, arms close to her body; his white shirt and holster strap blurred in the left foreground. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T40",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves under the chandeliers between the gold curtains, turning to face camera; the back of Hannah's head and plaid shirt blurred in the right foreground. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T41",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT of the compartment in front of the bright window: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves grabs Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers and lifts her clean off the floor in a tight protective hold, her arms thrown around his neck in surprise, her feet off the ground; he is seen from behind, she looks over his shoulder, startled. They fill about half the image height. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T42",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT from behind: a man's back in a white shirt crossed by a black leather holster harness, a woman's arms in plaid flannel sleeves wrapped around his neck. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T43",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. TIGHT MEDIUM SHOT from the chest up at the lace window: Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers fills the right two thirds of the frame, just set down, looking down at him, confused; Jack's head and shoulder in the white shirt are large and out of focus in the lower left foreground, his gloved hand drawing a black tactical knife. Jack is Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves. No legs, no shorts in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T44",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, raising a black tactical knife close to his face, eyes on her, lace window out of focus behind. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T45",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, the flat black blade of a knife held vertically against her lips by a black-gloved hand; dark wood ceiling beams above her; her eyes wet. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T46",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE TWO-SHOT IN PROFILE at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, facing right; on the right Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, facing left; faces a hand's width apart; he holds the black knife upright between them. No waist, no legs in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T47",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, the black knife held near her throat at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T48",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP in profile of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, facing left, the black blade held upright in front of her lips by a gloved hand, a bright window out of focus behind her. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T49",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, his gloved hand with the knife at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T52",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, tears on her cheeks, the flat of a black knife held against the side of her neck by a gloved hand, dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T53",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T54",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, crying, the black knife against her neck, dark wood ceiling beams above. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T55",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T56",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, sobbing silently, eyes lifted, the black knife against her neck, dark wood ceiling beams above. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T58",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_luka.png",
+        "assets/m_pasajeros.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_luka, m_pasajeros. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT over the shoulder of a bald passenger in a grey sweater (out of focus, right foreground): Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle storms through a cream-white doorway into the carriage, rifle first. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T59",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_luka.png",
+        "assets/m_pasajeros.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_luka, m_pasajeros. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the cream-white carriage: Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle shoves a bald passenger in a grey sweater, who raises both hands in terror. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T60",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_matones.png",
+        "assets/m_pasajeros.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_matones, m_pasajeros. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT down the train corridor: gunmen pin passengers against the wood-panelled wall at gunpoint. The gunmen are gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest; the passengers are ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T61",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_luka.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_luka, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the cream-white carriage over Wady's shoulder (his olive coat blurred in the left foreground): Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle faces camera, furious, rifle across his chest. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T62",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol, in the cream-white carriage, scared and agitated, pleading towards someone off camera. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T63",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_luka.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_luka, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the cream-white carriage over Wady's shoulder (blurred in the left foreground): Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle listens, jaw clenched, glaring. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T64",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol, in the cream-white carriage, wide-eyed, talking fast. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T65",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_luka.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_luka, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the cream-white carriage over Wady's shoulder (blurred in the left foreground): Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle grabs the lapel of Wady's olive coat and pulls him close, snarling. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T66",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_matones.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_matones. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the train corridor: a bald bearded gunman with tattooed arms in a black tank top, rifle ready, looks round in alarm. He is one of the gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T68",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_vagon_blanco.png",
+        "assets/m_wady.png",
+        "assets/m_matones.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_vagon_blanco, m_wady, m_matones. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT in the cream-white carriage: Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol runs for the doorway, pistol up, shoving past a gunman. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T69",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pasillo.png",
+        "assets/m_matones.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_pasillo, m_matones, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT down the train corridor: gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest and Wady run towards camera, weapons up. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T70",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. TIGHT MEDIUM SHOT from the chest up at the lace window, both faces in the upper half of the frame: Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves on the left slides the plaid flannel shirt off Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers's right shoulder with his gloved hand, uncovering the thin strap of her pink camisole leotard; she is on the right, fully dressed underneath, frozen, looking at him. No waist, no shorts, no legs in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T71",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, looking down at her bare shoulder in the foreground (the thin pink leotard strap visible), a striped drape out of focus behind. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T72",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT: the tip of a black knife held in a gloved hand slips under the thin strap of a pale pink camisole leotard on a woman's shoulder; the plaid shirt pushed off the shoulder. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T73",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, three-quarter view, close to her, a striped drape out of focus behind, her bare shoulder blurred at the lower right. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T74",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE TWO-SHOT IN PROFILE at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves, facing right, his gloved hand gripping her shoulder; on the right Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, facing left, chin lifted; faces very close. No waist, no legs in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T75",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, the black knife in a gloved hand near her bare shoulder, dark wood ceiling beams above, crying and scared. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T77",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT at the lace window: Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers and Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves on the banquette in a tight embrace, seen from behind her: her back and the plaid shirt slipping off one shoulder fill the frame, his arms around her in a protective hug, his face hidden behind her shoulder so only his dark hair shows; both fully dressed. The person closest to the camera is seen FROM BEHIND, out of focus, a dark shape at the edge of the frame: do not turn them towards camera. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T78",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_jack_camisa.png",
+        "assets/m_hannah.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT: a black fingerless leather glove pressed flat against the back of a worn brown-and-cream plaid flannel shirt, between the shoulder blades, pulling the wearer close; nothing else in the frame but the glove and the flannel. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T79",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_wady.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT at the door end of the car: Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol kicks the door and bursts through the heavy gold curtain into the car, blurred with motion. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T80",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_puerta.png",
+        "assets/m_wady.png",
+        "assets/m_matones.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_puerta, m_wady, m_matones. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. WIDE SHOT point of view from inside the car towards the door: Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol at the front with his pistol raised and gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest crowding behind him under the gold-and-crystal chandeliers, all aiming straight at camera; a blurred plaid shoulder in the foreground. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_T81",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_cabina_ventana.png",
+        "assets/m_hannah.png",
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.\nReference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP in profile of Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers, her face snapping towards the door off camera, eyes wide in shock, mouth open in a startled gasp; Jack's dark hair out of focus at the lower left edge, hiding his face behind her shoulder; dark wood ceiling above. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

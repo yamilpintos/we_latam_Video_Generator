@@ -1,0 +1,31 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_borde",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph from a high ash ridge on the rim of an active volcano at dawn, vertical frame. Dark grey volcanic gravel and ash in the foreground, the crater falling away beyond the edge, and a wide column of grey volcanic gas rising from inside it, lit faint orange from below. Cold blue pre-dawn sky above. Wind-blown ash streaks. The gas column is fine, fibrous and wind-torn, never rounded cartoon puffs. No people, no equipment, no buildings. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_crater",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic aerial photograph looking down INSIDE an active volcanic crater, vertical frame. Sheer dark rock walls streaked with yellow sulfur deposits converging downward, thin layers of drifting grey gas, and far below at the bottom a lava lake glowing hard orange with a black crust cracking into bright seams. Sparse embers rising. The gas is fine, fibrous and wind-torn, never rounded cartoon puffs. No people, no machines. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_piloto",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A drone pilot from the chest up: a dusty high-visibility orange mountain shell jacket with the hood down, bulky black FPV goggles completely covering the eyes, a grey dust buff pulled up over the nose and mouth so NO part of the face is visible, black work gloves holding a dark radio controller with two antennas at chest height. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_dron_caido",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic product-style reference photograph, vertical frame, plain dark grey background, even soft lighting. A small quadcopter drone that survived extreme heat: matte black carbon frame visibly warped and scorched, two propellers melted into curls, ash caked into every joint, and underneath it a small intact gimbal camera with a clean round lens and a tiny red LED lit beside it. It must read as real damaged equipment, scorched and heavy — never as a clean product render, never as a toy. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ]
+}

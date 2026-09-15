@@ -1,0 +1,194 @@
+{
+  "nombre": "recap-240",
+  "formato": "short",
+  "duracion_objetivo": 240,
+  "tolerancia": 10,
+  "plataformas": [
+    "TikTok",
+    "YouTube Shorts (3 min)",
+    "Instagram Reels"
+  ],
+  "retencion_objetivo": 0.45,
+  "interrupcion_cada": 30,
+  "notas": [
+    "LEY DEL GÉNERO: sale del análisis del canal @jcfdlw (referencias/jcfdlw/ANALISIS.md, 30/8/2026). Historias melodramáticas de 3 a 8 minutos, verticales, narradas en primera persona, con la voz en off SIN PAUSAS de punta a punta. TikTok premia el tiempo total de visualización: un video de 4 min visto al 60 % vale más que un short visto entero.",
+    "LA VOZ ES LA COLUMNA (regla 40): el guion completo se escribe PRIMERO como historia lineal; los planos se diseñan después, uno por línea, para ilustrar exactamente lo que se dice. Densidad de referencia del género: ~25 caracteres por segundo con voz acelerada; nuestra Kate corre a ~16,7 cps naturales, así que las líneas se escriben a 14-16 cps y la voz llena el plano entero.",
+    "LA VOZ ACTÚA LOS DIÁLOGOS: una sola voz narra y hace hablar a todos los personajes, con comillas latinas «» y cambio de entonación por puntuación, no por tags. Regla 9 (una voz por plano) no aplica: acá H3 no genera ninguna voz, la voz en off cruza todos los cortes.",
+    "EMOCIÓN PRIMARIA, NO ATMÓSFERA: familia en peligro, injusticia, revancha, catástrofe, plata. Protagonista con nombre, números concretos siempre (cuánto costó, cuántos eran, cuántos grados). El espectador no infiere nada: todo se dice o se ve sin ambigüedad.",
+    "MICRO-CLIFFHANGER CADA 25-35 s: cada bloque es problema → acción → consecuencia → problema nuevo. No hay un giro al medio: hay una cadena. El último plano de cada bloque deja algo abierto.",
+    "SUBTÍTULOS QUEMADOS SIEMPRE, frase por frase, en el tercio inferior-medio. En este género son parte del diseño, no un accesorio: el SRT del módulo se quema en el máster.",
+    "CARAS SÍ: el género vive de caras y actuación emocional. La regla 22 (caras tapadas) nació para el fotorrealismo documental; acá se privilegian planos medios (PM/PA) para las emociones y se reservan los primeros planos para uno o dos momentos. Entorno que perdona: nieve, noche, vapor, interiores con humo.",
+    "LA IMAGEN ILUSTRA, LA HISTORIA CARGA: el género tolera consistencia imperfecta entre planos. Igual se declaran personajes con hoja de modelo y vestuario (regla 13), porque sale casi gratis.",
+    "Con voz continua no se descarta casi nada: cada plano se usa casi entero (corta = segundos − 0,5 de colchón). Cortes de 5 a 7,3 s, dentro de lo medido en H3.",
+    "TECHO DE VRAM (31/8/2026, medido sobre 52 planos): corte máximo 6,1 s = generar 6,6, que entra casi siempre en 32 GB; 7,3 s resultó apuesta (cinco planos cayeron y costaron ~$5 en reintentos y rescates). Un plano más largo que 6,1 en línea se hace con dos planos o encadenando."
+  ],
+  "tramos": [
+    {
+      "id": "HOOK",
+      "nombre": "Gancho absurdo",
+      "desde": 0,
+      "hasta": 4.6,
+      "objetivo": "Una sola frase in-media-res que ya contiene el resultado y la contradicción: lo que hizo el protagonista, cómo reaccionó el mundo, y qué pasó después. El espectador tiene que entender la premisa entera antes del segundo 5.",
+      "exige": [
+        "La primera frase de la voz dice QUÉ hizo alguien y por qué es absurdo o extremo",
+        "La imagen muestra ese absurdo literal, legible en 0,3 s",
+        "Texto en pantalla con el resultado concreto en menos de 8 palabras",
+        "Un solo plano; la voz arranca antes del segundo 0,5"
+      ],
+      "corte_min": 4.0,
+      "corte_max": 5.3,
+      "tamanos": [
+        "PGE",
+        "PG",
+        "PD"
+      ],
+      "interrupcion": true,
+      "texto_pantalla": "El resultado o el dato absurdo, en menos de 8 palabras.",
+      "prompt_frame": "The single most absurd and readable image of the story: one clear subject doing something extreme, high contrast, instantly understandable as a thumbnail."
+    },
+    {
+      "id": "ARRANQUE",
+      "nombre": "Quién y qué pasó",
+      "desde": 4.6,
+      "hasta": 21,
+      "objetivo": "Presentar en tres planos: la narradora, el llamado o hecho que rompe la rutina, y la primera decisión. Sin explicar: mostrando.",
+      "exige": [
+        "La narradora aparece en su mundo normal (contraste con lo que viene)",
+        "Un diálogo actuado por la voz en off que plantea la urgencia",
+        "Termina en una decisión visible (salir, ir, dejar algo)"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 3
+    },
+    {
+      "id": "BLOQUE_1",
+      "nombre": "Bloque 1 · el viaje y la evidencia",
+      "desde": 21,
+      "hasta": 56.5,
+      "objetivo": "Problema → acción → consecuencia. Las primeras señales de que el protagonista tenía razón, y el primer antagonista que se ríe.",
+      "exige": [
+        "Al menos un dato numérico concreto",
+        "Presentar al antagonista o al escéptico",
+        "El último plano deja un cliffhanger"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 5,
+      "interrupcion": true
+    },
+    {
+      "id": "BLOQUE_2",
+      "nombre": "Bloque 2 · la preparación y la primera noche",
+      "desde": 56.5,
+      "hasta": 85.5,
+      "objetivo": "La acción del protagonista contra el mundo que sigue normal. Termina con el primer golpe real de la catástrofe.",
+      "exige": [
+        "Contraste visual: la casa preparada contra el barrio normal",
+        "Un texto en pantalla con la cifra que escala (temperatura, dinero, días)",
+        "El último plano es el golpe: algo se corta, se rompe o se apaga"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 5,
+      "interrupcion": true,
+      "texto_pantalla": "La cifra que escala (grados, pesos, días)."
+    },
+    {
+      "id": "BLOQUE_3",
+      "nombre": "Bloque 3 · llegan los que se rieron",
+      "desde": 85.5,
+      "hasta": 120,
+      "objetivo": "La catástrofe ya está. Los que se burlaron golpean la puerta. El protagonista decide qué clase de persona es.",
+      "exige": [
+        "El escéptico vuelve, transformado",
+        "Un diálogo corto que define al protagonista",
+        "Cambio de régimen de luz o sonido: la oscuridad o el silencio del mundo sin luz"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 5,
+      "interrupcion": true
+    },
+    {
+      "id": "GIRO",
+      "nombre": "El mundo confirma",
+      "desde": 120,
+      "hasta": 132,
+      "objetivo": "A la mitad exacta, la escala real del desastre: no es una noche, es semanas. Lo que parecía un problema doméstico es una catástrofe. Cambia el tamaño de lo que está en juego.",
+      "exige": [
+        "Una fuente externa confirma (radio, noticia, ejército)",
+        "Un plano de la ciudad o del afuera, enorme y muerto",
+        "Un plano de reacción de la narradora"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 2,
+      "interrupcion": true
+    },
+    {
+      "id": "BLOQUE_4",
+      "nombre": "Bloque 4 · organizar la supervivencia",
+      "desde": 132,
+      "hasta": 168,
+      "objetivo": "Más gente, menos recursos: la logística como tensión. Reglas, raciones, roles. Un conflicto interno.",
+      "exige": [
+        "Una cifra que crece (personas) contra una que baja (carbón, comida, días)",
+        "Un texto en pantalla con la cuenta regresiva",
+        "Un conflicto entre los refugiados, resuelto por el protagonista con una frase"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 5,
+      "interrupcion": true,
+      "texto_pantalla": "La cuenta regresiva del recurso."
+    },
+    {
+      "id": "BLOQUE_5",
+      "nombre": "Bloque 5 · la prueba máxima",
+      "desde": 168,
+      "hasta": 205,
+      "objetivo": "La noche peor. Un peligro físico concreto que amenaza a todos, y alguien que se arriesga. El bloque más rápido.",
+      "exige": [
+        "Un peligro con reloj (humo, frío, oscuridad)",
+        "Un personaje secundario se arriesga físicamente",
+        "El antagonista transformado hace un gesto de amor",
+        "Los cortes más rápidos del video"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 5,
+      "interrupcion": true
+    },
+    {
+      "id": "PAGO",
+      "nombre": "Reconocimiento",
+      "desde": 205,
+      "hasta": 228.5,
+      "objetivo": "Sale el sol. La cifra final (cuántos vivieron, cuántos no). El antagonista pide perdón. Y la imagen del gancho vuelve, ahora con contexto: el recurso se terminaba justo.",
+      "exige": [
+        "El dato final en números: vivos, muertos, días",
+        "El perdón o el reconocimiento, en un gesto, no en un discurso",
+        "Reencuadrar la imagen del gancho, cambiada"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 3
+    },
+    {
+      "id": "BUCLE",
+      "nombre": "La próxima vez",
+      "desde": 228.5,
+      "objetivo": "No cerrar: abrir la siguiente. El protagonista ya está preparando lo próximo, y la última línea le pregunta al espectador de qué lado estaría.",
+      "exige": [
+        "El protagonista repite el gesto del principio, ahora imitado por otros",
+        "La última línea es una pregunta contestable en una frase",
+        "Corte a negro"
+      ],
+      "corte_min": 5.0,
+      "corte_max": 6.1,
+      "planos_min": 1,
+      "interrupcion": true
+    }
+  ]
+}

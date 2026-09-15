@@ -1,0 +1,321 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "CONTRAMANO",
+  "slug": "contramano",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "short-60",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "CONTRAMANO",
+      "tramo": "HOOK",
+      "tipo": "PP",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "HOOK. Un faro que crece en el visor y una voz que grita. Cero contexto.",
+      "first_frame": "assets/sb_S01.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The reflected headlight grows fast in the visor as the distance closes. The orange lamp streaks accelerate. The head jerks once to the left, checking. Everything shakes with the road.\nAUDIO: [SFX] a motorcycle engine screaming at high revs, very close. [Foley] wind roar and helmet buffeting. [Speech] a woman's voice through a crackling radio speaker, urgent and compressed.\nSPOKEN LINE, in Spanish, exactly this: \"¡Salí de ahí ahora! ¡Viene el de las nueve, salí ya!\"\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": "¡Salí de ahí ahora! ¡Viene el de las nueve, salí ya!",
+      "texto": "iba en contramano",
+      "ventana_dialogo": 2.61,
+      "voz_de": "operadora",
+      "usa": [
+        0.0,
+        3.0
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        3.0
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "CONTRAMANO",
+      "tramo": "PROMESA",
+      "tipo": "PGE",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "PROMESA. Dónde está: un túnel de tren, y él entrando igual.",
+      "first_frame": "assets/sb_S02.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The motorcycle accelerates hard toward camera and the opening behind it shrinks. The headlight flares as it approaches. Dust lifts off the sleepers in its wake.\nAUDIO: [SFX] the engine note dropping as it passes camera, doppler. [Ambient] the huge reverberant space of the tunnel swallowing the sound.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.5
+      ],
+      "en_linea_de_tiempo": [
+        3.0,
+        5.5
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "CONTRAMANO",
+      "tramo": "PROGRESO",
+      "tipo": "PD",
+      "loc": "control",
+      "personajes": [
+        "operadora"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "BARRA DE PROGRESO. El diagrama de vías: dos puntos que se acercan.",
+      "first_frame": "assets/sb_S03.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The two markers close on each other steadily. The countdown drops. Her reflection leans in toward the glass and speaks into the boom mic. The screen flashes red once.\nAUDIO: [Foley] fingers hitting a keyboard hard, a chair rolling. [SFX] an alarm tone starting, low and insistent. [Speech] the woman speaking into her headset, tight and controlled.\nSPOKEN LINE, in Spanish, exactly this: \"Vía dos, ocupada.\"\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": "Vía dos, ocupada.",
+      "texto": "vía 2 · ocupada",
+      "interrupcion": true,
+      "ventana_dialogo": 1.5,
+      "usa": [
+        0.0,
+        4.0
+      ],
+      "en_linea_de_tiempo": [
+        5.5,
+        9.5
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "CONTRAMANO",
+      "tramo": "PROGRESO",
+      "tipo": "PG",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "TENSIÓN POR AUSENCIA. El túnel vacío y negro por delante: no hay salida.",
+      "first_frame": "assets/sb_S04.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The motorcycle rides away from camera into the dark and the lamps sweep past faster and faster. The headlight reaches nothing. The tunnel curve swallows it and there is only black ahead.\nAUDIO: [SFX] the engine, and the tunnel throwing it back as a wall of reverb. [Ambient] under everything, a low rumble that was not there before.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        4.5
+      ],
+      "en_linea_de_tiempo": [
+        9.5,
+        14.0
+      ]
+    },
+    {
+      "id": "S05",
+      "escena": "CONTRAMANO",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "ESCALERA 1 · arranca la toma continua: el rumbo se vuelve luz.",
+      "first_frame": "assets/sb_S05.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The camera holds beside the bike as it accelerates. Ahead, the white glow on the tunnel wall brightens steadily and starts to define a shape. The rider's head lifts toward it.\nAUDIO: [SFX] engine at full throttle, chain noise, the rails singing. [Foley] rapid breathing inside a helmet.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        14.0,
+        20.0
+      ]
+    },
+    {
+      "id": "S06",
+      "escena": "CONTRAMANO",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "ESCALERA 2 · MISMA TOMA: la luz se vuelve un tren.",
+      "first_frame": null,
+      "sigue_de": "S05",
+      "prompt": "Seamless continuation of the exact same uninterrupted cinematic take.\nTHE SUPPLIED FIRST FRAME IS A MID-ACTION FRAME, NOT THE BEGINNING OF A NEW SHOT.\nPreserve the exact ongoing momentum from frame one.\nCAMERA: continue the existing camera state at the same direction, speed, height and trajectory. No pause, no restart, no sudden acceleration, no camera reset.\nSUBJECTS: continue the current body movement without resetting posture or position. Preserve identity, proportions, orientation and relative placement.\nDYNAMIC ELEMENTS: continue smoke, dust, wind, fabric, fire, water, sparks and debris with the same direction, speed, density and physical behaviour.\nVISUAL CONTINUITY: identical lighting direction, exposure, environment, lens character, framing and overall style.\nDo not restart the action. Do not re-pose the subject. Treat this as the next uninterrupted seconds of the same take.\nPhotorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The same unbroken tracking shot continues at the same speed and height. The white glow ahead resolves into a single blinding headlight and then into the flat front of a train filling the tunnel, closing fast. The rider's head snaps left, looking for anything. The camera shakes harder.\nAUDIO: [SFX] a train horn tearing through the tunnel, enormous. [Foley] the engine still screaming. [Speech] a man's voice inside the helmet, breathless and fast.\nSPOKEN LINE, in Spanish, exactly this: \"¡No hay salida por acá! ¡No puedo frenar, no puedo frenar, no!\"\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": "¡No hay salida por acá! ¡No puedo frenar, no puedo frenar, no!",
+      "ventana_dialogo": 3.48,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        20.0,
+        26.0
+      ]
+    },
+    {
+      "id": "S07",
+      "escena": "CONTRAMANO",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "LA REVELACIÓN · MISMA TOMA: hay un nicho de servicio en la pared.",
+      "first_frame": null,
+      "sigue_de": "S06",
+      "prompt": "Seamless continuation of the exact same uninterrupted cinematic take.\nTHE SUPPLIED FIRST FRAME IS A MID-ACTION FRAME, NOT THE BEGINNING OF A NEW SHOT.\nPreserve the exact ongoing momentum from frame one.\nCAMERA: continue the existing camera state at the same direction, speed, height and trajectory. No pause, no restart, no sudden acceleration, no camera reset.\nSUBJECTS: continue the current body movement without resetting posture or position. Preserve identity, proportions, orientation and relative placement.\nDYNAMIC ELEMENTS: continue smoke, dust, wind, fabric, fire, water, sparks and debris with the same direction, speed, density and physical behaviour.\nVISUAL CONTINUITY: identical lighting direction, exposure, environment, lens character, framing and overall style.\nDo not restart the action. Do not re-pose the subject. Treat this as the next uninterrupted seconds of the same take.\nPhotorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The same unbroken shot continues. As the train fills the frame, the camera whips right and a shallow rectangular service alcove cut into the tunnel wall passes — the only gap in a hundred metres of concrete. The motorcycle leans violently toward it. The train light washes everything white.\nAUDIO: [SFX] the horn at maximum, the roar of displaced air, tyres screaming on wet concrete.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        26.0,
+        31.5
+      ]
+    },
+    {
+      "id": "S08",
+      "escena": "CONTRAMANO",
+      "tramo": "REVELACION",
+      "tipo": "PD",
+      "loc": "control",
+      "personajes": [
+        "operadora"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "INTERRUPCIÓN DE PATRÓN: se corta el estruendo y estamos en silencio, mirando una pantalla.",
+      "first_frame": "assets/sb_S08.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: She watches without blinking, then speaks into the mic once, hard. Her hand comes up and slams a red button off frame. The screen light on her face flashes from green to red and holds.\nAUDIO: [Ambient] the quiet room tone of the control room, almost silent after the tunnel. [Foley] a heavy switch thrown. [Speech] the woman, low and hard.\nSPOKEN LINE, in Spanish, exactly this: \"Frená ahora mismo. Tirate a la derecha, que hay un nicho de servicio.\"\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": "Frená ahora mismo. Tirate a la derecha, que hay un nicho de servicio.",
+      "texto": "frenado de emergencia",
+      "interrupcion": true,
+      "ventana_dialogo": 3.73,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        31.5,
+        37.5
+      ]
+    },
+    {
+      "id": "S09",
+      "escena": "CONTRAMANO",
+      "tramo": "GIRO",
+      "tipo": "PP",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CONTACTO · arranca la segunda toma continua: la maniobra.",
+      "first_frame": "assets/sb_S09.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: He throws his weight hard to the right and the bike goes over with him, the horizon tilting violently. The white light behind him grows until it consumes the frame edges.\nAUDIO: [SFX] the train horn, enormous and close. [Foley] a glove creaking on the grip, one sharp breath in.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "en_linea_de_tiempo": [
+        37.5,
+        42.5
+      ]
+    },
+    {
+      "id": "S10",
+      "escena": "CONTRAMANO",
+      "tramo": "CONTACTO",
+      "tipo": "PG",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "LO IMPOSIBLE · MISMA TOMA: entra al nicho y el tren pasa a centímetros.",
+      "first_frame": null,
+      "sigue_de": "S09",
+      "prompt": "Seamless continuation of the exact same uninterrupted cinematic take.\nTHE SUPPLIED FIRST FRAME IS A MID-ACTION FRAME, NOT THE BEGINNING OF A NEW SHOT.\nPreserve the exact ongoing momentum from frame one.\nCAMERA: continue the existing camera state at the same direction, speed, height and trajectory. No pause, no restart, no sudden acceleration, no camera reset.\nSUBJECTS: continue the current body movement without resetting posture or position. Preserve identity, proportions, orientation and relative placement.\nDYNAMIC ELEMENTS: continue smoke, dust, wind, fabric, fire, water, sparks and debris with the same direction, speed, density and physical behaviour.\nVISUAL CONTINUITY: identical lighting direction, exposure, environment, lens character, framing and overall style.\nDo not restart the action. Do not re-pose the subject. Treat this as the next uninterrupted seconds of the same take.\nPhotorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The same unbroken shot continues through the lean: the motorcycle slides sideways off the rails and into the shallow service alcove, and half a second later the train passes across the entire frame at speed, a wall of steel and windows centimetres away, strobing the alcove with light. Dust and grit blast horizontally past the lens.\nAUDIO: [SFX] the train passing at full speed, a wall of noise and pressure. [Foley] metal grinding on concrete, then only the train.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        42.5,
+        48.5
+      ]
+    },
+    {
+      "id": "S11",
+      "escena": "CONTRAMANO",
+      "tramo": "CONTACTO",
+      "tipo": "PP",
+      "loc": "tunel",
+      "personajes": [
+        "rider"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "EL PAGO. Quieto por primera vez en un minuto. Y contesta.",
+      "first_frame": "assets/sb_S11.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: The last carriages strobe past behind him and the light steadies into the dull orange of the service lamps. His shoulders drop. His head tips back against the concrete. Dust settles slowly through the frame.\nAUDIO: [SFX] the last of the train receding, the tunnel returning to silence. [Foley] very heavy breathing inside a helmet, and a radio clicking. [Speech] a man's voice, exhausted, close on the radio.\nSPOKEN LINE, in Spanish, exactly this: \"Estoy adentro. Ya pasó.\"\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": "Estoy adentro. Ya pasó.",
+      "ventana_dialogo": 2.44,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        48.5,
+        54.0
+      ]
+    },
+    {
+      "id": "S12",
+      "escena": "CONTRAMANO",
+      "tramo": "PAGO",
+      "tipo": "PGE",
+      "loc": "tunel",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CIERRE EN BUCLE. Otra luz, del otro lado. No terminó.",
+      "first_frame": "assets/sb_S12.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage in a railway tunnel at night, vertical 9:16. Violent motion, heavy motion blur, the camera struggling to hold the subject.\nMOTION: Everything is still for a beat. Then, far down the tunnel in the OTHER direction, a second white headlight appears and begins to grow. The dust starts moving again. Frame cuts to black before it arrives.\nAUDIO: [Ambient] tunnel silence, dust settling, a dripping somewhere. [SFX] far away, a second set of rails beginning to sing, then cut to complete silence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter.\nKeep the framing of the first frame. Grainy, high contrast, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        54.0,
+        59.5
+      ]
+    }
+  ]
+}

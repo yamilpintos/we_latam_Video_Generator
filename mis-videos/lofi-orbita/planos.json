@@ -1,0 +1,256 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes.",
+  "titulo": "INVERNADERO EN ORBITA",
+  "slug": "lofi-orbita",
+  "formato": "largo",
+  "fps": 24,
+  "ancho": 1344,
+  "alto": 768,
+  "estructura": "loop-ambiente",
+  "planos": [
+    {
+      "id": "O01",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": "modulo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "ARRANQUE DEL BUCLE. El módulo entero desde la escotilla: las bandejas bajo luz magenta y la Tierra en el ojo de buey.",
+      "first_frame": "assets/sb_O01.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The only motion: the Earth in the porthole turns very slowly and its clouds drift, and one or two leaves sway very slightly. Everything else in the picture, including every light, is a still painting: nothing changes in brightness or colour from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation, a faint electrical hum from the grow lights, and an occasional tiny drip of water.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 3001,
+      "en_linea_de_tiempo": [
+        0.0,
+        5.17
+      ]
+    },
+    {
+      "id": "O02",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La Tierra por el ojo de buey, de cerca: nubes que derivan, la línea fina de la atmósfera.",
+      "first_frame": "assets/sb_O02.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The Earth turns very slowly and its clouds drift; the atmosphere line glows steadily; a couple of droplets on the glass tremble. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        5.17,
+        10.33
+      ]
+    },
+    {
+      "id": "O03",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "modulo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Hojas de tomate bajo la luz magenta, una gota en la punta de una hoja.",
+      "first_frame": "assets/sb_O03.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The only motion: the droplet at the leaf tip trembles, detaches and floats slowly upward as a tiny weightless sphere. Everything else in the picture, including every light, is a still painting: nothing changes in brightness or colour from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint electrical hum from the grow lights.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 3003,
+      "en_linea_de_tiempo": [
+        10.33,
+        15.5
+      ]
+    },
+    {
+      "id": "O04",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Una esfera de agua flotando en el aire, con la Tierra borrosa detrás.",
+      "first_frame": "assets/sb_O04.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The water sphere drifts very slowly across the frame, wobbling gently like jelly; the blurred Earth behind turns almost imperceptibly. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        15.5,
+        20.67
+      ]
+    },
+    {
+      "id": "O05",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La fila de bandejas bajo la luz magenta, con el ojo de buey y la Tierra al fondo.",
+      "first_frame": "assets/sb_O05.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The only motion: the Earth in the big round porthole at the far end turns very slowly and its clouds drift. Everything else in the picture, including every light, is a still painting: nothing changes in brightness or colour from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint electrical hum from the grow lights.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 3005,
+      "en_linea_de_tiempo": [
+        20.67,
+        25.84
+      ]
+    },
+    {
+      "id": "O06",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "modulo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Una planta de frutilla con una frutilla roja madura bajo la luz magenta.",
+      "first_frame": "assets/sb_O06.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The strawberry sways very slightly on its stem; a droplet on a leaf trembles; the grow light stays steady. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint electrical hum from the grow lights.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 2006,
+      "en_linea_de_tiempo": [
+        25.84,
+        31.0
+      ]
+    },
+    {
+      "id": "O07",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La condensación por dentro del ojo de buey, la Tierra borrosa detrás.",
+      "first_frame": "assets/sb_O07.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Two droplets slowly merge into one; the blurred Earth behind turns almost imperceptibly and its glow shifts very slightly. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        31.0,
+        36.17
+      ]
+    },
+    {
+      "id": "O08",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El ventilador de la rejilla girando despacio, polvo flotando en la luz.",
+      "first_frame": "assets/sb_O08.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The fan blades turn slowly and steadily behind the grille; dust motes drift slowly toward the grille and past it. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are the soft steady whir of the small fan and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        36.17,
+        41.34
+      ]
+    },
+    {
+      "id": "O09",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "modulo",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "Raíces blancas en un tubo transparente con burbujas subiendo, luz magenta.",
+      "first_frame": "assets/sb_O09.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Tiny bubbles rise slowly and steadily through the water; the roots sway very slightly in the flow; the magenta light stays steady. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft bubbling of water in the tube and a faint steady hum of ventilation.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        41.34,
+        46.5
+      ]
+    },
+    {
+      "id": "O10",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El ojo de buey grande con la Tierra, y en primer término las siluetas de las plantas a contraluz.",
+      "first_frame": "assets/sb_O10.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The Earth turns very slowly in the porthole and its clouds drift; the leaf silhouettes sway very slightly; dust motes float through the blue light. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        46.5,
+        51.67
+      ]
+    },
+    {
+      "id": "O11",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El manojo de hierbas secas colgando y la regadera metálica sujeta a la pared.",
+      "first_frame": "assets/sb_O11.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The bundle of herbs sways very slightly, weightless; dust motes drift past; the light stays steady. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        51.67,
+        56.84
+      ]
+    },
+    {
+      "id": "O12",
+      "escena": "LOFI-ORBITA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "CIERRE DEL BUCLE. El lado nocturno de la Tierra por el ojo de buey: la línea del amanecer avanzando. Corta a O01.",
+      "first_frame": "assets/sb_O12.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The Earth turns very slowly so the line between night and day creeps a little; the aurora curtain ripples softly; the clouds drift. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        56.84,
+        62.0
+      ]
+    }
+  ]
+}

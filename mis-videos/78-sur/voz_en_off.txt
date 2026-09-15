@@ -1,0 +1,14 @@
+78 SUR — voz en off para ElevenLabs
+==============================================
+
+No la genera H3: va grabada aparte y montada encima. Así queda
+idéntica en todas las líneas, que es lo que H3 no sabe resolver.
+
+     0.3 s  (S01)   Llevo cuatro meses solo en esta base.
+     5.9 s  (S03)   A las tres de la mañana entró una señal en mi frecuencia.
+    14.5 s  (S05)   No hay nadie en ochocientos kilómetros.
+    26.6 s  (S07)   Caminé una hora hacia el norte.
+    32.8 s  (S08)   Era mi base. La misma. Con la luz encendida.
+    44.0 s  (S10)   Adentro, mi radio estaba transmitiendo.
+    49.6 s  (S11)   Y el café todavía estaba caliente.
+    55.5 s  (S12)   Todavía no sé cuál de todas era la mía.

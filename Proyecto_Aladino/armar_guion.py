@@ -1,0 +1,166 @@
+"""Arma guion.json: 10 escenas de 3 clips encadenados = 5 minutos de película.
+
+Cada escena es UNA SOLA TOMA continua de 30 s: el clip A se genera con Ref2VA y
+las imágenes madre, y los clips B y C con FL2VA arrancando en el último fotograma
+del anterior. Por eso los tres comparten encuadre y locación, y cada uno termina
+en una pose quieta que el siguiente pueda continuar (ver REGLAS-ENCADENADO.md).
+
+Las escenas entre sí son independientes: se pueden generar en paralelo.
+"""
+import json
+import pathlib
+
+ESTILO = ("2D animated illustration style, flat cel shading, clean confident linework, "
+          "rich ornate detail. Match the exact art style, palette and character design "
+          "of the reference images.")
+# Prompt de continuidad cinética. La clave es la segunda línea: declarar que el
+# fotograma recibido es un INSTANTE INTERMEDIO y no el comienzo de una toma nueva.
+# `first_frame` fija el punto visual pero no lleva información de velocidad ni de
+# fase del movimiento, así que si no se dice, el modelo arranca de cero y se ve
+# el "restart". Sigue la plantilla de la guía oficial de continuidad de MiniMax.
+SIGUE = """Seamless continuation of the exact same uninterrupted cinematic take.
+THE SUPPLIED FIRST FRAME IS A MID-ACTION FRAME, NOT THE BEGINNING OF A NEW SHOT.
+Preserve the exact ongoing momentum from frame one.
+CAMERA: continue the existing camera state at the same direction, speed, height and trajectory. No pause, no restart, no sudden acceleration, no camera reset.
+SUBJECTS: continue the current body movement without resetting posture or position. Preserve identity, proportions, orientation and relative placement.
+DYNAMIC ELEMENTS: continue smoke, wind, fabric, hair, fire, water and particles with the same direction, speed, density and physical behaviour.
+VISUAL CONTINUITY: identical lighting direction, exposure, environment, lens character, framing and overall style.
+Do not restart the action. Do not re-pose the characters. Treat this as the next uninterrupted seconds of the same take."""
+CIERRE = "NO MUSIC, no on-screen text. No dialogue in this shot."
+
+# Va PRIMERO en los 30 prompts. H3 inventa voces aunque le pidas silencio, y por
+# defecto las inventa en INGLES: en la primera corrida la mitad del audio salio
+# en ingles. Declarando el idioma arriba, donde el modelo pesa mas los tokens,
+# hasta las alucinaciones salen en castellano.
+IDIOMA = ("SPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd "
+          "chatter heard in this shot is in Spanish. NEVER English. If any voice "
+          "appears at all, it is Spanish.")
+
+
+COMPOSICION = ("[static] Locked-off camera, no camera movement.\n"
+               "START FROM THE EXACT COMPOSITION, FRAMING AND CHARACTER SCALE OF "
+               "<Picture 1>. The figures must stay the same size relative to the "
+               "architecture as they are in <Picture 1> — small in frame, never "
+               "oversized. Their feet stay on the ground plane shown there.")
+
+
+def esc(id, locacion, refs, a, b, c, audio, dialogos=("", "", "")):
+    """Una escena de tres clips. `dialogos` lleva una línea en castellano por clip.
+
+    Si el clip tiene diálogo, el texto entra como tag [Speech] EN CASTELLANO y se
+    saca "no speech" del cierre. Tiene que ser el idioma final: H3 mueve la boca
+    con lo que le pongas ahí, así que doblar después a otro idioma rompe el
+    lip-sync (ver REGLAS-ENCADENADO.md).
+    """
+    # La primera referencia deja de ser la locación vacía y pasa a ser la
+    # COMPOSICIÓN de la escena: el personaje ya puesto ahí, a escala correcta.
+    # Ocupa el mismo lugar, así que los <Picture N> del prompt no cambian.
+    # Sin esto los personajes salían gigantes: las hojas de personaje llenan el
+    # cuadro y las locaciones no tenían ninguna figura que diera escala.
+    refs = [f"c_{id}"] + list(refs[1:])
+
+    clips = []
+    for i, (cuerpo, aud, dial) in enumerate(zip((a, b, c), audio, dialogos)):
+        if dial:
+            aud = f"[Speech] '{dial}'\n{aud}"
+            cierre = "NO MUSIC, no on-screen text. The character speaks in Spanish."
+        else:
+            cierre = CIERRE
+        pre = (f"{ESTILO}\n{COMPOSICION}" if i == 0
+               else f"{ESTILO}\n[static] Locked-off camera, no camera movement.\n{SIGUE}")
+        clips.append(f"{IDIOMA}\n{pre}\n{cuerpo}\n{aud}\n{cierre}")
+    return {"id": id, "locacion": locacion, "refs": refs,
+            "prompts": clips, "dialogos": list(dialogos)}
+
+
+ESCENAS = [
+
+esc("E01_robo", "bazar", ["l_bazar", "p_aladino"],
+ "WIDE LOCKED-OFF SHOT of the crowded bazaar from <Picture 1>. The young man from <Picture 2> weaves through the stalls, snatches a pomegranate off a stall as he passes, and breaks into a run AWAY from camera down the aisle of awnings. A merchant throws up his arms behind him. He ends the shot mid-stride in the middle of frame, seen from behind, running toward the far archway.",
+ "He keeps running away from camera, ducks under a hanging carpet that swings behind him, then cuts left and SKIDS to a stop behind a stack of wicker baskets, dropping into a crouch with his back against them. He HOLDS there, still, knees up, the pomegranate against his chest, breathing hard, striped sunlight across his face.",
+ "Still crouched, he tips his head out past the baskets to check the aisle, pulls back, and a slow grin spreads across his face. He bites into the pomegranate and leans his head back against the baskets, chewing, eyes closed. He HOLDS there, relaxed.",
+ ["[Foley] Running footsteps on stone, crates rattling. [Ambient] Loud market crowd.",
+  "[Foley] Heavy carpet swinging, feet skidding, panting. [Ambient] Market crowd, muffled.",
+  "[Foley] Fruit skin tearing, slow breathing. [Ambient] Distant market."]),
+
+esc("E02_mago", "bazar", ["l_bazar", "p_aladino", "p_mago"],
+ "WIDE LOCKED-OFF SHOT of the bazaar from <Picture 1>. The tall old man in dark indigo robes from <Picture 3> walks slowly up the aisle toward camera, scanning faces on both sides. He stops in the middle of frame. His eyes fix on the young man from <Picture 2>, crouched by the baskets at the edge of frame. He HOLDS, watching him, hands clasped.",
+ "The old man crosses to the young man and lowers himself into a crouch to face him at eye level. He turns one hand over and opens it: a single gold coin sits on his palm. He HOLDS the hand out, waiting, unmoving. The young man stares at the coin.",
+ "The young man takes the coin. The old man rises to his full height and gestures with an open hand toward the stone archway at the far end of the aisle. The young man stands, and the two of them start walking AWAY from camera down the aisle, side by side, growing smaller between the awnings.",
+ ["[Foley] Slow heavy footsteps on stone, robes dragging. [Ambient] Market crowd.",
+  "[Foley] Cloth shifting, a coin turning on a palm. [Ambient] Market crowd, quieter.",
+  "[Foley] Two sets of footsteps walking away. [Ambient] Market fading behind."], ('', 'Toma. Ven conmigo, muchacho. Tengo algo mucho mejor que una moneda.', '')),
+
+esc("E03_puerta", "desierto", ["l_desierto", "p_aladino", "p_mago"],
+ "WIDE LOCKED-OFF SHOT of the desert at dusk from <Picture 1>. Two small figures, the young man from <Picture 2> and the old man from <Picture 3>, walk across the dunes from the left, tiny against the amber and violet sky, and stop at the base of the dark rocky outcrop in the middle ground. The old man raises both arms toward the rock. He HOLDS the pose, arms up, cloak stirring in the wind.",
+ "The ground at the foot of the rock CRACKS open. Sand pours into the widening gap and a heavy stone slab grinds aside, revealing a stair descending into the earth. A shaft of cold blue-green light rises out of the opening and lights both faces from below. Both men step back and HOLD, staring down into it.",
+ "The old man points down into the opening without looking away from it. The young man hesitates, glances at him, then steps onto the first stair and walks down, sinking out of frame into the blue glow until his head disappears below the sand.",
+ ["[Foley] Feet in loose sand, cloth in wind. [Ambient] Desert wind, sparse and wide.",
+  "[Foley] Deep stone grinding, sand pouring, a low subsonic rumble. [Ambient] Wind rising.",
+  "[Foley] Footsteps on stone stairs descending, echo growing. [Ambient] Wind above, hollow air below."]),
+
+esc("E04_lampara", "cueva", ["l_cueva", "p_aladino"],
+ "WIDE LOCKED-OFF SHOT of the treasure cavern from <Picture 1>. The young man from <Picture 2> comes down the stone stair at the back of frame and stops at the bottom step. He turns his head slowly, taking in the mounds of gold and the carved arches, blue-green glow on one side of his face and warm gold on the other. He HOLDS, motionless, staring.",
+ "He steps down off the stair and walks forward between the mounds of coins, trailing one hand across a heap so the coins slide and clink. He stops at a low carved pedestal in the middle of frame where a small plain brass lamp sits alone, dull among all the gold. He HOLDS, looking down at it.",
+ "He reaches out and lifts the lamp off the pedestal with both hands. He turns it over, examining it, and rubs a thumb across its side to wipe off the dust. He HOLDS it up in front of him, unimpressed, weighing it in one hand.",
+ ["[Foley] Footsteps echoing on stone, a long exhale. [Ambient] Hollow cavern air, faint dripping.",
+  "[Foley] Coins sliding and clinking, footsteps. [Ambient] Cavern echo.",
+  "[Foley] Metal turning in hands, a thumb dragging over dusty brass. [Ambient] Cavern echo."]),
+
+esc("E05_encierro", "cueva", ["l_cueva", "p_aladino", "p_mago"],
+ "WIDE LOCKED-OFF SHOT from the bottom of the treasure cavern from <Picture 1>, looking back at the stone stair. Far up at the top, framed in a square of daylight, the silhouette of the old man from <Picture 3> leans in with one arm stretched down, hand open, demanding. The young man from <Picture 2> stands at the foot of the stair below, the brass lamp held against his chest. Both HOLD, facing each other across the height.",
+ "The young man shakes his head once and takes a step BACKWARDS away from the stair, tightening both hands around the lamp. Far above, the old man's outstretched hand slowly closes into a fist. Neither moves after that. They HOLD, the standoff hanging.",
+ "The old man brings his fist down. The stone slab at the top GRINDS shut and the square of daylight narrows to a slit and then to nothing. The cavern is left in cold blue-green glow, the young man small and alone at the foot of the stair, the lamp against his chest.",
+ ["[Foley] Cloth shifting far above, echo of breathing below. [Ambient] Deep cavern reverb.",
+  "[Foley] One footstep backwards on stone, knuckles tightening on metal. [Ambient] Cavern silence.",
+  "[Foley] Enormous stone slab grinding shut, a final boom, echo rolling away. [Ambient] Total silence after."], ('Dame la lampara, muchacho. Despues te saco de ahi.', 'No. Primero sacame de aca.', '')),
+
+esc("E06_genio", "cueva", ["l_cueva", "p_aladino", "p_genio"],
+ "WIDE LOCKED-OFF SHOT of the cavern from <Picture 1> in cold blue-green light. The young man from <Picture 2> sits on the floor with his back against a carved pillar, knees up, turning the brass lamp over in his hands. He rubs its side with his sleeve to clean it. A thin thread of GOLD smoke slips out of the spout. He freezes and HOLDS, staring at it, hands still.",
+ "The thread swells into a torrent of gold and violet smoke pouring upward out of the lamp, filling the cavern, coiling around the pillars and lighting the gold below. The young man scrambles backwards along the floor. The smoke gathers into a single towering column in the centre of frame and HOLDS there, churning slowly, its shape not yet resolved.",
+ "The column folds inward and CONDENSES into the enormous smoke spirit from <Picture 3>: broad blue-violet torso, glowing gold markings, gold collar and cuffs, everything below the waist still a swirling column of smoke anchored to the lamp. He folds his arms, opens his eyes, and looks down at the tiny figure below with an amused grin.",
+ ["[Foley] Cloth rubbing metal, a soft hiss of escaping smoke. [Ambient] Cavern silence.",
+  "[Foley] Roaring rush of smoke, scrambling on stone. [Ambient] Deep resonant rumble building.",
+  "[Foley] Low bass thump of condensing mass, gold cuffs clinking. [Ambient] Warm resonant hum."], ('', '', 'Mil anos durmiendo. Y me despierta un muchacho con una lampara sucia.')),
+
+esc("E07_llegada", "palacio", ["l_palacio", "p_aladino"],
+ "WIDE LOCKED-OFF SHOT of the great palace courtyard from <Picture 1>, the lit fountain in the middle ground and the enormous ornate archway behind. The young man from <Picture 2>, now in fine embroidered robes of deep teal and gold instead of his patched tunic, walks in through the archway and stops beside the fountain. He tips his head back and looks up at the palace facade. He HOLDS there, still, dwarfed by it.",
+ "He turns slowly on the spot, taking in the whole courtyard, the arcades, the lanterns. He completes the turn, faces a tall doorway at the left of frame, and stops. He straightens his collar with both hands and squares his shoulders. He HOLDS, composed, facing the door.",
+ "He walks AWAY from camera toward the doorway, unhurried, robes moving, and stops at the threshold with one hand raised to the doorframe, about to step through.",
+ ["[Foley] Soft footsteps on stone, heavy embroidered fabric. [Ambient] Fountain water, evening birds.",
+  "[Foley] Fabric turning, a steadying breath, a collar adjusted. [Ambient] Fountain.",
+  "[Foley] Footsteps receding, a hand on stone. [Ambient] Fountain, wind through the arcade."]),
+
+esc("E08_encuentro", "palacio", ["l_palacio", "p_aladino", "p_princesa"],
+ "WIDE LOCKED-OFF SHOT of the palace courtyard from <Picture 1>. The young woman from <Picture 3>, in her cream and gold embroidered dress, stands alone beside the lit fountain, trailing one hand in the water. The young man from <Picture 2>, in fine teal robes, enters from the right of frame and stops a few paces from her. She turns. Both HOLD, facing each other across the gap, neither moving.",
+ "She takes one step toward him. He turns his palm up and offers his hand. She looks at it, then lays her hand on his. Both HOLD like that, hands joined, standing close, the fountain between them and the camera.",
+ "Hand in hand they walk slowly along the edge of the fountain toward the far arcade and stop there, side by side with their backs half to camera, looking out through the arch at the darkening sky.",
+ ["[Foley] Fingers in water, footsteps stopping short. [Ambient] Fountain, evening birds.",
+  "[Foley] One footstep, fabric, hands meeting. [Ambient] Fountain.",
+  "[Foley] Two sets of slow footsteps on stone. [Ambient] Fountain, wind, distant birds."], ('Y tu quien eres?', 'Nadie importante. Todavia.', '')),
+
+esc("E09_engano", "alcoba", ["l_alcoba", "p_princesa", "p_mago"],
+ "WIDE LOCKED-OFF SHOT of the candlelit palace bedchamber from <Picture 1>. The young woman from <Picture 2> crosses the room and sets a small plain brass lamp down on a carved side table among the candles. Three knocks sound at the door. She turns toward it and HOLDS, one hand still resting on the table beside the lamp.",
+ "The door opens and the old man from <Picture 3> steps in, hunched and smiling now, dressed as a pedlar, carrying a tray of bright new brass lamps that catch the candlelight. He holds the tray out toward her, offering. She looks from the shining tray to the dull old lamp on the table, hesitates, then picks the old one up. She HOLDS it, undecided, one lamp in her hand and a tray of better ones in front of her.",
+ "She sets the old lamp on his tray and lifts a shining new one in its place. The instant the old lamp touches the tray, the pedlar's stoop straightens out of him and the smile goes. He takes the old lamp in one hand, raises it, and looks at her with an entirely different face.",
+ ["[Foley] Brass set down on wood, three knocks on a heavy door. [Ambient] Candles, quiet room tone.",
+  "[Foley] Door hinges, a tray of metal clinking, hesitant breathing. [Ambient] Candles guttering.",
+  "[Foley] Metal on metal, cloth straightening, one slow indrawn breath. [Ambient] Candles, sudden stillness."], ('', 'Lamparas nuevas por lamparas viejas, senora. El cambio no cuesta nada.', '')),
+
+esc("E10_final", "palacio", ["l_palacio", "p_aladino", "p_mago", "p_princesa"],
+ "WIDE LOCKED-OFF SHOT of the palace courtyard from <Picture 1> at dawn, cold blue light. The old man from <Picture 3> stands beside the fountain with the brass lamp raised in one hand, cloak snapping. The young man from <Picture 2> runs in through the archway and skids to a stop facing him across the fountain. Both HOLD, ten paces apart, staring at each other.",
+ "The young man LUNGES across the gap and the two of them struggle over the lamp, hands locked on it, wrenching back and forth. The lamp tears loose from both their grips, spins through the air and CLATTERS onto the stone between them. Both freeze where they stand and HOLD, staring down at it.",
+ "The young man dives, closes both hands on the lamp and rubs it hard. Gold and violet smoke ERUPTS from the spout, sweeps across the courtyard and swallows the old man, who is gone when it clears. The smoke thins. The young woman from <Picture 4> walks in through the archway and stops beside him. He rises and turns to her. THE CAMERA DOES NOT MOVE and no new part of the courtyard is revealed: the framing stays exactly as it was, only the dawn light warms across it.",
+ ["[Foley] Running footsteps skidding on stone, a cloak snapping. [Ambient] Dawn wind, fountain.",
+  "[Foley] Bodies colliding, metal wrenching, the lamp clattering and rolling on stone. [Ambient] Wind.",
+  "[Foley] A palm dragging on brass, roaring rush of smoke, running footsteps. [Ambient] Wind dropping, fountain, morning birds."], ('Todo esto era mio antes de ser tuyo.', '', '')),
+]
+
+G = {"titulo": "Aladino y la lampara maravillosa", "escenas": ESCENAS}
+pathlib.Path(__file__).parent.joinpath("guion.json").write_text(
+    json.dumps(G, ensure_ascii=False, indent=1), encoding="utf-8")
+
+n = sum(len(e["prompts"]) for e in ESCENAS)
+print(f"{len(ESCENAS)} escenas · {n} clips de 10 s · {n*10//60}:{n*10%60:02d} de pelicula")
+for e in ESCENAS:
+    print(f"  {e['id']:16} {e['locacion']:10} {', '.join(e['refs'])}")

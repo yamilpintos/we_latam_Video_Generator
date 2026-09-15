@@ -1,0 +1,185 @@
+{
+  "titulo": "INVERNADERO EN ORBITA",
+  "slug": "lofi-orbita",
+  "formato": "largo",
+  "estructura": "loop",
+  "duracion_objetivo": 62,
+  "negativos": false,
+  "_concepto": "Tercer loop ambiente (11/9/2026). Un pequeño módulo-invernadero en órbita: bandejas de plantas bajo luz magenta de cultivo, y por un gran ojo de buey la Tierra girando despacio. Doce encuadres, cámara fija, un movimiento lento por plano. Lecciones aplicadas: negativos:false, primeros planos de objeto, nada abstracto, ninguna silla vacía; la única ventana da al espacio, sin ciudad ni gente posible detrás. El bucle se cierra en el corte O12 → O01.",
+  "_planta": "Módulo cilíndrico, paredes blancas y grises con paneles y cables; dos filas de bandejas hidropónicas con plantas verdes (tomate, frutilla, lechuga, hierbas) bajo tubos de luz magenta-violeta a lo largo; al fondo un gran ojo de buey circular con la Tierra azul llenándolo; a la izquierda una rejilla de ventilación con un ventilador pequeño; a la derecha una regadera metálica sujeta con velcro y un manojo de hierbas secas colgando.",
+  "estilo_imagen": "Hand-painted 2D animation background art for a calm lo-fi music video set inside a small orbital greenhouse module: soft painterly brushwork, gentle film grain. Magenta and violet grow-light glow on green leaves against cool blue Earth-light coming through a big round porthole; white and grey panels, a few cables. Muted but rich palette: magenta, violet, leaf green, deep space blue. Clean readable shapes, soft edges. Everything is still and quiet, tiny dust motes float. Nobody anywhere in the picture. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind.",
+  "medio": "hand-painted 2D animated film with soft painterly textures, calm, slow and quiet",
+  "personajes": {},
+  "locaciones": {
+    "modulo": {
+      "imagen": "l_modulo",
+      "descripcion": "a small cylindrical orbital greenhouse module: two rows of hydroponic trays with green plants under magenta grow-light tubes, a big round porthole at the far end filled with the blue Earth, a vent grille with a small fan at the left, a metal watering can and a bundle of dried herbs at the right"
+    }
+  },
+  "madre": [
+    {
+      "id": "l_modulo",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Hand-painted 2D animation background art, wide 16:9 landscape frame, calm lo-fi illustration style: soft painterly brushwork, gentle film grain. WIDE SHOT down the length of a small cylindrical orbital greenhouse module, seen from the hatch at one end. Two rows of white hydroponic trays full of green plants (tomato, strawberry, lettuce, herbs) run along both sides under long magenta-violet grow-light tubes that bathe the leaves in pink light. At the far end a BIG round porthole fills the wall, and through it the blue Earth with white swirls of cloud and a thin glowing atmosphere line, casting cool blue light into the module. On the LEFT wall a vent grille with a small fan. On the RIGHT a metal watering can held by a strap and a bundle of dried herbs hanging. White and grey panels, a few tidy cables, tiny dust motes in the light. Nobody in the module. No text, no letters, no labels, no screens anywhere. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    }
+  ],
+  "planos": [
+    {
+      "id": "O01",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": "modulo",
+      "personajes": [],
+      "funcion": "ARRANQUE DEL BUCLE. El módulo entero desde la escotilla: las bandejas bajo luz magenta y la Tierra en el ojo de buey.",
+      "ve": "WIDE SHOT down the length of the greenhouse module from the hatch, the SAME view as the reference location picture: the two rows of trays with green plants under magenta grow lights, the big round porthole at the far end filled with the blue Earth and its clouds, the vent fan at the left, the watering can and dried herbs at the right, tiny dust motes floating in the light. Nobody in the module.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The only motion: the Earth in the porthole turns very slowly and its clouds drift, and one or two leaves sway very slightly. Everything else in the picture, including every light, is a still painting: nothing changes in brightness or colour from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation, a faint electrical hum from the grow lights, and an occasional tiny drip of water.",
+      "seed": 3001
+    },
+    {
+      "id": "O02",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_modulo"
+      ],
+      "personajes": [],
+      "funcion": "La Tierra por el ojo de buey, de cerca: nubes que derivan, la línea fina de la atmósfera.",
+      "ve": "CLOSE UP of the big round porthole filling the frame: through the thick glass, the blue Earth with white swirls of cloud, the sunlit curve of the planet and a thin glowing blue atmosphere line against black space with a few stars; the metal rim of the porthole around the edge with a few tiny water droplets on the glass. Only the porthole and the Earth.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The Earth turns very slowly and its clouds drift; the atmosphere line glows steadily; a couple of droplets on the glass tremble. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station."
+    },
+    {
+      "id": "O03",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "modulo",
+      "personajes": [],
+      "funcion": "Hojas de tomate bajo la luz magenta, una gota en la punta de una hoja.",
+      "ve": "CLOSE UP of the leaves of a tomato plant under magenta grow light, filling the frame: green leaves glowing pink at the edges, one small green tomato, and a single water droplet trembling at the tip of a leaf. Behind, out of focus, more pink-lit leaves and the white tray. Only the plant and the drop.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The only motion: the droplet at the leaf tip trembles, detaches and floats slowly upward as a tiny weightless sphere. Everything else in the picture, including every light, is a still painting: nothing changes in brightness or colour from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint electrical hum from the grow lights.",
+      "seed": 3003
+    },
+    {
+      "id": "O04",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_modulo"
+      ],
+      "personajes": [],
+      "funcion": "Una esfera de agua flotando en el aire, con la Tierra borrosa detrás.",
+      "ve": "CLOSE UP of a single floating sphere of water, the size of a grape, hanging weightless in the middle of the frame, catching magenta light on one side and cool blue light on the other; behind it, out of focus, the round porthole with the blurred blue Earth. Only the water sphere and the blurred porthole.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The water sphere drifts very slowly across the frame, wobbling gently like jelly; the blurred Earth behind turns almost imperceptibly. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station."
+    },
+    {
+      "id": "O05",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [],
+      "personajes": [],
+      "funcion": "La fila de bandejas bajo la luz magenta, con el ojo de buey y la Tierra al fondo.",
+      "ve": "One single picture filling the ENTIRE 16:9 frame edge to edge, top to bottom, with no black bars: WIDE SHOT along one row of white hydroponic trays inside a small orbital greenhouse module, looking toward a round closed hatch at the far end. Green plants under long magenta grow-light tubes, tidy cables along the ceiling, white and grey panels, tiny dust motes in the pink light. The round hatch is closed. Nobody in the module.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The only motion: the Earth in the big round porthole at the far end turns very slowly and its clouds drift. Everything else in the picture, including every light, is a still painting: nothing changes in brightness or colour from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint electrical hum from the grow lights.",
+      "seed": 3005
+    },
+    {
+      "id": "O06",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "modulo",
+      "personajes": [],
+      "funcion": "Una planta de frutilla con una frutilla roja madura bajo la luz magenta.",
+      "ve": "CLOSE UP of a strawberry plant in a white hydroponic tray under magenta grow light: green leaves, one ripe red strawberry hanging from its stem, a small white flower, tiny droplets on the leaves. Behind, out of focus, pink-lit greenery. Only the plant.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The strawberry sways very slightly on its stem; a droplet on a leaf trembles; the grow light stays steady. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint electrical hum from the grow lights.",
+      "seed": 2006
+    },
+    {
+      "id": "O07",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_modulo"
+      ],
+      "personajes": [],
+      "funcion": "La condensación por dentro del ojo de buey, la Tierra borrosa detrás.",
+      "ve": "EXTREME CLOSE UP of the inside of the porthole glass: fine condensation droplets covering the glass in the foreground, sharp, and behind them, out of focus, the blue Earth with its white clouds and the glow of the atmosphere line. Only the droplets and the blurred Earth.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Two droplets slowly merge into one; the blurred Earth behind turns almost imperceptibly and its glow shifts very slightly. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station."
+    },
+    {
+      "id": "O08",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_modulo"
+      ],
+      "personajes": [],
+      "funcion": "El ventilador de la rejilla girando despacio, polvo flotando en la luz.",
+      "ve": "CLOSE UP of a round vent grille in a white panel, with a small fan turning slowly behind the grille, lit from one side by magenta grow light and from the other by cool blue light; tiny dust motes floating in front of it. Only the grille, the fan and the motes.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The fan blades turn slowly and steadily behind the grille; dust motes drift slowly toward the grille and past it. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are the soft steady whir of the small fan and a faint deep hum of the station."
+    },
+    {
+      "id": "O09",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "modulo",
+      "personajes": [],
+      "funcion": "Raíces blancas en un tubo transparente con burbujas subiendo, luz magenta.",
+      "ve": "CLOSE UP of a clear hydroponic tube under a tray: fine white roots hanging in the water inside the tube, tiny air bubbles rising through the water, magenta light glowing through the tube. Only the tube, the roots, the water and the bubbles.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. Tiny bubbles rise slowly and steadily through the water; the roots sway very slightly in the flow; the magenta light stays steady. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft bubbling of water in the tube and a faint steady hum of ventilation."
+    },
+    {
+      "id": "O10",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [],
+      "personajes": [],
+      "funcion": "El ojo de buey grande con la Tierra, y en primer término las siluetas de las plantas a contraluz.",
+      "ve": "WIDE SHOT inside a small orbital greenhouse module: a big round porthole fills the centre of the frame with the blue Earth and its white clouds glowing against black space, and in the foreground the dark silhouettes of leafy plants in trays, rimmed in magenta light from grow tubes at the sides. Cool blue Earth-light on the white panels. Nobody in the module.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The Earth turns very slowly in the porthole and its clouds drift; the leaf silhouettes sway very slightly; dust motes float through the blue light. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station."
+    },
+    {
+      "id": "O11",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_modulo"
+      ],
+      "personajes": [],
+      "funcion": "El manojo de hierbas secas colgando y la regadera metálica sujeta a la pared.",
+      "ve": "CLOSE UP of a bundle of dried herbs hanging from a hook on a white panel, tied with string, next to a small metal watering can held to the wall by a strap; magenta light from one side, cool blue from the other; tiny dust motes. Only the herbs, the can and the panel.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The bundle of herbs sways very slightly, weightless; dust motes drift past; the light stays steady. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station."
+    },
+    {
+      "id": "O12",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "refs": [
+        "l_modulo"
+      ],
+      "personajes": [],
+      "funcion": "CIERRE DEL BUCLE. El lado nocturno de la Tierra por el ojo de buey: la línea del amanecer avanzando. Corta a O01.",
+      "ve": "CLOSE UP of the round porthole filling the frame: through the glass, the Earth seen at the edge between night and day, the night side dark blue with a soft green curtain of aurora near the top, the day side bright blue with clouds, the thin glowing atmosphere line along the curve, black space with a few stars. Only the porthole and the Earth.",
+      "mueve": "LOCKED-OFF STATIC CAMERA, perfectly still for the whole shot. The Earth turns very slowly so the line between night and day creeps a little; the aurora curtain ripples softly; the clouds drift. Nothing else moves. The magenta grow lights stay switched on at exactly the same colour and the same brightness for the entire shot, and the cool blue Earth-light stays the same too: the lighting of the picture does not change at all from the first frame to the last.",
+      "audio": "[Ambient] The only sounds are a soft steady hum of ventilation and a faint deep hum of the station."
+    }
+  ]
+}

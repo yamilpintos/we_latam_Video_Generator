@@ -1,0 +1,370 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "EL LOCO DEL CARBÓN",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png",
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT from the street of the snowy yard, vertical frame. Ramón stands on top of a mountain of coal taller than the fence, shovel in hand, in his navy work overall and grey beanie, breath steaming. Blue tarps half pulled off the pile. Two neighbours at the wire fence with phones raised, filming him. Grey dead sky, snow on everything.\nNARRATIVE INTENT OF THIS FRAME: The single most absurd and readable image of the story: one clear subject doing something extreme, high contrast, instantly understandable as a thumbnail.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_oficina.png",
+        "assets/m_lucia.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT of Lucía at her desk in the corporate office, vertical frame, the grey city behind the glass wall. She wears the burgundy turtleneck, coat on the chair, typing, a coffee beside the keyboard. Frost is forming at the corner of the glass behind her, unnoticed.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_lucia.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP of Lucía INSIDE the office, still seated at her desk, holding the phone to her ear, vertical frame. Behind her, out of focus, the office's glass wall with frost creeping in from the corners and the grey city beyond, desks and monitors around her. Her face goes from routine to alarm. The phone screen glow on her cheek. Indoor fluorescent light, no snow falling on her.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_lucia.png",
+        "assets/l_oficina.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nAMERICAN SHOT of Lucía walking fast down the office aisle toward the elevators, vertical frame, pulling on the grey coat, phone still at her ear, bag over her shoulder. Coworkers turning their heads. Through the glass wall, the sky has gone the wrong colour.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_ruta.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME WIDE SHOT of the jammed highway out of the city at dusk, vertical frame, snow blowing sideways. In the emergency lane, three black luxury SUVs and a sedan without licence plates overtake the whole jam at speed, exhaust freezing behind them. Ordinary cars sit bumper to bumper with headlights on.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_tomi.png",
+        "assets/l_ruta.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT inside the car, vertical frame: Tomi in the passenger seat in his black puffer and red beanie, scrolling his phone, smirking, headphones around his neck. Through the window behind him the frozen jam and blowing snow. Lucía's hands on the wheel at the edge of frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S07",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png",
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT of the snowy yard from the gate, vertical frame: the coal mountain under blue tarps, rows and rows of canned food stacked on pallets, gas cylinders, and the old green truck loaded to the roof. Ramón in his navy overall is cutting a steel plate with an angle grinder, sparks flying orange against the snow.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP on Ramón's big scarred hands holding a metal bucket toward camera, vertical frame. Inside: a dozen small sparrows, rigid, feathers crusted white with frost. His navy overall sleeve and a bit of grey beard at the top of frame. Snow falling into the bucket.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_ramon.png",
+        "assets/m_marta.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT in the back room, vertical frame: Ramón seated at a small table beside the glowing coal stove, a worn bank card and a notebook in front of him, Marta standing behind with a tray of steaming bread rolls, in her flowered apron. Warm firelight on both faces. Frost on the single window.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S10",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_barrio.png",
+        "assets/m_beto.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT from inside the yard through the wire fence toward the street, vertical frame: Don Beto on the snowy sidewalk in his brown leather jacket, phone held up horizontally, filming the yard, grinning under his grey moustache. Two more neighbours behind him laughing. The coal mountain edge in the foreground.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_lucia.png",
+        "assets/m_tomi.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nAMERICAN SHOT in a wholesale warehouse aisle, vertical frame: Lucía in her grey coat pushing a cart piled with sacks of rice, oil cans and medicine boxes, Tomi behind her dragging a second cart stacked with batteries and canned food. Half-empty shelves. Harsh warehouse light. Other shoppers with full carts too.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME CLOSE UP of an old analogue outdoor thermometer screwed to the brick wall of the house, vertical frame, its glass frosted, the red column deep in the negative numbers. Snow piled on top of it. Behind it, out of focus, the yard and the coal pile under snow at night, one warm window.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S13",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_ramon.png",
+        "assets/m_marta.png",
+        "assets/m_tomi.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT of the heated back room at night, vertical frame: the coal stove glowing in the centre, mattresses side by side on the floor with blankets, Marta tucking a blanket over Tomi who lies with his red beanie still on, Ramón sitting on a crate feeding coal into the stove with a small shovel. Warm orange light, everything else dark.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S14",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_barrio.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME WIDE SHOT of the neighbourhood street at night under deep snow, vertical frame, from above. Every house has windows lit bright, the blue flicker of televisions, a streetlight buzzing. At the end of the street, one house with a smoking metal chimney: ours. Frozen tyre tracks in the road.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S15",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP on a bare light bulb hanging from a wire in the back room, vertical frame, glowing yellow. Below it, out of focus, the top of the coal stove glowing orange and the frosted window black with night.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S16",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_barrio.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT of the neighbourhood street at night, vertical frame, now in TOTAL darkness: no windows lit, no streetlight, only the blue of snow under a clouded moon. At the end of the street, one chimney smoking and the faint orange of a window: our house.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S17",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_marta.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT of Marta at the back room door, vertical frame, holding a candle, her flowered apron over the green fleece, her face lit warm from below, listening. Behind her the stove glow and shapes on the mattresses. The door has frost on the inside of its edges.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S18",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP of Ramón standing INSIDE the warm doorway of the house, vertical frame, the orange stove glow behind him, cold blue snow-light on the front of his face, grey beard, grey beanie, navy work overall. He looks DOWN at a small boy of twelve who stands OUTSIDE on the snowy step below him, seen from behind and below at the bottom edge of the frame: a dark-haired head, no coat, shoulders shaking, snow on his hair. Ramón's expression is hard and completely calm.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S19",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png",
+        "assets/m_beto.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nAMERICAN SHOT at the gate of the yard at night, vertical frame: Don Beto in his brown leather jacket wrapped in a blanket, a woman and a small girl behind him also in blankets, snow on their shoulders, lit only by a flashlight from inside. His phone is nowhere. His moustache is white with frost. He is shaking.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S20",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_ramon.png",
+        "assets/m_beto.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT in the back room, vertical frame: Ramón standing by the stove, arms crossed, talking; Don Beto sitting on a crate with a blanket around him, a mug of something hot in both hands, looking up at him, humbled, the mocking smile gone. Other figures on the mattresses in the background.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S21",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME CLOSE UP of an old battery radio on the wooden table, vertical frame, its small red tuning light on, a hand-cranked flashlight beside it, a candle. The stove glow in the background, frosted window beyond.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S22",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_barrio.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME WIDE AERIAL SHOT of the city at dawn during the cold wave, vertical frame: apartment towers with every window dark, streets empty and white, a burst water main frozen into a huge sculpture of ice across an avenue, abandoned cars buried to the roofs, no smoke, no movement anywhere.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S23",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_lucia.png",
+        "assets/l_pieza.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP of Lucía at the frosted back-room window, vertical frame, in the burgundy turtleneck with a blanket over her shoulders, her face lit blue from the window and orange from the stove behind. She looks out at nothing. Her breath fogs the glass.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S24",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png",
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT from the porch of the house toward the gate, vertical frame, snowing: a line of about twenty neighbours outside the wire fence wrapped in blankets and coats, children among them, holding bags. Ramón stands at the gate in his overall and beanie, one hand on the latch, looking at them.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S25",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_ramon.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT of Ramón opening the wire gate from inside, vertical frame, his big scarred hand on the frozen latch, face set, snow on his beanie and beard. Beyond the gate, out of focus, the blanketed neighbours pressing forward.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S26",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_marta.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT of Marta at the coal stove, vertical frame, stirring an enormous pot with a wooden spoon, steam rising into the firelight, her flowered apron, scarf, sleeves pushed up. Around her, out of focus, many people sitting on the mattresses with bowls, a child's hand reaching up.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S27",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_tomi.png",
+        "assets/m_beto.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nAMERICAN SHOT at the coal pile in the yard, vertical frame, daylight grey: Tomi in his black puffer and red beanie shovelling coal into a metal bucket, Don Beto in the brown leather jacket carrying two full buckets past him toward the house, both breathing steam, coal dust on their faces. The pile visibly lower than before.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S28",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_ramon.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP on Ramón's hand drawing a chalk line on the brick wall beside the coal pile, vertical frame: a column of chalk marks going down the wall, each lower than the last, the newest just below yesterday's. His navy overall sleeve, coal dust on his knuckles. The coal pile behind, lower than the marks above it.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S29",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT in the crowded back room, vertical frame: Ramón standing, holding out a coal shovel handle-first toward a man out of focus in the foreground, his face calm and hard, firelight on his beard. People on the mattresses watching. Marta behind him with the pot.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S30",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME WIDE SHOT of the house at night in a violent blizzard, vertical frame: snow blasting horizontally, the yard and the coal pile buried, the roof a white mound, and the metal chimney pipe half swallowed by a drift, its smoke choking and blowing back down. One faint orange window. Nothing else visible in the white.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S31",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP on the joint of the coal stove pipe near the ceiling, vertical frame: grey smoke leaking back OUT of the seam and pooling under the ceiling instead of going up. Below, out of focus, the crowded room, people's faces turning up toward it, a candle.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S32",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_tomi.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nAMERICAN SHOT at the back door of the house in the blizzard, vertical frame: Tomi in his black puffer with the red beanie pulled low, a rope tied around his waist, one foot already on a ladder against the wall, snow blasting past him horizontally. A flashlight from the doorway lights his back. His hands are bare.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S33",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_tomi.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT on the snow-buried roof in the blizzard, vertical frame: Tomi on his knees in the drift, red beanie, black puffer white with snow, digging with his bare hands around the half-buried chimney pipe, the rope trailing behind him into the white. Horizontal snow. No sky, no ground, only white and him.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S34",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_pieza.png",
+        "assets/m_beto.png",
+        "assets/m_tomi.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT in the back room, vertical frame: Don Beto in his leather jacket holding Tomi in a hard embrace, Tomi's red beanie soaked, snow melting off his black puffer onto the floor, his white fingers pressed against Beto's back. The stove glowing again behind them, the smoke gone. Faces around them in the firelight.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S35",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_ramon.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP on Ramón's hand holding a flashlight against the coal pile at night in the blizzard, vertical frame, the beam showing the pile now at half the height of the chalk marks on the wall beside it. Snow in the beam. His overall sleeve crusted white.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S36",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_barrio.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME WIDE SHOT of the neighbourhood at sunrise after the storm, vertical frame: a low pale sun on a white silent world, houses buried to the windows, bare trees crusted with ice glittering, and at the end of the street one chimney smoking straight up into still air. Very long shadows on the snow.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S37",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png",
+        "assets/m_ramon.png",
+        "assets/m_marta.png",
+        "assets/m_lucia.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nWIDE SHOT from the street of the house in sunlight, vertical frame: an olive-green army truck stopped at the gate with soldiers climbing down, and in the yard a crowd of about thirty people in blankets coming out of the house into the sun, blinking, children running in the snow. On the porch, Ramón in his overall with Marta and Lucía beside him, not moving.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S38",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_beto.png",
+        "assets/m_ramon.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP of Don Beto facing Ramón in the yard in sunlight, vertical frame, Beto in profile in the foreground holding his phone up between them with the screen toward Ramón, Ramón's face beyond, calm. Beto's moustache trembling. Snow bright behind them.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S39",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nCLOSE UP of the coal pile in sunlight, vertical frame — now just a low black heap in a wide dark stain of coal dust on the snow, the shovel standing upright in it. On the brick wall behind, the column of chalk marks runs from far above down to almost the ground. Blue tarps folded on the snow.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S40",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_ramon.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nMEDIUM SHOT of Ramón standing in the yard, vertical frame, in his navy overall and grey beanie, looking up at the sky where grey clouds are gathering again beyond the sun, a notebook and pencil in his hand. Behind him the low remains of the coal pile and a new pallet of canned food.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S41",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_barrio.png",
+        "assets/l_casa.png"
+      ],
+      "prompt": "Photorealistic prestige TV drama footage, an Argentine suburban town hit by an impossible polar cold wave: heavy snow where snow never falls, frost on brick walls and car windows, breath visible, dead blue-grey daylight outside against warm tungsten and firelight inside. Shot on 35mm with shallow depth of field, film grain, natural performances.\nEXTREME WIDE SHOT of the neighbourhood street in late daylight after the thaw has begun, vertical frame: our brick house with its yard at the end, and in front of THREE other houses along the street, small trucks unloading coal into yards, neighbours with shovels, new tarps. Grey clouds gathering overhead again.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

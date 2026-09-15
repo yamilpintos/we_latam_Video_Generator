@@ -1,0 +1,67 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_oficina",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a corporate open-plan office on a high floor, vertical frame, late afternoon. Rows of desks with monitors, a floor-to-ceiling glass wall showing a grey city skyline under a strange heavy sky, frost starting to form at the corners of the glass. Fluorescent light. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_ruta",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a two-lane highway leaving a city at dusk during an extreme cold wave, vertical frame. Cars jammed bumper to bumper with headlights on, exhaust freezing in the air, snow blowing sideways across the asphalt, frost-covered road signs, flat grey fields on both sides. No people visible outside the cars. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_casa",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a modest red-brick house on the outskirts of an Argentine town under heavy snow, vertical frame, from the street. A big yard behind a wire fence with a low brick wall; in the yard, a MOUNTAIN OF COAL taller than a person, half covered with blue tarps, a stack of gas cylinders, and an old green military-style truck. Smoke from a metal chimney. Dead grey sky. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_pieza",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a small back room turned into a shelter, vertical frame. A cast-iron coal stove glowing orange in the centre with a pipe going up through the ceiling, mattresses laid side by side on the floor with piled blankets, a single frosted window, shelves with canned food and candles, a pot on the stove. Warm tungsten and firelight. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_barrio",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a suburban Argentine street at night under deep snow, vertical frame. Low brick houses with wire fences, a few windows lit warm, bare trees heavy with snow, one streetlight buzzing, tyre tracks frozen in the road. Still, silent, very cold. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_lucia",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A woman of 28 from the knees up: dark brown hair in a low ponytail, a long grey wool office coat over a burgundy turtleneck sweater, dark jeans, small silver earrings, a serious intelligent face, natural skin. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_ramon",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A man of 58 from the knees up, a mechanic: broad and weathered, short grey beard, a grey wool beanie, a navy blue work overall stained with grease and coal dust over a thick brown sweater, big scarred hands hanging at his sides, calm hard eyes. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_marta",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A woman of 55 from the knees up: grey-streaked hair pinned up, a flowered kitchen apron over a dark green fleece, a wool scarf around her neck, warm tired eyes, hands clasped in front of the apron. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_tomi",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A skinny boy of 17 from the knees up: a black puffer jacket, a red knit beanie, headphones hanging around his neck, sneakers, restless hands in his pockets, a half-bored teenage expression. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_beto",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A man of 60 from the knees up: a thick grey moustache, a brown leather jacket over a checked shirt, a smartphone held in one hand at chest height, a mocking half-smile. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ]
+}

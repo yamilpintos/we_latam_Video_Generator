@@ -1,0 +1,213 @@
+{
+  "assets_requeridos": {
+    "personajes": {
+      "p_pescador": "Cinematic portrait of a weathered Arab fisherman, 55 years old, deeply lined sun-burnt face, gray beard, tired but sharp intelligent eyes, wearing a coarse patched linen tunic and a faded head wrap, neutral dark gray background, highly detailed skin texture, 8k resolution, photorealistic, 35mm lens.",
+      "p_efrit": "Cinematic full body portrait of a colossal Ifrit genie made of dark swirling smoke and glowing embers, towering muscular humanoid form, ash-gray skin cracked with molten orange light, burning amber eyes, no lower body, dissolving into a column of black smoke, neutral dark gray background, dramatic underlighting, 8k, photorealistic, epic scale."
+    },
+    "locaciones": {
+      "l_playa_amanecer": "Cinematic wide establishing shot of an empty Arabian sea shore at dawn. Pale gold light on flat wet sand, calm shallow water, low mist over the horizon, a few worn wooden stakes in the sand, cold blue shadows, lonely and quiet atmosphere, 8k, photorealistic.",
+      "l_orilla_rocosa": "Cinematic establishing shot of a rocky Arabian shoreline in hard morning light. Dark wet volcanic rocks, foam between the stones, scattered seaweed and broken pottery, harsh sun, deep shadows, 8k, photorealistic.",
+      "l_playa_atardecer": "Cinematic wide establishing shot of the same Arabian sea shore at dusk. Deep amber and violet sky, long shadows across the sand, dark restless water, silhouetted horizon, ominous and final atmosphere, 8k, photorealistic."
+    }
+  },
+  "timeline": [
+    {
+      "clip_id": 1,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Wide shot. An old fisherman walks alone across the wet sand toward the water, a heavy net folded over his shoulder. The camera pushes in slowly behind him. Dawn light, long shadow.",
+      "prompt_audio_minimax": "[Foley] Bare feet on wet sand, wet rope creaking on a shoulder. [Ambient] Small waves, distant gulls, low wind. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 2,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "The fisherman stops at the water's edge, plants his feet, swings the net back and casts it wide over the shallow water. The net opens in the air and lands flat. Camera holds.",
+      "prompt_audio_minimax": "[Foley] Net whipping through air, weights hitting water, splash. [Ambient] Small waves, low wind. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 3,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Medium shot. The fisherman hauls the rope hand over hand, straining, leaning back. The net comes up heavy and streaming water. His face is hopeful.",
+      "prompt_audio_minimax": "[Foley] Wet rope dragging, straining breath, water pouring off netting. [Ambient] Waves. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 4,
+      "locacion_id": "l_orilla_rocosa",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Medium shot. The fisherman drops the net open on the rocks. Inside is the bloated carcass of a dead donkey tangled in the mesh. He steps back, covers his nose, shoulders falling.",
+      "prompt_audio_minimax": "[Foley] Wet heavy mass hitting stone, net rustling, a disgusted exhale. [Ambient] Flies, waves on rocks. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 5,
+      "locacion_id": "l_orilla_rocosa",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Close up on the fisherman's weathered face. He looks out at the sea, jaw tight, then speaks quietly to himself with resignation. Hard morning light.",
+      "prompt_audio_minimax": "[Speech] 'Cuatro veces echo la red cada dia. Ni una mas. Que el mar decida mi suerte.' [Ambient] Waves on rock, wind. NO MUSIC.",
+      "texto_dialogo_limpio": "Cuatro veces echo la red cada día. Ni una más. Que el mar decida mi suerte.",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 6,
+      "locacion_id": "l_orilla_rocosa",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Medium shot. Second cast. He pulls the net up onto the rocks: it holds only a broken clay jar packed with black mud and sand. He tips it over and the mud slides out.",
+      "prompt_audio_minimax": "[Foley] Wet sand and mud sliding, clay scraping stone, tired breathing. [Ambient] Waves. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 7,
+      "locacion_id": "l_orilla_rocosa",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Wide shot. Third cast. The net comes up holding nothing but shards of broken pottery and seaweed. The fisherman sits down heavily on a rock, head lowered, hands hanging.",
+      "prompt_audio_minimax": "[Foley] Pottery shards clattering on stone, a long defeated sigh. [Ambient] Waves, wind. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 8,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Wide shot. Fourth and last cast. The fisherman throws the net, then hauls the rope. It goes taut and stops dead. He pulls harder, feet sliding in the sand, leaning his whole weight back.",
+      "prompt_audio_minimax": "[Foley] Rope going taut and creaking, feet skidding in wet sand, hard straining breath. [Ambient] Waves. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 9,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "The fisherman drags the net out of the shallows onto the sand. A heavy sealed brass jar slides free of the mesh, green with age and streaming water. He kneels down beside it.",
+      "prompt_audio_minimax": "[Foley] Heavy metal dragging on wet sand, water draining, knees hitting sand. [Ambient] Waves. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 10,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Extreme close up on the neck of the brass jar. A thick lead seal caps it, stamped with an intricate engraved sigil. Wet sand and green corrosion in the grooves. The camera drifts slowly around it.",
+      "prompt_audio_minimax": "[Foley] Fingers scraping wet corroded metal. [Ambient] Waves, wind. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 11,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Medium close up. The fisherman turns the jar in his hands, weighing it, and speaks with rising hope. He draws a small knife from his belt and sets the blade under the lead seal.",
+      "prompt_audio_minimax": "[Speech] 'Plomo sellado. Esto lo vendo en el zoco y como un mes entero.' [Foley] Metal turning in wet hands, knife sliding from a belt. NO MUSIC.",
+      "texto_dialogo_limpio": "Plomo sellado. Esto lo vendo en el zoco y como un mes entero.",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 12,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Close up. He levers the knife hard and the lead seal cracks and pops off. A thin thread of black smoke immediately begins to hiss out of the open neck. He freezes, still holding the knife.",
+      "prompt_audio_minimax": "[Foley] Lead cracking and clattering, a high hissing rush of escaping smoke, a sharp intake of breath. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 13,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "The thread of smoke swells into a torrent pouring upward out of the jar. The fisherman scrambles backwards across the sand. The camera tilts up following the black column climbing into the pale dawn sky.",
+      "prompt_audio_minimax": "[Foley] Roaring rush of smoke, scrambling in sand, panicked breathing. [Ambient] Wind rising hard. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 14,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_efrit"],
+      "prompt_video_minimax": "The towering column of smoke thickens and folds in on itself, condensing into the colossal form of an Ifrit: ash-gray cracked skin lit from within by molten orange, burning amber eyes opening, lower body still a churning column of smoke.",
+      "prompt_audio_minimax": "[Foley] Deep bass rumble of condensing smoke, low thunder. [Ambient] Roaring wind. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 15,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_efrit"],
+      "prompt_video_minimax": "Extreme low angle shot looking up at the Ifrit against the dawn sky. He looks down at the camera and speaks, his face filling the frame, embers falling from his jaw.",
+      "prompt_audio_minimax": "[Speech] 'Preparate a morir, pescador. Elige de que manera quieres que te mate.' [Foley] Deep resonant rumble under the voice. NO MUSIC.",
+      "texto_dialogo_limpio": "Prepárate a morir, pescador. Elige de qué manera quieres que te mate.",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 16,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Low medium shot. The fisherman on his knees in the wet sand, tiny in frame, looking up in terror. He raises one open hand and speaks, voice shaking.",
+      "prompt_audio_minimax": "[Speech] 'Por que? Yo te he liberado. Fui yo quien rompio el sello que te encerraba.' [Ambient] Hard wind, waves. NO MUSIC.",
+      "texto_dialogo_limpio": "¿Por qué? Yo te he liberado. Fui yo quien rompió el sello que te encerraba.",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 17,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_efrit"],
+      "prompt_video_minimax": "Medium shot of the Ifrit from the side, arms spread wide, embers streaming off him. He speaks with slow contempt as the camera arcs around him.",
+      "prompt_audio_minimax": "[Speech] 'Cien anos jure enriquecer a quien me abriera. Nadie vino. Cuatrocientos espere. Y jure matar al que llegara.' [Foley] Low rumble, crackling embers. NO MUSIC.",
+      "texto_dialogo_limpio": "Cien años juré enriquecer a quien me abriera. Nadie vino. Cuatrocientos esperé. Y juré matar al que llegara.",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 18,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Close up on the fisherman. The terror leaves his face and something sharp replaces it. He glances at the small brass jar in the sand, then back up, and speaks carefully.",
+      "prompt_audio_minimax": "[Speech] 'Antes de morir, respondeme algo. Ese cuerpo tuyo no cabe en esta jarra. Como voy a creerte?' [Ambient] Wind dropping slightly. NO MUSIC.",
+      "texto_dialogo_limpio": "Antes de morir, respóndeme algo. Ese cuerpo tuyo no cabe en esta jarra. ¿Cómo voy a creerte?",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 19,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_efrit"],
+      "prompt_video_minimax": "Wide shot. The Ifrit throws his head back, offended, and his whole body begins to unravel from the edges into black smoke, collapsing downward.",
+      "prompt_audio_minimax": "[Foley] Furious roar collapsing into a rushing hiss of smoke. [Ambient] Wind surging. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "hard_cut"
+    },
+    {
+      "clip_id": 20,
+      "locacion_id": "l_playa_amanecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "The column of smoke funnels down and pours back into the neck of the brass jar until the last wisp disappears inside. The fisherman lunges forward across the sand and slams the lead seal down onto the mouth.",
+      "prompt_audio_minimax": "[Foley] Sucking rush of smoke into metal, a body hitting wet sand, lead slammed onto brass. NO MUSIC.",
+      "texto_dialogo_limpio": "",
+      "tipo_transicion": "continuous_frame"
+    },
+    {
+      "clip_id": 21,
+      "locacion_id": "l_playa_atardecer",
+      "personajes_presentes": ["p_pescador"],
+      "prompt_video_minimax": "Wide silhouette shot at dusk. The fisherman stands at the water's edge holding the sealed jar. He speaks down to it, then hurls it far out into the dark water. Camera holds on the ripples.",
+      "prompt_audio_minimax": "[Speech] 'Ahora vuelve al mar, y esta vez quedate hasta el fin de los tiempos.' [Foley] Heavy throw, distant splash. [Ambient] Evening waves, wind. NO MUSIC.",
+      "texto_dialogo_limpio": "Ahora vuelve al mar, y esta vez quédate hasta el fin de los tiempos.",
+      "tipo_transicion": "hard_cut"
+    }
+  ],
+  "hoja_de_ruta_sonora": [
+    {"rango_tiempo": "00:00 - 00:45", "instruccion": "SFX: Mar calmo, gaviotas lejanas, pasos en arena mojada, red al agua. MÚSICA: Nada, o un drone muy bajo. Dejar respirar el amanecer."},
+    {"rango_tiempo": "00:45 - 01:45", "instruccion": "SFX: Cuerda tensa, moscas sobre el burro, cerámica rota, mar contra roca. MÚSICA: Ney o flauta sola, resignada, muy tenue. Sube apenas en cada tirada fallida."},
+    {"rango_tiempo": "01:45 - 02:30", "instruccion": "SFX: Metal pesado arrastrado, agua escurriendo, plomo raspando. MÚSICA: Cuerdas graves entrando de a poco, curiosidad, tensión que crece. Cortar seco justo antes de que salte el sello."},
+    {"rango_tiempo": "02:30 - 03:30", "instruccion": "SFX: Siseo del humo, viento en aumento, trueno grave, brasas. MÚSICA: Golpe orquestal en la aparición del efrit, después percusión grave sostenida. Es el pico de la película."},
+    {"rango_tiempo": "03:30 - 04:30", "instruccion": "SFX: Rugido grave bajo la voz del efrit, viento fuerte. MÚSICA: Tensión sostenida en cuerdas, bajar en el plano del pescador para que se escuche su miedo, subir con el relato de los siglos."},
+    {"rango_tiempo": "04:30 - 05:00", "instruccion": "SFX: Humo succionado al metal, plomo golpeando bronce. MÚSICA: Corte abrupto al sellar la jarra. Silencio total dos segundos."},
+    {"rango_tiempo": "05:00 - 05:15", "instruccion": "SFX: Lanzamiento, chapoteo lejano, olas de atardecer. MÚSICA: Oud solo, tema del pescador, resolución tranquila. Dejar que termine sobre el mar vacío."}
+  ]
+}

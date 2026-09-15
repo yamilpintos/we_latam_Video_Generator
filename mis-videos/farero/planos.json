@@ -1,0 +1,308 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "EL FARERO",
+  "slug": "farero",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "short-60",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "FARERO",
+      "tramo": "HOOK",
+      "tipo": "PD",
+      "loc": "sala",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "HOOK. La lámpara vieja, débil, parpadeando: cuarenta años y se está muriendo.",
+      "first_frame": "assets/sb_S01.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The filament flickers twice, dims almost to nothing, and recovers weakly. Rain intensifies on the glass behind. The blue of a lightning flash sweeps through the lens rings.\nAUDIO: [SFX] a low electrical hum wavering with the flicker, a heavy relay ticking. [Ambient] storm rain on glass, wind pressing on the tower.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "la cambian a mano una vez al año",
+      "usa": [
+        0.0,
+        3.0
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        3.0
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "FARERO",
+      "tramo": "PROMESA",
+      "tipo": "PGE",
+      "loc": "exterior",
+      "personajes": [
+        "farero"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "PROMESA. El faro entero en la tormenta y el farero diminuto entrando con la lámpara nueva.",
+      "first_frame": "assets/sb_S02.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: A wave bursts against the rocks and the spray sweeps across the base. The tiny figure pushes the steel door open against the wind and slips inside with the crate. The amber glow at the top flickers once.\nAUDIO: [SFX] a wave detonating on rock, close and huge. [Ambient] the full storm: wind, rain, the sea dragging back. [Foley] a heavy steel door slamming.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.5
+      ],
+      "en_linea_de_tiempo": [
+        3.0,
+        5.5
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "FARERO",
+      "tramo": "PROGRESO",
+      "tipo": "PG",
+      "loc": "escalera",
+      "personajes": [
+        "farero"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "BARRA DE PROGRESO. La escalera caracol desde arriba: el ojo sigue la subida, el contador va en post.",
+      "first_frame": "assets/sb_S03.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The keeper climbs turn after turn, his headlamp beam wiping across the peeling wall, boots landing heavy on the worn steps. The camera slowly descends toward him as he rises. Lightning pulses light the shaft twice.\nAUDIO: [Foley] boots on stone, steady and effortful, breath inside a hood. [Ambient] the storm muffled by thick walls, wind moaning in the shaft.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "escalón 47 de 212",
+      "usa": [
+        0.0,
+        4.2
+      ],
+      "en_linea_de_tiempo": [
+        5.5,
+        9.7
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "FARERO",
+      "tramo": "PROGRESO",
+      "tipo": "PD",
+      "loc": "escalera",
+      "personajes": [
+        "farero"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "TENSIÓN. Se le apaga la linterna a mitad de subida: cambio de régimen de luz y sonido.",
+      "first_frame": "assets/sb_S04.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The headlamp flickers, dies, comes back for a heartbeat, and dies for good. Darkness takes the stairwell — only the round window stays faintly blue, and a lightning flash silhouettes the hooded figure. He pockets the dead lamp and keeps climbing by feel.\nAUDIO: [Foley] a glove smacking plastic, twice. [SFX] the electrical whine of the lamp dying. [Ambient] the storm suddenly louder in the dark, as if closer.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        4.3
+      ],
+      "en_linea_de_tiempo": [
+        9.7,
+        14.0
+      ]
+    },
+    {
+      "id": "S05",
+      "escena": "FARERO",
+      "tramo": "REVELACION",
+      "tipo": "PG",
+      "loc": "sala",
+      "personajes": [
+        "farero"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "ESCALERA 1. Llega arriba: la sala y la lámpara casi muerta pulsando débil.",
+      "first_frame": "assets/sb_S05.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The bulb pulses slower and dimmer, and the room breathes with it: amber, dark, amber, dark. The keeper sets the wooden crate down without taking his eyes off the lamp. Rain lashes the windows harder.\nAUDIO: [SFX] the electrical hum stuttering with each pulse. [Foley] a wooden crate set down on the floor, water dripping off a coat. [Ambient] the storm surrounding the glass room on all sides.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        14.0,
+        19.5
+      ]
+    },
+    {
+      "id": "S06",
+      "escena": "FARERO",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": "exterior",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "ESCALERA 2 · ESCALA. La cúpula chiquita contra el mar negro enorme: lo que depende de esa lucecita.",
+      "first_frame": "assets/sb_S06.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: A slow drift forward over the enormous sea toward the tiny lighthouse. The amber glow at its top flickers, almost dies, and holds. Lightning flashes twice and the whole sea surface flares white-blue and goes black again.\nAUDIO: [Ambient] the open sea storm, huge and wide, thunder rolling long. [SFX] under it, very faint, the far hum of the struggling lamp.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        19.5,
+        25.5
+      ]
+    },
+    {
+      "id": "S07",
+      "escena": "FARERO",
+      "tramo": "REVELACION",
+      "tipo": "PD",
+      "loc": "sala",
+      "personajes": [
+        "farero"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "ESCALERA 3. El cambio: sale la vieja humeando de calor, entra la nueva, pesada, justa.",
+      "first_frame": "assets/sb_S07.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The gloves set the old bulb carefully into the crate, take up the new heavy bulb with visible effort, and lower it slowly into the brass socket, aligning it by feel — it settles in with one firm push. The heat-steam off the old bulb drifts and disappears.\nAUDIO: [Foley] glass set on wood, gloves gripping, the heavy bulb seating into brass with a clunk. [SFX] the old bulb ticking as it cools. [Ambient] the storm on the glass, constant.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.5
+      ],
+      "en_linea_de_tiempo": [
+        25.5,
+        32.0
+      ]
+    },
+    {
+      "id": "S08",
+      "escena": "FARERO",
+      "tramo": "GIRO",
+      "tipo": "PG",
+      "loc": "sala",
+      "personajes": [
+        "farero"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "GIRO. La enciende y... NADA. La sala queda negra: desaparece la luz y desaparece el zumbido.",
+      "first_frame": "assets/sb_S08.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: He throws the lever. Nothing. The lens stays dark. He throws it again — nothing, and a lightning flash fills the room white-blue and drops it back into black. His hooded head turns slowly toward the dark lamp. Rain runs down all the windows.\nAUDIO: [Foley] a heavy brass lever thrown, twice, dry clicks. [SFX] the electrical hum completely GONE — only silence where it was. [Ambient] the storm suddenly the loudest thing in the world.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "no enciende",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        32.0,
+        38.1
+      ]
+    },
+    {
+      "id": "S09",
+      "escena": "FARERO",
+      "tramo": "CONTACTO",
+      "tipo": "PD",
+      "loc": "sala",
+      "personajes": [
+        "farero"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CONTACTO. A ciegas, a puro tacto: la rosca medio punto más, iluminado sólo por los rayos.",
+      "first_frame": "assets/sb_S09.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The gloves twist the bulb's base a careful half-turn deeper into the socket, feeling for the seat. A pause — everything black between lightning flashes. Then one glove pats the glass once, gently, like luck.\nAUDIO: [Foley] rubber gloves creaking on glass, brass threads turning, one soft pat. [Ambient] thunder close, rain hammering. [SFX] total electrical silence underneath.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.2
+      ],
+      "en_linea_de_tiempo": [
+        38.1,
+        43.3
+      ]
+    },
+    {
+      "id": "S10",
+      "escena": "FARERO",
+      "tramo": "CONTACTO",
+      "tipo": "PP",
+      "loc": "sala",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "EL DETALLE, sostenido: el filamento despierta — de un hilito naranja a un resplandor blanco.",
+      "first_frame": "assets/sb_S10.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The filament wakes: first one dull orange thread, creeping along the coil, then brightening through deep orange to yellow to a growing white glow that blooms and fills the whole frame with warm light. The blue storm world turns gold around it.\nAUDIO: [SFX] the electrical hum returning — first a whisper, then rising, steady and healthy. [Ambient] the storm receding behind the growing hum.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        43.3,
+        49.3
+      ]
+    },
+    {
+      "id": "S11",
+      "escena": "FARERO",
+      "tramo": "PAGO",
+      "tipo": "PD",
+      "loc": "sala",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "EL PAGO. Vuelta al encuadre del gancho: la misma lámpara, ahora a plena potencia, y el haz arranca a girar.",
+      "first_frame": "assets/sb_S11.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The lens assembly begins to rotate slowly around the blazing bulb and the fanned rays sweep across the frame like spokes of light. Rain on the window flares gold every time a ray crosses it.\nAUDIO: [SFX] the healthy hum now full, and the deep slow mechanical turn of the lens gears starting up. [Ambient] the storm still there, but beaten.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.6
+      ],
+      "en_linea_de_tiempo": [
+        49.3,
+        54.9
+      ]
+    },
+    {
+      "id": "S12",
+      "escena": "FARERO",
+      "tramo": "BUCLE",
+      "tipo": "PGE",
+      "loc": "exterior",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CIERRE EN BUCLE. El haz barre el mar de tormenta y a lo lejos pasan las lucecitas de un barco. Corte a negro.",
+      "first_frame": "assets/sb_S12.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic footage at a lighthouse in a night storm, vertical 9:16. Rain, wind, spray.\nMOTION: The beam sweeps a slow full pass across the sea and catches the distant ship for an instant — its tiny lights blink on through the rain. The beam continues its turn, the storm rages on, and on the beam's next pass the frame cuts to black.\nAUDIO: [Ambient] the storm and the sea, wide. [SFX] the slow rhythmic sweep of the beam, a distant fog horn answering once, then cut to silence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the storm, the sea and the lamp mechanism.\nKeep the framing of the first frame. Grainy, wet, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        5.1
+      ],
+      "en_linea_de_tiempo": [
+        54.9,
+        60.0
+      ]
+    }
+  ]
+}

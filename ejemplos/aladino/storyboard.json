@@ -1,0 +1,391 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "Aladino y la lámpara maravillosa",
+  "aspecto": "16:9",
+  "refs": [
+    "../../Imagenes de referencia/Princesa.png",
+    "../../Imagenes de referencia/Palacio.png"
+  ],
+  "assets": [
+    {
+      "id": "sb_P01",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nWIDE SHOT. The bazaar seen down the length of its main aisle, awnings overhead, stalls piled with fruit and cloth on both sides, a dozen shoppers in robes moving through. No one is the focus. Late morning light falls in slats through the awnings.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nNARRATIVE INTENT OF THIS FRAME: The single strongest image of the whole film: high contrast, one readable subject, something happening that raises a question.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P02",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. The young man stands at a fruit stall piled with pomegranates, half turned away from it, eyes sliding sideways toward the fruit while he pretends to look elsewhere.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nNARRATIVE INTENT OF THIS FRAME: The single strongest image of the whole film: high contrast, one readable subject, something happening that raises a question.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P03",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nINSERT / EXTREME CLOSE UP of an object. A pile of dark red pomegranates on a wooden stall board. ONE single young hand, with exactly five fingers and dirty fingernails, enters from the top right and is closing around the topmost fruit. There is only ONE hand in the picture and no other limbs.\nFRAMING AND SCALE: The object fills the frame. No full figures visible, at most a pair of hands.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P04",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. The bazaar aisle from behind. The young man is running away from camera toward the far stone archway, weaving between shoppers. A stallkeeper is half out of his stall, arm up.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P05",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. A narrow shaded side alley off the bazaar. The young man is crouched low behind a stack of woven baskets, back against the wall, the pomegranate in both hands, chest heaving.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P06",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. The side alley from a low angle. The young man is crouched small at the right edge of frame. At the far end of the alley, framed by the light of the market behind him, the tall old man stands facing him, a long shadow stretching down the alley toward the boy.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P07",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the old man's face, lit from the side, unhurried, appraising, not unkind. He is looking DOWN AND OFF FRAME TO THE RIGHT, at someone crouched low on the right-hand side, and his eyes are clearly aimed to the right, never to the left.\nCHARACTERS, drawn exactly as in their model sheets: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P08",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_bazar.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. Two shot in the alley, the old man standing on the left, the young man half risen on the right. The old man is holding out a gold coin between two fingers. The old man MUST have his long grey beard reaching mid-chest and his hair as in his model sheet: he is not clean-shaven and not bald.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P09",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_desierto.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nEXTREME WIDE SHOT. The desert at dusk, huge orange dunes filling the frame. Two tiny figures walk the ridge of a dune in the middle distance, the old man ahead, the young man trailing behind.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figures are TINY, each about ONE TENTH of the image height, dwarfed by the landscape. The vastness is the point.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P10",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_desierto.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nFULL SHOT. The two of them at ground level on SOFT SAND DUNES, nothing but rolling orange dunes and open sky behind them: no rock formations, no canyon, no cliffs, no cacti, no vegetation. The old man strides ahead in his black cloak. The young man is a few paces behind, dragging his feet, tunic dusty, head down, EXHAUSTED AND MISERABLE, definitely not smiling.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figure is seen head to toe and fills about HALF the image height, with clear space above the head and below the feet.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P11",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_desierto.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the old man's face against the dusk sky, stopped, looking down at the ground ahead of him. Wind moving his beard.\nCHARACTERS, drawn exactly as in their model sheets: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P12",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_desierto.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Wide of the dune floor at the base of a dark rock outcrop, the two small figures standing side by side, facing a bare patch of sand.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P13",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. The young man on a stone stairway in the dark, seen from the front, cold blue-green light rising from below onto his face and chest.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P14",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. The treasure cavern opening out: carved arches, mounds of gold coins and vessels, blue-green light from above and gold light from the hoard. The young man is small at the foot of the stair at the back of frame, standing still.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P15",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. The young man in a narrow path between two mounds of treasure that rise HIGHER THAN HIS SHOULDERS on both sides and run off the left and right edges of the picture, so that he is walking in a trench of gold. Gold light on his face from below.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P16",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nINSERT / EXTREME CLOSE UP of an object. A small plain brass oil lamp, dented and unpolished, sitting alone in a carved stone niche in the cavern wall, seen from the side. Nothing else in the niche. Cold blue-green light from the left, deep shadow to the right. The carved stonework of the niche runs off both the left and the right edges of the picture.\nFRAMING AND SCALE: The object fills the frame. No full figures visible, at most a pair of hands.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P17",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the young man's face, lit cold from one side, looking slightly off camera at something below eye level.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P18",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Sharp low angle from the cavern floor looking straight up the stone stair to a small square of hot daylight far above. The young man is small at the foot of the stair holding the brass lamp. Far up in the square of light, the old man leans in as a silhouette.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P19",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the old man's face from below, hard daylight behind him rimming his beard, the rest of him in shadow. He is looking down.\nCHARACTERS, drawn exactly as in their model sheets: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P20",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the young man's face from slightly above, cold blue-green light on him, looking up. He is holding the lamp hard against his chest with both arms. His expression is STUBBORN AND DEFIANT: jaw set, brows down, mouth a hard line. He is frightened but refusing. He is NOT smiling, NOT dreamy, NOT hopeful.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P21",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Low angle up the stair again. The square of daylight far above. The young man tiny at the bottom, looking up.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P22",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. The young man sitting on the cavern floor with his back against a carved pillar, knees up, holding the brass lamp in both hands in his lap. Very low blue-green light. He looks beaten.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P23",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nINSERT / EXTREME CLOSE UP of an object. Extreme close on the brass lamp held in two dirty hands, a sleeve of patched ochre cloth beginning to rub across its side.\nFRAMING AND SCALE: The object fills the frame. No full figures visible, at most a pair of hands.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P24",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. The cavern with the young man small at the base of the pillar. A thick rope of dark smoke is pouring up out of the lamp spout and already fills the upper half of the frame.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P25",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_aladino.png",
+        "assets/m_genio.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Extreme low angle from the cavern floor. The smoke has resolved into the blue-violet spirit, and it is ENORMOUS: its head almost touches the top edge of the picture, its shoulders run nearly the full width of the frame, and it fills the upper two thirds. Its gold markings glow. Its lower body is a column of smoke going down into the lamp. The young man is a TINY silhouette at the very bottom edge of frame, on his back, looking up. He is about ONE TWELFTH of the image height. The size difference between them is the whole point of the picture.\nCHARACTERS, drawn exactly as in their model sheets: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the huge blue-violet smoke spirit with glowing gold geometric markings on its forearms and chest, a heavy gold collar and wide gold cuffs, its lower body trailing into a column of dark smoke.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P26",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_cueva.png",
+        "assets/m_genio.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the spirit's face, blue-violet skin, thick brows, gold collar at the bottom of frame, glowing markings. It is looking down toward camera.\nCHARACTERS, drawn exactly as in their model sheets: the huge blue-violet smoke spirit with glowing gold geometric markings on its forearms and chest, a heavy gold collar and wide gold cuffs, its lower body trailing into a column of dark smoke.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P27",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nEXTREME WIDE SHOT. The great palace courtyard at dusk, empty. The lit fountain in the middle ground, the enormous ornate archway behind it, arcades down both sides. Warm low sun on the upper stonework.\nFRAMING AND SCALE: The figures are TINY, each about ONE TENTH of the image height, dwarfed by the landscape. The vastness is the point.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P28",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nFULL SHOT. The young man in fine teal and gold robes standing beside the fountain, head to toe, clearly much shorter than the fountain is wide, the huge archway rising far above and behind him.\nCHARACTERS, drawn exactly as in their model sheets: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nFRAMING AND SCALE: The figure is seen head to toe and fills about HALF the image height, with clear space above the head and below the feet.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P29",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the young man's face tilted up, warm dusk light on him, eyes moving as he takes in something enormous above him.\nCHARACTERS, drawn exactly as in their model sheets: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P30",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_princesa.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Wide of the courtyard's far side: a broad stone stairway coming down from the arcade. The young woman in her cream and gold dress has just appeared at the top of it, small in frame, attendants behind.\nCHARACTERS, drawn exactly as in their model sheets: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P31",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_princesa.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. The young woman waist up beside the lit fountain, three quarters to camera, warm lantern light on her, the dark arcade behind.\nCHARACTERS, drawn exactly as in their model sheets: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P32",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_princesa.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the young woman's face beside the fountain, now turned to camera, warm lantern light on her, chin slightly up, unafraid.\nCHARACTERS, drawn exactly as in their model sheets: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P33",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the young man's face across the fountain, lantern light on one side of it, the dark courtyard behind him. He is looking OFF FRAME TO THE RIGHT, at someone standing to his right, and his eyes and the turn of his head are clearly aimed to the right, never to the left.\nCHARACTERS, drawn exactly as in their model sheets: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P34",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_aladino.png",
+        "assets/m_princesa.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Wide of the courtyard at last light. The two of them standing a few paces apart beside the lit fountain, both small in frame, clearly shorter than the fountain is wide, the huge archway behind.\nCHARACTERS, drawn exactly as in their model sheets: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic; the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P35",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_alcoba.png",
+        "assets/m_princesa.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nMEDIUM SHOT. The candlelit bedchamber at night. The young woman waist up beside a carved side table. On the table sits the plain dented brass lamp, clearly out of place among the fine things.\nCHARACTERS, drawn exactly as in their model sheets: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nFRAMING AND SCALE: The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P36",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_alcoba.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nFULL SHOT. The open doorway of the bedchamber seen head to toe. The old man stands in it hunched over and disguised as a pedlar, a shabby head wrap over his grey hair, carrying a tray of bright new brass lamps.\nCHARACTERS, drawn exactly as in their model sheets: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figure is seen head to toe and fills about HALF the image height, with clear space above the head and below the feet.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P37",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_alcoba.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nINSERT / EXTREME CLOSE UP of an object. Extreme close on the side table. Two hands, one young and one old and knotted, are exchanging a plain dented brass lamp for a bright new polished one. Candlelight.\nFRAMING AND SCALE: The object fills the frame. No full figures visible, at most a pair of hands.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P38",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_alcoba.png",
+        "assets/m_princesa.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Wide of the bedchamber. The young woman stands by the table with the new lamp on it. The doorway beyond her is empty, the door swinging.\nCHARACTERS, drawn exactly as in their model sheets: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P39",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_aladino.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2>, <Picture 3> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. The palace courtyard at dawn in cold blue light, the fountain still. The old man and the young man face each other across it, about ten paces apart, both small in frame, dwarfed by the great archway. The old man holds the dented brass lamp raised in one hand.\nCHARACTERS, drawn exactly as in their model sheets: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P40",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_mago.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nCLOSE UP. Close on the old man's face in cold blue dawn light, his own face again, no disguise, looking across at someone off camera. The lamp is just visible raised at the edge of frame.\nCHARACTERS, drawn exactly as in their model sheets: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nFRAMING AND SCALE: The face fills most of the frame, cropped just above the hairline and just below the chin.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P41",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1> as reference: <Picture 1> is the location, there are no characters in this shot.\nINSERT / EXTREME CLOSE UP of an object. Extreme close on wet stone paving in cold dawn light. The dented brass lamp has just hit the ground and is rolling.\nFRAMING AND SCALE: The object fills the frame. No full figures visible, at most a pair of hands.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_P42",
+      "aspecto": "16:9",
+      "refs": [
+        "assets/l_palacio.png",
+        "assets/m_aladino.png"
+      ],
+      "prompt": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.\nUse <Picture 1>, <Picture 2> as reference: <Picture 1> is the location, the rest are character model sheets.\nWIDE SHOT. Wide of the courtyard at dawn. A column of dark smoke stands where the old man was. The young man is small on the other side of the fountain, alone in the enormous empty space.\nCHARACTERS, drawn exactly as in their model sheets: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nFRAMING AND SCALE: The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nFORMAT: a WIDE 16:9 landscape frame, clearly wider than tall. Never square, never vertical.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

@@ -1,0 +1,633 @@
+{
+  "titulo": "Aladino y la lámpara maravillosa",
+  "slug": "aladino",
+  "formato": "largo",
+  "estructura": "largo",
+  "duracion_objetivo": 309.1,
+  "_nota": "Migrado de Proyecto_Aladino/armar_planos.py, que produjo los 42 planos de la primera corrida. Es el ejemplo del formato largo: 16:9, diálogo dentro del plano, personajes con hoja de modelo.",
+  "medio": "2D animated film",
+  "estilo_imagen": "Original 2D animated illustration, exact same art style, line weight, flat cel shading and colour treatment as the references.",
+  "refs_estilo": [
+    "../../Imagenes de referencia/Princesa.png",
+    "../../Imagenes de referencia/Palacio.png"
+  ],
+  "personajes": {
+    "aladino": {
+      "hoja": "m_aladino",
+      "descripcion": "the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals"
+    },
+    "aladino_rico": {
+      "hoja": "m_aladino",
+      "descripcion": "the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic"
+    },
+    "mago": {
+      "hoja": "m_mago",
+      "descripcion": "the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak"
+    },
+    "princesa": {
+      "hoja": "m_princesa",
+      "descripcion": "the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist"
+    },
+    "genio": {
+      "hoja": "m_genio",
+      "descripcion": "the huge blue-violet smoke spirit with glowing gold geometric markings on its forearms and chest, a heavy gold collar and wide gold cuffs, its lower body trailing into a column of dark smoke"
+    }
+  },
+  "locaciones": {
+    "bazar": {
+      "imagen": "l_bazar",
+      "descripcion": "the crowded persian bazaar in daylight"
+    },
+    "desierto": {
+      "imagen": "l_desierto",
+      "descripcion": "the desert dunes at dusk"
+    },
+    "cueva": {
+      "imagen": "l_cueva",
+      "descripcion": "the underground treasure cavern"
+    },
+    "palacio": {
+      "imagen": "l_palacio",
+      "descripcion": "the great palace courtyard"
+    },
+    "alcoba": {
+      "imagen": "l_alcoba",
+      "descripcion": "the candlelit palace bedchamber at night"
+    }
+  },
+  "_voces_nota": "Clones `professional` que existen SÓLO en la cuenta de Foton/dubai_v2 (ELEVENLABS_API_KEY). Cambiar de cuenta rompe el reparto: en otra las cuatro dan 'no disponible'.",
+  "voces": {
+    "mago": "oqO5cdAzjE5Ik5xWIZRL",
+    "aladino": "p7cwnUviDFhhX9y8sG2Q",
+    "aladino_rico": "p7cwnUviDFhhX9y8sG2Q",
+    "genio": "t3eeeqhBjrUqcrPvDqUn",
+    "princesa": "br0MPoLVxuslVxf61qHn"
+  },
+  "madre": [
+    {
+      "id": "p_aladino",
+      "prompt": "Generate an original 2D animated character illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nFull body, single figure standing facing the viewer, plain dark warm-gray background, even soft lighting, no props.\nCHARACTER: a young man of about twenty, lean and wiry, tousled dark hair, alert eyes, a faint confident half-smile. He wears a patched knee-length tunic of faded ochre and dusty brown, a frayed dark red sash at the waist, loose brown trousers and worn leather sandals. Poor clothing, no jewellery, nothing ornate. Confident, light-footed posture."
+    },
+    {
+      "id": "p_mago",
+      "prompt": "Generate an original 2D animated character illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nFull body, single figure standing facing the viewer, plain dark warm-gray background, even soft lighting.\nCHARACTER: a tall gaunt older man, long grey beard, sharp features, deep-set watchful eyes. He wears heavy robes of dark indigo with faded gold embroidery at the hem and cuffs, a long black travelling cloak, and a broad ring on one hand. Dignified but cold. Hands clasped in front of him."
+    },
+    {
+      "id": "p_genio",
+      "prompt": "Generate an original 2D animated fantasy creature illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nSingle figure centred, plain dark warm-gray background.\nSUBJECT: a mythical spirit of smoke and fire from Arabian folklore. Broad shouldered upper form in deep blue-violet, marked with faint glowing golden geometric patterns. A heavy gold collar and wide gold cuffs. A topknot of dark hair, thick brows, an amused knowing expression. Below the waist there is no solid form at all: the shape trails away into a swirling column of dark smoke that widens toward the bottom of the frame. Arms folded. Stylised and cartoonish, clearly a fantasy creature."
+    },
+    {
+      "id": "l_bazar",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading, ornate detail and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of a crowded Persian bazaar at midday. Narrow street of stone flags, striped canvas awnings strung overhead casting hard shafts of sunlight, stalls piled with spices in cones of red and yellow, hanging carpets and lanterns, arched doorways with geometric tilework, a stone archway at the far end. Warm dusty light, deep shadow under the awnings.\nNO PEOPLE in the image. Empty set."
+    },
+    {
+      "id": "l_desierto",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of an empty desert at dusk. Rolling dunes, a rocky outcrop of dark stone in the middle ground, scattered boulders, a deep amber and violet sky with the last of the sun low on the horizon, long blue shadows across the sand.\nNO PEOPLE in the image. Empty landscape."
+    },
+    {
+      "id": "l_cueva",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading, ornate detail and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of a vast underground treasure cavern. Carved stone arches and pillars covered in geometric relief, mounds of gold coins, goblets, chests spilling jewels, hanging chains. Everything lit by a cold blue-green glow from below and warm gold reflections off the treasure. A narrow stone stair descends from a square of daylight far above. Dust motes in the air.\nNO PEOPLE in the image. Empty set."
+    },
+    {
+      "id": "l_alcoba",
+      "prompt": "Generate an original 2D animated background illustration matching the EXACT art style, line weight, flat cel shading, ornate detail and colour treatment of the reference images.\nWIDE ESTABLISHING SHOT of an opulent Persian palace bedchamber at night. Intricate geometric tilework on the walls, hanging brass lanterns and dozens of candles, heavy silk curtains in teal and gold, a large low bed with embroidered covers, a carved wooden screen, a patterned carpet, an arched window open to a dark blue night sky.\nNO PEOPLE in the image. Empty set."
+    },
+    {
+      "id": "m_aladino",
+      "refs": [
+        "assets/p_aladino.png"
+      ],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR FULL-BODY VIEWS of the SAME character in a single horizontal row, evenly spaced, all at IDENTICAL height and scale, plain flat warm-gray background, even flat lighting, no cast shadows:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nCHARACTER, identical in all four: the young man from the reference. Tousled dark hair, lean build. Patched knee-length tunic in faded ochre with visible cloth patches at the chest and left hip, a frayed DARK RED sash tied at the waist with a short tail hanging on his LEFT side, loose brown trousers, worn leather sandals. No jewellery.\nKeep the costume details IDENTICAL across the four views: same patch positions, same sash length, same hair volume."
+    },
+    {
+      "id": "m_mago",
+      "refs": [
+        "assets/p_mago.png"
+      ],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR FULL-BODY VIEWS of the SAME character in a single horizontal row, evenly spaced, all at IDENTICAL height and scale, plain flat warm-gray background, even flat lighting, no cast shadows:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nCHARACTER, identical in all four: the tall gaunt older man from the reference. Long grey beard reaching mid-chest, sharp features, deep-set eyes. Heavy robes of dark indigo with faded gold embroidery at the hem and cuffs, a long black travelling cloak that falls to the ankles, one broad ring on the right hand.\nKeep the costume details IDENTICAL across the four views: same beard length, same embroidery pattern, same cloak fall."
+    },
+    {
+      "id": "m_princesa",
+      "refs": [
+        "assets/p_princesa.png"
+      ],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR FULL-BODY VIEWS of the SAME character in a single horizontal row, evenly spaced, all at IDENTICAL height and scale, plain flat warm-gray background, even flat lighting, no cast shadows:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nCHARACTER, identical in all four: the young woman from the reference. Dark hair in TWO braids falling forward over the shoulders. Long cream and gold embroidered silk dress reaching the floor, with a decorated band at the waist holding a blue-green gem, wide embroidered cuffs, embroidered slippers.\nKeep the costume details IDENTICAL across the four views: same braid placement, same embroidery pattern, same gem."
+    },
+    {
+      "id": "m_genio",
+      "refs": [
+        "assets/p_genio.png"
+      ],
+      "prompt": "Original 2D animated CHARACTER MODEL SHEET of a fantasy creature, exact same art style, line weight, flat cel shading and colour treatment as the reference.\nFOUR VIEWS of the SAME creature in a single horizontal row, evenly spaced, all at IDENTICAL scale, plain flat warm-gray background, even flat lighting:\n1) front view  2) three-quarter view  3) side profile view  4) back view.\nSUBJECT, identical in all four: the smoke spirit from the reference. Broad blue-violet upper body, glowing gold geometric markings on the forearms and chest, heavy gold collar, wide gold cuffs on both wrists, a topknot of dark hair, thick brows. Below the waist there is no solid form: the shape trails into a swirling column of dark smoke.\nKeep the markings, the collar and the cuffs IDENTICAL across the four views."
+    }
+  ],
+  "planos": [
+    {
+      "escena": "E01_robo",
+      "segundos": 10,
+      "tipo": "PG",
+      "loc": "bazar",
+      "personajes": [],
+      "ve": "The bazaar seen down the length of its main aisle, awnings overhead, stalls piled with fruit and cloth on both sides, a dozen shoppers in robes moving through. No one is the focus. Late morning light falls in slats through the awnings.",
+      "mueve": "Slow push in down the aisle. The crowd drifts across frame, cloth sways, dust turns in the light shafts.",
+      "audio": "[Ambient] busy market: overlapping voices, footsteps on stone. [Foley] cloth flapping, a wooden crate set down."
+    },
+    {
+      "escena": "E01_robo",
+      "segundos": 6,
+      "tipo": "PM",
+      "loc": "bazar",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The young man stands at a fruit stall piled with pomegranates, half turned away from it, eyes sliding sideways toward the fruit while he pretends to look elsewhere.",
+      "mueve": "He glances left, then right, then his eyes settle on the fruit. Behind him the crowd keeps moving. Camera holds.",
+      "audio": "[Ambient] market voices, closer now. [Foley] his breathing."
+    },
+    {
+      "escena": "E01_robo",
+      "segundos": 5,
+      "tipo": "PD",
+      "loc": "bazar",
+      "personajes": [],
+      "ve": "A pile of dark red pomegranates on a wooden stall board. ONE single young hand, with exactly five fingers and dirty fingernails, enters from the top right and is closing around the topmost fruit. There is only ONE hand in the picture and no other limbs.",
+      "mueve": "The hand closes on the pomegranate and lifts it clear of the pile. The pile shifts and one fruit rolls a little.",
+      "audio": "[Foley] fruit rolling on wood, a single soft scrape."
+    },
+    {
+      "escena": "E01_robo",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "bazar",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The bazaar aisle from behind. The young man is running away from camera toward the far stone archway, weaving between shoppers. A stallkeeper is half out of his stall, arm up.",
+      "mueve": "Camera whip-pans right and follows him running. He dodges a shopper, vaults a low crate and disappears through the archway. The stallkeeper shouts after him.",
+      "audio": "[Ambient] market. [Foley] running footsteps, a crate knocked over. [Speech] the stallkeeper shouts angrily after him."
+    },
+    {
+      "escena": "E02_mago",
+      "segundos": 7,
+      "tipo": "PM",
+      "loc": "bazar",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "A narrow shaded side alley off the bazaar. The young man is crouched low behind a stack of woven baskets, back against the wall, the pomegranate in both hands, chest heaving.",
+      "mueve": "He gets his breath back, grins to himself and bites into the fruit. Then his chewing slows and stops as something off frame catches his eye.",
+      "audio": "[Ambient] the market muffled, one alley away. [Foley] breathing, a wet bite."
+    },
+    {
+      "escena": "E02_mago",
+      "segundos": 7,
+      "tipo": "PG",
+      "loc": "bazar",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "ve": "The side alley from a low angle. The young man is crouched small at the right edge of frame. At the far end of the alley, framed by the light of the market behind him, the tall old man stands facing him, a long shadow stretching down the alley toward the boy.",
+      "mueve": "The shadow slides up the wall as the old man takes three unhurried steps forward. The boy shrinks back against the baskets. The market noise behind drops away.",
+      "audio": "[Ambient] market noise dropping away to near silence. [Foley] slow deliberate footsteps on stone."
+    },
+    {
+      "escena": "E02_mago",
+      "segundos": 6,
+      "tipo": "PP",
+      "loc": "bazar",
+      "personajes": [
+        "mago"
+      ],
+      "ve": "Close on the old man's face, lit from the side, unhurried, appraising, not unkind. He is looking DOWN AND OFF FRAME TO THE RIGHT, at someone crouched low on the right-hand side, and his eyes are clearly aimed to the right, never to the left.",
+      "mueve": "His eyes move slowly, reading the boy up and down. Then one corner of his mouth lifts. Camera creeps in a fraction.",
+      "audio": "[Ambient] near silence, distant market. [Foley] cloth shifting."
+    },
+    {
+      "escena": "E02_mago",
+      "segundos": 9,
+      "tipo": "PM",
+      "loc": "bazar",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "ve": "Two shot in the alley, the old man standing on the left, the young man half risen on the right. The old man is holding out a gold coin between two fingers. The old man MUST have his long grey beard reaching mid-chest and his hair as in his model sheet: he is not clean-shaven and not bald.",
+      "mueve": "The old man extends the coin further and speaks. The boy looks at the coin, then at his face, and slowly straightens up.",
+      "audio": "[Ambient] distant market. [Foley] a coin turning between fingers. [Speech] the old man speaks calmly to the boy.",
+      "dialogo": "Tomá. Vení conmigo, muchacho, y no vas a robar nunca más."
+    },
+    {
+      "escena": "E03_puerta",
+      "segundos": 10,
+      "tipo": "PGE",
+      "loc": "desierto",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "ve": "The desert at dusk, huge orange dunes filling the frame. Two tiny figures walk the ridge of a dune in the middle distance, the old man ahead, the young man trailing behind.",
+      "mueve": "Camera drifts slowly right, keeping them small in frame. Sand streams off the ridge in the wind. They keep walking.",
+      "audio": "[Ambient] wind over open sand, nothing else."
+    },
+    {
+      "escena": "E03_puerta",
+      "segundos": 6,
+      "tipo": "PA",
+      "loc": "desierto",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "ve": "The two of them at ground level on SOFT SAND DUNES, nothing but rolling orange dunes and open sky behind them: no rock formations, no canyon, no cliffs, no cacti, no vegetation. The old man strides ahead in his black cloak. The young man is a few paces behind, dragging his feet, tunic dusty, head down, EXHAUSTED AND MISERABLE, definitely not smiling.",
+      "mueve": "They walk toward camera. The boy stumbles in the soft sand, catches himself, hurries to keep up. The old man does not slow down.",
+      "audio": "[Ambient] wind. [Foley] feet sinking into sand, cloak snapping."
+    },
+    {
+      "escena": "E03_puerta",
+      "segundos": 6,
+      "tipo": "PP",
+      "loc": "desierto",
+      "personajes": [
+        "mago"
+      ],
+      "ve": "Close on the old man's face against the dusk sky, stopped, looking down at the ground ahead of him. Wind moving his beard.",
+      "mueve": "He stops dead. His lips begin to move in a low murmur and he lifts one hand out of frame. His eyes stay fixed on the ground.",
+      "audio": "[Ambient] wind rising. [Speech] the old man murmurs low words under his breath in Spanish."
+    },
+    {
+      "escena": "E03_puerta",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "desierto",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "ve": "Wide of the dune floor at the base of a dark rock outcrop, the two small figures standing side by side, facing a bare patch of sand.",
+      "mueve": "The sand cracks open in front of them and caves inward. Dust blows up. As it clears, a stone stairway is revealed going down into the dark. Both figures step back, then look at each other.",
+      "audio": "[Ambient] wind. [Foley] a deep grinding of stone, sand pouring, a low boom."
+    },
+    {
+      "escena": "E04_lampara",
+      "segundos": 7,
+      "tipo": "PM",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The young man on a stone stairway in the dark, seen from the front, cold blue-green light rising from below onto his face and chest.",
+      "mueve": "He descends step by step toward camera. The blue-green light on him grows stronger with each step. His eyes widen at something below.",
+      "audio": "[Ambient] a deep underground hush, faint dripping. [Foley] sandals on stone steps, echoing."
+    },
+    {
+      "escena": "E04_lampara",
+      "segundos": 10,
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The treasure cavern opening out: carved arches, mounds of gold coins and vessels, blue-green light from above and gold light from the hoard. The young man is small at the foot of the stair at the back of frame, standing still.",
+      "mueve": "Camera cranes slowly up and back, opening the cavern out around him and making him smaller still. He turns his head to take it in.",
+      "audio": "[Ambient] cavern reverb, dripping water. [Foley] a few coins settling somewhere in the dark."
+    },
+    {
+      "escena": "E04_lampara",
+      "segundos": 7,
+      "tipo": "PM",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The young man in a narrow path between two mounds of treasure that rise HIGHER THAN HIS SHOULDERS on both sides and run off the left and right edges of the picture, so that he is walking in a trench of gold. Gold light on his face from below.",
+      "mueve": "He walks forward, camera tracking with him. He trails one hand along a mound and coins slide and clatter down behind him. He does not stop to pick any up.",
+      "audio": "[Ambient] cavern reverb. [Foley] coins sliding and clattering."
+    },
+    {
+      "escena": "E04_lampara",
+      "segundos": 6,
+      "tipo": "PD",
+      "loc": "cueva",
+      "personajes": [],
+      "ve": "A small plain brass oil lamp, dented and unpolished, sitting alone in a carved stone niche in the cavern wall, seen from the side. Nothing else in the niche. Cold blue-green light from the left, deep shadow to the right. The carved stonework of the niche runs off both the left and the right edges of the picture.",
+      "mueve": "Camera pushes slowly in on the lamp. Dust turns in the light in front of it. Nothing else moves.",
+      "audio": "[Ambient] cavern hush, one drip echoing."
+    },
+    {
+      "escena": "E04_lampara",
+      "segundos": 5,
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "Close on the young man's face, lit cold from one side, looking slightly off camera at something below eye level.",
+      "mueve": "He looks at it a long moment, glances back over his shoulder toward the stair, then reaches forward out of frame.",
+      "audio": "[Ambient] cavern hush. [Foley] fabric shifting."
+    },
+    {
+      "escena": "E05_encierro",
+      "segundos": 7,
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "ve": "Sharp low angle from the cavern floor looking straight up the stone stair to a small square of hot daylight far above. The young man is small at the foot of the stair holding the brass lamp. Far up in the square of light, the old man leans in as a silhouette.",
+      "mueve": "The silhouette above reaches one arm down, insisting. The boy at the bottom does not move. Dust falls through the shaft of light between them.",
+      "audio": "[Ambient] cavern reverb, wind at the opening far above. [Foley] falling grit."
+    },
+    {
+      "escena": "E05_encierro",
+      "segundos": 7,
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "mago"
+      ],
+      "ve": "Close on the old man's face from below, hard daylight behind him rimming his beard, the rest of him in shadow. He is looking down.",
+      "mueve": "His patience goes. The lines of his face harden and he speaks down into the hole, one hand braced on the stone.",
+      "audio": "[Ambient] wind at the cave mouth. [Speech] the old man commands, cold and hard.",
+      "dialogo": "Dame la lámpara, muchacho. Dámela y te saco."
+    },
+    {
+      "escena": "E05_encierro",
+      "segundos": 7,
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "Close on the young man's face from slightly above, cold blue-green light on him, looking up. He is holding the lamp hard against his chest with both arms. His expression is STUBBORN AND DEFIANT: jaw set, brows down, mouth a hard line. He is frightened but refusing. He is NOT smiling, NOT dreamy, NOT hopeful.",
+      "mueve": "He tightens his grip on the lamp and holds the old man's eyes. Then he answers, quiet and stubborn.",
+      "audio": "[Ambient] cavern reverb. [Speech] the boy answers quietly, refusing.",
+      "dialogo": "No. Primero sacame de acá."
+    },
+    {
+      "escena": "E05_encierro",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "Low angle up the stair again. The square of daylight far above. The young man tiny at the bottom, looking up.",
+      "mueve": "A slab of stone slides across the opening above and the daylight narrows to a line and then to nothing. The frame goes almost black, leaving only the faint blue-green glow of the cavern and the boy's silhouette.",
+      "audio": "[Foley] a heavy stone grinding shut, a boom, then dead silence. [Ambient] cavern hush closing in."
+    },
+    {
+      "escena": "E06_genio",
+      "segundos": 8,
+      "tipo": "PM",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The young man sitting on the cavern floor with his back against a carved pillar, knees up, holding the brass lamp in both hands in his lap. Very low blue-green light. He looks beaten.",
+      "mueve": "He lets his head fall back against the pillar. Then he looks down at the lamp in his hands and turns it over slowly.",
+      "audio": "[Ambient] deep cavern silence, one distant drip. [Foley] cloth on stone, metal turning in hands."
+    },
+    {
+      "escena": "E06_genio",
+      "segundos": 5,
+      "tipo": "PD",
+      "loc": "cueva",
+      "personajes": [],
+      "ve": "Extreme close on the brass lamp held in two dirty hands, a sleeve of patched ochre cloth beginning to rub across its side.",
+      "mueve": "The sleeve rubs the brass twice. On the second pass a thread of light opens along the metal under the cloth.",
+      "audio": "[Foley] cloth rubbing metal. [SFX] a low tone rising underneath."
+    },
+    {
+      "escena": "E06_genio",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "ve": "The cavern with the young man small at the base of the pillar. A thick rope of dark smoke is pouring up out of the lamp spout and already fills the upper half of the frame.",
+      "mueve": "The smoke boils upward and outward, filling the cavern, lit from within by pulses of gold. The boy scrambles backward against the pillar, one arm up over his face.",
+      "audio": "[SFX] a rushing roar building. [Foley] scrambling on stone."
+    },
+    {
+      "escena": "E06_genio",
+      "segundos": 9,
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino",
+        "genio"
+      ],
+      "ve": "Extreme low angle from the cavern floor. The smoke has resolved into the blue-violet spirit, and it is ENORMOUS: its head almost touches the top edge of the picture, its shoulders run nearly the full width of the frame, and it fills the upper two thirds. Its gold markings glow. Its lower body is a column of smoke going down into the lamp. The young man is a TINY silhouette at the very bottom edge of frame, on his back, looking up. He is about ONE TWELFTH of the image height. The size difference between them is the whole point of the picture.",
+      "mueve": "The spirit finishes forming, rolls its shoulders and stretches both arms wide. The smoke column beneath it turns slowly. The boy stays flat on the floor, tiny.",
+      "audio": "[SFX] the roar settling into a low hum. [Foley] a vast slow exhalation."
+    },
+    {
+      "escena": "E06_genio",
+      "segundos": 7,
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "genio"
+      ],
+      "ve": "Close on the spirit's face, blue-violet skin, thick brows, gold collar at the bottom of frame, glowing markings. It is looking down toward camera.",
+      "mueve": "It opens its eyes fully, looks down at the boy, and speaks. Smoke curls past its jaw as it talks.",
+      "audio": "[SFX] low hum. [Speech] the spirit speaks in a huge slow voice.",
+      "dialogo": "Mil años durmiendo. Y me despierta un ladrón de frutas."
+    },
+    {
+      "escena": "E07_llegada",
+      "segundos": 10,
+      "tipo": "PGE",
+      "loc": "palacio",
+      "personajes": [],
+      "ve": "The great palace courtyard at dusk, empty. The lit fountain in the middle ground, the enormous ornate archway behind it, arcades down both sides. Warm low sun on the upper stonework.",
+      "mueve": "Camera cranes slowly down and forward toward the fountain. The water moves, lanterns along the arcade flicker on one after another as the light drops.",
+      "audio": "[Ambient] evening courtyard, water, distant birds."
+    },
+    {
+      "escena": "E07_llegada",
+      "segundos": 7,
+      "tipo": "PA",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "ve": "The young man in fine teal and gold robes standing beside the fountain, head to toe, clearly much shorter than the fountain is wide, the huge archway rising far above and behind him.",
+      "mueve": "He walks a few paces along the fountain edge, looking up at the facade, turning slowly as he goes. He is small against all of it.",
+      "audio": "[Ambient] fountain water, evening. [Foley] soft footsteps on stone."
+    },
+    {
+      "escena": "E07_llegada",
+      "segundos": 5,
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "ve": "Close on the young man's face tilted up, warm dusk light on him, eyes moving as he takes in something enormous above him.",
+      "mueve": "His eyes travel upward and keep going. His mouth opens slightly. He lets out a breath and almost laughs.",
+      "audio": "[Ambient] fountain. [Foley] a breath, a half laugh."
+    },
+    {
+      "escena": "E07_llegada",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "princesa"
+      ],
+      "ve": "Wide of the courtyard's far side: a broad stone stairway coming down from the arcade. The young woman in her cream and gold dress has just appeared at the top of it, small in frame, attendants behind.",
+      "mueve": "She starts down the stairway. Her dress moves on the steps. Camera holds wide and lets her come down into the courtyard.",
+      "audio": "[Ambient] evening courtyard. [Foley] slippers on stone, silk moving."
+    },
+    {
+      "escena": "E08_encuentro",
+      "segundos": 6,
+      "tipo": "PM",
+      "loc": "palacio",
+      "personajes": [
+        "princesa"
+      ],
+      "ve": "The young woman waist up beside the lit fountain, three quarters to camera, warm lantern light on her, the dark arcade behind.",
+      "mueve": "She trails her fingers in the fountain water, then stops as she senses someone. She turns her head toward camera.",
+      "audio": "[Ambient] fountain, evening. [Foley] fingers through water."
+    },
+    {
+      "escena": "E08_encuentro",
+      "segundos": 7,
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "princesa"
+      ],
+      "ve": "Close on the young woman's face beside the fountain, now turned to camera, warm lantern light on her, chin slightly up, unafraid.",
+      "mueve": "She looks him over once, then asks. Her expression stays level, more curious than alarmed.",
+      "audio": "[Ambient] fountain. [Speech] the young woman asks, level and unafraid.",
+      "dialogo": "¿Y vos quién sos?"
+    },
+    {
+      "escena": "E08_encuentro",
+      "segundos": 7,
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "ve": "Close on the young man's face across the fountain, lantern light on one side of it, the dark courtyard behind him. He is looking OFF FRAME TO THE RIGHT, at someone standing to his right, and his eyes and the turn of his head are clearly aimed to the right, never to the left.",
+      "mueve": "He opens his mouth to give an answer, stops, and gives a different one instead, with a small crooked smile at the end.",
+      "audio": "[Ambient] fountain. [Speech] the young man answers, a little amused at himself.",
+      "dialogo": "Nadie importante. Todavía."
+    },
+    {
+      "escena": "E08_encuentro",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico",
+        "princesa"
+      ],
+      "ve": "Wide of the courtyard at last light. The two of them standing a few paces apart beside the lit fountain, both small in frame, clearly shorter than the fountain is wide, the huge archway behind.",
+      "mueve": "They stand there. She turns back to the water, he takes one step closer. Camera pulls slowly back, making them smaller, the courtyard bigger. Lanterns burn along the arcade.",
+      "audio": "[Ambient] fountain, evening settling, distant music from inside."
+    },
+    {
+      "escena": "E09_engano",
+      "segundos": 7,
+      "tipo": "PM",
+      "loc": "alcoba",
+      "personajes": [
+        "princesa"
+      ],
+      "ve": "The candlelit bedchamber at night. The young woman waist up beside a carved side table. On the table sits the plain dented brass lamp, clearly out of place among the fine things.",
+      "mueve": "She picks the old lamp up, turns it over with a puzzled half smile, and sets it back down. She turns toward a sound at the door.",
+      "audio": "[Ambient] quiet room at night, a candle. [Foley] metal set on wood."
+    },
+    {
+      "escena": "E09_engano",
+      "segundos": 8,
+      "tipo": "PA",
+      "loc": "alcoba",
+      "personajes": [
+        "mago"
+      ],
+      "ve": "The open doorway of the bedchamber seen head to toe. The old man stands in it hunched over and disguised as a pedlar, a shabby head wrap over his grey hair, carrying a tray of bright new brass lamps.",
+      "mueve": "He bows low, lifts the tray of shining lamps toward camera and calls his patter in a thin wheedling voice, keeping his face down.",
+      "audio": "[Ambient] quiet room. [Foley] brass clinking on a wooden tray. [Speech] the pedlar calls out his patter, wheedling.",
+      "dialogo": "Lámparas nuevas por lámparas viejas, señora."
+    },
+    {
+      "escena": "E09_engano",
+      "segundos": 6,
+      "tipo": "PD",
+      "loc": "alcoba",
+      "personajes": [],
+      "ve": "Extreme close on the side table. Two hands, one young and one old and knotted, are exchanging a plain dented brass lamp for a bright new polished one. Candlelight.",
+      "mueve": "The new lamp is set down as the old one is lifted away. The old hand closes hard around the dented lamp and pulls it out of frame.",
+      "audio": "[Foley] two lamps set down and lifted, a knuckle cracking."
+    },
+    {
+      "escena": "E09_engano",
+      "segundos": 7,
+      "tipo": "PG",
+      "loc": "alcoba",
+      "personajes": [
+        "princesa"
+      ],
+      "ve": "Wide of the bedchamber. The young woman stands by the table with the new lamp on it. The doorway beyond her is empty, the door swinging.",
+      "mueve": "The door swings shut on its own. She stays still a moment, then looks back at the shiny new lamp on the table. The candles gutter all at once.",
+      "audio": "[Ambient] room tone. [Foley] a door swinging shut, candle flames guttering."
+    },
+    {
+      "escena": "E10_final",
+      "segundos": 8,
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico",
+        "mago"
+      ],
+      "ve": "The palace courtyard at dawn in cold blue light, the fountain still. The old man and the young man face each other across it, about ten paces apart, both small in frame, dwarfed by the great archway. The old man holds the dented brass lamp raised in one hand.",
+      "mueve": "The old man raises the lamp higher. The young man takes one slow step forward around the fountain. Neither hurries. Cold wind moves across the courtyard.",
+      "audio": "[Ambient] cold empty courtyard at dawn, wind, still water."
+    },
+    {
+      "escena": "E10_final",
+      "segundos": 7,
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "mago"
+      ],
+      "ve": "Close on the old man's face in cold blue dawn light, his own face again, no disguise, looking across at someone off camera. The lamp is just visible raised at the edge of frame.",
+      "mueve": "He almost smiles and speaks across the courtyard, unhurried, sure of himself. His beard moves in the wind.",
+      "audio": "[Ambient] wind. [Speech] the old man speaks across the courtyard, calm and certain.",
+      "dialogo": "Todo esto era mío antes de ser tuyo."
+    },
+    {
+      "escena": "E10_final",
+      "segundos": 5,
+      "tipo": "PD",
+      "loc": "palacio",
+      "personajes": [],
+      "ve": "Extreme close on wet stone paving in cold dawn light. The dented brass lamp has just hit the ground and is rolling.",
+      "mueve": "The lamp rolls across the stone, wobbles, and comes to rest on its side. A thin curl of smoke starts out of the spout.",
+      "audio": "[Foley] brass hitting and rolling on wet stone, ringing. [SFX] a low tone starting."
+    },
+    {
+      "escena": "E10_final",
+      "segundos": 10,
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "ve": "Wide of the courtyard at dawn. A column of dark smoke stands where the old man was. The young man is small on the other side of the fountain, alone in the enormous empty space.",
+      "mueve": "The smoke column collapses and blows apart across the paving until nothing is left. The young man lowers his arm. Camera pulls slowly back and up, leaving him one small figure in the huge courtyard as the dawn light warms.",
+      "audio": "[SFX] the low tone cutting out. [Ambient] wind, then only the fountain and morning birds."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+EL LOCO DEL CARBÓN — voz en off para ElevenLabs
+==============================================
+
+No la genera H3: va grabada aparte y montada encima. Así queda
+idéntica en todas las líneas, que es lo que H3 no sabe resolver.
+
+     0.2 s  (S01)   Mi padre vendió el taller y gastó todo en carbón. Toda la cuadra se le rió.
+     4.9 s  (S02)   Tres días después, se cortó la luz en toda la provincia.
+    10.3 s  (S03)   Un martes me llamó a la oficina: «Lucía, buscá a tu hermano y vengan ya».
+    15.7 s  (S04)   «Papá, tengo una reunión.» «Que se joda. El tanque reventó de hielo en media hora.»
+    20.4 s  (S05)   En la ruta pasaban autos importados sin patente, a toda velocidad. Los que saben, ya se iban.
+    26.5 s  (S06)   Tomi se rió: «Papá otra vez con el fin del mundo». Yo no me reí.
+    31.9 s  (S07)   En el patio había una montaña de carbón, doscientas latas y la camioneta vieja llena de garrafas.
+    38.7 s  (S08)   Mi padre nos mostró un balde: doce gorriones duros como piedra. «Los junté esta mañana.»
+    44.1 s  (S09)   «¿Cuánta plata tenés, Lucía?» «Trescientos mil.» «Va todo a comida. La plata sirve si estamos vivos.»
+    50.2 s  (S10)   Del otro lado de la reja, Don Beto filmaba para el grupo del barrio: «el loco del carbón».
+    55.6 s  (S11)   Un millón doscientos en dos días: comida, remedios, pilas. Y carbón.
+    61.0 s  (S12)   La primera noche marcó dieciocho bajo cero. Récord histórico.
+    66.4 s  (S13)   Mi padre había armado una sola pieza caliente: la del fondo, con la salamandra y colchones en el piso.
+    72.5 s  (S14)   Afuera, el barrio seguía normal. Luces prendidas, tele, estufas eléctricas a full.
+    78.6 s  (S15)   La segunda noche marcó treinta y uno bajo cero. Y a las tres de la mañana, se cortó la luz.
+    84.0 s  (S16)   Todo el barrio negro. Toda la provincia. Y en el fondo de casa, una chimenea humeando.
+    89.4 s  (S17)   A las cuatro golpearon la puerta: el hijo de Don Beto, doce años, sin campera.
+    94.8 s  (S18)   «¿Y tu papá?» «No sé.» Mi padre lo metió adentro sin decir nada.
+   100.2 s  (S19)   Una hora después llegó Don Beto con la mujer y la nena. No filmaba. Temblaba.
+   105.6 s  (S20)   Tres reglas: «Nadie sale. Nadie desperdicia. Y nadie pide perdón todavía.»
+   111.7 s  (S21)   La radio dijo lo que mi padre sabía hace una semana: la ola iba a durar tres semanas.
+   117.1 s  (S22)   En la ciudad reventaron los caños: sin agua, sin luz, sin gas. El ejército no podía entrar.
+   123.2 s  (S23)   Pensé en mi departamento, en el piso once. Sin ascensor. Sin nada.
+   128.6 s  (S24)   Al tercer día había veinte personas en la reja. Al cuarto, treinta y dos.
+   134.7 s  (S25)   Mi padre abrió la reja con una condición: entra la familia entera, o no entra nadie.
+   140.8 s  (S26)   Mi madre cocinaba para todos: una olla de arroz a la mañana, guiso de lata a la noche.
+   146.2 s  (S27)   Tomi y Don Beto se turnaban la pala del carbón. Ninguno de los dos hablaba del video.
+   151.6 s  (S28)   Mi padre medía la pila cada mañana con una marca en la pared. Y cada mañana la marca bajaba.
+   157.7 s  (S29)   Un vecino quiso doble ración para su familia. Mi padre le dio la pala: «El que más come, más carga.»
+   163.8 s  (S30)   La noche once vino la tormenta grande. Cuarenta y dos bajo cero. La nieve tapó la chimenea.
+   169.9 s  (S31)   El humo volvió. Treinta y dos personas, una salida. Monóxido.
+   175.3 s  (S32)   Tomi se ató una soga y subió al techo. Mi madre no gritó porque no podía.
+   181.4 s  (S33)   Tardó cuatro minutos en destapar la chimenea a mano. Bajó con los dedos blancos. Pero bajó.
+   188.2 s  (S34)   Don Beto lo abrazó como si fuera su hijo. Después no lo soltó por un rato largo.
+   193.6 s  (S35)   Esa noche no durmió nadie. Mi padre midió la pila: quedaba la mitad.
+   199.0 s  (S36)   El día veintidós salió el sol. En nuestra casa no murió nadie. En la provincia, cientos.
+   205.1 s  (S37)   Cuando llegó el ejército, encontraron treinta y dos personas vivas en la casa del loco del carbón.
+   211.9 s  (S38)   Don Beto se le paró enfrente, borró el video, y le pidió perdón.
+   217.3 s  (S39)   Quedaban dos días de carbón. Justo.
+   222.7 s  (S40)   Mi padre dice que el próximo invierno va a ser peor. Y ya empezó a comprar.
+   228.8 s  (S41)   ¿Vos le creerías?

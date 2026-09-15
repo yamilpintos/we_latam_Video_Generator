@@ -1,0 +1,182 @@
+{
+  "titulo": "PROFUNDIDAD",
+  "slug": "profundidad",
+  "formato": "short",
+  "estructura": "short",
+  "_nota": "Este es el short que está terminado (Proyecto_Short/PROFUNDIDAD_60s.mp4), reescrito como definición de proyecto. Sirve de plantilla: copiá la carpeta, cambiá estilo, sujeto y los doce planos, y el resto del pipeline es idéntico.",
+  "estilo_imagen": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain. Shallow depth of field.",
+  "estilo_video": "Photorealistic cinematic underwater footage, vertical 9:16.",
+  "cierre_video": "Keep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+  "sujeto": "a technical diver in a black drysuit with a yellow shoulder stripe, a full black mask with a curved glass port, a rebreather loop over the shoulders, and a wrist-mounted dive computer",
+  "solo_sonidos": "the breathing apparatus, the water and the structure",
+  "planos": [
+    {
+      "id": "S01",
+      "tipo": "PP",
+      "corta": 3.0,
+      "segundos": 5.2,
+      "funcion": "HOOK. Bucle abierto: la voz promete algo y no lo entrega.",
+      "ve": "EXTREME CLOSE UP on the curved glass port of a black diving mask filling the frame. Behind the glass, a pair of wide human eyes, lit from below by a cold torch. Condensation on the inside of the glass. Black water behind. No mouth visible, the rebreather loop crosses the bottom of frame.",
+      "mueve": "The eyes flick left, then right, then lock forward. A slow blink. The torch light on the glass brightens as something below comes closer.",
+      "audio": "[Foley] slow heavy breathing through a rebreather, very close and dry. [Ambient] deep water pressure hum, almost silence.",
+      "texto": "A 80 metros, con las luces encendidas"
+    },
+    {
+      "id": "S02",
+      "tipo": "PGE",
+      "corta": 2.5,
+      "segundos": 5.2,
+      "funcion": "Descenso. El corte rápido mantiene el pulso alto.",
+      "ve": "Looking straight UP from below at the surface of the sea, far above. The diver's silhouette hangs against a small pale disc of daylight. Shafts of light stab down through the dark and die before reaching the camera.",
+      "mueve": "The disc of daylight shrinks and dims as the diver descends toward camera. Bubbles rise past the lens in strings.",
+      "audio": "[Foley] a burst of exhaled bubbles rushing upward past the ear. [Ambient] the surface noise fading out with depth."
+    },
+    {
+      "id": "S03",
+      "tipo": "PD",
+      "corta": 4.0,
+      "segundos": 5.2,
+      "funcion": "BARRA DE PROGRESO. El número que sube le da al ojo algo que seguir.",
+      "ve": "EXTREME CLOSE UP of a wrist-mounted dive computer strapped over a black drysuit sleeve, its screen glowing pale green. Water and particles drift across the glass. Behind the wrist, black water and a torch beam.",
+      "mueve": "The wrist turns slowly toward camera as the diver keeps descending. Particles stream UPWARD past the lens, fast, selling the speed of the descent. The screen backlight flickers once. The torch beam behind swings across the dark.",
+      "audio": "[Foley] the tick of a dive computer, breathing slower now. [SFX] a low creak of pressure on the suit.",
+      "_nota": "Nada de pedirle dígitos que cambien: los modelos de video destrozan el texto en movimiento, y este plano depende de que se lea. El contador de profundidad va como gráfico en post, que además retiene mejor.",
+      "texto": "-62 m",
+      "interrupcion": true
+    },
+    {
+      "id": "S04",
+      "tipo": "PG",
+      "corta": 4.5,
+      "segundos": 5.2,
+      "funcion": "TENSIÓN POR AUSENCIA. Cuatro segundos de nada antes del hallazgo.",
+      "ve": "The beam of a powerful dive torch cutting into total blackness, seen from just behind the diver's shoulder. The beam is a solid cone of light full of drifting particles and reaches nothing. Empty black on all sides.",
+      "mueve": "The beam sweeps slowly left to right across the void and finds nothing. Particles stream through it. At the very end of the sweep the beam catches a hard edge far away and the diver stops it there.",
+      "audio": "[Ambient] deep water hum, nothing else. [Foley] one slow breath in, held."
+    },
+    {
+      "id": "S05",
+      "tipo": "PGE",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "funcion": "ESCALERA 1: de la nada a algo.",
+      "ve": "The torch beam holding on a distant hard-edged shape in the black water. Something metallic, riveted and pale, too straight and too regular to be rock. Most of it is still lost in the dark. The diver is small at the bottom edge of frame, seen from behind.",
+      "mueve": "The diver swims slowly toward it and the shape resolves a little more with every metre. Two rows of small dark rectangles become visible along its side.",
+      "audio": "[Foley] fins beating slowly, breathing quickening. [SFX] a distant groan of stressed metal."
+    },
+    {
+      "id": "S06",
+      "tipo": "PGE",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "funcion": "ESCALERA 2: la escala. Que sea vertical juega a favor acá.",
+      "ve": "Closer. A vast pale metal wall filling most of the vertical frame, riveted panels streaked with rust and marine growth, a line of round windows running up it. The torch light only reaches a fraction of it. The diver is TINY at the bottom of frame for scale.",
+      "mueve": "The camera cranes slowly upward along the metal wall, and it keeps going, and going, past the top of the frame. The diver stays tiny at the bottom.",
+      "audio": "[SFX] the deep groan of a large metal structure settling. [Foley] breathing loud and fast now."
+    },
+    {
+      "id": "S07",
+      "tipo": "PGE",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "funcion": "LA REVELACIÓN.",
+      "ve": "Wide from a distance, low angle. UNMISTAKABLY A COMMERCIAL PASSENGER AIRLINER resting on the seabed and tilted at an angle: the cockpit nose and its row of angled windscreen panes clearly visible at the left, a long line of small round cabin windows running down the fuselage, and the tall vertical TAIL FIN rising up into the black at the right. One wing is broken off and half buried in silt beside it. This must read instantly as an aeroplane and never as a submarine or a pipe. The diver's single torch is a pinprick of light beside the nose, giving the scale.",
+      "mueve": "The diver's tiny light drifts from the nose along the row of cabin windows toward the tail, giving the scale away. Silt lifts off the seabed in slow clouds.",
+      "audio": "[SFX] a long low resonance, like a struck bell underwater. [Ambient] pressure hum."
+    },
+    {
+      "id": "S08",
+      "tipo": "PD",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "funcion": "INTERRUPCIÓN DE PATRÓN, justo a la mitad, donde cae la retención.",
+      "ve": "A row of small round aircraft windows in the dark metal hull, seen close and slightly from below. WARM YELLOW LIGHT is coming out of every single one of them, cutting through the black water in solid beams.",
+      "mueve": "The camera drifts slowly along the lit windows. The warm light flickers once, all the windows at the same time, then steadies.",
+      "audio": "[SFX] a faint electrical hum that should not exist down here. [Foley] the breathing stops for a beat.",
+      "texto": "Vuelo 447"
+    },
+    {
+      "id": "S09",
+      "tipo": "PD",
+      "corta": 5.0,
+      "segundos": 5.9,
+      "funcion": "CONTACTO. El golpe desde adentro es el gancho del tramo.",
+      "ve": "CLOSE. A black-gloved hand pressing flat against the thick glass of a lit aircraft window, seen from outside. Warm yellow light from inside spills around the fingers. Reflected in the glass, the curved port of the diving mask.",
+      "mueve": "The hand presses harder and wipes marine growth off the glass in one slow arc, clearing a view into the cabin. The reflection of the mask leans in closer.",
+      "audio": "[Foley] a glove squeaking on wet glass, breathing held. [SFX] one dull knock from inside the hull."
+    },
+    {
+      "id": "S10",
+      "tipo": "PG",
+      "corta": 6.0,
+      "segundos": 7.3,
+      "funcion": "LO IMPOSIBLE. Seco por dentro es el detalle que lo vuelve inexplicable.",
+      "ve": "The view through the cleared aircraft window into a lit cabin. Rows of dry passenger seats in warm yellow light. Every seatbelt is fastened across an empty seat. Overhead lockers closed. No water inside. No people.",
+      "mueve": "The camera pushes slowly toward the glass and further into the cabin. Nothing moves inside. Then, far down the aisle, one overhead reading light clicks on by itself.",
+      "audio": "[SFX] the electrical hum, a single click of a switch. [Ambient] the muffled quiet of a dry room heard through glass."
+    },
+    {
+      "id": "S11",
+      "tipo": "PP",
+      "corta": 5.5,
+      "segundos": 5.9,
+      "funcion": "EL PAGO. La voz suelta el dato que reordena todo.",
+      "ve": "EXTREME CLOSE UP on the diving mask again, the same curved glass port. The eyes behind it are lit warm yellow now from the window instead of cold. Wide. The reflection of the lit cabin curves across the glass.",
+      "mueve": "The eyes go wide and hold. Then they shift focus, from what is in front of the glass to something reflected in it, coming from above and behind.",
+      "audio": "[Foley] one sharp breath in through the rebreather. [SFX] the hum dropping away to nothing."
+    },
+    {
+      "id": "S12",
+      "tipo": "PGE",
+      "corta": 5.5,
+      "segundos": 5.9,
+      "funcion": "CIERRE EN BUCLE. No cerramos la historia: abrimos una más grande.",
+      "ve": "Looking straight UP from the seabed into the black water above. Very far up, a single small cold light is descending through the dark, alone. It is the only thing in the frame besides black.",
+      "mueve": "The light above grows slowly larger as it descends toward camera. Nothing else moves. Frame goes to black before it arrives.",
+      "audio": "[Foley] breathing, fast and shallow. [SFX] a low tone rising, then cut to complete silence."
+    }
+  ],
+  "voz": [
+    {
+      "plano": "S01",
+      "offset": 0.4,
+      "texto": "A ochenta metros encontré algo que no debería estar ahí."
+    },
+    {
+      "plano": "S03",
+      "offset": 0.5,
+      "texto": "Bajé solo. Nadie sabía que estaba ahí abajo."
+    },
+    {
+      "plano": "S05",
+      "offset": 0.5,
+      "texto": "Al principio pensé que era un contenedor."
+    },
+    {
+      "plano": "S07",
+      "offset": 0.5,
+      "texto": "No era un contenedor."
+    },
+    {
+      "plano": "S08",
+      "offset": 1.0,
+      "texto": "Las luces estaban encendidas."
+    },
+    {
+      "plano": "S10",
+      "offset": 1.0,
+      "texto": "Y adentro estaba seco."
+    },
+    {
+      "plano": "S11",
+      "offset": 0.5,
+      "texto": "Ese vuelo desapareció hace once años."
+    },
+    {
+      "plano": "S12",
+      "offset": 1.0,
+      "texto": "Yo fui el primero en bajar. No el último."
+    }
+  ],
+  "_nota_ley": "El video renderizado (Proyecto_Short/PROFUNDIDAD_60s.mp4) NO tiene los overlays de `texto`: se produjo antes de adoptar la ley de 2026. Están declarados acá porque es exactamente lo que habría que agregarle en post para cumplirla — el triple refuerzo del gancho. No cambian ni un corte ni un plano: son una capa encima."
+}

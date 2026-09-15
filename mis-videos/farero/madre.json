@@ -1,0 +1,31 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_faro",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of an old white-and-red stone lighthouse on a black rock islet in a violent night storm, vertical frame. Huge waves exploding against the rocks, rain streaking sideways, low storm cloud. The lamp room at the top glows weak warm amber through its glass. A single steel door at the base, lit by one caged work light. No people, no boats. Film grain, deep blacks, wet surfaces shining. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_escalera",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph looking straight DOWN the center of a spiral stone staircase inside an old lighthouse tower, vertical frame. Worn stone steps winding down into darkness, a black iron handrail, small round windows every few turns letting in blue lightning light and rain trails. Peeling white paint on the curved wall, a rope running along it. No people. Warm light from somewhere above, cold blue below. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_sala",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a lighthouse lamp room interior at night, vertical frame. The centerpiece: a tall FRESNEL LENS of concentric glass rings, taller than a person, and inside it one large incandescent lamp bulb glowing weak warm amber. Brass fittings, a small workbench with tools, storm rain streaking the wrap-around windows, lightning lighting the clouds outside. No people. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_farero",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A lighthouse keeper from the knees up: a heavy dark green rubberized rain coat shining wet, the hood UP and pulled low so the face is COMPLETELY hidden in shadow, a thick grey knit sweater collar showing at the neck, worn black rubber gloves, an elastic headlamp strapped over the hood, sturdy rubber boots. Neutral stance, facing camera, face entirely invisible under the hood. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ]
+}

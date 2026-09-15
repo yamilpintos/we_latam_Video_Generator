@@ -1,0 +1,7 @@
+﻿1
+00:00:45,000 --> 00:01:00,000
+Mi señor, he venido a acompañarte esta noche.
+
+2
+00:01:00,000 --> 00:01:15,000
+Escucha mi rey, pues la historia que traigo esta noche no se parece a ninguna otra.

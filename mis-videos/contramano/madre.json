@@ -1,0 +1,31 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "l_tunel",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph looking straight down the length of a working railway tunnel at night. Vertical frame. Twin steel rails running away from camera on concrete sleepers, wet and throwing hard highlights. Hard sodium-orange service lamps mounted on the left wall every few metres, receding into black. Thick concrete dust and haze hanging in every beam. Cable trays and conduit along both walls. No people, no vehicles, no train. High ISO grain, deep blacks. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_control",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph of a small night-shift railway control room. Vertical frame. A curved desk with three CRT-era monitors showing track diagrams in green and amber, a analog clock on the wall, a coffee cup, a red handset on a coiled cord. The only light is the monitors and one desk lamp. Empty chair. No people. High ISO grain, warm amber and green cast against deep shadow. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_rider",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A motorcycle rider seen from the chest up, wearing a matte black full-face helmet with a SCRATCHED DARK VISOR FULLY DOWN so the face is completely hidden, a worn dark grey textile jacket with thin reflective piping along the sleeves, and black gloves. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_operadora",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A woman in her thirties from the chest up: dark hair tied back tightly, a black headset with a boom microphone at the corner of her mouth, a navy uniform shirt with a small embroidered patch on the shoulder. Calm, alert expression, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+[
+ {
+  "id": "MB01",
+  "voz": "voz_jack.wav",
+  "pedida": "Or... I cut that pretty throat.",
+  "dicho": "Or, I cut that pretty throat.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "MB02",
+  "voz": "voz_jack.wav",
+  "pedida": "Then don't play innocent.",
+  "dicho": "Then don't play innocent.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "MB03",
+  "voz": "voz_jack.wav",
+  "pedida": "Then don't play innocent.",
+  "dicho": "Then don't play innocent.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "MB04",
+  "voz": "voz_jack.wav",
+  "pedida": "Or... I cut that pretty throat.",
+  "dicho": "Or, I cut that pretty throat.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 100,
+  "f0_ref": 107,
+  "F": [
+   764,
+   1471,
+   1553
+  ],
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "timbre"
+  ]
+ },
+ {
+  "id": "MB05",
+  "voz": "voz_hannah.wav",
+  "pedida": "But I can't... I don't know how...",
+  "dicho": "But I can't. I don't know how.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 294,
+  "f0_ref": 280,
+  "F": [
+   514,
+   1169,
+   2598
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "MB06",
+  "voz": "voz_luka.wav",
+  "pedida": "Nobody move!",
+  "dicho": "Nobody move!",
+  "faltan": [],
+  "sobran": [],
+  "f0": 319,
+  "f0_ref": 333,
+  "F": [
+   430,
+   897,
+   2340
+  ],
+  "F_ref": [
+   651,
+   1350,
+   2411
+  ],
+  "alertas": []
+ },
+ {
+  "id": "MB07",
+  "voz": "voz_wady.wav",
+  "pedida": "He took out fourteen of our best men and we couldn't do a thing.",
+  "dicho": "He took out 14 of our best men and we couldn't do a thing.",
+  "faltan": [
+   "fourteen"
+  ],
+  "sobran": [],
+  "f0": 218,
+  "f0_ref": 211,
+  "F": [
+   417,
+   1299,
+   2415
+  ],
+  "F_ref": [
+   365,
+   1650,
+   2506
+  ],
+  "alertas": []
+ },
+ {
+  "id": "MB08",
+  "voz": "voz_hannah.wav",
+  "pedida": "Before my mother died, she arranged my marriage to Elliott Hargrove.",
+  "dicho": "Before my mother died, she arranged my marriage to Elliot Hargrove.",
+  "faltan": [
+   "elliott"
+  ],
+  "sobran": [
+   "elliot"
+  ],
+  "f0": 263,
+  "f0_ref": 280,
+  "F": [
+   469,
+   1214,
+   2206
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": [
+   "timbre"
+  ]
+ }
+]

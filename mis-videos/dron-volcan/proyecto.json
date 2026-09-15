@@ -1,0 +1,316 @@
+{
+  "titulo": "EL DRON DEL VOLCÁN",
+  "slug": "dron-volcan",
+  "formato": "short",
+  "estructura": "short",
+  "_concepto": "Un piloto FPV baja a un cráter activo a rescatar el dron que el volcán se tragó ayer — y que amaneció transmitiendo de nuevo. Cinco decisiones técnicas: (1) la cámara ES el dron de rescate, así que la mayoría de los planos son POV y no hay identidad que sostener entre tomas; (2) el gas volcánico, la ceniza y las brasas son un entorno que perdona artefactos; (3) no se ve ninguna boca (antiparras FPV + cuello cubriendo la cara), toda la voz va en off y no hay isocronía que medir; (4) CERO cadenas: doce planos sueltos, que es el método barato y el que nunca deja una placa parada; (5) los segundos varían por toma: el gancho corta a 3,0 s y la revelación se sostiene 6,5 — cada plano dura lo que su tramo pide, no un valor fijo.",
+  "_voz_nota": "La actuación está en el TEXTO: presente, frases cortas, enumeraciones que respiran (\"Cien metros. Ciento veinte.\"), y sólo dos tags de v3 en los dos picos ([surprised] en la revelación, [whispers] en el detalle imposible). El resto lo hace la puntuación, que es la regla 26. narrador = Pablo (argentino); si se quiere una voz más joven, cambiar el voice_id y volver a medir con `python -m h3pipeline voz`.",
+  "estilo_imagen": "Photorealistic FPV drone footage over an active volcanic crater at dawn, shot on a wide action camera. Cold blue pre-dawn light above, hard orange glow from below where the lava breathes. Fine volcanic haze, drifting ash flakes and sparse embers catching the light. High contrast, slight wide-angle distortion, digital sensor grain, aggressive motion.",
+  "estilo_video": "Photorealistic FPV drone footage at an active volcano at dawn, vertical 9:16. Fast aerial motion, wind buffeting, heat shimmer.",
+  "cierre_video": "Keep the framing of the first frame. Grainy, photographic, documentary. Not animated, not illustrated, not CGI-looking, not a video game.",
+  "solo_sonidos": "the wind, the drone motors and the volcano",
+  "personajes": {
+    "piloto": {
+      "hoja": "m_piloto",
+      "descripcion": "the drone pilot: a person in a dusty high-visibility orange mountain shell jacket with the hood down, bulky black FPV goggles completely covering the eyes, a grey dust buff pulled up over nose and mouth, and black work gloves holding a dark radio controller with two antennas — the face is NEVER visible"
+    }
+  },
+  "locaciones": {
+    "borde": {
+      "imagen": "l_borde",
+      "descripcion": "the windswept ash ridge on the crater rim at dawn"
+    },
+    "crater": {
+      "imagen": "l_crater",
+      "descripcion": "the inside of the active crater: vertical rock walls, volcanic gas, the lava lake glowing far below"
+    }
+  },
+  "voces": {
+    "narrador": "JXKQ929SO0LLl7spbEAI"
+  },
+  "madre": [
+    {
+      "id": "l_borde",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic photograph from a high ash ridge on the rim of an active volcano at dawn, vertical frame. Dark grey volcanic gravel and ash in the foreground, the crater falling away beyond the edge, and a wide column of grey volcanic gas rising from inside it, lit faint orange from below. Cold blue pre-dawn sky above. Wind-blown ash streaks. The gas column is fine, fibrous and wind-torn, never rounded cartoon puffs. No people, no equipment, no buildings. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "l_crater",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic aerial photograph looking down INSIDE an active volcanic crater, vertical frame. Sheer dark rock walls streaked with yellow sulfur deposits converging downward, thin layers of drifting grey gas, and far below at the bottom a lava lake glowing hard orange with a black crust cracking into bright seams. Sparse embers rising. The gas is fine, fibrous and wind-torn, never rounded cartoon puffs. No people, no machines. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_piloto",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic character reference photograph, vertical frame, plain dark grey background, even soft lighting. A drone pilot from the chest up: a dusty high-visibility orange mountain shell jacket with the hood down, bulky black FPV goggles completely covering the eyes, a grey dust buff pulled up over the nose and mouth so NO part of the face is visible, black work gloves holding a dark radio controller with two antennas at chest height. Neutral stance, facing camera. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    },
+    {
+      "id": "m_dron_caido",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic product-style reference photograph, vertical frame, plain dark grey background, even soft lighting. A small quadcopter drone that survived extreme heat: matte black carbon frame visibly warped and scorched, two propellers melted into curls, ash caked into every joint, and underneath it a small intact gimbal camera with a clean round lens and a tiny red LED lit beside it. It must read as real damaged equipment, scorched and heavy — never as a clean product render, never as a toy. Every detail sharp and readable: this is the reference for every other shot. This is a single film frame, not a poster: no text, no borders, no titles, no watermark."
+    }
+  ],
+  "planos": [
+    {
+      "id": "S01",
+      "tipo": "PD",
+      "corta": 3.0,
+      "segundos": 5.2,
+      "loc": "borde",
+      "personajes": [
+        "piloto"
+      ],
+      "refs": [
+        "m_piloto",
+        "l_borde"
+      ],
+      "funcion": "HOOK. Las antiparras se encienden de naranja: algo volvió a emitir ahí abajo.",
+      "texto": "volvió a transmitir a las 6 AM",
+      "ve": "EXTREME CLOSE UP on bulky black FPV goggles filling the lower two thirds of the vertical frame, worn over a grey dust buff. Across both curved lenses, the hard orange glow of a volcanic crater and a rising gas column are reflected, with a tiny green signal indicator light reflected in one corner. Fine ash drifts past. The upper third of the frame is dark pre-dawn sky, kept clear.",
+      "mueve": "The orange reflection in the lenses flares suddenly as a pulse of light comes up from the crater, and the green indicator reflection starts blinking fast. The head snaps down toward the crater. Ash streaks accelerate across the frame with a gust.",
+      "audio": "[SFX] a sharp radio lock-on beep repeating, close and dry. [Ambient] deep volcanic rumble underneath, wind gusting over rock."
+    },
+    {
+      "id": "S02",
+      "tipo": "PGE",
+      "corta": 2.5,
+      "segundos": 5.2,
+      "loc": "borde",
+      "personajes": [
+        "piloto"
+      ],
+      "refs": [
+        "l_borde",
+        "m_piloto"
+      ],
+      "funcion": "PROMESA. Dónde estamos y qué está en juego: una persona diminuta contra un cráter humeando, y el dron entrando.",
+      "ve": "EXTREME WIDE SHOT from high above and behind the ash ridge of the crater rim at dawn, a vast landscape that dwarfs everything human. The pilot in the high-visibility orange jacket is a TINY distant figure standing at the rim edge in the lower fifth of the vertical frame — his full height is about ONE TENTH of the image height, a small orange dot against the grey ash, and clearly MUCH smaller than the gas column is wide. Beyond and above him the crater mouth and its huge fibrous, wind-torn gas column lit orange from inside fill the frame, towering. A small dark quadcopter hangs in the air just past the rim, about to drop in.",
+      "mueve": "The quadcopter tips forward and dives into the crater mouth, shrinking fast to a dot against the glow. The gas column leans with the wind. The pilot's jacket flaps hard but he does not move.",
+      "audio": "[SFX] four drone motors spinning up to a scream, then doppler-fading down into the crater. [Ambient] wind at full force over the ridge, the low rumble underneath."
+    },
+    {
+      "id": "S03",
+      "tipo": "PG",
+      "corta": 4.2,
+      "segundos": 5.2,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "l_crater"
+      ],
+      "funcion": "BARRA DE PROGRESO. El descenso con número: la pared cayendo a toda velocidad, el contador en post.",
+      "texto": "−120 m · 68 °C",
+      "ve": "FPV POV diving steeply down inside the crater, the camera tilted forward. A sheer dark rock wall streaked with yellow sulfur rushes upward past the right side of the vertical frame, layers of thin grey gas below, and at the very bottom a faint orange glow. Slight wide-angle distortion, heat shimmer at the edges.",
+      "mueve": "The camera plunges: the rock wall streams past faster and faster, thin gas layers punch past the lens one after another, and the orange glow below grows steadily. The image vibrates with the motors and the wind buffeting.",
+      "audio": "[SFX] drone motors whining under load, pitch rising with the dive. [Foley] wind ripping past the microphone in bursts. [Ambient] the rumble getting closer and heavier."
+    },
+    {
+      "id": "S04",
+      "tipo": "PD",
+      "corta": 4.3,
+      "segundos": 5.2,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [],
+      "interrupcion": true,
+      "funcion": "TENSIÓN POR AUSENCIA. Entra al gas y no hay nada. Cambio de régimen: el sonido se apaga, la luz se apaga.",
+      "texto": "señal 12 %",
+      "ve": "FPV POV completely inside dense grey-brown volcanic gas, vertical frame, but with real depth: ragged nearer wisps sliding past close to the lens, a darker wall of denser gas farther away, drifting ash flakes catching a weak light between them. The gas is fine, fibrous and wind-torn, never rounded cartoon puffs. Very low contrast, claustrophobic, no walls, no sky, no horizon — and very low in the frame, almost lost, one single extremely faint warm glow smudged through the gas.",
+      "mueve": "The camera pushes slowly forward through the gas, swirls parting around the lens. Ash flakes drift past. For a long moment nothing appears at all — then the tiniest red blink, far away and low, barely there, once.",
+      "audio": "[Ambient] the wind and rumble suddenly muffled to almost nothing, as if wrapped in cloth. [SFX] the drone motors close and lonely, and one faint electronic blip, far away."
+    },
+    {
+      "id": "S05",
+      "tipo": "PG",
+      "corta": 5.5,
+      "segundos": 6.6,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "l_crater"
+      ],
+      "funcion": "ESCALERA 1. Del gas sale una forma: un brillo metálico en una cornisa. Todavía no se sabe qué es.",
+      "ve": "FPV POV in thinning volcanic gas, vertical frame. Ahead and below, a narrow rock ledge is starting to resolve out of the haze on the crater wall, lit faintly orange from beneath. On the ledge, one small metallic glint — a hard, angular reflection that does not belong to rock. Sulfur streaks on the wall behind.",
+      "mueve": "The gas thins in waves: with each wave the ledge sharpens and the metallic glint blinks in and out of view. The camera drifts closer and lower, careful now, the shaking almost gone. The glint holds steady for the last beat.",
+      "audio": "[SFX] the motors dropping to a slow hover note. [Ambient] the rumble returning, deeper now, and gas hissing somewhere on the wall."
+    },
+    {
+      "id": "S06",
+      "tipo": "PGE",
+      "corta": 6.0,
+      "segundos": 6.6,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "l_crater"
+      ],
+      "funcion": "ESCALERA 2 · ESCALA. El plano vertical juega: la cornisa diminuta contra la pared entera y el lago de lava abajo.",
+      "ve": "EXTREME WIDE POV inside the crater, vertical frame used at full height. The sheer rock wall fills the frame top to bottom; the narrow ledge with the tiny metallic glint is a dot partway down, and FAR below, at the very bottom of the frame, the lava lake glows hard orange with black crust cracking into bright seams. The glinting object on the ledge is about ONE FORTIETH of the image height: the scale must feel crushing. Thin gas layers drift between camera and wall.",
+      "mueve": "The camera slowly tilts down from the ledge to the lava lake and back up, connecting the two. The lake's crust splits and a bright seam widens, throwing more orange light up the wall. Embers rise past the lens.",
+      "audio": "[Ambient] the full voice of the volcano: deep rumble, rock cracking far below, gas venting. [SFX] a slow, heavy bubble of lava bursting somewhere beneath."
+    },
+    {
+      "id": "S07",
+      "tipo": "PD",
+      "corta": 6.5,
+      "segundos": 7.3,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "m_dron_caido"
+      ],
+      "funcion": "LA REVELACIÓN, al final del tramo. Es el dron perdido: quemado, torcido — y con la cámara todavía grabando.",
+      "ve": "FPV POV close on the rock ledge, vertical frame. Sitting in a drift of ash: the lost quadcopter — matte black carbon frame visibly warped and scorched, two propellers melted into curls, ash caked into every joint — and underneath it, intact, a small gimbal camera with a clean round lens and a tiny red LED blinking beside it. It must read as real scorched equipment, heavy and damaged, never as a clean product render, never as a toy. Orange light from below catches its edges.",
+      "mueve": "The camera eases in slowly across the ledge. Ash slides off the scorched frame in a thin stream with the rotor wash. The red LED keeps blinking, steady. Nothing else on the ledge moves.",
+      "audio": "[SFX] a soft repeating electronic blip, very close now, in rhythm with the blinking. [Foley] ash grains hissing across rock under rotor wash. [Ambient] the rumble, patient, underneath."
+    },
+    {
+      "id": "S08",
+      "tipo": "PGE",
+      "corta": 6.1,
+      "segundos": 6.6,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "l_crater"
+      ],
+      "interrupcion": true,
+      "funcion": "GIRO, a la mitad exacta. El lago revienta: entra una luz nueva de abajo y un rugido que no estaba. Ahora hay reloj.",
+      "ve": "WIDE POV looking down the crater shaft from beside the ledge, vertical frame. The lava lake below in mid-eruption: a fountain of bright orange lava bursting upward from the broken crust, embers and glowing fragments rising in a column, the rock walls flooding with hard orange light from beneath. Gas layers above lit from below like ceilings on fire. The gas and smoke are fibrous and wind-torn, never rounded cartoon puffs.",
+      "mueve": "The fountain surges taller and the whole frame floods brighter, shadows on the wall wheeling upward. A pressure wave of hot air slams the camera — the image kicks, tilts, and barely recovers. Embers stream up past the lens, faster and faster.",
+      "audio": "[SFX] a sudden roar from below, huge, like a furnace door opening. [Foley] the drone frame rattling, motors surging to fight the hot air. [Ambient] rock cracking, debris hissing.",
+      "texto": "el lago despertó"
+    },
+    {
+      "id": "S09",
+      "tipo": "PD",
+      "corta": 5.2,
+      "segundos": 5.9,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "m_dron_caido"
+      ],
+      "funcion": "CONTACTO físico. El gancho baja y agarra el chasis quemado, con las brasas subiendo alrededor.",
+      "ve": "FPV POV looking STRAIGHT DOWN at the ash ledge, vertical frame. Lying on the ledge below: the scorched quadcopter — warped black carbon frame, two propellers melted into curls, ash caked in every joint, small gimbal camera with a red LED — NOT attached to anything, resting in a drift of ash. From the top edge of the frame a thin black recovery hook on a short cable hangs down into the shot, dangling in mid-air a clear distance ABOVE the drone, visibly not touching it yet. Embers stream upward through the gap, orange light pulsing from below, ash whipping off the ledge.",
+      "mueve": "The hook lowers, swings once with the hot wind, misses, swings back and seats into the scorched frame. The cable snaps taut and the burned drone shifts in the ash, tipping toward the camera. Embers rush past faster.",
+      "audio": "[Foley] the metal hook scraping carbon, twice, then a clean click as it seats. [SFX] motors screaming under new load. [Ambient] the eruption roar below, continuous now."
+    },
+    {
+      "id": "S10",
+      "tipo": "PP",
+      "corta": 6.0,
+      "segundos": 6.6,
+      "loc": "crater",
+      "personajes": [],
+      "refs": [
+        "m_dron_caido"
+      ],
+      "funcion": "EL DETALLE IMPOSIBLE, sostenido para que se lea: colgado del cable, su cámara gira sola y queda mirando al lente.",
+      "ve": "CLOSE SHOT, vertical frame: the scorched quadcopter hanging from the taut cable against the orange chaos of the crater, filling the middle of the frame, slowly spinning. Its warped black frame and melted propellers read clearly. Under it, the small intact gimbal camera with its clean round lens and blinking red LED. Embers and lit gas layers drift behind.",
+      "mueve": "The hanging drone turns slowly on the cable — and as it turns, its small gimbal camera rotates smoothly the OTHER way, holding its lens pointed straight at us the whole time, level and deliberate, red LED blinking. The spin stops. The lens stays fixed on camera.",
+      "audio": "[SFX] the tiny gimbal motor whirring, close and clean against the huge roar below. [Foley] the cable creaking with the swing. [Ambient] the eruption, slightly farther now."
+    },
+    {
+      "id": "S11",
+      "tipo": "PD",
+      "corta": 5.6,
+      "segundos": 6.6,
+      "loc": "borde",
+      "personajes": [
+        "piloto"
+      ],
+      "refs": [
+        "m_piloto",
+        "m_dron_caido",
+        "l_borde"
+      ],
+      "funcion": "EL PAGO. Vuelta al tamaño del gancho: las antiparras naranjas, el dron quemado ya en la mano. La voz suelta el dato que reordena todo.",
+      "ve": "EXTREME CLOSE UP matching the very first shot: the bulky black FPV goggles worn over the grey dust buff fill the middle of the vertical frame, now flooded with warm orange light from the crater side, the crater and its gas column reflected across both lenses. Rising into the very bottom edge of the frame, a black-gloved hand holds the recovered scorched quadcopter: warped black carbon, two propellers melted into curls, ash caked into every joint, the small intact gimbal camera with its red LED — it must read as the SAME burned drone from the crater, never as a clean or intact drone. The upper third of the frame is dawn sky, kept clear.",
+      "mueve": "The goggles tilt slowly down toward the burned drone in the glove. The orange light on the lenses pulses once, softly, with the crater breathing behind. Ash drifts slower now. The gloved thumb wipes ash off the little camera.",
+      "audio": "[SFX] motors winding down from a scream to a whisper, then off. [Foley] carbon settling into a glove, a strap creaking. [Ambient] the rumble, distant again, and the wind."
+    },
+    {
+      "id": "S12",
+      "tipo": "PGE",
+      "corta": 5.1,
+      "segundos": 5.9,
+      "loc": "borde",
+      "personajes": [],
+      "refs": [
+        "l_borde"
+      ],
+      "interrupcion": true,
+      "funcion": "CIERRE EN BUCLE. La misma boca del cráter del segundo 3 — pero la columna es el doble de alta. Empalma con el arranque y corta a negro.",
+      "ve": "EXTREME WIDE SHOT of the crater rim at dawn from the ash ridge, matching the framing of the earlier wide shot, vertical frame. The crater mouth and its gas column — but the column is now TWICE as tall and twice as wide, glowing a deeper orange from inside, leaning over the ridge. No people, no drone. Wind-blown ash crossing the frame. The gas is fibrous and wind-torn, never rounded cartoon puffs.",
+      "mueve": "The gas column swells and brightens from inside, pulse by pulse, each pulse stronger. Ash streams faster across the ridge. On the brightest pulse the frame cuts to black.",
+      "audio": "[Ambient] the rumble rising steadily until it fills everything. [SFX] one sharp radio lock-on beep, identical to the opening, then total silence on the cut to black."
+    }
+  ],
+  "voz": [
+    {
+      "plano": "S01",
+      "offset": 0.3,
+      "texto": "Ayer perdimos un dron adentro del volcán."
+    },
+    {
+      "plano": "S02",
+      "offset": 0.3,
+      "texto": "Hoy volvió la señal. Bajo a buscarlo."
+    },
+    {
+      "plano": "S03",
+      "offset": 0.9,
+      "texto": "Entro con otro dron. Cien metros, ciento veinte."
+    },
+    {
+      "plano": "S04",
+      "offset": 0.5,
+      "texto": "El gas lo tapa todo. La señal casi se pierde."
+    },
+    {
+      "plano": "S05",
+      "offset": 0.6,
+      "texto": "Hasta que aparece. Un reflejo quieto en una cornisa."
+    },
+    {
+      "plano": "S06",
+      "offset": 0.6,
+      "texto": "Es una cornisa chiquita, colgada arriba del lago de lava."
+    },
+    {
+      "plano": "S07",
+      "offset": 0.5,
+      "texto": "[surprised] Es mi dron. Está todo quemado... y la lucecita roja sigue prendida."
+    },
+    {
+      "plano": "S08",
+      "offset": 0.8,
+      "texto": "Y justo ahí el lago explota. Tengo segundos para sacarlo."
+    },
+    {
+      "plano": "S09",
+      "offset": 0.5,
+      "texto": "Bajo el gancho. Fallo una vez. A la segunda, lo engancho."
+    },
+    {
+      "plano": "S10",
+      "offset": 0.6,
+      "texto": "[whispers] Y al levantarlo, su cámara gira sola... y me apunta."
+    },
+    {
+      "plano": "S11",
+      "offset": 0.5,
+      "texto": "Grabó toda la noche. La lava subió doce metros y nadie lo sabía."
+    },
+    {
+      "plano": "S12",
+      "offset": 0.3,
+      "texto": "Mañana vuelvo a entrar. ¿Vos te animarías?"
+    }
+  ]
+}

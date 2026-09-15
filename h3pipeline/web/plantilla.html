@@ -1,0 +1,864 @@
+<!-- Sin esto, servida desde `python -m http.server` la página sale con mojibake:
+     el servidor manda `text/html` sin charset y Windows asume windows-1252. -->
+<meta charset="utf-8">
+<title>Mesa de Armado H3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Paleta: la sala de montaje. Azul-verde de agua profunda como
+   ground, ámbar de monitor CRT como único acento. Sale de la
+   propia biblia del proyecto ("ámbar apagado, verde fósforo de
+   CRT y azul acero").
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --ground:    #F1F5F4;
+  --surface:   #FFFFFF;
+  --surface-2: #E6EDEB;
+  --ink:       #15211F;
+  --ink-2:     #485A57;
+  --ink-3:     #7B8D89;
+  --line:      #D2DDDA;
+  --line-2:    #BECbc8;
+  --ambar:     #A8620B;
+  --ambar-2:   #F4E5CE;
+  --teal:      #1D5E5A;
+  --teal-2:    #DCEAE8;
+  --ok:        #2C6845;
+  --warn:      #8E5C0D;
+  --crit:      #9E3A2E;
+  --sombra:    0 1px 2px rgba(21,33,31,.06), 0 8px 24px -12px rgba(21,33,31,.18);
+  --radio: 3px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:    #0B1413;
+    --surface:   #111C1A;
+    --surface-2: #172422;
+    --ink:       #E5EEEB;
+    --ink-2:     #9DB2AE;
+    --ink-3:     #6B7F7B;
+    --line:      #22302D;
+    --line-2:    #2E3F3B;
+    --ambar:     #E3A85E;
+    --ambar-2:   #2B2015;
+    --teal:      #55ADA4;
+    --teal-2:    #142A28;
+    --ok:        #6BB489;
+    --warn:      #D8A65C;
+    --crit:      #E0796A;
+    --sombra:    0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:    #0B1413;
+  --surface:   #111C1A;
+  --surface-2: #172422;
+  --ink:       #E5EEEB;
+  --ink-2:     #9DB2AE;
+  --ink-3:     #6B7F7B;
+  --line:      #22302D;
+  --line-2:    #2E3F3B;
+  --ambar:     #E3A85E;
+  --ambar-2:   #2B2015;
+  --teal:      #55ADA4;
+  --teal-2:    #142A28;
+  --ok:        #6BB489;
+  --warn:      #D8A65C;
+  --crit:      #E0796A;
+  --sombra:    0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 15px/1.55 "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; margin: 0; text-wrap: balance; }
+code, .mono, input[type="number"] { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--ambar); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ── cabecera ───────────────────────────────────────────────── */
+header {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  padding: 18px clamp(16px, 4vw, 36px);
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+}
+header h1 { font-size: 21px; font-weight: 800; letter-spacing: -.02em; }
+header .sub { color: var(--ink-3); font-size: 13px; }
+header .der { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+.tema {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink-2);
+  border-radius: var(--radio); padding: 5px 10px; font-size: 12px; cursor: pointer;
+  font-family: inherit;
+}
+.tema:hover { border-color: var(--ambar); color: var(--ambar); }
+
+/* ── layout ─────────────────────────────────────────────────── */
+.mesa {
+  display: grid; gap: 24px;
+  grid-template-columns: minmax(320px, 400px) minmax(0, 1fr);
+  align-items: start;
+  padding: 24px clamp(16px, 4vw, 36px) 64px;
+  max-width: 1500px; margin: 0 auto;
+}
+@media (max-width: 940px) { .mesa { grid-template-columns: 1fr; } }
+
+.panel {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radio); box-shadow: var(--sombra);
+}
+.panel > h2 {
+  font-size: 12px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-3); padding: 13px 16px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
+}
+.panel > h2 .n {
+  width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ambar-2); color: var(--ambar); font-size: 10px; font-weight: 600;
+  font-family: "IBM Plex Mono", monospace; letter-spacing: 0;
+}
+.cuerpo { padding: 16px; display: flex; flex-direction: column; gap: 18px; }
+
+/* ── controles ──────────────────────────────────────────────── */
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.campo > label, .rotulo {
+  font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ayuda { font-size: 12px; color: var(--ink-3); line-height: 1.45; }
+input[type="text"], textarea, select {
+  width: 100%; background: var(--ground); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radio);
+  padding: 9px 10px; font: inherit; font-size: 14px;
+}
+textarea { resize: vertical; min-height: 74px; line-height: 1.5; }
+input:focus, textarea:focus, select:focus { border-color: var(--ambar); }
+
+.segmentado { display: flex; border: 1px solid var(--line); border-radius: var(--radio); overflow: hidden; }
+.segmentado button {
+  flex: 1; padding: 9px 8px; border: 0; background: var(--surface); color: var(--ink-2);
+  font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  border-right: 1px solid var(--line);
+}
+.segmentado button:last-child { border-right: 0; }
+.segmentado button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.segmentado button:hover:not([aria-pressed="true"]) { background: var(--surface-2); }
+
+.opciones { display: flex; flex-direction: column; gap: 7px; }
+.opcion {
+  display: flex; gap: 10px; align-items: flex-start; padding: 10px 11px;
+  border: 1px solid var(--line); border-radius: var(--radio); cursor: pointer;
+  background: var(--surface); transition: border-color .12s, background .12s;
+}
+.opcion:hover { border-color: var(--line-2); background: var(--surface-2); }
+.opcion[data-sel="1"] { border-color: var(--ambar); background: var(--ambar-2); }
+.opcion input { margin: 3px 0 0; accent-color: var(--ambar); }
+.opcion .t { font-size: 14px; font-weight: 500; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.opcion .d { font-size: 12px; color: var(--ink-3); line-height: 1.45; margin-top: 2px; }
+
+.pastilla {
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 500;
+  padding: 2px 6px; border-radius: 2px; background: var(--surface-2); color: var(--ink-2);
+  border: 1px solid var(--line);
+}
+.pastilla.ret { background: var(--teal-2); color: var(--teal); border-color: transparent; }
+
+/* ── lista de personajes ────────────────────────────────────── */
+.ficha {
+  display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start;
+  padding: 10px; border: 1px solid var(--line); border-radius: var(--radio);
+  background: var(--ground);
+}
+.ficha .campos { display: flex; flex-direction: column; gap: 6px; }
+.ficha input, .ficha textarea { background: var(--surface); font-size: 13px; }
+.mini {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink-3);
+  border-radius: var(--radio); width: 26px; height: 26px; cursor: pointer;
+  font-size: 15px; line-height: 1; display: grid; place-items: center; font-family: inherit;
+}
+.mini:hover { border-color: var(--crit); color: var(--crit); }
+.agregar {
+  border: 1px dashed var(--line-2); background: transparent; color: var(--ink-2);
+  border-radius: var(--radio); padding: 8px; cursor: pointer; font: inherit; font-size: 13px;
+}
+.agregar:hover { border-color: var(--ambar); color: var(--ambar); }
+
+/* ── timeline ───────────────────────────────────────────────── */
+.tl-marco { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.tl {
+  display: flex; width: 100%; height: 62px; border-radius: 2px; overflow: hidden;
+  border: 1px solid var(--line); background: var(--ground);
+}
+.tl-seg {
+  position: relative; border-right: 1px solid var(--line); cursor: pointer;
+  background: var(--surface); padding: 7px 6px; overflow: hidden; text-align: left;
+  font: inherit; color: inherit; min-width: 0;
+  transition: background .12s;
+}
+.tl-seg:last-child { border-right: 0; }
+.tl-seg:hover { background: var(--surface-2); }
+.tl-seg[aria-pressed="true"] { background: var(--ambar-2); }
+.tl-seg .id {
+  font-family: "IBM Plex Mono", monospace; font-size: 9.5px; font-weight: 600;
+  letter-spacing: .04em; color: var(--ink-2); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; display: block;
+}
+.tl-seg[aria-pressed="true"] .id { color: var(--ambar); }
+.tl-seg .seg { font-family: "IBM Plex Mono", monospace; font-size: 9px; color: var(--ink-3); display: block; margin-top: 1px; }
+.tl-seg .rompe {
+  position: absolute; left: 6px; bottom: 6px; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ambar);
+}
+.tl-eje { display: flex; justify-content: space-between; font-family: "IBM Plex Mono", monospace; font-size: 10px; color: var(--ink-3); }
+
+.detalle {
+  border: 1px solid var(--line); border-radius: var(--radio); padding: 14px;
+  background: var(--ground); display: flex; flex-direction: column; gap: 10px;
+}
+.detalle h3 { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.detalle .obj { font-size: 14px; color: var(--ink-2); line-height: 1.55; max-width: 62ch; }
+.detalle ul { margin: 0; padding-left: 17px; display: flex; flex-direction: column; gap: 4px; }
+.detalle li { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.detalle .meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.detalle .overlay {
+  font-size: 12.5px; padding: 8px 10px; border-left: 2px solid var(--ambar);
+  background: var(--ambar-2); color: var(--ink-2); border-radius: 0 2px 2px 0;
+}
+
+/* ── salida ─────────────────────────────────────────────────── */
+.tabs { display: flex; gap: 0; border-bottom: 1px solid var(--line); padding: 0 16px; overflow-x: auto; }
+.tabs button {
+  border: 0; background: transparent; color: var(--ink-3); cursor: pointer;
+  padding: 11px 12px; font: inherit; font-size: 13px; font-weight: 500;
+  border-bottom: 2px solid transparent; white-space: nowrap;
+}
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ambar); }
+.tabs button:hover { color: var(--ink); }
+
+.salida { padding: 0; }
+pre.cod {
+  margin: 0; padding: 16px; overflow-x: auto; max-height: 60vh; overflow-y: auto;
+  font-family: "IBM Plex Mono", monospace; font-size: 12px; line-height: 1.6;
+  color: var(--ink-2); white-space: pre; tab-size: 2;
+}
+.barra {
+  display: flex; gap: 8px; align-items: center; padding: 11px 16px;
+  border-top: 1px solid var(--line); background: var(--surface-2);
+  border-radius: 0 0 var(--radio) var(--radio); flex-wrap: wrap;
+}
+.btn {
+  border: 1px solid var(--ink); background: var(--ink); color: var(--surface);
+  border-radius: var(--radio); padding: 8px 14px; font: inherit; font-size: 13px;
+  font-weight: 500; cursor: pointer;
+}
+.btn:hover { background: var(--ambar); border-color: var(--ambar); color: #fff; }
+.btn.sec { background: transparent; color: var(--ink-2); border-color: var(--line-2); }
+.btn.sec:hover { color: var(--ambar); border-color: var(--ambar); background: transparent; }
+.nota-barra { font-size: 12px; color: var(--ink-3); margin-left: auto; }
+
+/* ── trampas de Vast ────────────────────────────────────────── */
+.trampas { padding: 16px; display: flex; flex-direction: column; gap: 14px; max-height: 62vh; overflow-y: auto; }
+.trampas > .intro { font-size: 13px; color: var(--ink-3); line-height: 1.55; max-width: 66ch; }
+.trampa {
+  border: 1px solid var(--line); border-left: 2px solid var(--crit);
+  border-radius: 0 var(--radio) var(--radio) 0; background: var(--ground); padding: 12px 14px;
+}
+.trampa h4 { margin: 0 0 8px; font-size: 14px; font-weight: 600; font-family: "Bricolage Grotesque", sans-serif; }
+.trampa dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; }
+.trampa dt {
+  font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink-3); padding-top: 3px; white-space: nowrap;
+}
+.trampa dd { margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+.trampa dd code, .trampa h4 code {
+  font-family: "IBM Plex Mono", monospace; font-size: 11.5px;
+  background: var(--surface-2); padding: 1px 4px; border-radius: 2px;
+}
+.trampa dd b { color: var(--ink); font-weight: 600; }
+.trampa.arreglo { border-left-color: var(--ok); }
+.pasos-vast { display: flex; flex-direction: column; gap: 12px; }
+.paso h4 {
+  margin: 0 0 6px; font-size: 12px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ambar); font-family: "IBM Plex Sans", sans-serif;
+}
+.paso pre {
+  margin: 0; padding: 10px 12px; background: var(--ground); border: 1px solid var(--line);
+  border-radius: var(--radio); font-family: "IBM Plex Mono", monospace; font-size: 11.5px;
+  line-height: 1.6; color: var(--ink-2); overflow-x: auto;
+}
+
+/* ── avisos ─────────────────────────────────────────────────── */
+.avisos { display: flex; flex-direction: column; gap: 7px; padding: 14px 16px; }
+.aviso {
+  display: flex; gap: 9px; font-size: 13px; line-height: 1.45; padding: 9px 11px;
+  border-radius: var(--radio); border: 1px solid var(--line); background: var(--ground);
+  color: var(--ink-2);
+}
+.aviso b { color: var(--ink); font-weight: 600; }
+.aviso.ok { border-color: transparent; background: var(--teal-2); color: var(--teal); }
+.aviso .marca { flex: 0 0 auto; font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600; padding-top: 1px; }
+.aviso.warn .marca { color: var(--warn); }
+.aviso.crit .marca { color: var(--crit); }
+
+.resumen { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 1px; background: var(--line); }
+.dato { background: var(--surface); padding: 12px 14px; }
+.dato .k { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.dato .v { font-family: "IBM Plex Mono", monospace; font-size: 19px; font-weight: 500; margin-top: 3px; letter-spacing: -.02em; }
+.dato .v small { font-size: 12px; color: var(--ink-3); font-weight: 400; }
+
+footer {
+  border-top: 1px solid var(--line); padding: 20px clamp(16px, 4vw, 36px) 40px;
+  color: var(--ink-3); font-size: 12.5px; line-height: 1.6; max-width: 1500px; margin: 0 auto;
+}
+footer code { font-size: 12px; color: var(--ink-2); }
+</style>
+
+<header>
+  <h1>Mesa de Armado</h1>
+  <span class="sub">entra una idea · sale el brief que el modelo convierte en storyboard</span>
+  <div class="der">
+    <button class="tema" id="btema" type="button">tema</button>
+  </div>
+</header>
+
+<div class="mesa">
+  <!-- ═══ ENTRADA ═══ -->
+  <div style="display:flex;flex-direction:column;gap:20px">
+
+    <section class="panel">
+      <h2><span class="n">1</span> Formato</h2>
+      <div class="cuerpo">
+        <div class="segmentado" id="fmt">
+          <button type="button" data-f="short" aria-pressed="true">Short vertical</button>
+          <button type="button" data-f="largo" aria-pressed="false">Video largo</button>
+        </div>
+        <div class="campo">
+          <span class="rotulo">Estructura</span>
+          <div class="opciones" id="ests"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2><span class="n">2</span> La idea</h2>
+      <div class="cuerpo">
+        <div class="campo">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" placeholder="PROFUNDIDAD">
+        </div>
+        <div class="campo">
+          <label for="topico">Tópico</label>
+          <textarea id="topico" placeholder="Un buzo desciende a 80 metros y encuentra en el fondo un avión de pasajeros con las luces encendidas y la cabina seca."></textarea>
+          <span class="ayuda">Qué pasa, en dos o tres frases. Es lo que el modelo desarrolla contra la estructura.</span>
+        </div>
+        <div class="campo">
+          <label for="estilo">Estilo visual</label>
+          <select id="estilo"></select>
+          <textarea id="estilo_libre" placeholder="Se completa solo al elegir arriba. Editalo si querés otra cosa."></textarea>
+          <span class="ayuda">Va en inglés en todos los prompts de imagen: ancla paleta, luz y textura.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2><span class="n">3</span> Voz</h2>
+      <div class="cuerpo" id="voz-cuerpo"></div>
+    </section>
+
+    <section class="panel" id="panel-reparto" hidden>
+      <h2><span class="n">4</span> Reparto y locaciones</h2>
+      <div class="cuerpo">
+        <div class="campo">
+          <span class="rotulo">Personajes</span>
+          <div class="opciones" id="personajes"></div>
+          <button class="agregar" type="button" id="add-pers">+ personaje</button>
+          <span class="ayuda">La descripción se inyecta en <em>todos</em> los prompts donde aparece: la hoja de modelo sostiene la cara, el texto sostiene la ropa.</span>
+        </div>
+        <div class="campo">
+          <span class="rotulo">Locaciones</span>
+          <div class="opciones" id="locaciones"></div>
+          <button class="agregar" type="button" id="add-loc">+ locación</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══ SALIDA ═══ -->
+  <div style="display:flex;flex-direction:column;gap:20px">
+
+    <section class="panel">
+      <h2>La estructura, tramo por tramo</h2>
+      <div class="tl-marco">
+        <div class="tl" id="tl"></div>
+        <div class="tl-eje"><span>0 s</span><span id="eje-fin">60 s</span></div>
+      </div>
+      <div style="padding:0 16px 16px"><div class="detalle" id="detalle"></div></div>
+      <div class="resumen" id="resumen"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Lo que sale</h2>
+      <div class="tabs" id="tabs">
+        <button type="button" data-t="prompt" aria-selected="true">Instrucción para el modelo</button>
+        <button type="button" data-t="json" aria-selected="false">proyecto.json</button>
+        <button type="button" data-t="pasos" aria-selected="false">Qué corro después</button>
+        <button type="button" data-t="trampas" aria-selected="false">Trampas de Vast</button>
+      </div>
+      <div class="salida"><pre class="cod" id="cod"></pre><div id="trampas" hidden></div></div>
+      <div class="barra">
+        <button class="btn" type="button" id="copiar">Copiar</button>
+        <button class="btn sec" type="button" id="limpiar">Vaciar el formulario</button>
+        <span class="nota-barra" id="nota-barra"></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Verificación</h2>
+      <div class="avisos" id="avisos"></div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  Las estructuras salen de <code>Estructuras_Contenido_Alta_Retencion_2026.docx</code> y viven en
+  <code>h3pipeline/estructuras/</code>. Esta página se genera desde el módulo con
+  <code>python -m h3pipeline.web</code>, así que no se desincroniza: si cambiás un tramo en el JSON, cambia acá.
+  <br><br>
+  El texto en pantalla va <b>siempre</b> como overlay en post — los modelos de imagen y video destrozan el texto,
+  y en un gancho eso es fatal. Y la voz nunca sale de H3 cuando cruza un corte: H3 no tiene voice ID e inventa
+  una voz distinta en cada clip.
+</footer>
+
+<script>
+const DATOS = __DATOS__;
+
+/* ── estado ─────────────────────────────────────────────────── */
+const S = {
+  formato: "short", estructura: "short", titulo: "", topico: "",
+  estilo_preset: 0, estilo_libre: "",
+  voz_off: true, tono: "", dialogo: false, sonidos: "",
+  personajes: [], locaciones: [], tramo: 0, tab: "prompt",
+};
+try { Object.assign(S, JSON.parse(localStorage.getItem("mesa-h3") || "{}")); } catch {}
+const guardar = () => { try { localStorage.setItem("mesa-h3", JSON.stringify(S)); } catch {} };
+
+const $ = (s) => document.querySelector(s);
+const el = (t, c, x) => { const n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; };
+const est = () => DATOS.estructuras[S.estructura];
+const esShort = () => S.formato === "short";
+const seg = (x) => Math.abs(x - Math.round(x)) < 0.05 ? String(Math.round(x)) : x.toFixed(1);
+// NFD separa la tilde de la letra y hay que BORRARLA, no reemplazarla: si cae
+// en el filtro de abajo, "lámpara" termina como "la-mpara".
+const slug = (t) => (t || "video").toLowerCase().normalize("NFD")
+  .replace(/\p{Diacritic}/gu, "")
+  .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "video";
+
+/* ── formato y estructura ───────────────────────────────────── */
+function pintarFormato() {
+  $("#fmt").querySelectorAll("button").forEach((b) =>
+    b.setAttribute("aria-pressed", String(b.dataset.f === S.formato)));
+  const cont = $("#ests"); cont.innerHTML = "";
+  const opts = Object.entries(DATOS.estructuras).filter(([, e]) => e.formato === S.formato);
+  if (!opts.some(([k]) => k === S.estructura)) { S.estructura = opts[0][0]; S.tramo = 0; }
+  for (const [k, e] of opts) {
+    const lab = el("label", "opcion");
+    lab.dataset.sel = k === S.estructura ? "1" : "0";
+    const r = el("input"); r.type = "radio"; r.name = "est"; r.checked = k === S.estructura;
+    r.addEventListener("change", () => { S.estructura = k; S.tramo = 0; todo(); });
+    const box = el("div");
+    const t = el("div", "t");
+    t.append(el("span", null, e.etiqueta));
+    t.append(el("span", "pastilla", seg(e.duracion) + " s"));
+    if (e.retencion) t.append(el("span", "pastilla ret", Math.round(e.retencion * 100) + "% retención"));
+    box.append(t, el("div", "d", e.para));
+    lab.append(r, box); cont.append(lab);
+  }
+}
+
+/* ── estilo ─────────────────────────────────────────────────── */
+function pintarEstilo() {
+  const s = $("#estilo");
+  if (!s.options.length) {
+    DATOS.estilos.forEach((e, i) => s.append(new Option(e.nombre, String(i))));
+    s.addEventListener("change", () => {
+      S.estilo_preset = +s.value;
+      S.estilo_libre = DATOS.estilos[S.estilo_preset].prompt;
+      $("#estilo_libre").value = S.estilo_libre; salida(); guardar();
+    });
+  }
+  s.value = String(S.estilo_preset);
+  if (!S.estilo_libre) S.estilo_libre = DATOS.estilos[S.estilo_preset].prompt;
+  $("#estilo_libre").value = S.estilo_libre;
+}
+
+/* ── voz ────────────────────────────────────────────────────── */
+function pintarVoz() {
+  const c = $("#voz-cuerpo"); c.innerHTML = "";
+  const check = (id, txt, det, val, on) => {
+    const lab = el("label", "opcion"); lab.dataset.sel = val ? "1" : "0";
+    const i = el("input"); i.type = "checkbox"; i.checked = val; i.id = id;
+    i.addEventListener("change", () => { on(i.checked); todo(); });
+    const box = el("div"); box.append(el("div", "t", txt), el("div", "d", det));
+    lab.append(i, box); return lab;
+  };
+  c.append(check("c-off", "Voz en off", esShort()
+    ? "La cuenta alguien que no está en cuadro. En un short es lo normal: con la boca tapada el modelo no sincroniza nada."
+    : "Narración por encima de los planos. Siempre de ElevenLabs, nunca de H3.",
+    S.voz_off, (v) => { S.voz_off = v; }));
+
+  if (!esShort()) {
+    c.append(check("c-dia", "Personajes que hablan en cuadro", "Diálogo dentro del plano. H3 lo genera, pero después hay que doblarlo: no sostiene una voz entre clips.",
+      S.dialogo, (v) => { S.dialogo = v; }));
+  }
+
+  if (S.voz_off) {
+    const f = el("div", "campo");
+    const l = el("label", null, "Tono de la voz"); l.htmlFor = "tono";
+    const i = el("input"); i.type = "text"; i.id = "tono"; i.value = S.tono;
+    i.placeholder = "hombre, 30-40, contando algo que todavía lo perturba. Bajo, cercano, sin dramatizar.";
+    i.addEventListener("input", () => { S.tono = i.value; salida(); guardar(); });
+    f.append(l, i, el("span", "ayuda", "Va en la hoja de voz para ElevenLabs."));
+    c.append(f);
+  }
+  if (esShort()) {
+    const f = el("div", "campo");
+    const l = el("label", null, "Qué se oye, si nadie habla"); l.htmlFor = "sonidos";
+    const i = el("input"); i.type = "text"; i.id = "sonidos"; i.value = S.sonidos;
+    i.placeholder = "the breathing apparatus, the water and the structure";
+    i.addEventListener("input", () => { S.sonidos = i.value; salida(); guardar(); });
+    f.append(l, i, el("span", "ayuda", "En inglés. Cierra las vías de voz para que H3 no invente diálogo."));
+    c.append(f);
+  }
+  $("#panel-reparto").hidden = esShort() && !S.dialogo;
+}
+
+/* ── reparto ────────────────────────────────────────────────── */
+function pintarLista(cont, arr, campos, ph) {
+  cont.innerHTML = "";
+  arr.forEach((it, i) => {
+    const f = el("div", "ficha"); const cc = el("div", "campos");
+    campos.forEach(([k, tipo, p]) => {
+      const n = tipo === "area" ? el("textarea") : el("input");
+      if (tipo !== "area") n.type = "text";
+      n.value = it[k] || ""; n.placeholder = p;
+      if (tipo === "area") n.rows = 2;
+      n.addEventListener("input", () => { it[k] = n.value; salida(); guardar(); });
+      cc.append(n);
+    });
+    const x = el("button", "mini", "×"); x.type = "button"; x.title = "quitar";
+    x.addEventListener("click", () => { arr.splice(i, 1); todo(); });
+    f.append(cc, x); cont.append(f);
+  });
+  if (!arr.length) cont.append(el("div", "ayuda", ph));
+}
+function pintarReparto() {
+  pintarLista($("#personajes"), S.personajes,
+    [["id", "text", "aladino"], ["descripcion", "area", "the young man with tousled dark hair, in a patched ochre tunic and a frayed dark red sash"]],
+    "Sin personajes. Si nadie aparece en cuadro de forma recurrente, dejalo vacío.");
+  pintarLista($("#locaciones"), S.locaciones,
+    [["id", "text", "bazar"], ["descripcion", "text", "the crowded persian bazaar in daylight"]],
+    "Sin locaciones declaradas.");
+}
+
+/* ── timeline ───────────────────────────────────────────────── */
+function pintarTL() {
+  const e = est(), tl = $("#tl"); tl.innerHTML = "";
+  if (S.tramo >= e.tramos.length) S.tramo = 0;
+  e.tramos.forEach((t, i) => {
+    const b = el("button", "tl-seg"); b.type = "button";
+    b.style.flex = (t.hasta - t.desde) + " 0 0";
+    b.setAttribute("aria-pressed", String(i === S.tramo));
+    b.title = t.nombre;
+    b.append(el("span", "id", t.id), el("span", "seg", seg(t.desde) + "–" + seg(t.hasta)));
+    if (t.interrupcion) b.append(el("span", "rompe"));
+    b.addEventListener("click", () => { S.tramo = i; pintarTL(); pintarDetalle(); guardar(); });
+    tl.append(b);
+  });
+  $("#eje-fin").textContent = seg(e.duracion) + " s";
+}
+function pintarDetalle() {
+  const e = est(), t = e.tramos[Math.min(S.tramo, e.tramos.length - 1)], d = $("#detalle");
+  d.innerHTML = "";
+  d.append(el("h3", null, t.nombre + " · " + seg(t.desde) + " a " + seg(t.hasta) + " s"));
+  const m = el("div", "meta");
+  if (t.corte_min || t.corte_max)
+    m.append(el("span", "pastilla", "corte " + (t.corte_min ?? "…") + "–" + (t.corte_max ?? "…") + " s"));
+  if (t.planos_min > 1) m.append(el("span", "pastilla", t.planos_min + " planos mínimo"));
+  if (t.tamanos && t.tamanos.length) m.append(el("span", "pastilla", t.tamanos.join(" / ")));
+  if (t.interrupcion) m.append(el("span", "pastilla ret", "rompe el patrón"));
+  if (m.children.length) d.append(m);
+  if (t.objetivo) d.append(el("div", "obj", t.objetivo));
+  if (t.exige && t.exige.length) {
+    const ul = el("ul"); t.exige.forEach((x) => ul.append(el("li", null, x))); d.append(ul);
+  }
+  if (t.texto_pantalla) d.append(el("div", "overlay", "Texto en pantalla (overlay en post): " + t.texto_pantalla));
+}
+function pintarResumen() {
+  const e = est(), r = $("#resumen"); r.innerHTML = "";
+  const planos = e.esqueleto.reduce((a, x) => a + x.planos, 0);
+  const genera = e.esqueleto.reduce((a, x) => a + x.planos * x.genera, 0);
+  const min = genera * DATOS.costo.min_por_seg;
+  const dato = (k, v, u) => {
+    const n = el("div", "dato"); n.append(el("div", "k", k));
+    const vv = el("div", "v", v); if (u) vv.append(el("small", null, " " + u));
+    n.append(vv); r.append(n);
+  };
+  dato("Dura", seg(e.duracion), "s");
+  dato("Planos", String(planos));
+  dato("Se genera", genera.toFixed(0), "s");
+  dato("Retención", e.retencion ? Math.round(e.retencion * 100) + "%" : "—");
+  dato("GPU", (min / 4).toFixed(0), "min");
+  dato("Cuesta", "$" + (min / 4 * DATOS.costo.dolar_por_min).toFixed(2));
+}
+
+/* ── verificación ───────────────────────────────────────────── */
+function pintarAvisos() {
+  const c = $("#avisos"); c.innerHTML = "";
+  const e = est(), av = [];
+  if (!S.titulo.trim()) av.push(["warn", "Falta el título", "Nombra el proyecto y el archivo final."]);
+  if (S.topico.trim().length < 40) av.push(["warn", "El tópico está corto",
+    "Con dos o tres frases el modelo tiene de dónde sacar " + e.tramos.length + " tramos. Con una, inventa."]);
+  if (!S.estilo_libre.trim()) av.push(["crit", "Sin estilo visual",
+    "Describirlo por texto en cada plano da algo distinto cada vez: por eso va una sola vez, acá."]);
+  if (!esShort() && S.dialogo && !S.personajes.length) av.push(["crit", "Hay diálogo pero no hay personajes",
+    "Sin la descripción de vestuario, la ropa cambia entre plano y plano."]);
+  if (!esShort() && !S.locaciones.length) av.push(["warn", "Sin locaciones",
+    "En el largo cada escena necesita su plano general sin gente, que da la escala."]);
+  if (esShort() && !S.voz_off) av.push(["warn", "Short sin voz en off",
+    "Se puede, pero entonces el gancho lo carga todo la imagen y el texto en pantalla."]);
+  if (S.voz_off && !S.tono.trim()) av.push(["warn", "Falta el tono de la voz",
+    "Sin eso, ElevenLabs elige por su cuenta y cambia entre líneas."]);
+  if (esShort() && !S.sonidos.trim()) av.push(["warn", "No dijiste qué se oye",
+    "Sin cerrar las vías de voz, H3 mete murmullos en inglés de fondo."]);
+
+  if (!av.length) {
+    const n = el("div", "aviso ok");
+    n.append(el("span", "marca", "OK"));
+    n.append(el("span", null, "Está todo. Copiá la instrucción y pasásela al modelo."));
+    c.append(n); return;
+  }
+  av.forEach(([k, t, d]) => {
+    const n = el("div", "aviso " + k);
+    n.append(el("span", "marca", k === "crit" ? "!!" : "·"));
+    const b = el("span"); b.append(el("b", null, t + ". "), document.createTextNode(d));
+    n.append(b); c.append(n);
+  });
+}
+
+/* ── la salida ──────────────────────────────────────────────── */
+function proyectoJSON() {
+  const e = est();
+  const o = {
+    titulo: S.titulo || "SIN TÍTULO", slug: slug(S.titulo),
+    formato: S.formato, estructura: S.estructura,
+    estilo_imagen: S.estilo_libre.trim(),
+  };
+  if (esShort()) {
+    o.estilo_video = DATOS.estilos[S.estilo_preset].cabecera;
+    o.cierre_video = DATOS.estilos[S.estilo_preset].cierre;
+    o.sujeto = "";
+    if (S.sonidos.trim()) o.solo_sonidos = S.sonidos.trim();
+  } else {
+    o.medio = DATOS.estilos[S.estilo_preset].medio;
+  }
+  if (S.personajes.length) {
+    o.personajes = {};
+    S.personajes.filter((p) => p.id).forEach((p) => {
+      o.personajes[p.id] = { hoja: "m_" + p.id, descripcion: p.descripcion || "" };
+    });
+  }
+  if (S.locaciones.length) {
+    o.locaciones = {};
+    S.locaciones.filter((l) => l.id).forEach((l) => {
+      o.locaciones[l.id] = { imagen: "l_" + l.id, descripcion: l.descripcion || "" };
+    });
+  }
+  o.planos = [];
+  let n = 0;
+  e.esqueleto.forEach((h) => {
+    for (let i = 0; i < h.planos; i++) {
+      n++;
+      const p = { id: (esShort() ? "S" : "P") + String(n).padStart(2, "0"), tramo: h.tramo };
+      if (esShort()) p.corta = h.corte; else p.segundos = h.corte;
+      p.tipo = (h.tamanos && h.tamanos[0]) || (esShort() ? "PM" : "PM");
+      p.funcion = "‹para qué está este plano›";
+      p.ve = "‹qué se ve, QUIETO — en inglés›";
+      p.mueve = "‹qué se mueve a partir de ese fotograma — en inglés›";
+      p.audio = "‹[Foley] … [Ambient] … — en inglés›";
+      if (S.locaciones.length) p.loc = "‹locación›";
+      o.planos.push(p);
+    }
+  });
+  if (S.voz_off) o.voz = [{ plano: o.planos[0]?.id || "S01", offset: 0.4, texto: "‹la primera línea›" }];
+  return JSON.stringify(o, null, 2);
+}
+
+function instruccion() {
+  const e = est(), L = [];
+  L.push("Sos el director de un video generado con MiniMax H3. Escribí los planos.");
+  L.push("");
+  L.push("═══ LA IDEA ═══");
+  L.push("Título: " + (S.titulo || "(sin título)"));
+  L.push("Tópico: " + (S.topico.trim() || "(falta)"));
+  L.push("");
+  L.push("═══ EL FORMATO ═══");
+  L.push("· " + (esShort() ? "SHORT VERTICAL 9:16, 768×1344" : "VIDEO LARGO 16:9, 1344×768"));
+  L.push("· Dura " + seg(e.duracion) + " s. Estructura «" + S.estructura + "».");
+  if (e.retencion) L.push("· Retención objetivo: " + Math.round(e.retencion * 100) +
+    " %. Por debajo de eso la plataforma no lo empuja a más audiencia.");
+  if (e.plataformas && e.plataformas.length) L.push("· Va a: " + e.plataformas.join(", ") + ".");
+  if (e.interrupcion_cada) L.push("· Interrupción de patrón cada " + seg(e.interrupcion_cada) +
+    " s como máximo. Un CORTE NO CUENTA: cuenta un cambio de régimen (luz nueva, un sonido que entra o desaparece, el ritmo que cambia).");
+  L.push("");
+  L.push("═══ CÓMO SE CUENTA EL AUDIO ═══");
+  if (S.voz_off) {
+    L.push("· HAY VOZ EN OFF, de ElevenLabs, montada encima. Escribila en `voz`.");
+    if (S.tono.trim()) L.push("  Tono: " + S.tono.trim());
+    L.push("  No la genera H3: por eso queda idéntica en todas las líneas.");
+  } else {
+    L.push("· NO hay voz en off. El gancho lo cargan la imagen, el sonido y el texto en pantalla.");
+  }
+  if (!esShort() && S.dialogo) {
+    L.push("· HAY DIÁLOGO en cuadro. Una sola voz por plano y unas doce palabras como mucho.");
+    L.push("  Si hay que ir y volver, son dos planos: así se filma un contraplano.");
+    L.push("  El diálogo va en `dialogo` del plano, en castellano.");
+  } else if (!esShort()) {
+    L.push("· Sin diálogo en cuadro.");
+  } else {
+    L.push("· Ningún plano lleva diálogo: en el short la voz va siempre en off.");
+    if (S.sonidos.trim()) L.push("  Lo único que se oye: " + S.sonidos.trim() + ".");
+  }
+  L.push("");
+  L.push("═══ LA ESTRUCTURA — es la ley, tramo por tramo ═══");
+  L.push("Sale de Estructuras_Contenido_Alta_Retencion_2026.docx.");
+  L.push("");
+  e.tramos.forEach((t, i) => {
+    const h = e.esqueleto[i];
+    L.push("── " + t.id + " · " + t.nombre + " · " + seg(t.desde) + " a " + seg(t.hasta) + " s");
+    if (t.objetivo) L.push("   " + t.objetivo);
+    (t.exige || []).forEach((x) => L.push("   - " + x));
+    L.push("   → " + h.planos + " plano(s) de ~" + h.corte + " s en línea" +
+      (esShort() ? ", generando ~" + h.genera + " s cada uno" : ""));
+    if (t.texto_pantalla) L.push("   → TEXTO EN PANTALLA: " + t.texto_pantalla +
+      "  (campo `texto`; va como overlay en post, NO se le pide al generador)");
+    L.push("");
+  });
+  L.push("═══ QUÉ DEVOLVER ═══");
+  L.push("El JSON de abajo, con los ‹placeholders› reemplazados. Un objeto por plano:");
+  L.push("");
+  L.push("  ve      qué se ve QUIETO. Va al dibujo del primer fotograma. EN INGLÉS.");
+  L.push("  mueve   qué se mueve a partir de ese fotograma. Va al prompt de H3. EN INGLÉS.");
+  L.push("  audio   [Foley] … [Ambient] … [SFX] … EN INGLÉS.");
+  L.push("  funcion para qué está el plano. En castellano, para vos y para mí.");
+  if (esShort()) L.push("  corta   cuánto dura EN LA LÍNEA. El módulo genera de más solo.");
+  else L.push("  segundos  cuánto dura el plano.");
+  L.push("  tipo    " + DATOS.tamanos.map((t) => t[0] + " (" + t[1] + ")").join(" · "));
+  L.push("  texto   sólo donde el tramo lo pide.");
+  L.push("");
+  L.push("═══ LO QUE **NO** TENÉS QUE ESCRIBIR ═══");
+  L.push("El módulo lo inyecta solo en cada prompt. No lo repitas:");
+  DATOS.automatico.forEach((x) => L.push("  · " + x));
+  L.push("");
+  L.push("═══ REGLAS QUE COSTARON PLATA ═══");
+  DATOS.reglas.forEach((x) => L.push("  · " + x));
+  L.push("");
+  L.push("═══ EL ESQUELETO A COMPLETAR ═══");
+  L.push(proyectoJSON());
+  return L.join("\n");
+}
+
+function pasos() {
+  const s = slug(S.titulo), d = "mis-videos/" + s;
+  return [
+    "# 1. Guardá el proyecto.json que devuelve el modelo",
+    "mkdir -p " + d,
+    "#    …pegá el JSON en " + d + "/proyecto.json",
+    "",
+    "# 2. Miralo antes de gastar nada",
+    "python -m h3pipeline construir " + d + "/proyecto.json   # + validación",
+    "python -m h3pipeline voz       " + d + "/proyecto.json   # densidad de cada línea",
+    "python -m h3pipeline costo     " + d + "/proyecto.json",
+    "",
+    "# 3. Los primeros fotogramas, acá, con la GPU apagada",
+    "python -m h3pipeline frames " + d + "/proyecto.json",
+    "#    …revisá los PNG. Un encuadre malo se ve acá, no",
+    "#    después de siete minutos de generación cobrando.",
+    "",
+    "# 4. El paquete y la máquina",
+    "python -m h3pipeline empaquetar " + d + "/proyecto.json",
+    "python -m h3pipeline gpu        " + d + "/proyecto.json   # elegís un id",
+    "python -m h3pipeline alquilar   " + d + "/proyecto.json <id> --si",
+    "",
+    "# 5. Dentro de la máquina",
+    "bash /workspace/refs/setup.sh",
+    "PASOS=8 bash /workspace/refs/lanzar.sh",
+    "python /root/runner.py --montar",
+    "",
+    "# 6. Bajás los clips y montás acá",
+    "python -m h3pipeline montar " + d + "/proyecto.json clips/",
+    "",
+    "# 7. Y dejás de pagar. Esto es lo que más olvido genera.",
+    "python -m h3pipeline destruir <id> --si",
+  ].join("\n");
+}
+
+function salida() {
+  const txt = S.tab === "json" ? proyectoJSON() : S.tab === "pasos" ? pasos() : instruccion();
+  $("#cod").textContent = txt;
+  $("#nota-barra").textContent = txt.split("\n").length + " líneas · " +
+    (txt.length / 1000).toFixed(1) + " k";
+  pintarAvisos();
+}
+
+/* ── arranque ───────────────────────────────────────────────── */
+function todo() { pintarFormato(); pintarEstilo(); pintarVoz(); pintarReparto(); pintarTL(); pintarDetalle(); pintarResumen(); salida(); guardar(); }
+
+$("#fmt").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  S.formato = b.dataset.f; S.tramo = 0;
+  S.estructura = Object.entries(DATOS.estructuras).find(([, e]) => e.formato === S.formato)[0];
+  todo();
+});
+$("#titulo").addEventListener("input", (e) => { S.titulo = e.target.value; salida(); guardar(); });
+$("#topico").addEventListener("input", (e) => { S.topico = e.target.value; salida(); guardar(); });
+$("#estilo_libre").addEventListener("input", (e) => { S.estilo_libre = e.target.value; salida(); guardar(); });
+$("#add-pers").addEventListener("click", () => { S.personajes.push({ id: "", descripcion: "" }); todo(); });
+$("#add-loc").addEventListener("click", () => { S.locaciones.push({ id: "", descripcion: "" }); todo(); });
+$("#tabs").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button"); if (!b) return;
+  S.tab = b.dataset.t;
+  $("#tabs").querySelectorAll("button").forEach((x) =>
+    x.setAttribute("aria-selected", String(x.dataset.t === S.tab)));
+  salida(); guardar();
+});
+$("#copiar").addEventListener("click", async (ev) => {
+  const b = ev.currentTarget, o = b.textContent;
+  try { await navigator.clipboard.writeText($("#cod").textContent); b.textContent = "Copiado"; }
+  catch { b.textContent = "No pude — copialo a mano"; }
+  setTimeout(() => { b.textContent = o; }, 1600);
+});
+$("#limpiar").addEventListener("click", () => {
+  if (!confirm("¿Vaciar todo lo que escribiste?")) return;
+  Object.assign(S, { titulo: "", topico: "", estilo_libre: "", tono: "", sonidos: "",
+    personajes: [], locaciones: [], tramo: 0 });
+  $("#titulo").value = ""; $("#topico").value = "";
+  todo();
+});
+$("#btema").addEventListener("click", () => {
+  const oscuro = matchMedia("(prefers-color-scheme: dark)").matches;
+  const act = document.documentElement.getAttribute("data-theme") || (oscuro ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", act === "dark" ? "light" : "dark");
+});
+
+$("#titulo").value = S.titulo; $("#topico").value = S.topico;
+todo();
+</script>

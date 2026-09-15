@@ -1,0 +1,286 @@
+{
+  "titulo": "MUESTRA VO REPLICA DANZA",
+  "slug": "replica-danza-muestra-vo",
+  "formato": "short",
+  "idioma": "en",
+  "estructura": {
+    "nombre": "muestra-VO",
+    "formato": "short",
+    "duracion_objetivo": 40.0,
+    "tolerancia": 1,
+    "plataformas": [
+      "prueba"
+    ],
+    "interrupcion_cada": 0,
+    "tramos": [
+      {
+        "id": "MUESTRA",
+        "nombre": "muestra",
+        "desde": 0,
+        "hasta": 40.0,
+        "objetivo": "comparar configuraciones",
+        "corte_min": 4.9,
+        "corte_max": 5.1,
+        "planos_min": 8
+      }
+    ]
+  },
+  "estilo_imagen": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.",
+  "estilo_video": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.",
+  "cierre_video": "Keep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+  "solo_sonidos": "the train rolling on the rails, fabric, footsteps and breathing",
+  "personajes": {
+    "hannah": {
+      "hoja": "m_hannah",
+      "descripcion": "Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers"
+    },
+    "jack_abrigo": {
+      "hoja": "m_jack_abrigo",
+      "descripcion": "Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves"
+    },
+    "jack_camisa": {
+      "hoja": "m_jack_camisa",
+      "descripcion": "Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness, black trousers and black fingerless leather driving gloves"
+    },
+    "luka": {
+      "hoja": "m_luka",
+      "descripcion": "Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle"
+    },
+    "wady": {
+      "hoja": "m_wady",
+      "descripcion": "Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an olive-green canvas field coat over a grey hoodie, holding a black pistol"
+    },
+    "matones": {
+      "hoja": "m_matones",
+      "descripcion": "gang gunmen, half Italian mob and half street gang: a bald bearded man with tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest"
+    },
+    "pasajeros": {
+      "hoja": "m_pasajeros",
+      "descripcion": "ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan"
+    }
+  },
+  "locaciones": {
+    "campo": {
+      "imagen": "l_campo",
+      "descripcion": "a golden-hour grassy field beside railway tracks, utility poles and power lines, distant low industrial buildings and a few palm trees, hazy warm sky"
+    },
+    "cabina_ventana": {
+      "imagen": "l_cabina_ventana",
+      "descripcion": "the private compartment of a restored vintage luxury train car: glossy mahogany wall panels, tall windows with white lace curtains and red-and-cream striped side drapes glowing with bright daylight, a brass handrail under the windows like a ballet barre, a mustard-gold tufted velvet banquette with red fringe, deep red carpet, a coffered dark wood ceiling with cream panels and a brass ceiling fan"
+    },
+    "cabina_puerta": {
+      "imagen": "l_cabina_puerta",
+      "descripcion": "the door end of the same luxury train car: a double mahogany door with a heavy brass sliding bolt, framed by heavy gold brocade curtains draped with garlands of dark red silk roses, ornate gold-and-crystal chandeliers, coffered mahogany ceiling, deep red carpet"
+    },
+    "pasillo": {
+      "imagen": "l_pasillo",
+      "descripcion": "the narrow side corridor of a vintage train: polished honey-coloured wood paneling and compartment doors on one side, windows with cream pleated curtains on the other, a red carpet runner, ceiling vents, bright overcast daylight"
+    },
+    "vagon_blanco": {
+      "imagen": "l_vagon_blanco",
+      "descripcion": "a vintage train carriage painted cream-white: panelled walls and doors with brass fittings, small stained-glass transom windows, gold curtains, red velvet seats, flat bright daylight"
+    }
+  },
+  "planos": [
+    {
+      "id": "VO01",
+      "tipo": "PD",
+      "loc": "campo",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T02.png",
+      "ve": "Reference images, in this order: l_campo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. EXTREME CLOSE INSERT, camera almost on the ground: ONLY a woman's lower legs from just above the knees down, in pale pink tights and worn tan embroidered cowboy boots, one boot stepping towards camera through the grass; the top edge of the frame cuts above the knees, so no shorts, no hands, no bag, no body above the knees; blurred railway buildings behind. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. LIGHT: soft late-afternoon golden hour, the sun low but out of frame, a pale blue-white hazy sky, gentle warm light on skin; not an orange sunset. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "Step after step the boots come towards camera through the grass, the camera tracking backwards just ahead of them, the low sun flaring between the legs.",
+      "audio": "[Foley] boots crunching dry grass, a canvas bag swinging.",
+      "funcion": "muestra VO · E02 (toma 02) · VOZ EN OFF tramo 1: «Before my mother died, she arranged my marriage to Elliott Hargrove.»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an extreme close insert, camera almost on the ground: ONLY a woman's lower legs from just above the knees down, in pale pink tights and worn tan embroidered cowboy boots, one boot stepping towards camera through the grass; the top edge of the frame cuts above the knees, so no shorts, no hands, no bag, no body above the knees; blurred railway buildings behind.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an extreme close insert, camera almost on the ground: ONLY a woman's lower legs from just above the knees down, in pale pink tights and worn tan embroidered cowboy boots, one boot stepping towards camera through the grass; the top edge of the frame cuts above the knees, so no shorts, no hands, no bag, no body above the knees; blurred railway buildings behind. Soft late-afternoon golden light falls from a pale, hazy sky, warm on skin and grass. Early in the clip, step after step the boots come towards camera through the grass, the camera tracking backwards just ahead of them, the low sun flaring between the legs. The camera tracks backward low to the ground at the pace of her steps. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] Before my mother died, she arranged my marriage to Elliott Hargrove.</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nBoots crunching dry grass, a canvas bag swinging.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO02",
+      "tipo": "PD",
+      "loc": "campo",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T03.png",
+      "ve": "Reference images, in this order: l_campo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT of a young woman's torso while she walks: the open plaid flannel shirt over the pale pink leotard, her hands hooking a pair of worn pink pointe shoes by their ribbons onto a canvas tote bag on her shoulder; her face cut off above the frame; warm backlight. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights and worn tan embroidered cowboy boots, a canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. LIGHT: soft late-afternoon golden hour, the sun low but out of frame, a pale blue-white hazy sky, gentle warm light on skin; not an orange sunset. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "Her fingers loop the satin ribbons over the bag strap and let the pointe shoes swing against the canvas as she keeps walking.",
+      "audio": "[Foley] satin ribbons, canvas, footsteps in grass.",
+      "funcion": "muestra VO · E03 (toma 03) · VOZ EN OFF tramo 2: «To secure my future as a dancer with the Hargrove Ballet Company.»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert of a young woman's torso while she walks: the open plaid flannel shirt over the pale pink leotard, her hands hooking a pair of worn pink pointe shoes by their ribbons onto a canvas tote bag on her shoulder; her face cut off above the frame; warm backlight. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights and worn tan embroidered cowboy boots, a canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert of a young woman's torso while she walks: the open plaid flannel shirt over the pale pink leotard, her hands hooking a pair of worn pink pointe shoes by their ribbons onto a canvas tote bag on her shoulder; her face cut off above the frame; warm backlight. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights and worn tan embroidered cowboy boots, a canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons. Soft late-afternoon golden light falls from a pale, hazy sky, warm on skin and grass. Early in the clip, her fingers loop the satin ribbons over the bag strap and let the pointe shoes swing against the canvas as she keeps walking. The camera tracks backward with her, handheld, keeping the frame on her hands. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] To secure my future as a dancer with the Hargrove Ballet Company.</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nSatin ribbons, canvas, footsteps in grass.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO03",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T07.png",
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "Her fingers cross the ribbons around the ankle, pull them tight and tuck the knot in.",
+      "audio": "[Foley] satin ribbon pulled tight, velvet. [Ambient] the train rolling.",
+      "funcion": "muestra VO · E07 (toma 07) · VOZ EN OFF tramo 3: «Against her wishes, my father and stepmother»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. Early in the clip, her fingers cross the ribbons around the ankle, pull them tight and tuck the knot in. The camera holds a static shot with a slight handheld sway. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] Against her wishes, my father and stepmother</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nSatin ribbon pulled tight, velvet. The train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO04",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T09.png",
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "The feet rise onto full pointe, hold, and come down softly, then rise again.",
+      "audio": "[Foley] satin shoes on carpet, a soft creak of the floor. [Ambient] the train rolling.",
+      "funcion": "muestra VO · E09 (toma 09) · VOZ EN OFF tramo 4: «shipped me off to a farm in Indiana.»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. Early in the clip, the feet rise onto full pointe, hold, and come down softly, then rise again. The camera holds a static shot with a slight handheld sway. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] shipped me off to a farm in Indiana.</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nSatin shoes on carpet, a soft creak of the floor. The train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO05",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T07.png",
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "Her fingers cross the ribbons around the ankle, pull them tight and tuck the knot in.",
+      "audio": "[Foley] satin ribbon pulled tight, velvet. [Ambient] the train rolling.",
+      "funcion": "muestra VO · E07 (toma 07) · VOZ EN OFF tramo 5: «But I never stopped training, waiting to marry Elliott»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert inside the train compartment: a dancer's hands tying the satin ribbons of a pink pointe shoe around her ankle, her leg in pale pink tights and a pink leg warmer resting on the mustard velvet banquette with red fringe; red carpet below. She is Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose strands around her face, a faint smudge of farm dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights, chunky pink ribbed leg warmers and pink ballet slippers. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. Early in the clip, her fingers cross the ribbons around the ankle, pull them tight and tuck the knot in. The camera holds a static shot with a slight handheld sway. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] But I never stopped training, waiting to marry Elliott</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nSatin ribbon pulled tight, velvet. The train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO06",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T09.png",
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "The feet rise onto full pointe, hold, and come down softly, then rise again.",
+      "audio": "[Foley] satin shoes on carpet, a soft creak of the floor. [Ambient] the train rolling.",
+      "funcion": "muestra VO · E09 (toma 09) · VOZ EN OFF tramo 6: «and finally live the dream they stole from me.»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert at floor level in the train compartment: two feet in pink satin pointe shoes rising onto full pointe on the deep red carpet, pink ribbed leg warmers, pale pink tights, the bottom of a bright window and a brass rail behind. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. Early in the clip, the feet rise onto full pointe, hold, and come down softly, then rise again. The camera holds a static shot with a slight handheld sway. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] and finally live the dream they stole from me.</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nSatin shoes on carpet, a soft creak of the floor. The train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO07",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T13.png",
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "The phone vibrates on the sill; the hand picks it up and lifts it out of frame.",
+      "audio": "[SFX] a phone vibrating on wood. [Ambient] the train rolling.",
+      "funcion": "muestra VO · E13 (toma 13) · VOZ EN OFF tramo 7: «Dad wants me in New York to break off my engagement.»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. Early in the clip, the phone vibrates on the sill; the hand picks it up and lifts it out of frame. The camera holds a static shot with a slight handheld sway. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] Dad wants me in New York to break off my engagement.</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nA phone vibrating on wood. The train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A"
+    },
+    {
+      "id": "VO08",
+      "tipo": "PD",
+      "loc": "cabina_ventana",
+      "personajes": [
+        "hannah"
+      ],
+      "corta": 5.0,
+      "segundos": 5.17,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "dibujo": "sb_T13.png",
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. INSERT at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill. FRAMING IS THE POINT: this is an insert of that detail and nothing else; everything outside it is cut off by the edges of the frame, faces included. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "The phone vibrates on the sill; the hand picks it up and lifts it out of frame.",
+      "audio": "[SFX] a phone vibrating on wood. [Ambient] the train rolling.",
+      "funcion": "muestra VO · E13 (toma 13) · VOZ EN OFF tramo 8: «But I won't let him ruin my dreams again.»",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing an insert at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill.\n<Subject 1> is Hannah, the young woman narrating off-screen, as shown in <Picture 2>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> while <Subject 1> narrates one sentence off-screen using the voice timbre referenced from <Audio 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - composition, framing, light and set are kept.\n<Audio 1>: reference - the narrator follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic scene with shallow depth of field.\n[Shot 1] The shot begins exactly on <Picture 1>, an insert at the lace-curtained window of the train compartment: a dancer's leg in a pink leg warmer resting along the brass handrail, and her hand reaching into frame to pick up a smartphone that lies buzzing on the windowsill. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. Early in the clip, the phone vibrates on the sill; the hand picks it up and lifts it out of frame. The camera holds a static shot with a slight handheld sway. Over the image, <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an off-screen voiceover, calm and wistful: <d>[English] But I won't let him ruin my dreams again.</d> The frame stays on this detail for the whole clip.\n\noverall_soundscape:\nA phone vibrating on wood. The train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A"
+    }
+  ]
+}

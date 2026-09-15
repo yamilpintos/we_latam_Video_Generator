@@ -1,0 +1,92 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "78 SUR",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nEXTREME CLOSE UP on a pair of black ski goggles filling the frame, worn under an orange parka hood with a fur ruff. Reflected across the curved lenses, the green glow of a radio panel with a waveform spiking. Frost crusted along the goggle strap. Everything behind is dark.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nNARRATIVE INTENT OF THIS FRAME: This is the very first frame of a vertical short-form video and must read instantly as a thumbnail: one clear subject, strong contrast, something visibly wrong or surprising already present in the frame. Leave the upper third relatively clear: an on-screen text overlay goes there in post.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_base.png"
+      ],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nEXTREME WIDE SHOT of a single orange modular research station raised on steel legs, half buried in a snowdrift, in the middle of a flat white plain. Blowing snow crosses the whole frame. One small lit window. No other structure anywhere, no horizon line visible.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nNARRATIVE INTENT OF THIS FRAME: Establishing frame: the whole space and the scale of the subject within it are readable at a glance.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nEXTREME CLOSE UP of an analogue signal strength meter on a scratched metal radio panel, its needle in the low third, backlit amber. Beside it a row of toggle switches and a frost-fogged dial. A mitten thumb rests at the edge of frame.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nAn open steel door of the station seen from inside, framing pure white nothing. Snow blowing in across the threshold and piling on the floor plate. The figure in the orange parka stands in the doorway from behind, small in frame, looking out at nothing.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S05",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_base.png"
+      ],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nWIDE SHOT from behind and above the figure in the orange parka, tiny at the bottom of frame, walking away across a featureless white plain. Far ahead in the whiteout, a dark vertical shape is barely resolving out of the blowing snow, too straight to be natural.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S06",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nLooking steeply UP the length of a huge steel lattice radio mast crusted in rime ice, guy wires running off frame, disappearing into low cloud above. The figure in the orange parka is TINY at the very bottom of frame for scale. Blowing snow across everything.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S07",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_base.png"
+      ],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nWIDE SHOT, low angle from across the snow. UNMISTAKABLY THE SAME ORANGE MODULAR STATION AS BEFORE: the identical orange box on the identical steel legs, the identical steel door, the identical drift piled against the identical corner, the same lit window in the same place. This must read instantly as a duplicate of the first station and never as a different building. The figure in the orange parka stands small in the foreground, stopped, seen from behind.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S08",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_base.png"
+      ],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nCLOSE on a small square window in the orange station wall, seen from outside and slightly below, its frame packed with rime ice. WARM AMBER LIGHT is coming out of it into the blue-grey whiteout, the only warm colour anywhere in the frame. Through the frosted glass, blurred shapes of equipment inside.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nNARRATIVE INTENT OF THIS FRAME: A strong visual break from everything before it: a new colour of light, a new light source or an impossible detail, clearly visible in the frame.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S09",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_base.png"
+      ],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nCLOSE on a thick mitten resting flat against a frost-covered steel door handle, seen from outside. Amber light leaking from the seam of the door around it. Ice crystals on the metal catching that light.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S10",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nInterior of the station seen from the open doorway: a narrow warm amber room with a radio panel exactly like the first one, its green screen lit and live. An empty swivel chair half turned toward it. A steel mug on the desk with steam still rising off it. A parka identical to his own hanging on the wall hook. No people.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S11",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nEXTREME CLOSE UP on the same black ski goggles as the first shot, under the orange hood. The lenses are lit WARM AMBER now instead of green, reflecting the lit interior curving across the glass. Frost on the strap is melting into beads of water.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S12",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_base.png"
+      ],
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, shot on a full-frame camera with a fast lens. Blowing snow crossing the frame and cutting contrast to almost nothing. Flat overcast blue-grey daylight outside; amber sodium work lamps where there is power. Fine 35mm grain, cold and desaturated, shallow depth of field.\nEXTREME WIDE SHOT of a flat white plain in blowing snow, one single continuous photograph. FOUR identical orange stations from the reference image are scattered across this one landscape at different distances — the nearest large at the lower left, the others progressively smaller and fainter toward the upper right as they recede into the whiteout. Every one of them has the same middle window lit warm amber. A single line of boot prints crosses the snow between them, half filled in. No people.\nONE UNBROKEN LANDSCAPE seen from a single camera position: this is not a grid, not a collage, not a triptych, not stacked panels, and there are no dividing lines anywhere in the frame.\nTHE SUBJECT, identical in every shot: a lone polar researcher in a heavy orange expedition parka with the hood up and a fur ruff, black ski goggles, a grey fabric face mask and thick mittens — the face is never visible.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

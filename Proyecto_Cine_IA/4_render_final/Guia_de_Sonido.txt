@@ -1,0 +1,11 @@
+GUÍA DE SONIDO
+============================================================
+
+[00:00 - 00:30]  SFX: Pasos de Sherezade, viento frío. MÚSICA: Tensión oscura, cuerdas graves (Intro).
+[00:30 - 01:00]  SFX: Fuego crujiendo. MÚSICA: Cambio a un Oud o Duduk misterioso, la tensión baja pero la intriga sube cuando ella habla.
+
+------------------------------------------------------------
+Diálogos por clip (para referencia de doblaje):
+
+[00:00:45,000]  clip 004  Mi señor, he venido a acompañarte esta noche.
+[00:01:00,000]  clip 005  Escucha mi rey, pues la historia que traigo esta noche no se parece a ninguna otra.

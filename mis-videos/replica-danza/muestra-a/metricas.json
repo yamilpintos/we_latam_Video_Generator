@@ -1,0 +1,200 @@
+[
+ {
+  "id": "MA01",
+  "segundos": 5.167,
+  "minutos": 3.76,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA02",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA03",
+  "segundos": 5.167,
+  "minutos": 8.84,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "fl2va",
+  "shift_video": 12.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA04",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA05",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA06",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA07",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA08",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA09",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA10",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA11",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ }
+]

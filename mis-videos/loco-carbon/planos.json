@@ -1,0 +1,1035 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "EL LOCO DEL CARBÓN",
+  "slug": "loco-carbon",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "recap-240",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "LOCO-CARBON",
+      "tramo": "HOOK",
+      "tipo": "PG",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "HOOK. El absurdo literal: un hombre arriba de una montaña de carbón con una pala, y vecinos filmándolo.",
+      "first_frame": "assets/sb_S01.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Ramón drives the shovel into the coal and throws a load down without looking at the neighbours. One neighbour laughs and elbows the other, phone still up. Snow drifts across the frame.\nAUDIO: [Foley] a shovel biting into coal, coal rattling down. [Ambient] cold wind, a distant dog. [SFX] a phone camera shutter sound.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "gastó todo en carbón",
+      "usa": [
+        0.0,
+        4.7
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        4.7
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "LOCO-CARBON",
+      "tramo": "ARRANQUE",
+      "tipo": "PM",
+      "loc": "oficina",
+      "personajes": [
+        "lucia"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "ARRANQUE. La narradora en su mundo normal: la oficina, la ciudad, antes de todo.",
+      "first_frame": "assets/sb_S02.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: She types, glances at the frost on the glass, frowns a little, and goes back to the screen. The office lights flicker once. Her phone on the desk lights up.\nAUDIO: [Ambient] office hum, keyboards, a distant phone. [SFX] fluorescent lights buzzing, one flicker. [Foley] a phone vibrating on a desk.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        4.7,
+        10.1
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "LOCO-CARBON",
+      "tramo": "ARRANQUE",
+      "tipo": "PP",
+      "loc": "oficina",
+      "personajes": [
+        "lucia"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "ARRANQUE. El llamado del padre. La voz actúa el diálogo.",
+      "first_frame": "assets/sb_S03.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: She listens, her expression hardening, and stands up mid-sentence, grabbing her coat off the chair. Behind her, out of focus, coworkers keep working.\nAUDIO: [Foley] a phone against an ear, a chair rolling back. [Ambient] the office. [SFX] faint through the phone: wind and a man's voice, unintelligible.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        10.1,
+        15.5
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "LOCO-CARBON",
+      "tramo": "ARRANQUE",
+      "tipo": "PA",
+      "loc": "oficina",
+      "personajes": [
+        "lucia"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "ARRANQUE. La decisión visible: deja la reunión y se va.",
+      "first_frame": "assets/sb_S04.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: She strides toward camera, zipping the coat, hits the elevator button hard, and looks back once at the glass wall where the frost has spread. The elevator opens and she is gone.\nAUDIO: [Foley] fast heels on office floor, a coat zipping, an elevator chime. [Ambient] office murmur rising as people notice.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        4.7
+      ],
+      "en_linea_de_tiempo": [
+        15.5,
+        20.2
+      ]
+    },
+    {
+      "id": "S05",
+      "escena": "LOCO-CARBON",
+      "tramo": "ARRANQUE",
+      "tipo": "PGE",
+      "loc": "ruta",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 1. La evidencia: los que saben ya se van. Autos importados sin patente huyendo.",
+      "first_frame": "assets/sb_S05.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The luxury cars blast past along the shoulder, throwing up snow, and disappear toward the horizon. The jam creeps forward a metre. Snow thickens.\nAUDIO: [SFX] engines roaring past on the shoulder, horns from the jam. [Ambient] wind and snow hitting metal. [Foley] windshield wipers.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        20.2,
+        26.3
+      ]
+    },
+    {
+      "id": "S06",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_1",
+      "tipo": "PM",
+      "loc": "ruta",
+      "personajes": [
+        "tomi"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 1. Tomi se ríe del padre. Lucía no.",
+      "first_frame": "assets/sb_S06.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Tomi says something with a grin and shows the phone screen toward the driver's side. Lucía's hand on the wheel does not move. His grin fades a little when she does not answer, and he looks out the window.\nAUDIO: [Ambient] car interior, heater fan, wipers. [Foley] a phone screen tapped. [SFX] snow hitting the windshield.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        26.3,
+        31.7
+      ]
+    },
+    {
+      "id": "S07",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_1",
+      "tipo": "PG",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "BLOQUE 1. La llegada: el patio convertido en depósito. El dato numérico.",
+      "first_frame": "assets/sb_S07.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Sparks fountain from the grinder and die in the snow. Ramón stops, lifts his goggles, and looks toward the gate as the car headlights sweep across the yard. He does not smile, just nods once.\nAUDIO: [SFX] an angle grinder screaming on steel, then stopping. [Foley] sparks hissing in snow, a car pulling up. [Ambient] cold wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.8
+      ],
+      "en_linea_de_tiempo": [
+        31.7,
+        38.5
+      ]
+    },
+    {
+      "id": "S08",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_1",
+      "tipo": "PD",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 1. La prueba en un balde: doce gorriones congelados.",
+      "first_frame": "assets/sb_S08.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He tilts the bucket so the birds slide, stiff as stones, and picks one up between two fingers: it does not bend. He drops it back with a small hard sound. His breath steams over the bucket.\nAUDIO: [Foley] frozen birds clicking against metal like stones. [Ambient] wind, snow. [SFX] a single distant church bell.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        38.5,
+        43.9
+      ]
+    },
+    {
+      "id": "S09",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_1",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "ramon",
+        "marta"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 1. La mesa: la tarjeta, la plata, la decisión. «La plata sirve si estamos vivos.»",
+      "first_frame": "assets/sb_S09.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Ramón taps the card on the table twice while he talks, then slides it toward the camera. Marta sets the tray down and puts a hand on his shoulder. He does not look up from the notebook.\nAUDIO: [Foley] a card tapping wood, a tray set down, the stove ticking. [Ambient] the room, quiet, wind outside the window.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        43.9,
+        50.0
+      ]
+    },
+    {
+      "id": "S10",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_1",
+      "tipo": "PG",
+      "loc": "barrio",
+      "personajes": [
+        "beto"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 1 · cliffhanger. Don Beto filma desde la vereda: «el loco del carbón».",
+      "first_frame": "assets/sb_S10.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Beto pans his phone slowly across the yard, says something to the neighbours behind him and they laugh. He gives a thumbs-up toward the camera, mocking, and keeps filming.\nAUDIO: [Ambient] the street, wind. [Foley] boots on snow. [SFX] men laughing, a phone camera beep.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        50.0,
+        55.4
+      ]
+    },
+    {
+      "id": "S11",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_1",
+      "tipo": "PA",
+      "loc": "ruta",
+      "personajes": [
+        "lucia",
+        "tomi"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 2. Gastar todo en dos días: el mayorista, los carritos, el carbón.",
+      "first_frame": "assets/sb_S11.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Lucía sweeps a whole shelf of cans into the cart with her forearm. Tomi struggles with the heavy cart and it tips slightly; he catches it. A shopper behind them grabs the last sacks off the shelf.\nAUDIO: [Foley] cans rattling into a cart, cart wheels on concrete. [Ambient] warehouse echo, a PA announcement, unintelligible.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        55.4,
+        60.8
+      ]
+    },
+    {
+      "id": "S12",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_2",
+      "tipo": "PD",
+      "loc": "casa",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 2. La cifra: dieciocho bajo cero. Récord histórico.",
+      "first_frame": "assets/sb_S12.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Frost crystals grow across the glass in real time. The red column sinks a fraction more. A gust throws snow across the lens.\nAUDIO: [Ambient] night wind, deep and steady. [SFX] the brick wall creaking with cold, a window ticking. [Foley] snow hissing on glass.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "−18 °C",
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        60.8,
+        66.2
+      ]
+    },
+    {
+      "id": "S13",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_2",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "ramon",
+        "marta",
+        "tomi"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 2. La única pieza caliente: colchones en el piso, la salamandra, la familia.",
+      "first_frame": "assets/sb_S13.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Ramón feeds two shovels of coal into the stove and the glow brightens on the walls. Marta smooths the blanket over Tomi. Nobody speaks. The frost on the window catches the firelight.\nAUDIO: [Foley] coal poured into a stove, a blanket pulled. [SFX] the stove ticking and breathing. [Ambient] the wind outside, muffled.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        66.2,
+        72.3
+      ]
+    },
+    {
+      "id": "S14",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_2",
+      "tipo": "PGE",
+      "loc": "barrio",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 2. El contraste: el barrio sigue normal, luces prendidas, teles, estufas eléctricas.",
+      "first_frame": "assets/sb_S14.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: A slow drift along the street. Television light flickers in three windows at once. A car passes slowly with fogged windows. The chimney at the end keeps smoking.\nAUDIO: [Ambient] a quiet snowy street, distant televisions through walls. [SFX] a streetlight buzzing, an electric heater humming somewhere. [Foley] a car crunching past on snow.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        72.3,
+        78.4
+      ]
+    },
+    {
+      "id": "S15",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_2",
+      "tipo": "PD",
+      "loc": "pieza",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 2 · el golpe. Treinta y uno bajo cero, y a las tres de la mañana se corta la luz.",
+      "first_frame": "assets/sb_S15.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The bulb flickers, dims, flares, and dies. Total black for a beat — then only the orange glow of the stove remains, lighting the room from below. Frost on the window glints orange.\nAUDIO: [SFX] the electrical hum of the house dying with a descending whine, then silence. [Ambient] nothing but the stove ticking and the wind. [Foley] someone sitting up on a mattress.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "−31 °C · 3:04 AM",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        78.4,
+        83.8
+      ]
+    },
+    {
+      "id": "S16",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_2",
+      "tipo": "PG",
+      "loc": "barrio",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 3. Todo el barrio negro, toda la provincia. Y una sola chimenea humeando.",
+      "first_frame": "assets/sb_S16.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Nothing moves for a beat. Then a flashlight beam wanders in one dark window and goes out. Snow keeps falling. The single chimney smokes steadily.\nAUDIO: [Ambient] absolute silence of a blackout: no hum, no televisions, only wind. [SFX] a dog barking far away, then stopping.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        83.8,
+        89.2
+      ]
+    },
+    {
+      "id": "S17",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_3",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "marta"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 3. Golpean la puerta a las cuatro. El hijo de Don Beto, doce años, sin campera.",
+      "first_frame": "assets/sb_S17.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: She flinches at the knocking, looks back toward the stove, then steps to the door and pulls it open. Cold air rolls in as fog. A small figure stands in the dark doorway, shaking.\nAUDIO: [Foley] hard knocking on wood, a bolt sliding, a door opening. [SFX] wind rushing in. [Ambient] the stove.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        89.2,
+        94.6
+      ]
+    },
+    {
+      "id": "S18",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_3",
+      "tipo": "PP",
+      "loc": "pieza",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 3. «¿Y tu papá?» «No sé.» Mi padre lo mete adentro sin decir nada.",
+      "first_frame": "assets/sb_S18.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He listens to the small voice, his jaw tightens, and he reaches down out of frame and pulls the child inside by the shoulder in one motion, closing the door behind with his other hand. Frost crystals in his beard catch the light.\nAUDIO: [Foley] a small shaky voice, a coat rustling, a door shutting hard. [SFX] the wind cut off. [Ambient] the stove.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        94.6,
+        100.0
+      ]
+    },
+    {
+      "id": "S19",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_3",
+      "tipo": "PA",
+      "loc": "casa",
+      "personajes": [
+        "beto"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 3. Una hora después llega Don Beto con la familia. No filma. Tiembla.",
+      "first_frame": "assets/sb_S19.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He grips the wire of the gate and tries to say something; his breath comes out in shudders. The little girl hides behind the woman. The gate is pulled open from inside and the flashlight beam swings over their faces.\nAUDIO: [Foley] a wire gate rattling, chains, boots stamping. [SFX] teeth chattering. [Ambient] deep night wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        100.0,
+        105.4
+      ]
+    },
+    {
+      "id": "S20",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_3",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "ramon",
+        "beto"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 3. Las tres reglas de Ramón: nadie sale, nadie desperdicia, nadie pide perdón todavía.",
+      "first_frame": "assets/sb_S20.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Ramón counts three things on his thick fingers as he speaks. Beto nods at each one, staring into the mug. On the third, Ramón points at him and Beto looks away, then nods again.\nAUDIO: [Foley] a mug set on a crate, coal shifting in the stove. [Ambient] a room full of people breathing, the wind outside.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        105.4,
+        111.5
+      ]
+    },
+    {
+      "id": "S21",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_3",
+      "tipo": "PD",
+      "loc": "pieza",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 3 · cliffhanger. La radio a pilas dice lo que mi padre sabía: tres semanas.",
+      "first_frame": "assets/sb_S21.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: A gloved hand turns the tuning knob slowly through static until a voice locks in. The hand stops, pulls back, and stays frozen in the air. The candle flame leans.\nAUDIO: [SFX] radio static resolving into an official male voice, compressed and grave, words unintelligible. [Ambient] the room gone silent, the stove.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        111.5,
+        116.9
+      ]
+    },
+    {
+      "id": "S22",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_3",
+      "tipo": "PGE",
+      "loc": "barrio",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "GIRO. La ciudad congelada desde arriba: caños reventados, calles vacías, sin luz, sin gas.",
+      "first_frame": "assets/sb_S22.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: A very slow drift over the dead city. A single piece of sheet metal flaps on a rooftop. Nothing else moves. Snow drifts across the frozen avenue.\nAUDIO: [Ambient] a huge frozen silence, wind over towers. [SFX] sheet metal banging slowly, far away. [Foley] ice cracking somewhere below.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        116.9,
+        123.0
+      ]
+    },
+    {
+      "id": "S23",
+      "escena": "LOCO-CARBON",
+      "tramo": "GIRO",
+      "tipo": "PP",
+      "loc": "pieza",
+      "personajes": [
+        "lucia"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "GIRO. La reacción de Lucía: piensa en su departamento, piso once, sin ascensor.",
+      "first_frame": "assets/sb_S23.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: She wipes a small circle in the frost with her sleeve and looks through it, toward the city. Her eyes close for a second. She presses her forehead to the glass.\nAUDIO: [Foley] a sleeve on frosted glass, a slow breath. [Ambient] the stove behind, wind outside.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        123.0,
+        128.4
+      ]
+    },
+    {
+      "id": "S24",
+      "escena": "LOCO-CARBON",
+      "tramo": "GIRO",
+      "tipo": "PG",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 4. La fila en la reja: al tercer día veinte personas, al cuarto treinta y dos.",
+      "first_frame": "assets/sb_S24.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The line shifts and stamps in the cold. A woman at the front raises a child up so Ramón sees her. Ramón looks down the whole line, slowly, then back at the house.\nAUDIO: [Ambient] a crowd murmuring low, snow falling. [Foley] boots stamping, a baby crying once. [SFX] wind in the wire fence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        128.4,
+        134.5
+      ]
+    },
+    {
+      "id": "S25",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_4",
+      "tipo": "PM",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 4. Abre la reja con una condición: la familia entera o nadie.",
+      "first_frame": "assets/sb_S25.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He lifts the latch, holds the gate half open with his body, and speaks, pointing at one family and then at the whole line. He steps aside. The first family comes through, the mother touching his arm as she passes.\nAUDIO: [Foley] a frozen latch cracking free, a gate swinging, feet on snow. [Ambient] the crowd, relief in the voices, wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        134.5,
+        140.6
+      ]
+    },
+    {
+      "id": "S26",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_4",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "marta"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 4. Marta cocina para todos: arroz a la mañana, guiso de lata a la noche.",
+      "first_frame": "assets/sb_S26.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: She stirs, tastes from the spoon, adds salt from a tin, and starts ladling into the bowls held up toward her one after another. Steam fills the frame between ladles.\nAUDIO: [Foley] a wooden spoon in a big pot, a ladle, bowls clinking. [Ambient] a crowded warm room, murmurs, a child laughing. [SFX] the stove roaring softly.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        140.6,
+        146.0
+      ]
+    },
+    {
+      "id": "S27",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_4",
+      "tipo": "PA",
+      "loc": "casa",
+      "personajes": [
+        "tomi",
+        "beto"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 4. Tomi y Don Beto se turnan la pala. Ninguno habla del video.",
+      "first_frame": "assets/sb_S27.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Tomi fills the bucket and Beto sets down his two, takes the shovel from him without a word, and Tomi picks up the full buckets. They pass each other. Neither looks at the other. Snow falls on the coal.\nAUDIO: [Foley] a shovel in coal, buckets clanking, boots crunching. [Ambient] wind, a crow. [SFX] heavy breathing, no words.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        146.0,
+        151.4
+      ]
+    },
+    {
+      "id": "S28",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_4",
+      "tipo": "PD",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 4. La marca en la pared: la pila baja cada mañana. Cuenta regresiva.",
+      "first_frame": "assets/sb_S28.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He draws the line, steps back, and measures the gap between the marks with his thumb and finger. He looks at the pile, then at the sky, and puts the chalk in his pocket.\nAUDIO: [Foley] chalk on brick, a slow exhale. [Ambient] morning wind, snow, a distant shout from the house.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "carbón: 9 días",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        151.4,
+        157.5
+      ]
+    },
+    {
+      "id": "S29",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_4",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 4 · cliffhanger. Un vecino quiere doble ración. Mi padre le da la pala: «El que más come, más carga».",
+      "first_frame": "assets/sb_S29.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He holds the shovel out steadily and does not lower it. After a beat the man's hand comes into frame and takes it. Ramón nods once and turns back to the stove. Someone on a mattress exhales.\nAUDIO: [Ambient] a tense room gone quiet, the stove. [Foley] a wooden shovel handle changing hands, a mattress creaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        157.5,
+        163.6
+      ]
+    },
+    {
+      "id": "S30",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_4",
+      "tipo": "PGE",
+      "loc": "casa",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 5. La noche once: la tormenta grande, cuarenta y dos bajo cero, la nieve tapa la chimenea.",
+      "first_frame": "assets/sb_S30.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The blizzard hammers the house. The drift climbs the chimney pipe until the smoke stops coming out and curls back down under the eave. The orange window flickers.\nAUDIO: [Ambient] a blizzard at full force, screaming wind. [SFX] snow hissing against brick, metal groaning. [Foley] the chimney's draw choking to a stop.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "texto": "−42 °C",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        163.6,
+        169.7
+      ]
+    },
+    {
+      "id": "S31",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PD",
+      "loc": "pieza",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 5. El humo vuelve a la pieza. Treinta y dos personas, una salida. Monóxido.",
+      "first_frame": "assets/sb_S31.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The smoke thickens at the seam and spreads across the ceiling in a slow layer. Someone below starts coughing, then another. A hand waves at the air uselessly.\nAUDIO: [SFX] the stove's draw gone wrong, a hollow puffing. [Foley] coughing, one, then several, a child crying. [Ambient] the blizzard outside, muffled.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        169.7,
+        175.1
+      ]
+    },
+    {
+      "id": "S32",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PA",
+      "loc": "casa",
+      "personajes": [
+        "tomi"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BLOQUE 5. Tomi se ata una soga y sube al techo. Mi madre no grita porque no puede.",
+      "first_frame": "assets/sb_S32.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He climbs three rungs, the wind shoving him against the ladder, and hauls himself up onto the snow-buried roof edge. The rope goes taut behind him. The flashlight beam follows him up and loses him in the white.\nAUDIO: [Ambient] the blizzard screaming. [Foley] boots on metal rungs, a rope scraping brick. [SFX] a woman's voice shouting a name once, lost in the wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        175.1,
+        181.2
+      ]
+    },
+    {
+      "id": "S33",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PG",
+      "loc": "casa",
+      "personajes": [
+        "tomi"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "BLOQUE 5. En el techo, destapa la chimenea a mano en la ventisca. Cuatro minutos. Bajó con los dedos blancos.",
+      "first_frame": "assets/sb_S33.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He claws snow away from the pipe in fast desperate handfuls, gets his arm down the drift, and yanks — a plug of snow comes free and grey smoke bursts up out of the pipe into the wind. He falls back into the snow, then grabs the rope.\nAUDIO: [Ambient] the blizzard. [Foley] hands digging in packed snow, gasping, a heavy exhale. [SFX] the chimney's draw roaring back to life.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.8
+      ],
+      "en_linea_de_tiempo": [
+        181.2,
+        188.0
+      ]
+    },
+    {
+      "id": "S34",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PM",
+      "loc": "pieza",
+      "personajes": [
+        "beto",
+        "tomi"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 5. Don Beto lo abraza como si fuera su hijo. No lo suelta.",
+      "first_frame": "assets/sb_S34.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Beto grips the back of Tomi's head and does not let go. Tomi's shoulders shake once. Marta comes in from the side and wraps a blanket around both of them together.\nAUDIO: [Ambient] the room breathing again, the stove drawing clean. [Foley] wet fabric, a blanket, a stifled sob. [SFX] the blizzard outside, still there.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        188.0,
+        193.4
+      ]
+    },
+    {
+      "id": "S35",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PD",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BLOQUE 5 · cliffhanger. Esa noche nadie durmió. Mi padre midió la pila: la mitad.",
+      "first_frame": "assets/sb_S35.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The beam travels slowly up the chalk marks to the highest one, far above the pile now, and holds there. The hand shakes slightly with cold. The flashlight clicks off.\nAUDIO: [Foley] a flashlight clicking, snow in the wind. [Ambient] the blizzard, slightly weaker. [SFX] coal shifting under snow.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        193.4,
+        198.8
+      ]
+    },
+    {
+      "id": "S36",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PGE",
+      "loc": "barrio",
+      "personajes": [],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "PAGO. El día veintidós salió el sol. Nadie en nuestra casa murió. En la provincia, cientos.",
+      "first_frame": "assets/sb_S36.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The sun clears the rooftops and the ice on the trees flares gold all at once. A door opens somewhere down the street and a small figure steps out into the snow and just stands there. The chimney smokes straight up.\nAUDIO: [Ambient] total stillness, no wind for the first time, a drip of melting ice. [SFX] a single bird. [Foley] a door creaking open far away.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        198.8,
+        204.9
+      ]
+    },
+    {
+      "id": "S37",
+      "escena": "LOCO-CARBON",
+      "tramo": "BLOQUE_5",
+      "tipo": "PG",
+      "loc": "casa",
+      "personajes": [
+        "ramon",
+        "marta",
+        "lucia"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "PAGO. Llega el ejército: treinta y dos personas vivas en la casa del loco del carbón.",
+      "first_frame": "assets/sb_S37.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Soldiers open the gate and the crowd flows out toward the truck. A soldier counts heads with a raised hand. Ramón stays on the porch; Marta takes his arm; Lucía looks at her father.\nAUDIO: [Ambient] a crowd in daylight, voices, children. [Foley] a truck idling, boots, a gate. [SFX] a soldier's whistle.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.8
+      ],
+      "en_linea_de_tiempo": [
+        204.9,
+        211.7
+      ]
+    },
+    {
+      "id": "S38",
+      "escena": "LOCO-CARBON",
+      "tramo": "PAGO",
+      "tipo": "PP",
+      "loc": "casa",
+      "personajes": [
+        "beto",
+        "ramon"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "PAGO. Don Beto se le para enfrente, borra el video, y le pide perdón.",
+      "first_frame": "assets/sb_S38.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Beto's thumb presses the screen once, deliberately, and he lowers the phone. He says something short and his eyes fill. Ramón looks at him for a long beat, then puts a big hand on the back of his neck and pulls him in.\nAUDIO: [Foley] a phone tap, a jacket creaking, a hand on a neck. [Ambient] the yard, the crowd farther away, dripping ice.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        211.7,
+        217.1
+      ]
+    },
+    {
+      "id": "S39",
+      "escena": "LOCO-CARBON",
+      "tramo": "PAGO",
+      "tipo": "PD",
+      "loc": "casa",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "PAGO. Reencuadre del gancho: la pila casi vacía, la pala clavada. Quedaban dos días. Justo.",
+      "first_frame": "assets/sb_S39.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: The shovel handle casts a long shadow that creeps across the black heap as the sun rises. A crow lands on the wall by the chalk marks and looks down. Melting ice drips off the tarp.\nAUDIO: [Ambient] morning stillness, dripping. [SFX] a crow. [Foley] a tarp shifting.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        217.1,
+        222.5
+      ]
+    },
+    {
+      "id": "S40",
+      "escena": "LOCO-CARBON",
+      "tramo": "PAGO",
+      "tipo": "PM",
+      "loc": "casa",
+      "personajes": [
+        "ramon"
+      ],
+      "length": 158,
+      "segundos": 6.583,
+      "funcion": "BUCLE. Mi padre mira el cielo: el próximo invierno va a ser peor. Y ya empezó a comprar.",
+      "first_frame": "assets/sb_S40.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: He watches the clouds build, writes a number in the notebook, and closes it. He does not look worried. He looks like a man making a list. A single flake lands on the page.\nAUDIO: [Ambient] a breeze rising, dripping slowing. [Foley] a pencil on paper, a notebook closing. [SFX] very far, thunder or a truck.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.1
+      ],
+      "en_linea_de_tiempo": [
+        222.5,
+        228.6
+      ]
+    },
+    {
+      "id": "S41",
+      "escena": "LOCO-CARBON",
+      "tramo": "BUCLE",
+      "tipo": "PGE",
+      "loc": "barrio",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "BUCLE. La casa desde la calle — y en tres veredas más, ahora, vecinos descargando carbón. Corte a negro. «¿Vos le creerías?»",
+      "first_frame": "assets/sb_S41.png",
+      "sigue_de": null,
+      "prompt": "Photorealistic prestige drama footage in a snowbound Argentine suburb during an extreme cold wave, vertical 9:16. Natural, restrained movement.\nMOTION: Coal pours from a truck bed into a yard. A neighbour looks up at the clouds, then back at his pile, and keeps shovelling. The clouds thicken over the street. The frame cuts to black.\nAUDIO: [Foley] coal rattling from a truck, shovels. [Ambient] a street alive again, voices, a rising wind. [SFX] the first gust of the next storm, then cut to silence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the snow, the coal stove and the house.\nKeep the framing of the first frame. Grainy, cinematic, photographic. Not animated, not illustrated, not CGI-looking, not a video game.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        5.4
+      ],
+      "en_linea_de_tiempo": [
+        228.6,
+        234.0
+      ]
+    }
+  ]
+}

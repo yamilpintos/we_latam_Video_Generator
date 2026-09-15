@@ -1,0 +1,280 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "78 SUR",
+  "slug": "78-sur",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "short-60",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "78-SUR",
+      "tramo": "HOOK",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "HOOK. Algo entra en una frecuencia que debería estar muerta.",
+      "first_frame": "assets/sb_S01.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The waveform in the reflection spikes hard, twice, then settles. The head turns very slightly toward it. Frost crystals shift on the strap.\nAUDIO: [SFX] a burst of radio static, close and dry, then a carrier tone settling. [Ambient] a low room hum and the wind pressing on the walls outside.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "3:04 AM · −61 °C · nadie en 800 km",
+      "usa": [
+        0.0,
+        3.0
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        3.0
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "78-SUR",
+      "tramo": "PROMESA",
+      "tipo": "PGE",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "PROMESA. Dónde estamos y lo solo que está: una caja naranja en la nada.",
+      "first_frame": "assets/sb_S02.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: Blowing snow streams left to right across the frame, thickening until the station is almost lost, then thinning again. The lit window holds.\nAUDIO: [Ambient] wind at full force, wide and continuous. [Foley] a loose panel ticking against its frame somewhere.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        2.5
+      ],
+      "en_linea_de_tiempo": [
+        3.0,
+        5.5
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "78-SUR",
+      "tramo": "PROGRESO",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "BARRA DE PROGRESO. La aguja que sube le da al ojo algo que seguir.",
+      "first_frame": "assets/sb_S03.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The needle climbs steadily across the dial and pins hard to the right, then falls back and climbs again. The amber backlight dims once with the surge. The thumb pulls away from the panel.\nAUDIO: [SFX] the carrier tone rising in pitch and volume as the needle climbs. [Foley] a toggle switch thrown, a chair creaking.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "121.5 MHz",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        4.0
+      ],
+      "en_linea_de_tiempo": [
+        5.5,
+        9.5
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "78-SUR",
+      "tramo": "PROGRESO",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "TENSIÓN POR AUSENCIA. Cuatro segundos de nada blanca antes del hallazgo.",
+      "first_frame": "assets/sb_S04.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The figure steps down out of the doorway into the snow and walks a few paces away from camera, then stops and turns his head slowly left to right, scanning. Nothing is there. The wind takes his footprints almost immediately.\nAUDIO: [Ambient] the wind jumping in volume the instant the door opens. [Foley] boots compacting dry snow, breath through a fabric mask.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        4.5
+      ],
+      "en_linea_de_tiempo": [
+        9.5,
+        14.0
+      ]
+    },
+    {
+      "id": "S05",
+      "escena": "78-SUR",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": null,
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "ESCALERA 1: algo oscuro aparece donde todo era blanco.",
+      "first_frame": "assets/sb_S05.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The figure walks steadily toward the shape and it resolves a little more with every step: first an edge, then a second one beside it. The snow thins for a moment and the shape is clearly man-made, then the snow closes again.\nAUDIO: [Foley] boots in dry snow, slow breathing through fabric, the parka fabric snapping in the wind. [SFX] a distant metallic groan carried on the wind.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        14.0,
+        20.0
+      ]
+    },
+    {
+      "id": "S06",
+      "escena": "78-SUR",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": null,
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "ESCALERA 2: la escala. El formato vertical juega a favor acá.",
+      "first_frame": "assets/sb_S06.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The camera cranes slowly upward along the mast and it keeps going, and going, past the top of the frame into the cloud. The figure stays tiny at the bottom. Rime ice flakes off a cross member and falls past the lens.\nAUDIO: [SFX] the deep hum of wind through steel lattice and guy wires, rising as the camera climbs. [Foley] ice cracking off metal.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        20.0,
+        26.0
+      ]
+    },
+    {
+      "id": "S07",
+      "escena": "78-SUR",
+      "tramo": "REVELACION",
+      "tipo": "PGE",
+      "loc": null,
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "LA REVELACIÓN. No es otra cosa: es la MISMA base.",
+      "first_frame": "assets/sb_S07.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The figure stands completely still, looking at it. Blowing snow crosses between camera and station. He takes one step backward. Nothing else moves.\nAUDIO: [Ambient] the wind drops away almost to nothing for three seconds, then returns. [Foley] one sharp breath in through the mask.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        26.0,
+        32.0
+      ]
+    },
+    {
+      "id": "S08",
+      "escena": "78-SUR",
+      "tramo": "GIRO",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "INTERRUPCIÓN DE PATRÓN, justo a la mitad: entra el ámbar en un mundo azul.",
+      "first_frame": "assets/sb_S08.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The camera drifts slowly toward the window. The amber light flickers once and steadies. Behind the glass, a shape shifts slightly — something inside moved, or settled.\nAUDIO: [SFX] a faint generator hum that should not exist out here, and the tick of a relay. [Ambient] the wind muffled, as if heard from indoors.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "la luz estaba encendida",
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        32.0,
+        38.0
+      ]
+    },
+    {
+      "id": "S09",
+      "escena": "78-SUR",
+      "tramo": "CONTACTO",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CONTACTO. La mano en la puerta: lo físico antes de lo imposible.",
+      "first_frame": "assets/sb_S09.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The mitten tightens on the handle and pulls. The door gives a centimetre and warm amber light widens across the frost, then the hand stops. Ice cracks and falls from the seam.\nAUDIO: [Foley] a mitten squeaking on frozen steel, ice cracking, a heavy latch giving. [SFX] the generator hum getting louder through the gap.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.0
+      ],
+      "en_linea_de_tiempo": [
+        38.0,
+        43.0
+      ]
+    },
+    {
+      "id": "S10",
+      "escena": "78-SUR",
+      "tramo": "CONTACTO",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "LO IMPOSIBLE. Su propia radio, encendida, con la silla todavía girando.",
+      "first_frame": "assets/sb_S10.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The camera pushes slowly in from the doorway into the room. Nothing else moves except the steam off the mug and the chair, which is turning very slowly to a stop. On the radio screen, a waveform spikes twice — the same two spikes as the very first shot.\nAUDIO: [SFX] the room tone of a heated interior, a relay ticking, and the same carrier tone from the opening. [Ambient] the wind now completely outside and muffled.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        6.0
+      ],
+      "en_linea_de_tiempo": [
+        43.0,
+        49.0
+      ]
+    },
+    {
+      "id": "S11",
+      "escena": "78-SUR",
+      "tramo": "PAGO",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "EL PAGO. Vuelta al gancho, ahora en ámbar: la voz reordena todo.",
+      "first_frame": "assets/sb_S11.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The reflection of the room holds steady, then the head turns slowly — and in the curved lens, the reflection sweeps past the doorway to the white outside, where a second orange station sits far away with its window lit.\nAUDIO: [Foley] slow breathing through the mask, thawing. [SFX] the carrier tone dropping out to complete silence, then the wind returning.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        49.0,
+        54.5
+      ]
+    },
+    {
+      "id": "S12",
+      "escena": "78-SUR",
+      "tramo": "BUCLE",
+      "tipo": "PGE",
+      "loc": null,
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "CIERRE EN BUCLE. Empalma con el fotograma 1: hay otra, y otra.",
+      "first_frame": "assets/sb_S12.png",
+      "prompt": "Photorealistic cinematic footage in a polar whiteout, vertical 9:16.\nMOTION: The camera drifts slowly backward and the stations get smaller as more of the empty plain enters frame. The boot prints fill in with snow. The frame washes to white before the drift ends.\nAUDIO: [Ambient] wind rising steadily to fill everything. [SFX] a single burst of radio static, identical to the first shot, then cut to complete silence.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are the wind, the radio static and the structure.\nKeep the framing of the first frame. Grainy, cold, desaturated, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        5.5
+      ],
+      "en_linea_de_tiempo": [
+        54.5,
+        60.0
+      ]
+    }
+  ]
+}

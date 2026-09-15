@@ -1,0 +1,847 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes.",
+  "titulo": "Aladino y la lámpara maravillosa",
+  "slug": "aladino",
+  "formato": "largo",
+  "fps": 24,
+  "ancho": 1344,
+  "alto": 768,
+  "estructura": "largo-narrativo",
+  "planos": [
+    {
+      "id": "P01",
+      "escena": "E01_robo",
+      "tramo": "APERTURA",
+      "tipo": "PG",
+      "loc": "bazar",
+      "personajes": [],
+      "length": 243,
+      "segundos": 10.125,
+      "funcion": "",
+      "first_frame": "assets/sb_P01.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: Slow push in down the aisle. The crowd drifts across frame, cloth sways, dust turns in the light shafts.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nAUDIO: [Ambient] busy market: overlapping voices, footsteps on stone. [Foley] cloth flapping, a wooden crate set down.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        0.0,
+        10.12
+      ]
+    },
+    {
+      "id": "P02",
+      "escena": "E01_robo",
+      "tramo": "APERTURA",
+      "tipo": "PM",
+      "loc": "bazar",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P02.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: He glances left, then right, then his eyes settle on the fruit. Behind him the crowd keeps moving. Camera holds.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] market voices, closer now. [Foley] his breathing.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        10.12,
+        16.0
+      ]
+    },
+    {
+      "id": "P03",
+      "escena": "E01_robo",
+      "tramo": "PLANTEO",
+      "tipo": "PD",
+      "loc": "bazar",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "",
+      "first_frame": "assets/sb_P03.png",
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, 2D animated film.\nMOTION: The hand closes on the pomegranate and lifts it clear of the pile. The pile shifts and one fruit rolls a little.\nFRAMING: hold the shot size of the first frame. The object fills the frame. No full figures visible, at most a pair of hands.\nAUDIO: [Foley] fruit rolling on wood, a single soft scrape.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        16.0,
+        21.17
+      ]
+    },
+    {
+      "id": "P04",
+      "escena": "E01_robo",
+      "tramo": "PLANTEO",
+      "tipo": "PG",
+      "loc": "bazar",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P04.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: Camera whip-pans right and follows him running. He dodges a shopper, vaults a low crate and disappears through the archway. The stallkeeper shouts after him.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] market. [Foley] running footsteps, a crate knocked over. [Speech] the stallkeeper shouts angrily after him.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        21.17,
+        29.17
+      ]
+    },
+    {
+      "id": "P05",
+      "escena": "E02_mago",
+      "tramo": "PLANTEO",
+      "tipo": "PM",
+      "loc": "bazar",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P05.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: He gets his breath back, grins to himself and bites into the fruit. Then his chewing slows and stops as something off frame catches his eye.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] the market muffled, one alley away. [Foley] breathing, a wet bite.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        29.17,
+        36.46
+      ]
+    },
+    {
+      "id": "P06",
+      "escena": "E02_mago",
+      "tramo": "PLANTEO",
+      "tipo": "PG",
+      "loc": "bazar",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P06.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The shadow slides up the wall as the old man takes three unhurried steps forward. The boy shrinks back against the baskets. The market noise behind drops away.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] market noise dropping away to near silence. [Foley] slow deliberate footsteps on stone.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        36.46,
+        43.75
+      ]
+    },
+    {
+      "id": "P07",
+      "escena": "E02_mago",
+      "tramo": "PLANTEO",
+      "tipo": "PP",
+      "loc": "bazar",
+      "personajes": [
+        "mago"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P07.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: His eyes move slowly, reading the boy up and down. Then one corner of his mouth lifts. Camera creeps in a fraction.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] near silence, distant market. [Foley] cloth shifting.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        43.75,
+        49.63
+      ]
+    },
+    {
+      "id": "P08",
+      "escena": "E02_mago",
+      "tramo": "PLANTEO",
+      "tipo": "PM",
+      "loc": "bazar",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "length": 209,
+      "segundos": 8.708,
+      "funcion": "",
+      "first_frame": "assets/sb_P08.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: The old man extends the coin further and speaks. The boy looks at the coin, then at his face, and slowly straightens up.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] distant market. [Foley] a coin turning between fingers. [Speech] the old man speaks calmly to the boy.\nSPOKEN LINE, in Spanish, exactly this: \"Tomá. Vení conmigo, muchacho, y no vas a robar nunca más.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "Tomá. Vení conmigo, muchacho, y no vas a robar nunca más.",
+      "en_linea_de_tiempo": [
+        49.63,
+        58.33
+      ]
+    },
+    {
+      "id": "P09",
+      "escena": "E03_puerta",
+      "tramo": "PLANTEO",
+      "tipo": "PGE",
+      "loc": "desierto",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "length": 243,
+      "segundos": 10.125,
+      "funcion": "",
+      "first_frame": "assets/sb_P09.png",
+      "prompt": "EXTREME WIDE SHOT, 2D animated film.\nMOTION: Camera drifts slowly right, keeping them small in frame. Sand streams off the ridge in the wind. They keep walking.\nFRAMING: hold the shot size of the first frame. The figures are TINY, each about ONE TENTH of the image height, dwarfed by the landscape. The vastness is the point.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] wind over open sand, nothing else.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        58.33,
+        68.46
+      ]
+    },
+    {
+      "id": "P10",
+      "escena": "E03_puerta",
+      "tramo": "DETONANTE",
+      "tipo": "PA",
+      "loc": "desierto",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P10.png",
+      "prompt": "FULL SHOT, 2D animated film.\nMOTION: They walk toward camera. The boy stumbles in the soft sand, catches himself, hurries to keep up. The old man does not slow down.\nFRAMING: hold the shot size of the first frame. The figure is seen head to toe and fills about HALF the image height, with clear space above the head and below the feet.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] wind. [Foley] feet sinking into sand, cloak snapping.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        68.46,
+        74.33
+      ]
+    },
+    {
+      "id": "P11",
+      "escena": "E03_puerta",
+      "tramo": "DETONANTE",
+      "tipo": "PP",
+      "loc": "desierto",
+      "personajes": [
+        "mago"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P11.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: He stops dead. His lips begin to move in a low murmur and he lifts one hand out of frame. His eyes stay fixed on the ground.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] wind rising. [Speech] the old man murmurs low words under his breath in Spanish.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        74.33,
+        80.21
+      ]
+    },
+    {
+      "id": "P12",
+      "escena": "E03_puerta",
+      "tramo": "DETONANTE",
+      "tipo": "PG",
+      "loc": "desierto",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P12.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The sand cracks open in front of them and caves inward. Dust blows up. As it clears, a stone stairway is revealed going down into the dark. Both figures step back, then look at each other.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] wind. [Foley] a deep grinding of stone, sand pouring, a low boom.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        80.21,
+        88.21
+      ]
+    },
+    {
+      "id": "P13",
+      "escena": "E04_lampara",
+      "tramo": "DETONANTE",
+      "tipo": "PM",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P13.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: He descends step by step toward camera. The blue-green light on him grows stronger with each step. His eyes widen at something below.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] a deep underground hush, faint dripping. [Foley] sandals on stone steps, echoing.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        88.21,
+        95.5
+      ]
+    },
+    {
+      "id": "P14",
+      "escena": "E04_lampara",
+      "tramo": "DESARROLLO",
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 243,
+      "segundos": 10.125,
+      "funcion": "",
+      "first_frame": "assets/sb_P14.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: Camera cranes slowly up and back, opening the cavern out around him and making him smaller still. He turns his head to take it in.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] cavern reverb, dripping water. [Foley] a few coins settling somewhere in the dark.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        95.5,
+        105.63
+      ]
+    },
+    {
+      "id": "P15",
+      "escena": "E04_lampara",
+      "tramo": "DESARROLLO",
+      "tipo": "PM",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P15.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: He walks forward, camera tracking with him. He trails one hand along a mound and coins slide and clatter down behind him. He does not stop to pick any up.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] cavern reverb. [Foley] coins sliding and clattering.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        105.63,
+        112.92
+      ]
+    },
+    {
+      "id": "P16",
+      "escena": "E04_lampara",
+      "tramo": "DESARROLLO",
+      "tipo": "PD",
+      "loc": "cueva",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P16.png",
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, 2D animated film.\nMOTION: Camera pushes slowly in on the lamp. Dust turns in the light in front of it. Nothing else moves.\nFRAMING: hold the shot size of the first frame. The object fills the frame. No full figures visible, at most a pair of hands.\nAUDIO: [Ambient] cavern hush, one drip echoing.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        112.92,
+        118.79
+      ]
+    },
+    {
+      "id": "P17",
+      "escena": "E04_lampara",
+      "tramo": "DESARROLLO",
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "",
+      "first_frame": "assets/sb_P17.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: He looks at it a long moment, glances back over his shoulder toward the stair, then reaches forward out of frame.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] cavern hush. [Foley] fabric shifting.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        118.79,
+        123.96
+      ]
+    },
+    {
+      "id": "P18",
+      "escena": "E05_encierro",
+      "tramo": "DESARROLLO",
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino",
+        "mago"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P18.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The silhouette above reaches one arm down, insisting. The boy at the bottom does not move. Dust falls through the shaft of light between them.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] cavern reverb, wind at the opening far above. [Foley] falling grit.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        123.96,
+        131.25
+      ]
+    },
+    {
+      "id": "P19",
+      "escena": "E05_encierro",
+      "tramo": "DESARROLLO",
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "mago"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P19.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: His patience goes. The lines of his face harden and he speaks down into the hole, one hand braced on the stone.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] wind at the cave mouth. [Speech] the old man commands, cold and hard.\nSPOKEN LINE, in Spanish, exactly this: \"Dame la lámpara, muchacho. Dámela y te saco.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "Dame la lámpara, muchacho. Dámela y te saco.",
+      "en_linea_de_tiempo": [
+        131.25,
+        138.54
+      ]
+    },
+    {
+      "id": "P20",
+      "escena": "E05_encierro",
+      "tramo": "DESARROLLO",
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P20.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: He tightens his grip on the lamp and holds the old man's eyes. Then he answers, quiet and stubborn.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] cavern reverb. [Speech] the boy answers quietly, refusing.\nSPOKEN LINE, in Spanish, exactly this: \"No. Primero sacame de acá.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "No. Primero sacame de acá.",
+      "en_linea_de_tiempo": [
+        138.54,
+        145.84
+      ]
+    },
+    {
+      "id": "P21",
+      "escena": "E05_encierro",
+      "tramo": "DESARROLLO",
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P21.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: A slab of stone slides across the opening above and the daylight narrows to a line and then to nothing. The frame goes almost black, leaving only the faint blue-green glow of the cavern and the boy's silhouette.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Foley] a heavy stone grinding shut, a boom, then dead silence. [Ambient] cavern hush closing in.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        145.84,
+        153.84
+      ]
+    },
+    {
+      "id": "P22",
+      "escena": "E06_genio",
+      "tramo": "DESARROLLO",
+      "tipo": "PM",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P22.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: He lets his head fall back against the pillar. Then he looks down at the lamp in his hands and turns it over slowly.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [Ambient] deep cavern silence, one distant drip. [Foley] cloth on stone, metal turning in hands.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        153.84,
+        161.84
+      ]
+    },
+    {
+      "id": "P23",
+      "escena": "E06_genio",
+      "tramo": "PUNTO_MEDIO",
+      "tipo": "PD",
+      "loc": "cueva",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "",
+      "first_frame": "assets/sb_P23.png",
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, 2D animated film.\nMOTION: The sleeve rubs the brass twice. On the second pass a thread of light opens along the metal under the cloth.\nFRAMING: hold the shot size of the first frame. The object fills the frame. No full figures visible, at most a pair of hands.\nAUDIO: [Foley] cloth rubbing metal. [SFX] a low tone rising underneath.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        161.84,
+        167.0
+      ]
+    },
+    {
+      "id": "P24",
+      "escena": "E06_genio",
+      "tramo": "PUNTO_MEDIO",
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P24.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The smoke boils upward and outward, filling the cavern, lit from within by pulses of gold. The boy scrambles backward against the pillar, one arm up over his face.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals.\nAUDIO: [SFX] a rushing roar building. [Foley] scrambling on stone.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        167.0,
+        175.0
+      ]
+    },
+    {
+      "id": "P25",
+      "escena": "E06_genio",
+      "tramo": "PUNTO_MEDIO",
+      "tipo": "PG",
+      "loc": "cueva",
+      "personajes": [
+        "aladino",
+        "genio"
+      ],
+      "length": 209,
+      "segundos": 8.708,
+      "funcion": "",
+      "first_frame": "assets/sb_P25.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The spirit finishes forming, rolls its shoulders and stretches both arms wide. The smoke column beneath it turns slowly. The boy stays flat on the floor, tiny.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young man with tousled dark hair, in a patched ochre tunic with visible cloth patches, a frayed dark red sash, loose brown trousers and worn sandals; the huge blue-violet smoke spirit with glowing gold geometric markings on its forearms and chest, a heavy gold collar and wide gold cuffs, its lower body trailing into a column of dark smoke.\nAUDIO: [SFX] the roar settling into a low hum. [Foley] a vast slow exhalation.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        175.0,
+        183.71
+      ]
+    },
+    {
+      "id": "P26",
+      "escena": "E06_genio",
+      "tramo": "COMPLICACION",
+      "tipo": "PP",
+      "loc": "cueva",
+      "personajes": [
+        "genio"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P26.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: It opens its eyes fully, looks down at the boy, and speaks. Smoke curls past its jaw as it talks.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the huge blue-violet smoke spirit with glowing gold geometric markings on its forearms and chest, a heavy gold collar and wide gold cuffs, its lower body trailing into a column of dark smoke.\nAUDIO: [SFX] low hum. [Speech] the spirit speaks in a huge slow voice.\nSPOKEN LINE, in Spanish, exactly this: \"Mil años durmiendo. Y me despierta un ladrón de frutas.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "Mil años durmiendo. Y me despierta un ladrón de frutas.",
+      "en_linea_de_tiempo": [
+        183.71,
+        191.0
+      ]
+    },
+    {
+      "id": "P27",
+      "escena": "E07_llegada",
+      "tramo": "COMPLICACION",
+      "tipo": "PGE",
+      "loc": "palacio",
+      "personajes": [],
+      "length": 243,
+      "segundos": 10.125,
+      "funcion": "",
+      "first_frame": "assets/sb_P27.png",
+      "prompt": "EXTREME WIDE SHOT, 2D animated film.\nMOTION: Camera cranes slowly down and forward toward the fountain. The water moves, lanterns along the arcade flicker on one after another as the light drops.\nFRAMING: hold the shot size of the first frame. The figures are TINY, each about ONE TENTH of the image height, dwarfed by the landscape. The vastness is the point.\nAUDIO: [Ambient] evening courtyard, water, distant birds.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        191.0,
+        201.13
+      ]
+    },
+    {
+      "id": "P28",
+      "escena": "E07_llegada",
+      "tramo": "COMPLICACION",
+      "tipo": "PA",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P28.png",
+      "prompt": "FULL SHOT, 2D animated film.\nMOTION: He walks a few paces along the fountain edge, looking up at the facade, turning slowly as he goes. He is small against all of it.\nFRAMING: hold the shot size of the first frame. The figure is seen head to toe and fills about HALF the image height, with clear space above the head and below the feet.\nCHARACTERS, unchanged from the first frame: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nAUDIO: [Ambient] fountain water, evening. [Foley] soft footsteps on stone.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        201.13,
+        208.42
+      ]
+    },
+    {
+      "id": "P29",
+      "escena": "E07_llegada",
+      "tramo": "COMPLICACION",
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "",
+      "first_frame": "assets/sb_P29.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: His eyes travel upward and keep going. His mouth opens slightly. He lets out a breath and almost laughs.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nAUDIO: [Ambient] fountain. [Foley] a breath, a half laugh.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        208.42,
+        213.59
+      ]
+    },
+    {
+      "id": "P30",
+      "escena": "E07_llegada",
+      "tramo": "COMPLICACION",
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "princesa"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P30.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: She starts down the stairway. Her dress moves on the steps. Camera holds wide and lets her come down into the courtyard.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nAUDIO: [Ambient] evening courtyard. [Foley] slippers on stone, silk moving.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        213.59,
+        221.59
+      ]
+    },
+    {
+      "id": "P31",
+      "escena": "E08_encuentro",
+      "tramo": "COMPLICACION",
+      "tipo": "PM",
+      "loc": "palacio",
+      "personajes": [
+        "princesa"
+      ],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P31.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: She trails her fingers in the fountain water, then stops as she senses someone. She turns her head toward camera.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nAUDIO: [Ambient] fountain, evening. [Foley] fingers through water.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        221.59,
+        227.46
+      ]
+    },
+    {
+      "id": "P32",
+      "escena": "E08_encuentro",
+      "tramo": "COMPLICACION",
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "princesa"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P32.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: She looks him over once, then asks. Her expression stays level, more curious than alarmed.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nAUDIO: [Ambient] fountain. [Speech] the young woman asks, level and unafraid.\nSPOKEN LINE, in Spanish, exactly this: \"¿Y vos quién sos?\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "¿Y vos quién sos?",
+      "en_linea_de_tiempo": [
+        227.46,
+        234.75
+      ]
+    },
+    {
+      "id": "P33",
+      "escena": "E08_encuentro",
+      "tramo": "CLIMAX",
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P33.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: He opens his mouth to give an answer, stops, and gives a different one instead, with a small crooked smile at the end.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nAUDIO: [Ambient] fountain. [Speech] the young man answers, a little amused at himself.\nSPOKEN LINE, in Spanish, exactly this: \"Nadie importante. Todavía.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "Nadie importante. Todavía.",
+      "en_linea_de_tiempo": [
+        234.75,
+        242.05
+      ]
+    },
+    {
+      "id": "P34",
+      "escena": "E08_encuentro",
+      "tramo": "CLIMAX",
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico",
+        "princesa"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P34.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: They stand there. She turns back to the water, he takes one step closer. Camera pulls slowly back, making them smaller, the courtyard bigger. Lanterns burn along the arcade.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic; the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nAUDIO: [Ambient] fountain, evening settling, distant music from inside.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        242.05,
+        250.05
+      ]
+    },
+    {
+      "id": "P35",
+      "escena": "E09_engano",
+      "tramo": "CLIMAX",
+      "tipo": "PM",
+      "loc": "alcoba",
+      "personajes": [
+        "princesa"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P35.png",
+      "prompt": "MEDIUM SHOT, 2D animated film.\nMOTION: She picks the old lamp up, turns it over with a puzzled half smile, and sets it back down. She turns toward a sound at the door.\nFRAMING: hold the shot size of the first frame. The bottom edge of the frame CROPS the character at the waist: the legs, the knees and the feet are NOT in the picture at all. The head and shoulders take up the upper half of the frame, with a little headroom. This is not a full-body shot.\nCHARACTERS, unchanged from the first frame: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nAUDIO: [Ambient] quiet room at night, a candle. [Foley] metal set on wood.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        250.05,
+        257.34
+      ]
+    },
+    {
+      "id": "P36",
+      "escena": "E09_engano",
+      "tramo": "CLIMAX",
+      "tipo": "PA",
+      "loc": "alcoba",
+      "personajes": [
+        "mago"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P36.png",
+      "prompt": "FULL SHOT, 2D animated film.\nMOTION: He bows low, lifts the tray of shining lamps toward camera and calls his patter in a thin wheedling voice, keeping his face down.\nFRAMING: hold the shot size of the first frame. The figure is seen head to toe and fills about HALF the image height, with clear space above the head and below the feet.\nCHARACTERS, unchanged from the first frame: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] quiet room. [Foley] brass clinking on a wooden tray. [Speech] the pedlar calls out his patter, wheedling.\nSPOKEN LINE, in Spanish, exactly this: \"Lámparas nuevas por lámparas viejas, señora.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "Lámparas nuevas por lámparas viejas, señora.",
+      "en_linea_de_tiempo": [
+        257.34,
+        265.34
+      ]
+    },
+    {
+      "id": "P37",
+      "escena": "E09_engano",
+      "tramo": "CLIMAX",
+      "tipo": "PD",
+      "loc": "alcoba",
+      "personajes": [],
+      "length": 141,
+      "segundos": 5.875,
+      "funcion": "",
+      "first_frame": "assets/sb_P37.png",
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, 2D animated film.\nMOTION: The new lamp is set down as the old one is lifted away. The old hand closes hard around the dented lamp and pulls it out of frame.\nFRAMING: hold the shot size of the first frame. The object fills the frame. No full figures visible, at most a pair of hands.\nAUDIO: [Foley] two lamps set down and lifted, a knuckle cracking.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        265.34,
+        271.21
+      ]
+    },
+    {
+      "id": "P38",
+      "escena": "E09_engano",
+      "tramo": "CLIMAX",
+      "tipo": "PG",
+      "loc": "alcoba",
+      "personajes": [
+        "princesa"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P38.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The door swings shut on its own. She stays still a moment, then looks back at the shiny new lamp on the table. The candles gutter all at once.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the young woman with dark hair in two braids falling forward over her shoulders, in a long cream and gold embroidered silk dress with a blue-green gem at the waist.\nAUDIO: [Ambient] room tone. [Foley] a door swinging shut, candle flames guttering.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        271.21,
+        278.5
+      ]
+    },
+    {
+      "id": "P39",
+      "escena": "E10_final",
+      "tramo": "RESOLUCION",
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico",
+        "mago"
+      ],
+      "length": 192,
+      "segundos": 8.0,
+      "funcion": "",
+      "first_frame": "assets/sb_P39.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The old man raises the lamp higher. The young man takes one slow step forward around the fountain. Neither hurries. Cold wind moves across the courtyard.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic; the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] cold empty courtyard at dawn, wind, still water.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        278.5,
+        286.5
+      ]
+    },
+    {
+      "id": "P40",
+      "escena": "E10_final",
+      "tramo": "RESOLUCION",
+      "tipo": "PP",
+      "loc": "palacio",
+      "personajes": [
+        "mago"
+      ],
+      "length": 175,
+      "segundos": 7.292,
+      "funcion": "",
+      "first_frame": "assets/sb_P40.png",
+      "prompt": "CLOSE UP, 2D animated film.\nMOTION: He almost smiles and speaks across the courtyard, unhurried, sure of himself. His beard moves in the wind.\nFRAMING: hold the shot size of the first frame. The face fills most of the frame, cropped just above the hairline and just below the chin.\nCHARACTERS, unchanged from the first frame: the tall gaunt old man with a long grey beard reaching mid-chest, in dark indigo robes with faded gold embroidery and a long black travelling cloak.\nAUDIO: [Ambient] wind. [Speech] the old man speaks across the courtyard, calm and certain.\nSPOKEN LINE, in Spanish, exactly this: \"Todo esto era mío antes de ser tuyo.\"\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": "Todo esto era mío antes de ser tuyo.",
+      "en_linea_de_tiempo": [
+        286.5,
+        293.8
+      ]
+    },
+    {
+      "id": "P41",
+      "escena": "E10_final",
+      "tramo": "RESOLUCION",
+      "tipo": "PD",
+      "loc": "palacio",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "",
+      "first_frame": "assets/sb_P41.png",
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, 2D animated film.\nMOTION: The lamp rolls across the stone, wobbles, and comes to rest on its side. A thin curl of smoke starts out of the spout.\nFRAMING: hold the shot size of the first frame. The object fills the frame. No full figures visible, at most a pair of hands.\nAUDIO: [Foley] brass hitting and rolling on wet stone, ringing. [SFX] a low tone starting.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        293.8,
+        298.96
+      ]
+    },
+    {
+      "id": "P42",
+      "escena": "E10_final",
+      "tramo": "RESOLUCION",
+      "tipo": "PG",
+      "loc": "palacio",
+      "personajes": [
+        "aladino_rico"
+      ],
+      "length": 243,
+      "segundos": 10.125,
+      "funcion": "",
+      "first_frame": "assets/sb_P42.png",
+      "prompt": "WIDE SHOT, 2D animated film.\nMOTION: The smoke column collapses and blows apart across the paving until nothing is left. The young man lowers his arm. Camera pulls slowly back and up, leaving him one small figure in the huge courtyard as the dawn light warms.\nFRAMING: hold the shot size of the first frame. The figures are SMALL, each about ONE SIXTH of the image height. They read as normal-sized people inside a large space, never as giants. Their feet are on the ground.\nCHARACTERS, unchanged from the first frame: the same young man with tousled dark hair, now dressed in fine embroidered robes of deep teal and gold instead of his patched tunic.\nAUDIO: [SFX] the low tone cutting out. [Ambient] wind, then only the fountain and morning birds.\nDO NOT ADD ANYTHING that is not already in the first frame. No new characters, no new faces, no extra people, no new landscape features, no cacti, no fire, no flames, no magical glows, no weather. The location, the terrain, the architecture, the time of day, the light and the NUMBER OF CHARACTERS stay exactly as in the first frame from beginning to end. Nothing enters frame that was not there. Animate what is in the picture; invent nothing.\nAny smoke, dust or vapour is soft and wispy, painted with the same brush and texture as the rest of the image, drifting and dissipating. NEVER rounded cartoon cumulus puffs, never white bubble clouds.\nSPOKEN LANGUAGE: SPANISH. Every voice, word, murmur, shout or crowd chatter heard in this shot is in Spanish. NEVER English. If any voice appears at all, it is Spanish.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        298.96,
+        309.09
+      ]
+    }
+  ]
+}

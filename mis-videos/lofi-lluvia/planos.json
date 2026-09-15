@@ -1,0 +1,265 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes.",
+  "titulo": "LLUVIA EN LA VENTANA",
+  "slug": "lofi-lluvia",
+  "formato": "largo",
+  "fps": 24,
+  "ancho": 1344,
+  "alto": 768,
+  "estructura": "loop-ambiente",
+  "planos": [
+    {
+      "id": "P01",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": "cuarto",
+      "personajes": [
+        "gato"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "ARRANQUE DEL BUCLE. El cuarto entero desde la puerta: la ventana con lluvia, la lámpara, el gato dormido. Es a donde vuelve P12.",
+      "first_frame": "assets/sb_P01.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. Only tiny slow ambient motion: rain streaks slide down the window glass, a thin thread of vapour rises from the mug, the sleeping cat's flank rises and falls slowly, the record on the turntable turns slowly, the blurred lights outside shimmer faintly. The lamp light is steady. Nothing else moves. The room stays empty; the wooden chair stays tucked under the desk exactly where it is; the only thing beyond the glass is the dark rainy city with its blurred lights. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.\nFRAMING: hold the exact shot size and composition of the first frame.\nCHARACTERS, unchanged from the first frame: a plump grey tabby cat with darker grey stripes, a white chest and white paws, curled up ASLEEP on the folded burgundy wool blanket on the wide windowsill, eyes closed, tail wrapped over its paws; it never wakes up, never stands, never looks at the camera.\nAUDIO: [Ambient] The only sounds are a steady soft rain pattering on the window glass, a faint far-away muffled city hum.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 3001,
+      "en_linea_de_tiempo": [
+        0.0,
+        5.17
+      ]
+    },
+    {
+      "id": "P02",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "cuarto",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La lluvia en el vidrio: gotas y luces borrosas de la ciudad.",
+      "first_frame": "assets/sb_P02.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. Raindrops land on the glass, merge and slide slowly down in thin rivulets; the blurred lights behind shimmer gently. Nothing else moves; the focus does not change. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are rain very close on the glass, soft and steady, with the far city hum muffled behind it.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        5.17,
+        10.33
+      ]
+    },
+    {
+      "id": "P03",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PG",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El escritorio de costado, en perspectiva: la lámpara cerca, la taza lejos, la ventana en diagonal.",
+      "first_frame": "assets/sb_P03.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "WIDE SHOT, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. A thin thread of vapour curls slowly from the mug at the far end; rain runs down the window glass behind; the lamp light is steady. Nothing else moves. The room stays empty and the desk chair stays empty; the only thing beyond the glass is the dark rainy city with its blurred lights. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a steady soft rain on the window, muffled, with a faint far-away city hum.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 2003,
+      "en_linea_de_tiempo": [
+        10.33,
+        15.5
+      ]
+    },
+    {
+      "id": "P04",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "cuarto",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La taza: el vapor que sube a la luz de la lámpara.",
+      "first_frame": "assets/sb_P04.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The vapour rises slowly, curls and dissipates; a faint ripple crosses the surface of the tea; the blurred lights behind shimmer. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a steady soft rain on the window, muffled.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        15.5,
+        20.67
+      ]
+    },
+    {
+      "id": "P05",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PP",
+      "loc": "cuarto",
+      "personajes": [
+        "gato"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El gato dormido, de cerca: una oreja que se mueve.",
+      "first_frame": "assets/sb_P05.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "CLOSE UP, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The cat breathes slowly in its sleep; one ear twitches once; the whiskers tremble slightly. The eyes stay closed. It does not wake, does not move its head. Rain slides down the glass behind. Nothing else moves. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.\nFRAMING: hold the exact shot size and composition of the first frame.\nCHARACTERS, unchanged from the first frame: a plump grey tabby cat with darker grey stripes, a white chest and white paws, curled up ASLEEP on the folded burgundy wool blanket on the wide windowsill, eyes closed, tail wrapped over its paws; it never wakes up, never stands, never looks at the camera.\nAUDIO: [Ambient] The only sounds are soft rain on the glass behind, and a very soft, slow purr close to the microphone.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        20.67,
+        25.84
+      ]
+    },
+    {
+      "id": "P06",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "cuarto",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La lámpara: el polvo flotando en el haz.",
+      "first_frame": "assets/sb_P06.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. Fine dust motes drift very slowly through the cone of lamp light; the bulb glows steady; rain runs down the glass behind. Nothing else moves. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a steady soft rain on the window, muffled, and the faintest electrical hum of the lamp.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 2006,
+      "en_linea_de_tiempo": [
+        25.84,
+        31.0
+      ]
+    },
+    {
+      "id": "P07",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El sillón: la manta tejida y la luz de la lluvia moviéndose sobre la tela.",
+      "first_frame": "assets/sb_P07.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The blurred coloured lights in the window behind shimmer gently; a faint warm flicker of lamp light breathes over the fabric; rain runs down the glass only. The chair and the throw stay dry and still. Nothing else moves. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are a steady soft rain on the window, muffled, with a faint far-away city hum.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        31.0,
+        36.17
+      ]
+    },
+    {
+      "id": "P08",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El vinilo: los surcos girando bajo la púa.",
+      "first_frame": "assets/sb_P08.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The grooves slide slowly and steadily under the needle as the record turns; the arcs of warm light glide across the surface; the needle and the tonearm stay in place. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are the faintest vinyl surface crackle close up and soft rain on a window far behind.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 4008,
+      "en_linea_de_tiempo": [
+        36.17,
+        41.34
+      ]
+    },
+    {
+      "id": "P09",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PP",
+      "loc": "cuarto",
+      "personajes": [
+        "gato"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El gato desde atrás: el lomo curvado, la cola, la lluvia detrás.",
+      "first_frame": "assets/sb_P09.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "CLOSE UP, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The cat's back rises and falls slowly with its breathing; the tip of the tail twitches once; rain runs down the glass behind and the blurred lights shimmer. The cat stays asleep in the same position. Nothing else moves. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.\nFRAMING: hold the exact shot size and composition of the first frame.\nCHARACTERS, unchanged from the first frame: a plump grey tabby cat with darker grey stripes, a white chest and white paws, curled up ASLEEP on the folded burgundy wool blanket on the wide windowsill, eyes closed, tail wrapped over its paws; it never wakes up, never stands, never looks at the camera.\nAUDIO: [Ambient] The only sounds are soft rain on the glass and a very soft, slow purr close to the microphone.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 2009,
+      "en_linea_de_tiempo": [
+        41.34,
+        46.5
+      ]
+    },
+    {
+      "id": "P10",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": "cuarto",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "La planta contra el vidrio: una hoja que tiembla y una gota de condensación.",
+      "first_frame": "assets/sb_P10.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The leaves stir very slightly as if in a faint draft; raindrops slide down the glass behind; the drop of condensation slowly runs down the pane. Nothing else moves. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are rain on the glass, soft and close, with the muffled city behind.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "en_linea_de_tiempo": [
+        46.5,
+        51.67
+      ]
+    },
+    {
+      "id": "P11",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "El cuaderno desde arriba: el bosquejo del gato, el lápiz, el borde de la taza.",
+      "first_frame": "assets/sb_P11.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot, looking straight down. A thin thread of vapour rises from the tea and drifts across the corner of the frame; the warm lamp light breathes very faintly over the paper. The pencil, the notebook and the sketch stay exactly as they are. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are soft rain on a window far behind and a faint far-away city hum.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 3011,
+      "en_linea_de_tiempo": [
+        51.67,
+        56.84
+      ]
+    },
+    {
+      "id": "P12",
+      "escena": "LOFI-LLUVIA",
+      "tramo": "BUCLE",
+      "tipo": "PD",
+      "loc": null,
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "CIERRE DEL BUCLE. Los auriculares con la lluvia reflejada. Corta a P01.",
+      "first_frame": "assets/sb_P12.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "INSERT / EXTREME CLOSE UP of an object, hand-painted 2D animated film with soft painterly textures, calm, slow and quiet.\nMOTION: LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The warm lamp light breathes very faintly over the leather of the ear cups; a few dust motes drift slowly through the light. The headphones stay exactly where they are. Nothing else moves.\nFRAMING: hold the exact shot size and composition of the first frame.\nAUDIO: [Ambient] The only sounds are soft rain on a window far behind and a faint far-away city hum.\nEverything in the frame stays exactly as it is in the first frame for the whole shot: the same place, the same objects in the same positions, the same time of night, the same light. The frame holds only what the first frame shows, from beginning to end. Animate only the gentle motion described above; the rest of the picture stays still.",
+      "dialogo": null,
+      "seed": 3012,
+      "en_linea_de_tiempo": [
+        56.84,
+        62.0
+      ]
+    }
+  ]
+}

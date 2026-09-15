@@ -1,0 +1,14 @@
+PROFUNDIDAD — voz en off para ElevenLabs
+==============================================
+
+No la genera H3: va grabada aparte y montada encima. Así queda
+idéntica en todas las líneas, que es lo que H3 no sabe resolver.
+
+     0.4 s  (S01)   A ochenta metros encontré algo que no debería estar ahí.
+     6.0 s  (S03)   Bajé solo. Nadie sabía que estaba ahí abajo.
+    14.5 s  (S05)   Al principio pensé que era un contenedor.
+    26.5 s  (S07)   No era un contenedor.
+    33.0 s  (S08)   Las luces estaban encendidas.
+    44.0 s  (S10)   Y adentro estaba seco.
+    49.5 s  (S11)   Ese vuelo desapareció hace once años.
+    55.5 s  (S12)   Yo fui el primero en bajar. No el último.

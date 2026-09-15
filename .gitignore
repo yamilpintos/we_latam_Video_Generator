@@ -1,0 +1,66 @@
+# ── secretos ───────────────────────────────────────────────────────────────
+.env
+.env.*
+*.pem.key
+credentials*.json
+
+# ── entornos y cachés ──────────────────────────────────────────────────────
+.venv*/
+venv/
+__pycache__/
+*.pyc
+.claude/
+node_modules/
+
+# ── modelos (196 GB) ───────────────────────────────────────────────────────
+models/
+Minimax h3/
+*.gguf
+*.safetensors
+*.ckpt
+
+# ── medios generados: viven en la carpeta local, no en el repo ────────────
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.flac
+*.m4a
+*.ogg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.zip
+*.log
+
+# ── carpetas de salida y pruebas ───────────────────────────────────────────
+output/
+VIDEOS-REALISTAS/
+PRUEBAS-H3/
+SUBIR_A_VAST/
+Pruebas video/
+pruebas video 2/
+Video realshort/
+Imagenes/
+Imagenes de referencia/
+ENTREGA-MCO-5min/
+mis-videos/*/clips/
+mis-videos/*/para-vast/
+mis-videos/*/assets/
+mis-videos/*/qc/
+mis-videos/*/voz/
+mis-videos/*/voz-ajustada/
+ejemplos/*/para-vast/
+ejemplos/*/assets/
+
+# ── excepciones: lo que sí queremos aunque sea binario ─────────────────────
+!*.pdf
+!*.docx
+!certs/*.pem
+
+# temporales de montaje
+**/_tmp/

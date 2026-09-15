@@ -1,0 +1,191 @@
+{
+  "titulo": "LLUVIA EN LA VENTANA",
+  "slug": "lofi-lluvia",
+  "formato": "largo",
+  "estructura": "loop",
+  "duracion_objetivo": 62,
+  "_concepto": "Video ambiente de ~60 s que se repite en bucle, para una pista lo-fi. Un solo escenario: un cuarto de estudio de noche con una ventana grande bajo la lluvia, lámpara cálida, taza humeante, tocadiscos girando, plantas en el alféizar y un gato dormido. Sin gente, sin texto. Doce encuadres del mismo cuarto, cámara fija, un solo elemento en movimiento lento por plano. El bucle se cierra en el corte: P12 (detalle) corta a P01 (general) como cualquier otro corte. Clips de 5,17 s; el máster usa 5,0 de cada uno.",
+  "_reglas_del_cuarto": "Planta fija para que los doce dibujos coincidan: ventana grande en la pared del fondo; escritorio de madera bajo la ventana; lámpara de bronce con pantalla de vidrio verde en la esquina IZQUIERDA del escritorio; taza de cerámica y cuaderno abierto a la DERECHA; tocadiscos sobre una repisa baja a la IZQUIERDA del escritorio; alféizar ancho a la DERECHA con una manta de lana bordó doblada (el lugar del gato) y dos plantas en maceta; sillón en primer término a la derecha; alfombra; biblioteca en la pared izquierda; auriculares sobre el escritorio junto al cuaderno.",
+  "estilo_imagen": "Hand-painted 2D animation background art for a calm night-time lo-fi music video: soft painterly brushwork, gentle film grain, warm amber interior light against a cool blue-violet rainy night outside the window. Muted but rich palette: amber, teal, dusty violet, burgundy accents. Clean readable shapes, soft edges, no heavy outlines. Everything is still and cosy. Rain streaks the glass; the distant city is only soft blurred discs of coloured light. Any neon outside is an abstract blurred colour shape with NO letters and NO readable characters. No people anywhere in the picture. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind.",
+  "medio": "hand-painted 2D animated film with soft painterly textures, calm, slow and quiet",
+  "personajes": {
+    "gato": {
+      "hoja": "m_gato",
+      "descripcion": "a plump grey tabby cat with darker grey stripes, a white chest and white paws, curled up ASLEEP on the folded burgundy wool blanket on the wide windowsill, eyes closed, tail wrapped over its paws; it never wakes up, never stands, never looks at the camera"
+    }
+  },
+  "locaciones": {
+    "cuarto": {
+      "imagen": "l_cuarto",
+      "descripcion": "the small study room at night: a big rain-streaked window on the back wall, a wooden desk under it, a brass desk lamp with a green glass shade at the left corner of the desk, a ceramic mug and an open notebook at the right, a record player on a low shelf to the left of the desk, a wide windowsill on the right with a folded burgundy blanket and two potted plants, an armchair in the right foreground, a rug, a bookshelf on the left wall"
+    }
+  },
+  "madre": [
+    {
+      "id": "l_cuarto",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Hand-painted 2D animation background art, wide 16:9 landscape frame, calm night-time lo-fi illustration style: soft painterly brushwork, gentle film grain, warm amber interior light against a cool blue-violet rainy night. WIDE SHOT of a small cosy study room seen from the doorway at the back of the room. On the far wall a BIG window streaked with rain; outside, a night city that is only soft blurred discs of amber, teal and violet light, no readable signs. Under the window a wooden desk: a small brass desk lamp with a dark green glass shade switched on at the LEFT corner casting a warm pool of light, a ceramic mug and an open notebook with a pencil at the RIGHT, a pair of headphones beside the notebook. To the LEFT of the desk a record player on a low wooden shelf with a record on the turntable. To the RIGHT a wide windowsill with a folded burgundy wool blanket and two green potted plants. An armchair in the right foreground, a worn rug on the floorboards, a bookshelf full of books along the left wall. The chair at the desk is empty. NOBODY is in the room and there is NO animal in the room. No text, no letters, no signs, no labels anywhere. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    },
+    {
+      "id": "m_gato",
+      "aspecto": "16:9",
+      "refs": [],
+      "prompt": "Character model sheet in hand-painted 2D animation style, wide 16:9 landscape frame, plain neutral warm-grey background, even soft light. THREE views of the SAME cat asleep, side by side: from the side, from three-quarter front, and from above. The cat is a plump grey tabby with darker grey stripes, a white chest and white paws, curled up tightly asleep on a folded burgundy wool blanket, eyes closed, tail wrapped over its paws, ears relaxed. Same size, same colours, same blanket in all three views. Every detail sharp and readable: this is the reference for every other shot. No text, no labels, no arrows. This is a single film frame, not a poster: no text, no borders, no titles, no watermark. The painting fills the ENTIRE 16:9 canvas from edge to edge: no black bars, no letterbox, no cinemascope strip, no borders or frames of any kind."
+    }
+  ],
+  "planos": [
+    {
+      "id": "P01",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [
+        "gato"
+      ],
+      "funcion": "ARRANQUE DEL BUCLE. El cuarto entero desde la puerta: la ventana con lluvia, la lámpara, el gato dormido. Es a donde vuelve P12.",
+      "ve": "WIDE SHOT of the whole study room from the doorway at the back of the room, camera at standing eye level, the SAME view as the reference location picture. The big rain-streaked window fills the far wall; under it the desk with the brass lamp with its GREEN glass shade at the left corner, and the mug, the open notebook and the headphones at the right; the record player on its low shelf to the left of the desk; the wide windowsill on the right with the folded burgundy blanket and the potted plants; the armchair in the right foreground and the rug. The cat is curled up asleep ON THE BLANKET ON THE WINDOWSILL, not on the desk. Outside, blurred city lights under the rain. A plain wooden desk chair stands tucked under the desk, its back toward the camera, empty. Nobody is in the room.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. Only tiny slow ambient motion: rain streaks slide down the window glass, a thin thread of vapour rises from the mug, the sleeping cat's flank rises and falls slowly, the record on the turntable turns slowly, the blurred lights outside shimmer faintly. The lamp light is steady. Nothing else moves. The room stays empty; the wooden chair stays tucked under the desk exactly where it is; the only thing beyond the glass is the dark rainy city with its blurred lights. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.",
+      "audio": "[Ambient] The only sounds are a steady soft rain pattering on the window glass, a faint far-away muffled city hum.",
+      "seed": 3001
+    },
+    {
+      "id": "P02",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [],
+      "funcion": "La lluvia en el vidrio: gotas y luces borrosas de la ciudad.",
+      "ve": "EXTREME CLOSE UP of the window glass from inside the room: raindrops and slow running rivulets on the pane in sharp focus, and behind them the night city completely out of focus, only soft blurred discs of amber, teal and violet light. The glass fills the entire frame; no window frame, no room, no people visible.",
+      "mueve": "LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. Raindrops land on the glass, merge and slide slowly down in thin rivulets; the blurred lights behind shimmer gently. Nothing else moves; the focus does not change. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.",
+      "audio": "[Ambient] The only sounds are rain very close on the glass, soft and steady, with the far city hum muffled behind it."
+    },
+    {
+      "id": "P03",
+      "tipo": "PG",
+      "segundos": 5.17,
+      "loc": null,
+      "personajes": [],
+      "funcion": "El escritorio de costado, en perspectiva: la lámpara cerca, la taza lejos, la ventana en diagonal.",
+      "ve": "WIDE SHOT of the same cosy study room from a camera standing at the LEFT wall, beside a tall wooden bookshelf, at seated eye level, looking RIGHT along the length of a wooden desk. The desk runs away from the camera in strong perspective: nearest the camera a small brass desk lamp with a dark green glass shade, switched on, casting a warm pool of light; then an open spiral notebook with a pencil and a pair of black headphones; then a white ceramic mug with a wisp of vapour at the far end. Behind the desk, seen at an oblique angle, a big window streaked with rain; outside, only soft blurred discs of amber, teal and violet light. At the far right edge, the corner of a wide windowsill with two potted plants. The desk chair is empty. Nobody is in the room, no animal in the room.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. A thin thread of vapour curls slowly from the mug at the far end; rain runs down the window glass behind; the lamp light is steady. Nothing else moves. The room stays empty and the desk chair stays empty; the only thing beyond the glass is the dark rainy city with its blurred lights. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.",
+      "audio": "[Ambient] The only sounds are a steady soft rain on the window, muffled, with a faint far-away city hum.",
+      "refs": [],
+      "seed": 2003
+    },
+    {
+      "id": "P04",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [],
+      "funcion": "La taza: el vapor que sube a la luz de la lámpara.",
+      "ve": "EXTREME CLOSE UP of the ceramic mug on the desk, filling the frame: dark tea inside, a thin ribbon of soft wispy vapour rising into the warm lamp light, the wood grain of the desk below, and out of focus behind it the rain-blurred window with soft coloured lights. No hands, no people.",
+      "mueve": "LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The vapour rises slowly, curls and dissipates; a faint ripple crosses the surface of the tea; the blurred lights behind shimmer. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are a steady soft rain on the window, muffled."
+    },
+    {
+      "id": "P05",
+      "tipo": "PP",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [
+        "gato"
+      ],
+      "funcion": "El gato dormido, de cerca: una oreja que se mueve.",
+      "ve": "CLOSE UP of the sleeping cat's face on the folded burgundy blanket on the windowsill: eyes closed, whiskers, relaxed ears, the fur lit warm amber on the lamp side and cool blue on the window side. Behind, the rain-streaked glass out of focus with blurred city lights. No people.",
+      "mueve": "LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The cat breathes slowly in its sleep; one ear twitches once; the whiskers tremble slightly. The eyes stay closed. It does not wake, does not move its head. Rain slides down the glass behind. Nothing else moves. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.",
+      "audio": "[Ambient] The only sounds are soft rain on the glass behind, and a very soft, slow purr close to the microphone."
+    },
+    {
+      "id": "P06",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [],
+      "funcion": "La lámpara: el polvo flotando en el haz.",
+      "ve": "EXTREME CLOSE UP of the brass desk lamp only: the dark green glass shade fills the upper part of the frame and the warm frosted bulb glows underneath it, with fine dust motes hanging in the cone of light; below, only a small piece of the wooden desk top. Out of focus behind, the rain-streaked glass. No mug, no notebook, no headphones in the frame. No people.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. Fine dust motes drift very slowly through the cone of lamp light; the bulb glows steady; rain runs down the glass behind. Nothing else moves. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.",
+      "audio": "[Ambient] The only sounds are a steady soft rain on the window, muffled, and the faintest electrical hum of the lamp.",
+      "seed": 2006
+    },
+    {
+      "id": "P07",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "personajes": [],
+      "funcion": "El sillón: la manta tejida y la luz de la lluvia moviéndose sobre la tela.",
+      "ve": "CLOSE-UP INSERT of the seat and back of an old mustard-brown armchair in the cosy study room at night: a cream knitted throw folded over one arm, the worn velvet fabric completely DRY, lit by the warm amber glow of a desk lamp from the left. In the blurred background, part of the rain-streaked window with soft coloured bokeh discs; the rain is only on the window glass, never inside the room, nothing wet on the chair. No people, no animal, no text.",
+      "mueve": "LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The blurred coloured lights in the window behind shimmer gently; a faint warm flicker of lamp light breathes over the fabric; rain runs down the glass only. The chair and the throw stay dry and still. Nothing else moves. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.",
+      "audio": "[Ambient] The only sounds are a steady soft rain on the window, muffled, with a faint far-away city hum.",
+      "refs": []
+    },
+    {
+      "id": "P08",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "personajes": [],
+      "funcion": "El vinilo: los surcos girando bajo la púa.",
+      "ve": "One single picture filling the whole frame: a MACRO EXTREME CLOSE UP of the needle of a record player resting in the grooves of a spinning black vinyl record. The fine concentric grooves fill the entire frame edge to edge, catching warm amber lamp light in soft arcs; the silver cartridge and the tip of the tonearm enter from the upper right. The label of the record is completely out of frame. Only grooves, needle and light. Everything is still and dry.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The grooves slide slowly and steadily under the needle as the record turns; the arcs of warm light glide across the surface; the needle and the tonearm stay in place. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are the faintest vinyl surface crackle close up and soft rain on a window far behind.",
+      "seed": 4008,
+      "refs": []
+    },
+    {
+      "id": "P09",
+      "tipo": "PP",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [
+        "gato"
+      ],
+      "funcion": "El gato desde atrás: el lomo curvado, la cola, la lluvia detrás.",
+      "ve": "CLOSE UP of the sleeping cat seen from behind and slightly above, curled up on the folded burgundy blanket on the desk against the window: its striped grey back, the tail wrapped around, one ear visible, the fur lit warm amber from the left by the lamp and cool blue from the window. Beyond, the rain-streaked glass out of focus with soft blurred coloured lights. Nothing else on the desk in this frame except a corner of the notebook.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The cat's back rises and falls slowly with its breathing; the tip of the tail twitches once; rain runs down the glass behind and the blurred lights shimmer. The cat stays asleep in the same position. Nothing else moves. The rain keeps falling on the window glass for the whole shot, and it stays night outside: the same dark rainy city, the same blurred lights.",
+      "audio": "[Ambient] The only sounds are soft rain on the glass and a very soft, slow purr close to the microphone.",
+      "seed": 2009
+    },
+    {
+      "id": "P10",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": "cuarto",
+      "personajes": [],
+      "funcion": "La planta contra el vidrio: una hoja que tiembla y una gota de condensación.",
+      "ve": "EXTREME CLOSE UP of one of the potted plants on the windowsill: broad green leaves against the rain-streaked glass, one leaf tip touching the cold pane where a drop of condensation sits, the blurred city lights behind the glass. No people.",
+      "mueve": "LOCKED-OFF STATIC CAMERA: no pan, no zoom, no drift. The leaves stir very slightly as if in a faint draft; raindrops slide down the glass behind; the drop of condensation slowly runs down the pane. Nothing else moves. The rain already visible in the first frame keeps falling for the whole shot: it is part of the scene, not new weather.",
+      "audio": "[Ambient] The only sounds are rain on the glass, soft and close, with the muffled city behind."
+    },
+    {
+      "id": "P11",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "personajes": [],
+      "funcion": "El cuaderno desde arriba: el bosquejo del gato, el lápiz, el borde de la taza.",
+      "ve": "One single picture filling the whole frame: a TOP-DOWN EXTREME CLOSE UP straight down onto an open spiral notebook lying on a wooden desk. On the right-hand page a small pencil sketch of a curled-up sleeping cat, just a drawing made of pencil lines, with no words or letters anywhere; a wooden pencil resting diagonally across the left page; at the top edge of the frame the rim of a white ceramic mug of dark tea; warm amber lamp light from the upper left, soft shadows. Only the desk top, the notebook, the pencil and the mug rim are in the frame. Everything is dry and still.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot, looking straight down. A thin thread of vapour rises from the tea and drifts across the corner of the frame; the warm lamp light breathes very faintly over the paper. The pencil, the notebook and the sketch stay exactly as they are. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are soft rain on a window far behind and a faint far-away city hum.",
+      "seed": 3011,
+      "refs": []
+    },
+    {
+      "id": "P12",
+      "tipo": "PD",
+      "segundos": 5.17,
+      "loc": null,
+      "personajes": [],
+      "funcion": "CIERRE DEL BUCLE. Los auriculares con la lluvia reflejada. Corta a P01.",
+      "ve": "One single picture filling the whole frame, seen from desk level: a pair of black over-ear headphones lying on a wooden desk, very close, the two padded ear cups large in the centre of the frame, the cable coiled loosely beside them. Warm amber lamp light comes from the left and glows on the leather and the matte plastic. Behind the headphones there is only a soft out-of-focus warm brown wall. Everything is dry and still.",
+      "mueve": "LOCKED-OFF STATIC CAMERA on a tripod, perfectly still for the whole shot. The warm lamp light breathes very faintly over the leather of the ear cups; a few dust motes drift slowly through the light. The headphones stay exactly where they are. Nothing else moves.",
+      "audio": "[Ambient] The only sounds are soft rain on a window far behind and a faint far-away city hum.",
+      "seed": 3012,
+      "refs": []
+    }
+  ],
+  "negativos": false,
+  "_negativos_nota": "10/9/2026: con los bloques negativos fijos, 7 de 12 clips trajeron gente, cactus, fuego y nubes de caricatura: justo lo que prohíben. Se describen sólo las cosas que SÍ pasan."
+}
