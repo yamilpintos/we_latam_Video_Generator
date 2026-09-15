@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Fábrica</title>
+<link rel="stylesheet" href="/static/app.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+<canvas id="bg3d"></canvas>
+<div id="app">
+  <header class="top">
+    <a class="logo" href="#/">LA FÁBRICA</a>
+    <span id="vast-estado" class="pill"><i class="dot"></i> Vast</span>
+    <nav>
+      <a href="#/" data-r="/">Inicio</a>
+      <a href="#/proyectos" data-r="/proyectos">Proyectos</a>
+      <a href="#/vast" data-r="/vast">Máquinas</a>
+      <a href="#/musica" data-r="/musica">Music video</a>
+      <a href="/mesa" target="_blank">Mesa de Armado ↗</a>
+    </nav>
+  </header>
+  <main id="vista"></main>
+</div>
+<div id="tasks" class="tasks"></div>
+<div id="modal"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

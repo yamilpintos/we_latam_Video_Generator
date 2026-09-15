@@ -64,3 +64,6 @@ ejemplos/*/assets/
 
 # temporales de montaje
 **/_tmp/
+
+# logs del servidor
+h3pipeline/app/logs/

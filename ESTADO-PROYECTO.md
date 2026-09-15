@@ -300,6 +300,7 @@ El detalle completo, por área y con lo que bloquea a qué, está en
 
 | documento | cuándo |
 |---|---|
+| **La Fábrica** (`python -X utf8 -u -m h3pipeline.app` o doble clic en `h3pipeline/app/arrancar-fabrica.bat`) | **la web que corre el pipeline**: proyectos, dibujos con detector de barras, ofertas de Vast con costo estimado, alquiler con confirmación, taxímetro, QC con tiras, máster. 15/9/2026 |
 | `MANUAL-DE-PRODUCCION.md` | **el método entero, por formato** (short, largo, música): flujo en orden, fallas y arreglos, números, contradicciones resueltas. 14/9/2026 |
 | `h3pipeline/H3-OFICIAL.md` | **antes de escribir un prompt o usar voces**: el formato oficial de H3, la voz constante con Ref2VA, ComfyUI exacto, imágenes con GPT, replicar un video. Reglas 41-52. 14/9/2026 |
 | `mis-videos/replica-danza/NOTAS.md` | la réplica para la competencia (contra Kling): decisiones, costos, estado |
