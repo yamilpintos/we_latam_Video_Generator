@@ -27,6 +27,12 @@ sys.path.insert(0, str(RAIZ))
 from h3pipeline import vast  # noqa: E402
 
 ZIP = AQUI / "replica-danza-muestra-a-para-vast.zip"
+# `--solo-setup ZIP`: alquila, sube ese ZIP y corre SOLO setup.sh (los ~87 GB de
+# modelos), sin lanzar nada. Para adelantar la descarga mientras acá se termina
+# el paquete (15/9: los primeros fotogramas del original todavía se limpiaban).
+SOLO_SETUP = "--solo-setup" in sys.argv
+if SOLO_SETUP:
+    ZIP = Path(sys.argv[sys.argv.index("--solo-setup") + 1]).resolve()
 TECHO_DPH = 4.0
 ARRANQUE_MIN = 10
 COLGADAS = AQUI / "hosts-colgados.json"
@@ -114,6 +120,13 @@ while True:
          "inicio": time.time(), "estimado": 9.0, "maquina": elegida.maquina,
          "geo": elegida.geo}), encoding="utf-8")
     vast.subir(inst, ZIP, log=lambda m: print(m, flush=True))
+    if SOLO_SETUP:
+        cmd = ("export PATH=/venv/main/bin:$PATH && cd /workspace/refs && "
+               f"unzip -oq {ZIP.name} && sed -i 's/\\r$//' *.sh *.py && SOLO_FL=0 bash setup.sh")
+        vast.lanzar(inst, cmd, log="/root/setup.log")
+        print(f"LISTO: instancia {iid} bajando modelos (log /root/setup.log). "
+              f"Falta subir el paquete y correr lanzar.sh.", flush=True)
+        break
     vast.generar(inst, ZIP.name, pasos=8, ref2va=True, log=lambda m: print(m, flush=True))
     print(f"LISTO: muestra A lanzada en la instancia {iid}. NO se destruye al terminar.",
           flush=True)

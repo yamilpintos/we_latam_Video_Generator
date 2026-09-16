@@ -6,6 +6,7 @@ const h = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 const usd = (x) => x == null ? "—" : "$" + Number(x).toFixed(2);
 const mins = (s) => { s = Math.round(s || 0); return s < 90 ? `${s} s` : `${Math.floor(s / 60)} min ${s % 60 ? (s % 60) + " s" : ""}`.trim(); };
 const fmtHora = (t) => new Date(t * 1000).toLocaleTimeString("es-AR", {hour: "2-digit", minute: "2-digit"});
+const CPS = {pablo: 10.5, kate: 16.7};
 
 async function api(ruta, opts = {}) {
   const r = await fetch("/api" + ruta, {
@@ -110,19 +111,20 @@ setInterval(estadoVast, 30000);
 /* ─────────────────────────────────────────────── portada */
 ruta("/", async () => {
   let ps = []; try { ps = await api("/proyectos"); } catch {}
+  const esLoop = p => String(p.estructura).startsWith("loop"), esRecap = p => String(p.estructura).startsWith("recap");
   const n = (f) => ps.filter(p => f(p)).length;
   const masters = ps.reduce((s, p) => s + (p.estado?.masters?.length || 0), 0);
   $("#vista").innerHTML = `
   <section class="hero">
-    <h1>Videos con IA,<br>de la idea al <span>máster</span>.</h1>
-    <p class="lead">Guion, dibujos, GPU alquilada por hora, control de calidad y mezcla. Cada paso muestra lo que cuesta antes de gastarlo.</p>
+    <h1>Del guion al <span>máster</span>,<br>con la GPU cobrando lo justo.</h1>
+    <p class="lead">Pegás tu guion. La app lo traduce a planos, dibuja los fotogramas, alquila la máquina, controla los clips y mezcla. Cada paso muestra lo que cuesta antes de gastarlo.</p>
     <div class="puertas">
       <div class="puerta" onclick="location.hash='#/nuevo/short'"><span class="k">VERTICAL · 15 A 90 S</span><h2>Short</h2>
-        <p>Voz en off, subtítulos quemados y música. Tres clips para una muestra de 15 s; doce para un minuto.</p><span class="n">${n(p => p.formato === "short" && !String(p.estructura).startsWith("loop") && !String(p.estructura).startsWith("recap"))} proyectos</span></div>
+        <p>Tu guion, en voz en off con subtítulos. Tres clips para una muestra de 15 s; doce para un minuto.</p><span class="n">${n(p => p.formato === "short" && !esLoop(p) && !esRecap(p))} proyectos</span></div>
       <div class="puerta" onclick="location.hash='#/nuevo/largo'"><span class="k">VERTICAL · 3 A 8 MIN</span><h2>Largo</h2>
-        <p>Recap con voz continua a ritmo de TTS. Primero el audio, medido; después los planos que lo sirven.</p><span class="n">${n(p => String(p.estructura).startsWith("recap"))} proyectos</span></div>
-      <div class="puerta dim" onclick="location.hash='#/musica'"><span class="badge pill ac">en preparación</span><span class="k">16:9 · LOOP</span><h2>Music video</h2>
-        <p>Un escenario que se mira de fondo y se repite lo que dure la música. La música llega de un módulo aparte.</p><span class="n">${n(p => String(p.estructura).startsWith("loop"))} loops</span></div>
+        <p>Recap con voz continua. Primero el audio, medido contra la voz elegida; después los planos que lo sirven.</p><span class="n">${n(esRecap)} proyectos</span></div>
+      <div class="puerta" onclick="location.hash='#/musica'"><span class="k">16:9 · LOOP</span><h2>Music video</h2>
+        <p>Decís qué música y qué escena. La app compone la pista, hace el loop y el video dura lo que dure la música.</p><span class="n">${n(esLoop)} loops</span></div>
     </div>
     <div class="stats"><div><b>${ps.length}</b>proyectos</div><div><b>${masters}</b>másters</div><div><b>5,17 s</b>por clip, sin excepción</div><div><b>4× 5090</b>verificada o se espera</div></div>
   </section>`;
@@ -132,7 +134,7 @@ ruta("/", async () => {
 ruta("/proyectos", async () => {
   const ps = await api("/proyectos");
   $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Cada uno es una carpeta en <code>mis-videos/</code>. El estado sale de lo que existe en la carpeta.</p>
-    <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Nuevo</a></div>
+    <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Short</a><a class="btn" href="#/nuevo/largo">＋ Largo</a><a class="btn" href="#/nuevo/loop">＋ Loop</a></div>
     <div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div></div>`;
 });
 function etapa(p) {
@@ -155,53 +157,92 @@ function tarjetaProyecto(p) {
   </div>`;
 }
 
-/* ─────────────────────────────────────────────── nuevo proyecto */
+/* ─────────────────────────────────────────────── nuevo: el guion */
 ruta("/nuevo", async ([formato]) => {
-  const ests = await api("/estructuras");
-  const f = formato || "short";
-  $("#vista").innerHTML = `<div class="wrap"><h1>Nuevo ${f === "largo" ? "largo" : "short"}</h1>
-    <p class="sub">El flujo es el de siempre: la Mesa de Armado te da la instrucción para el LLM; el LLM te devuelve el <code>proyecto.json</code>; lo pegás acá.</p>
+  const op = await api("/guion/opciones");
+  const f = formato === "largo" ? "largo" : "short";
+  const esLoop = formato === "loop";
+  const ests = op.estructuras.filter(e => esLoop ? e.nombre.startsWith("loop")
+    : f === "largo" ? (e.nombre.startsWith("recap") || (e.formato === "largo" && !e.nombre.startsWith("loop")))
+    : (e.formato === "short" && !e.nombre.startsWith("recap")));
+  const estDefault = esLoop ? "loop" : f === "largo" ? "recap" : "short-15";
+  const titulo = esLoop ? "Nuevo loop" : f === "largo" ? "Nuevo largo" : "Nuevo short";
+  const sub = esLoop ? "Describí la escena: un lugar, una hora, una luz, y qué se mueve despacio. La app la traduce a doce encuadres."
+    : "Pegá tu guion. La app lo traduce a planos siguiendo la estructura, lo valida y te lo muestra. El guion no se reescribe: se ilustra.";
+  const ph = esLoop ? "Un jardín japonés de noche bajo lluvia fina: estanque negro con koi, un farol de piedra con vela, farolitos rojos, musgo, un arce…"
+    : "Soy Tomás, buzo de mantenimiento en la represa. Bajé a 42 metros a revisar una compuerta que no cerraba…";
+  $("#vista").innerHTML = `<div class="wrap"><h1>${titulo}</h1><p class="sub">${sub}</p>
     <div class="grid g2">
-      <div class="card"><h3>1 · La idea</h3><p class="muted">Abrí la Mesa de Armado, elegí formato y estructura, cargá la idea y el estilo, y copiá la instrucción que genera. Pegásela a tu LLM.</p>
-        <a class="btn p" href="/mesa" target="_blank">Abrir la Mesa de Armado ↗</a>
-        <div class="tiny" style="margin-top:12px">Estructuras disponibles: ${ests.map(e => `<code>${e.nombre}</code>`).join(" · ")}</div></div>
-      <div class="card"><h3>2 · El proyecto</h3><p class="muted">Pegá el JSON que devolvió el LLM. Se valida al guardar; después se construye hasta cero avisos.</p>
-        <textarea id="json" class="json" placeholder='{ "titulo": "...", "formato": "${f}", "estructura": "...", "planos": [ ... ] }'></textarea>
-        <div class="row" style="margin-top:10px"><input id="slug" placeholder="carpeta (opcional, ej. mi-video)" style="max-width:260px"><button class="btn p" onclick="guardarNuevo()">Guardar y construir</button></div>
-        <div id="err" class="tiny" style="color:var(--bad);margin-top:8px"></div></div>
-    </div></div>`;
+      <div class="card" style="grid-column:1/-1"><h3>${esLoop ? "La escena" : "El guion"}</h3>
+        <textarea id="guion" class="json" style="font-family:var(--font);font-size:15px;min-height:240px" placeholder="${ph}"></textarea>
+        <div class="tiny" style="margin-top:6px"><span id="nchars">0</span> caracteres${esLoop ? "" : ` · con la voz elegida entran unos <span id="cabe">—</span> caracteres en <span id="durest">—</span> s`}</div></div>
+      <div class="card"><h3>Título y formato</h3>
+        <input id="titulo" placeholder="Título" style="margin-bottom:8px">
+        <select id="estructura">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
+        ${esLoop ? "" : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
+        <textarea id="notas" style="margin-top:8px;min-height:60px" placeholder="Notas para el traductor (opcional): tono, qué no mostrar, cortes que querés…"></textarea></div>
+      <div class="card"><h3>Estilo visual</h3>
+        <select id="estilo">${op.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (escribilo abajo)</option></select>
+        <textarea id="estilo_libre" style="margin-top:8px;min-height:90px" placeholder="Opcional: tu propio estilo, en inglés. Reemplaza al preset."></textarea>
+        <div class="tiny" style="margin-top:6px" id="estilo_prev"></div></div>
+    </div>
+    <div class="row" style="margin-top:14px"><button class="btn p" id="btn-trad">Traducir a planos</button>
+      <span class="tiny">1 a 3 llamadas al modelo, 1-3 minutos. Después: dibujos, máquina, clips, máster.</span></div>
+    <div id="err" class="tiny" style="color:var(--bad);margin-top:8px"></div></div>`;
+  const actualizar = () => {
+    $("#nchars").textContent = $("#guion").value.length;
+    const e = ests.find(x => x.nombre === $("#estructura").value); const v = $("#voz")?.value;
+    if ($("#cabe")) { $("#cabe").textContent = v && e ? Math.round(e.duracion * CPS[v] * 0.9) : "—"; $("#durest").textContent = e ? e.duracion : "—"; }
+    const pe = op.estilos[Number($("#estilo").value)]; $("#estilo_prev").textContent = $("#estilo").value === "" ? "" : pe?.prompt || "";
+  };
+  ["guion", "estructura", "voz", "estilo"].forEach(id => $("#" + id)?.addEventListener("input", actualizar));
+  $("#btn-trad").onclick = () => traducirGuion(esLoop, f);
+  actualizar();
 });
-async function guardarNuevo() {
-  let pj; try { pj = JSON.parse($("#json").value); } catch (e) { $("#err").textContent = "JSON inválido: " + e.message; return; }
+async function traducirGuion(esLoop, formato) {
+  const body = {guion: $("#guion").value, formato: esLoop ? "largo" : "short", estructura: $("#estructura").value,
+    titulo: $("#titulo").value.trim(), estilo: $("#estilo").value === "" ? null : Number($("#estilo").value),
+    estilo_libre: $("#estilo_libre").value, voz: esLoop ? null : ($("#voz").value || null), negativos: !esLoop, notas: $("#notas").value};
+  if (!body.titulo) return $("#err").textContent = "Falta el título.";
+  if (body.guion.trim().length < 40) return $("#err").textContent = "El guion es demasiado corto.";
+  $("#btn-trad").disabled = true;
   try {
-    const d = await api("/proyectos", {method: "POST", body: {proyecto: pj, slug: $("#slug").value || null}});
-    await api(`/proyectos/${d.slug}/construir`, {method: "POST"});
-    location.hash = `#/p/${d.slug}`;
-  } catch (e) { $("#err").textContent = e.message; }
+    const d = await api("/guion", {method: "POST", body});
+    toast("traduciendo el guion…");
+    seguirTarea(d.tarea, (t) => { if (t.estado === "ok") location.hash = `#/p/${d.slug}`; else toast("la traducción falló: mirá el log", true); });
+    location.hash = `#/p/${d.slug}/espera`;
+  } catch (e) { $("#err").textContent = e.message; $("#btn-trad").disabled = false; }
 }
 
 /* ─────────────────────────────────────────────── el proyecto: los pasos */
-let P = null;     // el proyecto abierto
+let P = null;
 let pasoActual = null;
 ruta("/p", async ([slug, paso]) => {
+  if (paso === "espera") {
+    $("#vista").innerHTML = `<div class="wrap"><h1>Traduciendo el guion…</h1><p class="sub">Una a tres llamadas al modelo. Cuando termine, esta página pasa sola al proyecto. El avance está abajo a la derecha.</p>
+      <div class="card"><div class="muted">El guion quedó guardado en <code>mis-videos/${h(slug)}/guion.txt</code>. Si la traducción falla, el log dice por qué; el guion no se pierde.</div></div></div>`;
+    return;
+  }
   P = await api(`/proyectos/${slug}`);
   const e = P.estado;
+  const conVoz = (P.proyecto.voz || []).length > 0 || P.planos.some(x => x.dialogo);
   const hechos = {
     proyecto: P.avisos.length === 0,
+    voz: false,
     dibujos: e.assets.hechos === e.assets.esperados && e.assets.esperados > 0,
     maquina: e.clips.hechos === e.clips.esperados && e.clips.esperados > 0,
     clips: e.clips.hechos === e.clips.esperados && e.clips.esperados > 0,
     master: e.masters.length > 0,
   };
   pasoActual = paso || (!hechos.proyecto ? "proyecto" : !hechos.dibujos ? "dibujos" : !hechos.maquina ? "maquina" : !hechos.master ? "clips" : "master");
-  const pasos = [["proyecto", "Proyecto"], ["dibujos", "Dibujos"], ["maquina", "Máquina"], ["clips", "Clips"], ["master", "Máster"]];
+  const pasos = [["proyecto", "Proyecto"], ...(conVoz ? [["voz", "Voz"]] : []), ["dibujos", "Dibujos"], ["maquina", "Máquina"], ["clips", "Clips"], ["master", "Máster"]];
   $("#vista").innerHTML = `<div class="wrap">
     <div class="row" style="justify-content:space-between"><div><h1>${h(P.titulo)}</h1>
       <p class="sub">${P.formato === "largo" ? "16:9" : "9:16"} · ${h(P.estructura)} · ${P.planos.length} planos · ${mins(e.segundos)} generados ${P.negativos === false ? "· sin negativos" : ""}</p></div>
       <div class="row">${e.corrida && !e.corrida.fin ? `<span class="pill warn"><i class="dot live"></i> instancia ${e.corrida.instancia} · ${usd(e.corrida.acumulado)}</span>` : ""}${e.corrida?.gasto_final != null ? `<span class="pill">GPU gastada ${usd(e.corrida.gasto_final)}</span>` : ""}</div></div>
     <div class="pasos">${pasos.map(([k, n], i) => `<div class="paso ${k === pasoActual ? "on" : ""} ${hechos[k] ? "done" : ""}" onclick="location.hash='#/p/${slug}/${k}'"><b>${hechos[k] ? "✓" : i + 1}</b>${n}</div>`).join("")}</div>
     <div id="paso"></div></div>`;
-  await ({proyecto: pasoProyecto, dibujos: pasoDibujos, maquina: pasoMaquina, clips: pasoClips, master: pasoMaster}[pasoActual])();
+  await ({proyecto: pasoProyecto, voz: pasoVoz, dibujos: pasoDibujos, maquina: pasoMaquina, clips: pasoClips, master: pasoMaster}[pasoActual] || pasoProyecto)();
 });
 
 function lineaDeTiempo() {
@@ -213,11 +254,13 @@ function lineaDeTiempo() {
 
 async function pasoProyecto() {
   const av = P.avisos;
+  const voz = P.proyecto.voz || [];
   $("#paso").innerHTML = `<div class="grid g2">
     <div class="card" style="grid-column:1/-1"><h3>Línea de tiempo <span class="pill ${av.length ? "warn" : "ok"}">${av.length ? av.length + " aviso(s)" : "sin avisos"}</span></h3>${lineaDeTiempo()}
       ${av.length ? `<div class="pre" style="margin-top:10px;max-height:160px">${av.map(h).join("\n")}</div>` : ""}</div>
     <div class="card"><h3>Planos</h3><table><tr><th>id</th><th>tipo</th><th>tramo</th><th class="num">genera</th><th class="num">en línea</th><th>función</th></tr>
-      ${P.planos.map(p => `<tr><td class="mono">${p.id}${p.clip_de ? ` <span class="tiny">= ${p.clip_de}</span>` : ""}</td><td>${p.tipo}</td><td class="tiny">${h(p.tramo || "")}</td><td class="num">${p.segundos.toFixed(2)}</td><td class="num">${p.desde.toFixed(1)}–${p.hasta.toFixed(1)}</td><td class="tiny">${h(p.funcion)}</td></tr>`).join("")}</table></div>
+      ${P.planos.map(p => `<tr><td class="mono">${p.id}${p.clip_de ? ` <span class="tiny">= ${p.clip_de}</span>` : ""}</td><td>${p.tipo}</td><td class="tiny">${h(p.tramo || "")}</td><td class="num">${p.segundos.toFixed(2)}</td><td class="num">${p.desde.toFixed(1)}–${p.hasta.toFixed(1)}</td><td class="tiny">${h(p.funcion)}</td></tr>`).join("")}</table>
+      ${voz.length ? `<h3 style="margin-top:18px">Voz en off</h3>${voz.map(v => `<div class="muted" style="margin-bottom:6px"><span class="mono tiny">${h(v.plano || "")}</span> ${h(v.texto)}</div>`).join("")}` : ""}</div>
     <div class="card"><h3>proyecto.json <span class="pill">editable</span></h3>
       <textarea id="pj" class="json" style="min-height:420px">${h(JSON.stringify(P.proyecto, null, 2))}</textarea>
       <div class="row" style="margin-top:10px"><button class="btn p" onclick="guardarProyecto()">Guardar y reconstruir</button><span class="tiny">Se valida al guardar. Cero avisos antes de dibujar.</span></div>
@@ -229,6 +272,27 @@ async function guardarProyecto() {
   catch (e) { $("#err").textContent = e.message; }
 }
 
+/* ── voz ── */
+async function pasoVoz() {
+  const v = await api(`/proyectos/${P.slug}/voz`);
+  const fuera = v.lineas.filter(l => l.entra_en_voz === false).length;
+  const conTomas = v.lineas.filter(l => l.tomas.length).length;
+  $("#paso").innerHTML = `<div class="card"><h3>Voz en off <span class="pill ${fuera ? "warn" : "ok"}">${fuera ? fuera + " línea(s) no entran" : "todas entran"}</span></h3>
+    <p class="muted">La densidad se mide contra la voz elegida, no contra la teórica. Si una línea no entra, se acorta el texto en el paso Proyecto; nunca se estira el audio. ${v.sin_voz.length ? `<b style="color:var(--bad)">Sin voz asignada: ${v.sin_voz.join(", ")}</b>` : ""}</p>
+    <div class="row" style="margin-bottom:12px"><button class="btn p" onclick="generarVoz()">${conTomas ? "Volver a sintetizar lo que cambió" : "Sintetizar con ElevenLabs"}</button><span class="tiny">gasta créditos; las tomas se cachean por texto</span></div>
+    <table><tr><th>id</th><th>texto</th><th class="num">ventana</th><th class="num">carac.</th><th class="num">cps</th><th>voz</th><th>toma</th></tr>
+    ${v.lineas.map(l => `<tr class="${l.entra_en_voz === false ? "noapta" : ""}"><td class="mono">${l.id}</td><td>${h(l.texto)}</td><td class="num">${l.ventana.toFixed(1)} s</td>
+      <td class="num">${l.caracteres}${l.max_caracteres ? ` <span class="tiny">/ ${l.max_caracteres}</span>` : ""}</td>
+      <td class="num"><b style="color:${l.entra_en_voz === false ? "var(--bad)" : "var(--ok)"}">${l.cps}</b>${l.cps_voz ? ` <span class="tiny">/ ${l.cps_voz}</span>` : ""}</td>
+      <td class="tiny">${h(l.voz_nombre || l.voz_id || "—")}</td>
+      <td>${l.tomas.length ? l.tomas.map(tm => `<div class="row" style="gap:6px"><audio controls preload="none" src="${tm.url}" style="height:28px;width:200px"></audio><span class="tiny">${tm.dur ?? "?"} s · ${tm.factor ?? "?"}×</span></div>`).join("") : `<span class="tiny">sin toma</span>`}</td></tr>`).join("")}</table></div>`;
+}
+async function generarVoz() {
+  try { const d = await api(`/proyectos/${P.slug}/voz/generar`, {method: "POST"}); seguirTarea(d.tarea, () => navegar()); toast("sintetizando…"); }
+  catch (e) { toast(e.message, true); }
+}
+
+/* ── dibujos ── */
 async function pasoDibujos() {
   const as = await api(`/proyectos/${P.slug}/assets`);
   const faltan = as.filter(a => !a.existe).length, barras = as.filter(a => a.con_barras).length;
@@ -359,14 +423,14 @@ async function hacerTiras() { toast("armando tiras…"); try { await api(`/proye
 async function pasoMaster() {
   const e = P.estado; const loop = String(P.estructura).startsWith("loop");
   $("#paso").innerHTML = `<div class="grid g2">
-    <div class="card"><h3>Máster</h3><p class="muted">${loop ? "Loop: 5,0 s de cada clip, 1080p, −14 LUFS y el «×3» para mirar el empalme. La música entra como archivo." : "Corte por <code>usa</code>, tres capas con ducking, −14 LUFS y subtítulos quemados."}</p>
-      ${loop ? `<input id="musica" placeholder="ruta de la pista (mp3/wav), opcional"><div class="row" style="margin-top:8px"><input id="repite" type="number" min="0" placeholder="repetir N veces (opcional)" style="max-width:220px"></div>` : ""}
-      <div class="row" style="margin-top:12px"><button class="btn p" ${e.clips.hechos ? "" : "disabled"} onclick="masterizar()">Generar máster</button></div></div>
+    <div class="card"><h3>Máster</h3><p class="muted">${loop ? "Loop: 5,0 s de cada clip, 1080p, −14 LUFS y el «×3» para mirar el empalme. Para el video con música, usá la sección Music video." : "Corte por <code>usa</code>, tres capas con ducking, −14 LUFS y subtítulos quemados."}</p>
+      ${loop ? `<div class="row"><input id="repite" type="number" min="0" placeholder="repetir N veces (opcional)" style="max-width:220px"></div>` : ""}
+      <div class="row" style="margin-top:12px"><button class="btn p" ${e.clips.hechos ? "" : "disabled"} onclick="masterizar()">Generar máster</button>${loop ? `<a class="btn" href="#/musica/${P.slug}">Ir a la música</a>` : ""}</div></div>
     <div class="card"><h3>Archivos</h3>${e.masters.length ? e.masters.map(m => `<div class="row" style="margin-bottom:8px"><a href="/api/proyectos/${P.slug}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("") : `<div class="muted">Todavía no hay máster.</div>`}
       ${e.masters.length ? `<video controls style="width:100%;border-radius:10px;margin-top:8px" src="/api/proyectos/${P.slug}/archivo/${encodeURIComponent(e.masters[0])}"></video>` : ""}</div></div>`;
 }
 async function masterizar() {
-  const body = {musica: $("#musica")?.value || null, repite: Number($("#repite")?.value || 0)};
+  const body = {repite: Number($("#repite")?.value || 0)};
   try { const d = await api(`/proyectos/${P.slug}/master`, {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast("masterizando…"); }
   catch (e) { toast(e.message, true); }
 }
@@ -401,15 +465,43 @@ async function ofertasGlobal() {
 }
 
 /* ─────────────────────────────────────────────── music video */
-ruta("/musica", async () => {
+ruta("/musica", async ([slug]) => {
   const ps = (await api("/proyectos")).filter(p => String(p.estructura).startsWith("loop"));
-  $("#vista").innerHTML = `<div class="wrap"><h1>Music video <span class="pill ac">en preparación</span></h1>
-    <p class="sub">Un escenario que se mira de fondo y se repite lo que dure la música. Los loops se hacen acá con el mismo flujo; la música llega de un módulo aparte que está en desarrollo.</p>
-    <div class="grid g2"><div class="card"><h3>Cómo se conecta</h3><p class="muted">El módulo de música entrega un archivo de audio de la duración pedida. El máster del loop lo recibe con <code>--musica</code>, cierra la vuelta con un cruce de 2 s y masteriza a −14 LUFS. Cuando el módulo esté, este botón lo llama; hoy acepta una ruta de archivo en el paso Máster de cada loop.</p>
-      <a class="btn" href="#/nuevo/largo">Nuevo loop (estructura <code>loop</code>)</a></div>
-    <div class="card"><h3>Lo que falta</h3><ul class="muted" style="margin:0;padding-left:18px"><li>Que la pista mande la duración (<code>--largo-de-pista</code>).</li><li>Varios loops de 15 s que se alternan (tríos), para que una canción de 3 min no repita el mismo doce veces.</li><li>El módulo de generación de música (rama <code>hosting-y-musica</code>).</li></ul></div></div>
-    <h3 style="margin:26px 0 10px">Loops hechos</h3><div class="grid g3">${ps.map(tarjetaProyecto).join("") || `<div class="muted">Ninguno todavía.</div>`}</div></div>`;
+  const sel = slug || ps[0]?.slug;
+  let pistas = [];
+  const otros = ps.filter(p => p.slug !== sel && (p.estado?.masters || []).some(m => / - loop\.mp4$/.test(m)));
+  if (sel) { try { pistas = await api(`/proyectos/${sel}/musica`); } catch {} }
+  const p = ps.find(x => x.slug === sel);
+  $("#vista").innerHTML = `<div class="wrap"><h1>Music video</h1>
+    <p class="sub">Un escenario que se mira de fondo y se repite lo que dure la música. Elegís el tipo de música y la app la compone con ElevenLabs Music; el loop se hace con el mismo flujo de siempre; el video final dura lo que dura la pista.</p>
+    <div class="row" style="margin-bottom:14px"><a class="btn p" href="#/nuevo/loop">＋ Nuevo loop (describís la escena)</a>
+      ${ps.length ? `<select id="sel-loop" onchange="location.hash='#/musica/'+this.value" style="max-width:320px">${ps.map(x => `<option value="${x.slug}" ${x.slug === sel ? "selected" : ""}>${h(x.titulo)}</option>`).join("")}</select>` : ""}</div>
+    ${p ? `<div class="grid g2">
+      <div class="card"><h3>1 · La música para «${h(p.titulo)}»</h3>
+        <textarea id="tipo" style="min-height:90px" placeholder="Qué música: «lo-fi hip hop lento para estudiar, piano suave y vinilo, sin batería marcada, melancólico pero cálido»"></textarea>
+        <div class="row" style="margin-top:8px"><input id="dur" type="number" value="90" min="30" max="300" style="max-width:120px"><span class="tiny">segundos (30 a 300). Para publicar largo, el loop se repite sobre la pista.</span></div>
+        <div class="row" style="margin-top:10px"><button class="btn p" onclick="componer('${sel}')">Componer</button><span class="tiny">créditos de ElevenLabs</span></div>
+        <div style="margin-top:14px">${pistas.length ? pistas.map(t => `<div class="row" style="margin-bottom:8px"><audio controls preload="none" src="${t.url}" style="height:30px;flex:1"></audio><span class="tiny">${h(t.archivo)} · ${t.dur ?? "?"} s</span></div>`).join("") : `<div class="tiny">Todavía no hay pistas en este proyecto.</div>`}</div></div>
+      <div class="card"><h3>2 · El video final <span class="pill ${p.estado.masters.length ? "ok" : "warn"}">${p.estado.clips.hechos}/${p.estado.clips.esperados} clips</span></h3>
+        <p class="muted">La pista manda la duración: el loop se repite hasta cubrirla y se corta a su largo. Si marcás otros loops, se alternan para que no se vea el mismo doce veces.</p>
+        <select id="pista">${pistas.map(t => `<option value="${h(t.ruta)}">${h(t.archivo)} (${t.dur ?? "?"} s)</option>`).join("")}${pistas.length ? "" : `<option value="">(primero componé una pista)</option>`}</select>
+        ${otros.length ? `<div class="tiny" style="margin:10px 0 4px">Alternar con:</div>${otros.map(o => `<label class="tiny" style="display:block"><input type="checkbox" class="otro" value="${o.slug}"> ${h(o.titulo)}</label>`).join("")}` : ""}
+        <div class="row" style="margin-top:12px"><button class="btn p" ${pistas.length && p.estado.clips.hechos ? "" : "disabled"} onclick="masterMusica('${sel}')">Generar video con la pista</button>
+          <a class="btn" href="#/p/${sel}">Abrir el loop (dibujos, máquina, clips)</a></div>
+        <div style="margin-top:12px">${p.estado.masters.map(m => `<div><a href="/api/proyectos/${sel}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("")}</div></div>
+    </div>` : `<div class="card"><div class="muted">Todavía no hay loops. Empezá por «Nuevo loop».</div></div>`}
+    <h3 style="margin:26px 0 10px">Loops</h3><div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div></div>`;
 });
+async function componer(slug) {
+  const body = {slug, tipo: $("#tipo").value, duracion: Number($("#dur").value || 90)};
+  try { const d = await api("/musica/componer", {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast("componiendo…"); }
+  catch (e) { toast(e.message, true); }
+}
+async function masterMusica(slug) {
+  const otros = [...document.querySelectorAll(".otro:checked")].map(x => x.value);
+  try { const d = await api(`/proyectos/${slug}/master`, {method: "POST", body: {musica: $("#pista").value, largo_de_pista: true, otros_loops: otros}}); seguirTarea(d.tarea, () => navegar()); toast("armando el video con la pista…"); }
+  catch (e) { toast(e.message, true); }
+}
 
 /* ─────────────────────────────────────────────── fondo 3D */
 (function fondo() {
@@ -419,7 +511,6 @@ ruta("/musica", async () => {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   const scene = new THREE.Scene();
   const cam = new THREE.PerspectiveCamera(55, 1, .1, 100); cam.position.set(0, 0, 9);
-  // Un anillo de "fotogramas": planos finos girando lento, como una tira de película en órbita.
   const grupo = new THREE.Group(); scene.add(grupo);
   const geo = new THREE.PlaneGeometry(1.2, .68);
   for (let i = 0; i < 48; i++) {
@@ -428,7 +519,6 @@ ruta("/musica", async () => {
     m.position.set(Math.cos(t) * r, Math.sin(t * 2) * .9 + Math.sin(i) * .3, Math.sin(t) * r);
     m.lookAt(0, m.position.y, 0); grupo.add(m);
   }
-  // Polvo
   const n = 900, pos = new Float32Array(n * 3);
   for (let i = 0; i < n * 3; i++) pos[i] = (Math.random() - .5) * 26;
   const puntos = new THREE.Points(new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(pos, 3)),
@@ -444,8 +534,7 @@ ruta("/musica", async () => {
     grupo.rotation.y = t * .08; grupo.rotation.x = Math.sin(t * .15) * .12 + my * .2;
     puntos.rotation.y = -t * .02; cam.position.x += (mx * 1.2 - cam.position.x) * .03;
     cam.lookAt(0, 0, 0);
-    const enPortada = document.body.classList.contains("en-portada");
-    canvas.style.opacity = enPortada ? .9 : .28;
+    canvas.style.opacity = document.body.classList.contains("en-portada") ? .9 : .28;
     renderer.render(scene, cam); requestAnimationFrame(loop);
   })();
 })();

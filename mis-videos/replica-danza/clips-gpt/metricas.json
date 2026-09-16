@@ -1,0 +1,1802 @@
+[
+ {
+  "id": "MA01",
+  "segundos": 5.167,
+  "minutos": 3.76,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA02",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA03",
+  "segundos": 5.167,
+  "minutos": 8.84,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "fl2va",
+  "shift_video": 12.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA04",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA05",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA06",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA07",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA08",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA09",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA10",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MA11",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB01",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 2
+ },
+ {
+  "id": "MB02",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB03",
+  "segundos": 5.167,
+  "minutos": 8.75,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB04",
+  "segundos": 5.167,
+  "minutos": 4.84,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": true,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB05",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB06",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB07",
+  "segundos": 5.167,
+  "minutos": 4.75,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "MB08",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T01",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T02",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T03",
+  "segundos": 5.167,
+  "minutos": 4.75,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T04",
+  "segundos": 5.167,
+  "minutos": 4.92,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T05",
+  "segundos": 5.167,
+  "minutos": 4.09,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T06",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T07",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T08",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T09",
+  "segundos": 5.167,
+  "minutos": 4.09,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T10",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T11",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T12",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T13",
+  "segundos": 5.167,
+  "minutos": 4.09,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T14a",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T14b",
+  "segundos": 5.167,
+  "minutos": 4.26,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T15",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T16",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T17",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T18",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T21",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T22",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T23",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T24",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T25",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T26",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T27",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T28",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T29",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T30",
+  "segundos": 5.167,
+  "minutos": 4.33,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T31",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T32",
+  "segundos": 5.167,
+  "minutos": 4.75,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T33",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T34",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T35",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T38",
+  "segundos": 5.167,
+  "minutos": 4.09,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T39",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T40",
+  "segundos": 5.167,
+  "minutos": 4.09,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T41",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T42",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T43",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T44",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T45",
+  "segundos": 5.167,
+  "minutos": 4.01,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T46",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T47",
+  "segundos": 5.167,
+  "minutos": 4.84,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T48",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T49",
+  "segundos": 5.167,
+  "minutos": 4.75,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T52",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T53",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T54",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T55",
+  "segundos": 5.167,
+  "minutos": 4.75,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T56",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T58",
+  "segundos": 5.167,
+  "minutos": 4.0,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T59",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T60",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T61",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T62",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T63",
+  "segundos": 5.167,
+  "minutos": 3.92,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T64",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T65",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T66",
+  "segundos": 5.167,
+  "minutos": 4.34,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T68",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T69",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T70",
+  "segundos": 5.167,
+  "minutos": 4.25,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T71",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T72",
+  "segundos": 5.167,
+  "minutos": 3.92,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T73",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T74",
+  "segundos": 5.167,
+  "minutos": 4.75,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T75",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T77",
+  "segundos": 5.167,
+  "minutos": 3.92,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T78",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T79",
+  "segundos": 5.167,
+  "minutos": 4.09,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T80",
+  "segundos": 5.167,
+  "minutos": 4.17,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "fl2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T81",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO01",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO02",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO03",
+  "segundos": 5.167,
+  "minutos": 4.42,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO04",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO05",
+  "segundos": 5.167,
+  "minutos": 4.5,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO06",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO07",
+  "segundos": 5.167,
+  "minutos": 4.67,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "VO08",
+  "segundos": 5.167,
+  "minutos": 4.59,
+  "pasos": 8,
+  "turbo": true,
+  "modo": "ref2va",
+  "shift_video": 6.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ }
+]

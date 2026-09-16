@@ -27,6 +27,7 @@ Salidas (al lado de proyecto.json)
   <titulo> - loop.mp4        el loop, 1920×1080, −14 LUFS
   <titulo> - loop x3.mp4     tres vueltas seguidas, para MIRAR el empalme (0:60 y 2:00)
   <titulo> - <N>x.mp4        con --repite N, para publicar
+  <titulo> - <pista>.mp4     con --musica X --largo-de-pista: la pista manda la duración
 """
 from __future__ import annotations
 
@@ -178,6 +179,33 @@ def repetir(loop: Path, veces: int, salida: Path, log) -> None:
     log(f"  {salida.name}   ×{veces}   {salida.stat().st_size / 1e6:.1f} MB")
 
 
+def cubrir_pista(loops: list[Path], pista: Path, salida: Path, log) -> None:
+    """La PISTA manda: se alternan los loops hasta cubrir su duración, se corta
+    al largo exacto de la pista y se funde el último segundo. Para una canción
+    de 3 minutos con loops de 15 s, alternar varios evita que el mismo se vea
+    doce veces."""
+    dur = montaje.duracion(pista)
+    if not dur:
+        raise SystemExit(f"no pude medir {pista}")
+    largos = [montaje.duracion(l) for l in loops]
+    orden, t, i = [], 0.0, 0
+    while t < dur + 0.5:
+        orden.append(loops[i % len(loops)]); t += largos[i % len(largos)]; i += 1
+    lista = salida.with_suffix(".orden.txt")
+    lista.write_text("".join(f"file '{l.as_posix()}'\n" for l in orden), encoding="utf-8")
+    try:
+        ff("-f", "concat", "-safe", "0", "-i", str(lista), "-i", str(pista),
+           "-filter_complex",
+           f"[0:v]trim=0:{dur:.3f},setpts=PTS-STARTPTS,fade=t=out:st={dur - 1.0:.3f}:d=1.0[v];"
+           f"[1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,"
+           f"loudnorm=I=-14:TP=-1.0:LRA=11,aresample=48000[a]",
+           "-map", "[v]", "-map", "[a]", *CODEC_V, *CODEC_A, "-t", f"{dur:.3f}", str(salida))
+    finally:
+        lista.unlink(missing_ok=True)
+    log(f"  {salida.name}   {dur:.0f} s de pista · {len(orden)} vueltas de {len(loops)} loop(s)   "
+        f"{salida.stat().st_size / 1e6:.1f} MB")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--planos", default=str(AQUI / "planos.json"))
@@ -190,6 +218,10 @@ def main() -> int:
                     help="nivel del audio de H3 bajo la música (default -18)")
     ap.add_argument("--sin-ambiente", action="store_true", help="apaga el audio de H3")
     ap.add_argument("--repite", type=int, default=0, help="además, una versión de N vueltas")
+    ap.add_argument("--largo-de-pista", action="store_true",
+                    help="la pista manda: el loop se repite hasta cubrirla y se corta a su largo")
+    ap.add_argument("--otros-loops", nargs="*", default=[],
+                    help="otros «- loop.mp4» ya hechos para alternar con éste (con --largo-de-pista)")
     a = ap.parse_args()
 
     doc = json.loads(Path(a.planos).read_text(encoding="utf-8"))
@@ -203,8 +235,16 @@ def main() -> int:
         log(f"  corte.mp4   {largo:.1f} s\n")
         loop = AQUI / f"{titulo} - loop.mp4"
         log("máster:")
-        masterizar(corte, Path(a.musica) if a.musica else None, largo, loop,
-                   -90.0 if a.sin_ambiente else a.ambiente_db, a.cruce, a.desde, log)
+        if a.largo_de_pista and a.musica:
+            # El loop se masteriza SIN música (sólo ambiente, cerrado en bucle) y
+            # después la pista entera manda la duración del video final.
+            masterizar(corte, None, largo, loop, -90.0 if a.sin_ambiente else a.ambiente_db, a.cruce, None, log)
+            loops = [loop] + [Path(x) for x in a.otros_loops if Path(x).exists()]
+            final = AQUI / f"{titulo} - {Path(a.musica).stem}.mp4"
+            cubrir_pista(loops, Path(a.musica), final, log)
+        else:
+            masterizar(corte, Path(a.musica) if a.musica else None, largo, loop,
+                       -90.0 if a.sin_ambiente else a.ambiente_db, a.cruce, a.desde, log)
         repetir(loop, 3, AQUI / f"{titulo} - loop x3.mp4", log)
         if a.repite:
             repetir(loop, a.repite, AQUI / f"{titulo} - {a.repite}x.mp4", log)

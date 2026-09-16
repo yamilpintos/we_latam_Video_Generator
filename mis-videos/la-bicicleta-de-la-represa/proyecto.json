@@ -1,0 +1,155 @@
+{
+  "titulo": "LA BICICLETA DE LA REPRESA",
+  "slug": "la-bicicleta-de-la-represa",
+  "formato": "short",
+  "estructura": "short-15",
+  "_concepto": "Relato en primera persona de un buzo de mantenimiento que, trabajando en la represa de Salto Grande, encuentra a 30 metros de profundidad una bicicleta enganchada en la reja de entrada y, al moverla, descubre una placa con una patente vieja, imposible de estar ahí. Visualmente, todo sucede bajo el agua, en un entorno oscuro, turbio y frío, con haces de luz recortando el sedimento en suspensión; el gancho muestra de cerca la bicicleta imposible, el desarrollo presenta el contexto del buzo trabajando en la represa y el cierre revela la patente y deja la pregunta abierta, repitiendo el encuadre del gancho para buclear.",
+  "estilo_imagen": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain.",
+  "estilo_video": "Photorealistic cinematic underwater footage.",
+  "cierre_video": "Keep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+  "solo_sonidos": "Low underwater rumble, distant turbine hum, muffled water currents, regulator breathing, subtle metal creaks, faint bubbles.",
+  "voces": {
+    "narrador": "JXKQ929SO0LLl7spbEAI"
+  },
+  "personajes": {
+    "tomas": {
+      "hoja": "m_tomas",
+      "descripcion": "Male industrial diver in his 30s wearing a full-face diving helmet with visor, thick black drysuit with high-visibility yellow reflective stripes, heavy weight belt, black gloves, and sturdy dive boots. Multiple thick umbilical hoses attached to his helmet and back, including an air supply hose, communication cable, and safety line. No skin visible, all covered by suit and gear."
+    }
+  },
+  "locaciones": {
+    "represa_exterior": {
+      "imagen": "l_represa_exterior",
+      "descripcion": "Underwater view just inside the intake area of a large hydroelectric dam. Massive vertical metal bars forming a security grate, cold dark greenish water, strong directional beams of light filtering from above, lots of suspended particles. Hints of concrete walls and distant turbine structures fade into darkness."
+    },
+    "compuerta_fondo": {
+      "imagen": "l_compuerta_fondo",
+      "descripcion": "Deep underwater near the base of a dam gate at around 40 meters depth. Heavy concrete walls, a huge rusty steel sluice gate with visible seams, thick pipes and bolts, cables running along the walls. Very dark, with only the diver's lamp cutting through dense particulate-filled water."
+    }
+  },
+  "madre": [
+    {
+      "id": "m_tomas",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Full-body character sheet of an industrial diver underwater, photorealistic. Front, back, and side views. Male in his 30s wearing a full-face diving helmet with clear visor, thick black drysuit with high-visibility yellow reflective bands, heavy weight belt, black gloves, and sturdy dive boots. Multiple thick umbilical hoses attached to his helmet and back for air and communications. No bare skin visible. Neutral underwater background, cold teal water with floating particles, soft volumetric light. Underwater film look, not stylized, not CGI.",
+      "medio": "underwater film"
+    },
+    {
+      "id": "l_represa_exterior",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Establishing underwater environment for the inside of a hydroelectric dam intake. Tall vertical metal bars forming a security grate close to the camera, slightly rusted. Behind them, dark open water leading into the dam. Strong angled beams of light from the surface catch heavy suspended particles. Concrete walls frame the sides, with distant hints of turbine structures fading into darkness. Deep teal-black water, cold atmosphere, high ISO grain. Photorealistic underwater film.",
+      "medio": "underwater film"
+    },
+    {
+      "id": "l_compuerta_fondo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Deep underwater environment at the base of a large dam gate. Massive rusty steel sluice gate fills part of the frame, with visible seams, bolts, and stains. Thick concrete walls around it, with pipes and cables running along the surfaces. Very low ambient light, only a strong narrow beam from a diver's flashlight illuminating parts of the gate and nearby wall. Water is dense with particles, deep teal-black color, cold and murky. Photorealistic underwater film look.",
+      "medio": "underwater film"
+    }
+  ],
+  "planos": [
+    {
+      "id": "S01",
+      "tipo": "PP",
+      "corta": 3.0,
+      "segundos": 5.17,
+      "loc": "represa_exterior",
+      "personajes": [],
+      "refs": [
+        "l_represa_exterior"
+      ],
+      "funcion": "HOOK. Mostrar de entrada, en primer plano, la bicicleta imposible trabada en la reja de la represa, con la profundidad y lo inquietante del entorno ya visibles, alineado con el texto y la voz que adelantan el hallazgo.",
+      "texto": "Encontré una bici a 30 m, adentro de la represa",
+      "ve": "EXTREME CLOSE-UP of a fully intact rusted bicycle jammed horizontally between the thick vertical metal bars of the dam intake grate, underwater. The wheels, frame, and pedals are clearly visible, covered in algae and silt, with faint light beams slicing through dense floating particles. Background falls quickly into dark teal-black water; no people are visible. The frame is centered on the bike and the bars, with the upper third left relatively clear for text.",
+      "mueve": "From the first frame the camera pushes in slowly toward the bicycle, while drifting slightly sideways, making the metal bars parallax against the dark water behind. Small debris and bubbles drift past the lens. The bike wobbles subtly in the current but remains stuck between the bars.",
+      "audio": "[SFX] Muffled low underwater rumble, faint metallic creaks from the grate, distant turbine hum. [Ambient] Constant deep underwater dam ambience with low-frequency vibrations. [Foley] Occasional light clinks of the bicycle frame subtly shifting against the metal bars.",
+      "interrupcion": true
+    },
+    {
+      "id": "S02",
+      "tipo": "PG",
+      "corta": 3.8,
+      "segundos": 5.17,
+      "loc": "compuerta_fondo",
+      "personajes": [
+        "tomas"
+      ],
+      "refs": [
+        "l_compuerta_fondo",
+        "m_tomas"
+      ],
+      "funcion": "DESARROLLO. Presentar a Tomás trabajando como buzo de mantenimiento en la represa y la profundidad extrema de la bajada hacia la compuerta, dando contexto técnico y físico al hallazgo.",
+      "texto": "",
+      "ve": "WIDE SHOT underwater of the industrial diver Tomás descending along a guide cable towards a massive dam gate in the background. He wears a full-face helmet, thick drysuit with reflective bands, and several umbilical hoses trailing up into darkness. His flashlight casts a strong cone of light ahead, revealing part of the rusty steel gate and heavy concrete walls, with dense particles floating everywhere in the cold dark teal water.",
+      "mueve": "The camera slowly tracks backward and slightly upward as Tomás continues to descend along the cable, his fins kicking gently. His flashlight beam sweeps across the gate surface, briefly revealing bolts and seams before disappearing into shadow. Tiny bubbles escape from his helmet and drift upward, accentuating the depth.",
+      "audio": "[SFX] Steady regulator breathing and faint hiss of air through hoses, distant low turbine vibrations. [Ambient] Deep, constant underwater rumble inside the dam structure. [Foley] Soft swishes of the diver's fins and subtle creaks of his gear and harness.",
+      "interrupcion": true
+    },
+    {
+      "id": "S03",
+      "tipo": "PM",
+      "corta": 3.2,
+      "segundos": 5.17,
+      "loc": "represa_exterior",
+      "personajes": [
+        "tomas"
+      ],
+      "refs": [
+        "l_represa_exterior",
+        "m_tomas"
+      ],
+      "funcion": "DESARROLLO. Mostrar a Tomás frente a la reja a 30 metros, enfocando la bicicleta entera y el momento en que la mueve, preparando el descubrimiento de la placa detrás de la rueda trasera.",
+      "texto": "",
+      "ve": "MEDIUM SHOT underwater of Tomás facing the intake grate at about 30 meters depth, seen mostly from behind and slightly to the side to avoid his face. His gloved hands hold the rusted bicycle wedged between the vertical bars. The whole bike is visible, both wheels intact, coated in algae and silt. His helmet light brightly illuminates the bike and bars, while everything beyond the grate drops into almost complete darkness with thick particles in the beam.",
+      "mueve": "Tomás braces one boot against a lower bar and pulls the bicycle toward him. The frame and rear wheel shift with visible effort, shaking off clouds of silt that billow into the water. As he drags the back wheel sideways, the tire reveals a dark metal plate partially hidden behind it, catching the edge of his flashlight beam.",
+      "audio": "[SFX] Strained metal grinding as the bike scrapes against the bars, a small burst of silt gushing out. [Ambient] Continuous low underwater drone from the dam structure. [Foley] Tight creaks of Tomás's harness and gloves gripping the frame, dull thumps as the bike bumps the grate.",
+      "interrupcion": false
+    },
+    {
+      "id": "S04",
+      "tipo": "PP",
+      "corta": 4.8,
+      "segundos": 5.17,
+      "loc": "represa_exterior",
+      "personajes": [
+        "tomas"
+      ],
+      "refs": [
+        "l_represa_exterior",
+        "m_tomas"
+      ],
+      "funcion": "CIERRE. Pagar el misterio mostrando de cerca la placa con la patente vieja detrás de la rueda trasera, con la cifra de 1998 clara, y cerrar con la pregunta abierta sobre cómo llegó esa bicicleta ahí, repitiendo el encuadre del gancho para buclear.",
+      "texto": "",
+      "ve": "EXTREME CLOSE-UP underwater of Tomás's gloved hand brushing away silt from a small metal license plate bolted to a piece of structure directly behind where the rear wheel had been. The flashlight beam illuminates embossed characters and a clearly visible old-style plate number format that ended in the year 1998. The bicycle's rear wheel is still partly in frame to the side, jammed against the vertical bars of the grate, echoing the composition of the first shot.",
+      "mueve": "Tomás's thumb rubs away the last layer of slime from the plate, making the stamped numbers and letters fully readable. The camera slowly pushes in and eases to almost the same composition as the first shot, centering the bike and the newly revealed plate behind the rear wheel. Fine particles drift across the beam of light as the motion eases to a near still at the end, matching the opening frame for a seamless loop.",
+      "audio": "[SFX] Soft scraping as the glove wipes silt off the metal plate, a few tiny flakes of rust breaking off. [Ambient] Deep continuous underwater hum, slightly louder, with a faint pulse from machinery. [Foley] Subtle fabric and harness creaks from Tomás stabilizing himself against the bars, gentle touch sounds as his glove contacts the plate.",
+      "interrupcion": true
+    }
+  ],
+  "voz": [
+    {
+      "plano": "S01",
+      "offset": 0.2,
+      "texto": "Soy Tomás, buzo en Salto Grande."
+    },
+    {
+      "plano": "S02",
+      "offset": 0.3,
+      "texto": "Ese día bajé a 42 metros."
+    },
+    {
+      "plano": "S03",
+      "offset": 0.2,
+      "texto": "A 30 metros vi la reja y la bici."
+    },
+    {
+      "plano": "S04",
+      "offset": 0.2,
+      "texto": "La moví y atrás había una patente del noventa y ocho."
+    }
+  ],
+  "medio": "underwater film"
+}

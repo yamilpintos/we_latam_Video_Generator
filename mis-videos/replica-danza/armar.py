@@ -34,7 +34,10 @@ SEGUNDOS = 5.17
 TECHO = 4.87          # 5,17 − 0,30 de colchón: la cola de H3 deriva
 ONSET = 1.0           # arranque de la voz que se le pide a H3 en cada clip que habla
 ONSETS = {"E30": 1.5}  # Luka dispara un segundo y medio antes de gritar
-ONSETS_MEDIDOS = {"E22": 0.36, "E23": 4.41, "E30": 3.77, "E36": 4.1, "E43": 4.51, "E44": 2.85, "E46": 2.68, "E47": 3.51, "E49": 1.64, "E52": 1.12, "E53": 1.06, "E54": 4.09, "E55": 0.62, "E61": 1.87, "E62": 1.0, "E64": 1.22, "E65": 0.31, "E68": 1.26, "E73": 2.21, "E74": 2.64, "E75": 2.34, "E81": 4.33}   # medido con montar.py medir
+# Semillas fijadas a mano para rehacer una toma que salió mal (16/9: T73 dijo
+# «I said, I said» con las semillas 1000+idx y 7000+idx).
+SEMILLAS = {"E73": 31337, "E61": 4242, "E65": 4243, "E81": 4244, "E63": 5151, "E24": 6101, "E43": 6102, "E11": 6103}   # v4: T24 corte a 1,0 s; T43 derivó a los 2,8 s; T11 corte al borde   # 16/9: E61/E65/E81 por cortes internos
+ONSETS_MEDIDOS = {"E22": 1.39, "E23": 3.41, "E30": 3.1, "E36": 3.88, "E43": 4.41, "E44": 0.16, "E46": 1.84, "E47": 3.47, "E49": 1.75, "E52": 0.96, "E53": 0.94, "E54": 3.79, "E55": 0.82, "E61": 1.7, "E62": 1.4, "E64": 0.54, "E65": 0.42, "E68": 1.28, "E73": 2.29, "E74": 0.08, "E75": 2.65, "E81": 2.35}   # medido con montar.py medir
 
 # ───────────────────────────── estilo ───────────────────────────────────────
 # Sin nombrar el género de origen: «short-drama» trajo subtítulos chinos
@@ -57,20 +60,29 @@ LIENZO = ("VERTICAL 9:16 frame; keep the subject centred and nothing important n
           "and right edges (the sides get trimmed).")
 
 # ───────────────────────────── reparto ──────────────────────────────────────
-HANNAH_CARA = ("Hannah, 22, a slim ballet dancer with a delicate oval face, light freckles "
-               "across the nose, hazel-green eyes, honey-brown hair in a messy low bun with loose "
-               "strands around her face, a faint smudge of farm dirt on her left cheekbone")
+# Desde el 15/9 los primeros fotogramas son los cuadros del ORIGINAL (limpios de
+# texto), así que las descripciones son de sus actores, no de los que inventó
+# GPT: si el texto dijera «barba recortada» sobre un cuadro de un hombre
+# afeitado, H3 tiraría hacia el texto. Escritas mirando original/hoja*.jpg.
+# Reparto nuevo (15/9, noche): otros actores en todos los personajes, elegidos en
+# reparto-nuevo/HOJA.jpg; Luka lleva la cara del usuario. Las descripciones
+# siguen a esas hojas, que son también las <Picture 2> de los clips con voz.
+HANNAH_CARA = ("Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, "
+               "platinum-blonde hair pulled into a messy low bun with loose strands around her face, "
+               "light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a "
+               "faint smudge of dirt on her left cheekbone")
 HANNAH_ROPA = ("an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale "
-               "pink camisole leotard, frayed light-blue denim cut-off shorts over pale pink tights")
+               "pink camisole leotard, dark indigo denim cut-off shorts over pale tights")
 HANNAH = f"{HANNAH_CARA}, wearing {HANNAH_ROPA}, chunky pink ribbed leg warmers and pink ballet slippers"
 HANNAH_CAMPO = (f"{HANNAH_CARA}, wearing {HANNAH_ROPA} and worn tan embroidered cowboy boots, a "
                 "canvas tote bag on her shoulder with pink pointe shoes hanging from it by their ribbons")
-JACK_CARA = ("Jack, 32, a tall lean dangerously handsome man, dark brown hair swept back with "
-             "short sides, a trimmed dark beard, pale blue-grey eyes, a fresh spray of blood on the "
-             "LEFT side of HIS forehead and cheekbone, black ink tattoos up the side of his neck")
+JACK_CARA = ("Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a "
+             "short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of "
+             "blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left "
+             "side of his neck")
 JACK_CAMISA = (f"{JACK_CARA}, in a crisp white dress shirt with the sleeves rolled to the "
-               "forearm, a black leather shoulder-holster harness, black trousers and black "
-               "fingerless leather driving gloves")
+               "forearm, a black leather shoulder harness with two straps crossing his back, black "
+               "trousers and black fingerless leather driving gloves")
 JACK_ABRIGO = (f"{JACK_CARA}, in a long black wool overcoat over a white shirt, a loose black "
                "silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather "
                "gloves")
@@ -79,16 +91,18 @@ JACK_ABRIGO = (f"{JACK_CARA}, in a long black wool overcoat over a white shirt, 
 JACK_SIN_SOMBRERO = (f"{JACK_CARA}, BARE-HEADED with NO hat (he has taken the fedora off), in "
                      "a long black wool overcoat over a white shirt, a loose black silk scarf at "
                      "the neck and black fingerless leather gloves")
-LUKA = ("Luka, 45, a thick-necked brute with a dark buzz cut, heavy stubble and a hard furious "
-        "face, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, "
-        "a bandolier of rifle cartridges across his chest, carrying an AK-47 rifle")
-WADY = ("Wady, 33, messy dirty-blond wavy hair, a short blond beard, pale blue eyes, an "
-        "olive-green canvas field coat over a grey hoodie, holding a black pistol")
-MATONES = ("gang gunmen, half Italian mob and half street gang: a bald bearded man with "
-           "tattooed arms in a black tank top holding a rifle, a man in a black studded leather "
+LUKA = ("Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven "
+        "face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling "
+        "collar over a black shirt, dark trousers, carrying an AK-47 rifle")
+WADY = ("Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin "
+        "and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol")
+MATONES = ("gang gunmen, half Italian mob and half street gang: a man with short dark hair, a "
+           "thick dark moustache and tattooed arms in a black tank top holding a rifle, a man in a black studded leather "
            "jacket, a tattooed man in a sleeveless denim vest")
 PASAJEROS = ("ordinary train passengers: a bald middle-aged man in a light grey sweater, a "
              "young woman with curly dark hair, round glasses and a cream cardigan")
+PASAJERA = ("a young woman passenger in her thirties with curly dark hair, round wire-rimmed "
+            "glasses and a cream cardigan")
 
 # La voz sale de H3, en inglés (decisión del usuario, 14/9). H3 no tiene voice
 # ID: cada clip inventa una voz. Lo único que la sostiene entre clips es
@@ -108,11 +122,18 @@ VOCES = {
 PERSONAJES = {
     "hannah": {"hoja": "m_hannah", "descripcion": HANNAH},
     "jack_abrigo": {"hoja": "m_jack_abrigo", "descripcion": JACK_ABRIGO},
+    # 16/9: desde la toma 23 Jack ya se sacó el sombrero. El <Subject> de Ref2VA
+    # salía de esta tabla con «a black wide-brimmed fedora» mientras el cuadro y
+    # el [Shot 1] decían BARE-HEADED: H3 le puso el sombrero (T23). Estado aparte.
+    "jack_abrigo_sin": {"hoja": "m_jack_abrigo", "descripcion": JACK_SIN_SOMBRERO},
     "jack_camisa": {"hoja": "m_jack_camisa", "descripcion": JACK_CAMISA},
     "luka": {"hoja": "m_luka", "descripcion": LUKA},
     "wady": {"hoja": "m_wady", "descripcion": WADY},
     "matones": {"hoja": "m_matones", "descripcion": MATONES},
     "pasajeros": {"hoja": "m_pasajeros", "descripcion": PASAJEROS},
+    # 16/9: en E34 el texto decía «a bald middle-aged man…» y H3 convirtió a la
+    # pasajera en el calvo. La descripción de un plano nombra SÓLO a quien está.
+    "pasajera": {"hoja": "m_pasajera", "descripcion": PASAJERA},
 }
 
 CAB_VENTANA = ("the private compartment of a restored vintage luxury train car: glossy mahogany "
@@ -392,8 +413,8 @@ e("E31", f"MEDIUM SHOT: a gunman bursts through a cream-white door into the carr
 e("E33", f"MEDIUM SHOT of {WADY}, in the train corridor, grinning wildly, pistol raised next to his face.",
   "He grins, cocks his head and waves the pistol, enjoying the chaos.",
   "[Foley] a pistol slide racked. [Ambient] panic in the corridor.")
-e("E34", f"MEDIUM SHOT in the train corridor: a terrified passenger peeks out of a compartment door "
-         f"and screams. She is from the {PASAJEROS}.",
+e("E34", f"MEDIUM SHOT in the train corridor: {PASAJERA} peeks out of a compartment door, terrified, "
+         f"and screams.",
   "She screams, turns and flees back through the doorway, slamming into the frame.",
   "[Speech] a woman screaming, no words. [Foley] a door slamming.")
 e("E35", f"FULL SHOT from behind: {MATONES} push into compartments along the cream-white carriage, "
@@ -423,11 +444,14 @@ e("E40", f"FULL SHOT of {JACK_CAMISA} under the chandeliers between the gold cur
   "[Foley] footsteps, leather harness creaking.")
 # Rechazado por el filtro de OpenAI con «las piernas alrededor de la cadera».
 # Se cuenta como lo que es en la escena: un movimiento brusco para esconderla.
-e("E41", f"WIDE SHOT of the compartment in front of the bright window: {JACK_CAMISA} grabs {HANNAH} "
-         f"and lifts her clean off the floor in a tight protective hold, her arms thrown around his "
-         f"neck in surprise, her feet off the ground; he is seen from behind, she looks over his "
-         f"shoulder, startled. They fill about half the image height.",
-  "He swings her up off the floor in one move and turns with her; she clings to his neck, startled.",
+# E41, E77, E78 y E81 se habían suavizado para pasar el filtro de GPT (REGLAS 49).
+# Con el cuadro del original de primer fotograma el texto tiene que decir lo que
+# se ve, si no H3 tira hacia el texto y se despega de la imagen.
+e("E41", f"WIDE SHOT of the compartment in front of the bright window: {JACK_CAMISA} has lifted "
+         f"{HANNAH} clean off the floor; she wraps her legs around his waist and her arms around his "
+         f"neck, her back to the window; he is seen from behind, she looks over his shoulder, "
+         f"startled. They fill about half the image height.",
+  "He turns with her held against him; she clings to his neck, legs locked around his waist, startled.",
   "[Foley] a gasp, fabric, a body lifted.")
 e("E42", "INSERT from behind: a man's back in a white shirt crossed by a black leather holster "
          "harness, a woman's arms in plaid flannel sleeves wrapped around his neck.",
@@ -580,18 +604,18 @@ e("E75", f"CLOSE UP from a LOW ANGLE of {HANNAH}, the black knife in a gloved ha
   "[Speech] a young woman whispering, giving in.")
 # Rechazado por el filtro («sentada a horcajadas»). Se pide el abrazo que
 # esconde a Jack, que es lo que la toma le muestra a los matones.
-e("E77", f"FULL SHOT at the lace window: {HANNAH} and {JACK_CAMISA} on the banquette in a tight "
-         f"embrace, seen from behind her: her back and the plaid shirt slipping off one shoulder "
-         f"fill the frame, his arms around her in a protective hug, his face hidden behind her "
-         f"shoulder so only his dark hair shows; both fully dressed.",
+e("E77", f"FULL SHOT at the lace window: {HANNAH} sits astride {JACK_CAMISA} on the banquette, seen "
+         f"from behind her: her back and the plaid shirt slipped off one shoulder fill the frame, "
+         f"his black-gloved hands on her back and hip, his face hidden behind her shoulder so only "
+         f"his hair shows.",
   "He pulls her in closer and she clutches his shoulders, rocking slightly with the train.",
   "[Foley] fabric, velvet creaking. [Ambient] the train rolling.")
 # Rechazado por el filtro de OpenAI («mano apretando la cadera sobre el short»).
 # La mano va a la espalda, sobre la camisa: el gesto de acercarla se lee igual.
-e("E78", "INSERT: a black fingerless leather glove pressed flat against the back of a worn "
-         "brown-and-cream plaid flannel shirt, between the shoulder blades, pulling the wearer close; "
-         "nothing else in the frame but the glove and the flannel.",
-  "The gloved hand presses in and draws her closer; the flannel creases under the fingers.",
+e("E78", "INSERT: a black fingerless leather glove gripping a woman's hip over a worn brown-and-cream "
+         "plaid flannel shirt and dark denim shorts, pulling her close; nothing else in the frame "
+         "but the glove, the flannel and the denim.",
+  "The gloved hand tightens on her hip and draws her closer; the flannel creases under the fingers.",
   "[Foley] a leather glove on flannel.")
 e("E79", f"FULL SHOT at the door end of the car: {WADY} kicks the door and bursts through the heavy "
          f"gold curtain into the car, blurred with motion.",
@@ -604,9 +628,14 @@ e("E80", f"WIDE SHOT point of view from inside the car towards the door: {WADY} 
   "[Foley] guns cocked, boots. [Speech] a woman's gasp off camera.")
 # Rechazado por el filtro («cabeza atrás, él hundido en su cuello»). Lo que
 # cuenta la toma es el susto al ver las armas, y eso sí se puede pedir.
-e("E81", f"CLOSE UP in profile of {HANNAH}, her face snapping towards the door off camera, eyes wide "
-         f"in shock, mouth open in a startled gasp; Jack's dark hair out of focus at the lower left "
-         f"edge, hiding his face behind her shoulder; dark wood ceiling above.",
+# 15/9 (recast): el cuadro original de E81 lo rechazan los filtros; el primer
+# fotograma es el de E75 (primer plano contrapicado de ella, reparto nuevo) y la
+# descripción sigue a ESE cuadro. La versión «réplica exacta» describía el perfil
+# con la cabeza atrás y la cabeza de Jack abajo a la izquierda.
+e("E81", f"CLOSE UP from a LOW ANGLE of {HANNAH}, tears on her cheeks, her head snapping up towards "
+         f"the door off camera, eyes wide in shock, mouth open in a startled gasp; the flat of a black "
+         f"knife held against the side of her neck by a gloved hand; dark wood ceiling beams and cream "
+         f"ceiling panels above; his shoulder in a white shirt blurred at the lower left.",
   "She stays still for about one second, then gasps loudly, mouth open, eyes wide towards the door.",
   "[Speech] a young woman gasping loudly.")
 
@@ -668,11 +697,25 @@ def planos():
                     ini = max(0.0, min(ini, TECHO - dur))
                     usas[t[0]] = ini
                     ocupado = max(ocupado, ini + dur)
-            for t in tomas:              # después las mudas, detrás de la voz
-                if t[0] not in usas:
-                    ini = max(0.0, min(max(fin_voz + 0.2, ocupado), TECHO - (t[2] - t[1])))
+            # Las mudas del mismo encuadre NUNCA pisan el tramo con voz [on, fin_voz]:
+            # 16/9, T32 y T78 caían sobre la boca hablando y se veía a Luka decir
+            # «Where are you?» y a ella «okay, okay» sin sonido. Primero se ubican
+            # ANTES de la voz (en orden, empaquetadas hacia el arranque); lo que no
+            # entra va después de fin_voz.
+            mudas = [t for t in tomas if t[0] not in usas]
+            total_mudas = sum(t[2] - t[1] for t in mudas)
+            antes_fin = on - 0.15
+            cursor = max(0.0, antes_fin - total_mudas)
+            despues = max(fin_voz + 0.2, ocupado)
+            for t in mudas:
+                dur = t[2] - t[1]
+                if cursor + dur <= antes_fin + 0.005:
+                    usas[t[0]] = cursor
+                    cursor += dur
+                else:
+                    ini = max(0.0, min(despues, TECHO - dur))
                     usas[t[0]] = ini
-                    ocupado = ini + (t[2] - t[1])
+                    despues = ini + dur
         else:
             base, ocupado = tomas[0][1], 0.0
             for t in tomas:
@@ -684,6 +727,9 @@ def planos():
     out, fuente = [], {}
     placas = {round(a, 2): txt for a, _b, txt in PLACAS}
     for (tid, a, b, tipo, loc, pers, k, que_es) in TOMAS:
+        # El estado del vestuario manda sobre la hoja: sin sombrero desde la 23.
+        if int("".join(c for c in tid if c.isdigit())) >= 23:
+            pers = ["jack_abrigo_sin" if n == "jack_abrigo" else n for n in pers]
         corta = round(b - a, 2)
         ini = round(usas[tid], 2)
         fin = round(ini + corta, 2)
@@ -728,6 +774,7 @@ def planos():
                 if voz.exists():
                     # Ya hay voz elegida en el casting: Ref2VA con primer
                     # fotograma + hoja del que habla + esa voz como timbre.
+                    pl["guia0"] = True
                     pl.update({"modo": "ref2va", "voz_ref": voz.name,
                                "refs_extra": [f"{PERSONAJES[habla]['hoja']}.png"],
                                "prompt_h3": oficial.prompt_ref2va(
@@ -740,9 +787,38 @@ def planos():
                 # líneas cruzan dos o tres tomas (la 49 empieza en una y
                 # termina dos después).
                 pl["ventana_dialogo"] = habla_neta(DIALOGO[k][0], DIALOGO[k][1])
+                if k in SEMILLAS:
+                    pl["seed"] = SEMILLAS[k]
             else:
                 pl["personajes"] = list(pers)
-                pl["prompt_h3"] = oficial.prompt_i2va(sys.modules[__name__], k, tipo, loc, pers)
+                # 15/9 (noche): toda toma con actores va en Ref2VA con las hojas
+                # de cara de los presentes, hable o no. En PP/PD sólo el primero
+                # (REGLAS 57); en los demás, hasta tres hojas distintas.
+                con_hoja = []
+                # Insertos donde no se ve ninguna cara: sin hoja (una cara de referencia
+                # en un plano de pies o de un cerrojo es una invitación a traerla).
+                # E34 es la pasajera: su hoja, no la del pasajero calvo.
+                SIN_CARA = {"E02", "E03", "E07", "E09", "E13", "E26", "E42", "E72", "E78", "E79"}
+                for n in ([] if k in SIN_CARA else (pers[:1] if tipo in ("PP", "PD") else pers)):
+                    if k == "E34":
+                        n = "pasajera"
+                    h = PERSONAJES[n]["hoja"]
+                    if h not in [x[1] for x in con_hoja] and len(con_hoja) < 3:
+                        con_hoja.append((n, h))
+                if k in SEMILLAS:
+                    pl["seed"] = SEMILLAS[k]
+                if con_hoja:
+                    # guia0: MiniMaxH3AddGuide(frame 0). Sin él, Ref2VA trata al
+                    # primer cuadro como referencia blanda y recompone la toma
+                    # (16/9: T58, T32, T54 arrancaron ya distintos al cuadro).
+                    pl["guia0"] = True
+                    pl.update({"modo": "ref2va",
+                               "refs_extra": [f"{h}.png" for _n, h in con_hoja],
+                               "prompt_h3": oficial.prompt_ref2va_mudo(
+                                   sys.modules[__name__], k, tipo, loc, pers,
+                                   [(n, i + 2) for i, (n, _h) in enumerate(con_hoja)])})
+                else:
+                    pl["prompt_h3"] = oficial.prompt_i2va(sys.modules[__name__], k, tipo, loc, pers)
             fuente[k] = pl["id"]
         out.append(pl)
     return out

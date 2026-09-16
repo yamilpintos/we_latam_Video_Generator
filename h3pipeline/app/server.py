@@ -8,6 +8,7 @@ Convenciones
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import time
@@ -18,7 +19,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from .. import config, costos, montaje, vast, web
+from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
 from . import tareas
@@ -495,6 +496,8 @@ def qc_png(slug: str, nombre: str):
 class Master(BaseModel):
     musica: str | None = None
     repite: int = 0
+    largo_de_pista: bool = False
+    otros_loops: list[str] = []     # slugs de otros loops ya masterizados, para alternar
 
 
 @app.post("/api/proyectos/{slug}/master")
@@ -512,6 +515,11 @@ def master(slug: str, m: Master):
             args += ["--musica", m.musica]
         if m.repite:
             args += ["--repite", str(m.repite)]
+        if m.largo_de_pista and m.musica:
+            args.append("--largo-de-pista")
+            otros = [f for s in m.otros_loops for f in (MIS / s).glob("* - loop.mp4") if (MIS / s).is_dir()]
+            if otros:
+                args += ["--otros-loops", *[str(f) for f in otros]]
         return {"tarea": tareas.lanzar("máster (loop)", args, slug).a_dict()}
     args = ["-m", "h3pipeline", "mezclar", str(c / "proyecto.json"), str(c / "clips")]
     return {"tarea": tareas.lanzar("máster", args, slug).a_dict()}
@@ -520,9 +528,146 @@ def master(slug: str, m: Master):
 @app.get("/api/proyectos/{slug}/archivo/{nombre}")
 def archivo(slug: str, nombre: str):
     f = _carpeta(slug) / Path(nombre).name
-    if not f.exists() or f.suffix.lower() not in (".mp4", ".srt", ".txt", ".md", ".json"):
+    if not f.exists() or f.suffix.lower() not in (".mp4", ".srt", ".txt", ".md", ".json", ".mp3", ".wav"):
         raise HTTPException(404)
     return FileResponse(str(f), filename=f.name)
+
+
+# ─────────────────────────────────────────────────────────────── el guion → proyecto
+
+class Guion(BaseModel):
+    guion: str
+    formato: str = "short"            # short (9:16) | largo (16:9)
+    estructura: str = "short-15"
+    titulo: str = ""
+    estilo: int | None = 0            # índice en web.ESTILOS, o None si es libre
+    estilo_libre: str = ""
+    voz: str | None = "pablo"         # kate | pablo | None (sin voz)
+    negativos: bool = True
+    notas: str = ""
+    slug: str | None = None
+
+
+@app.get("/api/guion/opciones")
+def opciones_guion():
+    return {"estilos": [{"i": i, **e} for i, e in enumerate(web.ESTILOS)],
+            "voces": [{"clave": k, **v} for k, v in guionista.VOCES.items()],
+            "estructuras": estructuras()}
+
+
+@app.post("/api/guion")
+def traducir_guion(g: Guion):
+    """El guion del director → proyecto.json validado, guardado en su carpeta.
+    Tarda 1-3 min (una a tres llamadas al modelo). Corre como tarea."""
+    est = web.ESTILOS[g.estilo] if g.estilo is not None and 0 <= g.estilo < len(web.ESTILOS) else None
+    estilo_imagen = (g.estilo_libre.strip() or (est["prompt"] if est else "")).strip()
+    if not estilo_imagen:
+        raise HTTPException(422, "falta el estilo visual")
+    slug = g.slug or (re.sub(r"[^a-z0-9]+", "-", g.titulo.lower()).strip("-")[:40] if g.titulo else None)
+    if not slug:
+        raise HTTPException(422, "falta el título")
+    if (MIS / slug / "proyecto.json").exists():
+        raise HTTPException(409, f"ya existe mis-videos/{slug}/")
+    pedido = {"guion": g.guion, "formato": g.formato, "estructura": g.estructura, "titulo": g.titulo,
+              "estilo_imagen": estilo_imagen, "estilo_video": est["cabecera"] if est else "",
+              "cierre_video": est["cierre"] if est else "", "medio": est["medio"] if est else "",
+              "voz": g.voz, "negativos": g.negativos, "notas": g.notas, "slug": slug}
+    c = MIS / slug
+    c.mkdir(parents=True, exist_ok=True)
+    (c / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
+    (c / "guion.txt").write_text(g.guion, encoding="utf-8")
+    args = ["-m", "h3pipeline.app.traducir", str(c / "guion.json")]
+    return {"slug": slug, "tarea": tareas.lanzar("guion → proyecto", args, slug).a_dict()}
+
+
+# ─────────────────────────────────────────────────────────────── la voz
+
+@app.get("/api/proyectos/{slug}/voz")
+def voz(slug: str):
+    c = _carpeta(slug)
+    p = _proyecto(slug)
+    try:
+        lineas = p.lineas_de_voz()
+    except Exception:
+        lineas = []
+    cache = c / "voz"
+    por_id = {v["id"]: v for v in guionista.VOCES.values()}
+    out = []
+    for x in lineas:
+        tomas = sorted(cache.glob(f"{x.id}_*.mp3"), key=lambda f: f.stat().st_mtime) if cache.exists() else []
+        vz = por_id.get(x.voz_id)
+        cps_real = (x.caracteres / x.ventana) if x.ventana else 0
+        d = {"id": x.id, "personaje": x.personaje, "tipo": x.tipo, "ventana": round(x.ventana, 2),
+             "texto": x.texto, "caracteres": x.caracteres, "cps": round(cps_real, 1), "veredicto": x.veredicto,
+             "tags": list(x.tags or []), "voz_id": x.voz_id, "tomas": [],
+             "voz_nombre": vz["nombre"] if vz else None, "cps_voz": vz["cps"] if vz else None,
+             "entra_en_voz": (cps_real <= vz["cps"] * 1.05) if vz else None,
+             "max_caracteres": int(x.ventana * vz["cps"]) if vz else None}
+        for f in tomas:
+            try:
+                dur = tts.duracion_util(f)
+            except Exception:
+                dur = None
+            d["tomas"].append({"archivo": f.name, "url": f"/api/proyectos/{slug}/voz/{f.name}",
+                               "dur": round(dur, 2) if dur else None,
+                               "factor": round(dur / x.ventana, 2) if dur and x.ventana else None})
+        out.append(d)
+    return {"lineas": out, "voces": p.voces, "cps_referencia": vozmod.CPS,
+            "sin_voz": [x.id for x in lineas if not x.voz_id]}
+
+
+@app.post("/api/proyectos/{slug}/voz/generar")
+def voz_generar(slug: str):
+    c = _carpeta(slug)
+    if tareas.corriendo(slug):
+        raise HTTPException(409, "ya hay una tarea corriendo en este proyecto")
+    args = ["-m", "h3pipeline", "voz", str(c / "proyecto.json"), "--generar"]
+    return {"tarea": tareas.lanzar("voz", args, slug).a_dict()}
+
+
+@app.get("/api/proyectos/{slug}/voz/{nombre}")
+def voz_mp3(slug: str, nombre: str):
+    f = _carpeta(slug) / "voz" / Path(nombre).name
+    if not f.exists():
+        raise HTTPException(404)
+    return FileResponse(str(f), media_type="audio/mpeg")
+
+
+# ─────────────────────────────────────────────────────────────── la música
+
+class Musica(BaseModel):
+    slug: str
+    tipo: str                       # «lo-fi lento para estudiar, sin batería marcada…»
+    duracion: float = 90.0
+    nombre: str = "musica"
+
+
+@app.post("/api/musica/componer")
+def componer(m: Musica):
+    c = _carpeta(m.slug)
+    if not m.tipo.strip():
+        raise HTTPException(422, "falta describir la música")
+    if tareas.corriendo(m.slug):
+        raise HTTPException(409, "ya hay una tarea corriendo en este proyecto")
+    pedido = {"slug": m.slug, "tipo": m.tipo, "duracion": m.duracion,
+              "nombre": re.sub(r"[^a-z0-9-]+", "-", m.nombre.lower()).strip("-") or "musica"}
+    (c / "musica-pedido.json").write_text(json.dumps(pedido, ensure_ascii=False), encoding="utf-8")
+    args = ["-m", "h3pipeline.app.componer", str(c / "musica-pedido.json")]
+    return {"tarea": tareas.lanzar("música", args, m.slug).a_dict()}
+
+
+@app.get("/api/proyectos/{slug}/musica")
+def pistas(slug: str):
+    c = _carpeta(slug)
+    out = []
+    for f in sorted(list(c.glob("*.mp3")) + list(c.glob("*.wav")), key=lambda f: f.stat().st_mtime, reverse=True):
+        try:
+            dur = montaje.duracion(f)
+        except Exception:
+            dur = None
+        out.append({"archivo": f.name, "ruta": str(f), "dur": round(dur, 1) if dur else None,
+                    "url": f"/api/proyectos/{slug}/archivo/{f.name}"})
+    return out
 
 
 # ─────────────────────────────────────────────────────────────── tareas

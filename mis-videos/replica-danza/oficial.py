@@ -243,6 +243,10 @@ def descripcion_shot(A, k, tipo, loc, pers, habla=None, voz_ref=False):
                  + _cierre_labios(PRONOMBRE[quien]) + f" Afterwards {despues}.")
     else:
         t.append(_accion(mueve))
+        # 16/9: en T33 Wady movía la boca como hablando y no había voz (el audio
+        # del clip no se usa). Dicho en positivo, como la guía: labios cerrados.
+        if pers:
+            t.append("Nobody speaks in this shot: every mouth stays closed the whole time.")
     t.append(CAMARA.get(k, CAMARA_DEFAULT))
     t.append(f"Throughout the clip the framing, the light, the set and the people stay exactly as "
              f"established by {ancla}.")
@@ -254,6 +258,37 @@ def prompt_i2va(A, k, tipo, loc, pers, habla=None):
     _ve, _m, audio = A.E[k]
     return prompts.oficial_i2va(descripcion_shot(A, k, tipo, loc, pers, habla),
                                 _sonido(audio, loc))
+
+
+def prompt_ref2va_mudo(A, k, tipo, loc, pers, sujetos_con_hoja):
+    """Toma SIN diálogo pero con actores: primer fotograma + la hoja de cara de
+    cada personaje presente (<Picture 2>, <Picture 3>…), sin audio de referencia.
+
+    Pedido del usuario (15/9, noche): en las tomas donde el actor está pero la
+    cara no se ve en el primer cuadro (de espaldas, perfil, entra después), H3
+    inventaba una cara. Con la hoja como referencia y `fully_preserved`, tiene
+    de dónde sacarla. En PP/PD sólo el primer personaje es sujeto (REGLAS 57).
+    `sujetos_con_hoja` = [(nombre_personaje, índice_de_picture), …] en orden."""
+    from h3pipeline import prompts
+    ve, _m, audio = A.E[k]
+    ve = solo_lo_visible(A, ve, tipo)
+    sujetos = [f"<Picture 1> is the first frame of [Shot 1], showing {encuadre(ve, tipo)}"]
+    retencion = ["<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, "
+                 "lens, lighting, set and the positions of everyone in the frame are kept."]
+    for i, (n, pic) in enumerate(sujetos_con_hoja, start=1):
+        sujetos.append(f"<Subject {i}> is {solo_lo_visible(A, A.PERSONAJES[n]['descripcion'], tipo)}, "
+                       f"as shown in <Picture {pic}>; the same person as in <Picture 1>.")
+        retencion.append(f"<Subject {i}> (appears in [Shot 1]): fully_preserved - face, hair, skin "
+                         f"details and clothes are kept exactly as in <Picture {pic}>, including "
+                         f"whenever the face turns towards the camera.")
+    tam = TAM[tipo].split(" ", 1)[1]        # «an insert close-up» → «insert close-up»
+    resumen = (f"[keyframe completion + reference generation] The target video begins from "
+               f"<Picture 1> and continues as one {tam}, a single continuous take with no cut, in "
+               f"which the people keep the identities defined above.")
+    cuerpo = ("The target video is a live-action, photographic thriller scene with shallow depth "
+              "of field and natural skin texture.\n"
+              + descripcion_shot(A, k, tipo, loc, pers).replace(f"[Shot 1] {ESTILO}. ", "[Shot 1] "))
+    return prompts.oficial_ref2va(sujetos, resumen, retencion, cuerpo, _sonido(audio, loc))
 
 
 def prompt_ref2va(A, k, tipo, loc, pers, quien, linea, hoja_de):

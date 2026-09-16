@@ -1,0 +1,43 @@
+{
+  "_comentario": "Un dibujo por plano: es el primer fotograma que recibe H3. Se revisa y se rehace lo que no cierra ANTES de gastar un minuto de GPU.",
+  "titulo": "LA BICICLETA DE LA REPRESA",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "sb_S01",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_represa_exterior.png"
+      ],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain.\nEXTREME CLOSE-UP of a fully intact rusted bicycle jammed horizontally between the thick vertical metal bars of the dam intake grate, underwater. The wheels, frame, and pedals are clearly visible, covered in algae and silt, with faint light beams slicing through dense floating particles. Background falls quickly into dark teal-black water; no people are visible. The frame is centered on the bike and the bars, with the upper third left relatively clear for text.\nNARRATIVE INTENT OF THIS FRAME: This is the very first frame of a vertical short-form video and must read instantly as a thumbnail: one clear subject, strong contrast, something visibly wrong or surprising already present in the frame. Leave the upper third relatively clear: an on-screen text overlay goes there in post.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S02",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_compuerta_fondo.png",
+        "assets/m_tomas.png"
+      ],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain.\nWIDE SHOT underwater of the industrial diver Tomás descending along a guide cable towards a massive dam gate in the background. He wears a full-face helmet, thick drysuit with reflective bands, and several umbilical hoses trailing up into darkness. His flashlight casts a strong cone of light ahead, revealing part of the rusty steel gate and heavy concrete walls, with dense particles floating everywhere in the cold dark teal water.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S03",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_represa_exterior.png",
+        "assets/m_tomas.png"
+      ],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain.\nMEDIUM SHOT underwater of Tomás facing the intake grate at about 30 meters depth, seen mostly from behind and slightly to the side to avoid his face. His gloved hands hold the rusted bicycle wedged between the vertical bars. The whole bike is visible, both wheels intact, coated in algae and silt. His helmet light brightly illuminates the bike and bars, while everything beyond the grate drops into almost complete darkness with thick particles in the beam.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    },
+    {
+      "id": "sb_S04",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/l_represa_exterior.png",
+        "assets/m_tomas.png"
+      ],
+      "prompt": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain.\nEXTREME CLOSE-UP underwater of Tomás's gloved hand brushing away silt from a small metal license plate bolted to a piece of structure directly behind where the rear wheel had been. The flashlight beam illuminates embossed characters and a clearly visible old-style plate number format that ended in the year 1998. The bicycle's rear wheel is still partly in frame to the side, jammed against the vertical bars of the grate, echoing the composition of the first shot.\nFORMAT: a TALL 9:16 vertical frame, clearly taller than wide. Never square, never landscape.\nThis is a single film frame, not a poster: no text, no borders, no panel divisions, no title, no watermark."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "_comentario": "Assets madre: hojas de modelo y locaciones. Se generan una vez y son la referencia de todos los fotogramas.",
+  "aspecto": "9:16",
+  "refs": [],
+  "assets": [
+    {
+      "id": "m_tomas",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Full-body character sheet of an industrial diver underwater, photorealistic. Front, back, and side views. Male in his 30s wearing a full-face diving helmet with clear visor, thick black drysuit with high-visibility yellow reflective bands, heavy weight belt, black gloves, and sturdy dive boots. Multiple thick umbilical hoses attached to his helmet and back for air and communications. No bare skin visible. Neutral underwater background, cold teal water with floating particles, soft volumetric light. Underwater film look, not stylized, not CGI.",
+      "medio": "underwater film"
+    },
+    {
+      "id": "l_represa_exterior",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Establishing underwater environment for the inside of a hydroelectric dam intake. Tall vertical metal bars forming a security grate close to the camera, slightly rusted. Behind them, dark open water leading into the dam. Strong angled beams of light from the surface catch heavy suspended particles. Concrete walls frame the sides, with distant hints of turbine structures fading into darkness. Deep teal-black water, cold atmosphere, high ISO grain. Photorealistic underwater film.",
+      "medio": "underwater film"
+    },
+    {
+      "id": "l_compuerta_fondo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Deep underwater environment at the base of a large dam gate. Massive rusty steel sluice gate fills part of the frame, with visible seams, bolts, and stains. Thick concrete walls around it, with pipes and cables running along the surfaces. Very low ambient light, only a strong narrow beam from a diver's flashlight illuminating parts of the gate and nearby wall. Water is dense with particles, deep teal-black color, cold and murky. Photorealistic underwater film look.",
+      "medio": "underwater film"
+    }
+  ]
+}

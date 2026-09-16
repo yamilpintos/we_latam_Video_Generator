@@ -1,0 +1,1098 @@
+{
+  "titulo": "REPLICA DANZA · SEMILLAS ALT",
+  "slug": "replica-danza-alt",
+  "formato": "short",
+  "idioma": "en",
+  "_concepto": "Competencia (14/9/2026): réplica toma por toma, con MiniMax H3, del episodio 1 de «El amor es una danza peligrosa» de ReelShort, hecho con Kling. Mismas tomas y tiempos medidos; voces en inglés de ElevenLabs sobre la música y los efectos del original separados con demucs; subtítulos en castellano.",
+  "_original": "Video realshort/Episodio 1 - [doblado] El amor es una danza peligrosa.mp4 · 126,92 s · 720×1280 · 24 fps. Mapa en referencias/danza-peligrosa/MAPA.md.",
+  "_desvios": "1) La toma 14 se parte en PM + PP (5,82 s no entran en un clip de 5,17). 2) Tomas 70-78: el tirante se corta pero no hay semidesnudo. 3) Voces en inglés, no el doblaje en castellano.",
+  "_avisos_aceptados": "Quedan 10 avisos de `validar` a propósito. 1) T02/T03 son dos insertos seguidos: el original corta así. 2) Nueve de 'boca moviéndose sin voz': el chequeo supone una boca que ya existe y una voz que se escribe para ella. Acá H3 anima la boca CON la misma línea en inglés que después dice ElevenLabs, así que coinciden por construcción; y las líneas lentas (el susurro de Jack, «Shh», «Ah!») son lentas en el original. Alargarlas para callar el aviso rompería la fidelidad.",
+  "estructura": {
+    "nombre": "alt",
+    "formato": "short",
+    "duracion_objetivo": 40.19,
+    "tolerancia": 1,
+    "plataformas": [
+      "prueba"
+    ],
+    "interrupcion_cada": 0,
+    "tramos": [
+      {
+        "id": "ALT",
+        "nombre": "alt",
+        "desde": 0,
+        "hasta": 40.19,
+        "objetivo": "segunda semilla de cada diálogo",
+        "corte_min": 0.3,
+        "corte_max": 5.2,
+        "planos_min": 22
+      }
+    ]
+  },
+  "estilo_imagen": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain.",
+  "estilo_video": "Photorealistic cinematic footage, vertical 9:16, inside a restored vintage luxury train crossing the countryside. Natural, motivated movement; handheld weight.",
+  "cierre_video": "Keep the framing, the lens and the light of the first frame. The same people as in the first frame, in the same clothes, and nobody else; the place stays the same place. Photographic and cinematic, natural skin. Not animated, not illustrated, not CGI-looking.",
+  "solo_sonidos": "the train rolling on the rails, fabric, footsteps and breathing",
+  "personajes": {
+    "hannah": {
+      "hoja": "m_hannah",
+      "descripcion": "Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers"
+    },
+    "jack_abrigo": {
+      "hoja": "m_jack_abrigo",
+      "descripcion": "Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves"
+    },
+    "jack_camisa": {
+      "hoja": "m_jack_camisa",
+      "descripcion": "Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves"
+    },
+    "luka": {
+      "hoja": "m_luka",
+      "descripcion": "Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle"
+    },
+    "wady": {
+      "hoja": "m_wady",
+      "descripcion": "Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol"
+    },
+    "matones": {
+      "hoja": "m_matones",
+      "descripcion": "gang gunmen, half Italian mob and half street gang: a man with short dark hair, a thick dark moustache and tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest"
+    },
+    "pasajeros": {
+      "hoja": "m_pasajeros",
+      "descripcion": "ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan"
+    }
+  },
+  "locaciones": {
+    "campo": {
+      "imagen": "l_campo",
+      "descripcion": "a golden-hour grassy field beside railway tracks, utility poles and power lines, distant low industrial buildings and a few palm trees, hazy warm sky"
+    },
+    "cabina_ventana": {
+      "imagen": "l_cabina_ventana",
+      "descripcion": "the private compartment of a restored vintage luxury train car: glossy mahogany wall panels, tall windows with white lace curtains and red-and-cream striped side drapes glowing with bright daylight, a brass handrail under the windows like a ballet barre, a mustard-gold tufted velvet banquette with red fringe, deep red carpet, a coffered dark wood ceiling with cream panels and a brass ceiling fan"
+    },
+    "cabina_puerta": {
+      "imagen": "l_cabina_puerta",
+      "descripcion": "the door end of the same luxury train car: a double mahogany door with a heavy brass sliding bolt, framed by heavy gold brocade curtains draped with garlands of dark red silk roses, ornate gold-and-crystal chandeliers, coffered mahogany ceiling, deep red carpet"
+    },
+    "pasillo": {
+      "imagen": "l_pasillo",
+      "descripcion": "the narrow side corridor of a vintage train: polished honey-coloured wood paneling and compartment doors on one side, windows with cream pleated curtains on the other, a red carpet runner, ceiling vents, bright overcast daylight"
+    },
+    "vagon_blanco": {
+      "imagen": "l_vagon_blanco",
+      "descripcion": "a vintage train carriage painted cream-white: panelled walls and doors with brass fittings, small stained-glass transom windows, gold curtains, red velvet seats, flat bright daylight"
+    }
+  },
+  "madre": [
+    {
+      "id": "m_hannah",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_jack_camisa",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_jack_abrigo",
+      "aspecto": "9:16",
+      "refs": [
+        "assets/m_jack_camisa.png"
+      ],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Use the reference image for the face, hair, beard, tattoos and blood: the SAME man. Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves. Only the clothes change from the reference. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_luka",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_wady",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER REFERENCE SHEET on a plain mid-grey studio background with even soft light: the same person shown four times side by side, full body, head to toe — front view, three-quarter view, side profile, and back view — with identical face, hair and clothing in all four. Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol. Neutral standing pose, arms relaxed. Every detail sharp: this sheet is the reference for every other shot. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_matones",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER LINE-UP on a plain mid-grey studio background with even soft light: three different men standing side by side, full body, facing camera — gang gunmen, half Italian mob and half street gang: a man with short dark hair, a thick dark moustache and tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest. Each one clearly distinct. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "m_pasajeros",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. CHARACTER LINE-UP on a plain mid-grey studio background with even soft light: two different people standing side by side, full body, facing camera — ordinary train passengers: a bald middle-aged man in a light grey sweater, a young woman with curly dark hair, round glasses and a cream cardigan. A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_campo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. a golden-hour grassy field beside railway tracks, utility poles and power lines, distant low industrial buildings and a few palm trees, hazy warm sky. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_cabina_ventana",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. Looking at the window wall of the private compartment of a restored vintage luxury train car: glossy mahogany wall panels, tall windows with white lace curtains and red-and-cream striped side drapes glowing with bright daylight, a brass handrail under the windows like a ballet barre, a mustard-gold tufted velvet banquette with red fringe, deep red carpet, a coffered dark wood ceiling with cream panels and a brass ceiling fan. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_cabina_puerta",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. Looking at the door wall of the door end of the same luxury train car: a double mahogany door with a heavy brass sliding bolt, framed by heavy gold brocade curtains draped with garlands of dark red silk roses, ornate gold-and-crystal chandeliers, coffered mahogany ceiling, deep red carpet. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_pasillo",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. Looking straight down the narrow side corridor of a vintage train: polished honey-coloured wood paneling and compartment doors on one side, windows with cream pleated curtains on the other, a red carpet runner, ceiling vents, bright overcast daylight. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    },
+    {
+      "id": "l_vagon_blanco",
+      "aspecto": "9:16",
+      "refs": [],
+      "prompt": "Photorealistic still from a premium romance-thriller series, shot on a full-frame digital cinema camera with 50mm and 85mm lenses, shallow depth of field, natural skin texture with pores and freckles, no beauty retouching, believable performances, warm practical light and bright window light, subtle film grain. a vintage train carriage painted cream-white: panelled walls and doors with brass fittings, small stained-glass transom windows, gold curtains, red velvet seats, flat bright daylight. Nobody in the frame: an empty set. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed). A single film frame: no text, no captions, no borders, no watermark, no logo."
+    }
+  ],
+  "_lineas": [
+    {
+      "quien": "hannah",
+      "t0": 2.14,
+      "t1": 11.06,
+      "boca": null,
+      "es": "Antes de morir, mi madre arregló mi matrimonio con Elliott Hargrove para asegurar mi futuro como bailarina de la Compañía de Ballet Hargrove.",
+      "en": "Before my mother died, she arranged my marriage to Elliott Hargrove, to secure my future as a dancer with the Hargrove Ballet Company."
+    },
+    {
+      "quien": "hannah",
+      "t0": 11.32,
+      "t1": 22.88,
+      "boca": null,
+      "es": "Contra su voluntad, mi padre y mi madrastra me enviaron a vivir a una granja en Indiana, pero nunca dejé de entrenar, esperando a casarme con Elliott y finalmente vivir el sueño que me robaron.",
+      "en": "Against her wishes, my father and stepmother shipped me off to a farm in Indiana. But I never stopped training, waiting to marry Elliott and finally live the dream they stole from me."
+    },
+    {
+      "quien": "hannah",
+      "t0": 24.3,
+      "t1": 34.14,
+      "boca": null,
+      "es": "Papá me quiere en Nueva York para romper mi compromiso, pero no dejaré que arruine mis sueños otra vez.",
+      "en": "Dad wants me in New York to break off my engagement. But I won't let him ruin my dreams again."
+    },
+    {
+      "quien": "hannah",
+      "t0": 39.04,
+      "t1": 40.72,
+      "boca": "E22",
+      "es": "¡Oye! ¿Qué estás…?",
+      "en": "Hey! What are you—"
+    },
+    {
+      "quien": "jack",
+      "t0": 40.72,
+      "t1": 41.3,
+      "boca": "E23",
+      "es": "¡Shhh!",
+      "en": "Shh."
+    },
+    {
+      "quien": "luka",
+      "t0": 51.56,
+      "t1": 53.92,
+      "boca": "E30",
+      "es": "¡Que nadie se mueva!",
+      "en": "Nobody move!"
+    },
+    {
+      "quien": "matones",
+      "t0": 58.72,
+      "t1": 59.4,
+      "boca": null,
+      "es": "¡Víbora!",
+      "en": "Viper!"
+    },
+    {
+      "quien": "luka",
+      "t0": 60.32,
+      "t1": 61.64,
+      "boca": "E36",
+      "es": "¿En dónde estás?",
+      "en": "Where are you?"
+    },
+    {
+      "quien": "hannah",
+      "t0": 65.6,
+      "t1": 67.0,
+      "boca": "E43",
+      "es": "¿Qué…?",
+      "en": "What...?"
+    },
+    {
+      "quien": "jack",
+      "t0": 67.0,
+      "t1": 68.0,
+      "boca": "E44",
+      "es": "Shh, shh…",
+      "en": "Shh, shh..."
+    },
+    {
+      "quien": "jack",
+      "t0": 70.42,
+      "t1": 70.9,
+      "boca": "E46",
+      "es": "Bien.",
+      "en": "Good."
+    },
+    {
+      "quien": "jack",
+      "t0": 72.1,
+      "t1": 73.84,
+      "boca": "E47",
+      "es": "Ahora, gime para mí.",
+      "en": "Now moan for me."
+    },
+    {
+      "quien": "jack",
+      "t0": 75.32,
+      "t1": 77.78,
+      "boca": "E49",
+      "es": "O… te corto tu lindo cuello.",
+      "en": "Or... I cut that pretty throat."
+    },
+    {
+      "quien": "hannah",
+      "t0": 77.96,
+      "t1": 80.16,
+      "boca": "E52",
+      "es": "Pero no puedo, no sé cómo…",
+      "en": "But I can't... I don't know how..."
+    },
+    {
+      "quien": "jack",
+      "t0": 80.16,
+      "t1": 81.04,
+      "boca": "E53",
+      "es": "¿Cuántos años tienes?",
+      "en": "How old are you?"
+    },
+    {
+      "quien": "hannah",
+      "t0": 81.5,
+      "t1": 82.14,
+      "boca": "E54",
+      "es": "Veintidós.",
+      "en": "Twenty-two."
+    },
+    {
+      "quien": "jack",
+      "t0": 82.8,
+      "t1": 85.1,
+      "boca": "E55",
+      "es": "Entonces no te hagas la inocente.",
+      "en": "Then don't play innocent."
+    },
+    {
+      "quien": "luka",
+      "t0": 91.52,
+      "t1": 93.9,
+      "boca": "E61",
+      "es": "¡No! ¡Se escapará otra vez!",
+      "en": "No! He's not getting away again!"
+    },
+    {
+      "quien": "wady",
+      "t0": 93.9,
+      "t1": 98.02,
+      "boca": "E62",
+      "es": "Jefe, él es la Víbora, el asesino más letal del planeta.",
+      "en": "Boss, he's the Viper. The deadliest killer on the planet."
+    },
+    {
+      "quien": "wady",
+      "t0": 98.42,
+      "t1": 101.36,
+      "boca": "E64",
+      "es": "Mató a catorce de nuestros mejores hombres y no pudimos hacer nada.",
+      "en": "He took out fourteen of our best men and we couldn't do a thing."
+    },
+    {
+      "quien": "luka",
+      "t0": 101.56,
+      "t1": 106.4,
+      "boca": "E65",
+      "es": "Si no puedes hacerlo, ¡cincuenta millones para quien me traiga la cabeza de Víbora!",
+      "en": "If you can't do it, fifty million to whoever brings me the Viper's head!"
+    },
+    {
+      "quien": "wady",
+      "t0": 107.02,
+      "t1": 109.5,
+      "boca": "E68",
+      "es": "De acuerdo. ¡Vamos, quítense! ¡Vamos!",
+      "en": "Okay. Move! Out of the way! Go!"
+    },
+    {
+      "quien": "jack",
+      "t0": 113.52,
+      "t1": 115.4,
+      "boca": "E73",
+      "es": "Dije que… gimas…",
+      "en": "I said... moan..."
+    },
+    {
+      "quien": "jack",
+      "t0": 116.2,
+      "t1": 117.26,
+      "boca": "E74",
+      "es": "…o te haré gemir.",
+      "en": "...or I'll make you."
+    },
+    {
+      "quien": "hannah",
+      "t0": 118.68,
+      "t1": 119.62,
+      "boca": "E75",
+      "es": "Ok, ok.",
+      "en": "Okay, okay."
+    },
+    {
+      "quien": "hannah",
+      "t0": 124.58,
+      "t1": 125.98,
+      "boca": "E81",
+      "es": "¡Ah!",
+      "en": "Ah!"
+    }
+  ],
+  "planos": [
+    {
+      "id": "T22a",
+      "tipo": "PP",
+      "corta": 1.29,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T22 · toma 22 del original · 39.45→40.74 s · E22 · Hannah grita y la mano enguantada le tapa la boca",
+      "usa": [
+        0.57,
+        1.86
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah, m_jack_abrigo. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers against the bright window, frightened, mouth open to shout; at the left edge of frame the black-gloved hand of a man is coming towards her face. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "She stays silent for about one second, then shouts the line at him — and on the last word the black-gloved hand clamps over her mouth, muffling her.",
+      "audio": "VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman shouting, frightened, cut off by a hand. [Foley] a leather glove on skin.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_hannah",
+        "m_jack_abrigo"
+      ],
+      "personajes": [
+        "hannah"
+      ],
+      "dialogo": "Hey! What are you—",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard against the bright window, frightened, mouth open to shout; at the left edge of frame the black-gloved hand of a man is coming towards her face.\n<Subject 1> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard against the bright window, frightened, mouth open to shout; at the left edge of frame the black-gloved hand of a man is coming towards her face. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip her lips stay completely closed while she presses back against the window frame, eyes wide, breathing hard. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a frightened shout: <d>[English] Hey! What are you—</d> Exactly as her voice stops, her lips close and her jaw stops moving; she does not speak again for the rest of the clip. Afterwards a black-gloved hand clamps over her mouth. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nA leather glove on skin. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.64,
+      "seed": 7022,
+      "dibujo": "sb_T22.png"
+    },
+    {
+      "id": "T23a",
+      "tipo": "PP",
+      "corta": 2.54,
+      "loc": "cabina_puerta",
+      "funcion": "semilla alternativa de T23 · toma 23 del original · 40.74→43.28 s · E23 · Jack con sangre por encima del hombro de ella: «Shh»",
+      "usa": [
+        2.33,
+        4.87
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_puerta, m_jack_abrigo, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP over Hannah's shoulder of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves, very close to her, blood on his face, gold curtains and a chandelier out of focus behind him; the back of her head blurred at the right edge. He looks straight at her. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds still and silent for about one second, then brings his lips close and hushes her with a long soft 'shh', eyes locked on hers.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man hushing softly, very close. [Ambient] the train rolling.",
+      "refs": [
+        "l_cabina_puerta",
+        "m_jack_abrigo",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_abrigo"
+      ],
+      "dialogo": "Shh.",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_abrigo.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up over Hannah's shoulder of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves, very close to her, blood on his face, gold curtains and a chandelier out of focus behind him; the back of her head blurred at the right edge. He looks straight at her.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck, a black wide-brimmed fedora and black fingerless leather gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up over Hannah's shoulder of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, BARE-HEADED with NO hat (he has taken the fedora off), in a long black wool overcoat over a white shirt, a loose black silk scarf at the neck and black fingerless leather gloves, very close to her, blood on his face, gold curtains and a chandelier out of focus behind him; the back of her head blurred at the right edge. He looks straight at her. Warm golden light from the crystal chandeliers falls over the gold brocade curtains, the red silk roses and the dark mahogany. For about the first second of the clip his lips stay completely closed while he leans in until his face is inches from hers, eyes locked on hers. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a long, soft hush, and for the rest of the clip he stays silent with his lips closed while he keeps staring at her, completely still. The sound is: <d>[English] Shh.</d>\n\noverall_soundscape:\nThe train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 0.58,
+      "seed": 7023,
+      "dibujo": "sb_T23.png"
+    },
+    {
+      "id": "T30a",
+      "tipo": "PM",
+      "corta": 3.21,
+      "loc": "pasillo",
+      "funcion": "semilla alternativa de T30 · toma 30 del original · 50.32→53.53 s · E30 · Luka dispara el AK al techo · placa LUKA",
+      "usa": [
+        1.66,
+        4.87
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_pasillo, m_luka. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT from a LOW ANGLE of Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, standing in the train corridor, raising the AK-47 towards the ceiling, face twisted with rage. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "For about a second and a half he fires a burst into the ceiling, muzzle flash lighting his face; then he swings the rifle down and shouts the line at the passengers.",
+      "audio": "VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [SFX] a burst of AK-47 fire, deafening. [Speech] a man shouting in rage.",
+      "refs": [
+        "l_pasillo",
+        "m_luka"
+      ],
+      "personajes": [
+        "luka"
+      ],
+      "dialogo": "Nobody move!",
+      "modo": "ref2va",
+      "voz_ref": "voz_luka.wav",
+      "refs_extra": [
+        "m_luka.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a medium shot from a LOW ANGLE of Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, standing in the train corridor, raising the AK-47 towards the ceiling, face twisted with rage.\n<Subject 1> is Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a medium shot from a LOW ANGLE of Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, standing in the train corridor, raising the AK-47 towards the ceiling, face twisted with rage. Bright overcast daylight comes through the corridor windows and gleams along the polished honey-coloured wood. The whole frame is tilted in a Dutch angle of about twenty degrees, the corridor verticals leaning diagonally. For about the first second of the clip his lips stay completely closed while he fires a long burst from the AK-47 into the ceiling, muzzle flash lighting his face. The camera holds a low-angle shot and shakes strongly with each gunshot. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a furious roar at the passengers, and for the rest of the clip he stays silent with his lips closed while he swings the rifle down, glaring. The sound is: <d>[English] Nobody move!</d>\n\noverall_soundscape:\nA burst of AK-47 fire, deafening. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 2.14,
+      "seed": 7030,
+      "dibujo": "sb_T30.png"
+    },
+    {
+      "id": "T32a",
+      "tipo": "PA",
+      "corta": 0.92,
+      "loc": "pasillo",
+      "funcion": "semilla alternativa de T32 · toma 32 del original · 54.99→55.91 s · E36 · Luka en el pasillo, holandés",
+      "usa": [
+        3.95,
+        4.87
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_pasillo, m_luka. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT of Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, leaning against the polished wood wall of the train corridor, rifle hanging from his hand, looking straight at camera. DUTCH ANGLE: the whole camera is tilted about 20 degrees, the verticals of the corridor lean diagonally across the frame. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He pushes off the wall, holds a silent beat for about one second, then shouts the line up the corridor, glaring into camera, and goes quiet, breathing hard.",
+      "audio": "VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [Speech] a man shouting a short question. [Ambient] the train rolling.",
+      "refs": [
+        "l_pasillo",
+        "m_luka"
+      ],
+      "personajes": [
+        "luka"
+      ],
+      "dialogo": "Where are you?",
+      "modo": "ref2va",
+      "voz_ref": "voz_luka.wav",
+      "refs_extra": [
+        "m_luka.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a full shot of Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, leaning against the polished wood wall of the train corridor, rifle hanging from his hand, looking straight at camera.\n<Subject 1> is Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one full shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a full shot of Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, leaning against the polished wood wall of the train corridor, rifle hanging from his hand, looking straight at camera. Bright overcast daylight comes through the corridor windows and gleams along the polished honey-coloured wood. The whole frame is tilted in a Dutch angle of about twenty degrees, the corridor verticals leaning diagonally. For about the first second of the clip his lips stay completely closed while he pushes himself off the wood-panelled wall and grips his rifle. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a loud, rough shout up the corridor: <d>[English] Where are you?</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he stays in place, breathing hard, glaring. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.32,
+      "seed": 7032,
+      "dibujo": "sb_T32.png"
+    },
+    {
+      "id": "T43a",
+      "tipo": "PM",
+      "corta": 2.09,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T43 · toma 43 del original · 65.61→67.70 s · E43 · la baja; él saca el cuchillo; ella: «¿Qué…?»",
+      "usa": [
+        2.78,
+        4.87
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. TIGHT MEDIUM SHOT from the chest up at the lace window: Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers fills the right two thirds of the frame, just set down, looking down at him, confused; Jack's head and shoulder in the white shirt are large and out of focus in the lower left foreground, his gloved hand drawing a black tactical knife. Jack is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves. No legs, no shorts in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "She stays silent for about one second, then asks the line, bewildered, as the black knife comes up between them.",
+      "audio": "VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman asking, breathless. [Foley] a knife drawn from a sheath.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_hannah",
+        "m_jack_camisa"
+      ],
+      "personajes": [
+        "hannah"
+      ],
+      "dialogo": "What...?",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a tight medium shot from the chest up at the lace window: Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge fills the right two thirds of the frame, just set down, looking down at him, confused; Jack's head and shoulder in the white shirt are large and out of focus in the lower left foreground, his gloved hand drawing a black tactical knife. Jack is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves. No legs, no shorts in the frame.\n<Subject 1> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, as shown in <Picture 2> and in <Picture 1>.\n<Subject 2> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as visible in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, skin details and clothes are kept exactly.\n<Subject 2> (appears in [Shot 1]): fully_preserved - face, hair and clothes are kept.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a tight medium shot from the chest up at the lace window: Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge fills the right two thirds of the frame, just set down, looking down at him, confused; Jack's head and shoulder in the white shirt are large and out of focus in the lower left foreground, his gloved hand drawing a black tactical knife. Jack is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves. No legs, no shorts in the frame. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip her lips stay completely closed while she looks down at him, confused, as his hand draws a black knife. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a breathless, bewildered whisper, and for the rest of the clip she stays silent with her lips closed while she freezes, staring at the blade. The sound is: <d>[English] What...?</d>\n\noverall_soundscape:\nA knife drawn from a sheath. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.4,
+      "seed": 7043,
+      "dibujo": "sb_T43.png"
+    },
+    {
+      "id": "T44a",
+      "tipo": "PP",
+      "corta": 1.58,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T44 · toma 44 del original · 67.70→69.28 s · E44 · Jack a tres cuartos, cuchillo en alto: «Shh, shh»",
+      "usa": [
+        2.66,
+        4.24
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, three-quarter view, raising a black tactical knife close to his face, eyes on her, lace window out of focus behind. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then hushes her softly — 'shh, shh' — bringing the knife up.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man hushing softly twice, close. [Ambient] the train rolling.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "Shh, shh...",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, raising a black tactical knife close to his face, eyes on her, lace window out of focus behind.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, raising a black tactical knife close to his face, eyes on her, lace window out of focus behind. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while he raises the black knife close to his face, eyes on her. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a soft, slow hush, twice, and for the rest of the clip he stays silent with his lips closed while he holds the knife still between them. The sound is: <d>[English] Shh, shh...</d>\n\noverall_soundscape:\nThe train rolling. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.0,
+      "seed": 7044,
+      "dibujo": "sb_T44.png"
+    },
+    {
+      "id": "T46a",
+      "tipo": "PM",
+      "corta": 1.37,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T46 · toma 46 del original · 70.41→71.78 s · E46 · los dos de perfil cara a cara, cuchillo entre ellos: «Bien»",
+      "usa": [
+        3.37,
+        4.74
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE TWO-SHOT IN PROFILE at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, facing right; on the right Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers, facing left; faces a hand's width apart; he holds the black knife upright between them. No waist, no legs in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then murmurs a single word with a slow smile, and keeps staring at her; later his eyes flick towards the door.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man murmuring one word. [Foley] breathing.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "Good.",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close two-shot in profile at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, facing right; on the right Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, facing left; faces a hand's width apart; he holds the black knife upright between them. No waist, no legs in the frame.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Subject 2> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, as visible in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Subject 2> (appears in [Shot 1]): fully_preserved - face, hair and clothes are kept.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close two-shot in profile at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, facing right; on the right Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, facing left; faces a hand's width apart; he holds the black knife upright between them. No waist, no legs in the frame. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while they stare at each other in profile, the knife upright between them. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a single low, pleased murmur, and for the rest of the clip he stays silent with his lips closed while a slow smile stays on his face and his eyes flick toward the door. The sound is: <d>[English] Good.</d>\n\noverall_soundscape:\nBreathing. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 0.64,
+      "seed": 7046,
+      "dibujo": "sb_T46.png"
+    },
+    {
+      "id": "T47a",
+      "tipo": "PP",
+      "corta": 1.63,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T47 · toma 47 del original · 71.78→73.41 s · E47 · encuadre A: Jack a tres cuartos: «Ahora, gime para mí»",
+      "usa": [
+        3.13,
+        4.76
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, the black knife held near her throat at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then says the line low and slow, almost tender, with a dangerous half smile.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man speaking low and slow, intimate and menacing.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "Now moan for me.",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, the black knife held near her throat at the bottom edge; her hair blurred at the right edge.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, the black knife held near her throat at the bottom edge; her hair blurred at the right edge. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while he studies her face, the knife held near her throat. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says low and slow, almost tender, with a dangerous half smile: <d>[English] Now moan for me.</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he keeps his eyes on hers. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.74,
+      "seed": 7047,
+      "dibujo": "sb_T47.png"
+    },
+    {
+      "id": "T49a",
+      "tipo": "PP",
+      "corta": 1.0,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T49 · toma 49 del original · 74.61→75.61 s · E49 · encuadre A: «O te corto…»",
+      "usa": [
+        1.45,
+        2.45
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, his gloved hand with the knife at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then says the line slowly, with a pause after the first word, eyes cold.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man threatening, slow and quiet.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "Or... I cut that pretty throat.",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, his gloved hand with the knife at the bottom edge; her hair blurred at the right edge.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, close to her, a red-and-cream striped drape out of focus behind, his gloved hand with the knife at the bottom edge; her hair blurred at the right edge. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while his cold eyes stay on her, the knife steady in his gloved hand. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says slowly and quietly, with a pause after the first word: <d>[English] Or... I cut that pretty throat.</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he tilts his head, waiting. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 2.46,
+      "seed": 7049,
+      "dibujo": "sb_T49.png"
+    },
+    {
+      "id": "T52a",
+      "tipo": "PP",
+      "corta": 1.96,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T52 · toma 52 del original · 77.95→79.91 s · E52 · encuadre B: Hannah llorando: «Pero no puedo»",
+      "usa": [
+        1.12,
+        3.08
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers, tears on her cheeks, the flat of a black knife held against the side of her neck by a gloved hand, dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "She stays silent for about one second, then pleads the line through tears, her voice breaking.",
+      "audio": "VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman pleading through tears.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_hannah",
+        "m_jack_camisa"
+      ],
+      "personajes": [
+        "hannah"
+      ],
+      "dialogo": "But I can't... I don't know how...",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, tears on her cheeks, the flat of a black knife held against the side of her neck by a gloved hand, dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left.\n<Subject 1> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, tears on her cheeks, the flat of a black knife held against the side of her neck by a gloved hand, dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip her lips stay completely closed while tears run down her cheeks as the flat of the blade presses against her neck. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a pleading, broken voice through tears: <d>[English] But I can't... I don't know how...</d> Exactly as her voice stops, her lips close and her jaw stops moving; she does not speak again for the rest of the clip. Afterwards she keeps crying silently. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.86,
+      "seed": 7052,
+      "dibujo": "sb_T52.png"
+    },
+    {
+      "id": "T53a",
+      "tipo": "PP",
+      "corta": 1.12,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T53 · toma 53 del original · 79.91→81.03 s · E53 · encuadre A: «¿Cuántos años tienes?»",
+      "usa": [
+        0.83,
+        1.95
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then asks the line quickly, tilting his head.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man asking a short question.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "How old are you?",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while he watches her closely, the knife steady. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a quick, curious question, tilting his head: <d>[English] How old are you?</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he waits for her answer. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 0.88,
+      "seed": 7053,
+      "dibujo": "sb_T53.png"
+    },
+    {
+      "id": "T54a",
+      "tipo": "PP",
+      "corta": 1.38,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T54 · toma 54 del original · 81.03→82.41 s · E54 · encuadre B: «22»",
+      "usa": [
+        1.53,
+        2.91
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers, crying, the black knife against her neck, dark wood ceiling beams above. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "She stays silent for about one second, then answers with a single word, voice shaking.",
+      "audio": "VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman answering in one word, shaking.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_hannah",
+        "m_jack_camisa"
+      ],
+      "personajes": [
+        "hannah"
+      ],
+      "dialogo": "Twenty-two.",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, crying, the black knife against her neck, dark wood ceiling beams above.\n<Subject 1> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, crying, the black knife against her neck, dark wood ceiling beams above. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip her lips stay completely closed while she swallows, trembling, the blade against her neck. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a single shaking word, and for the rest of the clip she stays silent with her lips closed while she keeps her eyes on him, crying. The sound is: <d>[English] Twenty-two.</d>\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 0.64,
+      "seed": 7054,
+      "dibujo": "sb_T54.png"
+    },
+    {
+      "id": "T55a",
+      "tipo": "PP",
+      "corta": 2.12,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T55 · toma 55 del original · 82.41→84.53 s · E55 · encuadre A, sonríe: «Entonces no te hagas la inocente»",
+      "usa": [
+        0.08,
+        2.2
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then breaks into a wolfish smile and says the line.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man speaking with amusement.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "Then don't play innocent.",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, a red-and-cream striped drape out of focus behind, knife hand at the bottom edge; her hair blurred at the right edge. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while a wolfish smile spreads across his face. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says with dark amusement: <d>[English] Then don't play innocent.</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards the smile stays on his face. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 2.3,
+      "seed": 7055,
+      "dibujo": "sb_T55.png"
+    },
+    {
+      "id": "T61a",
+      "tipo": "PM",
+      "corta": 2.29,
+      "loc": "vagon_blanco",
+      "funcion": "semilla alternativa de T61 · toma 61 del original · 91.82→94.11 s · E61 · Luka furioso, Wady de espaldas: «¡No se escapará otra vez!»",
+      "usa": [
+        1.46,
+        3.75
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_vagon_blanco, m_luka, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the cream-white carriage over Wady's shoulder (his olive coat blurred in the left foreground): Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle faces camera, furious, rifle across his chest. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "Luka paces, holds a silent beat for about one second, then spits the line out in fury, jabbing a finger.",
+      "audio": "VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [Speech] a man shouting in fury.",
+      "refs": [
+        "l_vagon_blanco",
+        "m_luka",
+        "m_wady"
+      ],
+      "personajes": [
+        "luka"
+      ],
+      "dialogo": "No! He's not getting away again!",
+      "modo": "ref2va",
+      "voz_ref": "voz_luka.wav",
+      "refs_extra": [
+        "m_luka.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a medium shot in the cream-white carriage over Wady's shoulder (his olive coat blurred in the left foreground): Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle faces camera, furious, rifle across his chest.\n<Subject 1> is Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, as shown in <Picture 2> and in <Picture 1>.\n<Subject 2> is Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, as visible in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Subject 2> (appears in [Shot 1]): fully_preserved - face, hair and clothes are kept.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a medium shot in the cream-white carriage over Wady's shoulder (his olive coat blurred in the left foreground): Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle faces camera, furious, rifle across his chest. Flat, bright daylight fills the cream-white carriage. For about the first second of the clip his lips stay completely closed while he paces in fury, the rifle across his chest. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in an enraged shout, jabbing a finger: <d>[English] No! He's not getting away again!</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he glares, jaw clenched. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 2.14,
+      "seed": 7061,
+      "dibujo": "sb_T61.png"
+    },
+    {
+      "id": "T62a",
+      "tipo": "PM",
+      "corta": 2.09,
+      "loc": "vagon_blanco",
+      "funcion": "semilla alternativa de T62 · toma 62 del original · 94.11→96.20 s · E62 · Wady asustado: «Jefe, él es la Víbora…»",
+      "usa": [
+        1.58,
+        3.67
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_vagon_blanco, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, in the cream-white carriage, scared and agitated, pleading towards someone off camera. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then says the line fast and nervous, gesturing with his free hand.",
+      "audio": "VOICE of Wady, identical in every shot: a man in his early thirties, a mid-pitched, reedy, jittery voice that speeds up when scared, General American accent. [Speech] a man talking fast, nervous.",
+      "refs": [
+        "l_vagon_blanco",
+        "m_wady"
+      ],
+      "personajes": [
+        "wady"
+      ],
+      "dialogo": "Boss, he's the Viper. The deadliest killer on the planet.",
+      "modo": "ref2va",
+      "voz_ref": "voz_wady.wav",
+      "refs_extra": [
+        "m_wady.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a medium shot of Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, in the cream-white carriage, scared and agitated, pleading towards someone off camera.\n<Subject 1> is Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a medium shot of Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, in the cream-white carriage, scared and agitated, pleading towards someone off camera. Flat, bright daylight fills the cream-white carriage. For about the first second of the clip his lips stay completely closed while he looks at someone off camera, scared and agitated. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says fast and nervous, gesturing with his free hand: <d>[English] Boss, he's the Viper. The deadliest killer on the planet.</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he keeps looking at the boss, afraid. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 3.6,
+      "seed": 7062,
+      "dibujo": "sb_T62.png"
+    },
+    {
+      "id": "T64a",
+      "tipo": "PM",
+      "corta": 2.91,
+      "loc": "vagon_blanco",
+      "funcion": "semilla alternativa de T64 · toma 64 del original · 98.20→101.11 s · E64 · Wady: «Mató a catorce de nuestros mejores hombres…»",
+      "usa": [
+        1.18,
+        4.09
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_vagon_blanco, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT of Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, in the cream-white carriage, wide-eyed, talking fast. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then says the line very fast, counting on his fingers, panicking.",
+      "audio": "VOICE of Wady, identical in every shot: a man in his early thirties, a mid-pitched, reedy, jittery voice that speeds up when scared, General American accent. [Speech] a man talking very fast, panicking.",
+      "refs": [
+        "l_vagon_blanco",
+        "m_wady"
+      ],
+      "personajes": [
+        "wady"
+      ],
+      "dialogo": "He took out fourteen of our best men and we couldn't do a thing.",
+      "modo": "ref2va",
+      "voz_ref": "voz_wady.wav",
+      "refs_extra": [
+        "m_wady.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a medium shot of Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, in the cream-white carriage, wide-eyed, talking fast.\n<Subject 1> is Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a medium shot of Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, in the cream-white carriage, wide-eyed, talking fast. Flat, bright daylight fills the cream-white carriage. For about the first second of the clip his lips stay completely closed while his eyes go wide as he gestures. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says very fast, panicking, counting on his fingers: <d>[English] He took out fourteen of our best men and we couldn't do a thing.</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he stares, breathing hard. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 2.94,
+      "seed": 7064,
+      "dibujo": "sb_T64.png"
+    },
+    {
+      "id": "T65a",
+      "tipo": "PM",
+      "corta": 3.42,
+      "loc": "vagon_blanco",
+      "funcion": "semilla alternativa de T65 · toma 65 del original · 101.11→104.53 s · E65 · Luka lo agarra del saco: «¡50 millones…»",
+      "usa": [
+        0.0,
+        3.42
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_vagon_blanco, m_luka, m_wady. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. MEDIUM SHOT in the cream-white carriage over Wady's shoulder (blurred in the left foreground): Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle grabs the lapel of Wady's olive coat and pulls him close, snarling. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "Luka yanks him in, holds a silent beat for about one second, then growls the line into his face and shouts the end of it.",
+      "audio": "VOICE of Luka, identical in every shot: a heavy-set man in his forties, a rough, gravelly, loud bass voice with a thick Eastern European accent. [Speech] a man growling, then shouting.",
+      "refs": [
+        "l_vagon_blanco",
+        "m_luka",
+        "m_wady"
+      ],
+      "personajes": [
+        "luka"
+      ],
+      "dialogo": "If you can't do it, fifty million to whoever brings me the Viper's head!",
+      "modo": "ref2va",
+      "voz_ref": "voz_luka.wav",
+      "refs_extra": [
+        "m_luka.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a medium shot in the cream-white carriage over Wady's shoulder (blurred in the left foreground): Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle grabs the lapel of Wady's olive coat and pulls him close, snarling.\n<Subject 1> is Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle, as shown in <Picture 2> and in <Picture 1>.\n<Subject 2> is Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, as visible in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Subject 2> (appears in [Shot 1]): fully_preserved - face, hair and clothes are kept.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a medium shot in the cream-white carriage over Wady's shoulder (blurred in the left foreground): Luka, a stocky man in his late twenties with a round face, dark curly hair, a clean-shaven face and a hard furious expression, a worn dark-brown leather bomber jacket with a shearling collar over a black shirt, dark trousers, carrying an AK-47 rifle grabs the lapel of Wady's olive coat and pulls him close, snarling. Flat, bright daylight fills the cream-white carriage. For about the first second of the clip his lips stay completely closed while he yanks Wady in by the lapel of the olive coat and pulls him close. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a low growl that rises into a shout: <d>[English] If you can't do it, fifty million to whoever brings me the Viper's head!</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he shoves him away. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 4.54,
+      "seed": 7065,
+      "dibujo": "sb_T65.png"
+    },
+    {
+      "id": "T68a",
+      "tipo": "PA",
+      "corta": 1.0,
+      "loc": "vagon_blanco",
+      "funcion": "semilla alternativa de T68 · toma 68 del original · 106.99→107.99 s · E68 · Wady sale corriendo por la puerta: «¡Vamos, quítense!»",
+      "usa": [
+        2.32,
+        3.32
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_vagon_blanco, m_wady, m_matones. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. FULL SHOT in the cream-white carriage: Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol runs for the doorway, pistol up, shoving past a gunman. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He stays silent for about one second, then shouts the line and bolts through the door.",
+      "audio": "VOICE of Wady, identical in every shot: a man in his early thirties, a mid-pitched, reedy, jittery voice that speeds up when scared, General American accent. [Speech] a man shouting orders. [Foley] running footsteps.",
+      "refs": [
+        "l_vagon_blanco",
+        "m_wady",
+        "m_matones"
+      ],
+      "personajes": [
+        "wady"
+      ],
+      "dialogo": "Okay. Move! Out of the way! Go!",
+      "modo": "ref2va",
+      "voz_ref": "voz_wady.wav",
+      "refs_extra": [
+        "m_wady.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a full shot in the cream-white carriage: Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol runs for the doorway, pistol up, shoving past a gunman.\n<Subject 1> is Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol, as shown in <Picture 2> and in <Picture 1>.\n<Subject 2> is gang gunmen, half Italian mob and half street gang: a man with short dark hair, a thick dark moustache and tattooed arms in a black tank top holding a rifle, a man in a black studded leather jacket, a tattooed man in a sleeveless denim vest, as visible in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one full shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Subject 2> (appears in [Shot 1]): fully_preserved - face, hair and clothes are kept.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a full shot in the cream-white carriage: Wady, 33, dark hair shaved short at the sides and curly on top, a black goatee, tan skin and dark eyes, an olive-grey canvas field jacket over a dark shirt, holding a black pistol runs for the doorway, pistol up, shoving past a gunman. Flat, bright daylight fills the cream-white carriage. For about the first second of the clip his lips stay completely closed while he grips his pistol and turns toward the doorway. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a loud barked order: <d>[English] Okay. Move! Out of the way! Go!</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he bolts through the door. The camera pans left with small amplitude at fast speed as he bolts for the door. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nRunning footsteps. The steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.9,
+      "seed": 7068,
+      "dibujo": "sb_T68.png"
+    },
+    {
+      "id": "T73a",
+      "tipo": "PP",
+      "corta": 1.46,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T73 · toma 73 del original · 114.32→115.78 s · E73 · encuadre A: «…gimas…»",
+      "usa": [
+        3.04,
+        4.5
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, three-quarter view, close to her, a striped drape out of focus behind, her bare shoulder blurred at the lower right. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then says the line slowly, leaving a pause between the words.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man speaking slowly, menacing and intimate.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "I said... moan...",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, close to her, a striped drape out of focus behind, her bare shoulder blurred at the lower right.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up of Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, three-quarter view, close to her, a striped drape out of focus behind, her bare shoulder blurred at the lower right. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while he leans close to her bare shoulder, eyes on her face. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says slowly, leaving a pause between the words: <d>[English] I said... moan...</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards he waits, eyes on hers. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 2.68,
+      "seed": 7073,
+      "dibujo": "sb_T73.png"
+    },
+    {
+      "id": "T74a",
+      "tipo": "PM",
+      "corta": 1.13,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T74 · toma 74 del original · 115.78→116.91 s · E74 · los dos de perfil, la agarra del hombro: «o te haré gemir»",
+      "usa": [
+        2.78,
+        3.91
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_jack_camisa, m_hannah. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE TWO-SHOT IN PROFILE at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder harness with two straps crossing his back, black trousers and black fingerless leather driving gloves, facing right, his gloved hand gripping her shoulder; on the right Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers, facing left, chin lifted; faces very close. No waist, no legs in the frame. MEDIUM SHOT: the bottom edge of the frame crops at the waist; no knees, no feet. CROP LIKE A TIGHT TV CLOSE TWO-SHOT: the camera is less than a metre from their faces; the two heads and shoulders fill the whole frame and the BOTTOM EDGE of the frame cuts across their chests. The denim shorts, the waist, the belt, the hips and the legs are completely outside the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "He holds a silent beat for about one second, then finishes the threat in a whisper; after that his eyes slide towards the door while she trembles.",
+      "audio": "VOICE of Jack, identical in every shot: a man in his early thirties, a deep, low, smooth baritone with a slight rasp, calm and unhurried, General American accent. [Speech] a man whispering a short threat.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_jack_camisa",
+        "m_hannah"
+      ],
+      "personajes": [
+        "jack_camisa"
+      ],
+      "dialogo": "...or I'll make you.",
+      "modo": "ref2va",
+      "voz_ref": "voz_jack.wav",
+      "refs_extra": [
+        "m_jack_camisa.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close two-shot in profile at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, facing right, his gloved hand gripping her shoulder; on the right Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, facing left, chin lifted; faces very close. No waist, no legs in the frame.\n<Subject 1> is Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, as shown in <Picture 2> and in <Picture 1>.\n<Subject 2> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, as visible in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one medium shot in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - his face, hair, skin details and clothes are kept exactly.\n<Subject 2> (appears in [Shot 1]): fully_preserved - face, hair and clothes are kept.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close two-shot in profile at the lace window, framed from the chest up so the two faces fill the upper half of the frame: on the left Jack, 32, a tall lean man with Mediterranean features: black hair slicked back, a short dark beard, dark brown eyes, a strong brow and a sharp jaw, a fresh spray of blood on the LEFT side of HIS forehead and cheekbone, a black ink tattoo on the left side of his neck, in a crisp white dress shirt with the sleeves rolled to the forearm, a black leather shoulder-holster harness and black fingerless leather driving gloves, facing right, his gloved hand gripping her shoulder; on the right Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the waistband of frayed denim shorts at the bottom edge, facing left, chin lifted; faces very close. No waist, no legs in the frame. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip his lips stay completely closed while his gloved hand grips her shoulder, their faces very close. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, says in a menacing whisper: <d>[English] ...or I'll make you.</d> Exactly as his voice stops, his lips close and his jaw stops moving; he does not speak again for the rest of the clip. Afterwards his eyes slide toward the door while she trembles. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>.\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.06,
+      "seed": 7074,
+      "dibujo": "sb_T74.png"
+    },
+    {
+      "id": "T75a",
+      "tipo": "PP",
+      "corta": 1.87,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T75 · toma 75 del original · 116.91→118.78 s · E75 · encuadre B, asiente: «Okay, okay»",
+      "usa": [
+        1.47,
+        3.34
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers, the black knife in a gloved hand near her bare shoulder, dark wood ceiling beams above, crying and scared. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "She holds her breath for about two seconds, then nods quickly and whispers the line, giving in.",
+      "audio": "VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman whispering, giving in.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_hannah",
+        "m_jack_camisa"
+      ],
+      "personajes": [
+        "hannah"
+      ],
+      "dialogo": "Okay, okay.",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the black knife in a gloved hand near her bare shoulder, dark wood ceiling beams above, crying and scared.\n<Subject 1> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, the black knife in a gloved hand near her bare shoulder, dark wood ceiling beams above, crying and scared. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip her lips stay completely closed while she holds her breath for about two seconds, trembling. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a quick, broken whisper, nodding as she gives in, and for the rest of the clip she stays silent with her lips closed while she closes her eyes. The sound is: <d>[English] Okay, okay.</d>\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 0.92,
+      "seed": 7075,
+      "dibujo": "sb_T75.png"
+    },
+    {
+      "id": "T81a",
+      "tipo": "PP",
+      "corta": 1.81,
+      "loc": "cabina_ventana",
+      "funcion": "semilla alternativa de T81 · toma 81 del original · 125.11→126.92 s · E81 · Hannah de perfil con la boca abierta: corte",
+      "usa": [
+        2.09,
+        3.9
+      ],
+      "segundos": 5.17,
+      "ve": "Reference images, in this order: l_cabina_ventana, m_hannah, m_jack_camisa. The location image sets the set and light; the character sheets set faces, hair and clothes exactly. CLOSE UP from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, dark indigo denim cut-off shorts over pale tights, chunky pink ribbed leg warmers and pink ballet slippers, tears on her cheeks, her head snapping up towards the door off camera, eyes wide in shock, mouth open in a startled gasp; the flat of a black knife held against the side of her neck by a gloved hand; dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left. TIGHT CLOSE UP: the face fills the upper half of the frame and the bottom edge cuts across the chest; no waist, no hips, no legs in the picture. VERTICAL 9:16 frame; keep the subject centred and nothing important near the left and right edges (the sides get trimmed).",
+      "mueve": "She stays still for about one second, then gasps loudly, mouth open, eyes wide towards the door.",
+      "audio": "VOICE of Hannah, identical in every shot: a young American woman in her early twenties, a light, clear, slightly husky voice with a soft breathy edge, General American accent. [Speech] a young woman gasping loudly.",
+      "refs": [
+        "l_cabina_ventana",
+        "m_hannah",
+        "m_jack_camisa"
+      ],
+      "personajes": [
+        "hannah"
+      ],
+      "dialogo": "Ah!",
+      "modo": "ref2va",
+      "voz_ref": "voz_hannah.wav",
+      "refs_extra": [
+        "m_hannah.png"
+      ],
+      "prompt_h3": "subject_definitions:\n<Picture 1> is the first frame of [Shot 1], showing a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, tears on her cheeks, her head snapping up towards the door off camera, eyes wide in shock, mouth open in a startled gasp; the flat of a black knife held against the side of her neck by a gloved hand; dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left.\n<Subject 1> is Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, as shown in <Picture 2> and in <Picture 1>.\n<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken English vocal layer.\n\nsummary:\n[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and continues as one close-up in which <Subject 1> says one line of dialogue using the voice timbre referenced from <Audio 1>. The whole clip is a single continuous take on <Subject 1>.\n\nretention_analysis:\n<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set and the positions of everyone in the frame are kept.\n<Subject 1> (appears in [Shot 1]): fully_preserved - her face, hair, skin details and clothes are kept exactly.\n<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre without copying its words or its signal.\n\ndetailed_description:\nThe target video is a live-action, photographic thriller scene with shallow depth of field and natural skin texture.\n[Shot 1] The shot begins exactly on <Picture 1>, a close up from a LOW ANGLE of Hannah, 22, a slim young ballet dancer with a Scandinavian look: pale skin, platinum-blonde hair pulled into a messy low bun with loose strands around her face, light blue eyes, a slim straight nose, defined cheekbones and a small pointed chin, a faint smudge of dirt on her left cheekbone, wearing an oversized worn brown-and-cream plaid flannel shirt hanging open over a pale pink camisole leotard, tears on her cheeks, her head snapping up towards the door off camera, eyes wide in shock, mouth open in a startled gasp; the flat of a black knife held against the side of her neck by a gloved hand; dark wood ceiling beams and cream ceiling panels above; his shoulder in a white shirt blurred at the lower left. Bright daylight glows through the white lace curtains behind, while warm brass lamps light the glossy mahogany compartment. For about the first second of the clip her lips stay completely closed while her face snaps toward the door and her eyes go wide. The camera holds a static shot with a slight handheld sway. Throughout the clip the framing, the light, the set and the people stay exactly as established by <Picture 1>. Then <Subject 1> (S1), using the voice timbre referenced from <Audio 1>, makes one short sound in a loud, startled gasp, and for the rest of the clip she stays silent while her mouth stays open in shock. The sound is: <d>[English] Ah!</d>\n\noverall_soundscape:\nThe steady rumble and rhythmic clack of the train on the rails continue underneath.\n\nnon_diegetic_music:\nN/A",
+      "ventana_dialogo": 1.4,
+      "seed": 7081,
+      "dibujo": "sb_T81.png"
+    }
+  ]
+}

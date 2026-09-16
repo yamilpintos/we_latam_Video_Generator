@@ -1,0 +1,118 @@
+{
+  "_comentario": "Planos independientes: ninguno depende de otro, así que todos paralelizan y cualquiera se rehace solo. Se montan con cortes. Cada plano lleva 'usa' con el tramo que va a la línea: se genera de más porque H3 no baja de 5,17 s.",
+  "titulo": "LA BICICLETA DE LA REPRESA",
+  "slug": "la-bicicleta-de-la-represa",
+  "formato": "short",
+  "fps": 24,
+  "ancho": 768,
+  "alto": 1344,
+  "estructura": "short-15",
+  "planos": [
+    {
+      "id": "S01",
+      "escena": "LA-BICICLETA-DE-LA-REPRESA",
+      "tramo": "HOOK",
+      "tipo": "PP",
+      "loc": "represa_exterior",
+      "personajes": [],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "HOOK. Mostrar de entrada, en primer plano, la bicicleta imposible trabada en la reja de la represa, con la profundidad y lo inquietante del entorno ya visibles, alineado con el texto y la voz que adelantan el hallazgo.",
+      "first_frame": "assets/sb_S01.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic underwater footage.\nMOTION: From the first frame the camera pushes in slowly toward the bicycle, while drifting slightly sideways, making the metal bars parallax against the dark water behind. Small debris and bubbles drift past the lens. The bike wobbles subtly in the current but remains stuck between the bars.\nAUDIO: [SFX] Muffled low underwater rumble, faint metallic creaks from the grate, distant turbine hum. [Ambient] Constant deep underwater dam ambience with low-frequency vibrations. [Foley] Occasional light clinks of the bicycle frame subtly shifting against the metal bars.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are Low underwater rumble, distant turbine hum, muffled water currents, regulator breathing, subtle metal creaks, faint bubbles..\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "texto": "Encontré una bici a 30 m, adentro de la represa",
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        3.0
+      ],
+      "en_linea_de_tiempo": [
+        0.0,
+        3.0
+      ]
+    },
+    {
+      "id": "S02",
+      "escena": "LA-BICICLETA-DE-LA-REPRESA",
+      "tramo": "DESARROLLO",
+      "tipo": "PG",
+      "loc": "compuerta_fondo",
+      "personajes": [
+        "tomas"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "DESARROLLO. Presentar a Tomás trabajando como buzo de mantenimiento en la represa y la profundidad extrema de la bajada hacia la compuerta, dando contexto técnico y físico al hallazgo.",
+      "first_frame": "assets/sb_S02.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic underwater footage.\nMOTION: The camera slowly tracks backward and slightly upward as Tomás continues to descend along the cable, his fins kicking gently. His flashlight beam sweeps across the gate surface, briefly revealing bolts and seams before disappearing into shadow. Tiny bubbles escape from his helmet and drift upward, accentuating the depth.\nAUDIO: [SFX] Steady regulator breathing and faint hiss of air through hoses, distant low turbine vibrations. [Ambient] Deep, constant underwater rumble inside the dam structure. [Foley] Soft swishes of the diver's fins and subtle creaks of his gear and harness.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are Low underwater rumble, distant turbine hum, muffled water currents, regulator breathing, subtle metal creaks, faint bubbles..\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        3.8
+      ],
+      "en_linea_de_tiempo": [
+        3.0,
+        6.8
+      ]
+    },
+    {
+      "id": "S03",
+      "escena": "LA-BICICLETA-DE-LA-REPRESA",
+      "tramo": "DESARROLLO",
+      "tipo": "PM",
+      "loc": "represa_exterior",
+      "personajes": [
+        "tomas"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "DESARROLLO. Mostrar a Tomás frente a la reja a 30 metros, enfocando la bicicleta entera y el momento en que la mueve, preparando el descubrimiento de la placa detrás de la rueda trasera.",
+      "first_frame": "assets/sb_S03.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic underwater footage.\nMOTION: Tomás braces one boot against a lower bar and pulls the bicycle toward him. The frame and rear wheel shift with visible effort, shaking off clouds of silt that billow into the water. As he drags the back wheel sideways, the tire reveals a dark metal plate partially hidden behind it, catching the edge of his flashlight beam.\nAUDIO: [SFX] Strained metal grinding as the bike scrapes against the bars, a small burst of silt gushing out. [Ambient] Continuous low underwater drone from the dam structure. [Foley] Tight creaks of Tomás's harness and gloves gripping the frame, dull thumps as the bike bumps the grate.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are Low underwater rumble, distant turbine hum, muffled water currents, regulator breathing, subtle metal creaks, faint bubbles..\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "usa": [
+        0.0,
+        3.2
+      ],
+      "en_linea_de_tiempo": [
+        6.8,
+        10.0
+      ]
+    },
+    {
+      "id": "S04",
+      "escena": "LA-BICICLETA-DE-LA-REPRESA",
+      "tramo": "CIERRE",
+      "tipo": "PP",
+      "loc": "represa_exterior",
+      "personajes": [
+        "tomas"
+      ],
+      "length": 124,
+      "segundos": 5.167,
+      "funcion": "CIERRE. Pagar el misterio mostrando de cerca la placa con la patente vieja detrás de la rueda trasera, con la cifra de 1998 clara, y cerrar con la pregunta abierta sobre cómo llegó esa bicicleta ahí, repitiendo el encuadre del gancho para buclear.",
+      "first_frame": "assets/sb_S04.png",
+      "clip_de": null,
+      "sigue_de": null,
+      "prompt": "Photorealistic cinematic underwater footage.\nMOTION: Tomás's thumb rubs away the last layer of slime from the plate, making the stamped numbers and letters fully readable. The camera slowly pushes in and eases to almost the same composition as the first shot, centering the bike and the newly revealed plate behind the rear wheel. Fine particles drift across the beam of light as the motion eases to a near still at the end, matching the opening frame for a seamless loop.\nAUDIO: [SFX] Soft scraping as the glove wipes silt off the metal plate, a few tiny flakes of rust breaking off. [Ambient] Deep continuous underwater hum, slightly louder, with a faint pulse from machinery. [Foley] Subtle fabric and harness creaks from Tomás stabilizing himself against the bars, gentle touch sounds as his glove contacts the plate.\nNO SPEECH. No voices, no words, no dialogue, no singing, no crowd chatter. The only sounds are Low underwater rumble, distant turbine hum, muffled water currents, regulator breathing, subtle metal creaks, faint bubbles..\nKeep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+      "dialogo": null,
+      "interrupcion": true,
+      "usa": [
+        0.0,
+        4.8
+      ],
+      "en_linea_de_tiempo": [
+        10.0,
+        14.8
+      ]
+    }
+  ]
+}

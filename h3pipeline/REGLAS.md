@@ -579,3 +579,146 @@ línea se saca del clip de la boca con `t = inicio_toma + (t_clip − usa_ini)` 
 toma que MÁS se superpone con la línea (no la primera del encuadre), así la
 sincronía labial sale por construcción aunque la ventana se haya corrido contra
 el techo. `mis-videos/replica-danza/montar.py`.
+
+## 64 · Para replicar un video, el primer fotograma es el cuadro del original
+
+Con imágenes generadas (GPT, 73 cuadros aprobados uno por uno) la puesta en
+escena se perdió igual: la escena final del original es a horcajadas y en la
+nuestra están de pie, porque el filtro obligó a suavizar E41/E77/E78/E81 y
+porque un generador no reproduce una composición ajena. El usuario lo notó al
+primer visionado (15/9). Regla: si el objetivo es una réplica, el primer
+fotograma de cada toma es el cuadro del original (2 cuadros después del corte),
+limpio de texto, y las descripciones de los personajes se reescriben mirando a
+SUS actores (si el texto dice «barba» sobre un afeitado, H3 tira hacia el texto).
+
+## 65 · Limpiar subtítulos del cuadro: Nano Banana, y OpenCV donde el filtro bloquea
+
+`gemini-2.5-flash-image` borra subtítulos, placas y logo sin tocar el resto
+(~10 s, ~$0,04 por cuadro), pero rechaza las mismas poses que rechazaría al
+generar (IMAGE_SAFETY / IMAGE_OTHER en T76, T77, T81). Respaldo
+`limpiar_cv.py`: blanco puro en la franja del subtítulo, contraste local para la
+placa semitransparente, y el logo —brillo variable, posición fija— se tapa por
+rectángulo (arriba-izquierda en 41 tomas, abajo-derecha en 41) con inpaint.
+
+## 66 · Verificar la limpieza de Nano Banana con plantilla del logo
+
+En 6 de 67 cuadros Nano Banana borró el subtítulo pero dejó el logo (T22, T30,
+T66, T74 abajo a la derecha; T40, T48 arriba). Se detecta con `matchTemplate`
+del logo recortado del cuadro crudo (score > 0,6) y se tapa con
+`limpiar_cv.limpiar(..., solo_logo=True)`, que escala el rectángulo al tamaño
+del cuadro. Un logo que sobrevive se copia a todo lo que se genere desde ese cuadro.
+
+## 67 · Recast: mismo cuadro, otros actores — GPT con hojas, pose bloqueada
+
+Para rehacer un video con otro reparto: hojas del reparto nuevo (una por
+personaje, generadas sobre un cuadro del original como plantilla) y después cada
+cuadro con `recast.py`: imagen 1 = cuadro original, imágenes 2… = hojas de los
+presentes (la cara del usuario, dos fotos), prompt «recreate this exact frame …
+replace ONLY the identity … do NOT turn anyone towards the camera». Sin el
+candado de pose el modelo gira a los de espaldas para mostrar la cara de la
+referencia. Un solo generador para los 82 (Nano Banana Pro hizo 29 y se agotó el
+crédito → todo GPT de nuevo; mezclar dos mete inconsistencias). GPT rechazó 8 de
+82 y con reintentos quedaron 2 (a horcajadas, grito con la cabeza atrás), que
+tampoco pasan Gemini: esas tomas se resuelven continuando el encuadre vecino
+(`clip_de`) o arrancando de un cuadro rehecho de otra toma con la descripción
+reescrita a ese cuadro. Recolorear el pelo con OpenCV no sirve (máscaras por
+color arruinan piel y fondo).
+
+## 68 · Toda toma con actores va en Ref2VA con las hojas de cara
+
+Pedido del 15/9: donde el actor está pero la cara no se ve en el primer cuadro
+(espaldas, perfil, entra después), H3 inventaba la cara. `oficial.prompt_ref2va_mudo`
+define <Subject n> «as shown in <Picture n>, fully_preserved … whenever the face
+turns towards the camera», sin audio. En PP/PD sólo el primer personaje (REGLAS
+57). 70 de 73 tomas terminaron en Ref2VA; sólo las 3 sin gente quedan en FL2VA.
+
+## 69 · Con hojas de cara en tomas mudas, más cortes internos: el montaje los tapa
+
+Corrida del 16/9 (91 Ref2VA de 94): 7 clips con corte a mitad de tramo contra 0
+en la corrida I2VA equivalente. Es el costo de REGLAS 68 (sujetos extra piden
+pantalla, REGLAS 57). `montar.py` lee `cortes.json`: en tomas mudas usa lo
+anterior al corte en cámara lenta (≥ 40 % de los cuadros) o un cuadro fijo con
+zoom suave; en las que hablan no toca nada (estirar desincroniza la boca) y el
+corte queda como corte de montaje al mismo personaje. Las segundas semillas
+(8 líneas cortas) no adelantaron el arranque: ganó la semilla original en las 8.
+
+## 70 · Cuadro y texto en desacuerdo → H3 fabrica una mezcla imposible
+
+T09 (16/9): GPT, al «recastear» un inserto de pies en punta, devolvió un primer
+plano de la cara de la actriz nueva; el prompt seguía describiendo «two feet in
+pointe shoes, leg warmers, red carpet». H3 obedeció a los dos: la chica del
+cuadro sentada en la alfombra con una pierna levantada en una posición
+imposible para mostrar la zapatilla. Ni el cuadro ni el texto tenían esa pierna:
+la inventó para conciliar. Controles: (1) los insertos sin cara no se rehacen
+(no hay identidad que cambiar); (2) antes de generar, comparar cada cuadro con
+su descripción —un cuadro que no muestra lo que el texto nombra es un clip roto.
+Y Whisper no sirve para detectar bocas que hablan en clips mudos: transcribe
+«Thanks for watching!» sobre el ruido del tren en 35 de 50.
+
+## 71 · Las tomas mudas que reusan un clip con voz no pisan el tramo hablado
+
+16/9: T32 (reusa el clip de E36) y T78 (reusa E75) caían sobre el tramo donde el
+personaje dice la línea: se veía a Luka decir «Where are you?» y a ella «okay,
+okay» sin sonido, cinco segundos antes o después de la línea real. `armar.planos`
+ubica las mudas del encuadre ANTES del arranque medido (empaquetadas en orden) y,
+lo que no entra, después de fin_voz. Y el texto de una toma nombra sólo a quien
+está: «a bald man… a young woman…» convirtió a la pasajera en el calvo (T34).
+
+## 72 · Repeticiones dentro de la línea: cirugía por tramos, no otra semilla
+
+T73 «I said… moan…» repitió «I said» en las TRES semillas (H3 rellena la
+elipsis). Whisper sobre el clip entero lo funde en un solo «I said»; sobre la
+pieza recortada sí lo separa. `montar.SEGMENTOS` pega tramos elegidos a mano
+(primer «I said» + «moan») con 0,35 s de pausa; `pieza_compacta` acorta pausas
+largas entre palabras. Y el grito de una toma muda (T34) se mezcla desde el audio
+de H3 con `SFX_DE_CLIP`, porque demucs se llevó el del original con las voces.
+
+## 73 · Demucs deja los gritos en la pista de ambiente
+
+El grito de la pasajera (T34) quedó en `ambiente.wav` (+15 dB en la banda de voz):
+demucs separa voz cantada/hablada, no gritos. Sumar un grito generado encima da
+dos gritos. Regla: antes de agregar un efecto vocal, medir la banda de voz del
+ambiente en ese tramo; si el original ya está, se refuerza desde `vocals.wav` (misma
+grabación, suma coherente) en vez de generar otro. Y la caché de audio del
+montaje se invalida por fecha del clip (`audio()`), si no las voces rehechas
+salen del clip viejo.
+
+## 74 · H3 SÍ acepta una voz previa como pista final: `audio reuse` / `fully_copy`
+
+La guía oficial de Ref2VA (§2.4, §3, §4.2) define para `<Audio N>` los marcadores
+`fully_copy` («the complete source audio serves as the target video's complete
+final audio track») y `partially_copy`, con el tipo de tarea `audio reuse`.
+Toda la réplica usó sólo `reference` (timbre), y por eso H3 decidía cuándo y qué
+decir. Con `fully_copy`, la voz (ElevenLabs, humana) entra tal cual y H3 tiene
+que mover la boca sobre ella: es la receta Kling + ElevenLabs dentro de H3.
+Sin probar en pesos abiertos al 16/9: primero un piloto de 3-4 clips.
+
+## 75 · Ref2VA sin `guia0` no ancla el primer cuadro: recompone la toma
+
+Corrida recast del 16/9 (91 Ref2VA): T58, T32 y T54 arrancaban YA distintos al
+cuadro enviado (Luka de pie y centrado en vez de apoyado; Hannah sola en la
+ventana en vez de con el cuchillo). En I2VA/FL2VA el primer cuadro es duro; en
+Ref2VA `<Picture 1>` es una referencia blanda que el texto y las hojas pueden
+vencer. Regla: todo plano Ref2VA lleva `guia0: true` (`MiniMaxH3AddGuide`,
+frame 0). Y el control de deriva compara el tramo usado contra el CUADRO 0 del
+clip, no contra el arranque del tramo (`cortes.py`), más CLIP cuadro 0 ↔ tramo
+(`clips/deriva-clip.json`, < 0,85 = mirar).
+
+## 76 · Un solo estado por personaje y toma, en TODAS las secciones del prompt
+
+T23: el `[Shot 1]` decía BARE-HEADED y la definición de `<Subject 1>` (tabla de
+personajes) decía «a black wide-brimmed fedora»; H3 le puso el sombrero. La tabla
+de personajes tiene un estado por vestuario (`jack_abrigo_sin` desde la toma 23)
+y `planos()` elige el estado por número de toma. Verificar con un grep de
+contradicciones (sombrero/anteojos/ropa) sobre los prompts antes de empaquetar.
+
+## 77 · Repeticiones de frase dentro de la línea: se quitan por palabras de Whisper
+
+v4 (16/9): T64 dijo «of our best men of our best men». `montar.sin_repeticiones`
+busca la misma secuencia de ≥ 2 palabras dos veces seguidas y salta la segunda
+(sin pausa). Junto con `pieza_compacta` (pausas largas) y el recorte a N palabras
+(balbuceo posterior: T53 «I don't under-ref…», T55 «After I've twigered»), la
+línea queda limpia sin regenerar. Verificar siempre transcribiendo la PIEZA
+recortada, no el clip entero: Whisper funde repeticiones en el clip completo.
+Y las tomas cuyo «corte» es movimiento real van a `SIN_TAPAR` para que el montaje
+no las ponga en cámara lenta.

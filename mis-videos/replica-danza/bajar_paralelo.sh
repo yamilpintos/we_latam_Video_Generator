@@ -6,7 +6,7 @@
 # cortado a 21 cuadros y ffprobe igual decía 5,17 s (15/9).
 set -uo pipefail
 cd "$(dirname "$0")"
-S="ssh -o StrictHostKeyChecking=no -o ConnectTimeout=20 -o LogLevel=ERROR -p ${PUERTO:-42710} root@${IP:-211.72.13.201}"
+S="ssh -o StrictHostKeyChecking=no -o ConnectTimeout=20 -o LogLevel=ERROR -p ${PUERTO:-42311} root@${IP:-211.72.13.201}"
 FFPROBE=/c/ffmpeg-2026-04-09-git-d3d0b7a5ee-essentials_build/bin/ffprobe
 mkdir -p clips clips/.parcial
 LISTA=$(timeout 60 $S "cd /workspace/ComfyUI/output/video && find . -maxdepth 1 -regextype egrep -regex './(T|VO)[0-9a-z]*_0+1_\.mp4' -mmin +1 -printf '%f\n'" | sort)

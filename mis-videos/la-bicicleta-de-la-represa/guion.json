@@ -1,0 +1,14 @@
+{
+  "guion": "Soy Tomás, buzo de mantenimiento en la represa de Salto Grande. Bajé a 42 metros a revisar una compuerta que no cerraba.\nA los 30 metros la linterna me mostró la reja de entrada: había una bicicleta enganchada, entera, con las dos ruedas.\nCuando la moví, detrás de la rueda de atrás apareció una placa con un número de patente que ya no existe desde 1998.\n¿Cómo llegó una bicicleta a 30 metros de profundidad, del lado de adentro de la reja?",
+  "formato": "short",
+  "estructura": "short-15",
+  "titulo": "LA BICICLETA DE LA REPRESA",
+  "estilo_imagen": "Photorealistic cinematic underwater footage, shot on a full-frame camera with a fast wide lens. Heavy particulate suspended in the water catching the light. Volumetric beams. Deep teal-black water, cold. High ISO grain.",
+  "estilo_video": "Photorealistic cinematic underwater footage.",
+  "cierre_video": "Keep the framing of the first frame. Grainy, cold, photographic. Not animated, not illustrated, not CGI-looking.",
+  "medio": "underwater film",
+  "voz": "pablo",
+  "negativos": true,
+  "notas": "",
+  "slug": "la-bicicleta-de-la-represa"
+}

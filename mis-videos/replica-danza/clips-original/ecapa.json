@@ -1,0 +1,272 @@
+{
+ "T22": {
+  "quien": "hannah",
+  "sim": {
+   "jack": -0.05,
+   "hannah": 0.5,
+   "luka": 0.09,
+   "wady": 0.05
+  }
+ },
+ "T23": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.14,
+   "hannah": -0.04,
+   "luka": -0.0,
+   "wady": 0.06
+  }
+ },
+ "T30": {
+  "quien": "luka",
+  "sim": {
+   "jack": 0.08,
+   "hannah": -0.01,
+   "luka": 0.46,
+   "wady": 0.1
+  }
+ },
+ "T32": {
+  "quien": "luka",
+  "sim": {
+   "jack": 0.07,
+   "hannah": -0.04,
+   "luka": 0.38,
+   "wady": 0.06
+  }
+ },
+ "T43": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.17,
+   "hannah": -0.02,
+   "luka": -0.04,
+   "wady": 0.01
+  }
+ },
+ "T44": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.15,
+   "hannah": -0.09,
+   "luka": 0.05,
+   "wady": 0.13
+  }
+ },
+ "T46": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.09,
+   "hannah": -0.05,
+   "luka": -0.03,
+   "wady": -0.03
+  }
+ },
+ "T47": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.2,
+   "hannah": -0.04,
+   "luka": 0.11,
+   "wady": 0.05
+  }
+ },
+ "T49": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.4,
+   "hannah": -0.05,
+   "luka": 0.23,
+   "wady": 0.09
+  }
+ },
+ "T52": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.08,
+   "hannah": 0.75,
+   "luka": -0.02,
+   "wady": 0.06
+  }
+ },
+ "T53": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.68,
+   "hannah": -0.0,
+   "luka": 0.21,
+   "wady": 0.09
+  }
+ },
+ "T54": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.11,
+   "hannah": 0.6,
+   "luka": 0.03,
+   "wady": 0.14
+  }
+ },
+ "T55": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.78,
+   "hannah": 0.02,
+   "luka": 0.18,
+   "wady": 0.05
+  }
+ },
+ "T61": {
+  "quien": "luka",
+  "sim": {
+   "jack": 0.14,
+   "hannah": -0.02,
+   "luka": 0.65,
+   "wady": 0.1
+  }
+ },
+ "T62": {
+  "quien": "wady",
+  "sim": {
+   "jack": 0.07,
+   "hannah": 0.07,
+   "luka": 0.03,
+   "wady": 0.62
+  }
+ },
+ "T64": {
+  "quien": "wady",
+  "sim": {
+   "jack": 0.1,
+   "hannah": 0.08,
+   "luka": 0.14,
+   "wady": 0.62
+  }
+ },
+ "T65": {
+  "quien": "luka",
+  "sim": {
+   "jack": 0.21,
+   "hannah": 0.01,
+   "luka": 0.72,
+   "wady": 0.13
+  }
+ },
+ "T68": {
+  "quien": "wady",
+  "sim": {
+   "jack": 0.13,
+   "hannah": -0.07,
+   "luka": 0.23,
+   "wady": 0.45
+  }
+ },
+ "T73": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.51,
+   "hannah": -0.05,
+   "luka": 0.28,
+   "wady": -0.06
+  }
+ },
+ "T74": {
+  "quien": "jack",
+  "sim": {
+   "jack": 0.24,
+   "hannah": 0.04,
+   "luka": 0.11,
+   "wady": 0.13
+  }
+ },
+ "T75": {
+  "quien": "hannah",
+  "sim": {
+   "jack": -0.1,
+   "hannah": 0.35,
+   "luka": 0.04,
+   "wady": 0.02
+  }
+ },
+ "T81": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.09,
+   "hannah": -0.01,
+   "luka": -0.03,
+   "wady": 0.07
+  }
+ },
+ "VO01": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.25,
+   "hannah": 0.65,
+   "luka": 0.06,
+   "wady": 0.08
+  }
+ },
+ "VO02": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.22,
+   "hannah": 0.7,
+   "luka": 0.03,
+   "wady": 0.03
+  }
+ },
+ "VO03": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.19,
+   "hannah": 0.72,
+   "luka": 0.03,
+   "wady": 0.04
+  }
+ },
+ "VO04": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.22,
+   "hannah": 0.68,
+   "luka": 0.01,
+   "wady": 0.07
+  }
+ },
+ "VO05": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.18,
+   "hannah": 0.71,
+   "luka": 0.01,
+   "wady": 0.05
+  }
+ },
+ "VO06": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.19,
+   "hannah": 0.62,
+   "luka": 0.02,
+   "wady": 0.04
+  }
+ },
+ "VO07": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.27,
+   "hannah": 0.68,
+   "luka": 0.04,
+   "wady": 0.08
+  }
+ },
+ "VO08": {
+  "quien": "hannah",
+  "sim": {
+   "jack": 0.21,
+   "hannah": 0.75,
+   "luka": 0.01,
+   "wady": 0.05
+  }
+ }
+}

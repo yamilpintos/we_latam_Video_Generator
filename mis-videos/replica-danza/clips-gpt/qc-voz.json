@@ -1,0 +1,683 @@
+[
+ {
+  "id": "T22",
+  "voz": "voz_hannah.wav",
+  "pedida": "Hey! What are you—",
+  "dicho": "Hey, what are you?",
+  "faltan": [],
+  "sobran": [],
+  "f0": 349,
+  "f0_ref": 280,
+  "F": [
+   358,
+   1492,
+   2476
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T23",
+  "voz": "voz_jack.wav",
+  "pedida": "Shh.",
+  "dicho": "Shh. Exactly as his fed heart of.",
+  "faltan": [],
+  "sobran": [
+   "exactly",
+   "as",
+   "his",
+   "fed",
+   "heart",
+   "of"
+  ],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "texto",
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T30",
+  "voz": "voz_luka.wav",
+  "pedida": "Nobody move!",
+  "dicho": "Nobody move!",
+  "faltan": [],
+  "sobran": [],
+  "f0": 328,
+  "f0_ref": 333,
+  "F": [
+   394,
+   988,
+   2388
+  ],
+  "F_ref": [
+   651,
+   1350,
+   2411
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T32",
+  "voz": "voz_luka.wav",
+  "pedida": "Where are you?",
+  "dicho": "Where are you?",
+  "faltan": [],
+  "sobran": [],
+  "f0": 330,
+  "f0_ref": 333,
+  "F": [
+   711,
+   1320,
+   2248
+  ],
+  "F_ref": [
+   651,
+   1350,
+   2411
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T43",
+  "voz": "voz_hannah.wav",
+  "pedida": "What...?",
+  "dicho": "What?",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 280,
+  "F": null,
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T44",
+  "voz": "voz_jack.wav",
+  "pedida": "Shh, shh...",
+  "dicho": "",
+  "faltan": [
+   "shh",
+   "shh"
+  ],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "texto",
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T46",
+  "voz": "voz_jack.wav",
+  "pedida": "Good.",
+  "dicho": "Good.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T47",
+  "voz": "voz_jack.wav",
+  "pedida": "Now moan for me.",
+  "dicho": "Now moan for me.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T49",
+  "voz": "voz_jack.wav",
+  "pedida": "Or... I cut that pretty throat.",
+  "dicho": "Or I cut that pretty throat.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 117,
+  "f0_ref": 107,
+  "F": [
+   711,
+   1418,
+   1630
+  ],
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "timbre"
+  ]
+ },
+ {
+  "id": "T52",
+  "voz": "voz_hannah.wav",
+  "pedida": "But I can't... I don't know how...",
+  "dicho": "But I can't. I don't know how.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 295,
+  "f0_ref": 280,
+  "F": [
+   571,
+   1436,
+   2834
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": [
+   "timbre"
+  ]
+ },
+ {
+  "id": "T53",
+  "voz": "voz_jack.wav",
+  "pedida": "How old are you?",
+  "dicho": "How old are you? And do what others feel at you.",
+  "faltan": [],
+  "sobran": [
+   "and",
+   "do",
+   "what",
+   "others",
+   "feel",
+   "at"
+  ],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "texto",
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T54",
+  "voz": "voz_hannah.wav",
+  "pedida": "Twenty-two.",
+  "dicho": "22.",
+  "faltan": [
+   "twenty",
+   "two"
+  ],
+  "sobran": [],
+  "f0": 281,
+  "f0_ref": 280,
+  "F": [
+   295,
+   1275,
+   2650
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": [
+   "texto"
+  ]
+ },
+ {
+  "id": "T55",
+  "voz": "voz_jack.wav",
+  "pedida": "Then don't play innocent.",
+  "dicho": "then don't play innocent. Afterward was thereof.",
+  "faltan": [],
+  "sobran": [
+   "afterward",
+   "was",
+   "thereof"
+  ],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "texto",
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T61",
+  "voz": "voz_luka.wav",
+  "pedida": "No! He's not getting away again!",
+  "dicho": "No! He's not getting away again!",
+  "faltan": [],
+  "sobran": [],
+  "f0": 295,
+  "f0_ref": 333,
+  "F": [
+   583,
+   1376,
+   2322
+  ],
+  "F_ref": [
+   651,
+   1350,
+   2411
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T62",
+  "voz": "voz_wady.wav",
+  "pedida": "Boss, he's the Viper. The deadliest killer on the planet.",
+  "dicho": "Boss, he's the Viper, the deadliest killer on the planet.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 174,
+  "f0_ref": 211,
+  "F": [
+   522,
+   1101,
+   1616
+  ],
+  "F_ref": [
+   365,
+   1650,
+   2506
+  ],
+  "alertas": [
+   "timbre"
+  ]
+ },
+ {
+  "id": "T64",
+  "voz": "voz_wady.wav",
+  "pedida": "He took out fourteen of our best men and we couldn't do a thing.",
+  "dicho": "He took out 14 of our best men and we couldn't do a thing.",
+  "faltan": [
+   "fourteen"
+  ],
+  "sobran": [],
+  "f0": 189,
+  "f0_ref": 211,
+  "F": [
+   409,
+   1468,
+   2458
+  ],
+  "F_ref": [
+   365,
+   1650,
+   2506
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T65",
+  "voz": "voz_luka.wav",
+  "pedida": "If you can't do it, fifty million to whoever brings me the Viper's head!",
+  "dicho": "If you can't do it, 50 million to whoever brings me the viper's head!",
+  "faltan": [
+   "fifty"
+  ],
+  "sobran": [],
+  "f0": 294,
+  "f0_ref": 333,
+  "F": [
+   350,
+   1363,
+   2279
+  ],
+  "F_ref": [
+   651,
+   1350,
+   2411
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T68",
+  "voz": "voz_wady.wav",
+  "pedida": "Okay. Move! Out of the way! Go!",
+  "dicho": "Okay, move out of the way, go!",
+  "faltan": [],
+  "sobran": [],
+  "f0": 208,
+  "f0_ref": 211,
+  "F": [
+   406,
+   931,
+   2358
+  ],
+  "F_ref": [
+   365,
+   1650,
+   2506
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T73",
+  "voz": "voz_jack.wav",
+  "pedida": "I said... moan...",
+  "dicho": "I said, moan.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T74",
+  "voz": "voz_jack.wav",
+  "pedida": "...or I'll make you.",
+  "dicho": "Or I'll make you.",
+  "faltan": [],
+  "sobran": [],
+  "f0": null,
+  "f0_ref": 107,
+  "F": null,
+  "F_ref": [
+   1502,
+   2538,
+   2834
+  ],
+  "alertas": [
+   "f0",
+   "timbre"
+  ]
+ },
+ {
+  "id": "T75",
+  "voz": "voz_hannah.wav",
+  "pedida": "Okay, okay.",
+  "dicho": "Okay, okay.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 286,
+  "f0_ref": 280,
+  "F": [
+   340,
+   1616,
+   2360
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "T81",
+  "voz": "voz_hannah.wav",
+  "pedida": "Ah!",
+  "dicho": "Exactly as Zachly is not dressed to.",
+  "faltan": [
+   "ah"
+  ],
+  "sobran": [
+   "exactly",
+   "as",
+   "zachly",
+   "is",
+   "not",
+   "dressed",
+   "to"
+  ],
+  "f0": 281,
+  "f0_ref": 280,
+  "F": [
+   354,
+   1892,
+   2669
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": [
+   "texto"
+  ]
+ },
+ {
+  "id": "VO01",
+  "voz": "voz_hannah.wav",
+  "pedida": "Before my mother died, she arranged my marriage to Elliott Hargrove.",
+  "dicho": "Before my mother died, she arranged my marriage to Elliot Hargrove.",
+  "faltan": [
+   "elliott"
+  ],
+  "sobran": [
+   "elliot"
+  ],
+  "f0": 257,
+  "f0_ref": 280,
+  "F": [
+   483,
+   1322,
+   2294
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO02",
+  "voz": "voz_hannah.wav",
+  "pedida": "To secure my future as a dancer with the Hargrove Ballet Company.",
+  "dicho": "to secure my future as a dancer with the Hargrove Ballet Company.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 258,
+  "f0_ref": 280,
+  "F": [
+   407,
+   1329,
+   2334
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO03",
+  "voz": "voz_hannah.wav",
+  "pedida": "Against her wishes, my father and stepmother",
+  "dicho": "Against her wishes, my father and stepmother.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 269,
+  "f0_ref": 280,
+  "F": [
+   464,
+   1348,
+   2256
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO04",
+  "voz": "voz_hannah.wav",
+  "pedida": "shipped me off to a farm in Indiana.",
+  "dicho": "shipped me off to a farm in Indiana.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 248,
+  "f0_ref": 280,
+  "F": [
+   329,
+   1375,
+   2300
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO05",
+  "voz": "voz_hannah.wav",
+  "pedida": "But I never stopped training, waiting to marry Elliott",
+  "dicho": "But I never stopped training, waiting to marry Elliot.",
+  "faltan": [
+   "elliott"
+  ],
+  "sobran": [
+   "elliot"
+  ],
+  "f0": 265,
+  "f0_ref": 280,
+  "F": [
+   388,
+   1146,
+   2299
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO06",
+  "voz": "voz_hannah.wav",
+  "pedida": "and finally live the dream they stole from me.",
+  "dicho": "and finally live the dream they stole from me.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 257,
+  "f0_ref": 280,
+  "F": [
+   404,
+   1444,
+   2605
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO07",
+  "voz": "voz_hannah.wav",
+  "pedida": "Dad wants me in New York to break off my engagement.",
+  "dicho": "Dad wants me in New York to break off my engagement.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 242,
+  "f0_ref": 280,
+  "F": [
+   318,
+   1103,
+   2577
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ },
+ {
+  "id": "VO08",
+  "voz": "voz_hannah.wav",
+  "pedida": "But I won't let him ruin my dreams again.",
+  "dicho": "But I won't let him ruin my dreams again.",
+  "faltan": [],
+  "sobran": [],
+  "f0": 259,
+  "f0_ref": 280,
+  "F": [
+   329,
+   1205,
+   2334
+  ],
+  "F_ref": [
+   300,
+   1026,
+   2512
+  ],
+  "alertas": []
+ }
+]

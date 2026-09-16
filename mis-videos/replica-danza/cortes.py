@@ -21,6 +21,11 @@ from pathlib import Path
 
 FF = "C:/ffmpeg-2026-04-09-git-d3d0b7a5ee-essentials_build/bin/ffmpeg.exe"
 UMBRAL = 0.30
+DERIVA_EN = None
+UMBRAL_DERIVA = -1.0
+# Deriva sin salto, vista a ojo (16/9 v4): segundo del tramo en que la toma dejó
+# de ser la del cuadro 0. El montaje la trata como corte (cámara lenta / cuadro fijo).
+DERIVA_MANUAL = {"T48": 0.6}
 
 
 def cortes(mp4, hasta):
@@ -37,11 +42,22 @@ def parecido(mp4, desde, hasta):
     r = subprocess.run([FF, "-v", "error", "-i", str(mp4), "-vf", "scale=36:64,format=gray",
                         "-f", "rawvideo", "-"], capture_output=True)
     a = np.frombuffer(r.stdout, np.uint8).reshape(-1, 64, 36).astype(float)
-    a = a[int(desde * 24): int(hasta * 24) + 1]
+    # Referencia: el CUADRO 0 del clip (el que se le dio a H3), no el arranque del
+    # tramo. 16/9: T54 y T58 se habían ido a otra composición ANTES de la ventana
+    # y el control no lo veía porque comparaba contra el primer cuadro del tramo.
     f0 = a[0] - a[0].mean()
-    return round(min(float(((x - x.mean()) * f0).sum()
-                           / np.sqrt(((x - x.mean()) ** 2).sum() * (f0 ** 2).sum()))
-                     for x in a), 2)
+    i0 = int(desde * 24)
+    a = a[i0: int(hasta * 24) + 1]
+    sims = [float(((x - x.mean()) * f0).sum() / np.sqrt(((x - x.mean()) ** 2).sum() * (f0 ** 2).sum()))
+            for x in a]
+    # Deriva sin corte duro (16/9, T48: la toma se fue a otro encuadre en un
+    # segundo, sin salto que el detector de escena viera): el primer cuadro del
+    # tramo por debajo de 0,3 se anota como corte, para que el montaje lo tape.
+    global DERIVA_EN
+    # Umbral automático desactivado (-1): con 0,3 marcaba también puertas que se
+    # abren y matones que cruzan. La deriva blanda se anota a mano en DERIVA_MANUAL.
+    DERIVA_EN = next((round((i0 + i) / 24, 2) for i, v in enumerate(sims) if v < UMBRAL_DERIVA), None)
+    return round(min(sims), 2)
 
 
 def main():
@@ -60,6 +76,10 @@ def main():
         hasta += 0.3
         c = [t for t in cortes(mp4, hasta) if t >= desde]
         s = parecido(mp4, desde, hasta)
+        if DERIVA_EN is not None and DERIVA_EN > desde + 0.15 and not any(abs(DERIVA_EN - t) < 0.3 for t in c):
+            c = sorted(c + [DERIVA_EN])
+        if k in DERIVA_MANUAL and not any(abs(DERIVA_MANUAL[k] - t) < 0.3 for t in c):
+            c = sorted(c + [DERIVA_MANUAL[k]])
         # Con el tramo acotado, los que se mueven mucho (una corrida, una puerta)
         # bajan hasta ~0,3 sin cortar: el umbral va más abajo que en el clip entero.
         mal = bool(c) or s < 0.1

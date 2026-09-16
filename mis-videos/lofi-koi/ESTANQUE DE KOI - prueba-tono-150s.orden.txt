@@ -1,0 +1,3 @@
+file 'C:/Users/Yamil/Desktop/youtube proyect/mis-videos/lofi-koi/ESTANQUE DE KOI - loop.mp4'
+file '../lofi-lluvia/LLUVIA EN LA VENTANA - loop.mp4'
+file 'C:/Users/Yamil/Desktop/youtube proyect/mis-videos/lofi-koi/ESTANQUE DE KOI - loop.mp4'

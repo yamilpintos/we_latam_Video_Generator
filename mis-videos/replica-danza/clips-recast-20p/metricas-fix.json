@@ -1,0 +1,272 @@
+[
+ {
+  "id": "T09",
+  "segundos": 5.167,
+  "minutos": 10.51,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "fl2va",
+  "shift_video": 12.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T26",
+  "segundos": 5.167,
+  "minutos": 8.84,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "fl2va",
+  "shift_video": 12.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T33",
+  "segundos": 5.167,
+  "minutos": 9.59,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T34",
+  "segundos": 5.167,
+  "minutos": 9.67,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T34b",
+  "segundos": 5.167,
+  "minutos": 8.0,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T34c",
+  "segundos": 5.167,
+  "minutos": 9.67,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T34d",
+  "segundos": 5.167,
+  "minutos": 9.59,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T61",
+  "segundos": 5.167,
+  "minutos": 9.26,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T63",
+  "segundos": 5.167,
+  "minutos": 8.92,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 3,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T65",
+  "segundos": 5.167,
+  "minutos": 9.09,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T72",
+  "segundos": 5.167,
+  "minutos": 8.92,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "fl2va",
+  "shift_video": 12.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T73",
+  "segundos": 5.167,
+  "minutos": 8.42,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T73b",
+  "segundos": 5.167,
+  "minutos": 8.93,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T79",
+  "segundos": 5.167,
+  "minutos": 8.34,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "fl2va",
+  "shift_video": 12.0,
+  "scheduler": "simple",
+  "guia0": false,
+  "refs": 1,
+  "voz": false,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ },
+ {
+  "id": "T81",
+  "segundos": 5.167,
+  "minutos": 9.09,
+  "pasos": 20,
+  "turbo": false,
+  "modo": "ref2va",
+  "shift_video": 12.0,
+  "scheduler": "beta",
+  "guia0": false,
+  "refs": 2,
+  "voz": true,
+  "wh": [
+   768,
+   1344
+  ],
+  "intentos": 1
+ }
+]

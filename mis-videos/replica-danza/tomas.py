@@ -100,8 +100,15 @@ TOMAS = [
     ("74", 115.78, 116.91, "PM", "cabina_ventana", ["jack_camisa", "hannah"], "E74", "los dos de perfil, la agarra del hombro: «o te haré gemir»"),
     ("75", 116.91, 118.78, "PP", "cabina_ventana", ["hannah", "jack_camisa"], "E75", "encuadre B, asiente: «Okay, okay»"),
     ("76", 118.78, 120.61, "PM", "cabina_ventana", ["jack_camisa", "hannah"], "E74", "los dos de perfil, él mira la puerta"),
-    ("77", 120.61, 121.91, "PA", "cabina_ventana", ["hannah", "jack_camisa"], "E77", "ella sentada a horcajadas sobre él, de espaldas"),
-    ("78", 121.91, 122.95, "PD", "cabina_ventana", ["jack_camisa", "hannah"], "E78", "mano enguantada en la cadera, sobre el short"),
+    # 15/9 (recast): el cuadro de E77 (a horcajadas) lo rechazan GPT y Gemini y no
+    # se pudo rehacer con el reparto nuevo; la toma continúa el encuadre E74 (los
+    # dos de perfil) para no meter a la actriz original en el medio. En la
+    # versión «réplica exacta» era "E77".
+    ("77", 120.61, 121.91, "PM", "cabina_ventana", ["jack_camisa", "hannah"], "E74", "ella sentada a horcajadas sobre él, de espaldas (recast: sigue E74)"),
+    # 16/9: el inserto de la mano en la cadera daba una lectura sexual junto con el
+    # «Ah!» final (el usuario no podía mandar el video así). Se reemplaza por el
+    # plano de reacción de ella (E75). En la «réplica exacta» era "E78".
+    ("78", 121.91, 122.95, "PP", "cabina_ventana", ["hannah", "jack_camisa"], "E75", "mano enguantada en la cadera (recast: reacción de ella, E75)"),
     ("79", 122.95, 123.74, "PA", "cabina_puerta", ["wady"], "E79", "Wady patea la puerta y atraviesa la cortina"),
     ("80", 123.74, 125.11, "PG", "cabina_puerta", ["wady", "matones"], "E80", "POV de la puerta: los armados apuntando"),
     ("81", 125.11, 126.92, "PP", "cabina_ventana", ["hannah", "jack_camisa"], "E81", "Hannah de perfil con la boca abierta: corte"),

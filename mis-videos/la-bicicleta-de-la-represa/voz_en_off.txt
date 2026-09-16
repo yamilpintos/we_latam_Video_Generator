@@ -1,0 +1,10 @@
+LA BICICLETA DE LA REPRESA — voz en off para ElevenLabs
+==============================================
+
+No la genera H3: va grabada aparte y montada encima. Así queda
+idéntica en todas las líneas, que es lo que H3 no sabe resolver.
+
+     0.2 s  (S01)   Soy Tomás, buzo en Salto Grande.
+     3.3 s  (S02)   Ese día bajé a 42 metros.
+     7.0 s  (S03)   A 30 metros vi la reja y la bici.
+    10.2 s  (S04)   La moví y atrás había una patente del noventa y ocho.
