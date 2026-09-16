@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import maquina, tareas
+from . import cola, libre, maquina, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -568,7 +568,12 @@ def estado_maquina():
             if prog["listo"]:
                 maquina.escribir(fase="lista", lista_desde=time.time())
                 out["fase"] = "lista"
-        if m.get("proyecto") and m.get("fase") == "lista":
+        if m.get("proyecto") == "_libre" and m.get("fase") == "lista":
+            ts = libre.refrescar()
+            gen = [t for t in ts if t["estado"] == "generando"]
+            out["generando"] = {"slug": "_libre", "titulo": "Libre (chat)", "hechos": 0 if gen else 1, "total": 1,
+                                "libre": True}
+        elif m.get("proyecto") and m.get("fase") == "lista":
             try:
                 p = Proyecto.cargar(MIS / m["proyecto"] / "proyecto.json")
                 planos = p.construir()[1]["planos"]
@@ -621,28 +626,136 @@ class Apagado(BaseModel):
 def apagar(a: Apagado):
     if not a.confirmar:
         raise HTTPException(400, "hace falta confirmar: true")
-    m = maquina.leer()
-    iid = m.get("instancia")
-    for t in tareas.corriendo("_maquina"):
+    for t in tareas.corriendo("_maquina") + tareas.corriendo("_cola"):
         tareas.matar(t.id)
-    if iid:
+    try:
+        return maquina.apagar(log=lambda *_: None)
+    except Exception as ex:
+        raise HTTPException(502, f"no pude destruir: {ex}")
+
+
+# ─────────────────────────────────────────────────────────────── LA COLA
+
+@app.get("/api/cola")
+def ver_cola():
+    d = cola.leer()
+    d["corriendo"] = bool(tareas.corriendo("_cola"))
+    d["tarea"] = next((t.a_dict(lineas=6) for t in tareas.corriendo("_cola")), None)
+    titulos = {}
+    for i in d["items"]:
         try:
-            vast.destruir(int(iid), confirmar=True)
-        except Exception as ex:
-            if "no existe" not in str(ex):
-                raise HTTPException(502, f"no pude destruir: {ex}")
-    g = maquina.gasto(m)
-    d = maquina.escribir(fase="apagada", fin=time.time(), gasto_final=g["acumulado"], proyecto=None)
-    for f in MIS.glob("*/corrida.json"):
+            titulos[i["slug"]] = json.loads((MIS / i["slug"] / "proyecto.json").read_text(encoding="utf-8")).get("titulo")
+        except Exception:
+            titulos[i["slug"]] = i["slug"]
+        i["titulo"] = titulos[i["slug"]]
+        i["zip"] = any((MIS / i["slug"]).glob("*-para-vast.zip"))
+    return d
+
+
+class ItemCola(BaseModel):
+    slug: str
+
+
+@app.post("/api/cola/agregar")
+def cola_agregar(i: ItemCola):
+    _carpeta(i.slug)
+    if not any((MIS / i.slug).glob("*-para-vast.zip")):
+        raise HTTPException(409, "el proyecto no está empaquetado: dibujos → empaquetar primero")
+    return cola.agregar(i.slug)
+
+
+@app.post("/api/cola/quitar")
+def cola_quitar(i: ItemCola):
+    return cola.quitar(i.slug)
+
+
+class Correr(BaseModel):
+    confirmar: bool = False
+    apagar_al_final: bool = True
+
+
+@app.post("/api/cola/correr")
+def cola_correr(c: Correr):
+    if not c.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true (puede alquilar y cobra)")
+    if tareas.corriendo("_cola") or tareas.corriendo("_maquina"):
+        raise HTTPException(409, "la cola o la máquina ya tienen una tarea corriendo")
+    if not cola.pendientes():
+        raise HTTPException(409, "la cola está vacía")
+    d = cola.leer()
+    d["apagar_al_final"] = c.apagar_al_final
+    cola.escribir(d)
+    return {"tarea": tareas.lanzar("correr la cola", ["-m", "h3pipeline.app.correr_cola"], "_cola").a_dict()}
+
+
+# ─────────────────────────────────────────────────────────────── EL MODO LIBRE (chat)
+
+class ImagenLibre(BaseModel):
+    prompt: str = ""
+    aspecto: str = "16:9"
+    estilo: str = ""
+    imagen_b64: str | None = None
+
+
+@app.get("/api/libre")
+def libre_turnos():
+    return {"turnos": libre.refrescar(), "maquina": maquina.leer().get("fase"), "ocupada": libre.ocupada()}
+
+
+@app.post("/api/libre/imagen")
+def libre_imagen(i: ImagenLibre):
+    if not i.imagen_b64 and len(i.prompt.strip()) < 8:
+        raise HTTPException(422, "escribí qué querés ver, o subí una imagen")
+    try:
+        return libre.imagen(i.prompt, i.aspecto, i.imagen_b64, i.estilo)
+    except Exception as e:
+        raise HTTPException(502, f"no pude crear la imagen: {e}")
+
+
+class VideoLibre(BaseModel):
+    id: str
+    prompt_video: str
+    segundos: float = 5.167
+    seed: int | None = None
+
+
+@app.post("/api/libre/video")
+def libre_video(v: VideoLibre):
+    if len(v.prompt_video.strip()) < 8:
+        raise HTTPException(422, "describí qué se mueve")
+    m = maquina.leer()
+    if m.get("fase") != "lista":
+        raise HTTPException(409, f"la máquina no está lista (fase {m.get('fase')}). Encendela desde el inicio.")
+    if libre.ocupada():
+        raise HTTPException(409, "hay un turno generando; esperá a que termine")
+    if m.get("proyecto") and m.get("proyecto") != "_libre":
         try:
-            c = json.loads(f.read_text(encoding="utf-8"))
-            if iid and int(c.get("instancia", 0)) == int(iid) and not c.get("fin"):
-                c["fin"] = time.time()
-                c["gasto_final"] = round(c.get("dph", 0) * (c["fin"] - c["inicio"]) / 3600, 2)
-                f.write_text(json.dumps(c), encoding="utf-8")
+            p0 = Proyecto.cargar(MIS / m["proyecto"] / "proyecto.json")
+            inst = vast.instancia(int(m["instancia"]))
+            planos0 = p0.construir()[1]["planos"]
+            prog = vast.progreso(inst, planos0, p0.slug)
+            if len(prog["hechos"]) < len([x for x in planos0 if not x.get("clip_de")]):
+                raise HTTPException(409, f"la máquina está generando {m['proyecto']}")
+        except HTTPException:
+            raise
         except Exception:
             pass
-    return {"apagada": iid, "gasto_final": d.get("gasto_final"), "minutos": g["minutos"]}
+    try:
+        return libre.video(v.id, v.prompt_video, v.segundos, v.seed, log=lambda *_: None)
+    except KeyError:
+        raise HTTPException(404, "no existe ese turno")
+    except Exception as e:
+        raise HTTPException(502, f"no pude lanzar el video: {e}")
+
+
+@app.get("/api/libre/archivo/{carpeta}/{nombre}")
+def libre_archivo(carpeta: str, nombre: str):
+    if carpeta not in ("assets", "clips"):
+        raise HTTPException(404)
+    f = libre.DIR / carpeta / Path(nombre).name
+    if not f.exists():
+        raise HTTPException(404)
+    return FileResponse(str(f))
 
 
 class GenerarEn(BaseModel):

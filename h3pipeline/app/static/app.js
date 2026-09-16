@@ -125,12 +125,52 @@ ruta("/", async () => {
         <p>Recap con voz continua. Primero el audio, medido contra la voz elegida; después los planos que lo sirven.</p><span class="n">${n(esRecap)} proyectos</span></div>
       <div class="puerta" onclick="location.hash='#/musica'"><span class="k">16:9 · LOOP</span><h2>Music video</h2>
         <p>Decís qué música y qué escena. La app compone la pista, hace el loop y el video dura lo que dure la música.</p><span class="n">${n(esLoop)} loops</span></div>
+      <div class="puerta" onclick="location.hash='#/libre'"><span class="k">CHAT · SIN ESTRUCTURA</span><h2>Libre</h2>
+        <p>Escribís un prompt, ves la imagen, describís el movimiento y sale un clip de MiniMax. Para probar ideas antes de un guion.</p><span class="n">como un playground</span></div>
     </div>
     <div class="card" id="maq" style="margin-top:34px"><h3>La máquina</h3><div class="muted">consultando…</div></div>
+    <div class="card" id="cola" style="margin-top:14px"><h3>La cola</h3><div class="muted">consultando…</div></div>
     <div class="stats"><div><b>${ps.length}</b>proyectos</div><div><b>${masters}</b>másters</div><div><b>5,17 s</b>por clip, sin excepción</div><div><b>4× 5090</b>verificada o se espera</div></div>
   </section>`;
-  pintarMaquina();
+  pintarMaquina(); pintarCola();
 });
+
+/* ─────────────────────────────────────────────── la cola (portada) */
+let colaTimer = null;
+const ESTADOS_COLA = {pendiente: "", generando: "warn", bajando: "warn", bajado: "ok", error: "bad"};
+async function pintarCola() {
+  const box = $("#cola"); if (!box) return;
+  let c; try { c = await api("/cola"); } catch (e) { box.innerHTML = `<h3>La cola</h3><div class="pre">${h(e.message)}</div>`; return; }
+  const pend = c.items.filter(i => i.estado === "pendiente" || i.estado === "error").length;
+  box.innerHTML = `<h3>La cola <span class="pill ${c.corriendo ? "warn" : pend ? "ac" : ""}">${c.corriendo ? '<i class="dot live"></i> corriendo' : pend ? pend + " por generar" : "vacía"}</span></h3>
+    <p class="muted">Varios videos con una sola máquina: enciende si hace falta, genera uno tras otro, baja cada uno y apaga al final. Se agregan desde <a href="#/proyectos">Proyectos</a> (los que ya están empaquetados).</p>
+    ${c.items.length ? `<table><tr><th>proyecto</th><th>estado</th><th></th></tr>${c.items.map(i => `<tr><td><a href="#/p/${i.slug}">${h(i.titulo || i.slug)}</a>${i.zip ? "" : ' <span class="pill bad">sin ZIP</span>'}</td>
+      <td><span class="pill ${ESTADOS_COLA[i.estado] || ""}">${i.estado}</span> <span class="tiny">${h(i.nota || "")}</span></td>
+      <td>${i.estado !== "generando" && !c.corriendo ? `<button class="btn s" onclick="quitarDeCola('${i.slug}')">quitar</button>` : ""}</td></tr>`).join("")}</table>` : ""}
+    ${c.tarea ? `<pre class="pre" style="margin-top:10px;max-height:120px">${h(c.tarea.log)}</pre>` : ""}
+    <div class="row" style="margin-top:12px">
+      ${!c.corriendo ? `<button class="btn p" ${pend ? "" : "disabled"} onclick="correrCola()">Correr la cola</button>
+        <label class="tiny"><input type="checkbox" id="apagar-fin" ${c.apagar_al_final !== false ? "checked" : ""}> apagar la máquina al terminar</label>` : `<span class="tiny">La cola avanza sola; podés cerrar la página.</span>`}
+    </div>`;
+  clearTimeout(colaTimer);
+  if (c.corriendo) colaTimer = setTimeout(() => { if ($("#cola")) pintarCola(); }, 20000);
+}
+async function agregarACola(slug) {
+  try { await api("/cola/agregar", {method: "POST", body: {slug}}); toast("agregado a la cola"); navegar(); } catch (e) { toast(e.message, true); }
+}
+async function quitarDeCola(slug) { try { await api("/cola/quitar", {method: "POST", body: {slug}}); pintarCola(); } catch (e) { toast(e.message, true); } }
+async function correrCola() {
+  const apagar = $("#apagar-fin")?.checked !== false;
+  let m = null; try { m = await api("/maquina"); } catch {}
+  const hayMaq = m && m.fase === "lista";
+  confirmar("Correr la cola",
+    `${hayMaq ? "La máquina ya está lista: se usa ésa." : "No hay máquina lista: <b>se alquila una 4×5090</b> (o se espera a que aparezca una apta) y se instala H3 una sola vez."}<br>
+     Después genera cada proyecto de la cola, lo baja, y ${apagar ? "<b>apaga la máquina al terminar</b>" : "deja la máquina encendida (acordate de apagarla)"}.<br><br>Esto cobra desde que la máquina arranca hasta que se apaga.`,
+    "Correr", async () => {
+      try { const d = await api("/cola/correr", {method: "POST", body: {confirmar: true, apagar_al_final: apagar}}); seguirTarea(d.tarea, () => { pintarCola(); pintarMaquina(); }); toast("cola en marcha"); setTimeout(() => { pintarCola(); pintarMaquina(); }, 1500); }
+      catch (e) { toast(e.message, true); }
+    });
+}
 
 /* ─────────────────────────────────────────────── la máquina (portada) */
 let maqTimer = null;
@@ -208,8 +248,23 @@ function tarjetaProyecto(p) {
     <h3>${h(p.titulo)} <span class="pill ${cl}">${et}</span></h3>
     <div class="muted">${p.formato === "largo" ? "16:9" : "9:16"} · ${h(p.estructura)} · ${e.planos} planos · ${mins(e.segundos)}</div>
     <div class="tiny" style="margin-top:8px">dibujos ${e.assets.hechos}/${e.assets.esperados} · clips ${e.clips.hechos}/${e.clips.esperados}${e.corrida ? ` · GPU ${usd(e.corrida.gasto_final ?? e.corrida.acumulado)}` : ""}</div>
+    ${e.zip && e.clips.hechos < e.clips.esperados ? `<div style="margin-top:8px"><button class="btn s" onclick="event.stopPropagation();agregarACola('${p.slug}')">＋ a la cola</button></div>` : ""}
   </div>`;
 }
+
+/* ─────────────────────────────────────────────── escenas prearmadas para loops */
+const ESCENAS = [
+  {n: "La ventana de lluvia", e: 1, t: "Un cuarto de estudio de noche junto a una ventana grande bajo la lluvia. Escritorio de madera con lámpara de bronce de pantalla verde, taza humeante, cuaderno abierto, auriculares; tocadiscos girando en una repisa; alféizar con manta bordó y plantas; un gato gris dormido en la manta. Afuera, luces borrosas de la ciudad. Sin gente. Se mueve despacio: gotas en el vidrio, vapor, el gato respira, el disco gira."},
+  {n: "Estanque de koi", e: 1, t: "Un jardín japonés de noche bajo lluvia fina: estanque negro con koi naranjas y blancos, farol de piedra con vela, dos farolitos rojos de papel colgados de un arce, musgo en las piedras, nenúfares, un caño de bambú que gotea. Sin gente. Se mueve despacio: los koi, los anillos de lluvia, la llama, las gotas en las hojas."},
+  {n: "Invernadero en órbita", e: 1, t: "Un pequeño módulo invernadero en órbita: bandejas hidropónicas con tomate, frutilla y hierbas bajo luz cálida y suave (no magenta), y por un gran ojo de buey la Tierra girando despacio. Un ventilador en la rejilla, una regadera sujeta con velcro, hierbas secas colgadas. Sin gente. Se mueve despacio: la Tierra, una gota que flota, las hojas."},
+  {n: "Cabaña con chimenea", e: 0, t: "El interior de una cabaña de madera en una noche de nieve: chimenea encendida, pava humeando sobre la estufa, un perro dormido en la alfombra, una ventana con nieve cayendo afuera, mantas, libros, una vela. Sin gente. Se mueve despacio: el fuego, la nieve, el vapor, el perro respira."},
+  {n: "Vagón nocturno", e: 0, t: "El interior de un vagón de tren vacío de noche bajo la lluvia: asientos de cuero cálidos, luces amarillas, un paraguas mojado apoyado, gotas horizontales en la ventana, luces de pueblos pasando afuera. Sin gente. Se mueve despacio: las luces que pasan, el vaivén, las gotas."},
+  {n: "Acuario de medusas", e: 0, t: "Un living a oscuras iluminado sólo por una pared de acuario: medusas azules bioluminiscentes flotando, burbujas, la silueta de un sofá y una planta, la luz azul ondulando en el techo. Sin gente. Se mueve despacio: las medusas pulsan, las burbujas suben, la luz ondula."},
+  {n: "Faro en la tormenta", e: 0, t: "La sala de la lámpara de un faro de piedra en una noche de tormenta: la lámpara girando, lluvia en los cristales, un mar negro con espuma allá abajo, una taza de café, un cuaderno de bitácora, un impermeable colgado. Sin gente. Se mueve despacio: el haz que gira, la lluvia, las olas lejanas."},
+  {n: "Biblioteca antigua", e: 0, t: "Una biblioteca antigua de noche: estantes hasta el techo, una lámpara de lectura verde, un libro abierto, polvo en el haz de luz, una escalera de madera, lluvia contra un ventanal alto con vitrales. Sin gente. Se mueve despacio: el polvo, la llama de una vela, la lluvia."},
+  {n: "Cafetería bajo la lluvia", e: 4, t: "Una cafetería pequeña de noche vista desde adentro: la vidriera empañada con gotas, luces de neón borrosas afuera, una taza humeante en la barra, una planta, una máquina de café con vapor, mesas vacías. Sin gente. Se mueve despacio: las gotas, el vapor, el neón que parpadea."},
+  {n: "Playa de noche", e: 0, t: "Una playa desierta de noche con luna llena: olas suaves que llegan y se van, una fogata chica con brasas, una manta, una lámpara de camping, estrellas. Sin gente. Se mueve despacio: las olas, las brasas, la llama, las nubes."},
+];
 
 /* ─────────────────────────────────────────────── nuevo: el guion */
 ruta("/nuevo", async ([formato]) => {
@@ -228,6 +283,7 @@ ruta("/nuevo", async ([formato]) => {
   $("#vista").innerHTML = `<div class="wrap"><h1>${titulo}</h1><p class="sub">${sub}</p>
     <div class="grid g2">
       <div class="card" style="grid-column:1/-1"><h3>${esLoop ? "La escena" : "El guion"}</h3>
+        ${esLoop ? `<select id="escena" style="margin-bottom:8px"><option value="">Escena propia (escribila abajo)</option>${ESCENAS.map((s, i) => `<option value="${i}">${h(s.n)}</option>`).join("")}</select>` : ""}
         <textarea id="guion" class="json" style="font-family:var(--font);font-size:15px;min-height:240px" placeholder="${ph}"></textarea>
         <div class="tiny" style="margin-top:6px"><span id="nchars">0</span> caracteres${esLoop ? "" : ` · con la voz elegida entran unos <span id="cabe">—</span> caracteres en <span id="durest">—</span> s`}</div></div>
       <div class="card"><h3>Título y formato</h3>
@@ -251,9 +307,62 @@ ruta("/nuevo", async ([formato]) => {
     const pe = op.estilos[Number($("#estilo").value)]; $("#estilo_prev").textContent = $("#estilo").value === "" ? "" : pe?.prompt || "";
   };
   ["guion", "estructura", "voz", "estilo"].forEach(id => $("#" + id)?.addEventListener("input", actualizar));
+  $("#escena")?.addEventListener("change", () => {
+    const s = ESCENAS[Number($("#escena").value)]; if (!s) return;
+    $("#guion").value = s.t; if (!$("#titulo").value) $("#titulo").value = s.n.toUpperCase(); $("#estilo").value = String(s.e); actualizar();
+  });
   $("#btn-trad").onclick = () => traducirGuion(esLoop, f);
   actualizar();
 });
+
+/* ─────────────────────────────────────────────── libre: el chat con H3 */
+let libreTimer = null;
+ruta("/libre", async () => {
+  const d = await api("/libre");
+  const lista = d.maquina === "lista";
+  $("#vista").innerHTML = `<div class="wrap"><h1>Libre <span class="pill ${lista ? "ok" : "warn"}">máquina ${h(d.maquina || "apagada")}</span></h1>
+    <p class="sub">Un prompt → una imagen → un clip de MiniMax H3. Sin estructura, sin proyecto: para probar una idea, un estilo o un movimiento. La imagen cuesta 4 centavos; el clip, ~4 minutos de GPU de la máquina encendida.</p>
+    <div class="card" style="margin-bottom:14px"><h3>Nuevo turno</h3>
+      <textarea id="lp" style="min-height:80px" placeholder="Qué querés ver (en castellano o inglés): «un faro de piedra en una tormenta de noche, visto desde el mar, olas enormes, la lámpara girando»"></textarea>
+      <div class="row" style="margin-top:8px"><select id="lasp" style="max-width:160px"><option value="16:9">16:9 horizontal</option><option value="9:16">9:16 vertical</option></select>
+        <input id="lest" placeholder="estilo (opcional, en inglés): photorealistic, 35mm film grain…" style="flex:1;min-width:220px">
+        <label class="btn s">subir imagen<input type="file" id="lfile" accept="image/*" hidden></label>
+        <button class="btn p" onclick="libreImagen()">Crear imagen</button></div>
+      <div id="lerr" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
+    <div id="turnos"></div></div>`;
+  $("#lfile").addEventListener("change", async (ev) => {
+    const f = ev.target.files[0]; if (!f) return;
+    const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+    libreImagen(b64);
+  });
+  pintarTurnos(d.turnos, d);
+});
+function pintarTurnos(ts, d) {
+  const lista = d.maquina === "lista";
+  $("#turnos").innerHTML = ts.map(t => `<div class="card" style="margin-bottom:12px"><div class="grid g2">
+    <div><div class="tiny" style="margin-bottom:6px">${new Date(t.creado * 1000).toLocaleString("es-AR")} · ${t.aspecto} · ${h(t.origen_imagen)}</div>
+      <img src="/api/libre/archivo/${t.imagen}" style="width:100%;border-radius:8px;cursor:zoom-in" onclick="lightbox('/api/libre/archivo/${t.imagen}')">
+      <div class="muted" style="margin-top:6px">${h(t.prompt_imagen || "(imagen subida)")}</div></div>
+    <div>${t.estado === "listo" ? `<video controls style="width:100%;border-radius:8px" src="/api/libre/archivo/${t.clip}"></video><div class="muted" style="margin-top:6px">${h(t.prompt_video)} · ${t.segundos} s</div>`
+      : t.estado === "generando" ? `<div class="pill warn"><i class="dot live"></i> generando en la máquina… (~4 min)</div><div class="muted" style="margin-top:6px">${h(t.prompt_video)}</div>`
+      : t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny">${h(t.nota)}</div>`
+      : `<textarea id="lv-${t.id}" style="min-height:70px" placeholder="Qué se mueve a partir de esta imagen (inglés recomendado): «locked-off camera; the beam of the lighthouse sweeps slowly; waves crash against the rocks; rain streaks the lens»"></textarea>
+         <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:170px"><option value="5.167">5,17 s (seguro)</option><option value="5.875">5,88 s</option><option value="6.583">6,58 s (riesgo)</option><option value="10.083">10,08 s (riesgo)</option></select>
+           <button class="btn p" ${lista && !d.ocupada ? "" : "disabled"} onclick="libreVideo('${t.id}')">Generar clip</button>
+           <span class="tiny">${!lista ? "encendé la máquina desde el inicio" : d.ocupada ? "hay un turno generando" : ""}</span></div>`}
+      ${t.nota && t.estado !== "error" ? `<div class="tiny">${h(t.nota)}</div>` : ""}</div></div></div>`).join("") || `<div class="muted">Todavía no hay turnos.</div>`;
+  clearTimeout(libreTimer);
+  if (ts.some(t => t.estado === "generando")) libreTimer = setTimeout(async () => { if (!$("#turnos")) return; const d2 = await api("/libre"); pintarTurnos(d2.turnos, d2); }, 12000);
+}
+async function libreImagen(b64 = null) {
+  $("#lerr").textContent = ""; toast(b64 ? "subiendo…" : "dibujando… (10-20 s)");
+  try { await api("/libre/imagen", {method: "POST", body: {prompt: $("#lp").value, aspecto: $("#lasp").value, estilo: $("#lest").value, imagen_b64: b64}}); navegar(); }
+  catch (e) { $("#lerr").textContent = e.message; }
+}
+async function libreVideo(id) {
+  try { await api("/libre/video", {method: "POST", body: {id, prompt_video: $(`#lv-${id}`).value, segundos: Number($(`#ls-${id}`).value)}}); toast("clip lanzado en la máquina"); navegar(); }
+  catch (e) { toast(e.message, true); }
+}
 async function traducirGuion(esLoop, formato) {
   const body = {guion: $("#guion").value, formato: esLoop ? "largo" : "short", estructura: $("#estructura").value,
     titulo: $("#titulo").value.trim(), estilo: $("#estilo").value === "" ? null : Number($("#estilo").value),

@@ -71,3 +71,7 @@ h3pipeline/app/logs/
 # estado y zip de la máquina compartida
 h3pipeline/app/maquina.json
 h3pipeline/app/h3-setup.zip
+
+# cola y modo libre
+h3pipeline/app/cola.json
+mis-videos/_libre/
