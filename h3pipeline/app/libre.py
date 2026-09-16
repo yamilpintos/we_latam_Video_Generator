@@ -60,7 +60,8 @@ def _guardar(t: dict) -> dict:
 
 # ───────────────────────────────────────────────────────────── la imagen
 
-def imagen(prompt: str, aspecto: str = "16:9", b64: str | None = None, estilo: str = "") -> dict:
+def imagen(prompt: str, aspecto: str = "16:9", b64: str | None = None, estilo: str = "",
+           motor: str = "nanobanana") -> dict:
     """Crea el turno con su primer fotograma: subido (`b64`) o generado con
     nano banana Flash a partir del prompt (+ estilo opcional)."""
     aspecto = aspecto if aspecto in RES else "16:9"
@@ -75,8 +76,18 @@ def imagen(prompt: str, aspecto: str = "16:9", b64: str | None = None, estilo: s
         origen = "subida"
     else:
         texto = " ".join(x for x in (estilo.strip(), prompt.strip(), prompts.FORMATO[aspecto], prompts.FRAME_LIMPIO) if x)
-        crudo.write_bytes(frames.generar(texto, [], config.leer_env("nanobanana"), aspecto, log=lambda *_: None))
-        origen = "nano banana"
+        if motor == "openai":
+            crudo.write_bytes(frames.generar_openai(texto, [], config.leer_env("OPENAI_API_KEY"), aspecto, log=lambda *_: None))
+            origen = "OpenAI"
+        else:
+            try:
+                crudo.write_bytes(frames.generar(texto, [], config.leer_env("nanobanana"), aspecto, log=lambda *_: None))
+                origen = "nano banana"
+            except frames.SinCredito:
+                # Sin créditos en Gemini: OpenAI como respaldo (pierde ~14 % del ancho
+                # al normalizar; el sujeto va centrado).
+                crudo.write_bytes(frames.generar_openai(texto, [], config.leer_env("OPENAI_API_KEY"), aspecto, log=lambda *_: None))
+                origen = "OpenAI (sin créditos en nano banana)"
     w, h = RES[aspecto]
     final = DIR / "assets" / f"{tid}.png"
     frames.normalizar(crudo, final, w, h)

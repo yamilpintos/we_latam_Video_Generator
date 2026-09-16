@@ -325,6 +325,7 @@ ruta("/libre", async () => {
     <div class="card" style="margin-bottom:14px"><h3>Nuevo turno</h3>
       <textarea id="lp" style="min-height:80px" placeholder="Qué querés ver (en castellano o inglés): «un faro de piedra en una tormenta de noche, visto desde el mar, olas enormes, la lámpara girando»"></textarea>
       <div class="row" style="margin-top:8px"><select id="lasp" style="max-width:160px"><option value="16:9">16:9 horizontal</option><option value="9:16">9:16 vertical</option></select>
+        <select id="lmotor" style="max-width:220px"><option value="nanobanana">nano banana (~$0,04)</option><option value="openai">OpenAI (~$0,25, recorta 14 %)</option></select>
         <input id="lest" placeholder="estilo (opcional, en inglés): photorealistic, 35mm film grain…" style="flex:1;min-width:220px">
         <label class="btn s">subir imagen<input type="file" id="lfile" accept="image/*" hidden></label>
         <button class="btn p" onclick="libreImagen()">Crear imagen</button></div>
@@ -356,7 +357,7 @@ function pintarTurnos(ts, d) {
 }
 async function libreImagen(b64 = null) {
   $("#lerr").textContent = ""; toast(b64 ? "subiendo…" : "dibujando… (10-20 s)");
-  try { await api("/libre/imagen", {method: "POST", body: {prompt: $("#lp").value, aspecto: $("#lasp").value, estilo: $("#lest").value, imagen_b64: b64}}); navegar(); }
+  try { await api("/libre/imagen", {method: "POST", body: {prompt: $("#lp").value, aspecto: $("#lasp").value, estilo: $("#lest").value, imagen_b64: b64, motor: $("#lmotor").value}}); navegar(); }
   catch (e) { $("#lerr").textContent = e.message; }
 }
 async function libreVideo(id) {
@@ -464,7 +465,8 @@ async function pasoDibujos() {
   const vertical = P.formato === "short";
   $("#paso").innerHTML = `<div class="card" style="margin-bottom:14px"><h3>Dibujos ${as.length - faltan}/${as.length}
       <span class="pill ${faltan ? "warn" : barras ? "bad" : "ok"}">${faltan ? faltan + " faltan" : barras ? barras + " con barras" : "todos listos"}</span></h3>
-    <div class="row"><button class="btn p" onclick="dibujar([])">${faltan ? "Dibujar los que faltan" : "Dibujar (nada nuevo)"}</button>
+    <div class="row"><select id="motor" style="max-width:230px"><option value="nanobanana">nano banana (~$0,04)</option><option value="openai">OpenAI (~$0,25, recorta 14 %)</option></select>
+      <button class="btn p" onclick="dibujar([])">${faltan ? "Dibujar los que faltan" : "Dibujar (nada nuevo)"}</button>
       <button class="btn" onclick="rehacerMarcados()">Rehacer los marcados</button>
       <button class="btn" ${faltan ? "disabled" : ""} onclick="empaquetar()">Empaquetar ZIP ${P.estado.zip ? `(${P.estado.zip_mb} MB, ya existe)` : ""}</button>
       <span class="tiny">~$0,04 por dibujo · se revisan TODOS antes de empaquetar · el detector marca letterbox</span></div></div>
@@ -476,7 +478,7 @@ async function pasoDibujos() {
 }
 async function dibujar(rehacer) {
   try {
-    const d = await api(`/proyectos/${P.slug}/frames`, {method: "POST", body: {madre: true, motor: "nanobanana", rehacer}});
+    const d = await api(`/proyectos/${P.slug}/frames`, {method: "POST", body: {madre: true, motor: $("#motor")?.value || "nanobanana", rehacer}});
     seguirTarea(d.tarea, () => navegar()); toast("dibujando…");
   } catch (e) { toast(e.message, true); }
 }

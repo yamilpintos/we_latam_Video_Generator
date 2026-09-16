@@ -695,6 +695,7 @@ class ImagenLibre(BaseModel):
     aspecto: str = "16:9"
     estilo: str = ""
     imagen_b64: str | None = None
+    motor: str = "nanobanana"        # nanobanana | openai
 
 
 @app.get("/api/libre")
@@ -707,7 +708,7 @@ def libre_imagen(i: ImagenLibre):
     if not i.imagen_b64 and len(i.prompt.strip()) < 8:
         raise HTTPException(422, "escribí qué querés ver, o subí una imagen")
     try:
-        return libre.imagen(i.prompt, i.aspecto, i.imagen_b64, i.estilo)
+        return libre.imagen(i.prompt, i.aspecto, i.imagen_b64, i.estilo, i.motor)
     except Exception as e:
         raise HTTPException(502, f"no pude crear la imagen: {e}")
 
