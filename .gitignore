@@ -67,3 +67,7 @@ ejemplos/*/assets/
 
 # logs del servidor
 h3pipeline/app/logs/
+
+# estado y zip de la máquina compartida
+h3pipeline/app/maquina.json
+h3pipeline/app/h3-setup.zip

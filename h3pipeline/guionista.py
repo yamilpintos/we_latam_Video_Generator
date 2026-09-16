@@ -63,8 +63,10 @@ def _prompt_base(formato_narrativo: str) -> str:
 def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
                 estilo_video: str = "", cierre_video: str = "", medio: str = "",
                 voz: str | None = "kate", titulo: str = "", negativos: bool = True,
-                notas: str = "") -> str:
+                notas: str = "", duracion: float | None = None) -> str:
     est = Estructura.cargar(estructura)
+    if duracion and abs(est.duracion_objetivo - duracion) > 0.01:
+        est = est.con_duracion(duracion)
     narrativo = "largo" if (formato == "largo" and not est.nombre.startswith("loop")) else "short"
     L = [_prompt_base(narrativo).strip(), ""]
     L.append("## LO QUE FIJA EL DIRECTOR (no lo cambies)")
@@ -89,6 +91,9 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
         L.append("- NO hay voz en off: no escribas `voz`. El gancho lo cargan imagen, sonido y texto.")
     L.append(f"- `segundos` de TODOS los planos: {grilla.MINIMO:.2f}. `corta` ≤ 4.8. "
              f"Si una idea necesita más, son dos planos.")
+    if duracion:
+        L.append(f"- `duracion_objetivo`: {duracion}. El video dura {duracion:g} s: "
+                 f"{max(1, round(duracion / grilla.MINIMO))} planos de {grilla.MINIMO:.2f} s.")
     if not negativos:
         L.append("- Es una escena quieta y sin gente: agregá `\"negativos\": false` y describí sólo lo "
                  "que SÍ pasa (nunca «no hay X»). Los audios en positivo: «The only sounds are…».")
@@ -206,13 +211,13 @@ def _forzar_grilla(d: dict) -> None:
 def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
              estilo_video: str = "", cierre_video: str = "", medio: str = "",
              voz: str | None = "kate", titulo: str = "", negativos: bool = True,
-             notas: str = "", reintentos: int = 2, log=print) -> dict:
+             notas: str = "", reintentos: int = 2, log=print, duracion: float | None = None) -> dict:
     """Guion → proyecto validado. Devuelve {"proyecto", "avisos", "intentos", "instruccion"}."""
     if not guion or len(guion.strip()) < 40:
         raise ErrorGuionista("el guion está vacío o es demasiado corto")
     ins = instruccion(guion, formato=formato, estructura=estructura, estilo_imagen=estilo_imagen,
                       estilo_video=estilo_video, cierre_video=cierre_video, medio=medio, voz=voz,
-                      titulo=titulo, negativos=negativos, notas=notas)
+                      titulo=titulo, negativos=negativos, notas=notas, duracion=duracion)
     mensajes = [{"role": "system", "content": "Sos el director técnico de un pipeline de video con IA. "
                                               "Respondés sólo con JSON válido."},
                 {"role": "user", "content": ins}]
@@ -223,6 +228,8 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
         d = _json(crudo)
         d["formato"] = formato
         d["estructura"] = estructura
+        if duracion:
+            d["duracion_objetivo"] = duracion
         if titulo:
             d["titulo"] = titulo
         d["estilo_imagen"] = estilo_imagen

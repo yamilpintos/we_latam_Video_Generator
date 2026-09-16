@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import tareas
+from . import maquina, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -533,6 +533,150 @@ def archivo(slug: str, nombre: str):
     return FileResponse(str(f), filename=f.name)
 
 
+# ─────────────────────────────────────────────────────────────── LA MÁQUINA
+
+_saldo_cache: dict = {"t": 0, "v": None}
+
+
+def _saldo() -> float | None:
+    if time.time() - _saldo_cache["t"] > 60:
+        try:
+            _saldo_cache.update(t=time.time(), v=vast.saldo())
+        except Exception:
+            _saldo_cache["t"] = time.time()
+    return _saldo_cache["v"]
+
+
+@app.get("/api/maquina")
+def estado_maquina():
+    m = maquina.leer()
+    out = {**m, "saldo": _saldo(), **maquina.gasto(m), "tareas": [t.a_dict(lineas=4) for t in tareas.corriendo("_maquina")]}
+    iid = m.get("instancia")
+    if iid and m.get("fase") not in ("apagada", "fallo"):
+        try:
+            inst = vast.instancia(int(iid))
+        except Exception as e:
+            out["existe"] = False
+            out["error"] = str(e)
+            return out
+        out["existe"] = True
+        out["estado_vast"] = inst.get("actual_status")
+        out["ssh"] = vast.ssh_de(inst)
+        if m.get("fase") == "instalando":
+            prog = maquina.progreso_instalacion(inst)
+            out["instalacion"] = prog
+            if prog["listo"]:
+                maquina.escribir(fase="lista", lista_desde=time.time())
+                out["fase"] = "lista"
+        if m.get("proyecto") and m.get("fase") == "lista":
+            try:
+                p = Proyecto.cargar(MIS / m["proyecto"] / "proyecto.json")
+                planos = p.construir()[1]["planos"]
+                prog = vast.progreso(inst, planos, p.slug)
+                out["generando"] = {"slug": p.slug, "titulo": p.titulo, "hechos": len(prog["hechos"]),
+                                    "total": len([x for x in planos if not x.get("clip_de")]),
+                                    "logs": (prog.get("logs") or "")[-1500:]}
+            except Exception as e:
+                out["generando"] = {"slug": m["proyecto"], "error": str(e)}
+    return out
+
+
+class Encendido(BaseModel):
+    id: int | None = None
+    confirmar: bool = False
+
+
+@app.post("/api/maquina/encender")
+def encender(e: Encendido):
+    if not e.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true (esto alquila y cobra)")
+    m = maquina.leer()
+    if m.get("fase") in ("arrancando", "instalando", "lista", "buscando") and m.get("instancia"):
+        raise HTTPException(409, f"ya hay una máquina en fase {m['fase']} (instancia {m['instancia']})")
+    if tareas.corriendo("_maquina"):
+        raise HTTPException(409, "ya hay una tarea de máquina corriendo")
+    args = ["-m", "h3pipeline.app.encender"] + ([str(e.id)] if e.id else [])
+    maquina.escribir(fase="buscando", instancia=None, proyecto=None, fin=None, gasto_final=None)
+    return {"tarea": tareas.lanzar("encender máquina", args, "_maquina").a_dict()}
+
+
+@app.get("/api/maquina/mejor")
+def mejor():
+    try:
+        o = maquina.mejor_oferta()
+    except Exception as ex:
+        raise HTTPException(502, f"Vast no contestó: {ex}")
+    if not o:
+        return {"oferta": None}
+    return {"oferta": {"id": o.id, "geo": o.geo, "gpu": o.gpu, "gpus": o.gpus, "dph": round(o.dph, 3),
+                       "inet": round(o.inet_down), "fiabilidad": round(o.fiabilidad, 4),
+                       "instalacion_estimada": round(o.dph * (7 + 59e9 * 8 / max(o.inet_down, 1) / 1e6 / 60) / 60, 2)}}
+
+
+class Apagado(BaseModel):
+    confirmar: bool = False
+
+
+@app.post("/api/maquina/apagar")
+def apagar(a: Apagado):
+    if not a.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true")
+    m = maquina.leer()
+    iid = m.get("instancia")
+    for t in tareas.corriendo("_maquina"):
+        tareas.matar(t.id)
+    if iid:
+        try:
+            vast.destruir(int(iid), confirmar=True)
+        except Exception as ex:
+            if "no existe" not in str(ex):
+                raise HTTPException(502, f"no pude destruir: {ex}")
+    g = maquina.gasto(m)
+    d = maquina.escribir(fase="apagada", fin=time.time(), gasto_final=g["acumulado"], proyecto=None)
+    for f in MIS.glob("*/corrida.json"):
+        try:
+            c = json.loads(f.read_text(encoding="utf-8"))
+            if iid and int(c.get("instancia", 0)) == int(iid) and not c.get("fin"):
+                c["fin"] = time.time()
+                c["gasto_final"] = round(c.get("dph", 0) * (c["fin"] - c["inicio"]) / 3600, 2)
+                f.write_text(json.dumps(c), encoding="utf-8")
+        except Exception:
+            pass
+    return {"apagada": iid, "gasto_final": d.get("gasto_final"), "minutos": g["minutos"]}
+
+
+class GenerarEn(BaseModel):
+    slug: str
+
+
+@app.post("/api/maquina/generar")
+def generar_en(g: GenerarEn):
+    c = _carpeta(g.slug)
+    m = maquina.leer()
+    if m.get("fase") != "lista":
+        raise HTTPException(409, f"la máquina no está lista (fase {m.get('fase')})")
+    if m.get("proyecto") and m.get("proyecto") != g.slug:
+        # ¿el anterior terminó? si no, no se pisa
+        try:
+            p0 = Proyecto.cargar(MIS / m["proyecto"] / "proyecto.json")
+            inst = vast.instancia(int(m["instancia"]))
+            prog = vast.progreso(inst, p0.construir()[1]["planos"], p0.slug)
+            total = len([x for x in p0.construir()[1]["planos"] if not x.get("clip_de")])
+            if len(prog["hechos"]) < total:
+                raise HTTPException(409, f"la máquina sigue generando {m['proyecto']} ({len(prog['hechos'])}/{total})")
+        except HTTPException:
+            raise
+        except Exception:
+            pass
+    if tareas.corriendo(g.slug) or tareas.corriendo("_maquina"):
+        raise HTTPException(409, "ya hay una tarea corriendo")
+    p = _proyecto(g.slug)
+    if not (c / f"{p.slug}-para-vast.zip").exists():
+        raise HTTPException(409, "falta el ZIP: empaquetá primero")
+    args = ["-m", "h3pipeline.app.generar_en", str(c / "proyecto.json")]
+    return {"tarea": tareas.lanzar("generar en la máquina", args, g.slug).a_dict()}
+
+
 # ─────────────────────────────────────────────────────────────── el guion → proyecto
 
 class Guion(BaseModel):
@@ -546,6 +690,7 @@ class Guion(BaseModel):
     negativos: bool = True
     notas: str = ""
     slug: str | None = None
+    duracion: float | None = None     # estira la estructura (loops: 15,5 / 31 / 62 / 93 s)
 
 
 @app.get("/api/guion/opciones")
@@ -571,7 +716,8 @@ def traducir_guion(g: Guion):
     pedido = {"guion": g.guion, "formato": g.formato, "estructura": g.estructura, "titulo": g.titulo,
               "estilo_imagen": estilo_imagen, "estilo_video": est["cabecera"] if est else "",
               "cierre_video": est["cierre"] if est else "", "medio": est["medio"] if est else "",
-              "voz": g.voz, "negativos": g.negativos, "notas": g.notas, "slug": slug}
+              "voz": g.voz, "negativos": g.negativos, "notas": g.notas, "slug": slug,
+              "duracion": g.duracion}
     c = MIS / slug
     c.mkdir(parents=True, exist_ok=True)
     (c / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")

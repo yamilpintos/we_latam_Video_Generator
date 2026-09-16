@@ -462,3 +462,17 @@ realmente entrega archivos.
 nodos de H3 se hacía aunque ComfyUI no hubiera arrancado todavía (la máquina
 seguía bajando su portal), y lo tomaba por «faltan los nodos» e intentaba
 actualizar ComfyUI. Ahora sólo actualiza si ComfyUI responde y los nodos faltan.
+
+## La máquina compartida (16/9/2026)
+
+Desde la Fábrica (`python -m h3pipeline.app`) la máquina es una cosa aparte
+del proyecto: el botón «Buscar una 4×5090 y encender» de la portada elige la
+oferta apta de mayor fiabilidad (o caza cada minuto si no hay), la alquila,
+sube `remoto/*` e instala H3 una sola vez (`app/encender.py`). La portada
+muestra la fase (buscando · arrancando · instalando X de 59 GB · lista), el
+precio, los minutos, lo gastado y el **saldo de Vast** (`vast.saldo()`, de
+`/users/current/`). Con la máquina lista, cada proyecto empaquetado se genera
+en ella desde su paso Máquina («Generar en la máquina», `app/generar_en.py`:
+aparta las salidas del anterior, sube el ZIP y corre sólo `lanzar.sh`). El
+botón «Apagar» destruye la instancia y escribe el gasto final. El estado vive
+en `app/maquina.json`. Sigue valiendo la regla 7: nada vivo entre sesiones.

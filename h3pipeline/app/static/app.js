@@ -126,9 +126,63 @@ ruta("/", async () => {
       <div class="puerta" onclick="location.hash='#/musica'"><span class="k">16:9 · LOOP</span><h2>Music video</h2>
         <p>Decís qué música y qué escena. La app compone la pista, hace el loop y el video dura lo que dure la música.</p><span class="n">${n(esLoop)} loops</span></div>
     </div>
+    <div class="card" id="maq" style="margin-top:34px"><h3>La máquina</h3><div class="muted">consultando…</div></div>
     <div class="stats"><div><b>${ps.length}</b>proyectos</div><div><b>${masters}</b>másters</div><div><b>5,17 s</b>por clip, sin excepción</div><div><b>4× 5090</b>verificada o se espera</div></div>
   </section>`;
+  pintarMaquina();
 });
+
+/* ─────────────────────────────────────────────── la máquina (portada) */
+let maqTimer = null;
+const FASES = {apagada: ["apagada", ""], buscando: ["buscando una 4×5090 apta…", "warn"], arrancando: ["arrancando", "warn"],
+  instalando: ["instalando H3", "warn"], lista: ["lista", "ok"], fallo: ["falló", "bad"]};
+async function pintarMaquina() {
+  const box = $("#maq"); if (!box) return;
+  let m; try { m = await api("/maquina"); } catch (e) { box.innerHTML = `<h3>La máquina</h3><div class="pre">${h(e.message)}</div>`; return; }
+  const [ftxt, fcl] = FASES[m.fase] || [m.fase, ""];
+  const viva = ["buscando", "arrancando", "instalando", "lista"].includes(m.fase);
+  const inst = m.instalacion, gen = m.generando;
+  box.innerHTML = `<h3>La máquina <span class="pill ${fcl}">${viva && m.fase !== "buscando" ? '<i class="dot live"></i> ' : ""}${ftxt}${m.instancia ? ` · ${m.instancia}` : ""}</span>
+      <span class="pill" title="crédito en Vast">saldo ${usd(m.saldo)}</span></h3>
+    <div class="kpis" style="margin-bottom:12px">
+      <div class="kpi"><div class="l">precio</div><div class="v">${m.dph ? "$" + Number(m.dph).toFixed(3) + '<span class="tiny">/h</span>' : "—"}</div></div>
+      <div class="kpi"><div class="l">${viva ? "encendida hace" : "última sesión"}</div><div class="v">${m.minutos ? m.minutos + " min" : "—"}</div></div>
+      <div class="kpi"><div class="l">${viva ? "gastado" : "gastó"}</div><div class="v" style="color:var(--ac)">${usd(viva ? m.acumulado : m.gasto_final)}</div></div>
+      <div class="kpi"><div class="l">dónde</div><div class="v" style="font-size:15px">${m.oferta ? h(m.oferta.geo) + `<div class="tiny">${m.oferta.inet} Mbps · fiab ${m.oferta.fiabilidad}</div>` : "—"}</div></div>
+    </div>
+    ${m.fase === "instalando" ? `<div class="tiny" style="margin-bottom:4px">Bajando los modelos de H3: ${inst?.gb ?? "?"} de 59 GB${inst?.pct != null ? ` · ${inst.pct} %` : ""}</div>
+      <div class="bar"><i style="width:${inst?.pct ?? 0}%"></i></div><div class="tiny mono" style="margin-top:6px;white-space:pre-wrap">${h(inst?.ultimo || "")}</div>` : ""}
+    ${m.fase === "arrancando" ? `<div class="tiny">El host está levantando la instancia (2 a 8 min). Si no arranca en 20, se destruye sola y se busca otra.</div>` : ""}
+    ${m.fase === "buscando" ? `<div class="tiny">No hay ninguna 4×5090 verificada ahora. Consulta cada minuto y alquila sola cuando aparezca. Podés cerrar la página.</div>` : ""}
+    ${gen ? `<div style="margin:10px 0"><b>Generando:</b> <a href="#/p/${gen.slug}/maquina">${h(gen.titulo || gen.slug)}</a> · ${gen.hechos ?? "?"}/${gen.total ?? "?"} clips
+      <div class="bar" style="margin-top:6px"><i style="width:${gen.total ? Math.round(gen.hechos / gen.total * 100) : 0}%"></i></div></div>` : ""}
+    ${m.fase === "lista" && !gen ? `<div class="tiny" style="margin-bottom:8px">H3 instalado. Elegí un proyecto empaquetado y tocá «Generar en la máquina» en su paso Máquina. Cada minuto que pasa cuesta ${m.dph ? "$" + (m.dph / 60).toFixed(3) : "plata"}.</div>` : ""}
+    ${m.fase === "lista" && gen && gen.total && gen.hechos >= gen.total ? `<div class="tiny" style="margin-bottom:8px;color:var(--ok)">Todos los clips están en la máquina: bajalos desde el proyecto y después apagá.</div>` : ""}
+    <div class="row" style="margin-top:8px">
+      ${!viva ? `<button class="btn p" onclick="encenderMaquina()">Buscar una 4×5090 y encender</button>` : ""}
+      ${viva ? `<button class="btn d" onclick="apagarMaquina()">Apagar (destruir)</button>` : ""}
+      ${m.ssh ? `<code class="tiny">${h(m.ssh)}</code>` : ""}
+      ${m.tareas?.length ? `<span class="tiny">${h(m.tareas[0].nombre)}: ${h((m.tareas[0].log || "").split("\n").pop())}</span>` : ""}
+    </div>`;
+  clearTimeout(maqTimer);
+  if (viva) maqTimer = setTimeout(() => { if ($("#maq")) pintarMaquina(); }, m.fase === "instalando" ? 15000 : 20000);
+}
+async function encenderMaquina() {
+  let o = null; try { o = (await api("/maquina/mejor")).oferta; } catch (e) { return toast(e.message, true); }
+  const cuerpo = o ? `Mejor oferta ahora: <b>${o.gpus}× ${h(o.gpu)}</b> en ${h(o.geo)} a <b>$${o.dph.toFixed(3)}/h</b>, ${o.inet} Mbps, fiabilidad ${o.fiabilidad}.<br>
+      Arranque + instalación de H3 (59 GB): unos <b>${usd(o.instalacion_estimada)}</b>. Después la máquina queda lista y cada proyecto cuesta sólo su generación.<br><br>Empieza a cobrar de inmediato y sigue cobrando hasta que la apagues.`
+    : `Ahora no hay ninguna 4×5090 verificada. Si confirmás, la app consulta cada minuto y alquila sola la primera que aparezca (sólo aptas, techo $4/h). Podés cerrar la página; el cazador sigue mientras el servidor esté vivo.`;
+  confirmar("Encender la máquina", cuerpo, o ? "Alquilar e instalar" : "Buscar y encender cuando haya", async () => {
+    try { const d = await api("/maquina/encender", {method: "POST", body: {id: o?.id ?? null, confirmar: true}}); seguirTarea(d.tarea, () => pintarMaquina()); toast(o ? "alquilando…" : "buscando…"); setTimeout(pintarMaquina, 1500); }
+    catch (e) { toast(e.message, true); }
+  });
+}
+function apagarMaquina() {
+  confirmar("Apagar la máquina", "Se destruye la instancia: deja de cobrar y se pierde todo lo que haya adentro (modelos y clips no bajados). <b>Bajá los clips antes.</b>", "Apagar", async () => {
+    try { const d = await api("/maquina/apagar", {method: "POST", body: {confirmar: true}}); toast(`apagada · gastó ${usd(d.gasto_final)} en ${d.minutos} min`); estadoVast(); pintarMaquina(); }
+    catch (e) { toast(e.message, true); }
+  }, true);
+}
 
 /* ─────────────────────────────────────────────── proyectos */
 ruta("/proyectos", async () => {
@@ -179,7 +233,8 @@ ruta("/nuevo", async ([formato]) => {
       <div class="card"><h3>Título y formato</h3>
         <input id="titulo" placeholder="Título" style="margin-bottom:8px">
         <select id="estructura">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
-        ${esLoop ? "" : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
+        ${esLoop ? `<div style="margin-top:8px"><select id="duracion"><option value="15.5">Loop de 15 s · 3 clips</option><option value="31">Loop de 30 s · 6 clips</option><option value="46.5">Loop de 45 s · 9 clips</option><option value="62" selected>Loop de 60 s · 12 clips</option><option value="93">Loop de 90 s · 18 clips</option></select>
+          <div class="tiny" style="margin-top:4px">Después, en Music video, el loop se repite hasta cubrir la pista. Cuanto más corto, más se nota la repetición: alternalo con otros.</div></div>` : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
         <textarea id="notas" style="margin-top:8px;min-height:60px" placeholder="Notas para el traductor (opcional): tono, qué no mostrar, cortes que querés…"></textarea></div>
       <div class="card"><h3>Estilo visual</h3>
         <select id="estilo">${op.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (escribilo abajo)</option></select>
@@ -202,7 +257,8 @@ ruta("/nuevo", async ([formato]) => {
 async function traducirGuion(esLoop, formato) {
   const body = {guion: $("#guion").value, formato: esLoop ? "largo" : "short", estructura: $("#estructura").value,
     titulo: $("#titulo").value.trim(), estilo: $("#estilo").value === "" ? null : Number($("#estilo").value),
-    estilo_libre: $("#estilo_libre").value, voz: esLoop ? null : ($("#voz").value || null), negativos: !esLoop, notas: $("#notas").value};
+    estilo_libre: $("#estilo_libre").value, voz: esLoop ? null : ($("#voz").value || null), negativos: !esLoop, notas: $("#notas").value,
+    duracion: esLoop ? Number($("#duracion").value) : null};
   if (!body.titulo) return $("#err").textContent = "Falta el título.";
   if (body.guion.trim().length < 40) return $("#err").textContent = "El guion es demasiado corto.";
   $("#btn-trad").disabled = true;
@@ -329,7 +385,14 @@ async function empaquetar() {
 let seguimiento = null;
 async function pasoMaquina() {
   const e = P.estado;
+  let m = null; try { m = await api("/maquina"); } catch {}
+  const lista = m && m.fase === "lista";
+  const ocupada = lista && m.generando && m.generando.slug !== P.slug && m.generando.total && m.generando.hechos < m.generando.total;
   $("#paso").innerHTML = `<div class="grid g2">
+    <div class="card" style="grid-column:1/-1"><h3>La máquina encendida <span class="pill ${lista ? "ok" : m && m.fase !== "apagada" ? "warn" : ""}">${m ? (FASES[m.fase] || [m.fase])[0] : "?"}${m?.instancia ? " · " + m.instancia : ""}</span>${m?.acumulado ? `<span class="pill">gastado ${usd(m.acumulado)}</span>` : ""}</h3>
+      ${lista ? `<div class="row"><button class="btn p" ${e.zip && !ocupada ? "" : "disabled"} onclick="generarEnMaquina()">Generar este proyecto en la máquina</button>
+        <span class="tiny">${!e.zip ? "falta empaquetar" : ocupada ? `ocupada con ${h(m.generando.slug)} (${m.generando.hechos}/${m.generando.total})` : "H3 ya está instalado: sólo se paga la generación (~" + Math.round(e.segundos * 0.77) + " min de GPU, ~" + Math.ceil(e.segundos * 0.77 / 4) + " de pared)"}</span></div>`
+        : `<div class="muted">No hay máquina lista. Encendela desde el <a href="#/">inicio</a> (una sola instalación para todos los proyectos), o alquilá una sólo para este proyecto con la tabla de abajo.</div>`}</div>
     <div class="card" style="grid-column:1/-1" id="inst"></div>
     <div class="card" style="grid-column:1/-1"><h3>Ofertas de 4× RTX 5090 <span class="pill" id="of-n">consultando…</span></h3>
       <div class="row" style="margin-bottom:10px"><label class="tiny"><input type="checkbox" id="todas" onchange="cargarOfertas()"> mostrar también las no aptas (desverificadas, lentas, caras)</label>
@@ -387,10 +450,14 @@ async function pintarInstancia() {
     <div class="bar" style="margin:12px 0 6px"><i style="width:${pct}%"></i></div>
     <div class="tiny">${listo ? "todos los clips están en la máquina" : "faltan: " + s.faltan.join(" ")}</div>
     <div class="row" style="margin-top:12px"><button class="btn ${listo ? "p" : ""}" onclick="bajar()">Bajar clips${listo ? "" : " (parcial)"}</button>
-      <button class="btn d" onclick="destruir(${c.instancia})">Destruir instancia</button>
+      ${c.maquina_compartida ? `<button class="btn d" onclick="apagarMaquina()">Apagar la máquina</button><span class="tiny">es la máquina compartida: apagarla corta también los otros proyectos</span>` : `<button class="btn d" onclick="destruir(${c.instancia})">Destruir instancia</button>`}
       <button class="btn s" onclick="pintarInstancia()">actualizar</button><code class="tiny">${h(s.ssh || "")}</code></div>
     <details style="margin-top:10px"><summary class="tiny">log de la máquina</summary><div class="pre">${h(s.logs)}</div></details>`;
   clearTimeout(seguimiento); seguimiento = setTimeout(() => { if (location.hash.includes("/maquina")) pintarInstancia(); }, 20000);
+}
+async function generarEnMaquina() {
+  try { const d = await api("/maquina/generar", {method: "POST", body: {slug: P.slug}}); seguirTarea(d.tarea, () => navegar()); toast("subiendo el proyecto a la máquina…"); }
+  catch (e) { toast(e.message, true); }
 }
 async function bajar() {
   const c = P.estado.corrida;

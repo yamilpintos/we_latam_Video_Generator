@@ -19,7 +19,7 @@ def main() -> int:
         g["guion"], formato=g["formato"], estructura=g["estructura"], estilo_imagen=g["estilo_imagen"],
         estilo_video=g.get("estilo_video", ""), cierre_video=g.get("cierre_video", ""),
         medio=g.get("medio", ""), voz=g.get("voz"), titulo=g.get("titulo", ""),
-        negativos=g.get("negativos", True), notas=g.get("notas", ""))
+        negativos=g.get("negativos", True), notas=g.get("notas", ""), duracion=g.get("duracion"))
     d = r["proyecto"]
     d["slug"] = g["slug"]
     (c / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -534,6 +534,13 @@ def instancias(clave: str | None = None) -> list[dict]:
     return _pedir("/instances/", clave).get("instances", [])
 
 
+def saldo(clave: str | None = None) -> float | None:
+    """El crédito que queda en la cuenta, en dólares (`credit` de /users/current/)."""
+    d = _pedir("/users/current/", clave)
+    c = d.get("credit")
+    return round(float(c), 2) if c is not None else None
+
+
 def destruir(instancia_id: int, *, confirmar: bool = False, clave: str | None = None) -> dict:
     """Borra la instancia y deja de cobrar. **Bajate los archivos antes**: no
     hay vuelta atrás. Para volver en unos días conviene STOP desde la web, que
