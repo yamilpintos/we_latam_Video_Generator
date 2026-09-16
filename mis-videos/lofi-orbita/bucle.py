@@ -95,6 +95,57 @@ def cortar(planos: list[dict], clips: Path, usa: float, tmp: Path, log,
     return corte, t
 
 
+def una_escena(fuente: Path, dur: float, cierre: str, fundido: float, tmp: Path, log) -> tuple[Path, float]:
+    """El loop de UN solo clip. H3 no puede hacer que el último cuadro sea el
+    primero, así que el bucle se cierra de dos maneras:
+
+      fundido   la cola del clip se funde sobre su cabeza (x segundos). El loop
+                dura dur − x y arranca y termina en el mismo cuadro (el del
+                segundo x). Sirve para casi todo movimiento ambiente.
+      pingpong  el clip y después el clip al revés. Perfecto para lo simétrico
+                (fuego, agua, luz que late, una respiración); se nota en lo que
+                cae (lluvia, nieve) porque sube.
+    """
+    fuente = Path(fuente)
+    corte = tmp / "corte.mp4"
+    if cierre == "pingpong":
+        ida = tmp / "ida.mp4"
+        ff("-i", str(fuente), "-t", f"{dur:.3f}", "-vf", f"scale={ANCHO}:{ALTO}:flags=lanczos,setsar=1",
+           *CODEC_V, *CODEC_A, str(ida))
+        vuelta = tmp / "vuelta.mp4"
+        ff("-i", str(ida), "-vf", "reverse", "-af", "areverse", *CODEC_V, *CODEC_A, str(vuelta))
+        lista = tmp / "orden.txt"
+        lista.write_text(f"file '{ida.as_posix()}'\nfile '{vuelta.as_posix()}'\n", encoding="utf-8")
+        ff("-f", "concat", "-safe", "0", "-i", str(lista), "-c", "copy", str(corte))
+        log(f"  una escena · ping-pong · {2 * dur:.1f} s")
+        return corte, 2 * dur
+    x = min(fundido, dur / 3)
+    largo = dur - x
+    # entrada 1: el clip desde x hasta el final; entrada 2: el clip de 0 a x.
+    # xfade con d=x y offset=dur−2x: los últimos x segundos se funden sobre los
+    # primeros x, y el resultado termina en el cuadro del segundo x, que es
+    # exactamente donde arranca.
+    # xfade exige a las dos entradas cuadros a ritmo constante, mismo tamaño,
+    # formato y base de tiempo. Lo más robusto es escribir las dos partes como
+    # archivos (ya a 24 fps, 1080p) y cruzarlas después.
+    cola = tmp / "cola.mp4"
+    cabeza = tmp / "cabeza.mp4"
+    escala = f"scale={ANCHO}:{ALTO}:flags=lanczos,setsar=1"
+    ff("-ss", f"{x:.3f}", "-i", str(fuente), "-t", f"{dur - x:.3f}", "-vf", escala,
+       "-af", "aresample=48000", *CODEC_V, *CODEC_A, str(cola))
+    ff("-i", str(fuente), "-t", f"{x:.3f}", "-vf", escala,
+       "-af", "aresample=48000", *CODEC_V, *CODEC_A, str(cabeza))
+    dur_cola = montaje.duracion(cola) or (dur - x)
+    offset = max(0.0, dur_cola - x)
+    ff("-i", str(cola), "-i", str(cabeza), "-filter_complex",
+       f"[0:v][1:v]xfade=transition=fade:duration={x:.3f}:offset={offset:.3f}[v];"
+       f"[0:a][1:a]acrossfade=d={x:.3f}:c1=tri:c2=tri[au]",
+       "-map", "[v]", "-map", "[au]", *CODEC_V, *CODEC_A, str(corte))
+    largo = montaje.duracion(corte) or largo
+    log(f"  una escena · fundido de {x:.1f} s · loop de {largo:.1f} s (empieza y termina en el mismo cuadro)")
+    return corte, largo
+
+
 def filtro_musica(dur_pista: float, largo: float, cruce: float, desde: float | None):
     """El grafo de ffmpeg que deja la música de `largo` s exactos y cerrada en
     bucle. Devuelve (filtro, etiqueta_de_salida, desde_usado)."""
@@ -144,13 +195,24 @@ def masterizar(corte: Path, musica: Path | None, largo: float, salida: Path,
     # en −18,3 LUFS con objetivo −14; con las medidas de la primera pasada
     # trabaja en modo lineal y clava el objetivo.
     m = _medir_loudnorm(entradas, pre, "[pre]")
-    log(f"  medido: {float(m['input_i']):.1f} LUFS, pico {float(m['input_tp']):.1f} dBTP, "
-        f"LRA {float(m['input_lra']):.1f}")
-    ln = (f"loudnorm=I=-14:TP=-1.0:LRA=11:measured_I={m['input_i']}:"
-          f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:"
-          f"measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
-    ff(*entradas, "-filter_complex", pre + f";[pre]{ln},aresample=48000[out]",
-       "-map", "0:v", "-map", "[out]", "-c:v", "copy", *CODEC_A, "-t", f"{largo:.3f}", str(salida))
+    try:
+        medido_i = float(m["input_i"])
+    except (TypeError, ValueError):
+        medido_i = float("-inf")
+    if medido_i < -70:
+        # Audio prácticamente mudo (un clip de H3 sin ambiente y sin música):
+        # loudnorm no puede normalizar el silencio. Se deja tal cual.
+        log("  audio casi mudo: sin normalizar")
+        ff(*entradas, "-filter_complex", pre + ";[pre]aresample=48000[out]",
+           "-map", "0:v", "-map", "[out]", "-c:v", "copy", *CODEC_A, "-t", f"{largo:.3f}", str(salida))
+    else:
+        log(f"  medido: {medido_i:.1f} LUFS, pico {float(m['input_tp']):.1f} dBTP, "
+            f"LRA {float(m['input_lra']):.1f}")
+        ln = (f"loudnorm=I=-14:TP=-1.0:LRA=11:measured_I={m['input_i']}:"
+              f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:"
+              f"measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+        ff(*entradas, "-filter_complex", pre + f";[pre]{ln},aresample=48000[out]",
+           "-map", "0:v", "-map", "[out]", "-c:v", "copy", *CODEC_A, "-t", f"{largo:.3f}", str(salida))
     log(f"  {salida.name}   {largo:.1f} s   {salida.stat().st_size / 1e6:.1f} MB")
 
 
@@ -222,6 +284,9 @@ def main() -> int:
                     help="la pista manda: el loop se repite hasta cubrirla y se corta a su largo")
     ap.add_argument("--otros-loops", nargs="*", default=[],
                     help="otros «- loop.mp4» ya hechos para alternar con éste (con --largo-de-pista)")
+    ap.add_argument("--cierre", choices=("fundido", "pingpong", "corte"), default="fundido",
+                    help="cómo se cierra un loop de UNA escena (un solo plano)")
+    ap.add_argument("--fundido", type=float, default=1.0, help="segundos del fundido de cierre (una escena)")
     a = ap.parse_args()
 
     doc = json.loads(Path(a.planos).read_text(encoding="utf-8"))
@@ -231,7 +296,14 @@ def main() -> int:
     tmp = Path(tempfile.mkdtemp(prefix="bucle_"))
     try:
         log("corte:")
-        corte, largo = cortar(planos, Path(a.clips), a.usa, tmp, log, a.planos)
+        if len(planos) == 1 and a.cierre != "corte":
+            p = planos[0]
+            fuente = montaje.buscar_clip(Path(a.clips), montaje.clip_fuente(p))
+            if not fuente:
+                raise SystemExit(f"falta el clip de {p['id']} en {a.clips}")
+            corte, largo = una_escena(fuente, float(p["segundos"]), a.cierre, a.fundido, tmp, log)
+        else:
+            corte, largo = cortar(planos, Path(a.clips), a.usa, tmp, log, a.planos)
         log(f"  corte.mp4   {largo:.1f} s\n")
         loop = AQUI / f"{titulo} - loop.mp4"
         log("máster:")

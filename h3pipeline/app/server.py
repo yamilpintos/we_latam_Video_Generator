@@ -226,7 +226,7 @@ def construir(slug: str):
 
 class OpcionesFrames(BaseModel):
     madre: bool = True
-    motor: str = "nanobanana"
+    motor: str = "openai"             # el usuario eligió GPT para las imágenes (16/9/2026)
     rehacer: list[str] = []      # ids de assets a borrar antes (sb_P03, l_cuarto…)
 
 
@@ -498,6 +498,7 @@ class Master(BaseModel):
     repite: int = 0
     largo_de_pista: bool = False
     otros_loops: list[str] = []     # slugs de otros loops ya masterizados, para alternar
+    cierre: str = "fundido"         # loops de UNA escena: fundido | pingpong | corte
 
 
 @app.post("/api/proyectos/{slug}/master")
@@ -510,7 +511,7 @@ def master(slug: str, m: Master):
         bucle = c / "bucle.py"
         if not bucle.exists():
             shutil.copy(MIS / "lofi-koi" / "bucle.py", bucle)
-        args = [str(bucle)]
+        args = [str(bucle), "--cierre", m.cierre if m.cierre in ("fundido", "pingpong", "corte") else "fundido"]
         if m.musica:
             args += ["--musica", m.musica]
         if m.repite:
@@ -695,7 +696,7 @@ class ImagenLibre(BaseModel):
     aspecto: str = "16:9"
     estilo: str = ""
     imagen_b64: str | None = None
-    motor: str = "nanobanana"        # nanobanana | openai
+    motor: str = "openai"            # openai | nanobanana
 
 
 @app.get("/api/libre")

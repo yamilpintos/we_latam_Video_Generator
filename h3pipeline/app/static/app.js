@@ -289,8 +289,8 @@ ruta("/nuevo", async ([formato]) => {
       <div class="card"><h3>Título y formato</h3>
         <input id="titulo" placeholder="Título" style="margin-bottom:8px">
         <select id="estructura">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
-        ${esLoop ? `<div style="margin-top:8px"><select id="duracion"><option value="15.5">Loop de 15 s · 3 clips</option><option value="31">Loop de 30 s · 6 clips</option><option value="46.5">Loop de 45 s · 9 clips</option><option value="62" selected>Loop de 60 s · 12 clips</option><option value="93">Loop de 90 s · 18 clips</option></select>
-          <div class="tiny" style="margin-top:4px">Después, en Music video, el loop se repite hasta cubrir la pista. Cuanto más corto, más se nota la repetición: alternalo con otros.</div></div>` : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
+        ${esLoop ? `<div style="margin-top:8px"><select id="duracion"><option value="5.17" selected>UNA escena · 1 clip de 5 s, cerrado con fundido</option><option value="10.08">UNA escena · 1 clip de 10 s (riesgo de VRAM)</option><option value="15.5">3 escenas · 3 clips · 15 s</option><option value="31">Loop de 30 s · 6 clips</option><option value="46.5">Loop de 45 s · 9 clips</option><option value="62">Loop de 60 s · 12 clips</option><option value="93">Loop de 90 s · 18 clips</option></select>
+          <div class="tiny" style="margin-top:4px">Una escena: un solo plano que se repite, cerrado con un fundido de la cola sobre la cabeza (o ping-pong). Varias escenas: cortes entre encuadres del mismo lugar. Después, en Music video, el loop se repite hasta cubrir la pista.</div></div>` : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
         <textarea id="notas" style="margin-top:8px;min-height:60px" placeholder="Notas para el traductor (opcional): tono, qué no mostrar, cortes que querés…"></textarea></div>
       <div class="card"><h3>Estilo visual</h3>
         <select id="estilo">${op.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (escribilo abajo)</option></select>
@@ -325,7 +325,7 @@ ruta("/libre", async () => {
     <div class="card" style="margin-bottom:14px"><h3>Nuevo turno</h3>
       <textarea id="lp" style="min-height:80px" placeholder="Qué querés ver (en castellano o inglés): «un faro de piedra en una tormenta de noche, visto desde el mar, olas enormes, la lámpara girando»"></textarea>
       <div class="row" style="margin-top:8px"><select id="lasp" style="max-width:160px"><option value="16:9">16:9 horizontal</option><option value="9:16">9:16 vertical</option></select>
-        <select id="lmotor" style="max-width:220px"><option value="nanobanana">nano banana (~$0,04)</option><option value="openai">OpenAI (~$0,25, recorta 14 %)</option></select>
+        <select id="lmotor" style="max-width:220px"><option value="openai">OpenAI / GPT (~$0,25)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
         <input id="lest" placeholder="estilo (opcional, en inglés): photorealistic, 35mm film grain…" style="flex:1;min-width:220px">
         <label class="btn s">subir imagen<input type="file" id="lfile" accept="image/*" hidden></label>
         <button class="btn p" onclick="libreImagen()">Crear imagen</button></div>
@@ -465,11 +465,11 @@ async function pasoDibujos() {
   const vertical = P.formato === "short";
   $("#paso").innerHTML = `<div class="card" style="margin-bottom:14px"><h3>Dibujos ${as.length - faltan}/${as.length}
       <span class="pill ${faltan ? "warn" : barras ? "bad" : "ok"}">${faltan ? faltan + " faltan" : barras ? barras + " con barras" : "todos listos"}</span></h3>
-    <div class="row"><select id="motor" style="max-width:230px"><option value="nanobanana">nano banana (~$0,04)</option><option value="openai">OpenAI (~$0,25, recorta 14 %)</option></select>
+    <div class="row"><select id="motor" style="max-width:230px"><option value="openai">OpenAI / GPT (~$0,25)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
       <button class="btn p" onclick="dibujar([])">${faltan ? "Dibujar los que faltan" : "Dibujar (nada nuevo)"}</button>
       <button class="btn" onclick="rehacerMarcados()">Rehacer los marcados</button>
       <button class="btn" ${faltan ? "disabled" : ""} onclick="empaquetar()">Empaquetar ZIP ${P.estado.zip ? `(${P.estado.zip_mb} MB, ya existe)` : ""}</button>
-      <span class="tiny">~$0,04 por dibujo · se revisan TODOS antes de empaquetar · el detector marca letterbox</span></div></div>
+      <span class="tiny">se revisan TODOS antes de empaquetar · el detector marca letterbox</span></div></div>
     <div class="thumbs">${as.map(a => `<div class="th ${vertical && a.tipo === "plano" ? "v" : ""} ${a.existe ? "" : "falta"}">
       <img src="${a.existe ? a.url : ""}" onclick="${a.existe ? `lightbox('${a.url}')` : ""}" alt="">
       <div class="c"><input type="checkbox" class="rh" value="${a.id}" title="marcar para rehacer"><b>${a.id}</b>${a.plano ? `<span>${a.plano}</span>` : `<span>${a.tipo}</span>`}
@@ -478,7 +478,7 @@ async function pasoDibujos() {
 }
 async function dibujar(rehacer) {
   try {
-    const d = await api(`/proyectos/${P.slug}/frames`, {method: "POST", body: {madre: true, motor: $("#motor")?.value || "nanobanana", rehacer}});
+    const d = await api(`/proyectos/${P.slug}/frames`, {method: "POST", body: {madre: true, motor: $("#motor")?.value || "openai", rehacer}});
     seguirTarea(d.tarea, () => navegar()); toast("dibujando…");
   } catch (e) { toast(e.message, true); }
 }
@@ -602,13 +602,13 @@ async function pasoMaster() {
   const e = P.estado; const loop = String(P.estructura).startsWith("loop");
   $("#paso").innerHTML = `<div class="grid g2">
     <div class="card"><h3>Máster</h3><p class="muted">${loop ? "Loop: 5,0 s de cada clip, 1080p, −14 LUFS y el «×3» para mirar el empalme. Para el video con música, usá la sección Music video." : "Corte por <code>usa</code>, tres capas con ducking, −14 LUFS y subtítulos quemados."}</p>
-      ${loop ? `<div class="row"><input id="repite" type="number" min="0" placeholder="repetir N veces (opcional)" style="max-width:220px"></div>` : ""}
+      ${loop ? `<div class="row"><input id="repite" type="number" min="0" placeholder="repetir N veces (opcional)" style="max-width:220px">${P.planos.length === 1 ? `<select id="cierre" style="max-width:260px"><option value="fundido">cierre: fundido de 1 s (lluvia, vapor, todo)</option><option value="pingpong">cierre: ping-pong (fuego, agua, luz)</option><option value="corte">cierre: corte seco</option></select>` : ""}</div>` : ""}
       <div class="row" style="margin-top:12px"><button class="btn p" ${e.clips.hechos ? "" : "disabled"} onclick="masterizar()">Generar máster</button>${loop ? `<a class="btn" href="#/musica/${P.slug}">Ir a la música</a>` : ""}</div></div>
     <div class="card"><h3>Archivos</h3>${e.masters.length ? e.masters.map(m => `<div class="row" style="margin-bottom:8px"><a href="/api/proyectos/${P.slug}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("") : `<div class="muted">Todavía no hay máster.</div>`}
       ${e.masters.length ? `<video controls style="width:100%;border-radius:10px;margin-top:8px" src="/api/proyectos/${P.slug}/archivo/${encodeURIComponent(e.masters[0])}"></video>` : ""}</div></div>`;
 }
 async function masterizar() {
-  const body = {repite: Number($("#repite")?.value || 0)};
+  const body = {repite: Number($("#repite")?.value || 0), cierre: $("#cierre")?.value || "fundido"};
   try { const d = await api(`/proyectos/${P.slug}/master`, {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast("masterizando…"); }
   catch (e) { toast(e.message, true); }
 }
@@ -677,7 +677,7 @@ async function componer(slug) {
 }
 async function masterMusica(slug) {
   const otros = [...document.querySelectorAll(".otro:checked")].map(x => x.value);
-  try { const d = await api(`/proyectos/${slug}/master`, {method: "POST", body: {musica: $("#pista").value, largo_de_pista: true, otros_loops: otros}}); seguirTarea(d.tarea, () => navegar()); toast("armando el video con la pista…"); }
+  try { const d = await api(`/proyectos/${slug}/master`, {method: "POST", body: {musica: $("#pista").value, largo_de_pista: true, otros_loops: otros, cierre: "fundido"}}); seguirTarea(d.tarea, () => navegar()); toast("armando el video con la pista…"); }
   catch (e) { toast(e.message, true); }
 }
 

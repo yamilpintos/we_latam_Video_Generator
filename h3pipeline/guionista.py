@@ -89,11 +89,19 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
                  f"`\"voces\": {{\"narrador\": \"{v['id']}\"}}`.")
     elif voz is None:
         L.append("- NO hay voz en off: no escribas `voz`. El gancho lo cargan imagen, sonido y texto.")
-    L.append(f"- `segundos` de TODOS los planos: {grilla.MINIMO:.2f}. `corta` ≤ 4.8. "
-             f"Si una idea necesita más, son dos planos.")
-    if duracion:
-        L.append(f"- `duracion_objetivo`: {duracion}. El video dura {duracion:g} s: "
-                 f"{max(1, round(duracion / grilla.MINIMO))} planos de {grilla.MINIMO:.2f} s.")
+    if duracion and duracion <= grilla.MAXIMO + 0.1:
+        L.append(f"- ES UN LOOP DE UNA SOLA ESCENA: exactamente UN plano, con `segundos`: "
+                 f"{grilla.encajar(duracion)[1]:.2f}, sin `corta` ni `usa`. Elegí el encuadre que mejor "
+                 f"aguante mirarse en bucle: un solo movimiento lento y cíclico (lluvia, vapor, fuego, agua, "
+                 f"una respiración, un disco que gira), cámara fija. El cierre del bucle se hace con un "
+                 f"fundido de la cola sobre la cabeza, así que el final y el principio tienen que parecerse.")
+        L.append(f"- `duracion_objetivo`: {duracion}.")
+    else:
+        L.append(f"- `segundos` de TODOS los planos: {grilla.MINIMO:.2f}. `corta` ≤ 4.8. "
+                 f"Si una idea necesita más, son dos planos.")
+        if duracion:
+            L.append(f"- `duracion_objetivo`: {duracion}. El video dura {duracion:g} s: "
+                     f"{max(1, round(duracion / grilla.MINIMO))} planos de {grilla.MINIMO:.2f} s.")
     if not negativos:
         L.append("- Es una escena quieta y sin gente: agregá `\"negativos\": false` y describí sólo lo "
                  "que SÍ pasa (nunca «no hay X»). Los audios en positivo: «The only sounds are…».")
@@ -193,10 +201,19 @@ def _validar(d: dict, cps_voz: float | None = None) -> tuple[list[str], str | No
     return avisos, None
 
 
-def _forzar_grilla(d: dict) -> None:
+def _forzar_grilla(d: dict, segundos: float | None = None) -> None:
     """Lo que no se negocia se corrige acá, sin gastar otra llamada: todos los
-    planos generan 5,17 s y ningún corte pasa de 4,8."""
-    for p in d.get("planos", []):
+    planos generan 5,17 s y ningún corte pasa de 4,8. Excepción: el loop de UNA
+    escena, donde el único plano genera `segundos` (hasta 15,08) y se usa entero."""
+    planos = d.get("planos", [])
+    if segundos and len(planos) == 1:
+        p = planos[0]
+        _l, real = grilla.encajar(float(segundos))
+        p["segundos"] = round(real, 3)
+        p.pop("corta", None)
+        p.pop("usa", None)
+        return
+    for p in planos:
         if p.get("clip_de") or p.get("sigue_de"):
             continue
         p["segundos"] = round(grilla.MINIMO, 2)
@@ -243,7 +260,8 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
             d.setdefault("voces", {})["narrador"] = VOCES[voz]["id"]
         if not negativos:
             d["negativos"] = False
-        _forzar_grilla(d)
+        una_escena = bool(duracion) and duracion <= grilla.MAXIMO + 0.1
+        _forzar_grilla(d, duracion if una_escena else None)
         avisos, fatal = _validar(d, VOCES[voz]["cps"] if voz and voz in VOCES else None)
         log(f"    {'ERROR ' + fatal if fatal else str(len(avisos)) + ' aviso(s)'}")
         if not fatal and not avisos:

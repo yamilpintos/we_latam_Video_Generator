@@ -14,7 +14,7 @@
     "CLIPS DE 5,17 s Y NADA MÁS (regla 1 de la corrida limpia en VAST.md). En el máster del loop se usan 5,0 s de cada uno: la cola de un clip de H3 deriva.",
     "NADA DE GENTE. Las caras y las nucas que se dan vuelta son el fallo más caro del modelo (regla 22 y la réplica). Si hay un ser vivo es un animal dormido, con hoja de modelo.",
     "NADA DE TEXTO LEGIBLE en la escena: ni carteles, ni letras de neón, ni etiquetas, ni páginas escritas. El modelo lo destroza y en un bucle se ve sesenta veces por hora.",
-    "Estirable: el tramo está en fracción y `planos_min` es 3, así que `duracion_objetivo` del proyecto puede ser 15,5 (3 clips), 31 (6), 62 (12) o 93 (18) sin tocar esta estructura."
+    "Estirable: el tramo está en fracción y `planos_min` es 1, así que `duracion_objetivo` del proyecto puede ser 5,17 (UNA escena, cerrada con fundido), 15,5 (3 clips), 31 (6), 62 (12) o 93 (18) sin tocar esta estructura."
   ],
   "tramos": [
     {
@@ -34,7 +34,7 @@
       "corte_max": 5.3,
       "tamanos": [],
       "prompt_frame": "A calm, perfectly still frame from a looping ambient video meant to be watched for a long time: balanced composition, nothing dramatic, no event, no story beat, no one in the room. Every element sits exactly where it sits in the reference location.",
-      "planos_min": 3,
+      "planos_min": 1,
       "interrupcion": false
     }
   ]
