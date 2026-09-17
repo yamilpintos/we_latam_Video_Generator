@@ -104,6 +104,42 @@ Medido el 17/9 con el short de la bicicleta (4 planos, 5,17 s): 4 de 4 válidos,
 2 a la primera y 2 al segundo intento (largo); el mono de 15 s con 5 líneas, a
 la primera, 729 palabras.
 
+### 1.3 ter · Editar un video existente (Ref2VA con `<Video 1>`, 17/9/2026)
+
+La herramienta **Editar** de La Fábrica (`app/editar.py`, puerta en la portada):
+se sube un video de 2 a 15 s, se dice en castellano qué cambiar (ropa, fondo,
+objeto, clima, una frase) y H3 lo rehace conservando persona, encuadre,
+movimiento y tiempos. Es la tarea oficial `[video editing]` de la guía de
+referencia completa; el nodo `MiniMaxH3ReferenceToVideo` acepta hasta 3 videos
+(`ref_videos.ref_video_0`, fotogramas a 24 fps, con `ref_video_audios` para su
+pista). Lo que hace la app:
+
+1. **Prepara el video**: 24 fps, lienzo 1344×768 o 768×1344 según su
+   orientación (entero con fondo desenfocado, o recortado), como mucho 15,08 s
+   en la grilla; y una hoja de 8 fotogramas que GPT mira.
+2. **Reescritor de edición** (`reescritor.reescribir_edicion`): las seis
+   secciones oficiales con `<Video 1>` como fuente, `<Subject N>` descriptos del
+   video real, `<Picture 1>` si se sube una imagen del cambio (la prenda, el
+   fondo), `<Audio 1>` `fully_copy` si se conserva el audio original. Validado:
+   orden de secciones, prefijo `[video editing…]`, marcadores de retención,
+   diálogo literal, sin negativos.
+3. **Runner** (`remoto/runner.py`): plano `modo: ref2va` sin `first_frame`, con
+   `ref_video` → `LoadVideo` + `GetVideoComponents` (núcleo de ComfyUI) →
+   `ref_videos.ref_video_0` (+ `ref_video_audios.ref_video_audio_0`). Las
+   etiquetas siguen el orden imágenes → videos → audios sueltos.
+4. **Ref2VA en la máquina**: si se instaló sólo FL2VA, la primera edición corre
+   `SOLO_FL=0 bash setup.sh` (idempotente: baja los 24 GB del GGUF y la LoRA
+   turbo ref2v, ~5 min a 1 Gbps) y el turno queda «instalando_ref2va» hasta
+   que están; después se lanza solo.
+
+Límites (doc de MiniMax + código del nodo): fuente 2-15 s, salida 5,17-15,08 s,
+**no conserva cada cuadro ni el timing exacto** (reinterpreta; no hay
+«denoise»), y con referencias baja el largo seguro en 32 GB (#15738). Primer
+uso real pendiente: la prueba en seco del 17/9 (reel del mono, «traje rojo en
+vez del cárdigan», audio conservado) dio un prompt válido a la primera, 743
+palabras. Subtítulos quemados en la fuente: H3 los va a «conservar»; mejor
+subir la versión sin subtítulos.
+
 ### 1.4 Context-IR y 2K (API paga, opcional)
 
 - **Context-IR** reescribe un pedido libre al formato oficial. No es open source

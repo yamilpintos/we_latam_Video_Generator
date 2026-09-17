@@ -83,3 +83,6 @@ mis-videos/_estado/
 
 # biblioteca de música de los music videos (pistas, piezas)
 mis-videos/_musica/
+
+# editar: videos subidos, hojas, clips
+mis-videos/_editar/

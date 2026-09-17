@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import cola, libre, maquina, tareas
+from . import cola, editar, libre, maquina, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -754,11 +754,12 @@ def estado_maquina():
                 out["fase"] = "lista"
                 m["fase"] = "lista"
         out["progreso"] = maquina.progreso_general(m, prog)
-        if m.get("proyecto") == "_libre" and m.get("fase") == "lista":
-            ts = libre.refrescar()
-            gen = [t for t in ts if t["estado"] == "generando"]
-            out["generando"] = {"slug": "_libre", "titulo": "Libre (chat)", "hechos": 0 if gen else 1, "total": 1,
-                                "libre": True}
+        if m.get("proyecto") in ("_libre", "_editar") and m.get("fase") == "lista":
+            mod = libre if m["proyecto"] == "_libre" else editar
+            ts = mod.refrescar()
+            gen = [t for t in ts if t["estado"] in ("generando", "instalando_ref2va")]
+            out["generando"] = {"slug": m["proyecto"], "titulo": "Libre (chat)" if m["proyecto"] == "_libre" else "Editar video",
+                                "hechos": 0 if gen else 1, "total": 1, "libre": True}
         elif m.get("proyecto") and m.get("fase") == "lista":
             try:
                 p = Proyecto.cargar(MIS / m["proyecto"] / "proyecto.json")
@@ -920,9 +921,9 @@ def libre_video(v: VideoLibre):
     m = maquina.sincronizar()
     if m.get("fase") != "lista":
         raise HTTPException(409, f"la máquina no está lista (fase {m.get('fase')}). Encendela desde el inicio.")
-    if libre.ocupada():
+    if libre.ocupada() or editar.ocupada():
         raise HTTPException(409, "hay un turno generando; esperá a que termine")
-    if m.get("proyecto") and m.get("proyecto") != "_libre":
+    if m.get("proyecto") and m.get("proyecto") not in ("_libre", "_editar"):
         try:
             p0 = Proyecto.cargar(MIS / m["proyecto"] / "proyecto.json")
             inst = vast.instancia(int(m["instancia"]))
@@ -958,6 +959,91 @@ def libre_reescribir(q: PromptLibre):
         raise HTTPException(422, str(e))
     except Exception as e:
         raise HTTPException(502, f"el reescritor falló: {e}")
+
+
+# ─────────────────────────────────────────────────────────────── EDITAR (Ref2VA)
+
+@app.get("/api/editar")
+def editar_turnos():
+    return {"turnos": editar.refrescar(), "maquina": maquina.sincronizar().get("fase"),
+            "ocupada": editar.ocupada() or libre.ocupada()}
+
+
+class VideoSubido(BaseModel):
+    nombre: str
+    b64: str
+    ajuste: str = "encajar"          # encajar (entero, fondo desenfocado) | recortar
+    desde: float = 0.0               # segundo desde el que se toma el video
+
+
+@app.post("/api/editar/video")
+def editar_subir(v: VideoSubido):
+    try:
+        return editar.subir_video(v.nombre, v.b64, v.ajuste, v.desde)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    except Exception as e:
+        raise HTTPException(500, f"no pude preparar el video: {e}")
+
+
+class ImagenRef(BaseModel):
+    b64: str | None = None           # None = quitar la referencia
+
+
+@app.post("/api/editar/{tid}/referencia")
+def editar_referencia(tid: str, i: ImagenRef):
+    try:
+        return editar.referencia(tid, i.b64) if i.b64 else editar.quitar_referencia(tid)
+    except KeyError:
+        raise HTTPException(404, "no existe ese turno")
+
+
+class PromptEdicion(BaseModel):
+    id: str
+    texto: str
+    segundos: float = 5.167
+    audio_original: bool = True
+    dialogo: str = ""
+
+
+@app.post("/api/editar/reescribir")
+def editar_reescribir(q: PromptEdicion):
+    try:
+        return editar.armar_prompt(q.id, q.texto, q.segundos, q.audio_original, q.dialogo, log=lambda *_: None)
+    except KeyError:
+        raise HTTPException(404, "no existe ese turno")
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    except Exception as e:
+        raise HTTPException(502, f"el reescritor falló: {e}")
+
+
+class Edicion(PromptEdicion):
+    seed: int | None = None
+
+
+@app.post("/api/editar/generar")
+def editar_generar(e: Edicion):
+    if len(e.texto.strip()) < 6:
+        raise HTTPException(422, "decí qué querés cambiar")
+    try:
+        return editar.video(e.id, e.texto, e.segundos, e.seed, e.audio_original, e.dialogo, log=lambda *_: None)
+    except KeyError:
+        raise HTTPException(404, "no existe ese turno")
+    except RuntimeError as ex:
+        raise HTTPException(409, str(ex))
+    except Exception as ex:
+        raise HTTPException(502, f"no pude lanzar la edición: {ex}")
+
+
+@app.get("/api/editar/archivo/{carpeta}/{nombre}")
+def editar_archivo(carpeta: str, nombre: str):
+    if carpeta not in ("fuentes", "assets", "clips"):
+        raise HTTPException(404)
+    f = editar.DIR / carpeta / Path(nombre).name
+    if not f.exists():
+        raise HTTPException(404)
+    return FileResponse(str(f), filename=f.name)
 
 
 @app.post("/api/libre/{tid}/otra-vez")

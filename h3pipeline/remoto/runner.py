@@ -84,7 +84,9 @@ def subir(api, ruta):
     el archivo a medio escribir y LoadAudio dio «Invalid data found»."""
     b = "----x" + secrets.token_hex(8)
     n = f"p{api.rsplit(':', 1)[-1]}_{os.path.basename(ruta)}"
-    tipo = b"audio/wav" if n.lower().endswith(".wav") else b"image/png"
+    baja = n.lower()
+    tipo = (b"audio/wav" if baja.endswith(".wav") else b"video/mp4" if baja.endswith(".mp4")
+            else b"image/png")
     cuerpo = b"".join([
         ("--" + b + "\r\n").encode(),
         ('Content-Disposition: form-data; name="image"; filename="' + n + '"\r\n').encode(),
@@ -311,29 +313,41 @@ def plano(api, out, p, idx, w, h):
         if not ultimo_frame(os.path.join(out, previos[0]), dibujo):
             return None, None
         print(f"     {p['id']} arranca en el último frame de {p['sigue_de']}")
-    else:
+    elif p.get("first_frame"):
         dibujo = os.path.join(ASSETS, os.path.basename(p["first_frame"]))
         if not os.path.exists(dibujo):
             print(f"  X  {p['id']}: falta el dibujo {os.path.basename(dibujo)}")
             return None, None
+    else:
+        # Sin primer fotograma: sólo vale en ref2va con un video de referencia
+        # (edición de un video existente, 17/9/2026).
+        dibujo = None
 
     modo, pasos, turbo, sv, sa, sched = config_plano(p)
+    if dibujo is None and not (modo == "ref2va" and p.get("ref_video")):
+        print(f"  X  {p['id']}: no tiene primer fotograma ni video de referencia")
+        return None, None
     wf = base(modo, pasos, turbo, sv, sa, sched)
-    wf["300"] = {"class_type": "LoadImage", "inputs": {"image": subir(api, dibujo)}}
+    if dibujo:
+        wf["300"] = {"class_type": "LoadImage", "inputs": {"image": subir(api, dibujo)}}
     if modo == "ref2va":
         # Nombres EXACTOS de las entradas en formato API: clave plana con punto e
         # índice desde 0. Un nombre mal escrito ComfyUI lo DESCARTA SIN ERROR y
         # genera como si no hubiera referencias (issue #15667). ref_image_0 es
-        # <Picture 1> en el prompt, ref_audio_0 es <Audio 1>.
+        # <Picture 1> en el prompt, ref_audio_0 es <Audio 1>. Orden de las
+        # etiquetas: imágenes → videos (su audio justo antes) → audios sueltos.
         entradas = {
             "clip": ["128", 0], "vae": ["119", 0],
             # Sin audio_vae la voz de referencia sólo pone la etiqueta en el texto
             # y no condiciona NADA (código del nodo).
             "audio_vae": ["120", 0],
             "prompt": ["138", 0], "width": w, "height": h, "length": ["131", 1],
-            "ref_image_size": p.get("ref_image_size", "match"),
-            "ref_images.ref_image_0": ["300", 0]}
-        for k, extra in enumerate(p.get("refs_extra") or [], start=1):
+            "ref_image_size": p.get("ref_image_size", "match")}
+        k = 0
+        if dibujo:
+            entradas["ref_images.ref_image_0"] = ["300", 0]
+            k = 1
+        for extra in (p.get("refs_extra") or []):
             ruta = os.path.join(ASSETS, os.path.basename(extra))
             if not os.path.exists(ruta):
                 print(f"  X  {p['id']}: falta la referencia {os.path.basename(extra)}")
@@ -341,6 +355,22 @@ def plano(api, out, p, idx, w, h):
             nid = str(300 + k)
             wf[nid] = {"class_type": "LoadImage", "inputs": {"image": subir(api, ruta)}}
             entradas[f"ref_images.ref_image_{k}"] = [nid, 0]
+            k += 1
+        if p.get("ref_video"):
+            # Video de referencia (<Video 1>): LoadVideo + GetVideoComponents del
+            # núcleo de ComfyUI (la plantilla oficial del ControlNet los usa así).
+            # El nodo H3 lo recorta a ≤ length fotogramas y a la grilla 17k+5; ya
+            # viene a 24 fps y al lienzo desde la app. Su pista de audio entra
+            # como <Audio 1> sólo si se pide (ref_video_audio).
+            ruta = os.path.join(ASSETS, os.path.basename(p["ref_video"]))
+            if not os.path.exists(ruta):
+                print(f"  X  {p['id']}: falta el video {os.path.basename(ruta)}")
+                return None, None
+            wf["330"] = {"class_type": "LoadVideo", "inputs": {"file": subir(api, ruta)}}
+            wf["331"] = {"class_type": "GetVideoComponents", "inputs": {"video": ["330", 0]}}
+            entradas["ref_videos.ref_video_0"] = ["331", 0]
+            if p.get("ref_video_audio"):
+                entradas["ref_video_audios.ref_video_audio_0"] = ["331", 1]
         if p.get("voz_ref"):
             ruta = os.path.join(ASSETS, os.path.basename(p["voz_ref"]))
             if not os.path.exists(ruta):
@@ -349,7 +379,7 @@ def plano(api, out, p, idx, w, h):
             wf["310"] = {"class_type": "LoadAudio", "inputs": {"audio": subir(api, ruta)}}
             entradas["ref_audios.ref_audio_0"] = ["310", 0]
         wf["136"] = {"class_type": "MiniMaxH3ReferenceToVideo", "inputs": entradas}
-        if p.get("guia0"):
+        if p.get("guia0") and dibujo:
             # Ancla dura: la misma imagen como fotograma 0 del eje del video (el
             # DiT acepta keyframes y referencias juntos). Sin documentar para
             # ref2va en el cuadro 0: por eso es opcional y se prueba A/B.
@@ -402,7 +432,8 @@ def plano(api, out, p, idx, w, h):
                             "minutos": round(t / 60, 2), "pasos": pasos,
                             "turbo": turbo, "modo": modo, "shift_video": sv,
                             "scheduler": sched, "guia0": bool(p.get("guia0")),
-                            "refs": 1 + len(p.get("refs_extra") or []),
+                            "refs": (1 if p.get("first_frame") or p.get("sigue_de") else 0) + len(p.get("refs_extra") or []),
+                            "video_ref": bool(p.get("ref_video")),
                             "voz": bool(p.get("voz_ref")), "wh": [w, h],
                             "intentos": intento}
         if intento == 1:

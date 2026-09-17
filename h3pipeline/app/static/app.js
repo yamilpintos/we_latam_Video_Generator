@@ -128,6 +128,8 @@ ruta("/", async () => {
         <p>Decís qué música y qué escena. La app compone la pista, hace el loop y el video dura lo que dure la música.</p><span class="n">${n(esLoop)} loops</span></div>
       <div class="puerta" onclick="location.hash='#/libre'"><span class="k">CHAT · SIN ESTRUCTURA</span><h2>Libre</h2>
         <p>Escribís un prompt, ves la imagen, describís el movimiento y sale un clip de MiniMax. Para probar ideas antes de un guion.</p><span class="n">como un playground</span></div>
+      <div class="puerta" onclick="location.hash='#/editar'"><span class="k">VIDEO → VIDEO · 2 A 15 S</span><h2>Editar</h2>
+        <p>Subís un video y decís qué cambiar: la ropa, el fondo, un objeto, una frase. H3 lo rehace conservando encuadre y movimiento.</p><span class="n">referencia completa</span></div>
     </div>
     <div class="card" id="maq" style="margin-top:34px"><h3>La máquina</h3><div class="muted">consultando…</div></div>
     <div class="card" id="cola" style="margin-top:14px"><h3>La cola</h3><div class="muted">consultando…</div></div>
@@ -317,6 +319,94 @@ ruta("/nuevo", async ([formato]) => {
   $("#btn-trad").onclick = () => traducirGuion(esLoop, f);
   actualizar();
 });
+
+/* ─────────────────────────────────────────────── editar: video → video (Ref2VA) */
+let editTimer = null;
+const DURS_H3 = [[5.167, "5,17 s"], [5.875, "5,88 s"], [6.583, "6,58 s"], [7.292, "7,29 s"], [10.083, "10,08 s"], [12.917, "12,92 s"], [15.083, "15,08 s"]];
+ruta("/editar", async () => {
+  const d = await api("/editar");
+  const lista = d.maquina === "lista";
+  $("#vista").innerHTML = `<div class="wrap"><h1>Editar un video <span class="pill ${lista ? "ok" : "warn"}">máquina ${h(d.maquina || "apagada")}</span></h1>
+    <p class="sub">Subís un video de 2 a 15 segundos y decís qué cambiar: la ropa, el fondo, un objeto, el clima, una frase que diga. MiniMax H3 lo rehace conservando la persona, el encuadre, el movimiento y los tiempos. Es una reinterpretación fiel, no un filtro: la primera vez conviene un cambio solo y claro.</p>
+    <div class="card" style="margin-bottom:14px"><h3>Nuevo video</h3>
+      <div class="row"><label class="btn p">subir video<input type="file" id="efile" accept="video/mp4,video/quicktime,video/webm,video/*" hidden></label>
+        <select id="eajuste" style="max-width:300px" title="qué hacer si el video no tiene la proporción 16:9 o 9:16"><option value="encajar">entero, con fondo desenfocado a los lados</option><option value="recortar">recortado al cuadro (se pierden bordes)</option></select>
+        <span class="tiny">se pasa a 24 fps y al cuadro de H3; si dura más de 15 s se usan los primeros 15</span></div>
+      <div id="eerr" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
+    <div id="eturnos"></div></div>`;
+  $("#efile").addEventListener("change", async (ev) => {
+    const f = ev.target.files[0]; if (!f) return;
+    if (f.size > 180 * 1024 * 1024) { $("#eerr").textContent = "el archivo pesa más de 180 MB: recortalo o bajale la resolución antes"; return; }
+    toast("subiendo y preparando el video… (10-40 s)");
+    const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+    try { await api("/editar/video", {method: "POST", body: {nombre: f.name, b64, ajuste: $("#eajuste").value}}); toast("video listo"); navegar(); }
+    catch (e) { $("#eerr").textContent = e.message; }
+  });
+  pintarEdiciones(d.turnos, d);
+});
+function pintarEdiciones(ts, d) {
+  const lista = d.maquina === "lista";
+  const activos = ts.filter(t => t.estado !== "listo"), hechos = ts.filter(t => t.estado === "listo");
+  const dur = s => `${Number(s).toFixed(2).replace(".", ",")} s`;
+  const barra = (t, etq) => { const p = t.progreso; return `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> ${etq}</span><span class="tiny">${p ? `${Math.floor(p.transcurrido / 60)} min de ~${Math.round(p.estimado / 60)}` : ""}</span></div>
+      <div class="bar" style="height:10px;margin-top:8px"><i style="width:${p ? p.pct : 2}%"></i></div>
+      <div class="tiny mono" style="margin-top:6px;white-space:pre-wrap;opacity:.75">${p && p.ultimo ? h(p.ultimo) : "esperando la primera señal de la máquina…"}</div>`; };
+  const biblioteca = hechos.length ? `<h3 style="margin-top:22px">Ediciones hechas <span class="pill">${hechos.length}</span></h3><div class="grid g3">${hechos.map(t => `<div class="card" style="padding:10px">
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:6px"><div><div class="tiny">original</div><video controls preload="metadata" style="width:100%;border-radius:6px;background:#000" src="/api/editar/archivo/fuentes/${t.fuente.split("/")[1]}"></video></div>
+        <div><div class="tiny">editado</div><video controls preload="metadata" style="width:100%;border-radius:6px;background:#000" src="/api/editar/archivo/clips/${t.clip.split("/")[1]}"></video></div></div>
+      <div class="tiny" style="margin-top:6px">${new Date(t.creado * 1000).toLocaleString("es-AR")} · ${t.aspecto} · ${dur(t.segundos)}</div>
+      <div class="muted" style="margin-top:4px">${h(t.cambio || "")}</div>
+      <details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">prompt</summary><div class="tiny mono" style="white-space:pre-wrap;opacity:.8;max-height:220px;overflow:auto">${h(t.prompt_video || "")}</div></details>
+      <div class="row" style="margin-top:8px"><a class="btn s" href="/api/editar/archivo/clips/${t.clip.split("/")[1]}" download>descargar</a></div></div>`).join("")}</div>` : "";
+  $("#eturnos").innerHTML = (activos.map(t => `<div class="card" style="margin-bottom:12px"><div class="grid g2">
+    <div><div class="tiny" style="margin-bottom:6px">${new Date(t.creado * 1000).toLocaleString("es-AR")} · ${h(t.nombre || "")} · ${t.aspecto} · ${dur(t.segundos_fuente)} · ${t.tiene_audio ? "con audio" : "sin audio"}${t.original ? ` · original ${t.original.w}×${t.original.h}, ${t.original.dur} s` : ""}</div>
+      <video controls preload="metadata" style="width:100%;border-radius:8px;background:#000;max-height:360px" src="/api/editar/archivo/fuentes/${t.fuente.split("/")[1]}"></video>
+      <img src="/api/editar/archivo/fuentes/${t.hoja.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:6px;opacity:.85" title="lo que GPT mira para describir el video">
+      ${t.nota && t.estado === "fuente" ? `<div class="tiny" style="margin-top:4px">${h(t.nota)}</div>` : ""}</div>
+    <div>${t.estado === "generando" ? barra(t, `editando en la máquina · ${dur(t.segundos)}`) + `<div class="muted" style="margin-top:6px">${h(t.cambio || "")}</div>`
+      : t.estado === "instalando_ref2va" ? barra(t, "instalando el modelo Ref2VA en la máquina") + `<div class="tiny" style="margin-top:6px">${h(t.nota || "")}</div>`
+      : t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny">${h(t.nota)}</div><div class="muted" style="margin-top:6px">${h(t.cambio || "")}</div>`
+      : `<label class="tiny" style="display:block;margin-bottom:4px">Qué cambiar (en castellano; una cosa clara)</label>
+         <textarea id="ec-${t.id}" style="min-height:90px" placeholder="«Que la persona tenga un traje rojo con corbata negra» · «Que el fondo sea una playa al atardecer» · «Que diga: “Hola, ¿cómo están?”»">${h(t.cambio || "")}</textarea>
+         <div class="row" style="margin-top:8px;gap:10px;flex-wrap:wrap">
+           <div><div class="tiny">imagen de referencia (opcional: la prenda, el fondo)</div>
+             ${t.ref ? `<div class="row"><img src="/api/editar/archivo/assets/${t.ref.split("/")[1]}" style="height:54px;border-radius:6px"><button class="btn s" onclick="editarRef('${t.id}', null)">quitar</button></div>`
+                     : `<label class="btn s">subir imagen<input type="file" accept="image/*" hidden onchange="editarRefArchivo('${t.id}', this)"></label>`}</div>
+           <div><div class="tiny">duración del resultado</div><select id="es-${t.id}" style="max-width:150px">${DURS_H3.filter(([v]) => v <= t.segundos_fuente + 0.8).map(([v, l], i, arr) => `<option value="${v}" ${i === arr.length - 1 ? "selected" : ""}>${l}</option>`).join("")}</select></div>
+           ${t.tiene_audio ? `<label class="tiny" style="align-self:end"><input type="checkbox" id="ea-${t.id}" checked> mantener el audio original</label>` : ""}</div>
+         <div class="row" style="margin-top:10px"><button class="btn s" onclick="editarArmar('${t.id}')" title="convierte lo que escribiste al formato de referencia completa de H3 y lo deja en el cuadro para que lo revises">Armar prompt H3</button>
+           <button class="btn p" ${lista && !d.ocupada ? "" : "disabled"} onclick="editarGenerar('${t.id}')">Editar video</button>
+           <span class="tiny">${!lista ? "encendé la máquina desde el inicio" : d.ocupada ? "hay un turno generando" : "si la máquina no tiene Ref2VA, primero lo baja (~5 min)"}</span></div>`}
+      </div></div></div>`).join("") || `<div class="muted">Nada en curso. Subí un video para empezar.</div>`) + biblioteca;
+  clearTimeout(editTimer);
+  if (ts.some(t => t.estado === "generando" || t.estado === "instalando_ref2va")) editTimer = setTimeout(async () => { if (!$("#eturnos")) return; const d2 = await api("/editar"); pintarEdiciones(d2.turnos, d2); }, 12000);
+}
+async function editarRefArchivo(id, input) {
+  const f = input.files[0]; if (!f) return;
+  const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+  editarRef(id, b64);
+}
+async function editarRef(id, b64) {
+  try { await api(`/editar/${id}/referencia`, {method: "POST", body: {b64}}); const d = await api("/editar"); pintarEdiciones(d.turnos, d); }
+  catch (e) { toast(e.message, true); }
+}
+function editarOpciones(id) {
+  const a = $(`#ea-${id}`);
+  return {id, texto: $(`#ec-${id}`).value, segundos: Number($(`#es-${id}`).value), audio_original: a ? a.checked : false};
+}
+async function editarArmar(id) {
+  const ta = $(`#ec-${id}`);
+  toast("armando el prompt de edición… (15-30 s)");
+  try { const r = await api("/editar/reescribir", {method: "POST", body: editarOpciones(id)}); ta.value = r.prompt; ta.style.minHeight = "300px";
+    toast(r.problemas && r.problemas.length ? "prompt armado, con avisos: " + r.problemas[0] : "prompt armado: revisalo y tocá Editar video", !!(r.problemas && r.problemas.length)); }
+  catch (e) { toast(e.message, true); }
+}
+async function editarGenerar(id) {
+  const o = editarOpciones(id);
+  toast(o.texto.trim().startsWith("subject_definitions:") ? "lanzando…" : "armando el prompt y lanzando… (15-40 s)");
+  try { const t = await api("/editar/generar", {method: "POST", body: o}); toast(t.estado === "instalando_ref2va" ? "la máquina baja Ref2VA; el clip arranca solo después" : "edición lanzada en la máquina"); navegar(); }
+  catch (e) { toast(e.message, true); }
+}
 
 /* ─────────────────────────────────────────────── libre: el chat con H3 */
 let libreTimer = null;

@@ -77,7 +77,13 @@ FALTAN=0
 for id in $(python - <<'PY'
 import json, os
 for p in json.load(open(os.environ["PLANOS"], encoding="utf-8"))["planos"]:
-    print(p["first_frame"].split("/")[-1])
+    # Un plano de edición (ref2va con video de referencia) no tiene dibujo:
+    # lo que tiene que estar es el video, y la referencia si la hay.
+    for k in ("first_frame", "ref_video"):
+        if p.get(k):
+            print(p[k].split("/")[-1])
+    for r in p.get("refs_extra") or []:
+        print(r.split("/")[-1])
 PY
 ); do
   [ -f "$ASSETS/$id" ] || { echo "  !! falta el dibujo $id"; FALTAN=1; }

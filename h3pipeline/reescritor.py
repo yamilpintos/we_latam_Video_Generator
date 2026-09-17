@@ -398,3 +398,206 @@ def completar(ruta_json: Path, log=print, forzar: bool = False, solo: list[str] 
         hechos += 1
         ruta_json.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return hechos
+
+
+# ═══════════════════════════════════════════════ EDICIÓN DE UN VIDEO (Ref2VA)
+
+GUIA_EDICION = """You rewrite a VIDEO-EDITING request into the exact full-reference prompt format of MiniMax H3 (mode Ref2VA). The source video is <Video 1>; the target video is an edited version of it that keeps everything the user did not ask to change (framing, camera, motion, timing, identity, place, light) and changes only what the user asked (clothing, background, an object, the weather, a spoken line…). Output ONLY the final prompt, nothing else.
+
+FORMAT: six sections, these exact names, this order, each name on its own line followed by a colon, one blank line between sections:
+subject_definitions:
+<Subject 1> is <the person/thing that appears in <Video 1>, described concretely: hair, face, age, clothing, pose>.
+<Subject 2> is <the environment/background in <Video 1>> (add more subjects only if they must be tracked separately).
+<Picture 1> is <the reference image: the new outfit / the new background / the object>, ONLY if a reference image is attached.
+<Video 1> is the source video for the target video edit.
+<Audio 1> is the synchronized audio track of <Video 1> and is reused in the target video. ONLY if the request says to keep the original audio.
+
+summary:
+[video editing] or [video editing + reference generation] (if <Picture 1> exists) or [video editing + audio reuse] (if <Audio 1> exists), combined with " + " as needed. Then one short paragraph: "The target video is an edited version of <Video 1>. ..." saying what stays and what changes.
+
+retention_analysis:
+One line per label defined above, with these fixed markers: fully_preserved / partially_preserved / attribute_transfer / weak_reference for <Subject N>, <Picture N>, <Video N>; fully_copy / partially_copy / reference / weak_reference for <Audio N>. Format: "<Subject 1> (appears in [Shot 1]): partially_preserved - the identity, face, hair and pose are retained while the clothing changes to …". "<Video 1> (source video editing): fully_preserved - the original framing, camera motion, timing and lighting are maintained while … is edited." "<Audio 1>: fully_copy - <Audio 1> is reused 1:1 as the target video's complete final audio track."
+
+detailed_description:
+One or two sentences of overall style, then "[Shot 1] The shot begins from the source <Video 1>, showing <Subject 1> …" and describe, in playback order and matching the requested duration, what is seen: the subject with the EDITED attributes stated explicitly (the new clothing in detail, the new background in detail), the original motion and camera preserved ("the camera keeps the exact framing and movement of <Video 1>"), and the sound. If a reference image exists, say what is taken from <Picture 1> ("wearing the … shown in <Picture 1>"). Speech follows the usual rules: (S1) ids, voice described once, literal lines inside <d>[Language] …</d>, mouth visibly moving for on-screen speech, lips closed when the voice stops.
+
+overall_soundscape:
+1-3 sentences of ambience and physical sounds. If the original audio is reused, say the soundscape comes from <Audio 1>.
+
+non_diegetic_music:
+N/A
+
+RULES
+- Everything in English except the literal words inside <d>…</d>.
+- Describe the source video faithfully from the attached frames (people, clothing, place, motion, camera). The edit must be explicit and concrete: never "different clothes", always "a dark green wool coat with a wide collar over a white shirt".
+- Keep every unrequested attribute: state what is preserved (identity, face, hair, pose, framing, camera, timing, lighting).
+- NEVER write prohibitions ("no", "not", "never", "without", "do not", "avoid"): describe what IS there. The retention lines use the fixed markers, that is the only place a contrast ("… retained while … changes") belongs.
+- Do not invent extra people, objects, text or cuts. One [Shot 1] unless the source clearly has cuts.
+- Length: 250-600 words in detailed_description, scaled to the duration.
+
+EXAMPLE (official, editing a source video to add speech, keeping its music):
+subject_definitions:
+<Subject 1> is the young man with short wavy blonde hair, wearing a bright pink suit jacket, matching pink trousers, an unbuttoned white shirt, and silver rings, holding a small black lamb in his arms in <Video 1>.
+<Video 1> is the source video for the editing task.
+<Audio 1> is the synchronized audio track of <Video 1>, providing the background music.
+
+summary:
+[video editing + audio reuse] The target video is an edited version of <Video 1>. <Subject 1>, wearing a bright pink suit and holding a black lamb, stands in a grassy field with other white lambs in the background. The edit animates <Subject 1>'s face to speak the user-provided dialogue while <Audio 1> continues as the background music.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the short wavy blonde hair, bright pink suit, unbuttoned white shirt, silver rings and the black lamb are retained.
+<Video 1> (source video editing): fully_preserved - the original camera framing, warm golden hour lighting, grassy hill setting, and background white lambs are maintained while the central character is edited to speak.
+<Audio 1>: partially_copy - the background music of <Audio 1> continues underneath the new spoken line.
+
+detailed_description:
+Live-action, cinematic, warm golden-hour light.
+[Shot 1] The shot begins from the source <Video 1>, showing <Subject 1>, a young man with short wavy blonde hair, wearing a bright pink suit jacket, matching pink trousers, and a casually unbuttoned white shirt. He stands in a sunlit green pasture, gently holding a small black lamb in his arms, while several white lambs graze on the rolling hill behind him. The camera keeps the exact framing and slow push-in of <Video 1>. <Subject 1> (S1), a calm young male voice, medium pitch, unhurried, looks forward and speaks, his mouth opening and closing clearly in sync with each word: <d>[English] Follow the wind, live free.</d> Exactly as his voice stops, his lips meet in a relaxed smile and his jaw stops moving; he strokes the lamb's fleece and looks toward the horizon through the end of the video.
+
+overall_soundscape:
+The background music of <Audio 1> plays continuously; a light breeze moves through the grass and the lamb shifts softly in his arms.
+
+non_diegetic_music:
+N/A
+"""
+
+SECCIONES_REF = ("subject_definitions:", "summary:", "retention_analysis:", "detailed_description:",
+                 "overall_soundscape:", "non_diegetic_music:")
+
+
+def pedido_edicion_texto(p: dict) -> str:
+    L = [f"Target duration: {float(p['duracion']):.2f} seconds (same timing as the source). Frame: {p.get('aspecto', '16:9')}.",
+         f"Source video <Video 1>: {float(p.get('segundos_fuente') or p['duracion']):.1f} s; its frames are attached as a contact sheet "
+         "(read left to right, top to bottom)." + (f" Notes about it: {p['fuente_desc']}" if p.get("fuente_desc") else "")]
+    L.append(f"WHAT TO CHANGE (the user's request, may be in Spanish; translate the intent): {p['cambio'].strip()}")
+    if p.get("imagen_ref"):
+        L.append("A reference image is attached AFTER the contact sheet: it is <Picture 1> and shows what the user wants "
+                 "(the outfit, the background or the object). Describe it and use it as the source of the change.")
+    L.append("The original audio of <Video 1> IS reused (<Audio 1>, fully_copy or partially_copy if speech is added)."
+             if p.get("audio_original") else
+             "The original audio is discarded: define no <Audio N>; describe the new soundscape from the scene.")
+    d = p.get("dialogo")
+    lineas = lineas_de(d) if d else []
+    if lineas:
+        lengua = IDIOMAS.get(d.get("idioma", "es"), "Spanish")
+        L.append(f"New speech in {lengua}, in this order (label = who, never spoken; text after «» is literal):")
+        for l in lineas:
+            L.append(f"- {l['quien'] or 'the person on screen'} ({'off-screen voice-over' if l['off'] else 'on screen, mouth moving'}): «{l['texto']}»")
+    else:
+        L.append("Nobody speaks in the target video.")
+    if p.get("notas"):
+        L.append(f"Notes: {p['notas']}")
+    return "\n".join(L)
+
+
+def validar_edicion(prompt: str, p: dict) -> list[str]:
+    e = []
+    t = prompt.strip()
+    pos = [t.find(s) for s in SECCIONES_REF]
+    if any(x < 0 for x in pos):
+        e.append("missing section(s): " + ", ".join(s for s, x in zip(SECCIONES_REF, pos) if x < 0))
+    elif pos != sorted(pos):
+        e.append("the six sections must be in the official order")
+    if "<Video 1>" not in t.split("summary:")[0]:
+        e.append("subject_definitions must define <Video 1> as the source video")
+    m = re.search(r"summary:\s*\[([^\]]+)\]", t)
+    if not m or "video editing" not in m.group(1):
+        e.append("summary must start with a task prefix containing 'video editing', e.g. [video editing + audio reuse]")
+    if "[Shot 1]" not in t:
+        e.append("detailed_description must contain [Shot 1]")
+    if p.get("imagen_ref") and "<Picture 1>" not in t:
+        e.append("a reference image is attached: define and use <Picture 1>")
+    if not p.get("imagen_ref") and "<Picture 1>" in t:
+        e.append("there is no reference image: remove <Picture 1>")
+    if p.get("audio_original"):
+        if "<Audio 1>" not in t or not re.search(r"<Audio 1>:\s*(fully_copy|partially_copy)", t):
+            e.append("the original audio is reused: define <Audio 1> and mark it fully_copy or partially_copy in retention_analysis")
+    elif "<Audio 1>" in t:
+        e.append("the original audio is discarded: remove <Audio 1>")
+    if not re.search(r"non_diegetic_music:\s*N/A", t):
+        e.append("non_diegetic_music must be N/A")
+    d = p.get("dialogo")
+    lineas = lineas_de(d) if d else []
+    bloques = re.findall(r"<d>\s*\[[^\]]+\]\s*(.*?)</d>", t, re.S)
+    if lineas:
+        dentro = _normal(" ".join(bloques))
+        for l in lineas:
+            if _normal(l["texto"]) not in dentro:
+                e.append(f"this line is missing or altered inside <d>: {l['texto']!r}")
+        if len(bloques) > len(lineas):
+            e.append(f"{len(bloques)} <d> blocks for {len(lineas)} lines: one per line")
+    elif bloques:
+        e.append("nobody speaks: remove every <d>…</d>")
+    cuerpo = t.split("detailed_description:")[-1]
+    negs = NEGACIONES.findall(cuerpo)
+    if len(negs) > 2:
+        e.append(f"remove the negatives in detailed_description ({', '.join(sorted(set(x.lower() for x in negs)))})")
+    n = len(cuerpo.split())
+    if n < 150:
+        e.append(f"detailed_description too short ({n} words): describe the source and the edit concretely")
+    return e
+
+
+def plantilla_edicion(p: dict) -> str:
+    """Piso determinista para la edición: seis secciones armadas con los campos."""
+    suj = ["<Subject 1> is the main person or object seen in <Video 1>, kept with the same identity, pose and motion.",
+           "<Video 1> is the source video for the target video edit."]
+    ret = ["<Subject 1> (appears in [Shot 1]): partially_preserved - identity, pose and motion are retained while the requested change is applied.",
+           "<Video 1> (source video editing): fully_preserved - the original framing, camera motion, timing and lighting are maintained."]
+    tarea = ["video editing"]
+    if p.get("imagen_ref"):
+        suj.insert(1, "<Picture 1> is the reference image showing the requested change.")
+        ret.append("<Picture 1> (reference for the change): attribute_transfer - its look is applied to <Subject 1>.")
+        tarea.append("reference generation")
+    if p.get("audio_original"):
+        suj.append("<Audio 1> is the synchronized audio track of <Video 1> and is reused in the target video.")
+        ret.append("<Audio 1>: fully_copy - <Audio 1> is reused 1:1 as the target video's complete final audio track.")
+        tarea.append("audio reuse")
+    resumen = (f"[{' + '.join(tarea)}] The target video is an edited version of <Video 1>. Everything stays as in the source "
+               f"except this change: {p['cambio'].strip()}")
+    desc = ("Live-action, same style as the source.\n[Shot 1] The shot begins from the source <Video 1>, showing <Subject 1> with the exact "
+            f"framing, camera movement and timing of <Video 1>. The requested change is applied and visible from the first frame: {p['cambio'].strip()}. "
+            "Everything else, the identity, the pose, the motion, the place and the light, continues exactly as in the source through the end of the clip.")
+    sonido = "The soundscape comes from <Audio 1>." if p.get("audio_original") else "Quiet ambience matching the place, with the physical sounds of what moves."
+    return prompts.oficial_ref2va(suj, resumen, ret, desc, sonido, "N/A")
+
+
+def reescribir_edicion(p: dict, log=print, reintentos: int = 2, clave: str | None = None) -> dict:
+    """Como `reescribir`, para editar un video: manda la hoja de fotogramas del
+    video fuente (`p['hoja']`) y, si hay, la imagen de referencia (`p['imagen_ref']`)."""
+    contenido: list = [{"type": "text", "text": "Rewrite this video-editing request into the H3 full-reference prompt.\n\n" + pedido_edicion_texto(p)}]
+    for clave_img, detalle in (("hoja", "high"), ("imagen_ref", "low")):
+        ruta = p.get(clave_img)
+        if ruta and Path(str(ruta)).exists():
+            b = _imagen_b64(Path(str(ruta)), lado=1024 if clave_img == "hoja" else 768)
+            if b:
+                contenido.append({"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b}", "detail": detalle}})
+    mensajes = [{"role": "system", "content": GUIA_EDICION}, {"role": "user", "content": contenido}]
+    problemas: list[str] = []
+    salida = ""
+    for intento in range(1, reintentos + 2):
+        try:
+            salida, uso = _chat(mensajes, clave=clave)
+        except ErrorReescritor as e:
+            log(f"    !! {e}")
+            break
+        salida = salida.strip()
+        if salida.startswith("```"):
+            salida = re.sub(r"^```[a-z]*\s*|\s*```$", "", salida, flags=re.S).strip()
+        i = salida.find("subject_definitions:")
+        if i > 0:
+            salida = salida[i:]
+        problemas = validar_edicion(salida, p)
+        log(f"    reescritor (edición): intento {intento} · {len(salida.split())} palabras · "
+            f"{uso.get('prompt_tokens', '?')}+{uso.get('completion_tokens', '?')} tokens"
+            + (f" · {len(problemas)} problema(s)" if problemas else " · OK"))
+        if not problemas:
+            return {"prompt": salida, "origen": f"reescritor {MODELO}", "intentos": intento, "problemas": []}
+        for pr in problemas:
+            log(f"      - {pr}")
+        mensajes.append({"role": "assistant", "content": salida})
+        mensajes.append({"role": "user", "content": "Fix these problems and output the complete corrected prompt only:\n- " + "\n- ".join(problemas)})
+    graves = [x for x in problemas if not x.startswith(("detailed_description too short", "remove the negatives"))]
+    if salida and not graves:
+        return {"prompt": salida, "origen": f"reescritor {MODELO} (con avisos)", "intentos": reintentos + 1, "problemas": problemas}
+    log("    !! el modelo no dio un prompt válido: va la plantilla determinista")
+    return {"prompt": plantilla_edicion(p), "origen": "plantilla", "intentos": reintentos + 1, "problemas": problemas}
