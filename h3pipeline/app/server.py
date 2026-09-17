@@ -83,10 +83,21 @@ def _normalizar_clave_privada(priv: str) -> str:
     iban los saltos. ssh la rechaza si no está en bloque; acá se rearma."""
     import re
     s = priv.replace("\\n", "\n").strip().strip('"').strip("'").strip()
-    m = re.search(r"-----BEGIN ([A-Z ]+)-----(.*?)-----END \1-----", s, re.S)
-    if not m:
+    # Cabeceras maltratadas («----BEGIN -OPENSSH PRIVATE KEY-----», visto el
+    # 17/9 en Render): se rescata el tipo y el cuerpo y se rearma la cabecera.
+    # El cuerpo es base64 (sin guiones), así que los guiones se pueden tratar
+    # como espacios: quedan BEGIN, las palabras del tipo en mayúsculas, el
+    # cuerpo, END y otra vez el tipo.
+    tokens = s.replace("-", " ").split()
+    if "BEGIN" not in tokens or "END" not in tokens:
         return s + "\n"
-    tipo, cuerpo = m.group(1), "".join(m.group(2).split())
+    i, j = tokens.index("BEGIN") + 1, tokens.index("END")
+    tipo_l = []
+    while i < j and re.fullmatch(r"[A-Z]+", tokens[i]):
+        tipo_l.append(tokens[i])
+        i += 1
+    tipo = " ".join(tipo_l) or "OPENSSH PRIVATE KEY"
+    cuerpo = "".join(tokens[i:j])
     lineas = [cuerpo[i:i + 70] for i in range(0, len(cuerpo), 70)]
     return f"-----BEGIN {tipo}-----\n" + "\n".join(lineas) + f"\n-----END {tipo}-----\n"
 
