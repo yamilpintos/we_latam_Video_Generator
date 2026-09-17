@@ -131,6 +131,14 @@ def video(tid: str, prompt_video: str, segundos: float = grilla.MINIMO, seed: in
     inst = vast.instancia(int(m["instancia"]))
     z = _zip_turno(t, prompt_video, segundos, seed)
     vast.subir(inst, z)
+    if float(segundos) > 6.0:
+        # Un clip largo sólo entra en 32 GB con la memoria LIMPIA: el 17/8 los
+        # de 15 s salieron en 5090 como primer trabajo de un proceso fresco, y
+        # los OOM de 6,6-7,3 s fueron siempre el tercer clip de una placa. Así
+        # que antes de un clip largo se reinicia el ComfyUI de la placa 0
+        # (lanzar.sh espera a que vuelva).
+        vast.ejecutar(inst, "supervisorctl restart comfyui >/dev/null 2>&1 || true", timeout=60)
+        log("ComfyUI reiniciado para arrancar con la VRAM limpia")
     vast.ejecutar(inst, f"export PATH=/venv/main/bin:$PATH && cd /workspace/refs && unzip -oq {z.name} && "
                         f"sed -i 's/\\r$//' *.sh *.py && cp planos.json /root/planos.json", timeout=180)
     vast.lanzar(inst, "export PATH=/venv/main/bin:$PATH && cd /workspace/refs && PASOS=8 GPUS=1 bash lanzar.sh",
