@@ -803,7 +803,7 @@ class ImagenLibre(BaseModel):
 
 @app.get("/api/libre")
 def libre_turnos():
-    return {"turnos": libre.refrescar(), "maquina": maquina.leer().get("fase"), "ocupada": libre.ocupada()}
+    return {"turnos": libre.refrescar(), "maquina": maquina.sincronizar().get("fase"), "ocupada": libre.ocupada()}
 
 
 @app.post("/api/libre/imagen")

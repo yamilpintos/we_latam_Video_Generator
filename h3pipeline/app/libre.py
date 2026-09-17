@@ -164,7 +164,7 @@ def video(tid: str, prompt_video: str, segundos: float = grilla.MINIMO, seed: in
           log=print) -> dict:
     """Manda el turno a la máquina lista y lo deja generando."""
     t = _turno(tid)
-    m = maquina.leer()
+    m = maquina.sincronizar()
     if m.get("fase") != "lista" or not m.get("instancia"):
         raise RuntimeError(f"la máquina no está lista (fase {m.get('fase')}); encendela desde el inicio")
     inst = vast.instancia(int(m["instancia"]))

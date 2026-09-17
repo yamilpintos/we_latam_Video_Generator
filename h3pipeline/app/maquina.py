@@ -67,6 +67,24 @@ def escribir(**cambios) -> dict:
     return d
 
 
+def sincronizar() -> dict:
+    """El estado puesto al día para quien lo necesite fuera de la portada
+    (Libre, la cola): adopta una instancia viva si el estado se perdió y, si
+    dice «instalando», pregunta a la máquina si ya terminó. El 17/9 Libre
+    pedía «encendé la máquina» con la máquina lista porque nadie había
+    abierto la portada después de un redeploy."""
+    adoptar()
+    m = leer()
+    if m.get("fase") == "instalando" and m.get("instancia"):
+        try:
+            inst = vast.instancia(int(m["instancia"]))
+            if progreso_instalacion(inst)["listo"]:
+                m = escribir(fase="lista", lista_desde=time.time())
+        except Exception:
+            pass
+    return m
+
+
 _adopcion: dict = {"t": 0}
 
 
