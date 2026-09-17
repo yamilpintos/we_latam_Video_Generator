@@ -27,6 +27,13 @@ def main() -> int:
     p.escribir(log=lambda *_: None)
     print(f"\nproyecto.json escrito: {len(d['planos'])} planos · {len(d.get('voz', []))} líneas de voz · "
           f"{r['intentos']} llamada(s)")
+    # Cada plano sale ya con su prompt en el formato oficial de H3 (se rehace
+    # al empaquetar si para entonces hay dibujo, porque el dibujo mejora la
+    # descripción del primer fotograma).
+    print("\nprompts para H3 (formato oficial):")
+    from .. import reescritor
+    n = reescritor.completar(c / "proyecto.json", log=print)
+    print(f"  {n} prompt(s) escritos")
     if r["avisos"]:
         print(f"{len(r['avisos'])} aviso(s) que quedaron:")
         for a in r["avisos"]:

@@ -83,10 +83,17 @@ def main(argv=None) -> int:
     s.add_argument("--hilos", type=int, default=1,
                    help="imágenes en paralelo (OpenAI tarda ~85 s por imagen con referencias)")
 
+    s = sub.add_parser("reescribir", help="escribe el prompt oficial de H3 de cada plano (GPT + validación)")
+    s.add_argument("proyecto")
+    s.add_argument("--forzar", action="store_true", help="rehacer aunque el pedido no haya cambiado")
+    s.add_argument("--solo", nargs="+", metavar="ID")
+
     s = sub.add_parser("empaquetar", help="arma el ZIP para subir")
     s.add_argument("proyecto")
     s.add_argument("--solo", nargs="+", metavar="ID", help="sólo estos planos (rehacer)")
     s.add_argument("--sin-zip", action="store_true")
+    s.add_argument("--sin-reescribir", action="store_true",
+                   help="no pasar los prompts por el reescritor antes de empaquetar")
 
     s = sub.add_parser("gpu", help="busca dónde correrlo")
     s.add_argument("proyecto", nargs="?")
@@ -222,7 +229,22 @@ def main(argv=None) -> int:
                   + " ".join(bloqueados))
         return 1 if bloqueados else 0
 
+    if a.cmd == "reescribir":
+        from . import reescritor
+        n = reescritor.completar(Path(a.proyecto), forzar=a.forzar, solo=a.solo)
+        print(f"{n} prompt(s) reescritos")
+        return 0
+
     if a.cmd == "empaquetar":
+        if not a.sin_reescribir:
+            # Todo prompt que llega a H3 pasa antes por el reescritor: acá ya
+            # están los dibujos, así que el primer fotograma se describe de la
+            # imagen real. Los planos al día no se tocan.
+            from . import reescritor
+            print("prompts para H3:")
+            n = reescritor.completar(Path(a.proyecto), solo=a.solo)
+            print(f"  {n} reescritos, el resto estaba al día")
+            p = Proyecto.cargar(Path(a.proyecto))
         emp.empaquetar(p, solo=a.solo, zip_=not a.sin_zip)
         return 0
 

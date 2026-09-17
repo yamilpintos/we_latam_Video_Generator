@@ -457,6 +457,25 @@ def asset_png(slug: str, nombre: str):
     return FileResponse(str(f))
 
 
+class Reescribir(BaseModel):
+    forzar: bool = False
+    solo: list[str] = []
+
+
+@app.post("/api/proyectos/{slug}/reescribir")
+def reescribir_prompts(slug: str, r: Reescribir):
+    """Escribe el prompt oficial de H3 de cada plano (tarea; GPT + validación)."""
+    c = _carpeta(slug)
+    if tareas.corriendo(slug):
+        raise HTTPException(409, "ya hay una tarea corriendo en este proyecto")
+    args = ["-m", "h3pipeline", "reescribir", str(c / "proyecto.json")]
+    if r.forzar:
+        args.append("--forzar")
+    if r.solo:
+        args += ["--solo", *r.solo]
+    return {"tarea": tareas.lanzar("prompts H3", args, slug).a_dict()}
+
+
 @app.post("/api/proyectos/{slug}/empaquetar")
 def empaquetar(slug: str):
     c = _carpeta(slug)
@@ -919,6 +938,26 @@ def libre_video(v: VideoLibre):
         return libre.video(v.id, v.prompt_video, v.segundos, v.seed, log=lambda *_: None)
     except KeyError:
         raise HTTPException(404, "no existe ese turno")
+
+
+class PromptLibre(BaseModel):
+    id: str
+    texto: str
+    segundos: float = 5.167
+
+
+@app.post("/api/libre/reescribir")
+def libre_reescribir(q: PromptLibre):
+    """Lo que escribió el usuario → el prompt oficial de H3, para verlo y
+    retocarlo antes de generar. Tarda 10-20 s; cuesta centavos."""
+    try:
+        return libre.armar_prompt(q.id, q.texto, q.segundos, log=lambda *_: None)
+    except KeyError:
+        raise HTTPException(404, "no existe ese turno")
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    except Exception as e:
+        raise HTTPException(502, f"el reescritor falló: {e}")
 
 
 @app.post("/api/libre/{tid}/otra-vez")

@@ -75,6 +75,14 @@ parada mientras se mira. En la réplica fueron $3,71 de $12,40.
 
 ## 0.3 Cómo se escribe un plano
 
+> **Desde el 17/9/2026 el prompt de video no se escribe a mano.** Los campos de
+> abajo (`ve`, `mueve`, `audio`, `dialogo`) son el *pedido*; el prompt que
+> recibe H3 lo arma `h3pipeline/reescritor.py` (GPT con la guía oficial de
+> MiniMax, validado: un solo shot, diálogo literal, sin negativos) al traducir
+> el guion y al empaquetar, y queda en `prompt_h3` de cada plano. En Libre lo
+> mismo, desde lo que el usuario escribe en castellano. Detalle en
+> `h3pipeline/H3-OFICIAL.md` §1.3 bis.
+
 - **`ve`** es la FOTO del primer fotograma: tamaño de plano en mayúsculas,
   vestuario completo, escala en fracciones del cuadro, qué NO tiene que
   parecer. Va al dibujo.

@@ -367,8 +367,10 @@ function pintarTurnos(ts, d) {
       : t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny">${h(t.nota)}</div>`
       : `<textarea id="lv-${t.id}" style="min-height:70px" placeholder="Qué se mueve a partir de esta imagen (inglés recomendado): «locked-off camera; the beam of the lighthouse sweeps slowly; waves crash against the rocks; rain streaks the lens»">${h(t.sugerido || "")}</textarea>
          <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:200px">${[["5.167", "5,17 s (seguro)"], ["5.875", "5,88 s"], ["6.583", "6,58 s (riesgo)"], ["7.292", "7,29 s (riesgo)"], ["10.083", "10,08 s (riesgo alto)"], ["12.917", "12,92 s (riesgo alto)"], ["15.083", "15,08 s (el máximo de H3; ~18 min, memoria limpia)"]].map(([v, l]) => `<option value="${v}" ${t.segundos_sugeridos && Math.abs(Number(v) - t.segundos_sugeridos) < 0.01 ? "selected" : ""}>${l}</option>`).join("")}</select>
+           <button class="btn s" onclick="libreArmar('${t.id}')" title="convierte lo que escribiste al formato oficial de MiniMax H3 y lo deja en el cuadro para que lo revises">Armar prompt H3</button>
            <button class="btn p" ${lista && !d.ocupada ? "" : "disabled"} onclick="libreVideo('${t.id}')">Generar clip</button>
-           <span class="tiny">${!lista ? "encendé la máquina desde el inicio" : d.ocupada ? "hay un turno generando" : ""}</span></div>`}
+           <span class="tiny">${!lista ? "encendé la máquina desde el inicio" : d.ocupada ? "hay un turno generando" : ""}</span></div>
+         <div class="tiny" style="margin-top:6px">Escribí en castellano lo que pasa y quién dice qué («MONO: Cuéntame.» · «PACIENTE (fuera de cuadro): …»). Al generar, se convierte solo al formato de H3; con «Armar prompt H3» lo ves antes.</div>`}
       ${t.nota && t.estado !== "error" ? `<div class="tiny">${h(t.nota)}</div>` : ""}</div></div></div>`).join("") || `<div class="muted">Nada en curso. Subí una imagen o creá una para empezar.</div>`) + biblioteca;
   clearTimeout(libreTimer);
   if (ts.some(t => t.estado === "generando")) libreTimer = setTimeout(async () => { if (!$("#turnos")) return; const d2 = await api("/libre"); pintarTurnos(d2.turnos, d2); }, 12000);
@@ -383,8 +385,20 @@ async function libreImagen(b64 = null) {
   catch (e) { $("#lerr").textContent = e.message; }
 }
 async function libreVideo(id) {
-  try { await api("/libre/video", {method: "POST", body: {id, prompt_video: $(`#lv-${id}`).value, segundos: Number($(`#ls-${id}`).value)}}); toast("clip lanzado en la máquina"); navegar(); }
+  const texto = $(`#lv-${id}`).value;
+  const oficial = texto.trim().startsWith("For the target video");
+  toast(oficial ? "lanzando…" : "armando el prompt para H3 y lanzando… (15-30 s)");
+  try { await api("/libre/video", {method: "POST", body: {id, prompt_video: texto, segundos: Number($(`#ls-${id}`).value)}}); toast("clip lanzado en la máquina"); navegar(); }
   catch (e) { toast(e.message, true); }
+}
+async function libreArmar(id) {
+  const ta = $(`#lv-${id}`);
+  toast("armando el prompt oficial de H3… (10-20 s)");
+  try {
+    const r = await api("/libre/reescribir", {method: "POST", body: {id, texto: ta.value, segundos: Number($(`#ls-${id}`).value)}});
+    ta.value = r.prompt; ta.style.minHeight = "260px";
+    toast(r.problemas && r.problemas.length ? "prompt armado, con avisos: " + r.problemas[0] : "prompt armado: revisalo y tocá Generar", !!(r.problemas && r.problemas.length));
+  } catch (e) { toast(e.message, true); }
 }
 async function traducirGuion(esLoop, formato) {
   const body = {guion: $("#guion").value, formato: esLoop ? "largo" : "short", estructura: $("#estructura").value,
@@ -448,11 +462,20 @@ async function pasoProyecto() {
       ${av.length ? `<div class="pre" style="margin-top:10px;max-height:160px">${av.map(h).join("\n")}</div>` : ""}</div>
     <div class="card"><h3>Planos</h3><table><tr><th>id</th><th>tipo</th><th>tramo</th><th class="num">genera</th><th class="num">en línea</th><th>función</th></tr>
       ${P.planos.map(p => `<tr><td class="mono">${p.id}${p.clip_de ? ` <span class="tiny">= ${p.clip_de}</span>` : ""}</td><td>${p.tipo}</td><td class="tiny">${h(p.tramo || "")}</td><td class="num">${p.segundos.toFixed(2)}</td><td class="num">${p.desde.toFixed(1)}–${p.hasta.toFixed(1)}</td><td class="tiny">${h(p.funcion)}</td></tr>`).join("")}</table>
-      ${voz.length ? `<h3 style="margin-top:18px">Voz en off</h3>${voz.map(v => `<div class="muted" style="margin-bottom:6px"><span class="mono tiny">${h(v.plano || "")}</span> ${h(v.texto)}</div>`).join("")}` : ""}</div>
+      ${voz.length ? `<h3 style="margin-top:18px">Voz en off</h3>${voz.map(v => `<div class="muted" style="margin-bottom:6px"><span class="mono tiny">${h(v.plano || "")}</span> ${h(v.texto)}</div>`).join("")}` : ""}
+      ${(() => { const pl = (P.proyecto.planos || []).filter(p => !p.clip_de); const con = pl.filter(p => p.prompt_h3).length;
+        return `<h3 style="margin-top:18px">Prompts para H3 <span class="pill ${con === pl.length ? "ok" : "warn"}">${con}/${pl.length}</span></h3>
+        <p class="tiny">Lo que de verdad recibe MiniMax: cada plano pasa por el reescritor (GPT con la guía oficial de H3, validado). Se rehace solo al empaquetar si hay dibujo nuevo. Si editás uno a mano en el JSON, ponele <span class="mono">"prompt_h3_manual": true</span> para que no se pise.</p>
+        ${pl.map(p => `<details style="margin-bottom:6px"><summary class="tiny" style="cursor:pointer"><span class="mono">${p.id}</span> · ${p.prompt_h3 ? h(p.prompt_h3_origen || "") : "<span style='color:var(--warn)'>sin prompt todavía</span>"}</summary>${p.prompt_h3 ? `<div class="tiny mono" style="white-space:pre-wrap;opacity:.85;max-height:260px;overflow:auto;margin-top:4px">${h(p.prompt_h3)}</div>` : ""}</details>`).join("")}
+        <div class="row" style="margin-top:8px"><button class="btn s" onclick="reescribirPrompts(false)">Escribir los que faltan</button><button class="btn s" onclick="reescribirPrompts(true)">Rehacer todos</button><span class="tiny">~10 s y centavos por plano</span></div>`; })()}</div>
     <div class="card"><h3>proyecto.json <span class="pill">editable</span></h3>
       <textarea id="pj" class="json" style="min-height:420px">${h(JSON.stringify(P.proyecto, null, 2))}</textarea>
       <div class="row" style="margin-top:10px"><button class="btn p" onclick="guardarProyecto()">Guardar y reconstruir</button><span class="tiny">Se valida al guardar. Cero avisos antes de dibujar.</span></div>
       <div id="err" class="tiny" style="color:var(--bad);margin-top:8px"></div></div></div>`;
+}
+async function reescribirPrompts(forzar) {
+  try { const d = await api(`/proyectos/${P.slug}/reescribir`, {method: "POST", body: {forzar}}); seguirTarea(d.tarea, () => navegar()); toast("escribiendo los prompts de H3…"); }
+  catch (e) { toast(e.message, true); }
 }
 async function guardarProyecto() {
   let pj; try { pj = JSON.parse($("#pj").value); } catch (e) { $("#err").textContent = "JSON inválido: " + e.message; return; }

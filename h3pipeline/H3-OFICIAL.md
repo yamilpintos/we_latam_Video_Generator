@@ -73,6 +73,37 @@ voice stops, his lips close and his jaw stops moving; he does not speak again fo
 - Flechas, barras, signos `+` y collages de referencia: el modelo los dibuja
   (skills oficiales).
 
+### 1.3 bis · El reescritor propio (17/9/2026): `reescritor.py`
+
+Desde el 17/9 **ningún prompt llega a H3 escrito a mano ni en texto libre**.
+`h3pipeline/reescritor.py` hace localmente lo que Context-IR hace en la API:
+recibe un *pedido* (duración, formato, estilo, qué se ve en el primer fotograma
+—y la imagen misma si ya existe, que GPT mira—, qué pasa, qué se oye, quién dice
+qué y en qué idioma) y devuelve un prompt I2VA en el formato oficial, validado:
+
+- la línea de instrucción exacta, los tres campos, un solo `[Shot 1]`;
+- cada línea de diálogo **literal** dentro de `<d>[Spanish] …</d>`, un bloque
+  por línea, el rótulo del hablante afuera («MONO: Cuéntame.» → `(S1) … <d>[Spanish] Cuéntame.</d>`);
+  «(fuera de cuadro)» u «(off)» en el rótulo = `says in an off-screen voiceover`;
+- boca visible y moviéndose en el que habla (lo que tapa la boca se aparta
+  antes: lección del mono terapeuta, v1 muda con la lapicera en la boca);
+- **sin negaciones** (más de dos → reintento), `non_diegetic_music: N/A`,
+  largo acorde a la duración.
+
+Si GPT falla dos veces, sale `plantilla()` (el formato oficial armado con los
+campos tal cual): el piso es siempre formato oficial. Cuesta ~$0,01-0,03 por
+plano (gpt-5.1, 1.700+600 tokens). Dónde corre:
+
+| camino | cuándo |
+|---|---|
+| short / largo / music video | al traducir el guion (`app/traducir.py`) y otra vez al **empaquetar**, ya con el dibujo: `prompt_h3` + `prompt_h3_de` (huella del pedido) en cada plano; `"prompt_h3_manual": true` lo protege |
+| Libre | al tocar «Armar prompt H3» (se ve y se edita) o solo, al generar, si el texto no viene en formato oficial |
+| CLI | `python -m h3pipeline reescribir proyecto.json [--forzar] [--solo …]`; `empaquetar --sin-reescribir` lo saltea |
+
+Medido el 17/9 con el short de la bicicleta (4 planos, 5,17 s): 4 de 4 válidos,
+2 a la primera y 2 al segundo intento (largo); el mono de 15 s con 5 líneas, a
+la primera, 729 palabras.
+
 ### 1.4 Context-IR y 2K (API paga, opcional)
 
 - **Context-IR** reescribe un pedido libre al formato oficial. No es open source

@@ -18,7 +18,7 @@ import time
 import zipfile
 from pathlib import Path
 
-from .. import config, frames, grilla, prompts, vast
+from .. import config, frames, grilla, prompts, reescritor, vast
 from . import maquina
 
 DIR = maquina.MIS / "_libre"
@@ -174,13 +174,47 @@ def _zip_turno(t: dict, prompt_video: str, segundos: float, seed: int | None) ->
     return z
 
 
+def es_oficial(texto: str) -> bool:
+    return texto.strip().startswith("For the target video") and "integrated_multimodal_description:" in texto
+
+
+def pedido_libre(t: dict, texto: str, segundos: float) -> dict:
+    """El pedido del reescritor para un turno: lo que el usuario escribió (en el
+    idioma que sea) más la imagen del turno, que el modelo describe."""
+    return {"modo": "i2va", "duracion": round(float(segundos), 3), "aspecto": t["aspecto"],
+            "estilo": t.get("estilo") or "", "primer_fotograma": t.get("prompt_imagen") or "",
+            "accion": texto.strip(), "musica_aparte": True, "imagen": str(DIR / t["imagen"]),
+            "notas": "The user's request may be in Spanish: translate the intent to English, keep quoted speech verbatim. "
+                     "If the request contains lines of dialogue (with or without «WHO:» labels), they are spoken in the "
+                     "language they are written in, one <d> block per line; a speaker marked off/fuera de cuadro is a voice-over."}
+
+
+def armar_prompt(tid: str, texto: str, segundos: float, log=print) -> dict:
+    """Sólo el prompt oficial (para verlo y editarlo antes de gastar GPU)."""
+    t = _turno(tid)
+    if es_oficial(texto):
+        return {"prompt": texto.strip(), "origen": "ya venía en formato oficial", "problemas": []}
+    if len(texto.strip()) < 8:
+        raise ValueError("describí qué pasa en el clip")
+    r = reescritor.reescribir(pedido_libre(t, texto, segundos), log=log)
+    t["prompt_usuario"] = texto.strip()
+    _guardar(t)
+    return r
+
+
 def video(tid: str, prompt_video: str, segundos: float = grilla.MINIMO, seed: int | None = None,
           log=print) -> dict:
-    """Manda el turno a la máquina lista y lo deja generando."""
+    """Manda el turno a la máquina lista y lo deja generando. Lo que no viene
+    ya en el formato oficial de H3 pasa antes por el reescritor."""
     t = _turno(tid)
     m = maquina.sincronizar()
     if m.get("fase") != "lista" or not m.get("instancia"):
         raise RuntimeError(f"la máquina no está lista (fase {m.get('fase')}); encendela desde el inicio")
+    if not es_oficial(prompt_video):
+        r = reescritor.reescribir(pedido_libre(t, prompt_video, segundos), log=log)
+        t["prompt_usuario"] = prompt_video.strip()
+        t["prompt_origen"] = r["origen"]
+        prompt_video = r["prompt"]
     inst = vast.instancia(int(m["instancia"]))
     z = _zip_turno(t, prompt_video, segundos, seed)
     vast.subir(inst, z)
