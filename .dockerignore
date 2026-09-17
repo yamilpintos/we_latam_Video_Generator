@@ -1,0 +1,44 @@
+# Lo que NO entra al contenedor: modelos (196 GB), medios, entornos y secretos.
+.git
+.env
+.env.*
+.venv*/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.claude/
+node_modules/
+models/
+Minimax h3/
+output/
+VIDEOS-REALISTAS/
+PRUEBAS-H3/
+SUBIR_A_VAST/
+Pruebas video/
+pruebas video 2/
+Video realshort/
+Imagenes/
+Imagenes de referencia/
+ENTREGA-MCO-5min/
+referencias/**/*.mp4
+referencias/**/*.mp3
+referencias/**/*.jpg
+mis-videos/*/clips/
+mis-videos/*/para-vast/
+mis-videos/*/assets/
+mis-videos/*/qc/
+mis-videos/*/voz/
+mis-videos/*/voz-ajustada/
+mis-videos/**/*.mp4
+mis-videos/**/*.wav
+mis-videos/**/*.mp3
+mis-videos/**/*.zip
+mis-videos/_libre/
+h3pipeline/app/logs/
+h3pipeline/app/maquina.json
+h3pipeline/app/cola.json
+h3pipeline/app/h3-setup.zip
+*.gguf
+*.safetensors
+*.log

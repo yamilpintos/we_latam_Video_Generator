@@ -1,0 +1,28 @@
+# Blueprint de Render para La Fábrica.
+# Las claves NO van acá: se cargan en el panel de Render (Environment) o como
+# Environment Group. Ver DEPLOY.md.
+services:
+  - type: web
+    name: la-fabrica
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/estructuras
+    disk:
+      name: mis-videos
+      mountPath: /app/mis-videos
+      sizeGB: 20
+    envVars:
+      - key: FABRICA_PASSWORD
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: VAST_API_KEY
+        sync: false
+      - key: nanobanana
+        sync: false
+      - key: VAST_SSH_PRIVATE_KEY
+        sync: false
+      - key: VAST_SSH_PUBLIC_KEY
+        sync: false

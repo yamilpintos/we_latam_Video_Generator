@@ -33,6 +33,53 @@ app = FastAPI(title="La Fábrica", docs_url="/api/docs")
 app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
 
 
+# ─────────────────────────────────────────────────────────────── acceso
+
+@app.middleware("http")
+async def _contrasena(request, call_next):
+    """HTTP Basic con FABRICA_PASSWORD. Sin la variable, la app es local y
+    abierta; con ella (Render, el Teramont) cada botón que gasta plata queda
+    detrás de la contraseña."""
+    import base64
+    import os
+    import secrets
+    clave = os.environ.get("FABRICA_PASSWORD")
+    if not clave:
+        return await call_next(request)
+    auth = request.headers.get("authorization", "")
+    ok = False
+    if auth.startswith("Basic "):
+        try:
+            usuario, _, dado = base64.b64decode(auth[6:]).decode("utf-8", "replace").partition(":")
+            ok = secrets.compare_digest(dado, clave)
+        except Exception:
+            ok = False
+    if not ok:
+        from fastapi.responses import Response
+        return Response("La Fábrica: hace falta la contraseña", status_code=401,
+                        headers={"WWW-Authenticate": 'Basic realm="La Fabrica"'})
+    return await call_next(request)
+
+
+def _clave_ssh_desde_entorno() -> None:
+    """En un servidor la clave SSH para Vast llega por variables de entorno;
+    se escribe en ~/.ssh al arrancar, que es donde la busca el módulo."""
+    import os
+    priv, pub = os.environ.get("VAST_SSH_PRIVATE_KEY"), os.environ.get("VAST_SSH_PUBLIC_KEY")
+    if not priv or not pub:
+        return
+    d = Path.home() / ".ssh"
+    d.mkdir(mode=0o700, exist_ok=True)
+    k = d / "id_ed25519"
+    if not k.exists():
+        k.write_text(priv.replace("\\n", "\n").strip() + "\n", encoding="utf-8")
+        k.chmod(0o600)
+        (d / "id_ed25519.pub").write_text(pub.strip() + "\n", encoding="utf-8")
+
+
+_clave_ssh_desde_entorno()
+
+
 # ─────────────────────────────────────────────────────────────── utilidades
 
 def _carpeta(slug: str) -> Path:
