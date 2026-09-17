@@ -463,6 +463,32 @@ nodos de H3 se hacía aunque ComfyUI no hubiera arrancado todavía (la máquina
 seguía bajando su portal), y lo tomaba por «faltan los nodos» e intentaba
 actualizar ComfyUI. Ahora sólo actualiza si ComfyUI responde y los nodos faltan.
 
+### 18 · La máquina arranca bien, pero es el servidor el que no puede entrar
+
+**Síntoma (17/9/2026, La Fábrica en Render):** dos 4×5090 verificadas (Taiwán,
+0,998) quedaron 20 min en «arrancando» y se descartaron solas, ~$1,80. Desde la
+PC local se entraba por SSH sin problema: la máquina estaba lista desde el
+minuto 2. El `ssh` fallaba **desde Render**, y `esperar_lista` sólo escribía
+«running…» sin el motivo.
+
+Causa: la clave privada pegada en el entorno de Render tenía la cabecera rota
+(`----BEGIN -OPENSSH PRIVATE KEY-----`, cuatro guiones y un guion suelto).
+`ssh` la descarta como «invalid format» y el código la escribía tal cual.
+En otra vuelta faltó la pública y el código no escribía nada.
+
+**Regla:** antes de alquilar, el servidor valida su propia clave
+(`vast.diagnostico_ssh()`: `ssh-keygen -y` sobre la privada y coincidencia con
+la pública). Si no sirve, `encender` no gasta y deja el motivo en el estado.
+`GET /api/maquina/diagnostico` lo muestra sin alquilar nada. Además la clave del
+entorno se rearma aunque venga rota, en una línea o con comillas, y alcanza con
+la privada (la pública se deriva). Y `esperar_lista` ya escribe el stderr del
+`ssh` cuando la instancia corre pero no entra.
+
+Segunda lección de la misma tarde: el estado de la máquina vivía junto al código
+y un redeploy de Render lo borraba. Ahora está en `mis-videos/_estado/` (disco
+persistente) y, si igual se pierde, `maquina.adoptar()` retoma cualquier
+instancia viva de la cuenta en vez de decir «apagada» con la máquina cobrando.
+
 ## La máquina compartida (16/9/2026)
 
 Desde la Fábrica (`python -m h3pipeline.app`) la máquina es una cosa aparte

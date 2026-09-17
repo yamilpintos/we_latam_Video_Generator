@@ -521,3 +521,24 @@ La lección de costo: el rehecho por contenido costó 6× la generación. Se evi
 con el prompt correcto ANTES de la primera tanda (`negativos: false` en escenas
 quietas) y con encuadres que H3 sostiene (primeros planos de objeto, sin ventana
 pegada, sin silla vacía frente a un escritorio).
+
+## 15. Primer clip de 15 s desde la web — EL MONO TERAPEUTA (17 de septiembre de 2026)
+
+Modo Libre de La Fábrica corriendo en Render, máquina 4×5090 en Taiwán a $2,806/h,
+verificada, 1138 Mbps. Un solo plano FL2VA Q5_K_M, 8 pasos turbo, 768×1344,
+15,083 s (362 frames), con siete líneas de diálogo en castellano neutro.
+
+| qué | medido |
+|---|---|
+| encendido → lista (59 GB) | 11 min, descarga a 1,9 Gbps |
+| clip de 15,08 s en una 5090 | **17,2 min** de GPU (1,14 min por segundo de clip) |
+| VRAM durante la generación | 26,7 GB estables (proceso fresco: ComfyUI reiniciado antes) |
+| audio | las 7 líneas, en orden, en 13,7 s; pico a 0,0 dBFS (clipeado, como siempre) |
+| máquina encendida hasta bajar el clip | ~35 min ≈ $1,65 |
+
+Lecciones:
+- Los 15 s **no escalan lineal**: 0,67-0,81 min/s entre 5 y 7 s, 1,14 min/s a 15 s.
+  El estimado de Libre usa 0,8 hasta 7,5 s y 1,15 de ahí en adelante.
+- Antes de este clip se perdieron ~$1,80 en dos máquinas que arrancaron bien pero a
+  las que Render no podía entrar: la clave SSH pegada en el entorno tenía la cabecera
+  rota. Ahora el encendido valida la clave antes de alquilar (VAST.md, trampa 18).

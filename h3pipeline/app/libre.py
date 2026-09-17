@@ -222,14 +222,18 @@ def refrescar() -> list[dict]:
     return turnos()
 
 
-# Minutos de GPU por segundo de clip en una 5090 (COSTOS-H3.md §12-14: 0,67-0,81
-# medidos entre 5 y 7 s; los de 15 s del 17/8 salieron algo más lentos).
-MIN_GPU_POR_SEGUNDO = 0.8
+# Minutos de GPU por segundo de clip en una 5090 (COSTOS-H3.md): 0,67-0,81
+# medidos entre 5 y 7 s; el de 15,08 s del 17/9/2026 (mono terapeuta, 768×1344)
+# tardó 17,2 min = 1,14 min/s. No escala lineal: la atención crece con el largo.
+MIN_GPU_POR_SEGUNDO_CORTO = 0.8     # hasta 7,3 s
+MIN_GPU_POR_SEGUNDO_LARGO = 1.15    # 10 a 15 s
 
 
 def estimado_seg(segundos: float) -> int:
     """Cuánto suele tardar un clip de `segundos`, incluida la carga del modelo."""
-    return int(60 + float(segundos) * MIN_GPU_POR_SEGUNDO * 60)
+    s = float(segundos)
+    tasa = MIN_GPU_POR_SEGUNDO_CORTO if s <= 7.5 else MIN_GPU_POR_SEGUNDO_LARGO
+    return int(60 + s * tasa * 60)
 
 
 def progreso(t: dict, ultimo: str = "") -> dict:
