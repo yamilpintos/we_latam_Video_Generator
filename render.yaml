@@ -14,6 +14,8 @@ services:
     envVars:
       - key: FABRICA_PASSWORD
         sync: false
+      - key: FABRICA_USUARIO
+        value: fabrica
       - key: OPENAI_API_KEY
         sync: false
       - key: ELEVENLABS_API_KEY

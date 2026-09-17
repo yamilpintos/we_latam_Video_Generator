@@ -14,7 +14,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -35,30 +35,101 @@ app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
 
 # ─────────────────────────────────────────────────────────────── acceso
 
-@app.middleware("http")
-async def _contrasena(request, call_next):
-    """HTTP Basic con FABRICA_PASSWORD. Sin la variable, la app es local y
-    abierta; con ella (Render, el Teramont) cada botón que gasta plata queda
-    detrás de la contraseña."""
-    import base64
+COOKIE = "fabrica_sesion"
+
+
+def _credenciales() -> tuple[str, str] | None:
+    """(usuario, contraseña) del entorno, o None si la app es local y abierta."""
     import os
-    import secrets
     clave = os.environ.get("FABRICA_PASSWORD")
     if not clave:
-        return await call_next(request)
-    auth = request.headers.get("authorization", "")
-    ok = False
+        return None
+    return os.environ.get("FABRICA_USUARIO") or "fabrica", clave
+
+
+def _ficha(usuario: str, clave: str) -> str:
+    """El valor de la cookie: un HMAC de la sesión con la contraseña como
+    secreto. Cambiar la contraseña cierra todas las sesiones."""
+    import hashlib
+    import hmac
+    return hmac.new(clave.encode(), f"sesion:{usuario}".encode(), hashlib.sha256).hexdigest()
+
+
+def _autorizado(request) -> bool:
+    import base64
+    import secrets
+    cred = _credenciales()
+    if cred is None:
+        return True
+    usuario, clave = cred
+    ficha = request.cookies.get(COOKIE, "")
+    if ficha and secrets.compare_digest(ficha, _ficha(usuario, clave)):
+        return True
+    auth = request.headers.get("authorization", "")        # curl / scripts
     if auth.startswith("Basic "):
         try:
-            usuario, _, dado = base64.b64decode(auth[6:]).decode("utf-8", "replace").partition(":")
-            ok = secrets.compare_digest(dado, clave)
+            _u, _, dado = base64.b64decode(auth[6:]).decode("utf-8", "replace").partition(":")
+            return secrets.compare_digest(dado, clave)
         except Exception:
-            ok = False
-    if not ok:
-        from fastapi.responses import Response
-        return Response("La Fábrica: hace falta la contraseña", status_code=401,
-                        headers={"WWW-Authenticate": 'Basic realm="La Fabrica"'})
-    return await call_next(request)
+            return False
+    return False
+
+
+@app.middleware("http")
+async def _contrasena(request, call_next):
+    """Puerta de entrada. Sin FABRICA_PASSWORD la app es local y abierta; con
+    ella (Render, el Teramont) hay una pantalla de login y una cookie de sesión
+    de 30 días. Las llamadas a /api sin sesión reciben 401 (el front manda al
+    login); el resto se redirige a /login. Basic auth sigue valiendo para curl."""
+    from fastapi.responses import RedirectResponse
+    ruta = request.url.path
+    if ruta in ("/login", "/logout") or ruta.startswith("/static/") or _autorizado(request):
+        return await call_next(request)
+    if ruta.startswith("/api/"):
+        return JSONResponse({"detail": "sesión vencida: volvé a entrar"}, status_code=401)
+    destino = ruta + (("?" + request.url.query) if request.url.query else "")
+    return RedirectResponse(f"/login?next={destino}", status_code=302)
+
+
+def _https(request) -> bool:
+    return request.url.scheme == "https" or request.headers.get("x-forwarded-proto", "") == "https"
+
+
+@app.get("/login", response_class=HTMLResponse)
+def login_pantalla(request: Request):
+    if _credenciales() is None or _autorizado(request):
+        from fastapi.responses import RedirectResponse
+        return RedirectResponse("/", status_code=302)
+    return (STATIC / "login.html").read_text(encoding="utf-8")
+
+
+@app.post("/login")
+async def login_entrar(request: Request):
+    import secrets
+    from fastapi.responses import RedirectResponse
+    cred = _credenciales()
+    if cred is None:
+        return RedirectResponse("/", status_code=303)
+    form = await request.form()
+    usuario, clave = cred
+    u, c = str(form.get("usuario", "")).strip(), str(form.get("contrasena", ""))
+    siguiente = str(form.get("next", "/"))
+    if not siguiente.startswith("/") or siguiente.startswith("//"):
+        siguiente = "/"
+    if not (secrets.compare_digest(u, usuario) and secrets.compare_digest(c, clave)):
+        return RedirectResponse(f"/login?e=1&next={siguiente}", status_code=303)
+    r = RedirectResponse(siguiente, status_code=303)
+    r.set_cookie(COOKIE, _ficha(usuario, clave), max_age=30 * 24 * 3600, httponly=True,
+                 samesite="lax", secure=_https(request), path="/")
+    return r
+
+
+@app.get("/logout")
+def login_salir(request: Request):
+    from fastapi.responses import RedirectResponse
+    r = RedirectResponse("/login" if _credenciales() else "/", status_code=302)
+    r.delete_cookie(COOKIE, path="/")
+    return r
 
 
 def _clave_ssh_desde_entorno() -> None:

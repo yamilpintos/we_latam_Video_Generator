@@ -15,6 +15,7 @@ async function api(ruta, opts = {}) {
   });
   const txt = await r.text();
   let data; try { data = JSON.parse(txt); } catch { data = {detail: txt}; }
+  if (r.status === 401) { location.href = "/login?next=" + encodeURIComponent(location.pathname + location.hash); throw new Error("sesión vencida"); }
   if (!r.ok) throw new Error(data.detail || r.statusText);
   return data;
 }

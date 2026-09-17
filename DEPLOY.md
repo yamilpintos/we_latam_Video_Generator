@@ -11,7 +11,8 @@ en cada deploy.
 
 | variable | qué es | obligatoria |
 |---|---|---|
-| `FABRICA_PASSWORD` | contraseña de acceso (HTTP Basic, cualquier usuario). Sin ella, cualquiera con la URL puede alquilar GPU con tu cuenta | **sí, en cualquier servidor** |
+| `FABRICA_PASSWORD` | contraseña de la pantalla de login. Sin ella, cualquiera con la URL puede alquilar GPU con tu cuenta | **sí, en cualquier servidor** |
+| `FABRICA_USUARIO` | usuario de la pantalla de login. Si no está, es `fabrica` | no |
 | `OPENAI_API_KEY` | traducción de guiones (gpt-5.1) e imágenes (GPT) | sí |
 | `ELEVENLABS_API_KEY` | voz y música | sí |
 | `VAST_API_KEY` | buscar, alquilar, seguir y destruir máquinas | sí |
@@ -34,8 +35,11 @@ para Vast, `elevenlabs` para ElevenLabs, `openai` para OpenAI,
 2. Cargás las variables. La clave SSH privada: copiá el archivo completo
    (`-----BEGIN OPENSSH PRIVATE KEY-----` … `-----END …-----`).
 3. Deploy. El chequeo de salud pega en `/api/estructuras`.
-4. Entrás a la URL, el navegador pide usuario y contraseña: cualquier usuario,
-   la contraseña es `FABRICA_PASSWORD`.
+4. Entrás a la URL y aparece la pantalla de login: usuario `FABRICA_USUARIO`
+   (o `fabrica` si no la definiste), contraseña `FABRICA_PASSWORD`. La sesión
+   dura 30 días en ese navegador; «Salir» la cierra. Cambiar la contraseña
+   cierra todas las sesiones. Para scripts sigue valiendo HTTP Basic
+   (`curl -u :$FABRICA_PASSWORD …`).
 
 ## Lo que hay que saber
 

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Fábrica · entrar</title>
+<link rel="stylesheet" href="/static/app.css">
+<style>
+  html,body{height:100%}
+  body{display:grid;place-items:center;overflow:hidden;position:relative}
+  .fondo{position:fixed;inset:0;z-index:0;background:
+    radial-gradient(600px 400px at 20% 15%,rgba(255,180,84,.16),transparent 60%),
+    radial-gradient(700px 500px at 85% 85%,rgba(255,122,69,.13),transparent 60%),
+    radial-gradient(400px 300px at 70% 20%,rgba(106,169,255,.08),transparent 60%),var(--bg)}
+  .grilla{position:fixed;inset:0;z-index:0;opacity:.35;background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:48px 48px;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+  .caja{position:relative;z-index:1;width:min(400px,92vw);background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--r);padding:34px 32px 28px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+  .marca{font-weight:800;letter-spacing:.22em;font-size:13px;color:var(--ac)}
+  h1{margin:8px 0 4px;font-size:26px;letter-spacing:-.01em}
+  .sub{color:var(--tx2);font-size:14px;margin:0 0 24px}
+  label{display:block;font-size:12px;color:var(--tx3);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 6px}
+  input{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--tx);border-radius:var(--r2);
+    padding:12px 14px;font:inherit;font-size:15px;outline:none;transition:border-color .15s,box-shadow .15s}
+  input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,180,84,.15)}
+  .btn{margin-top:22px;width:100%;padding:13px;border:0;border-radius:var(--r2);font-weight:700;font-size:15px;color:#1a1207;
+    background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 8px 24px rgba(255,150,60,.25);transition:transform .1s,filter .15s}
+  .btn:hover{filter:brightness(1.06)} .btn:active{transform:translateY(1px)}
+  .error{margin-top:14px;padding:10px 12px;border-radius:var(--r2);background:rgba(255,100,112,.1);border:1px solid rgba(255,100,112,.35);
+    color:var(--bad);font-size:13px}
+  .pie{margin-top:20px;font-size:12px;color:var(--tx3);text-align:center}
+  .ojo{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--tx3);font-size:12px;padding:6px}
+  .campo{position:relative}
+</style>
+</head>
+<body>
+<div class="fondo"></div><div class="grilla"></div>
+<form class="caja" method="post" action="/login" autocomplete="on">
+  <div class="marca">LA FÁBRICA</div>
+  <h1>Entrar</h1>
+  <p class="sub">Videos con MiniMax H3 en una GPU alquilada. Cada botón de adentro gasta plata: por eso la puerta.</p>
+  <input type="hidden" name="next" id="next" value="/">
+  <label for="usuario">Usuario</label>
+  <input id="usuario" name="usuario" autocomplete="username" autofocus required>
+  <label for="contrasena">Contraseña</label>
+  <div class="campo">
+    <input id="contrasena" name="contrasena" type="password" autocomplete="current-password" required>
+    <button type="button" class="ojo" onclick="const i=document.getElementById('contrasena');i.type=i.type==='password'?'text':'password';this.textContent=i.type==='password'?'ver':'ocultar'">ver</button>
+  </div>
+  <div id="error" class="error" hidden>Usuario o contraseña incorrectos.</div>
+  <button class="btn" type="submit">Entrar</button>
+  <div class="pie">La sesión dura 30 días en este navegador. «Salir» arriba a la derecha la cierra.</div>
+</form>
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.get("e")) document.getElementById("error").hidden = false;
+  const n = q.get("next"); if (n && n.startsWith("/") && !n.startsWith("//")) document.getElementById("next").value = n;
+</script>
+</body>
+</html>
