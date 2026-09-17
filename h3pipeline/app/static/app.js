@@ -190,10 +190,11 @@ async function pintarMaquina() {
       <div class="kpi"><div class="l">${viva ? "gastado" : "gastó"}</div><div class="v" style="color:var(--ac)">${usd(viva ? m.acumulado : m.gasto_final)}</div></div>
       <div class="kpi"><div class="l">dónde</div><div class="v" style="font-size:15px">${m.oferta ? h(m.oferta.geo) + `<div class="tiny">${m.oferta.inet} Mbps · fiab ${m.oferta.fiabilidad}</div>` : "—"}</div></div>
     </div>
-    ${m.fase === "instalando" ? `<div class="tiny" style="margin-bottom:4px">Bajando los modelos de H3: ${inst?.gb ?? "?"} de 59 GB${inst?.pct != null ? ` · ${inst.pct} %` : ""}</div>
-      <div class="bar"><i style="width:${inst?.pct ?? 0}%"></i></div><div class="tiny mono" style="margin-top:6px;white-space:pre-wrap">${h(inst?.ultimo || "")}</div>` : ""}
-    ${m.fase === "arrancando" ? `<div class="tiny">El host está levantando la instancia (2 a 8 min). Si no arranca en 20, se destruye sola y se busca otra.</div>` : ""}
-    ${m.fase === "buscando" ? `<div class="tiny">No hay ninguna 4×5090 verificada ahora. Consulta cada minuto y alquila sola cuando aparezca. Podés cerrar la página.</div>` : ""}
+    ${viva && m.progreso ? `<div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="tiny"><b>${h(m.progreso.etapa)}</b> · ${h(m.progreso.detalle || "")}</span><span class="tiny">${m.progreso.pct} %</span></div>
+      <div class="bar" style="height:12px"><i style="width:${m.progreso.pct}%"></i></div>
+      <div class="tiny" style="margin-top:6px;display:flex;gap:14px"><span style="color:${m.progreso.pct >= 2 ? "var(--ok)" : ""}">① buscar</span><span style="color:${m.progreso.pct >= 5 ? "var(--ok)" : ""}">② arrancar</span><span style="color:${m.progreso.pct >= 15 ? "var(--ok)" : ""}">③ instalar H3 (59 GB)</span><span style="color:${m.progreso.pct >= 100 ? "var(--ok)" : ""}">④ lista</span></div>
+      ${m.fase === "instalando" && inst?.ultimo ? `<div class="tiny mono" style="margin-top:6px;white-space:pre-wrap;opacity:.7">${h(inst.ultimo)}</div>` : ""}
+      ${m.fase === "buscando" ? `<div class="tiny" style="margin-top:6px">No hay ninguna 4×5090 verificada ahora. Consulta cada minuto y alquila sola cuando aparezca. Podés cerrar la página.</div>` : ""}` : ""}
     ${gen ? `<div style="margin:10px 0"><b>Generando:</b> <a href="#/p/${gen.slug}/maquina">${h(gen.titulo || gen.slug)}</a> · ${gen.hechos ?? "?"}/${gen.total ?? "?"} clips
       <div class="bar" style="margin-top:6px"><i style="width:${gen.total ? Math.round(gen.hechos / gen.total * 100) : 0}%"></i></div></div>` : ""}
     ${m.fase === "lista" && !gen ? `<div class="tiny" style="margin-bottom:8px">H3 instalado. Elegí un proyecto empaquetado y tocá «Generar en la máquina» en su paso Máquina. Cada minuto que pasa cuesta ${m.dph ? "$" + (m.dph / 60).toFixed(3) : "plata"}.</div>` : ""}
@@ -348,7 +349,7 @@ function pintarTurnos(ts, d) {
       : t.estado === "generando" ? `<div class="pill warn"><i class="dot live"></i> generando en la máquina… (~4 min)</div><div class="muted" style="margin-top:6px">${h(t.prompt_video)}</div>`
       : t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny">${h(t.nota)}</div>`
       : `<textarea id="lv-${t.id}" style="min-height:70px" placeholder="Qué se mueve a partir de esta imagen (inglés recomendado): «locked-off camera; the beam of the lighthouse sweeps slowly; waves crash against the rocks; rain streaks the lens»"></textarea>
-         <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:170px"><option value="5.167">5,17 s (seguro)</option><option value="5.875">5,88 s</option><option value="6.583">6,58 s (riesgo)</option><option value="10.083">10,08 s (riesgo)</option></select>
+         <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:200px"><option value="5.167">5,17 s (seguro)</option><option value="5.875">5,88 s</option><option value="6.583">6,58 s (riesgo)</option><option value="7.292">7,29 s (riesgo)</option><option value="10.083">10,08 s (riesgo alto)</option><option value="12.917">12,92 s (riesgo alto)</option><option value="15.083">15,08 s (el máximo de H3; suele caer por VRAM en 32 GB)</option></select>
            <button class="btn p" ${lista && !d.ocupada ? "" : "disabled"} onclick="libreVideo('${t.id}')">Generar clip</button>
            <span class="tiny">${!lista ? "encendé la máquina desde el inicio" : d.ocupada ? "hay un turno generando" : ""}</span></div>`}
       ${t.nota && t.estado !== "error" ? `<div class="tiny">${h(t.nota)}</div>` : ""}</div></div></div>`).join("") || `<div class="muted">Todavía no hay turnos.</div>`;
@@ -558,7 +559,10 @@ async function pintarInstancia() {
       <div class="kpi"><div class="l">gastado</div><div class="v" style="color:var(--ac)">${usd(c.acumulado)}</div></div>
       <div class="kpi"><div class="l">estimado</div><div class="v">${usd(c.estimado)}</div></div>
       <div class="kpi"><div class="l">clips</div><div class="v">${s.hechos.length}/${s.total}</div></div></div>
-    <div class="bar" style="margin:12px 0 6px"><i style="width:${pct}%"></i></div>
+    ${!s.hechos.length && s.instalacion && !s.instalacion.listo ? `<div class="row" style="justify-content:space-between;margin:12px 0 4px"><span class="tiny"><b>instalando H3</b> · ${s.instalacion.gb ?? "?"} de 59 GB${s.instalacion.mbps ? ` · ${s.instalacion.mbps} Mbps` : ""}${s.instalacion.eta_min != null ? ` · faltan ~${s.instalacion.eta_min} min` : ""}</span><span class="tiny">${s.instalacion.pct ?? 0} %</span></div>
+      <div class="bar" style="height:12px"><i style="width:${s.instalacion.pct ?? 0}%"></i></div>` : ""}
+    <div class="tiny" style="margin-top:12px">clips</div>
+    <div class="bar" style="margin:4px 0 6px"><i style="width:${pct}%"></i></div>
     <div class="tiny">${listo ? "todos los clips están en la máquina" : "faltan: " + s.faltan.join(" ")}</div>
     <div class="row" style="margin-top:12px"><button class="btn ${listo ? "p" : ""}" onclick="bajar()">Bajar clips${listo ? "" : " (parcial)"}</button>
       ${c.maquina_compartida ? `<button class="btn d" onclick="apagarMaquina()">Apagar la máquina</button><span class="tiny">es la máquina compartida: apagarla corta también los otros proyectos</span>` : `<button class="btn d" onclick="destruir(${c.instancia})">Destruir instancia</button>`}

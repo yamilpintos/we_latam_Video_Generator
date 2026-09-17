@@ -183,10 +183,46 @@ def progreso_instalacion(inst: dict, cada: float = 15.0) -> dict:
         listo = len(lineas) > 1 and lineas[1].strip().isdigit() and int(lineas[1]) > 0
         v = {"gb": round(b / 1e9, 1), "pct": min(99, int(b / BYTES_MODELOS * 100)) if not listo else 100,
              "listo": listo, "ultimo": "\n".join(lineas[2:])[-400:]}
+        # Velocidad y tiempo que falta, con dos muestras separadas por ≥ 20 s.
+        m = leer()
+        prev = m.get("muestra_descarga")
+        if prev and ahora - prev["t"] >= 20 and b > prev["b"]:
+            gbps = (b - prev["b"]) / (ahora - prev["t"])
+            v["mbps"] = round(gbps * 8 / 1e6)
+            if gbps > 0 and not listo:
+                v["eta_min"] = round(max(0.0, BYTES_MODELOS - b) / gbps / 60 + 1)   # +1: reinicio de ComfyUI
+        if not prev or ahora - prev["t"] >= 20:
+            escribir(muestra_descarga={"t": ahora, "b": b})
     except Exception as e:
         v = {"gb": None, "pct": None, "listo": False, "ultimo": f"(sin respuesta: {e})"}
     _cache.update(t=ahora, v=v)
     return v
+
+
+def progreso_general(m: dict, instalacion: dict | None = None) -> dict:
+    """Una sola barra para todo el encendido: buscando → arrancando →
+    instalando → lista. `pct` de 0 a 100, `etapa` para el texto."""
+    fase = m.get("fase", "apagada")
+    ahora = time.time()
+    if fase == "buscando":
+        return {"pct": 2, "etapa": "buscando una 4×5090 apta", "detalle": "consulta a Vast cada minuto"}
+    if fase == "arrancando":
+        mins = (ahora - m.get("inicio", ahora)) / 60
+        return {"pct": 5 + min(10, int(mins / 6 * 10)), "etapa": "arrancando la instancia",
+                "detalle": f"{mins:.0f} min · suele tardar 2 a 8; a los 20 se descarta y se busca otra"}
+    if fase == "instalando":
+        p = instalacion or {}
+        gb = p.get("gb") or 0.0
+        pct = 15 + int(min(gb / 59.0, 0.99) * 85)
+        det = f"bajando los modelos de H3: {gb:.1f} de 59 GB"
+        if p.get("mbps"):
+            det += f" · {p['mbps']} Mbps"
+        if p.get("eta_min") is not None:
+            det += f" · faltan ~{p['eta_min']} min"
+        return {"pct": pct, "etapa": "instalando H3", "detalle": det}
+    if fase == "lista":
+        return {"pct": 100, "etapa": "lista", "detalle": "H3 instalado; la máquina espera trabajo"}
+    return {"pct": 0, "etapa": fase, "detalle": ""}
 
 
 def esperar_instalacion(inst: dict, log=print, minutos: int = 45) -> bool:

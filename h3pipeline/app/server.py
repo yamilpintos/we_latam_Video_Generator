@@ -446,10 +446,18 @@ def seguir(slug: str, iid: int):
         prog = vast.progreso(inst, planos, p.slug)
     except Exception as e:
         prog = {"hechos": [], "total": len(planos), "logs": f"(sin logs: {e})"}
-    return {"existe": True, "estado": inst.get("actual_status"), "dph": float(inst.get("dph_total") or 0),
-            "ssh": vast.ssh_de(inst), "hechos": prog["hechos"], "total": prog["total"],
-            "faltan": [x["id"] for x in planos if x["id"] not in prog["hechos"] and not x.get("clip_de")],
-            "logs": (prog.get("logs") or "")[-3000:], "corrida": _corrida(c)}
+    out = {"existe": True, "estado": inst.get("actual_status"), "dph": float(inst.get("dph_total") or 0),
+           "ssh": vast.ssh_de(inst), "hechos": prog["hechos"], "total": prog["total"],
+           "faltan": [x["id"] for x in planos if x["id"] not in prog["hechos"] and not x.get("clip_de")],
+           "logs": (prog.get("logs") or "")[-3000:], "corrida": _corrida(c)}
+    # Mientras no hay ningún clip, lo que pasa es la instalación: se mide igual
+    # que en la máquina compartida (bytes de modelos contra 59 GB).
+    if not prog["hechos"]:
+        try:
+            out["instalacion"] = maquina.progreso_instalacion(inst, cada=10)
+        except Exception:
+            pass
+    return out
 
 
 class Bajada(BaseModel):
@@ -598,7 +606,8 @@ def _saldo() -> float | None:
 @app.get("/api/maquina")
 def estado_maquina():
     m = maquina.leer()
-    out = {**m, "saldo": _saldo(), **maquina.gasto(m), "tareas": [t.a_dict(lineas=4) for t in tareas.corriendo("_maquina")]}
+    out = {**m, "saldo": _saldo(), **maquina.gasto(m), "tareas": [t.a_dict(lineas=4) for t in tareas.corriendo("_maquina")],
+           "progreso": maquina.progreso_general(m)}
     iid = m.get("instancia")
     if iid and m.get("fase") not in ("apagada", "fallo"):
         try:
@@ -610,12 +619,15 @@ def estado_maquina():
         out["existe"] = True
         out["estado_vast"] = inst.get("actual_status")
         out["ssh"] = vast.ssh_de(inst)
+        prog = None
         if m.get("fase") == "instalando":
             prog = maquina.progreso_instalacion(inst)
             out["instalacion"] = prog
             if prog["listo"]:
                 maquina.escribir(fase="lista", lista_desde=time.time())
                 out["fase"] = "lista"
+                m["fase"] = "lista"
+        out["progreso"] = maquina.progreso_general(m, prog)
         if m.get("proyecto") == "_libre" and m.get("fase") == "lista":
             ts = libre.refrescar()
             gen = [t for t in ts if t["estado"] == "generando"]
