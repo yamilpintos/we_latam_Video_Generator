@@ -1080,19 +1080,31 @@ def voz_mp3(slug: str, nombre: str):
 
 class Musica(BaseModel):
     slug: str
-    tipo: str                       # «lo-fi lento para estudiar, sin batería marcada…»
-    duracion: float = 90.0
+    tipo: str = ""                  # descripción libre: «lento para estudiar, sin batería marcada…»
+    duracion: float = 90.0          # 30 a 300 s
     nombre: str = "musica"
+    genero: str = ""                # clave de componer.GENEROS ("" = sólo la descripción)
+    loopeable: bool = True          # instrumental sin intro ni final (para el loop de video)
+    con_letra: bool = False
+    letra: str = ""
+    idioma_letra: str = "es"
+    voz_letra: str = "femenina"     # femenina | masculina | duo | coro
 
 
 @app.post("/api/musica/componer")
 def componer(m: Musica):
     c = _carpeta(m.slug)
-    if not m.tipo.strip():
-        raise HTTPException(422, "falta describir la música")
+    if not m.tipo.strip() and not m.genero:
+        raise HTTPException(422, "elegí un género o describí la música")
+    if m.con_letra and len(m.letra.strip()) < 10:
+        raise HTTPException(422, "marcaste «con letra» pero no pegaste la letra")
+    if not 30 <= m.duracion <= 300:
+        raise HTTPException(422, "la duración va de 30 a 300 segundos")
     if tareas.corriendo(m.slug):
         raise HTTPException(409, "ya hay una tarea corriendo en este proyecto")
-    pedido = {"slug": m.slug, "tipo": m.tipo, "duracion": m.duracion,
+    pedido = {"slug": m.slug, "tipo": m.tipo, "duracion": m.duracion, "genero": m.genero,
+              "loopeable": m.loopeable, "con_letra": m.con_letra, "letra": m.letra,
+              "idioma_letra": m.idioma_letra, "voz_letra": m.voz_letra,
               "nombre": re.sub(r"[^a-z0-9-]+", "-", m.nombre.lower()).strip("-") or "musica"}
     (c / "musica-pedido.json").write_text(json.dumps(pedido, ensure_ascii=False), encoding="utf-8")
     args = ["-m", "h3pipeline.app.componer", str(c / "musica-pedido.json")]

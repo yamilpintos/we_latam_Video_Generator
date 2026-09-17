@@ -679,25 +679,60 @@ ruta("/musica", async ([slug]) => {
     <p class="sub">Un escenario que se mira de fondo y se repite lo que dure la música. Elegís el tipo de música y la app la compone con ElevenLabs Music; el loop se hace con el mismo flujo de siempre; el video final dura lo que dura la pista.</p>
     <div class="row" style="margin-bottom:14px"><a class="btn p" href="#/nuevo/loop">＋ Nuevo loop (describís la escena)</a>
       ${ps.length ? `<select id="sel-loop" onchange="location.hash='#/musica/'+this.value" style="max-width:320px">${ps.map(x => `<option value="${x.slug}" ${x.slug === sel ? "selected" : ""}>${h(x.titulo)}</option>`).join("")}</select>` : ""}</div>
-    ${p ? `<div class="grid g2">
-      <div class="card"><h3>1 · La música para «${h(p.titulo)}»</h3>
-        <textarea id="tipo" style="min-height:90px" placeholder="Qué música: «lo-fi hip hop lento para estudiar, piano suave y vinilo, sin batería marcada, melancólico pero cálido»"></textarea>
-        <div class="row" style="margin-top:8px"><input id="dur" type="number" value="90" min="30" max="300" style="max-width:120px"><span class="tiny">segundos (30 a 300). Para publicar largo, el loop se repite sobre la pista.</span></div>
-        <div class="row" style="margin-top:10px"><button class="btn p" onclick="componer('${sel}')">Componer</button><span class="tiny">créditos de ElevenLabs</span></div>
-        <div style="margin-top:14px">${pistas.length ? pistas.map(t => `<div class="row" style="margin-bottom:8px"><audio controls preload="none" src="${t.url}" style="height:30px;flex:1"></audio><span class="tiny">${h(t.archivo)} · ${t.dur ?? "?"} s</span></div>`).join("") : `<div class="tiny">Todavía no hay pistas en este proyecto.</div>`}</div></div>
+    ${p ? `<div class="card" style="margin-bottom:14px"><h3>1 · La música para «${h(p.titulo)}»</h3>
+        <div class="grid g3" style="gap:12px">
+          <div><label class="tiny" style="display:block;margin-bottom:4px">Duración</label>
+            <select id="dur">${[[30, "30 s"], [60, "1 min"], [90, "1 min 30"], [120, "2 min"], [180, "3 min"], [240, "4 min"], [300, "5 min (máximo)"]].map(([v, l]) => `<option value="${v}" ${v === 90 ? "selected" : ""}>${l}</option>`).join("")}</select>
+            <div class="tiny" style="margin-top:4px">Para publicar largo, el loop de video se repite sobre la pista.</div></div>
+          <div><label class="tiny" style="display:block;margin-bottom:4px">Género</label>
+            <select id="genero">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
+            <div class="tiny" style="margin-top:4px">Marca el estilo base; lo fino va en la descripción.</div></div>
+          <div><label class="tiny" style="display:block;margin-bottom:4px">Voz</label>
+            <select id="conletra" onchange="letraToggle()"><option value="no">Instrumental (sin voz)</option><option value="si">Con letra cantada</option></select>
+            <label class="tiny" id="loopwrap" style="display:block;margin-top:6px"><input type="checkbox" id="loopeable" checked> sin intro ni final (loopeable)</label></div>
+        </div>
+        <label class="tiny" style="display:block;margin:12px 0 4px">Descripción · qué tipo de música querés</label>
+        <textarea id="tipo" style="min-height:80px" placeholder="Ánimo, instrumentos, tempo, referencias: «lento, para estudiar de noche; piano suave y vinilo; sin batería marcada; melancólico pero cálido; como el canal Lofi Girl»"></textarea>
+        <div id="letrabox" hidden style="margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:var(--r2);background:var(--bg2)">
+          <div class="row" style="gap:12px;margin-bottom:8px">
+            <div><label class="tiny" style="display:block;margin-bottom:4px">Idioma de la letra</label><select id="idioma_letra"><option value="es">Español</option><option value="en">Inglés</option><option value="pt">Portugués</option><option value="it">Italiano</option><option value="fr">Francés</option></select></div>
+            <div><label class="tiny" style="display:block;margin-bottom:4px">Quién canta</label><select id="voz_letra"><option value="femenina">Voz femenina</option><option value="masculina">Voz masculina</option><option value="duo">Dúo</option><option value="coro">Coro</option></select></div></div>
+          <label class="tiny" style="display:block;margin-bottom:4px">La letra · se canta tal cual, en este orden</label>
+          <textarea id="letra" style="min-height:140px;font-family:var(--mono)" placeholder="[Verso 1]
+Bajo la lluvia que no para
+la ciudad se queda quieta
+
+[Estribillo]
+…"></textarea>
+          <div class="tiny" style="margin-top:4px">Como guía: 1 minuto de canción son unas 8 a 12 líneas. Si la letra es más larga que la pista, se canta hasta donde llegue.</div></div>
+        <div class="row" style="margin-top:12px"><input id="nombre" placeholder="nombre de la pista (opcional)" style="max-width:260px"><button class="btn p" onclick="componer('${sel}')">Componer</button><span class="tiny">ElevenLabs Music · tarda 1 a 3 minutos</span></div>
+        <div style="margin-top:14px">${pistas.length ? `<div class="tiny" style="margin-bottom:6px">Pistas de este proyecto</div>` + pistas.map(t => `<div class="row" style="margin-bottom:8px"><audio controls preload="none" src="${t.url}" style="height:30px;flex:1"></audio><span class="tiny">${h(t.archivo)} · ${t.dur ?? "?"} s</span></div>`).join("") : `<div class="tiny">Todavía no hay pistas en este proyecto.</div>`}</div></div>
       <div class="card"><h3>2 · El video final <span class="pill ${p.estado.masters.length ? "ok" : "warn"}">${p.estado.clips.hechos}/${p.estado.clips.esperados} clips</span></h3>
         <p class="muted">La pista manda la duración: el loop se repite hasta cubrirla y se corta a su largo. Si marcás otros loops, se alternan para que no se vea el mismo doce veces.</p>
         <select id="pista">${pistas.map(t => `<option value="${h(t.ruta)}">${h(t.archivo)} (${t.dur ?? "?"} s)</option>`).join("")}${pistas.length ? "" : `<option value="">(primero componé una pista)</option>`}</select>
         ${otros.length ? `<div class="tiny" style="margin:10px 0 4px">Alternar con:</div>${otros.map(o => `<label class="tiny" style="display:block"><input type="checkbox" class="otro" value="${o.slug}"> ${h(o.titulo)}</label>`).join("")}` : ""}
         <div class="row" style="margin-top:12px"><button class="btn p" ${pistas.length && p.estado.clips.hechos ? "" : "disabled"} onclick="masterMusica('${sel}')">Generar video con la pista</button>
           <a class="btn" href="#/p/${sel}">Abrir el loop (dibujos, máquina, clips)</a></div>
-        <div style="margin-top:12px">${p.estado.masters.map(m => `<div><a href="/api/proyectos/${sel}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("")}</div></div>
-    </div>` : `<div class="card"><div class="muted">Todavía no hay loops. Empezá por «Nuevo loop».</div></div>`}
+        <div style="margin-top:12px">${p.estado.masters.map(m => `<div><a href="/api/proyectos/${sel}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("")}</div></div>` : `<div class="card"><div class="muted">Todavía no hay loops. Empezá por «Nuevo loop».</div></div>`}
     <h3 style="margin:26px 0 10px">Loops</h3><div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div></div>`;
 });
+const GENEROS_MUSICA = [["lofi", "Lo-fi hip hop"], ["chillhop", "Chillhop"], ["ambient", "Ambient"], ["piano", "Piano solo"], ["jazz", "Jazz suave"],
+  ["acustico", "Acústico / folk"], ["clasica", "Clásica de cámara"], ["bossa", "Bossa nova"], ["cinematica", "Cinemática"], ["synthwave", "Synthwave"],
+  ["downtempo", "Electrónica downtempo"], ["pop", "Pop"], ["rock", "Rock suave"], ["cumbia", "Cumbia"], ["reggaeton", "Reggaetón"], ["trap", "Trap"],
+  ["tango", "Tango"], ["infantil", "Infantil"], ["", "Otro (sólo la descripción)"]];
+function letraToggle() {
+  const con = $("#conletra").value === "si";
+  $("#letrabox").hidden = !con;
+  // Una canción con letra tiene principio y final: no se pide loopeable.
+  $("#loopwrap").style.opacity = con ? ".4" : "1";
+  if (con) $("#loopeable").checked = false;
+}
 async function componer(slug) {
-  const body = {slug, tipo: $("#tipo").value, duracion: Number($("#dur").value || 90)};
-  try { const d = await api("/musica/componer", {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast("componiendo…"); }
+  const con = $("#conletra").value === "si";
+  const body = {slug, tipo: $("#tipo").value, duracion: Number($("#dur").value || 90), genero: $("#genero").value,
+    loopeable: !con && $("#loopeable").checked, con_letra: con, letra: con ? $("#letra").value : "",
+    idioma_letra: $("#idioma_letra").value, voz_letra: $("#voz_letra").value, nombre: $("#nombre").value || (con ? "cancion" : "musica")};
+  try { const d = await api("/musica/componer", {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast(con ? "componiendo la canción…" : "componiendo…"); }
   catch (e) { toast(e.message, true); }
 }
 async function masterMusica(slug) {

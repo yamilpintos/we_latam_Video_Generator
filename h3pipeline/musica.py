@@ -47,14 +47,19 @@ class ErrorMusica(RuntimeError):
 
 
 def componer(duracion_s: float, tono: str, formato: str = "vertical short film",
-             clave: str | None = None, prompt: str | None = None) -> bytes:
-    """Devuelve los bytes del MP3 de una pista de `duracion_s` segundos."""
+             clave: str | None = None, prompt: str | None = None,
+             instrumental: bool | None = None) -> bytes:
+    """Devuelve los bytes del MP3 de una pista de `duracion_s` segundos.
+    `instrumental=True` fuerza sin voz (force_instrumental de la API); None deja
+    que el modelo decida según el prompt (así una letra en el prompt se canta)."""
     config.certificados()
     k = clave or config.leer_env("ELEVENLABS_API_KEY", obligatorio=False) \
         or config.leer_env("elevenlabs")
     texto = prompt or PROMPT_BASE.format(dur=duracion_s, formato=formato, tono=tono)
-    cuerpo = json.dumps({"prompt": texto,
-                         "music_length_ms": int(round(duracion_s * 1000))}).encode()
+    pedido = {"prompt": texto, "music_length_ms": int(round(duracion_s * 1000))}
+    if instrumental is not None:
+        pedido["force_instrumental"] = bool(instrumental)
+    cuerpo = json.dumps(pedido).encode()
     req = urllib.request.Request(API, data=cuerpo,
                                  headers={"xi-api-key": k, "Content-Type": "application/json"})
     try:
