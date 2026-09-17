@@ -71,10 +71,24 @@ def _clave_ssh_desde_entorno() -> None:
     d = Path.home() / ".ssh"
     d.mkdir(mode=0o700, exist_ok=True)
     k = d / "id_ed25519"
-    if not k.exists():
-        k.write_text(priv.replace("\\n", "\n").strip() + "\n", encoding="utf-8")
-        k.chmod(0o600)
-        (d / "id_ed25519.pub").write_text(pub.strip() + "\n", encoding="utf-8")
+    # Se reescribe en cada arranque, así un cambio en el entorno se aplica.
+    k.write_text(_normalizar_clave_privada(priv), encoding="utf-8")
+    k.chmod(0o600)
+    (d / "id_ed25519.pub").write_text(pub.strip().strip('"').strip() + "\n", encoding="utf-8")
+
+
+def _normalizar_clave_privada(priv: str) -> str:
+    """Una clave OpenSSH pegada en un formulario web llega de mil formas:
+    con `\\n` literales, entre comillas, o en UNA línea con espacios donde
+    iban los saltos. ssh la rechaza si no está en bloque; acá se rearma."""
+    import re
+    s = priv.replace("\\n", "\n").strip().strip('"').strip("'").strip()
+    m = re.search(r"-----BEGIN ([A-Z ]+)-----(.*?)-----END \1-----", s, re.S)
+    if not m:
+        return s + "\n"
+    tipo, cuerpo = m.group(1), "".join(m.group(2).split())
+    lineas = [cuerpo[i:i + 70] for i in range(0, len(cuerpo), 70)]
+    return f"-----BEGIN {tipo}-----\n" + "\n".join(lineas) + f"\n-----END {tipo}-----\n"
 
 
 _clave_ssh_desde_entorno()
@@ -661,8 +675,14 @@ def encender(e: Encendido):
     if tareas.corriendo("_maquina"):
         raise HTTPException(409, "ya hay una tarea de máquina corriendo")
     args = ["-m", "h3pipeline.app.encender"] + ([str(e.id)] if e.id else [])
-    maquina.escribir(fase="buscando", instancia=None, proyecto=None, fin=None, gasto_final=None)
+    maquina.escribir(fase="buscando", instancia=None, proyecto=None, fin=None, gasto_final=None, error=None)
     return {"tarea": tareas.lanzar("encender máquina", args, "_maquina").a_dict()}
+
+
+@app.get("/api/maquina/diagnostico")
+def diagnostico_maquina():
+    """¿Este servidor puede entrar por SSH a una máquina de Vast? Sin alquilar."""
+    return vast.diagnostico_ssh()
 
 
 @app.get("/api/maquina/mejor")

@@ -121,7 +121,8 @@ def _alquilar(oferta: vast.Oferta, log) -> dict | None:
             vast.destruir(iid, confirmar=True)
         except Exception:
             pass
-        escribir(fase="fallo", fin=time.time())
+        escribir(fase="fallo", fin=time.time(),
+                 error=f"no arrancó en 20 min · último ssh: {vast.ULTIMO_ERROR_SSH or 'sin respuesta'}")
         return None
     escribir(dph=float(inst.get("dph_total") or oferta.dph))
     return inst
@@ -130,6 +131,15 @@ def _alquilar(oferta: vast.Oferta, log) -> dict | None:
 def encender(pedido: int | None = None, log=print, intentos_max: int = 3) -> dict | None:
     """Busca (o toma) una 4×5090 apta, la alquila, espera el SSH y deja
     setup.sh corriendo. Devuelve la instancia (fase `instalando`) o None."""
+    # Antes de gastar un centavo: ¿este servidor puede entrar por SSH? El 17/9
+    # Render quemó dos máquinas (20 min cada una) sin poder entrar a ninguna.
+    d = vast.diagnostico_ssh()
+    log("SSH del servidor: " + json.dumps(d, ensure_ascii=False))
+    if not (d["privada_valida"] and d["publica_coincide"]):
+        log(f"!! la clave SSH de este servidor no sirve ({d['error']}). No alquilo nada: "
+            "revisá VAST_SSH_PRIVATE_KEY y VAST_SSH_PUBLIC_KEY en el entorno.")
+        escribir(fase="fallo", instancia=None, fin=time.time(), error=f"clave SSH: {d['error']}")
+        return None
     intentos, inst = 0, None
     while inst is None and intentos < intentos_max:
         oferta = None

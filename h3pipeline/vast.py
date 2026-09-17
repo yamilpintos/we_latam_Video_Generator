@@ -343,15 +343,68 @@ def ssh_responde(inst: dict) -> bool:
     Sólo el handshake completo distingue el tercero del listo de verdad.
     """
     import subprocess
+    global ULTIMO_ERROR_SSH
     try:
         _host, puerto, usuario = _ssh_args(inst)
-    except ErrorVast:
+    except ErrorVast as e:
+        ULTIMO_ERROR_SSH = str(e)
         return False
-    r = subprocess.run(
-        ["ssh", "-p", puerto, "-o", "StrictHostKeyChecking=accept-new",
-         "-o", "ConnectTimeout=12", "-o", "BatchMode=yes", usuario, "true"],
-        capture_output=True, text=True)
+    try:
+        r = subprocess.run(
+            ["ssh", "-p", puerto, "-o", "StrictHostKeyChecking=accept-new",
+             "-o", "ConnectTimeout=12", "-o", "BatchMode=yes", usuario, "true"],
+            capture_output=True, text=True, timeout=40)
+    except Exception as e:                       # no hay ssh, o se colgó
+        ULTIMO_ERROR_SSH = f"{type(e).__name__}: {e}"
+        return False
+    err = " ".join(l for l in (r.stderr or "").splitlines()
+                   if l.strip() and not l.startswith("Warning: Permanently added"))
+    ULTIMO_ERROR_SSH = "" if r.returncode == 0 else (err[-300:] or f"código {r.returncode} sin mensaje")
     return r.returncode == 0
+
+
+ULTIMO_ERROR_SSH = ""   # por qué falló el último ssh_responde; lo muestra esperar_lista
+
+
+def diagnostico_ssh() -> dict:
+    """Estado de la clave SSH de ESTE servidor, sin tocar Vast ni alquilar nada.
+
+    Nació el 17/9/2026: en Render dos 4×5090 quedaron 20 min en «arrancando»
+    y se destruyeron solas (~$1,80) porque el ssh desde el servidor no entraba
+    y el log sólo decía «running…». Con esto se ve antes de gastar si la
+    clave privada es válida y si su pública es la que se adjunta a la instancia.
+    """
+    import shutil
+    import subprocess
+    from pathlib import Path
+    home = Path.home()
+    k, pub = home / ".ssh" / "id_ed25519", home / ".ssh" / "id_ed25519.pub"
+    d = {"home": str(home), "ssh": shutil.which("ssh"), "privada": k.exists(), "publica": pub.exists(),
+         "privada_valida": False, "publica_coincide": False, "error": None}
+    if not d["ssh"]:
+        d["error"] = "no hay cliente ssh en el PATH"
+        return d
+    if not k.exists():
+        d["error"] = f"no existe {k} (en un servidor: VAST_SSH_PRIVATE_KEY y VAST_SSH_PUBLIC_KEY)"
+        return d
+    d["lineas_privada"] = k.read_text(encoding="utf-8").count("\n")
+    try:
+        r = subprocess.run(["ssh-keygen", "-y", "-f", str(k)], capture_output=True, text=True, timeout=20)
+    except Exception as e:
+        d["error"] = f"ssh-keygen: {e}"
+        return d
+    if r.returncode != 0:
+        d["error"] = (r.stderr or "").strip()[-300:] or "ssh-keygen no pudo leer la clave privada"
+        return d
+    d["privada_valida"] = True
+    derivada = r.stdout.split()[:2]
+    if pub.exists():
+        d["publica_coincide"] = pub.read_text(encoding="utf-8").split()[:2] == derivada
+        if not d["publica_coincide"]:
+            d["error"] = "la pública guardada no es la de esta privada: la instancia autoriza una clave y ssh presenta otra"
+    else:
+        d["error"] = f"no existe {pub}"
+    return d
 
 
 def esperar_lista(instancia_id: int, minutos: int = 20, clave: str | None = None,
@@ -375,7 +428,13 @@ def esperar_lista(instancia_id: int, minutos: int = 20, clave: str | None = None
         if estado == "running" and ssh_responde(i):
             log(f"  lista en {(time.time() - t0) / 60:.1f} min · {ssh_de(i)}")
             return i
-        log(f"  {estado}… {(time.time() - t0) / 60:.1f} min")
+        if estado == "running":
+            # La máquina ya corre: si no entramos es cosa nuestra (clave, red,
+            # ssh) o de la imagen. El motivo va al log, no se lo traga más.
+            log(f"  running, pero ssh no entra ({ULTIMO_ERROR_SSH or 'sin respuesta'}) · "
+                f"{ssh_de(i)} · {(time.time() - t0) / 60:.1f} min")
+        else:
+            log(f"  {estado}… {(time.time() - t0) / 60:.1f} min")
         time.sleep(20)
     raise ErrorVast(f"la instancia {instancia_id} no arrancó en {minutos} min. "
                     f"Si quedó colgada, destruila para no pagarla: "
