@@ -379,8 +379,11 @@ def diagnostico_ssh() -> dict:
     from pathlib import Path
     home = Path.home()
     k, pub = home / ".ssh" / "id_ed25519", home / ".ssh" / "id_ed25519.pub"
+    import os
     d = {"home": str(home), "ssh": shutil.which("ssh"), "privada": k.exists(), "publica": pub.exists(),
-         "privada_valida": False, "publica_coincide": False, "error": None}
+         "privada_valida": False, "publica_coincide": False, "error": None,
+         # cuántos caracteres trae cada variable del entorno (0 = no está o está vacía)
+         "entorno": {n: len((os.environ.get(n) or "").strip()) for n in ("VAST_SSH_PRIVATE_KEY", "VAST_SSH_PUBLIC_KEY")}}
     if not d["ssh"]:
         d["error"] = "no hay cliente ssh en el PATH"
         return d

@@ -65,16 +65,26 @@ def _clave_ssh_desde_entorno() -> None:
     """En un servidor la clave SSH para Vast llega por variables de entorno;
     se escribe en ~/.ssh al arrancar, que es donde la busca el módulo."""
     import os
-    priv, pub = os.environ.get("VAST_SSH_PRIVATE_KEY"), os.environ.get("VAST_SSH_PUBLIC_KEY")
-    if not priv or not pub:
+    import subprocess
+    priv, pub = (os.environ.get("VAST_SSH_PRIVATE_KEY") or "").strip(), (os.environ.get("VAST_SSH_PUBLIC_KEY") or "").strip()
+    if not priv:
         return
     d = Path.home() / ".ssh"
     d.mkdir(mode=0o700, exist_ok=True)
     k = d / "id_ed25519"
     # Se reescribe en cada arranque, así un cambio en el entorno se aplica.
-    k.write_text(_normalizar_clave_privada(priv), encoding="utf-8")
+    # newline="\n": en Windows write_text escribiría CRLF y ssh rechaza la clave.
+    k.write_text(_normalizar_clave_privada(priv), encoding="utf-8", newline="\n")
     k.chmod(0o600)
-    (d / "id_ed25519.pub").write_text(pub.strip().strip('"').strip() + "\n", encoding="utf-8")
+    if not pub:
+        # Sin pública en el entorno, se deriva de la privada: una variable menos que pegar.
+        try:
+            r = subprocess.run(["ssh-keygen", "-y", "-f", str(k)], capture_output=True, text=True, timeout=20)
+            pub = r.stdout.strip() if r.returncode == 0 else ""
+        except Exception:
+            pub = ""
+    if pub:
+        (d / "id_ed25519.pub").write_text(pub.strip('"').strip() + "\n", encoding="utf-8", newline="\n")
 
 
 def _normalizar_clave_privada(priv: str) -> str:
