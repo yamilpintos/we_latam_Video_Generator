@@ -278,8 +278,8 @@ ruta("/nuevo", async ([formato]) => {
     : f === "largo" ? (e.nombre.startsWith("recap") || (e.formato === "largo" && !e.nombre.startsWith("loop")))
     : (e.formato === "short" && !e.nombre.startsWith("recap")));
   const estDefault = esLoop ? "loop" : f === "largo" ? "recap" : "short-15";
-  const titulo = esLoop ? "Nuevo loop" : f === "largo" ? "Nuevo largo" : "Nuevo short";
-  const sub = esLoop ? "Describí la escena: un lugar, una hora, una luz, y qué se mueve despacio. La app la traduce a doce encuadres."
+  const titulo = esLoop ? "La escena del music video" : f === "largo" ? "Nuevo largo" : "Nuevo short";
+  const sub = esLoop ? "Paso 2 de 4. Describí el lugar que se va a mirar mientras suena la música: un lugar, una hora, una luz, y qué se mueve despacio. Se repite en loop lo que dure la pista."
     : "Pegá tu guion. La app lo traduce a planos siguiendo la estructura, lo valida y te lo muestra. El guion no se reescribe: se ilustra.";
   const ph = esLoop ? "Un jardín japonés de noche bajo lluvia fina: estanque negro con koi, un farol de piedra con vela, farolitos rojos, musgo, un arce…"
     : "Soy Tomás, buzo de mantenimiento en la represa. Bajé a 42 metros a revisar una compuerta que no cerraba…";
@@ -289,11 +289,11 @@ ruta("/nuevo", async ([formato]) => {
         ${esLoop ? `<select id="escena" style="margin-bottom:8px"><option value="">Escena propia (escribila abajo)</option>${ESCENAS.map((s, i) => `<option value="${i}">${h(s.n)}</option>`).join("")}</select>` : ""}
         <textarea id="guion" class="json" style="font-family:var(--font);font-size:15px;min-height:240px" placeholder="${ph}"></textarea>
         <div class="tiny" style="margin-top:6px"><span id="nchars">0</span> caracteres${esLoop ? "" : ` · con la voz elegida entran unos <span id="cabe">—</span> caracteres en <span id="durest">—</span> s`}</div></div>
-      <div class="card"><h3>Título y formato</h3>
+      <div class="card"><h3>${esLoop ? "Título y cuántas tomas" : "Título y formato"}</h3>
         <input id="titulo" placeholder="Título" style="margin-bottom:8px">
-        <select id="estructura">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
-        ${esLoop ? `<div style="margin-top:8px"><select id="duracion"><option value="5.17" selected>UNA escena · 1 clip de 5 s, cerrado con fundido</option><option value="10.08">UNA escena · 1 clip de 10 s (riesgo de VRAM)</option><option value="15.5">3 escenas · 3 clips · 15 s</option><option value="31">Loop de 30 s · 6 clips</option><option value="46.5">Loop de 45 s · 9 clips</option><option value="62">Loop de 60 s · 12 clips</option><option value="93">Loop de 90 s · 18 clips</option></select>
-          <div class="tiny" style="margin-top:4px">Una escena: un solo plano que se repite, cerrado con un fundido de la cola sobre la cabeza (o ping-pong). Varias escenas: cortes entre encuadres del mismo lugar. Después, en Music video, el loop se repite hasta cubrir la pista.</div></div>` : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
+        ${esLoop ? `<input type="hidden" id="estructura" value="${estDefault}">` : `<select id="estructura">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>`}
+        ${esLoop ? `<div><select id="duracion"><option value="5.17" selected>Una sola toma · 1 clip de 5 s (lo más barato y seguro)</option><option value="10.08">Una sola toma · 1 clip de 10 s (riesgo de memoria)</option><option value="15.5">3 tomas del mismo lugar · 3 clips</option><option value="31">6 tomas · 30 s de variedad</option><option value="46.5">9 tomas · 45 s de variedad</option><option value="62">12 tomas · 1 min de variedad</option><option value="93">18 tomas · 1 min 30 de variedad</option></select>
+          <div class="tiny" style="margin-top:4px">Una toma: un solo plano que se repite en loop (cerrado con un fundido de la cola sobre la cabeza). Varias tomas: la app corta entre encuadres del mismo lugar, así en 30 minutos de música no se ve siempre lo mismo. Más tomas = más clips = más minutos de GPU.</div></div>` : `<div style="margin-top:8px"><select id="voz"><option value="pablo">Voz: Pablo, argentino (10,5 cps)</option><option value="kate">Voz: Kate (16,7 cps)</option><option value="">Sin voz en off</option></select></div>`}
         <textarea id="notas" style="margin-top:8px;min-height:60px" placeholder="Notas para el traductor (opcional): tono, qué no mostrar, cortes que querés…"></textarea></div>
       <div class="card"><h3>Estilo visual</h3>
         <select id="estilo">${op.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (escribilo abajo)</option></select>
@@ -691,22 +691,25 @@ async function ofertasGlobal() {
 }
 
 /* ─────────────────────────────────────────────── music video */
+const fmtDur = s => s == null ? "?" : s >= 60 ? `${Math.floor(s / 60)} min${Math.round(s % 60) ? " " + Math.round(s % 60) + " s" : ""}` : `${Math.round(s)} s`;
 ruta("/musica", async ([slug]) => {
   const ps = (await api("/proyectos")).filter(p => String(p.estructura).startsWith("loop"));
   const sel = slug || ps[0]?.slug;
+  const bib = await api("/musica/biblioteca");
   let pistas = [];
   const otros = ps.filter(p => p.slug !== sel && (p.estado?.masters || []).some(m => / - loop\.mp4$/.test(m)));
   if (sel) { try { pistas = await api(`/proyectos/${sel}/musica`); } catch {} }
   const p = ps.find(x => x.slug === sel);
+  const todas = [...bib.pistas, ...pistas];
+  const paso = (n, t, ok) => `<span class="pill ${ok ? "ok" : ""}" style="margin-right:6px">${n} · ${t}</span>`;
   $("#vista").innerHTML = `<div class="wrap"><h1>Music video</h1>
-    <p class="sub">Un escenario que se mira de fondo y se repite lo que dure la música. Elegís el tipo de música y la app la compone con ElevenLabs Music; el loop se hace con el mismo flujo de siempre; el video final dura lo que dura la pista.</p>
-    <div class="row" style="margin-bottom:14px"><a class="btn p" href="#/nuevo/loop">＋ Nuevo loop (describís la escena)</a>
-      ${ps.length ? `<select id="sel-loop" onchange="location.hash='#/musica/'+this.value" style="max-width:320px">${ps.map(x => `<option value="${x.slug}" ${x.slug === sel ? "selected" : ""}>${h(x.titulo)}</option>`).join("")}</select>` : ""}</div>
-    ${p ? `<div class="card" style="margin-bottom:14px"><h3>1 · La música para «${h(p.titulo)}»</h3>
+    <p class="sub">Primero la música, después la escena. La app compone la pista con ElevenLabs Music (o subís la tuya), vos describís un lugar, y el video final dura exactamente lo que dura la música: la escena se repite en loop encima.</p>
+    <div style="margin-bottom:14px">${paso(1, "música", bib.pistas.length)}${paso(2, "escena", ps.length)}${paso(3, "máquina y clips", p && p.estado.clips.hechos)}${paso(4, "video final", p && p.estado.masters.length)}</div>
+    <div class="card" style="margin-bottom:14px"><h3>1 · La música</h3>
         <div class="grid g3" style="gap:12px">
-          <div><label class="tiny" style="display:block;margin-bottom:4px">Duración</label>
-            <select id="dur">${[[30, "30 s"], [60, "1 min"], [90, "1 min 30"], [120, "2 min"], [180, "3 min"], [240, "4 min"], [300, "5 min (máximo)"]].map(([v, l]) => `<option value="${v}" ${v === 90 ? "selected" : ""}>${l}</option>`).join("")}</select>
-            <div class="tiny" style="margin-top:4px">Para publicar largo, el loop de video se repite sobre la pista.</div></div>
+          <div><label class="tiny" style="display:block;margin-bottom:4px">Duración total</label>
+            <select id="dur">${[[60, "1 min"], [120, "2 min"], [180, "3 min"], [300, "5 min"], [600, "10 min"], [900, "15 min"], [1200, "20 min"], [1800, "30 min"]].map(([v, l]) => `<option value="${v}" ${v === 180 ? "selected" : ""}>${l}</option>`).join("")}</select>
+            <div class="tiny" style="margin-top:4px">Más de 5 min se compone en piezas de hasta 5 min del mismo estilo; cada una baja a silencio al final y la siguiente sube desde silencio.</div></div>
           <div><label class="tiny" style="display:block;margin-bottom:4px">Género</label>
             <select id="genero">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
             <div class="tiny" style="margin-top:4px">Marca el estilo base; lo fino va en la descripción.</div></div>
@@ -728,16 +731,37 @@ la ciudad se queda quieta
 [Estribillo]
 …"></textarea>
           <div class="tiny" style="margin-top:4px">Como guía: 1 minuto de canción son unas 8 a 12 líneas. Si la letra es más larga que la pista, se canta hasta donde llegue.</div></div>
-        <div class="row" style="margin-top:12px"><input id="nombre" placeholder="nombre de la pista (opcional)" style="max-width:260px"><button class="btn p" onclick="componer('${sel}')">Componer</button><span class="tiny">ElevenLabs Music · tarda 1 a 3 minutos</span></div>
-        <div style="margin-top:14px">${pistas.length ? `<div class="tiny" style="margin-bottom:6px">Pistas de este proyecto</div>` + pistas.map(t => `<div class="row" style="margin-bottom:8px"><audio controls preload="none" src="${t.url}" style="height:30px;flex:1"></audio><span class="tiny">${h(t.archivo)} · ${t.dur ?? "?"} s</span></div>`).join("") : `<div class="tiny">Todavía no hay pistas en este proyecto.</div>`}</div></div>
-      <div class="card"><h3>2 · El video final <span class="pill ${p.estado.masters.length ? "ok" : "warn"}">${p.estado.clips.hechos}/${p.estado.clips.esperados} clips</span></h3>
-        <p class="muted">La pista manda la duración: el loop se repite hasta cubrirla y se corta a su largo. Si marcás otros loops, se alternan para que no se vea el mismo doce veces.</p>
-        <select id="pista">${pistas.map(t => `<option value="${h(t.ruta)}">${h(t.archivo)} (${t.dur ?? "?"} s)</option>`).join("")}${pistas.length ? "" : `<option value="">(primero componé una pista)</option>`}</select>
+        <div class="row" style="margin-top:12px"><input id="nombre" placeholder="nombre de la pista (opcional)" style="max-width:260px"><button class="btn p" onclick="componer('_musica')">Componer</button><span class="tiny">ElevenLabs Music · 1 a 3 min por cada 5 min de música</span>
+          <label class="btn s" style="margin-left:auto">subir mi pista (mp3/wav)<input type="file" id="fpista" accept=".mp3,.wav,audio/*" hidden></label></div>
+        ${bib.tareas.length ? `<div class="pill warn" style="margin-top:10px"><i class="dot live"></i> componiendo… ${h(bib.tareas[0].cola || "")}</div>` : ""}
+        <div style="margin-top:14px"><div class="tiny" style="margin-bottom:6px">Biblioteca de música ${bib.pistas.length ? `· ${bib.pistas.length} pista${bib.pistas.length > 1 ? "s" : ""}` : ""}</div>
+          ${bib.pistas.length ? bib.pistas.map(t => `<div class="row" style="margin-bottom:8px;gap:10px"><audio controls preload="none" src="${t.url}" style="height:30px;flex:1;min-width:220px"></audio><span class="tiny">${h(t.archivo)} · <b>${fmtDur(t.dur)}</b>${t.genero ? " · " + h(t.genero) : ""}${t.con_letra ? " · con letra" : ""}${t.piezas > 1 ? ` · ${t.piezas} piezas` : ""}</span></div>`).join("") : `<div class="tiny">Todavía no hay pistas. Componé una o subí la tuya.</div>`}</div></div>
+    <div class="card" style="margin-bottom:14px"><h3>2 · La escena</h3>
+        <p class="muted">Un lugar que se mira mientras suena la música. Se dibuja, se anima con H3 y se repite en loop lo que dure la pista.</p>
+        <div class="row"><a class="btn p" href="#/nuevo/loop">＋ Nueva escena (la describís en castellano)</a>
+          ${ps.length ? `<select id="sel-loop" onchange="location.hash='#/musica/'+this.value" style="max-width:320px">${ps.map(x => `<option value="${x.slug}" ${x.slug === sel ? "selected" : ""}>${h(x.titulo)}</option>`).join("")}</select><span class="tiny">escena elegida</span>` : `<span class="tiny">todavía no hay escenas</span>`}</div></div>
+    ${p ? `<div class="grid g2">
+      <div class="card"><h3>3 · Máquina y clips <span class="pill ${p.estado.clips.hechos ? "ok" : "warn"}">${p.estado.clips.hechos}/${p.estado.clips.esperados} clips</span></h3>
+        <p class="muted">La escena «${h(p.titulo)}» se dibuja y se genera en la máquina como cualquier proyecto: dibujos → máquina → clips. Los clips quedan guardados; el video final se arma sin volver a generar.</p>
+        <div class="row"><a class="btn p" href="#/p/${sel}/dibujos">Dibujos</a><a class="btn" href="#/p/${sel}/maquina">Máquina</a><a class="btn" href="#/p/${sel}/clips">Clips</a></div></div>
+      <div class="card"><h3>4 · El video final <span class="pill ${p.estado.masters.length ? "ok" : ""}">${p.estado.masters.length ? p.estado.masters.length + " hecho(s)" : "pendiente"}</span></h3>
+        <p class="muted">La pista manda la duración: la escena se repite hasta cubrirla y se corta a su largo. Si marcás otras escenas ya hechas, se alternan para que no se vea siempre la misma.</p>
+        <label class="tiny" style="display:block;margin-bottom:4px">Pista</label>
+        <select id="pista">${todas.map(t => `<option value="${h(t.ruta)}">${h(t.archivo)} · ${fmtDur(t.dur)}</option>`).join("")}${todas.length ? "" : `<option value="">(primero componé o subí una pista)</option>`}</select>
         ${otros.length ? `<div class="tiny" style="margin:10px 0 4px">Alternar con:</div>${otros.map(o => `<label class="tiny" style="display:block"><input type="checkbox" class="otro" value="${o.slug}"> ${h(o.titulo)}</label>`).join("")}` : ""}
-        <div class="row" style="margin-top:12px"><button class="btn p" ${pistas.length && p.estado.clips.hechos ? "" : "disabled"} onclick="masterMusica('${sel}')">Generar video con la pista</button>
-          <a class="btn" href="#/p/${sel}">Abrir el loop (dibujos, máquina, clips)</a></div>
-        <div style="margin-top:12px">${p.estado.masters.map(m => `<div><a href="/api/proyectos/${sel}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("")}</div></div>` : `<div class="card"><div class="muted">Todavía no hay loops. Empezá por «Nuevo loop».</div></div>`}
-    <h3 style="margin:26px 0 10px">Loops</h3><div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div></div>`;
+        <div class="row" style="margin-top:12px"><button class="btn p" ${todas.length && p.estado.clips.hechos ? "" : "disabled"} onclick="masterMusica('${sel}')">Generar el music video</button>
+          <span class="tiny">${!p.estado.clips.hechos ? "faltan los clips de la escena" : !todas.length ? "falta la música" : "tarda ~1 min aunque la pista dure 30"}</span></div>
+        <div style="margin-top:12px">${p.estado.masters.map(m => `<div><a href="/api/proyectos/${sel}/archivo/${encodeURIComponent(m)}" target="_blank">${h(m)}</a></div>`).join("")}</div></div>
+    </div>` : ""}
+    ${ps.length ? `<h3 style="margin:26px 0 10px">Escenas</h3><div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div>` : ""}</div>`;
+  $("#conletra") && letraToggle();
+  $("#fpista").addEventListener("change", async (ev) => {
+    const f = ev.target.files[0]; if (!f) return;
+    toast("subiendo la pista…");
+    const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+    try { await api("/musica/subir", {method: "POST", body: {nombre: f.name, b64}}); toast("pista guardada en la biblioteca"); navegar(); }
+    catch (e) { toast(e.message, true); }
+  });
 });
 const GENEROS_MUSICA = [["lofi", "Lo-fi hip hop"], ["chillhop", "Chillhop"], ["ambient", "Ambient"], ["piano", "Piano solo"], ["jazz", "Jazz suave"],
   ["acustico", "Acústico / folk"], ["clasica", "Clásica de cámara"], ["bossa", "Bossa nova"], ["cinematica", "Cinemática"], ["synthwave", "Synthwave"],
@@ -755,7 +779,8 @@ async function componer(slug) {
   const body = {slug, tipo: $("#tipo").value, duracion: Number($("#dur").value || 90), genero: $("#genero").value,
     loopeable: !con && $("#loopeable").checked, con_letra: con, letra: con ? $("#letra").value : "",
     idioma_letra: $("#idioma_letra").value, voz_letra: $("#voz_letra").value, nombre: $("#nombre").value || (con ? "cancion" : "musica")};
-  try { const d = await api("/musica/componer", {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast(con ? "componiendo la canción…" : "componiendo…"); }
+  const piezas = Math.ceil(body.duracion / 300);
+  try { const d = await api("/musica/componer", {method: "POST", body}); seguirTarea(d.tarea, () => navegar()); toast((con ? "componiendo la canción" : "componiendo") + (piezas > 1 ? ` en ${piezas} piezas…` : "…")); setTimeout(navegar, 1200); }
   catch (e) { toast(e.message, true); }
 }
 async function masterMusica(slug) {

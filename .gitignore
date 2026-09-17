@@ -80,3 +80,6 @@ RENDER-VARIABLES.txt
 
 # estado de la máquina y la cola (mis-videos/_estado, disco persistente)
 mis-videos/_estado/
+
+# biblioteca de música de los music videos (pistas, piezas)
+mis-videos/_musica/

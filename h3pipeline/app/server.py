@@ -1117,10 +1117,13 @@ def voz_mp3(slug: str, nombre: str):
 
 # ─────────────────────────────────────────────────────────────── la música
 
+BIBLIOTECA = MIS / "_musica"      # las pistas de los music videos, independientes de la escena
+
+
 class Musica(BaseModel):
-    slug: str
+    slug: str = "_musica"           # "_musica" = la biblioteca; o el slug de un proyecto
     tipo: str = ""                  # descripción libre: «lento para estudiar, sin batería marcada…»
-    duracion: float = 90.0          # 30 a 300 s
+    duracion: float = 90.0          # 30 s a 30 min; más de 5 min se compone en piezas unidas con fundido a silencio
     nombre: str = "musica"
     genero: str = ""                # clave de componer.GENEROS ("" = sólo la descripción)
     loopeable: bool = True          # instrumental sin intro ni final (para el loop de video)
@@ -1130,17 +1133,78 @@ class Musica(BaseModel):
     voz_letra: str = "femenina"     # femenina | masculina | duo | coro
 
 
+def _pista_dict(f: Path, url: str) -> dict:
+    try:
+        dur = montaje.duracion(f)
+    except Exception:
+        dur = None
+    meta = {}
+    j = f.with_suffix(".json")
+    if j.exists():
+        try:
+            meta = json.loads(j.read_text(encoding="utf-8"))
+        except Exception:
+            meta = {}
+    return {"archivo": f.name, "ruta": str(f), "dur": round(dur, 1) if dur else None, "url": url,
+            "genero": meta.get("genero"), "con_letra": meta.get("con_letra"), "piezas": meta.get("piezas"),
+            "tipo": meta.get("tipo"), "creado": f.stat().st_mtime}
+
+
+@app.get("/api/musica/biblioteca")
+def biblioteca():
+    BIBLIOTECA.mkdir(parents=True, exist_ok=True)
+    fs = sorted(list(BIBLIOTECA.glob("*.mp3")) + list(BIBLIOTECA.glob("*.wav")), key=lambda f: f.stat().st_mtime, reverse=True)
+    return {"pistas": [_pista_dict(f, f"/api/musica/archivo/{f.name}") for f in fs],
+            "tareas": [t.a_dict(lineas=3) for t in tareas.corriendo("_musica")]}
+
+
+@app.get("/api/musica/archivo/{nombre}")
+def musica_archivo(nombre: str):
+    f = BIBLIOTECA / Path(nombre).name
+    if not f.exists() or f.suffix.lower() not in (".mp3", ".wav"):
+        raise HTTPException(404)
+    return FileResponse(str(f), filename=f.name)
+
+
+class PistaSubida(BaseModel):
+    nombre: str
+    b64: str                        # el archivo (mp3 o wav), base64 con o sin prefijo data:
+
+
+@app.post("/api/musica/subir")
+def subir_pista(p: PistaSubida):
+    """Tu propia pista a la biblioteca (la que hiciste afuera o ya tenías)."""
+    import base64
+    BIBLIOTECA.mkdir(parents=True, exist_ok=True)
+    ext = Path(p.nombre).suffix.lower()
+    if ext not in (".mp3", ".wav"):
+        raise HTTPException(422, "sólo mp3 o wav")
+    b = p.b64.split(",", 1)[1] if "," in p.b64[:64] else p.b64
+    base = re.sub(r"[^a-z0-9-]+", "-", Path(p.nombre).stem.lower()).strip("-") or "pista"
+    f = BIBLIOTECA / f"{base}{ext}"
+    n = 2
+    while f.exists():
+        f = BIBLIOTECA / f"{base}-{n}{ext}"
+        n += 1
+    f.write_bytes(base64.b64decode(b))
+    return _pista_dict(f, f"/api/musica/archivo/{f.name}")
+
+
 @app.post("/api/musica/componer")
 def componer(m: Musica):
-    c = _carpeta(m.slug)
+    if m.slug == "_musica":
+        BIBLIOTECA.mkdir(parents=True, exist_ok=True)
+        c = BIBLIOTECA
+    else:
+        c = _carpeta(m.slug)
     if not m.tipo.strip() and not m.genero:
         raise HTTPException(422, "elegí un género o describí la música")
     if m.con_letra and len(m.letra.strip()) < 10:
         raise HTTPException(422, "marcaste «con letra» pero no pegaste la letra")
-    if not 30 <= m.duracion <= 300:
-        raise HTTPException(422, "la duración va de 30 a 300 segundos")
+    if not 30 <= m.duracion <= 1800:
+        raise HTTPException(422, "la duración va de 30 segundos a 30 minutos")
     if tareas.corriendo(m.slug):
-        raise HTTPException(409, "ya hay una tarea corriendo en este proyecto")
+        raise HTTPException(409, "ya hay una composición en marcha; esperá a que termine")
     pedido = {"slug": m.slug, "tipo": m.tipo, "duracion": m.duracion, "genero": m.genero,
               "loopeable": m.loopeable, "con_letra": m.con_letra, "letra": m.letra,
               "idioma_letra": m.idioma_letra, "voz_letra": m.voz_letra,
