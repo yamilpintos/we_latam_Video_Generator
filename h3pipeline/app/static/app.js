@@ -328,6 +328,7 @@ ruta("/libre", async () => {
       <div class="row" style="margin-top:8px"><select id="lasp" style="max-width:160px"><option value="16:9">16:9 horizontal</option><option value="9:16">9:16 vertical</option></select>
         <select id="lmotor" style="max-width:220px"><option value="openai">OpenAI / GPT (~$0,25)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
         <input id="lest" placeholder="estilo (opcional, en inglés): photorealistic, 35mm film grain…" style="flex:1;min-width:220px">
+        <select id="lajuste" style="max-width:250px" title="qué hacer si la imagen subida no tiene la proporción del video"><option value="encajar">subida: entera, fondo desenfocado</option><option value="recortar">subida: recortar al centro</option></select>
         <label class="btn s">subir imagen<input type="file" id="lfile" accept="image/*" hidden></label>
         <button class="btn p" onclick="libreImagen()">Crear imagen</button></div>
       <div id="lerr" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
@@ -358,7 +359,7 @@ function pintarTurnos(ts, d) {
 }
 async function libreImagen(b64 = null) {
   $("#lerr").textContent = ""; toast(b64 ? "subiendo…" : "dibujando… (10-20 s)");
-  try { await api("/libre/imagen", {method: "POST", body: {prompt: $("#lp").value, aspecto: $("#lasp").value, estilo: $("#lest").value, imagen_b64: b64, motor: $("#lmotor").value}}); navegar(); }
+  try { await api("/libre/imagen", {method: "POST", body: {prompt: $("#lp").value, aspecto: $("#lasp").value, estilo: $("#lest").value, imagen_b64: b64, motor: $("#lmotor").value, ajuste: $("#lajuste").value}}); navegar(); }
   catch (e) { $("#lerr").textContent = e.message; }
 }
 async function libreVideo(id) {

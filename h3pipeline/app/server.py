@@ -756,6 +756,7 @@ class ImagenLibre(BaseModel):
     estilo: str = ""
     imagen_b64: str | None = None
     motor: str = "openai"            # openai | nanobanana
+    ajuste: str = "encajar"          # imagen subida: encajar (entera, fondo desenfocado) | recortar
 
 
 @app.get("/api/libre")
@@ -768,7 +769,7 @@ def libre_imagen(i: ImagenLibre):
     if not i.imagen_b64 and len(i.prompt.strip()) < 8:
         raise HTTPException(422, "escribí qué querés ver, o subí una imagen")
     try:
-        return libre.imagen(i.prompt, i.aspecto, i.imagen_b64, i.estilo, i.motor)
+        return libre.imagen(i.prompt, i.aspecto, i.imagen_b64, i.estilo, i.motor, i.ajuste)
     except Exception as e:
         raise HTTPException(502, f"no pude crear la imagen: {e}")
 

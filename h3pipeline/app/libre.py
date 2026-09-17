@@ -61,7 +61,7 @@ def _guardar(t: dict) -> dict:
 # ───────────────────────────────────────────────────────────── la imagen
 
 def imagen(prompt: str, aspecto: str = "16:9", b64: str | None = None, estilo: str = "",
-           motor: str = "nanobanana") -> dict:
+           motor: str = "nanobanana", ajuste: str = "encajar") -> dict:
     """Crea el turno con su primer fotograma: subido (`b64`) o generado con
     nano banana Flash a partir del prompt (+ estilo opcional)."""
     aspecto = aspecto if aspecto in RES else "16:9"
@@ -88,14 +88,53 @@ def imagen(prompt: str, aspecto: str = "16:9", b64: str | None = None, estilo: s
                 # al normalizar; el sujeto va centrado).
                 crudo.write_bytes(frames.generar_openai(texto, [], config.leer_env("OPENAI_API_KEY"), aspecto, log=lambda *_: None))
                 origen = "OpenAI (sin créditos en nano banana)"
-    w, h = RES[aspecto]
-    final = DIR / "assets" / f"{tid}.png"
-    frames.normalizar(crudo, final, w, h)
+    nota = ""
+    if b64:
+        # Una imagen subida no se recorta: se elige el cuadro según su
+        # orientación y se ENCAJA entera sobre un fondo desenfocado de sí misma.
+        from PIL import Image
+        with Image.open(crudo) as im:
+            iw, ih = im.size
+        aspecto_img = "9:16" if ih > iw * 1.1 else "16:9"
+        if aspecto_img != aspecto:
+            nota = f"la imagen es {'vertical' if aspecto_img == '9:16' else 'horizontal'}: se usó {aspecto_img}"
+            aspecto = aspecto_img
+        w, h = RES[aspecto]
+        final = DIR / "assets" / f"{tid}.png"
+        if ajuste == "recortar":
+            frames.normalizar(crudo, final, w, h)
+        else:
+            _encajar(crudo, final, w, h)
+            if abs(iw / ih - w / h) > 0.05:
+                nota = (nota + " · " if nota else "") + "encajada entera con fondo desenfocado (sin recorte)"
+    else:
+        w, h = RES[aspecto]
+        final = DIR / "assets" / f"{tid}.png"
+        frames.normalizar(crudo, final, w, h)
     crudo.unlink(missing_ok=True)
     t = {"id": tid, "creado": time.time(), "prompt_imagen": prompt, "estilo": estilo, "aspecto": aspecto,
          "imagen": f"assets/{tid}.png", "origen_imagen": origen, "estado": "imagen",
-         "prompt_video": None, "segundos": None, "clip": None, "nota": ""}
+         "prompt_video": None, "segundos": None, "clip": None, "nota": nota}
     return _guardar(t)
+
+
+def _encajar(origen: Path, destino: Path, w: int, h: int) -> None:
+    """La imagen entera dentro de w×h: fondo = la misma imagen agrandada hasta
+    cubrir, desenfocada y oscurecida; adelante, la imagen a tamaño completo."""
+    from PIL import Image, ImageEnhance, ImageFilter
+    im = Image.open(origen).convert("RGB")
+    iw, ih = im.size
+    # fondo que cubre
+    esc = max(w / iw, h / ih)
+    fondo = im.resize((max(w, int(iw * esc)), max(h, int(ih * esc))), Image.LANCZOS)
+    fx, fy = (fondo.width - w) // 2, (fondo.height - h) // 2
+    fondo = fondo.crop((fx, fy, fx + w, fy + h)).filter(ImageFilter.GaussianBlur(radius=max(w, h) // 30))
+    fondo = ImageEnhance.Brightness(fondo).enhance(0.55)
+    # frente que entra entero
+    esc = min(w / iw, h / ih)
+    frente = im.resize((int(iw * esc), int(ih * esc)), Image.LANCZOS)
+    fondo.paste(frente, ((w - frente.width) // 2, (h - frente.height) // 2))
+    fondo.save(destino, "PNG")
 
 
 # ───────────────────────────────────────────────────────────── el video
