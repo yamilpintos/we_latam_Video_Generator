@@ -253,7 +253,10 @@ def progreso_instalacion(inst: dict, cada: float = 15.0) -> dict:
                   "tail -n 2 /root/corrida.log 2>/dev/null", timeout=40)
         lineas = salida.splitlines()
         b = float(lineas[0]) if lineas and lineas[0].strip().isdigit() else 0.0
-        listo = len(lineas) > 1 and lineas[1].strip().isdigit() and int(lineas[1]) > 0
+        marca = len(lineas) > 1 and lineas[1].strip().isdigit() and int(lineas[1]) > 0
+        # La marca del log puede desaparecer (el 17/9 un turno de Libre escribió
+        # sobre corrida.log): los modelos completos en disco también valen.
+        listo = marca or b >= BYTES_MODELOS * 0.99
         v = {"gb": round(b / 1e9, 1), "pct": min(99, int(b / BYTES_MODELOS * 100)) if not listo else 100,
              "listo": listo, "ultimo": "\n".join(lineas[2:])[-400:]}
         # Velocidad y tiempo que falta, con dos muestras separadas por ≥ 20 s.

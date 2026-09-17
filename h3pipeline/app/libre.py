@@ -180,8 +180,10 @@ def video(tid: str, prompt_video: str, segundos: float = grilla.MINIMO, seed: in
         log("ComfyUI reiniciado para arrancar con la VRAM limpia")
     vast.ejecutar(inst, f"export PATH=/venv/main/bin:$PATH && cd /workspace/refs && unzip -oq {z.name} && "
                         f"sed -i 's/\\r$//' *.sh *.py && cp planos.json /root/planos.json", timeout=180)
+    # Log propio: si escribiera sobre corrida.log borraría la marca «Listo. Ahora»
+    # de la instalación, y la app dejaría de ver la máquina como lista (17/9).
     vast.lanzar(inst, "export PATH=/venv/main/bin:$PATH && cd /workspace/refs && PASOS=8 GPUS=1 bash lanzar.sh",
-                log=vast.LOG_CORRIDA)
+                log="/root/libre.log")
     maquina.escribir(proyecto="_libre", generando_desde=time.time())
     t.update(prompt_video=prompt_video, segundos=float(segundos), estado="generando", lanzado=time.time())
     return _guardar(t)
