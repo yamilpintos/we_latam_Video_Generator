@@ -15,10 +15,18 @@ import json
 from pathlib import Path
 
 AQUI = Path(__file__).resolve().parent
-ESTADO = AQUI / "cola.json"
+# En mis-videos/_estado (disco persistente en un servidor); ver maquina.ESTADO.
+ESTADO = AQUI.parent.parent / "mis-videos" / "_estado" / "cola.json"
+_ESTADO_VIEJO = AQUI / "cola.json"
 
 
 def leer() -> dict:
+    if not ESTADO.exists() and _ESTADO_VIEJO.exists():
+        try:
+            ESTADO.parent.mkdir(parents=True, exist_ok=True)
+            _ESTADO_VIEJO.replace(ESTADO)
+        except Exception:
+            pass
     if not ESTADO.exists():
         return {"items": [], "apagar_al_final": True, "corriendo": False}
     try:
@@ -28,6 +36,7 @@ def leer() -> dict:
 
 
 def escribir(d: dict) -> dict:
+    ESTADO.parent.mkdir(parents=True, exist_ok=True)
     ESTADO.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
     return d
 

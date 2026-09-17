@@ -640,6 +640,7 @@ def _saldo() -> float | None:
 
 @app.get("/api/maquina")
 def estado_maquina():
+    maquina.adoptar()          # estado perdido pero instancia viva → se retoma
     m = maquina.leer()
     out = {**m, "saldo": _saldo(), **maquina.gasto(m), "tareas": [t.a_dict(lineas=4) for t in tareas.corriendo("_maquina")],
            "progreso": maquina.progreso_general(m)}

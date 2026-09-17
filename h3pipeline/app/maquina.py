@@ -31,7 +31,11 @@ from ..proyecto import Proyecto
 AQUI = Path(__file__).resolve().parent
 RAIZ = AQUI.parent.parent
 MIS = RAIZ / "mis-videos"
-ESTADO = AQUI / "maquina.json"
+# El estado vive en mis-videos/_estado, que en un servidor es el disco
+# persistente. Hasta el 17/9 estaba junto al código y un redeploy de Render
+# lo borraba: la app decía «apagada» mientras la instancia seguía cobrando.
+ESTADO = MIS / "_estado" / "maquina.json"
+_ESTADO_VIEJO = AQUI / "maquina.json"
 ZIP_SETUP = AQUI / "h3-setup.zip"
 REMOTO = AQUI.parent / "remoto"
 BYTES_MODELOS = 59e9          # perfil max, SOLO_FL=1 (COSTOS §12, VAST.md)
@@ -41,6 +45,12 @@ TECHO_DPH = 4.0
 # ───────────────────────────────────────────────────────────── estado
 
 def leer() -> dict:
+    if not ESTADO.exists() and _ESTADO_VIEJO.exists():
+        try:                                   # migración desde la ubicación vieja
+            ESTADO.parent.mkdir(parents=True, exist_ok=True)
+            _ESTADO_VIEJO.replace(ESTADO)
+        except Exception:
+            pass
     if not ESTADO.exists():
         return {"fase": "apagada"}
     try:
@@ -52,8 +62,40 @@ def leer() -> dict:
 def escribir(**cambios) -> dict:
     d = leer()
     d.update(cambios)
+    ESTADO.parent.mkdir(parents=True, exist_ok=True)
     ESTADO.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
     return d
+
+
+_adopcion: dict = {"t": 0}
+
+
+def adoptar(cada: float = 60.0) -> dict | None:
+    """Si el estado dice apagada/fallo pero en Vast hay una instancia nuestra
+    viva, la toma como propia. Cubre el caso del estado perdido (un redeploy,
+    un disco nuevo) y el de una máquina alquilada a mano: nunca hay que pagar
+    una máquina que la app no muestra. Se consulta como mucho cada `cada` s."""
+    m = leer()
+    if m.get("fase") not in (None, "apagada", "fallo"):
+        return None
+    ahora = time.time()
+    if ahora - _adopcion["t"] < cada:
+        return None
+    _adopcion["t"] = ahora
+    try:
+        vivas = [i for i in vast._pedir("/instances/").get("instances", [])
+                 if i.get("actual_status") in ("running", "loading", "created")]
+    except Exception:
+        return None
+    if not vivas:
+        return None
+    i = sorted(vivas, key=lambda x: -(x.get("num_gpus") or 0))[0]
+    return escribir(fase="instalando", instancia=int(i["id"]), dph=float(i.get("dph_total") or 0),
+                    inicio=float(i.get("start_date") or ahora), fin=None, gasto_final=None, proyecto=None,
+                    error=None, adoptada=True,
+                    oferta={"id": i.get("machine_id"), "geo": i.get("geolocation"), "gpu": i.get("gpu_name"),
+                            "gpus": i.get("num_gpus"), "inet": round(i.get("inet_down") or 0),
+                            "fiabilidad": round(i.get("reliability2") or 0, 4)})
 
 
 def gasto(d: dict) -> dict:
@@ -184,8 +226,11 @@ def progreso_instalacion(inst: dict, cada: float = 15.0) -> dict:
     if _cache["v"] and ahora - _cache["t"] < cada:
         return _cache["v"]
     try:
+        # Dos árboles de ComfyUI según la imagen (VAST.md): se mide el que más
+        # pesa. El 17/9 la barra quedó clavada en 15 % midiendo el árbol vacío.
         salida = vast.ejecutar(
-            inst, "du -sb /workspace/ComfyUI/models 2>/dev/null | cut -f1; "
+            inst, "for d in /opt/workspace-internal/ComfyUI/models /workspace/ComfyUI/models; do "
+                  "du -sb $d 2>/dev/null | cut -f1; done | sort -n | tail -1; "
                   "grep -c 'Listo. Ahora' /root/corrida.log 2>/dev/null; "
                   "tail -n 2 /root/corrida.log 2>/dev/null", timeout=40)
         lineas = salida.splitlines()

@@ -77,3 +77,6 @@ h3pipeline/app/cola.json
 mis-videos/_libre/
 
 RENDER-VARIABLES.txt
+
+# estado de la máquina y la cola (mis-videos/_estado, disco persistente)
+mis-videos/_estado/
