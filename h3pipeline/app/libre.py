@@ -205,18 +205,48 @@ def refrescar() -> list[dict]:
     except Exception:
         return turnos()
     (DIR / "clips").mkdir(exist_ok=True)
+    ultimo = _ultima_linea(inst)
     for t in gen:
         mios = [a for a in arch if a.startswith(t["id"] + "_") and a.endswith(".mp4")]
         if mios:
             try:
                 vast.bajar(inst, mios[:1], DIR / "clips", log=lambda *_: None)
-                t.update(estado="listo", clip=f"clips/{mios[0]}", terminado=time.time())
+                t.update(estado="listo", clip=f"clips/{mios[0]}", terminado=time.time(), progreso=None)
             except Exception as e:
                 t.update(nota=f"bajando… ({e})")
         elif time.time() - t.get("lanzado", 0) > 25 * 60:
-            t.update(estado="error", nota="no salió en 25 min: mirá el log de la máquina")
+            t.update(estado="error", nota="no salió en 25 min: mirá el log de la máquina", progreso=None)
+        else:
+            t["progreso"] = progreso(t, ultimo)
     _escribir(ts)
     return turnos()
+
+
+# Minutos de GPU por segundo de clip en una 5090 (COSTOS-H3.md §12-14: 0,67-0,81
+# medidos entre 5 y 7 s; los de 15 s del 17/8 salieron algo más lentos).
+MIN_GPU_POR_SEGUNDO = 0.8
+
+
+def estimado_seg(segundos: float) -> int:
+    """Cuánto suele tardar un clip de `segundos`, incluida la carga del modelo."""
+    return int(60 + float(segundos) * MIN_GPU_POR_SEGUNDO * 60)
+
+
+def progreso(t: dict, ultimo: str = "") -> dict:
+    trans = int(time.time() - t.get("lanzado", time.time()))
+    est = estimado_seg(t.get("segundos") or grilla.MINIMO)
+    return {"transcurrido": trans, "estimado": est,
+            "pct": min(95, int(trans / est * 100)) if est else 0, "ultimo": ultimo}
+
+
+def _ultima_linea(inst: dict) -> str:
+    """La última línea del log de la placa 0 (el runner escribe «generando… Ns»
+    cada 5 s, y «!!» si algo falla), con los retornos de carro deshechos."""
+    try:
+        return vast.ejecutar(inst, "tail -c 600 /root/gpu0.log 2>/dev/null | tr '\\r' '\\n' | grep . | tail -n 1",
+                             timeout=30).strip()[-200:]
+    except Exception:
+        return ""
 
 
 def ocupada() -> bool:

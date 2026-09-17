@@ -323,7 +323,7 @@ ruta("/libre", async () => {
   const d = await api("/libre");
   const lista = d.maquina === "lista";
   $("#vista").innerHTML = `<div class="wrap"><h1>Libre <span class="pill ${lista ? "ok" : "warn"}">máquina ${h(d.maquina || "apagada")}</span></h1>
-    <p class="sub">Un prompt → una imagen → un clip de MiniMax H3. Sin estructura, sin proyecto: para probar una idea, un estilo o un movimiento. La imagen cuesta 4 centavos; el clip, ~4 minutos de GPU de la máquina encendida.</p>
+    <p class="sub">Un prompt → una imagen → un clip de MiniMax H3. Sin estructura, sin proyecto: para probar una idea, un estilo o un movimiento. La imagen cuesta 4 centavos; el clip, entre 4 minutos (5 s) y 13 minutos (15 s) de GPU de la máquina encendida.</p>
     <div class="card" style="margin-bottom:14px"><h3>Nuevo turno</h3>
       <textarea id="lp" style="min-height:80px" placeholder="Qué querés ver (en castellano o inglés): «un faro de piedra en una tormenta de noche, visto desde el mar, olas enormes, la lámpara girando»"></textarea>
       <div class="row" style="margin-top:8px"><select id="lasp" style="max-width:160px"><option value="16:9">16:9 horizontal</option><option value="9:16">9:16 vertical</option></select>
@@ -348,7 +348,11 @@ function pintarTurnos(ts, d) {
       <img src="/api/libre/archivo/${t.imagen}" style="width:100%;border-radius:8px;cursor:zoom-in" onclick="lightbox('/api/libre/archivo/${t.imagen}')">
       <div class="muted" style="margin-top:6px">${h(t.prompt_imagen || "(imagen subida)")}</div></div>
     <div>${t.estado === "listo" ? `<video controls style="width:100%;border-radius:8px" src="/api/libre/archivo/${t.clip}"></video><div class="muted" style="margin-top:6px">${h(t.prompt_video)} · ${t.segundos} s</div>`
-      : t.estado === "generando" ? `<div class="pill warn"><i class="dot live"></i> generando en la máquina… (~4 min)</div><div class="muted" style="margin-top:6px">${h(t.prompt_video)}</div>`
+      : t.estado === "generando" ? (p => `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> generando en la máquina · ${t.segundos} s</span><span class="tiny">${p ? `${Math.floor(p.transcurrido / 60)} min de ~${Math.round(p.estimado / 60)} estimados` : ""}</span></div>
+          <div class="bar" style="height:10px;margin-top:8px"><i style="width:${p ? p.pct : 2}%"></i></div>
+          <div class="tiny mono" style="margin-top:6px;white-space:pre-wrap;opacity:.75">${p && p.ultimo ? h(p.ultimo) : "esperando la primera señal de la placa…"}</div>
+          <div class="tiny" style="margin-top:4px">El estimado sale de los tiempos medidos (~0,8 min de GPU por segundo de clip). Si el log dice «!!» o pasa de 25 min, falló: casi siempre es memoria en los clips largos.</div>
+          <div class="muted" style="margin-top:6px">${h(t.prompt_video)}</div>`)(t.progreso)
       : t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny">${h(t.nota)}</div>`
       : `<textarea id="lv-${t.id}" style="min-height:70px" placeholder="Qué se mueve a partir de esta imagen (inglés recomendado): «locked-off camera; the beam of the lighthouse sweeps slowly; waves crash against the rocks; rain streaks the lens»"></textarea>
          <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:200px"><option value="5.167">5,17 s (seguro)</option><option value="5.875">5,88 s</option><option value="6.583">6,58 s (riesgo)</option><option value="7.292">7,29 s (riesgo)</option><option value="10.083">10,08 s (riesgo alto)</option><option value="12.917">12,92 s (riesgo alto)</option><option value="15.083">15,08 s (el máximo de H3; suele caer por VRAM en 32 GB)</option></select>
