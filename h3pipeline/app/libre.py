@@ -118,6 +118,20 @@ def imagen(prompt: str, aspecto: str = "16:9", b64: str | None = None, estilo: s
     return _guardar(t)
 
 
+def duplicar(tid: str) -> dict:
+    """Un turno nuevo con la MISMA imagen de uno terminado, y su prompt de
+    video como sugerencia: para iterar un prompt sin volver a subir la foto."""
+    import shutil
+    v = _turno(tid)
+    nid = "L" + time.strftime("%m%d%H%M%S")
+    shutil.copyfile(DIR / v["imagen"], DIR / "assets" / f"{nid}.png")
+    t = {"id": nid, "creado": time.time(), "prompt_imagen": v.get("prompt_imagen"), "estilo": v.get("estilo", ""),
+         "aspecto": v["aspecto"], "imagen": f"assets/{nid}.png", "origen_imagen": f"misma imagen que {tid}",
+         "estado": "imagen", "prompt_video": None, "segundos": None, "clip": None, "nota": "",
+         "sugerido": v.get("prompt_video"), "segundos_sugeridos": v.get("segundos")}
+    return _guardar(t)
+
+
 def _encajar(origen: Path, destino: Path, w: int, h: int) -> None:
     """La imagen entera dentro de w×h: fondo = la misma imagen agrandada hasta
     cubrir, desenfocada y oscurecida; adelante, la imagen a tamaño completo."""

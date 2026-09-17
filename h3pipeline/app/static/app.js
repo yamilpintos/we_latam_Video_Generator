@@ -343,24 +343,38 @@ ruta("/libre", async () => {
 });
 function pintarTurnos(ts, d) {
   const lista = d.maquina === "lista";
-  $("#turnos").innerHTML = ts.map(t => `<div class="card" style="margin-bottom:12px"><div class="grid g2">
+  // La mesa de trabajo: sólo lo que está en curso (imagen sin clip, generando,
+  // error). Lo terminado baja a la biblioteca y deja la página libre.
+  const activos = ts.filter(t => t.estado !== "listo"), hechos = ts.filter(t => t.estado === "listo");
+  const dur = s => `${Number(s).toFixed(2).replace(".", ",")} s`;
+  const biblioteca = hechos.length ? `<h3 style="margin-top:22px">Biblioteca <span class="pill">${hechos.length} clip${hechos.length > 1 ? "s" : ""}</span></h3>
+    <div class="grid g3">${hechos.map(t => `<div class="card" style="padding:10px">
+      <video controls preload="metadata" style="width:100%;border-radius:8px;background:#000" src="/api/libre/archivo/${t.clip}"></video>
+      <div class="tiny" style="margin-top:6px">${new Date(t.creado * 1000).toLocaleString("es-AR")} · ${t.aspecto} · ${dur(t.segundos)}</div>
+      <details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">prompt</summary><div class="tiny mono" style="white-space:pre-wrap;opacity:.8;max-height:220px;overflow:auto">${h(t.prompt_video)}</div></details>
+      <div class="row" style="margin-top:8px;gap:8px"><a class="btn s" href="/api/libre/archivo/${t.clip}" download>descargar</a>
+        <button class="btn s" onclick="libreOtraVez('${t.id}')" title="turno nuevo con la misma imagen y este prompt precargado">otra versión</button></div></div>`).join("")}</div>` : "";
+  $("#turnos").innerHTML = (activos.map(t => `<div class="card" style="margin-bottom:12px"><div class="grid g2">
     <div><div class="tiny" style="margin-bottom:6px">${new Date(t.creado * 1000).toLocaleString("es-AR")} · ${t.aspecto} · ${h(t.origen_imagen)}</div>
       <img src="/api/libre/archivo/${t.imagen}" style="width:100%;border-radius:8px;cursor:zoom-in" onclick="lightbox('/api/libre/archivo/${t.imagen}')">
       <div class="muted" style="margin-top:6px">${h(t.prompt_imagen || "(imagen subida)")}</div></div>
-    <div>${t.estado === "listo" ? `<video controls style="width:100%;border-radius:8px" src="/api/libre/archivo/${t.clip}"></video><div class="muted" style="margin-top:6px">${h(t.prompt_video)} · ${t.segundos} s</div>`
-      : t.estado === "generando" ? (p => `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> generando en la máquina · ${t.segundos} s</span><span class="tiny">${p ? `${Math.floor(p.transcurrido / 60)} min de ~${Math.round(p.estimado / 60)} estimados` : ""}</span></div>
+    <div>${t.estado === "generando" ? (p => `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> generando en la máquina · ${t.segundos} s</span><span class="tiny">${p ? `${Math.floor(p.transcurrido / 60)} min de ~${Math.round(p.estimado / 60)} estimados` : ""}</span></div>
           <div class="bar" style="height:10px;margin-top:8px"><i style="width:${p ? p.pct : 2}%"></i></div>
           <div class="tiny mono" style="margin-top:6px;white-space:pre-wrap;opacity:.75">${p && p.ultimo ? h(p.ultimo) : "esperando la primera señal de la placa…"}</div>
           <div class="tiny" style="margin-top:4px">El estimado sale de los tiempos medidos (~0,8 min de GPU por segundo de clip). Si el log dice «!!» o pasa de 25 min, falló: casi siempre es memoria en los clips largos.</div>
           <div class="muted" style="margin-top:6px">${h(t.prompt_video)}</div>`)(t.progreso)
       : t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny">${h(t.nota)}</div>`
-      : `<textarea id="lv-${t.id}" style="min-height:70px" placeholder="Qué se mueve a partir de esta imagen (inglés recomendado): «locked-off camera; the beam of the lighthouse sweeps slowly; waves crash against the rocks; rain streaks the lens»"></textarea>
-         <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:200px"><option value="5.167">5,17 s (seguro)</option><option value="5.875">5,88 s</option><option value="6.583">6,58 s (riesgo)</option><option value="7.292">7,29 s (riesgo)</option><option value="10.083">10,08 s (riesgo alto)</option><option value="12.917">12,92 s (riesgo alto)</option><option value="15.083">15,08 s (el máximo de H3; suele caer por VRAM en 32 GB)</option></select>
+      : `<textarea id="lv-${t.id}" style="min-height:70px" placeholder="Qué se mueve a partir de esta imagen (inglés recomendado): «locked-off camera; the beam of the lighthouse sweeps slowly; waves crash against the rocks; rain streaks the lens»">${h(t.sugerido || "")}</textarea>
+         <div class="row" style="margin-top:8px"><select id="ls-${t.id}" style="max-width:200px">${[["5.167", "5,17 s (seguro)"], ["5.875", "5,88 s"], ["6.583", "6,58 s (riesgo)"], ["7.292", "7,29 s (riesgo)"], ["10.083", "10,08 s (riesgo alto)"], ["12.917", "12,92 s (riesgo alto)"], ["15.083", "15,08 s (el máximo de H3; ~18 min, memoria limpia)"]].map(([v, l]) => `<option value="${v}" ${t.segundos_sugeridos && Math.abs(Number(v) - t.segundos_sugeridos) < 0.01 ? "selected" : ""}>${l}</option>`).join("")}</select>
            <button class="btn p" ${lista && !d.ocupada ? "" : "disabled"} onclick="libreVideo('${t.id}')">Generar clip</button>
            <span class="tiny">${!lista ? "encendé la máquina desde el inicio" : d.ocupada ? "hay un turno generando" : ""}</span></div>`}
-      ${t.nota && t.estado !== "error" ? `<div class="tiny">${h(t.nota)}</div>` : ""}</div></div></div>`).join("") || `<div class="muted">Todavía no hay turnos.</div>`;
+      ${t.nota && t.estado !== "error" ? `<div class="tiny">${h(t.nota)}</div>` : ""}</div></div></div>`).join("") || `<div class="muted">Nada en curso. Subí una imagen o creá una para empezar.</div>`) + biblioteca;
   clearTimeout(libreTimer);
   if (ts.some(t => t.estado === "generando")) libreTimer = setTimeout(async () => { if (!$("#turnos")) return; const d2 = await api("/libre"); pintarTurnos(d2.turnos, d2); }, 12000);
+}
+async function libreOtraVez(tid) {
+  try { await api(`/libre/${tid}/otra-vez`, {method: "POST", body: {}}); const d = await api("/libre"); pintarTurnos(d.turnos, d); window.scrollTo({top: 0, behavior: "smooth"}); toast("turno nuevo con la misma imagen; el prompt anterior ya está cargado"); }
+  catch (e) { toast(e.message, true); }
 }
 async function libreImagen(b64 = null) {
   $("#lerr").textContent = ""; toast(b64 ? "subiendo…" : "dibujando… (10-20 s)");

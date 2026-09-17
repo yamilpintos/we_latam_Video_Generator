@@ -827,7 +827,7 @@ class VideoLibre(BaseModel):
 def libre_video(v: VideoLibre):
     if len(v.prompt_video.strip()) < 8:
         raise HTTPException(422, "describí qué se mueve")
-    m = maquina.leer()
+    m = maquina.sincronizar()
     if m.get("fase") != "lista":
         raise HTTPException(409, f"la máquina no está lista (fase {m.get('fase')}). Encendela desde el inicio.")
     if libre.ocupada():
@@ -846,6 +846,15 @@ def libre_video(v: VideoLibre):
             pass
     try:
         return libre.video(v.id, v.prompt_video, v.segundos, v.seed, log=lambda *_: None)
+    except KeyError:
+        raise HTTPException(404, "no existe ese turno")
+
+
+@app.post("/api/libre/{tid}/otra-vez")
+def libre_otra_vez(tid: str):
+    """Turno nuevo con la misma imagen de uno terminado (para iterar el prompt)."""
+    try:
+        return libre.duplicar(tid)
     except KeyError:
         raise HTTPException(404, "no existe ese turno")
     except Exception as e:
