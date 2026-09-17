@@ -256,16 +256,22 @@ def cubrir_pista(loops: list[Path], pista: Path, salida: Path, log) -> None:
     lista = salida.with_suffix(".orden.txt")
     lista.write_text("".join(f"file '{l.as_posix()}'\n" for l in orden), encoding="utf-8")
     try:
+        # El video se COPIA, no se recodifica: los loops ya salieron de acá con
+        # el mismo códec, tamaño y fps, así que el concat es exacto y una
+        # canción de 30 minutos se arma en segundos (recodificar 1080p a 0,5
+        # CPU en un servidor llevaría horas). Sólo el audio se procesa: la
+        # pista reemplaza al ambiente del loop y se normaliza a −14 LUFS.
         ff("-f", "concat", "-safe", "0", "-i", str(lista), "-i", str(pista),
            "-filter_complex",
-           f"[0:v]trim=0:{dur:.3f},setpts=PTS-STARTPTS,fade=t=out:st={dur - 1.0:.3f}:d=1.0[v];"
            f"[1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,"
-           f"loudnorm=I=-14:TP=-1.0:LRA=11,aresample=48000[a]",
-           "-map", "[v]", "-map", "[a]", *CODEC_V, *CODEC_A, "-t", f"{dur:.3f}", str(salida))
+           f"loudnorm=I=-14:TP=-1.0:LRA=11,aresample=48000,afade=t=out:st={max(0.0, dur - 2.0):.3f}:d=2.0[a]",
+           "-map", "0:v", "-map", "[a]", "-c:v", "copy", *CODEC_A,
+           "-t", f"{dur:.3f}", "-movflags", "+faststart", str(salida))
     finally:
         lista.unlink(missing_ok=True)
-    log(f"  {salida.name}   {dur:.0f} s de pista · {len(orden)} vueltas de {len(loops)} loop(s)   "
-        f"{salida.stat().st_size / 1e6:.1f} MB")
+    real = montaje.duracion(salida) or dur
+    log(f"  {salida.name}   {real:.0f} s (pista {dur:.0f} s) · {len(orden)} vueltas de {len(loops)} loop(s)   "
+        f"{salida.stat().st_size / 1e6:.1f} MB · video copiado sin recodificar")
 
 
 def main() -> int:
