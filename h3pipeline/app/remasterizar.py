@@ -1,5 +1,6 @@
 """Tarea: los pasos largos del remaster (ver app/remaster.py).
 
+    python -X utf8 -u -m h3pipeline.app.remasterizar descargar <id>          # el link de Drive, con gdown
     python -X utf8 -u -m h3pipeline.app.remasterizar preparar <id>
     python -X utf8 -u -m h3pipeline.app.remasterizar correr   <id> [id_de_oferta]   # alquila y cobra
     python -X utf8 -u -m h3pipeline.app.remasterizar bajar    <id>
@@ -16,6 +17,14 @@ def main() -> int:
         return 2
     que, tid = sys.argv[1], sys.argv[2]
     log = lambda s: print(s, flush=True)
+    if que == "descargar":
+        try:
+            remaster.descargar(tid, log=log)
+            return 0
+        except Exception as e:
+            remaster.actualizar(tid, estado="error", nota=f"la descarga falló: {e}", progreso=None)
+            log(f"!! {e}")
+            return 1
     if que == "preparar":
         try:
             remaster.preparar(tid, log=log)

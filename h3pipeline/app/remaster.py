@@ -55,7 +55,7 @@ SETUP_SEG = 13 * 60           # 770 s de instalación + 1,5 min de arranque
 LIMITE_SETUP_MIN = 30
 ALTO_MAX_ORIGEN = 720         # FlashVSR es ×4 nativo: más de esto pasa de 4K
 CRF_FINAL = 15
-ACTIVOS = ("preparando", "alquilando", "arrancando", "instalando", "remasterizando", "codificando", "bajando", "qc")
+ACTIVOS = ("descargando", "preparando", "alquilando", "arrancando", "instalando", "remasterizando", "codificando", "bajando", "qc")
 
 
 # ───────────────────────────────────────────────────────────── trabajos
@@ -291,6 +291,106 @@ def avisos_de(s: dict) -> list[dict]:
     return a
 
 
+def _trabajo_nuevo(tid: str, nombre: str, origen: str | None, subido: bool) -> dict:
+    return {"id": tid, "creado": time.time(), "nombre": Path(nombre).name if nombre else "", "origen": origen,
+            "subido": subido, "sonda": None, "hoja": None, "avisos": [], "drive": None,
+            "opciones": {"inicio": 0.0, "fin": None, "recorte": "", "desentrelazar": False, "campo": "auto", "variante": "full"},
+            "estado": "origen", "fuente": None, "hoja_fuente": None, "segundos_fuente": None, "cuadros": None,
+            "final": None, "salidas": {}, "qc": [], "costo": {}, "progreso": None, "nota": "", "instancia": None}
+
+
+def _analizar(t: dict, origen: Path) -> dict:
+    """Sondeo + hoja + avisos + opciones sugeridas sobre un archivo ya en disco."""
+    s = sondear(origen)
+    if not s["w"] or s["dur"] <= 0:
+        raise ValueError("no pude leer el video (¿es un archivo de video completo?)")
+    (DIR / "hojas").mkdir(parents=True, exist_ok=True)
+    hoja = DIR / "hojas" / f"{t['id']}-origen.jpg"
+    try:
+        _hoja(origen, s["dur"], hoja)
+    except Exception:
+        hoja = None
+    t.update(origen=str(origen), sonda=s, hoja=f"hojas/{hoja.name}" if hoja else None, avisos=avisos_de(s),
+             opciones={**t["opciones"], "recorte": recorte_sugerido(s["w"], s["h"]),
+                       "desentrelazar": bool(s["entrelazado"]), "campo": s["campo"]},
+             estado="origen", nota="", progreso=None)
+    return guardar(t)
+
+
+# ───────────────────────────────────────────────────────────── Google Drive
+
+def _drive_id(url: str) -> str:
+    """El id del archivo de un link de Drive, en cualquiera de sus formas
+    (`/file/d/<id>/view`, `open?id=`, `uc?id=`). Las carpetas no: hay que
+    pasar el link del archivo."""
+    u = url.strip()
+    m = re.search(r"/file/d/([A-Za-z0-9_-]{10,})", u) or re.search(r"[?&]id=([A-Za-z0-9_-]{10,})", u)
+    if m:
+        return m.group(1)
+    if "/folders/" in u:
+        raise ValueError("es el link de una carpeta: abrí el archivo en Drive y pegá el link del archivo")
+    if re.fullmatch(r"[A-Za-z0-9_-]{10,}", u):
+        return u
+    raise ValueError("no reconozco ese link de Drive (esperaba …/file/d/<id>/… o …?id=<id>)")
+
+
+def nuevo_origen_drive(url: str) -> dict:
+    """Registra un trabajo que todavía no tiene el archivo: la tarea `descargar`
+    lo baja con gdown (como se bajó el máster el 17/9: 22,7 GB, con reanudación)
+    y lo analiza al terminar."""
+    fid = _drive_id(url)
+    tid = "R" + time.strftime("%m%d%H%M%S")
+    t = _trabajo_nuevo(tid, "", None, subido=True)
+    t.update(drive={"url": url.strip(), "id": fid}, estado="descargando", nombre="(Drive) bajando…",
+             progreso={"fase": "descargando", "hechos": 0, "total": None, "pct": 0, "ultimo": "conectando con Drive", "t": time.time()})
+    return guardar(t)
+
+
+def descargar(tid: str, log=print) -> dict:
+    """Baja el archivo de Drive a `origenes/` y lo analiza. gdown reanuda si ya
+    había una parte (`resume=True`). Avast rompe TLS en esta PC: se prueba con
+    el bundle del proyecto (`config.certificados()`) y si igual falla, sin
+    verificar el certificado, como hizo `gdown --no-check-certificate`."""
+    import gdown
+    t = trabajo(tid)
+    fid = t["drive"]["id"]
+    (DIR / "origenes").mkdir(parents=True, exist_ok=True)
+    config.certificados()
+    actualizar(tid, estado="descargando", nota="")
+    info = None
+    for verify in (True, False):
+        try:
+            info = gdown.download(id=fid, skip_download=True, quiet=True, verify=verify)
+            break
+        except Exception as e:
+            log(f"consulta a Drive (verify={verify}): {e}")
+            if verify is False:
+                raise RuntimeError(f"Drive no contestó: {e}")
+    # gdown 6.1: GoogleDriveFileToDownload(id, path, local_path); `path` es el nombre en Drive
+    nombre = Path(getattr(info, "path", None) or getattr(info, "local_path", None) or getattr(info, "name", None) or f"{tid}.bin").name
+    destino = DIR / "origenes" / f"{tid}-{nombre}"
+    log(f"Drive: {nombre} → {destino.name} (verify={verify})")
+    actualizar(tid, nombre=nombre)
+    ultimo = {"t": 0.0}
+
+    def avance(bajado: int, total: int | None):
+        if time.time() - ultimo["t"] < 5:
+            return
+        ultimo["t"] = time.time()
+        p = {"fase": "descargando", "hechos": bajado, "total": total, "t": time.time(),
+             "pct": min(99, int(bajado / total * 100)) if total else 0,
+             "ultimo": f"{bajado / 1e9:.2f} de {total / 1e9:.2f} GB" if total else f"{bajado / 1e6:.0f} MB"}
+        actualizar(tid, progreso=p)
+        log(p["ultimo"])
+
+    salida = gdown.download(id=fid, output=str(destino), quiet=True, resume=True, verify=verify, progress=avance)
+    if not salida or not destino.exists() or destino.stat().st_size < 1000:
+        raise RuntimeError("la descarga no dejó un archivo")
+    log(f"bajado: {destino.stat().st_size / 1e9:.2f} GB · analizando")
+    t = trabajo(tid)
+    return _analizar(t, destino)
+
+
 def nuevo_origen(nombre: str = "", b64: str | None = None, ruta: str | None = None) -> dict:
     """Registra un origen: un archivo subido (base64) o una ruta en este servidor
     (para másters de varios GB que no pasan por el navegador). Sondea, hace la
@@ -314,25 +414,14 @@ def nuevo_origen(nombre: str = "", b64: str | None = None, ruta: str | None = No
         origen = DIR / "origenes" / f"{tid}{ext}"
         origen.write_bytes(base64.b64decode(b64))
     else:
-        raise ValueError("subí un archivo o pegá una ruta")
-    s = sondear(origen)
-    if not s["w"] or s["dur"] <= 0:
+        raise ValueError("subí un archivo, pegá una ruta o un link de Drive")
+    t = _trabajo_nuevo(tid, nombre, str(origen), subido=bool(b64))
+    try:
+        return _analizar(t, origen)
+    except ValueError:
         if b64:
             origen.unlink(missing_ok=True)
-        raise ValueError("no pude leer el video (¿es un archivo de video completo?)")
-    hoja = DIR / "hojas" / f"{tid}-origen.jpg"
-    try:
-        _hoja(origen, s["dur"], hoja)
-    except Exception:
-        hoja = None
-    t = {"id": tid, "creado": time.time(), "nombre": Path(nombre).name, "origen": str(origen),
-         "subido": bool(b64), "sonda": s, "hoja": f"hojas/{hoja.name}" if hoja else None,
-         "avisos": avisos_de(s),
-         "opciones": {"inicio": 0.0, "fin": None, "recorte": recorte_sugerido(s["w"], s["h"]),
-                      "desentrelazar": bool(s["entrelazado"]), "campo": s["campo"], "variante": "full"},
-         "estado": "origen", "fuente": None, "hoja_fuente": None, "segundos_fuente": None, "cuadros": None,
-         "final": None, "salidas": {}, "qc": [], "costo": {}, "progreso": None, "nota": "", "instancia": None}
-    return guardar(t)
+        raise
 
 
 # ───────────────────────────────────────────────────────────── preparar
@@ -354,6 +443,8 @@ def fijar_opciones(tid: str, **op) -> dict:
     t = trabajo(tid)
     if t["estado"] in ACTIVOS:
         raise RuntimeError("el trabajo está en curso; esperá a que termine")
+    if not t.get("sonda"):
+        raise RuntimeError("este trabajo todavía no tiene el archivo (la descarga no terminó)")
     s = t["sonda"]
     o = dict(t["opciones"])
     if "recorte" in op:
@@ -913,5 +1004,7 @@ def refrescar() -> list[dict]:
                 t.update(estado="error", nota=t.get("nota") or "la tarea murió (¿se reinició el servidor?)", progreso=None)
             elif t["estado"] == "preparando":
                 t.update(estado="origen", nota="la preparación se cortó; volvé a prepararla")
+            elif t["estado"] == "descargando":
+                t.update(estado="error", nota="la descarga se cortó; «reintentar descarga» la retoma donde quedó", progreso=None)
         _escribir(ts)
     return trabajos()

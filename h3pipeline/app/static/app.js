@@ -415,7 +415,7 @@ let remTimer = null;
 const FASES_REM = {apagada: ["apagada", ""], fallo: ["falló", "bad"], buscando: ["buscando una A100…", "warn"], arrancando: ["arrancando", "warn"],
   instalando: ["instalando FlashVSR", "warn"], remasterizando: ["remasterizando", "warn"], codificando: ["codificando el 4K", "warn"],
   bajando: ["bajando", "warn"], lista: ["viva, con salida sin bajar", "warn"]};
-const ESTADOS_REM = {origen: ["por preparar", ""], preparando: ["preparando la fuente", "warn"], preparado: ["fuente lista", "ok"],
+const ESTADOS_REM = {descargando: ["bajando de Drive", "warn"], origen: ["por preparar", ""], preparando: ["preparando la fuente", "warn"], preparado: ["fuente lista", "ok"],
   alquilando: ["alquilando", "warn"], arrancando: ["arrancando la A100", "warn"], instalando: ["instalando FlashVSR", "warn"],
   remasterizando: ["remasterizando", "warn"], codificando: ["codificando el 4K", "warn"], bajando: ["bajando el 4K", "warn"],
   qc: ["control de calidad", "warn"], listo: ["listo", "ok"], sin_bajar: ["hecho, sin bajar", "bad"], error: ["error", "bad"]};
@@ -431,6 +431,10 @@ ruta("/remaster", async () => {
         <span class="tiny">hasta ~300 MB por el navegador. Para un máster grande:</span>
         <input id="rruta" placeholder="ruta del archivo en este servidor, p. ej. remasterizado\\original\\capitulo.mxf" style="max-width:520px">
         <button class="btn" onclick="remRuta()">analizar la ruta</button></div>
+      <div class="row" style="margin-top:8px"><span class="tiny">o un link de Google Drive (del archivo, compartido con «cualquiera con el link»):</span>
+        <input id="rdrive" placeholder="https://drive.google.com/file/d/…/view" style="max-width:520px">
+        <button class="btn" onclick="remDrive()">bajar y analizar</button>
+        <span class="tiny">se baja acá como tarea (retoma si se corta) y se analiza solo al terminar</span></div>
       <div id="rerr" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
     <div id="rtrabajos"></div></div>`;
   $("#rfile").addEventListener("change", async (ev) => {
@@ -443,6 +447,15 @@ ruta("/remaster", async () => {
   });
   pintarRemaster(d);
 });
+async function remDrive() {
+  const drive = $("#rdrive").value.trim(); if (!drive) return;
+  try { await api("/remaster/origen", {method: "POST", body: {drive}}); toast("bajando de Drive… podés cerrar la página"); navegar(); }
+  catch (e) { $("#rerr").textContent = e.message; }
+}
+async function remReintentarDescarga(id) {
+  try { const r = await api(`/remaster/${id}/descargar`, {method: "POST"}); seguirTarea(r.tarea, () => navegar()); toast("retomando la descarga…"); navegar(); }
+  catch (e) { toast(e.message, true); }
+}
 async function remRuta() {
   const ruta = $("#rruta").value.trim(); if (!ruta) return;
   toast("analizando… (sondeo + detección de entrelazado, 10-60 s)");
@@ -454,13 +467,13 @@ function pintarRemaster(d) {
   const libre = !d.ocupada && !d.tarea && (m.fase === "apagada" || m.fase === "fallo");
   const secs = s => s == null ? "—" : `${Number(s).toFixed(1).replace(".", ",")} s`;
   const barra = (t) => { const p = t.progreso || {}; const [etq] = ESTADOS_REM[t.estado] || [t.estado];
-    return `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> ${etq}</span><span class="tiny">${p.total && p.hechos != null ? `${p.hechos} de ${p.total} cuadros` : ""}${m.inicio && m.fase !== "apagada" ? ` · ${usd(m.acumulado)} · ${m.minutos} min` : ""}</span></div>
+    return `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> ${etq}</span><span class="tiny">${p.total && p.hechos != null && t.estado !== "descargando" ? `${p.hechos} de ${p.total} cuadros` : ""}${m.inicio && m.fase !== "apagada" ? ` · ${usd(m.acumulado)} · ${m.minutos} min` : ""}</span></div>
       <div class="bar" style="height:10px;margin-top:8px"><i style="width:${p.pct != null ? p.pct : 2}%"></i></div>
       <div class="tiny mono" style="margin-top:6px;white-space:pre-wrap;opacity:.75">${h(p.ultimo || "esperando la primera señal…")}</div>
       ${d.tarea ? `<pre class="pre" style="margin-top:8px;max-height:140px">${h(d.tarea.log)}</pre>` : ""}`; };
-  const sonda = (s) => `${s.w}×${s.h}${s.dar ? " (DAR " + s.dar + ")" : ""} · ${s.fps} fps · ${hms(s.dur)} · ${s.codec}${s.pix ? " " + s.pix : ""} · ${s.kbps ? (s.kbps / 1000).toFixed(1).replace(".", ",") + " Mb/s" : "bitrate ?"} · ${s.entrelazado ? "entrelazado " + s.campo.toUpperCase() : "progresivo"} · ${s.canales ? s.canales + " canal" + (s.canales > 1 ? "es" : "") + " de audio" : "sin audio"}`;
+  const sonda = (s) => !s ? "" : `${s.w}×${s.h}${s.dar ? " (DAR " + s.dar + ")" : ""} · ${s.fps} fps · ${hms(s.dur)} · ${s.codec}${s.pix ? " " + s.pix : ""} · ${s.kbps ? (s.kbps / 1000).toFixed(1).replace(".", ",") + " Mb/s" : "bitrate ?"} · ${s.entrelazado ? "entrelazado " + s.campo.toUpperCase() : "progresivo"} · ${s.canales ? s.canales + " canal" + (s.canales > 1 ? "es" : "") + " de audio" : "sin audio"}`;
   const avisos = (t) => (t.avisos || []).map(a => `<div class="pill ${a.nivel === "info" ? "" : a.nivel}" style="display:flex;white-space:normal;margin-top:6px;padding:8px 12px;line-height:1.35">${h(a.texto)}</div>`).join("");
-  const form = (t) => { const o = t.opciones, s = t.sonda; return `
+  const form = (t) => { if (!t.sonda) return t.drive ? `<div class="row" style="margin-top:8px"><button class="btn p" onclick="remReintentarDescarga('${t.id}')" ${d.tarea ? "disabled" : ""}>reintentar descarga</button><span class="tiny">${h(t.drive.url)}</span></div>` : ""; const o = t.opciones, s = t.sonda; return `
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:8px">
       <div><div class="tiny">desde (s)</div><input id="ri-${t.id}" type="number" min="0" step="0.1" value="${o.inicio || 0}"></div>
       <div><div class="tiny">hasta (s, vacío = final)</div><input id="rf-${t.id}" type="number" min="0" step="0.1" value="${o.fin ?? ""}" placeholder="${Math.round(s.dur)}"></div>
@@ -479,14 +492,14 @@ function pintarRemaster(d) {
     <div class="row" style="margin-top:10px"><a class="btn p" href="/api/remaster/archivo/salidas/${s["4k"].split("/")[1]}" download>descargar 4K</a>
       ${s.uhd ? `<a class="btn" href="/api/remaster/archivo/salidas/${s.uhd.split("/")[1]}" download>descargar UHD 3840×2160</a>` : `<button class="btn" onclick="remUhd('${t.id}')" ${d.tarea ? "disabled" : ""}>hacer versión UHD 3840×2160 (barras)</button>`}
       <span class="tiny">${t.costo && t.costo.real != null ? `costó ${usd(t.costo.real)} (${t.costo.minutos} min de A100${t.costo.factor_medido ? `, ${t.costo.factor_medido}× tiempo real` : ""}; estimado ${usd(t.costo.estimado)})` : ""}</span></div>`; };
-  $("#rtrabajos").innerHTML = ts.map(t => { const [etq, cls] = ESTADOS_REM[t.estado] || [t.estado, ""]; const activo = ["preparando", "alquilando", "arrancando", "instalando", "remasterizando", "codificando", "bajando", "qc"].includes(t.estado);
-    return `<div class="card" style="margin-bottom:12px"><h3>${h(t.nombre)} <span class="tiny mono">${t.id}</span><span class="pill ${cls}">${activo ? '<i class="dot live"></i> ' : ""}${etq}</span></h3>
+  $("#rtrabajos").innerHTML = ts.map(t => { const [etq, cls] = ESTADOS_REM[t.estado] || [t.estado, ""]; const activo = ["descargando", "preparando", "alquilando", "arrancando", "instalando", "remasterizando", "codificando", "bajando", "qc"].includes(t.estado);
+    return `<div class="card" style="margin-bottom:12px"><h3>${h(t.nombre || "(sin nombre)")} <span class="tiny mono">${t.id}</span><span class="pill ${cls}">${activo ? '<i class="dot live"></i> ' : ""}${etq}</span></h3>
     <div class="grid g2">
       <div><div class="tiny" style="margin-bottom:6px">${sonda(t.sonda)}</div>
         ${t.hoja ? `<img src="/api/remaster/archivo/hojas/${t.hoja.split("/")[1]}" style="width:100%;border-radius:6px;cursor:zoom-in" onclick="lightbox('/api/remaster/archivo/hojas/${t.hoja.split("/")[1]}')">` : ""}
         ${avisos(t)}
         ${t.fuente && t.hoja_fuente && t.estado !== "listo" ? `<div class="tiny" style="margin-top:8px">la fuente preparada: ${t.sonda_fuente ? t.sonda_fuente.w + "×" + t.sonda_fuente.h : ""} · ${secs(t.segundos_fuente)} · ${t.cuadros} cuadros → 4K ${t.final ? t.final.w + "×" + t.final.h : ""}</div><img src="/api/remaster/archivo/hojas/${t.hoja_fuente.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:4px;opacity:.9">` : ""}
-        <div class="tiny" style="margin-top:6px;opacity:.7">${h(t.origen)}</div></div>
+        <div class="tiny" style="margin-top:6px;opacity:.7">${h(t.origen || (t.drive ? t.drive.url : ""))}</div></div>
       <div>${activo ? barra(t)
         : t.estado === "listo" ? listo(t)
         : t.estado === "sin_bajar" ? `<div class="pill bad">hecho, sin bajar</div><div class="tiny" style="margin:6px 0">${h(t.nota)}</div><div class="row"><button class="btn p" onclick="remBajar('${t.id}')">bajar de nuevo</button><button class="btn d" onclick="remApagar()">apagar y perderlo</button></div>`

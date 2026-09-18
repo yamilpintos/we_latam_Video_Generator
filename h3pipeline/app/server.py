@@ -1055,16 +1055,39 @@ class OrigenRemaster(BaseModel):
     nombre: str = ""
     b64: str | None = None            # el archivo subido desde el navegador
     ruta: str | None = None           # o una ruta en este servidor (másters de varios GB)
+    drive: str | None = None          # o un link de Google Drive (se baja con gdown, como tarea)
 
 
 @app.post("/api/remaster/origen")
 def remaster_origen(o: OrigenRemaster):
     try:
+        if o.drive:
+            t = remaster.nuevo_origen_drive(o.drive)
+            if tareas.corriendo("_remaster"):
+                remaster.actualizar(t["id"], estado="error", nota="hay otra tarea de remaster corriendo; tocá «reintentar descarga» cuando termine")
+                return t
+            tareas.lanzar("bajar de Drive", ["-m", "h3pipeline.app.remasterizar", "descargar", t["id"]], "_remaster")
+            return t
         return remaster.nuevo_origen(o.nombre, o.b64, o.ruta)
     except ValueError as e:
         raise HTTPException(422, str(e))
     except Exception as e:
         raise HTTPException(500, f"no pude analizar el video: {e}")
+
+
+@app.post("/api/remaster/{tid}/descargar")
+def remaster_descargar(tid: str):
+    """Reintenta (retoma) la bajada de Drive de un trabajo."""
+    try:
+        t = remaster.trabajo(tid)
+    except KeyError:
+        raise HTTPException(404, "no existe ese trabajo")
+    if not t.get("drive"):
+        raise HTTPException(409, "este trabajo no vino de Drive")
+    if tareas.corriendo("_remaster"):
+        raise HTTPException(409, "ya hay una tarea de remaster corriendo")
+    remaster.actualizar(tid, estado="descargando", nota="")
+    return {"tarea": tareas.lanzar("bajar de Drive", ["-m", "h3pipeline.app.remasterizar", "descargar", tid], "_remaster").a_dict()}
 
 
 class OpcionesRemaster(BaseModel):
