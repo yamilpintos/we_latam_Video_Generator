@@ -215,6 +215,9 @@ def _corrida(c: Path) -> dict | None:
     horas = ((d.get("fin") or time.time()) - d["inicio"]) / 3600
     d["minutos"] = round(horas * 60)
     d["acumulado"] = round(d.get("dph", 0) * horas, 2)
+    # Una corrida sin `fin` de hace más de 12 h no es una máquina viva: es un
+    # registro viejo (los proyectos del repo mostraban «máquina viva · $805»).
+    d["vieja"] = not d.get("fin") and (time.time() - d["inicio"]) > 12 * 3600
     return d
 
 
@@ -360,6 +363,24 @@ def detalle(slug: str):
             "tramos": [{"id": t.id, "desde": t.desde, "hasta": t.hasta, "nombre": t.nombre} for t in est.tramos]}
 
 
+@app.delete("/api/proyectos/{slug}")
+def borrar_proyecto(slug: str):
+    """A la papelera (`mis-videos/_papelera/<slug>-<fecha>/`), no se destruye:
+    el usuario pidió limpiar los proyectos viejos del repo que aparecen en
+    Render sin dibujos ni clips (18/9)."""
+    c = _carpeta(slug)
+    if tareas.corriendo(slug):
+        raise HTTPException(409, "hay una tarea corriendo en este proyecto")
+    if any(i["slug"] == slug and i["estado"] == "generando" for i in cola.leer()["items"]):
+        raise HTTPException(409, "el proyecto se está generando en la cola")
+    cola.quitar(slug)
+    pap = MIS / "_papelera"
+    pap.mkdir(parents=True, exist_ok=True)
+    destino = pap / f"{slug}-{time.strftime('%Y%m%d-%H%M%S')}"
+    shutil.move(str(c), str(destino))
+    return {"ok": True, "papelera": destino.name}
+
+
 @app.post("/api/proyectos/{slug}/construir")
 def construir(slug: str):
     p = _proyecto(slug)
@@ -426,7 +447,7 @@ def _asset(c: Path, aid: str, tipo: str, barras) -> dict:
 
 def _detector_barras(c: Path):
     """El detector de letterbox vive en los proyectos lo-fi; si está, se usa."""
-    for cand in (c / "barras.py", MIS / "lofi-koi" / "barras.py"):
+    for cand in (c / "barras.py", AQUI / "herramientas" / "barras.py", MIS / "lofi-koi" / "barras.py"):
         if cand.exists():
             import importlib.util
             spec = importlib.util.spec_from_file_location("barras_" + cand.parent.name, cand)
@@ -680,7 +701,10 @@ def master(slug: str, m: Master):
     if p.estructura_resuelta().nombre.startswith("loop"):
         bucle = c / "bucle.py"
         if not bucle.exists():
-            shutil.copy(MIS / "lofi-koi" / "bucle.py", bucle)
+            origen = AQUI / "herramientas" / "bucle.py"
+            if not origen.exists():
+                origen = MIS / "lofi-koi" / "bucle.py"
+            shutil.copy(origen, bucle)
         args = [str(bucle), "--cierre", m.cierre if m.cierre in ("fundido", "pingpong", "corte") else "fundido"]
         if m.musica:
             args += ["--musica", m.musica]

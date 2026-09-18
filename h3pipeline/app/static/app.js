@@ -256,7 +256,7 @@ ruta("/proyectos", async () => {
   $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Las series son carpetas con sus capítulos adentro y su barra del proceso; se refrescan solas mientras algo corre. Abajo, los videos sueltos.</p>
     <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Short</a><a class="btn" href="#/nuevo/largo">＋ Largo</a><a class="btn" href="#/nuevo/loop">＋ Loop</a><span class="tiny">serie nueva: desde Short, Largo o Music video</span></div>
     ${carpetas}
-    ${sueltos.length ? `<details ${carpetas ? "" : "open"} style="margin-top:8px"><summary class="tiny" style="cursor:pointer;margin-bottom:8px">${sueltos.length} video${sueltos.length > 1 ? "s" : ""} suelto${sueltos.length > 1 ? "s" : ""} (fuera de series)</summary><div class="grid g3">${sueltos.map(tarjetaProyecto).join("")}</div></details>` : ""}</div>`;
+    ${sueltos.length ? `<details ${carpetas ? "" : "open"} style="margin-top:8px"><summary class="tiny" style="cursor:pointer;margin-bottom:8px">${sueltos.length} video${sueltos.length > 1 ? "s" : ""} suelto${sueltos.length > 1 ? "s" : ""} (fuera de series) <button class="btn s d" style="margin-left:10px" onclick="event.preventDefault();borrarSueltos(${JSON.stringify(sueltos.map(p => p.slug)).replace(/"/g, "&quot;")})">borrar todos los sueltos</button></summary><div class="grid g3">${sueltos.map(tarjetaProyecto).join("")}</div></details>` : ""}</div>`;
   clearTimeout(proyTimer);
   if (vivo) proyTimer = setTimeout(() => { if (location.hash.replace(/^#/, "") === "/proyectos") navegar(); }, 15000);
 });
@@ -266,7 +266,7 @@ async function encolarSerie(slugs) {
 function etapa(p) {
   const e = p.estado; if (!e) return ["error", "bad"];
   if (e.masters.length) return ["máster listo", "ok"];
-  if (e.corrida && !e.corrida.fin) return ["máquina viva", "warn"];
+  if (e.corrida && !e.corrida.fin && !e.corrida.vieja) return ["máquina viva", "warn"];
   if (e.clips.hechos === e.clips.esperados && e.clips.esperados) return ["clips bajados", "ac"];
   if (e.zip) return ["empaquetado", "ac"];
   if (e.assets.hechos === e.assets.esperados && e.assets.esperados) return ["dibujos listos", ""];
@@ -280,8 +280,19 @@ function tarjetaProyecto(p) {
     <h3>${h(p.titulo)} <span class="pill ${cl}">${et}</span></h3>
     <div class="muted">${p.formato === "largo" ? "16:9" : "9:16"} · ${h(p.estructura)} · ${e.planos} planos · ${mins(e.segundos)}</div>
     <div class="tiny" style="margin-top:8px">dibujos ${e.assets.hechos}/${e.assets.esperados} · clips ${e.clips.hechos}/${e.clips.esperados}${e.corrida ? ` · GPU ${usd(e.corrida.gasto_final ?? e.corrida.acumulado)}` : ""}</div>
-    ${e.zip && e.clips.hechos < e.clips.esperados ? `<div style="margin-top:8px"><button class="btn s" onclick="event.stopPropagation();agregarACola('${p.slug}')">＋ a la cola</button></div>` : ""}
+    <div class="row" style="margin-top:8px">${e.zip && e.clips.hechos < e.clips.esperados ? `<button class="btn s" onclick="event.stopPropagation();agregarACola('${p.slug}')">＋ a la cola</button>` : ""}<button class="btn s" style="margin-left:auto;opacity:.7" onclick="event.stopPropagation();borrarProyecto('${p.slug}')">borrar</button></div>
   </div>`;
+}
+function borrarProyecto(slug) {
+  confirmar("Borrar el proyecto", `«${h(slug)}» va a la papelera (<code>mis-videos/_papelera/</code>): desaparece de la lista y de la cola. No se destruye nada en disco.`, "Borrar", async () => {
+    try { await api(`/proyectos/${slug}`, {method: "DELETE"}); toast("a la papelera"); navegar(); } catch (e) { toast(e.message, true); }
+  }, true);
+}
+function borrarSueltos(slugs) {
+  confirmar(`Borrar ${slugs.length} videos sueltos`, "Todos los proyectos fuera de series van a la papelera (<code>mis-videos/_papelera/</code>). Sirve para empezar de cero: nada se destruye en disco y los que se estén generando no se tocan.", "Borrar todos", async () => {
+    let n = 0; for (const s of slugs) { try { await api(`/proyectos/${s}`, {method: "DELETE"}); n++; } catch {} }
+    toast(`${n} a la papelera`); navegar();
+  }, true);
 }
 
 /* ─────────────────────────────────────────────── escenas prearmadas para loops */

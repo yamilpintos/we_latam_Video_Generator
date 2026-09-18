@@ -42,3 +42,5 @@ h3pipeline/app/h3-setup.zip
 *.gguf
 *.safetensors
 *.log
+# (18/9) los proyectos históricos del repo no van al contenedor: en Render viven en el disco
+mis-videos/
