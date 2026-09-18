@@ -536,7 +536,7 @@ function pintarSerie(s) {
   const volver = s.formato === "musica" ? "#/musica" : `#/nuevo/${s.formato}`;
   const nombres = pj.map(([, p]) => p.nombre);
   const ejemplo = nombres.length ? `«${nombres.slice(0, 3).join(", ")} ${nombres.length > 1 ? "tienen" : "tiene"} aventuras juntos cuando terminan las clases…»` : "«los tres amigos Pedro, Luis y Juan tienen aventuras juntos cuando terminan las clases»";
-  $("#vista").innerHTML = `<div class="wrap"><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.modo === "actuado" ? `<span class="pill ac">actuado · hablan los personajes</span>` : s.voz ? `<span class="pill">narrado · voz ${h(s.voz)}</span>` : s.formato === "musica" ? "" : `<span class="pill">sin voz</span>`}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
+  $("#vista").innerHTML = `<div class="wrap"><div id="serie-err"></div><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.modo === "actuado" ? `<span class="pill ac">actuado · hablan los personajes</span>` : s.voz ? `<span class="pill">narrado · voz ${h(s.voz)}</span>` : s.formato === "musica" ? "" : `<span class="pill">sin voz</span>`}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>`
       : s.ultima_tarea ? `<details class="card" style="margin-bottom:14px;padding:10px 20px"><summary class="tiny" style="cursor:pointer">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · ${s.ultima_tarea.estado} · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} — ver el log</summary><pre class="pre" style="max-height:340px;margin-top:8px">${h(s.ultima_tarea.log)}</pre></details>` : ""}
     <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
@@ -573,13 +573,19 @@ function pintarSerie(s) {
   if (tarea || s.capitulos.some(c => c.estado === "escribiendo" || c.estado === "produciendo"))
     serieTimer = setTimeout(async () => { if (!location.hash.startsWith(`#/serie/${slug}`)) return; try { pintarSerie(await api(`/series/${slug}`)); } catch {} }, 6000);
 }
-async function serieRefrescar(slug) { try { pintarSerie(await api(`/series/${slug}`)); } catch (e) { toast(e.message, true); } }
+function serieError(msg) {
+  toast(msg, true);
+  const box = $("#serie-err"); if (!box) return;
+  box.innerHTML = `<div class="card" style="margin-bottom:14px;border-color:rgba(255,100,112,.5)"><div class="row"><span class="pill bad">no se pudo</span><span style="flex:1">${h(msg)}</span><button class="btn s" onclick="$('#serie-err').innerHTML=''">cerrar</button></div></div>`;
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+async function serieRefrescar(slug) { try { pintarSerie(await api(`/series/${slug}`)); } catch (e) { serieError(e.message); } }
 async function serieBiblia(slug) {
-  try { await api(`/series/${slug}`, {method: "PUT", body: {idea: $("#b-idea").value, notas: $("#b-notas").value}}); toast("biblia guardada"); } catch (e) { toast(e.message, true); }
+  try { await api(`/series/${slug}`, {method: "PUT", body: {idea: $("#b-idea").value, notas: $("#b-notas").value}}); toast("biblia guardada"); } catch (e) { serieError(e.message); }
 }
 function serieBorrar(slug) {
   confirmar("Borrar la serie", "Se borran la biblia, los personajes y sus hojas, y el plan. Los proyectos ya producidos en mis-videos/ quedan.", "Borrar", async () => {
-    try { await api(`/series/${slug}`, {method: "DELETE"}); location.hash = "#/series"; } catch (e) { toast(e.message, true); }
+    try { await api(`/series/${slug}`, {method: "DELETE"}); location.hash = "#/series"; } catch (e) { serieError(e.message); }
   }, true);
 }
 async function seriePersonaje(slug) {
@@ -588,43 +594,43 @@ async function seriePersonaje(slug) {
   const f = $("#p-ref").files[0];
   const b64 = f ? await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); }) : null;
   toast("GPT describe al personaje… (10-20 s)");
-  try { await api(`/series/${slug}/personajes`, {method: "POST", body: {nombre, descripcion, b64}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { await api(`/series/${slug}/personajes`, {method: "POST", body: {nombre, descripcion, b64}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 async function seriePersonajeGuardar(slug, id) {
   const v = $(`#pv-${id}`);
-  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {descripcion: $(`#pd-${id}`).value, voz: v ? v.value : null}}); toast("guardado"); } catch (e) { toast(e.message, true); }
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {descripcion: $(`#pd-${id}`).value, voz: v ? v.value : null}}); toast("guardado"); } catch (e) { serieError(e.message); }
 }
 async function seriePersonajeAprobar(slug, id, ok) {
-  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {aprobada: ok}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {aprobada: ok}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 function seriePersonajeQuitar(slug, id) {
-  confirmar("Quitar el personaje", "Se borra su hoja también.", "Quitar", async () => { try { await api(`/series/${slug}/personajes/${id}`, {method: "DELETE"}); serieRefrescar(slug); } catch (e) { toast(e.message, true); } }, true);
+  confirmar("Quitar el personaje", "Se borra su hoja también.", "Quitar", async () => { try { await api(`/series/${slug}/personajes/${id}`, {method: "DELETE"}); serieRefrescar(slug); } catch (e) { serieError(e.message); } }, true);
 }
 async function serieLocacion(slug) {
   const nombre = $("#l-nombre").value.trim(), descripcion = $("#l-desc").value.trim();
   if (!nombre || descripcion.length < 5) return toast("nombre y descripción", true);
   toast("GPT describe la locación…");
-  try { await api(`/series/${slug}/locaciones`, {method: "POST", body: {nombre, descripcion}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { await api(`/series/${slug}/locaciones`, {method: "POST", body: {nombre, descripcion}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 function serieLocacionQuitar(slug, id) {
-  confirmar("Quitar la locación", "Se borra su imagen también.", "Quitar", async () => { try { await api(`/series/${slug}/locaciones/${id}`, {method: "DELETE"}); serieRefrescar(slug); } catch (e) { toast(e.message, true); } }, true);
+  confirmar("Quitar la locación", "Se borra su imagen también.", "Quitar", async () => { try { await api(`/series/${slug}/locaciones/${id}`, {method: "DELETE"}); serieRefrescar(slug); } catch (e) { serieError(e.message); } }, true);
 }
 async function serieHojas(slug, ids, rehacer) {
-  try { const r = await api(`/series/${slug}/hojas`, {method: "POST", body: {ids, rehacer, motor: "openai"}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("dibujando… (1-2 min por hoja)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { const r = await api(`/series/${slug}/hojas`, {method: "POST", body: {ids, rehacer, motor: "openai"}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("dibujando… (1-2 min por hoja)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 async function seriePlan(slug, cuantos) {
   const n = cuantos || Number($("#plan-n").value || 10), pista = $("#plan-pista").value;
-  try { const r = await api(`/series/${slug}/planificar`, {method: "POST", body: {n, pista}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast(`GPT propone ${n} capítulos… (30-90 s)`); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { const r = await api(`/series/${slug}/planificar`, {method: "POST", body: {n, pista}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast(`GPT propone ${n} capítulos… (30-90 s)`); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 async function serieCap(slug, n, cambios) {
-  try { pintarSerie({...(await api(`/series/${slug}/capitulos/${n}`, {method: "PUT", body: cambios})), proyectos: {}, tarea: null, cola: {items: []}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { pintarSerie({...(await api(`/series/${slug}/capitulos/${n}`, {method: "PUT", body: cambios})), proyectos: {}, tarea: null, cola: {items: []}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 async function serieGuion(slug, n) {
-  try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 function serieProducir(slug, n, rehacer = false) {
   confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,05-0,20 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola." + (rehacer ? "<br><br>Se descarta el proyecto anterior y se vuelve a traducir con el reparto de la serie." : ""), "Producir", async () => {
-    try { const r = await api(`/series/${slug}/capitulos/${n}/producir`, {method: "POST", body: {confirmar: true, rehacer}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo… (3-8 min)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+    try { const r = await api(`/series/${slug}/capitulos/${n}/producir`, {method: "POST", body: {confirmar: true, rehacer}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo… (3-8 min)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
   });
 }
 function serieMasa(slug) {
@@ -634,12 +640,12 @@ function serieMasa(slug) {
     <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa</button></div>`);
   $("#masa-ok").onclick = async () => {
     const cola = $("#masa-cola").checked, apagar = $("#masa-apagar").checked; cerrarModal();
-    try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true, cola, apagar}}); seguirTarea(r.tarea, () => navegar()); toast(cola ? "produciendo en masa; al final enciende y genera" : "produciendo en masa…"); location.hash = `#/serie/${slug}`; serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+    try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true, cola, apagar}}); seguirTarea(r.tarea, () => navegar()); toast(cola ? "produciendo en masa; al final enciende y genera" : "produciendo en masa…"); location.hash = `#/serie/${slug}`; window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
   };
 }
 function serieProducirTodos(slug, n) {
   confirmar(`Producir ${n} capítulos`, `Uno tras otro: guion → planos → voz → dibujos → ZIP → cola. Gasta API (unos centavos a un dólar por capítulo en imágenes y voz), no GPU. Tarda 3-8 min por capítulo; podés cerrar la página.`, "Producir todos", async () => {
-    try { const r = await api(`/series/${slug}/producir-aprobados`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo los aprobados…"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+    try { const r = await api(`/series/${slug}/producir-aprobados`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo los aprobados…"); window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
   });
 }
 
