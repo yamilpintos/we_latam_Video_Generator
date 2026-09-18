@@ -297,6 +297,11 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
             d["medio"] = medio
         if voz and voz in VOCES:
             d.setdefault("voces", {})["narrador"] = VOCES[voz]["id"]
+        if actuado:
+            # Sin narrador: si el modelo igual escribió `voz` (con campos que
+            # Voz no conoce, como `habla`), se descarta antes de validar.
+            d.pop("voz", None)
+            d["voces"] = {}
         if not negativos:
             d["negativos"] = False
         una_escena = bool(duracion) and duracion <= grilla.MAXIMO + 0.1

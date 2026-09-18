@@ -444,6 +444,18 @@ def capitulo(s: dict, n: int) -> dict:
     raise KeyError(n)
 
 
+def _estado(slug: str, n: int, estado: str, nota: str | None = None) -> dict:
+    """Cambio de estado desde adentro del flujo (sin el guardián de «en curso»:
+    el 18/9 producir se marcaba «produciendo» dos veces y su propio guardián
+    tiraba los cinco capítulos con el proyecto ya traducido)."""
+    s = leer(slug)
+    c = capitulo(s, n)
+    c["estado"] = estado
+    if nota is not None:
+        c["nota"] = nota
+    return guardar(s)
+
+
 def editar_capitulo(slug: str, n: int, **campos) -> dict:
     s = leer(slug)
     c = capitulo(s, n)
@@ -482,7 +494,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
     c = capitulo(s, n)
     if c["estado"] in ACTIVOS_CAP:
         raise RuntimeError("el capítulo está en curso")
-    editar_capitulo(slug, n, estado="escribiendo")
+    _estado(slug, n, "escribiendo")
     try:
         anteriores = [x for x in s["capitulos"] if x["n"] < c["n"] and x["estado"] != "descartado" and (x.get("resumen") or x.get("premisa"))]
         ctx = ""
@@ -546,7 +558,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         log(f"guion escrito: {len(guion)} caracteres")
         return guardar(s)
     except Exception as e:
-        editar_capitulo(slug, n, estado="aprobado", nota=f"no pude escribir el guion: {e}")
+        _estado(slug, n, "aprobado", f"no pude escribir el guion: {e}")
         raise
 
 
@@ -646,7 +658,7 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
     sin_aprobar = [p["nombre"] for p in s["personajes"].values() if p.get("hoja") and not p.get("aprobada")]
     if sin_aprobar:
         log(f"aviso: hojas sin aprobar ({', '.join(sin_aprobar)}); se usan igual")
-    editar_capitulo(slug, n, estado="produciendo", nota="")
+    _estado(slug, n, "produciendo", "")
     pslug = c.get("slug") or f"{slug}-{c['n']:02d}-{_slug(c['titulo'])[:24]}"
     pc = maquina.MIS / pslug
     try:
@@ -741,12 +753,12 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                 shutil.copy(carpeta(slug) / l["imagen"], pc / "assets" / f"l_{lid}.png")
                 copiadas += 1
         log(f"hojas y locaciones de la serie copiadas: {copiadas}")
-        editar_capitulo(slug, n, estado="produciendo")
+        _estado(slug, n, "produciendo")
         s2 = leer(slug)
         capitulo(s2, n)["slug"] = pslug
         guardar(s2)
         if hasta == "proyecto":
-            editar_capitulo(slug, n, estado="producido", nota="proyecto listo (sin dibujos)")
+            _estado(slug, n, "producido", "proyecto listo (sin dibujos)")
             return leer(slug)
         # 3 · música del capítulo (music video)
         if es_musica:
@@ -766,17 +778,17 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         log(f"dibujos ({motor})…")
         _python("-m", "h3pipeline", "frames", str(pc / "proyecto.json"), "--motor", motor, "--madre", log=log)
         if hasta == "dibujos":
-            editar_capitulo(slug, n, estado="producido", nota="dibujos listos; falta empaquetar")
+            _estado(slug, n, "producido", "dibujos listos; falta empaquetar")
             return leer(slug)
         # 6 · ZIP y cola
         log("empaquetando…")
         _python("-m", "h3pipeline", "empaquetar", str(pc / "proyecto.json"), log=log)
         cola.agregar(pslug)
-        editar_capitulo(slug, n, estado="producido", nota="en la cola: se genera cuando la corras")
+        _estado(slug, n, "producido", "en la cola: se genera cuando la corras")
         log(f"capítulo {c['n']} en la cola como {pslug}")
         return leer(slug)
     except Exception as e:
-        editar_capitulo(slug, n, estado="error", nota=f"{e}")
+        _estado(slug, n, "error", f"{e}")
         s3 = leer(slug)
         capitulo(s3, n)["slug"] = pslug if (pc / "proyecto.json").exists() else None
         guardar(s3)
@@ -802,7 +814,7 @@ def masa(slug: str, motor: str = "openai", correr_cola: bool = False, apagar: bo
         try:
             c = capitulo(leer(slug), n)
             if c["estado"] == "propuesto":
-                editar_capitulo(slug, n, estado="aprobado")
+                _estado(slug, n, "aprobado")
             c = capitulo(leer(slug), n)
             if len(c.get("guion") or "") < 40:
                 log(f"— capítulo {n}: guion")
@@ -840,7 +852,7 @@ def guiones_todos(slug: str, log=print) -> dict:
         try:
             c = capitulo(leer(slug), n)
             if c["estado"] in ("propuesto", "error"):
-                editar_capitulo(slug, n, estado="aprobado", nota="")
+                _estado(slug, n, "aprobado", "")
             log(f"— capítulo {n}: guion")
             escribir_guion(slug, n, log=log)
             hechos += 1

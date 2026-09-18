@@ -498,6 +498,45 @@ ruta("/serie", async ([slug]) => {
   const s = await api(`/series/${slug}`);
   pintarSerie(s);
 });
+let serieFaseAnterior = {};
+function avisar(msg) {
+  toast(msg);
+  try { if ("Notification" in window && Notification.permission === "granted") new Notification("La Fábrica", {body: msg}); } catch {}
+  document.title = "● " + msg.slice(0, 40) + " · La Fábrica";
+  setTimeout(() => { document.title = "La Fábrica"; }, 30000);
+}
+function pedirAvisos() { try { if ("Notification" in window && Notification.permission === "default") Notification.requestPermission(); } catch {} }
+function barraSerie(s) {
+  const caps = s.capitulos.filter(c => c.estado !== "descartado"); const N = caps.length || 1;
+  const conGuion = caps.filter(c => (c.guion || "").length >= 40).length, producidos = caps.filter(c => c.estado === "producido").length;
+  const prs = caps.map(c => c.slug && s.proyectos[c.slug]).filter(Boolean);
+  const clipsHechos = prs.reduce((a, p) => a + Math.min(p.clips, p.planos), 0), clipsTotal = prs.reduce((a, p) => a + p.planos, 0);
+  const masters = prs.filter(p => p.masters.length).length;
+  const m = s.maquina || {}, cola = s.cola || {}, enCola = prs.filter(p => p.en_cola).length;
+  const FASE = {apagada: "apagada", buscando: "buscando una 4×5090…", arrancando: "arrancando", instalando: "instalando H3 (59 GB)", lista: "lista", fallo: "falló"};
+  const generando = cola.corriendo && m.fase === "lista";
+  const etapas = [
+    ["Guiones", conGuion, N, conGuion === N],
+    ["Producidos", producidos, N, producidos === N],
+    ["Máquina", m.fase === "lista" ? 1 : 0, 1, m.fase === "lista", FASE[m.fase] || m.fase || "apagada", m.fase && m.fase !== "apagada" ? `${usd(m.acumulado)} · ${m.minutos} min` : ""],
+    ["Videos", clipsHechos, clipsTotal || producidos * 3, clipsTotal > 0 && clipsHechos === clipsTotal, generando ? "🎬 generando ahora" : cola.corriendo ? "en cola" : ""],
+    ["Másters", masters, N, masters === N]];
+  const pct = Math.round((conGuion / N * 20) + (producidos / N * 25) + (m.fase === "lista" || clipsHechos ? 10 : m.fase && m.fase !== "apagada" && m.fase !== "fallo" ? 5 : 0) + (clipsTotal ? clipsHechos / clipsTotal * 35 : 0) + (masters / N * 10));
+  // avisos cuando cambia la fase importante
+  const clave = generando ? "generando" : cola.corriendo ? "cola" : m.fase;
+  if (serieFaseAnterior[s.slug] && serieFaseAnterior[s.slug] !== clave) {
+    if (clave === "generando") avisar("🎬 La máquina está generando los videos de " + s.titulo);
+    else if (clave === "arrancando" || clave === "instalando") avisar("máquina " + (FASE[clave] || clave));
+    else if (serieFaseAnterior[s.slug] === "generando" && !cola.corriendo) avisar("✅ Terminó la cola: videos bajados de " + s.titulo);
+  }
+  serieFaseAnterior[s.slug] = clave;
+  return `<div class="card" style="margin-bottom:14px;padding:14px 18px"><div class="row" style="justify-content:space-between;margin-bottom:8px"><b>El proceso</b><span class="tiny">${pct} %</span></div>
+    <div class="bar" style="height:12px"><i style="width:${pct}%"></i></div>
+    <div class="kpis" style="margin-top:10px">${etapas.map(([n, a, b, ok, txt, sub]) => `<div class="kpi" style="${ok ? "outline:1px solid rgba(90,211,138,.45)" : ""}"><div class="l">${n}</div><div class="v" style="font-size:18px">${txt ? h(txt) : `${a}/${b}`}</div>${sub ? `<div class="tiny">${h(sub)}</div>` : ""}</div>`).join("")}</div>
+    ${generando ? `<div class="pill warn" style="margin-top:10px"><i class="dot live"></i> la máquina está generando: ${clipsHechos} de ${clipsTotal} clips · ${usd(m.acumulado)} gastados · la cola baja cada video al terminar y apaga al final</div>`
+      : cola.corriendo ? `<div class="pill warn" style="margin-top:10px"><i class="dot live"></i> la cola corre: ${FASE[m.fase] || m.fase}${m.fase !== "lista" ? " (todavía no genera)" : ""}</div>`
+      : enCola ? `<div class="tiny" style="margin-top:10px">${enCola} capítulo(s) en la cola esperando que la corras (portada → La cola → Correr).</div>` : ""}</div>`;
+}
 function pintarSerie(s) {
   const slug = s.slug, tarea = s.tarea;
   const pj = Object.entries(s.personajes), lc = Object.entries(s.locaciones);
@@ -543,7 +582,9 @@ function pintarSerie(s) {
     : sinHoja ? `Falta dibujar la hoja de modelo de ${pj.filter(([, p]) => !p.hoja).map(([, p]) => p.nombre).join(", ")}. Sin hoja no se puede producir.` : "";
   $("#vista").innerHTML = `<div class="wrap"><div id="serie-err">${bloqueo ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.6)"><div class="row"><span class="pill warn">antes de producir</span><span style="flex:1">${h(bloqueo)}</span></div></div>` : ""}</div><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.modo === "actuado" ? `<span class="pill ac">actuado · hablan los personajes</span>` : s.voz ? `<span class="pill">narrado · voz ${h(s.voz)}</span>` : s.formato === "musica" ? "" : `<span class="pill">sin voz</span>`}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>`
-      : s.ultima_tarea ? `<details class="card" style="margin-bottom:14px;padding:10px 20px"><summary class="tiny" style="cursor:pointer">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · ${s.ultima_tarea.estado} · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} — ver el log</summary><pre class="pre" style="max-height:340px;margin-top:8px">${h(s.ultima_tarea.log)}</pre></details>` : ""}
+      : ""}
+    ${barraSerie(s)}
+    ${!tarea && s.ultima_tarea ? `<details class="card" style="margin-bottom:14px;padding:10px 20px"><summary class="tiny" style="cursor:pointer">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · ${s.ultima_tarea.estado} · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} — ver el log</summary><pre class="pre" style="max-height:340px;margin-top:8px">${h(s.ultima_tarea.log)}</pre></details>` : ""}
     <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
     <div class="grid g3">
       <div class="card" style="padding:12px"><b>Nuevo personaje</b><div class="tiny" style="margin-bottom:6px">GPT lo pasa a la descripción de los prompts y después le dibujás la hoja.</div>
@@ -576,8 +617,8 @@ function pintarSerie(s) {
     ${desc.length ? `<details style="margin-top:10px"><summary class="tiny" style="cursor:pointer">${desc.length} descartado(s)</summary>${desc.map(c => `<div class="tiny" style="margin-top:4px">${c.n}. ${h(c.titulo)} — ${h(c.premisa)} <button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">recuperar</button></div>`).join("")}</details>` : ""}
     </div>`;
   clearTimeout(serieTimer);
-  if (tarea || s.capitulos.some(c => c.estado === "escribiendo" || c.estado === "produciendo"))
-    serieTimer = setTimeout(async () => { if (!location.hash.startsWith(`#/serie/${slug}`)) return; try { pintarSerie(await api(`/series/${slug}`)); } catch {} }, 6000);
+  const vivo = tarea || s.capitulos.some(c => c.estado === "escribiendo" || c.estado === "produciendo") || (s.cola && s.cola.corriendo) || (s.maquina && !["apagada", "fallo", undefined, null].includes(s.maquina.fase));
+  if (vivo) serieTimer = setTimeout(async () => { if (!location.hash.startsWith(`#/serie/${slug}`)) return; try { pintarSerie(await api(`/series/${slug}`)); } catch {} }, s.cola && s.cola.corriendo ? 15000 : 6000);
 }
 function serieError(msg) {
   toast(msg, true);
@@ -652,7 +693,7 @@ function serieMasa(slug) {
     <label class="tiny" style="display:block;margin-bottom:14px;margin-left:22px"><input type="checkbox" id="masa-apagar" checked> apagar la máquina al terminar</label>
     <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa</button></div>`);
   $("#masa-ok").onclick = async () => {
-    const cola = $("#masa-cola").checked, apagar = $("#masa-apagar").checked; cerrarModal();
+    const cola = $("#masa-cola").checked, apagar = $("#masa-apagar").checked; cerrarModal(); pedirAvisos();
     try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true, cola, apagar}}); seguirTarea(r.tarea, () => navegar()); toast(cola ? "produciendo en masa; al final enciende y genera" : "produciendo en masa…"); location.hash = `#/serie/${slug}`; window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
   };
 }
