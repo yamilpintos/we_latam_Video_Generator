@@ -1095,9 +1095,14 @@ def _serie_o_404(slug: str) -> dict:
 @app.get("/api/series/{slug}")
 def serie_detalle(slug: str):
     s = _serie_o_404(slug)
+    pasadas = tareas.listar(_slug_serie(slug), cuantas=1)
+    ultima = None
+    if pasadas:
+        t = tareas.obtener(pasadas[0]["id"])
+        ultima = t.a_dict(lineas=60) if t else None
     return {**s, "proyectos": series.estado_proyectos(s),
             "tarea": next((t.a_dict(lineas=8) for t in tareas.corriendo(_slug_serie(slug))), None),
-            "cola": cola.leer()}
+            "ultima_tarea": ultima, "cola": cola.leer()}
 
 
 class EdicionSerie(BaseModel):

@@ -404,8 +404,14 @@ def planificar(slug: str, n: int, pista: str = "", log=print) -> dict:
         raise RuntimeError("GPT no devolvió capítulos")
     s = leer(slug)
     sig = (max([c["n"] for c in s["capitulos"]] or [0])) + 1
+    por_nombre = {_id(p["nombre"]): pid for pid, p in s["personajes"].items()}
     for c in caps[:n]:
-        pers = [p for p in (c.get("personajes") or []) if p in s["personajes"]]
+        pers = []
+        for x in (c.get("personajes") or []):
+            xid = _id(str(x))
+            pid = xid if xid in s["personajes"] else por_nombre.get(xid) or _alias_de(s, [xid]).get(xid)
+            if pid and pid not in pers:
+                pers.append(pid)
         s["capitulos"].append({"n": sig, "titulo": str(c.get("titulo", f"CAPÍTULO {sig}")).strip()[:80],
                                "premisa": str(c.get("premisa", "")).strip(), "personajes": pers,
                                "locacion": str(c.get("locacion") or "").strip(), "musica": str(c.get("musica") or "").strip() or None,
@@ -548,6 +554,23 @@ def _python(*args: str, log=print, cwd: Path | None = None) -> None:
         raise RuntimeError(f"{args[1] if len(args) > 1 else args[0]} terminó con código {r.returncode}")
 
 
+def _alias_de(s: dict, ids: list[str]) -> dict[str, str]:
+    """{id inventado → id de la serie} para los personajes que el traductor
+    renombró: «monky_zen» → «monky», «el_alumno» → «alumno», o por el nombre."""
+    out = {}
+    serie = {pid: p for pid, p in s["personajes"].items()}
+    for x in set(ids):
+        if x in serie:
+            continue
+        xl = x.lower()
+        for pid, p in serie.items():
+            nom = _id(p["nombre"])
+            if xl.startswith(pid + "_") or xl.endswith("_" + pid) or xl == nom or xl.startswith(nom + "_") or (len(pid) > 3 and pid in xl):
+                out[x] = pid
+                break
+    return out
+
+
 def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=print) -> dict:
     """Capítulo con guion aprobado → proyecto completo listo para la cola:
     traducir (GPT, con el reparto fijo) → hojas de la serie copiadas → voz
@@ -559,9 +582,17 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         raise RuntimeError(f"el capítulo está en estado {c['estado']}; primero escribí y aprobá el guion")
     if len(c.get("guion", "")) < 40:
         raise RuntimeError("el capítulo no tiene guion")
-    sin_hoja = [pid for pid in c["personajes"] if not s["personajes"].get(pid, {}).get("hoja")]
+    # TODOS los personajes de la serie tienen que tener su hoja antes de producir:
+    # sin hoja no entran al reparto fijo y el traductor inventa otros (el 18/9
+    # salieron `m_monky_zen` y `m_alumno_off` en vez del Monky de la serie).
+    if not s["personajes"]:
+        raise RuntimeError("la serie no tiene personajes: cargá al menos uno y dibujale la hoja")
+    sin_hoja = [p["nombre"] for p in s["personajes"].values() if not p.get("hoja")]
     if sin_hoja:
-        raise RuntimeError(f"faltan las hojas de modelo de: {', '.join(sin_hoja)} (dibujalas y aprobalas primero)")
+        raise RuntimeError(f"faltan las hojas de modelo de: {', '.join(sin_hoja)}. Dibujalas y aprobalas (paso 1) antes de producir")
+    sin_aprobar = [p["nombre"] for p in s["personajes"].values() if p.get("hoja") and not p.get("aprobada")]
+    if sin_aprobar:
+        log(f"aviso: hojas sin aprobar ({', '.join(sin_aprobar)}); se usan igual")
     editar_capitulo(slug, n, estado="produciendo", nota="")
     pslug = c.get("slug") or f"{slug}-{c['n']:02d}-{_slug(c['titulo'])[:24]}"
     pc = maquina.MIS / pslug
@@ -608,6 +639,22 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             # El reparto manda: mismas descripciones e ids que en toda la serie, y
             # las madres que ya existen no se vuelven a pedir.
             d.setdefault("personajes", {})
+            # Si el traductor igual renombró a alguien («monky_zen» por «monky»),
+            # se lo vuelve al id de la serie: misma hoja, misma cara.
+            alias = _alias_de(s, list(d["personajes"].keys()) + [x for pl in d["planos"] for x in (pl.get("personajes") or [])])
+            if alias:
+                log("personajes renombrados por el traductor, vueltos al reparto: " + ", ".join(f"{a}→{b}" for a, b in alias.items()))
+                for a, b in alias.items():
+                    d["personajes"].pop(a, None)
+                    for pl in d["planos"]:
+                        pl["personajes"] = [b if x == a else x for x in (pl.get("personajes") or [])]
+                        pl["personajes"] = list(dict.fromkeys(pl["personajes"]))
+                        if pl.get("refs"):
+                            pl["refs"] = list(dict.fromkeys(f"m_{b}" if r == f"m_{a}" else r for r in pl["refs"]))
+                        for k in ("habla", "voz_de"):
+                            if pl.get(k) == a:
+                                pl[k] = b
+                    d["madre"] = [m for m in (d.get("madre") or []) if m.get("id") != f"m_{a}"]
             for pid, p in rep["personajes"].items():
                 if pid in d["personajes"] or any(pid in (pl.get("personajes") or []) for pl in d["planos"]):
                     d["personajes"][pid] = dict(p)
