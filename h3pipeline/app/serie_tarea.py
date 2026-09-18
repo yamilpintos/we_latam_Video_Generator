@@ -5,6 +5,7 @@
     python -X utf8 -u -m h3pipeline.app.serie_tarea guion      <serie> <n>
     python -X utf8 -u -m h3pipeline.app.serie_tarea producir   <serie> <n> [--hasta proyecto|dibujos|cola] [--motor openai]
     python -X utf8 -u -m h3pipeline.app.serie_tarea producir-aprobados <serie> [--motor openai]
+    python -X utf8 -u -m h3pipeline.app.serie_tarea masa       <serie> [--cola] [--no-apagar]   # todo solo; --cola alquila
 """
 import sys
 
@@ -40,7 +41,12 @@ def main() -> int:
         elif que == "producir":
             hasta = _opt(resto, "--hasta", "cola")
             motor = _opt(resto, "--motor", "openai")
-            series.producir(slug, int(resto[0]), hasta=hasta, motor=motor, log=log)
+            rehacer = "--rehacer" in resto
+            resto = [x for x in resto if x != "--rehacer"]
+            series.producir(slug, int(resto[0]), hasta=hasta, motor=motor, log=log, rehacer=rehacer)
+        elif que == "masa":
+            motor = _opt(resto, "--motor", "openai")
+            series.masa(slug, motor=motor, correr_cola="--cola" in resto, apagar="--no-apagar" not in resto, log=log)
         elif que == "producir-aprobados":
             motor = _opt(resto, "--motor", "openai")
             series.producir_aprobados(slug, motor=motor, log=log)

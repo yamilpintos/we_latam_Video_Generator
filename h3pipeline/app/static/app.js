@@ -233,11 +233,23 @@ function apagarMaquina() {
 
 /* ─────────────────────────────────────────────── proyectos */
 ruta("/proyectos", async () => {
-  const ps = await api("/proyectos");
-  $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Cada uno es una carpeta en <code>mis-videos/</code>. El estado sale de lo que existe en la carpeta.</p>
-    <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Short</a><a class="btn" href="#/nuevo/largo">＋ Largo</a><a class="btn" href="#/nuevo/loop">＋ Loop</a></div>
-    <div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div></div>`;
+  const [ps, sd] = await Promise.all([api("/proyectos"), api("/series").catch(() => ({series: []}))]);
+  const porSerie = {};
+  ps.forEach(p => { if (p.serie?.slug) (porSerie[p.serie.slug] = porSerie[p.serie.slug] || []).push(p); });
+  const sueltos = ps.filter(p => !p.serie?.slug);
+  const carpetas = sd.series.map(s => { const caps = (porSerie[s.slug] || []).sort((a, b) => (a.serie.capitulo || 0) - (b.serie.capitulo || 0));
+    const listos = caps.filter(p => p.estado?.zip && p.estado.clips.hechos < p.estado.clips.esperados).length, masters = caps.filter(p => p.estado?.masters?.length).length;
+    return `<div class="card" style="margin-bottom:14px;border-color:rgba(255,180,84,.35)"><h3><span style="color:var(--ac)">▣</span> ${h(s.titulo)} <span class="pill">serie · ${FORMATOS_SERIE[s.formato] || s.formato}</span><span class="tiny">${s.personajes} personajes · ${s.capitulos} capítulos · ${caps.length} carpetas · ${masters} másters</span>
+        <span class="row" style="margin-left:auto;gap:6px"><a class="btn s p" href="#/serie/${s.slug}">abrir la serie</a>${s.aprobados || s.capitulos > s.producidos ? `<button class="btn s" onclick="serieMasa('${s.slug}')">producir en masa</button>` : ""}${listos ? `<button class="btn s" onclick="encolarSerie(${JSON.stringify(caps.filter(p => p.estado?.zip && p.estado.clips.hechos < p.estado.clips.esperados).map(p => p.slug)).replace(/"/g, "&quot;")})">＋ ${listos} a la cola</button>` : ""}</span></h3>
+      ${caps.length ? `<div class="grid g3" style="margin-top:6px">${caps.map(tarjetaProyecto).join("")}</div>` : `<div class="tiny">Todavía no hay capítulos producidos: se producen desde la serie.</div>`}</div>`; }).join("");
+  $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Las series son carpetas con sus capítulos adentro. Abajo, los videos sueltos. El estado sale de lo que existe en cada carpeta de <code>mis-videos/</code>.</p>
+    <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Short</a><a class="btn" href="#/nuevo/largo">＋ Largo</a><a class="btn" href="#/nuevo/loop">＋ Loop</a><span class="tiny">serie nueva: desde Short, Largo o Music video</span></div>
+    ${carpetas}
+    ${sueltos.length ? `<details ${carpetas ? "" : "open"} style="margin-top:8px"><summary class="tiny" style="cursor:pointer;margin-bottom:8px">${sueltos.length} video${sueltos.length > 1 ? "s" : ""} suelto${sueltos.length > 1 ? "s" : ""} (fuera de series)</summary><div class="grid g3">${sueltos.map(tarjetaProyecto).join("")}</div></details>` : ""}</div>`;
 });
+async function encolarSerie(slugs) {
+  try { for (const s of slugs) await api("/cola/agregar", {method: "POST", body: {slug: s}}); toast(`${slugs.length} en la cola`); navegar(); } catch (e) { toast(e.message, true); }
+}
 function etapa(p) {
   const e = p.estado; if (!e) return ["error", "bad"];
   if (e.masters.length) return ["máster listo", "ok"];
@@ -517,7 +529,7 @@ function pintarSerie(s) {
         ${c.estado === "propuesto" ? `<button class="btn s p" onclick="serieCap('${slug}',${c.n},{estado:'aprobado',premisa:$('#cp-${c.n}').value})">aprobar</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'descartado'})">descartar</button>` : ""}
         ${c.estado === "aprobado" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieGuion('${slug}',${c.n})">escribir el guion (GPT)</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">volver a propuesto</button>` : ""}
         ${c.estado === "guion" ? `<button class="btn s" onclick="serieCap('${slug}',${c.n},{guion:$('#cg-${c.n}').value})">guardar cambios del guion</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieGuion('${slug}',${c.n})">otro guion</button><button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">producir este capítulo</button>` : ""}
-        ${c.estado === "error" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">reintentar</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'guion'})">volver a guion</button>` : ""}
+        ${c.estado === "error" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n},true)">rehacer desde el guion</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'guion'})">volver a guion</button>` : ""}
         ${c.estado === "producido" ? `<button class="btn s" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">rehacer lo que falte</button>` : ""}
         ${!activo && c.estado !== "producido" ? `<button class="btn s" style="margin-left:auto" onclick="serieCap('${slug}',${c.n},{estado:'descartado'})">descartar</button>` : ""}
       </div></div>`; };
@@ -550,7 +562,10 @@ function pintarSerie(s) {
     <h3 style="margin:26px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">3</b> Capítulos <span class="pill">${caps.length}</span>
       <span class="row" style="margin-left:auto;gap:6px">${caps.length ? "" : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}', 1)" title="un solo capítulo para ver si la serie funciona antes de pedir más">1 piloto</button>`}<input id="plan-n" type="number" min="1" max="50" value="10" style="width:70px"><input id="plan-pista" placeholder="pista para esta tanda (opcional)" style="width:260px"><button class="btn s ${caps.length ? "p" : ""}" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}')">proponer capítulos (GPT)</button></span></h3>
     ${caps.length ? "" : `<div class="tiny" style="margin:-4px 0 10px">Conviene arrancar con <b>1 piloto</b>: lo aprobás, GPT escribe el guion, lo producís, lo generás con la cola y lo mirás. Si gusta, la serie ya quedó guardada con los personajes y el estilo: pedís diez más. Si no, la borrás.</div>`}
-    ${aprobables ? `<div class="row" style="margin-bottom:10px"><button class="btn p" ${tarea ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">producir los ${aprobables} con guion aprobado</button><span class="tiny">traduce, hace la voz, dibuja, empaqueta y encola cada uno; después corrés la cola</span></div>` : ""}
+    ${caps.some(c => ["propuesto", "aprobado", "guion", "error"].includes(c.estado)) ? `<div class="card" style="margin-bottom:12px;padding:12px 16px;border-color:rgba(255,180,84,.35)"><div class="row">
+        <button class="btn p" ${tarea ? "disabled" : ""} onclick="serieMasa('${slug}')">▶ Producir en masa</button>
+        <span class="muted">Todo solo, sin pasar por vos: aprueba los propuestos, escribe los guiones que falten, produce cada capítulo (guion → planos → ${s.modo === "actuado" ? "" : "voz → "}dibujos → ZIP) y los deja en la cola. Rehace los que quedaron en error. Con la casilla de la confirmación, además enciende la máquina y genera los videos.</span>
+        ${aprobables ? `<button class="btn s" style="margin-left:auto" ${tarea ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">sólo los ${aprobables} con guion aprobado</button>` : ""}</div></div>` : ""}
     ${caps.map(filaCap).join("") || `<div class="muted">Sin capítulos. Proponé una tanda.</div>`}
     ${desc.length ? `<details style="margin-top:10px"><summary class="tiny" style="cursor:pointer">${desc.length} descartado(s)</summary>${desc.map(c => `<div class="tiny" style="margin-top:4px">${c.n}. ${h(c.titulo)} — ${h(c.premisa)} <button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">recuperar</button></div>`).join("")}</details>` : ""}
     </div>`;
@@ -607,10 +622,20 @@ async function serieCap(slug, n, cambios) {
 async function serieGuion(slug, n) {
   try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
 }
-function serieProducir(slug, n) {
-  confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,05-0,20 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola.", "Producir", async () => {
-    try { const r = await api(`/series/${slug}/capitulos/${n}/producir`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo… (3-8 min)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+function serieProducir(slug, n, rehacer = false) {
+  confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,05-0,20 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola." + (rehacer ? "<br><br>Se descarta el proyecto anterior y se vuelve a traducir con el reparto de la serie." : ""), "Producir", async () => {
+    try { const r = await api(`/series/${slug}/capitulos/${n}/producir`, {method: "POST", body: {confirmar: true, rehacer}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo… (3-8 min)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
   });
+}
+function serieMasa(slug) {
+  modal(`<h3>Producir en masa</h3><div class="muted" style="margin-bottom:12px">Todo lo que no esté descartado ni producido: se aprueba, se le escribe el guion si falta, se produce (guion → planos → voz → dibujos → ZIP) y va a la cola. Los que quedaron en error se rehacen desde el guion. Gasta API: unos centavos a un dólar por capítulo. Tarda 3-8 min por capítulo; podés cerrar la página.</div>
+    <label class="tiny" style="display:block;margin-bottom:6px"><input type="checkbox" id="masa-cola"> <b>y al terminar, encender la máquina y generar los videos</b> (alquila una 4×5090: ~$2-3 los primeros 7 shorts, después ~$0,25 por short)</label>
+    <label class="tiny" style="display:block;margin-bottom:14px;margin-left:22px"><input type="checkbox" id="masa-apagar" checked> apagar la máquina al terminar</label>
+    <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa</button></div>`);
+  $("#masa-ok").onclick = async () => {
+    const cola = $("#masa-cola").checked, apagar = $("#masa-apagar").checked; cerrarModal();
+    try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true, cola, apagar}}); seguirTarea(r.tarea, () => navegar()); toast(cola ? "produciendo en masa; al final enciende y genera" : "produciendo en masa…"); location.hash = `#/serie/${slug}`; serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  };
 }
 function serieProducirTodos(slug, n) {
   confirmar(`Producir ${n} capítulos`, `Uno tras otro: guion → planos → voz → dibujos → ZIP → cola. Gasta API (unos centavos a un dólar por capítulo en imágenes y voz), no GPU. Tarda 3-8 min por capítulo; podés cerrar la página.`, "Producir todos", async () => {

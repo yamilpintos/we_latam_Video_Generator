@@ -571,7 +571,31 @@ def _alias_de(s: dict, ids: list[str]) -> dict[str, str]:
     return out
 
 
-def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=print) -> dict:
+def _proyecto_coincide(pc: Path, s: dict) -> bool:
+    """¿El proyecto.json que ya existe usa el reparto de la serie? Si tiene
+    personajes que no son de la serie (los inventó el traductor) hay que
+    volver a traducir: reutilizarlo dibujaría caras que no son."""
+    try:
+        d = json.loads((pc / "proyecto.json").read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    usados = set(d.get("personajes", {}).keys()) | {x for pl in d.get("planos", []) for x in (pl.get("personajes") or [])}
+    return usados.issubset(set(s["personajes"].keys()))
+
+
+def _limpiar_proyecto(pc: Path, log=print) -> None:
+    """Borra lo derivado de una traducción mala (proyecto, storyboard, planos,
+    dibujos, voz, ZIP) y deja el guion. Los clips bajados, si los hubiera, quedan."""
+    for n in ("proyecto.json", "storyboard.json", "planos.json", "madre.json", "brief.md", "voz_en_off.txt", "texto_en_pantalla.txt"):
+        (pc / n).unlink(missing_ok=True)
+    for z in pc.glob("*-para-vast.zip"):
+        z.unlink(missing_ok=True)
+    for d in ("assets", "voz", "para-vast"):
+        shutil.rmtree(pc / d, ignore_errors=True)
+    log("proyecto anterior descartado: se vuelve a traducir con el reparto de la serie")
+
+
+def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=print, rehacer: bool = False) -> dict:
     """Capítulo con guion aprobado → proyecto completo listo para la cola:
     traducir (GPT, con el reparto fijo) → hojas de la serie copiadas → voz
     (ElevenLabs) → dibujos (imágenes) → ZIP → cola. En music video, además
@@ -612,6 +636,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                   "actuado": actuado}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
         (pc / "guion.txt").write_text(c["guion"], encoding="utf-8")
+        if (pc / "proyecto.json").exists() and (rehacer or not _proyecto_coincide(pc, s)):
+            _limpiar_proyecto(pc, log=log)
         if not (pc / "proyecto.json").exists():
             log(f"traduciendo el guion del capítulo {c['n']} ({len(c['guion'])} caracteres)…")
             r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
@@ -726,6 +752,48 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         capitulo(s3, n)["slug"] = pslug if (pc / "proyecto.json").exists() else None
         guardar(s3)
         raise
+
+
+def masa(slug: str, motor: str = "openai", correr_cola: bool = False, apagar: bool = True, log=print) -> dict:
+    """PRODUCCIÓN EN MASA, sin pasar por el usuario capítulo a capítulo: todo lo
+    que no esté descartado ni producido se aprueba, se le escribe el guion si
+    no lo tiene, se produce (rehaciendo lo que quedó mal) y va a la cola. Si
+    `correr_cola`, al final enciende la máquina y genera todo (eso alquila;
+    la confirmación la dio el usuario al apretar)."""
+    s = leer(slug)
+    if len((s.get("idea") or "").strip()) < 20:
+        raise RuntimeError("falta la idea general de la serie (paso 2)")
+    sin_hoja = [p["nombre"] for p in s["personajes"].values() if not p.get("hoja")]
+    if sin_hoja:
+        raise RuntimeError(f"faltan las hojas de: {', '.join(sin_hoja)} (paso 1)")
+    pendientes = [c["n"] for c in sorted(s["capitulos"], key=lambda c: c["n"]) if c["estado"] in ("propuesto", "aprobado", "guion", "error")]
+    log(f"producción en masa: {len(pendientes)} capítulo(s)")
+    hechos, fallados = [], []
+    for n in pendientes:
+        try:
+            c = capitulo(leer(slug), n)
+            if c["estado"] == "propuesto":
+                editar_capitulo(slug, n, estado="aprobado")
+            c = capitulo(leer(slug), n)
+            if len(c.get("guion") or "") < 40:
+                log(f"— capítulo {n}: guion")
+                escribir_guion(slug, n, log=log)
+            log(f"— capítulo {n}: producir")
+            producir(slug, n, motor=motor, log=log, rehacer=(c["estado"] == "error"))
+            hechos.append(n)
+        except Exception as e:
+            log(f"!! capítulo {n}: {e}")
+            fallados.append(n)
+    log(f"en masa: {len(hechos)} producidos, {len(fallados)} fallados" + (f" ({', '.join(map(str, fallados))})" if fallados else ""))
+    if correr_cola and hechos:
+        from . import correr_cola as cc
+        d = cola.leer()
+        d["apagar_al_final"] = bool(apagar)
+        cola.escribir(d)
+        log("=== la cola: enciendo la máquina y genero todo ===")
+        rc = cc.main()
+        log(f"cola terminada con código {rc}")
+    return leer(slug)
 
 
 def producir_aprobados(slug: str, motor: str = "openai", log=print) -> dict:
