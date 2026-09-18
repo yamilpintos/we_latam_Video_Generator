@@ -61,16 +61,26 @@ def carpeta(slug: str) -> Path:
 
 
 def leer(slug: str) -> dict:
+    """Con dos reintentos cortos: en Render el disco persistente se vuelve a
+    montar en cada redeploy y un pedido que cae en ese segundo veía «no existe
+    esa serie» (18/9). Un archivo a medio escribir también se reintenta."""
     f = carpeta(slug) / "serie.json"
-    if not f.exists():
-        raise KeyError(slug)
-    return json.loads(f.read_text(encoding="utf-8"))
+    for intento in range(3):
+        try:
+            return json.loads(f.read_text(encoding="utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError):
+            if intento == 2:
+                break
+            time.sleep(0.4)
+    raise KeyError(slug)
 
 
 def guardar(s: dict) -> dict:
     c = carpeta(s["slug"])
     c.mkdir(parents=True, exist_ok=True)
-    (c / "serie.json").write_text(json.dumps(s, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp = c / "serie.json.tmp"
+    tmp.write_text(json.dumps(s, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(c / "serie.json")           # atómico: nunca se lee un JSON a medias
     return s
 
 
