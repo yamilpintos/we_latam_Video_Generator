@@ -120,14 +120,12 @@ ruta("/", async () => {
     <h1>Del guion al <span>máster</span>,<br>con la GPU cobrando lo justo.</h1>
     <p class="lead">Pegás tu guion. La app lo traduce a planos, dibuja los fotogramas, alquila la máquina, controla los clips y mezcla. Cada paso muestra lo que cuesta antes de gastarlo.</p>
     <div class="puertas">
-      <div class="puerta" onclick="location.hash='#/series'" style="border-color:rgba(255,180,84,.45)"><span class="k">PRODUCCIÓN EN MASA</span><h2>Series</h2>
-        <p>Personajes fijos con su hoja, un estilo, una idea. GPT propone la lista de capítulos, escribe cada guion que aprobás, y los capítulos se dibujan y entran a la cola solos.</p><span class="n">shorts, largos o music videos, por decenas</span></div>
       <div class="puerta" onclick="location.hash='#/nuevo/short'"><span class="k">VERTICAL · 15 A 90 S</span><h2>Short</h2>
-        <p>Tu guion, en voz en off con subtítulos. Tres clips para una muestra de 15 s; doce para un minuto.</p><span class="n">${n(p => p.formato === "short" && !esLoop(p) && !esRecap(p))} proyectos</span></div>
+        <p>Tu guion, en voz en off con subtítulos. Tres clips para una muestra de 15 s; doce para un minuto. Suelto, o una <b>serie</b> con personajes fijos que GPT escribe por tandas.</p><span class="n">${n(p => p.formato === "short" && !esLoop(p) && !esRecap(p))} proyectos · suelto o en serie</span></div>
       <div class="puerta" onclick="location.hash='#/nuevo/largo'"><span class="k">VERTICAL · 3 A 8 MIN</span><h2>Largo</h2>
-        <p>Recap con voz continua. Primero el audio, medido contra la voz elegida; después los planos que lo sirven.</p><span class="n">${n(esRecap)} proyectos</span></div>
+        <p>Recap con voz continua. Primero el audio, medido contra la voz elegida; después los planos que lo sirven. Suelto o en <b>serie</b>.</p><span class="n">${n(esRecap)} proyectos · suelto o en serie</span></div>
       <div class="puerta" onclick="location.hash='#/musica'"><span class="k">16:9 · LOOP</span><h2>Music video</h2>
-        <p>Decís qué música y qué escena. La app compone la pista, hace el loop y el video dura lo que dure la música.</p><span class="n">${n(esLoop)} loops</span></div>
+        <p>Decís qué música y qué escena. La app compone la pista, hace el loop y el video dura lo que dure la música. O una <b>serie</b>: otra pista y otra escena por capítulo.</p><span class="n">${n(esLoop)} loops · suelto o en serie</span></div>
       <div class="puerta" onclick="location.hash='#/libre'"><span class="k">CHAT · SIN ESTRUCTURA</span><h2>Libre</h2>
         <p>Escribís un prompt, ves la imagen, describís el movimiento y sale un clip de MiniMax. Para probar ideas antes de un guion.</p><span class="n">como un playground</span></div>
       <div class="puerta" onclick="location.hash='#/editar'"><span class="k">VIDEO → VIDEO · 2 A 15 S</span><h2>Editar</h2>
@@ -290,6 +288,7 @@ ruta("/nuevo", async ([formato]) => {
   const ph = esLoop ? "Un jardín japonés de noche bajo lluvia fina: estanque negro con koi, un farol de piedra con vela, farolitos rojos, musgo, un arce…"
     : "Soy Tomás, buzo de mantenimiento en la represa. Bajé a 42 metros a revisar una compuerta que no cerraba…";
   $("#vista").innerHTML = `<div class="wrap"><h1>${titulo}</h1><p class="sub">${sub}</p>
+    <div id="series-seccion"></div>
     <div class="grid g2">
       <div class="card" style="grid-column:1/-1"><h3>${esLoop ? "La escena" : "El guion"}</h3>
         ${esLoop ? `<select id="escena" style="margin-bottom:8px"><option value="">Escena propia (escribila abajo)</option>${ESCENAS.map((s, i) => `<option value="${i}">${h(s.n)}</option>`).join("")}</select>` : ""}
@@ -322,6 +321,7 @@ ruta("/nuevo", async ([formato]) => {
   });
   $("#btn-trad").onclick = () => traducirGuion(esLoop, f);
   actualizar();
+  pintarSeriesSeccion(esLoop ? "musica" : f);
 });
 
 /* ─────────────────────────────────────────────── editar: video → video (Ref2VA) */
@@ -416,50 +416,66 @@ async function editarGenerar(id) {
 const FORMATOS_SERIE = {short: "Shorts verticales", largo: "Largos (recap)", musica: "Music videos"};
 const ESTADOS_CAP = {propuesto: ["propuesto", ""], aprobado: ["aprobado · sin guion", "ac"], escribiendo: ["escribiendo el guion", "warn"], guion: ["guion listo", "ok"],
   produciendo: ["produciendo", "warn"], producido: ["producido", "ok"], error: ["error", "bad"], descartado: ["descartado", ""]};
-ruta("/series", async () => {
+/* Cada sección (Short, Largo, Music video) tiene su propia opción de serie con el
+   formato ya fijo. #/series/nueva/<formato> crea; #/series/<formato> lista; #/serie/<slug> es la serie. */
+async function pintarSeriesSeccion(formato) {
+  const box = $("#series-seccion"); if (!box) return;
+  let d; try { d = await api("/series"); } catch { return; }
+  const mias = d.series.filter(s => s.formato === formato);
+  const que = formato === "musica" ? "music videos" : formato === "largo" ? "largos" : "shorts";
+  box.innerHTML = `<div class="card" style="margin-bottom:14px;border-color:rgba(255,180,84,.35)"><h3>¿Uno solo o una serie de ${que}?
+      <a class="btn s p" style="margin-left:auto" href="#/series/nueva/${formato}">＋ Nueva serie de ${que}</a></h3>
+    <p class="muted" style="margin:0 0 ${mias.length ? 10 : 0}px">Una serie tiene personajes fijos con su hoja de modelo (las caras no cambian entre videos), una idea general que los nombra, y GPT propone los capítulos por tandas y escribe cada guion que aprobás. Los capítulos se dibujan, se empaquetan y entran a la cola solos. Abajo, ${formato === "musica" ? "la escena" : "el guion"} de un video suelto, como siempre.</p>
+    ${mias.length ? `<div class="row">${mias.map(s => `<a class="btn s" href="#/serie/${s.slug}">${h(s.titulo)} <span class="tiny">· ${s.personajes} pj · ${s.capitulos} cap · ${s.producidos} hechos</span></a>`).join("")}</div>` : ""}</div>`;
+}
+ruta("/series", async ([a, b]) => {
   const d = await api("/series");
-  const ests = (f) => d.estructuras.filter(e => f === "musica" ? e.nombre.startsWith("loop") : f === "largo" ? (e.nombre.startsWith("recap") || (e.formato === "largo" && !e.nombre.startsWith("loop"))) : (e.formato === "short" && !e.nombre.startsWith("recap")));
-  $("#vista").innerHTML = `<div class="wrap"><h1>Series</h1>
-    <p class="sub">La unidad deja de ser un video. Una serie tiene personajes fijos (con su hoja de modelo, así las caras no cambian), un estilo, una idea y una voz. De ahí GPT propone capítulos, vos aprobás la lista, GPT escribe cada guion, vos lo aprobás, y el capítulo se traduce, se dibuja, se empaqueta y entra a la cola solo. Después la cola genera todos con una máquina.</p>
-    <div class="grid g2">
-      <div class="card"><h3>Nueva serie</h3>
-        <input id="s-titulo" placeholder="Título de la serie" style="margin-bottom:8px">
-        <div class="row" style="margin-bottom:8px"><select id="s-formato" style="max-width:220px">${Object.entries(FORMATOS_SERIE).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
-          <select id="s-estructura" style="max-width:260px"></select>
-          <select id="s-voz" style="max-width:220px"><option value="pablo">Voz: Pablo, argentino</option><option value="kate">Voz: Kate</option><option value="">Sin voz en off</option></select>
-          <select id="s-cont" style="max-width:260px"><option value="antologia">Antología (capítulos sueltos)</option><option value="serial">Serial (la historia sigue)</option></select></div>
-        <div id="s-musica" class="row" hidden style="margin-bottom:8px"><select id="s-genero" style="max-width:200px">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
-          <select id="s-mdur" style="max-width:160px">${[[60, "1 min"], [180, "3 min"], [300, "5 min"], [600, "10 min"]].map(([v, l]) => `<option value="${v}" ${v === 180 ? "selected" : ""}>pistas de ${l}</option>`).join("")}</select>
-          <input id="s-mtipo" placeholder="cómo suena la música de la serie (ánimo, instrumentos, tempo)" style="flex:1;min-width:240px"></div>
-        <textarea id="s-idea" style="min-height:110px" placeholder="La idea general: de qué va la serie, tono, a quién le habla, qué se repite en cada capítulo. Ejemplo: «Un mecánico de pueblo cuenta en primera persona los casos raros que le llegan al taller. Melodrama con humor seco; siempre termina con una lección que no pidió»."></textarea>
-        <div class="row" style="margin-top:8px"><select id="s-estilo" style="max-width:320px">${d.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (abajo)</option></select>
-          <input id="s-estilo-libre" placeholder="estilo propio, en inglés (opcional)" style="flex:1;min-width:220px"></div>
-        <div class="row" style="margin-top:10px"><button class="btn p" onclick="serieCrear()">Crear la serie</button><span class="tiny">gratis; después cargás los personajes</span></div>
-        <div id="s-err" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
-      <div class="card"><h3>Cómo funciona</h3>
-        <ol class="muted" style="margin:0;padding-left:18px;line-height:1.7">
-          <li><b>Biblia</b>: idea, estilo, voz, formato. Una vez.</li>
-          <li><b>Personajes</b>: los describís (o subís una imagen) y GPT dibuja la hoja de modelo. La aprobás. Se reusa en todos los capítulos.</li>
-          <li><b>Plan</b>: «proponé 10 capítulos». Aprobás, editás o descartás cada uno.</li>
-          <li><b>Guion</b>: GPT lo escribe medido a la voz. Lo leés, lo tocás, lo aprobás.</li>
-          <li><b>Producir</b>: proyecto + voz + dibujos + ZIP + cola, solo. Gasta API (centavos por capítulo), no GPU.</li>
-          <li><b>La cola</b> genera todos con una máquina y apaga.</li></ol></div>
-    </div>
-    <h3 style="margin:26px 0 10px">Tus series</h3>
-    <div class="grid g3">${d.series.map(s => `<div class="card" style="cursor:pointer" onclick="location.hash='#/serie/${s.slug}'"><h3>${h(s.titulo)}<span class="pill">${FORMATOS_SERIE[s.formato] || s.formato}</span></h3>
+  if (a === "nueva" && FORMATOS_SERIE[b]) return pintarNuevaSerie(d, b);
+  const f = FORMATOS_SERIE[a] ? a : null;
+  const lista = f ? d.series.filter(s => s.formato === f) : d.series;
+  $("#vista").innerHTML = `<div class="wrap"><h1>Series${f ? " de " + FORMATOS_SERIE[f].toLowerCase() : ""}</h1>
+    <p class="sub">Cada sección tiene las suyas: se crean desde <a href="#/nuevo/short">Short</a>, <a href="#/nuevo/largo">Largo</a> o <a href="#/musica">Music video</a>.</p>
+    <div class="grid g3">${lista.map(s => `<div class="card" style="cursor:pointer" onclick="location.hash='#/serie/${s.slug}'"><h3>${h(s.titulo)}<span class="pill">${FORMATOS_SERIE[s.formato] || s.formato}</span></h3>
       <div class="muted">${s.personajes} personaje${s.personajes === 1 ? "" : "s"} · ${s.capitulos} capítulo${s.capitulos === 1 ? "" : "s"} · ${s.producidos} producido${s.producidos === 1 ? "" : "s"}${s.aprobados ? ` · ${s.aprobados} por producir` : ""}</div></div>`).join("") || `<div class="muted">Todavía no hay series.</div>`}</div></div>`;
-  const pintarEst = () => { const f = $("#s-formato").value; const es = ests(f); $("#s-estructura").innerHTML = es.map(e => `<option value="${e.nombre}" ${e.nombre === (f === "musica" ? "loop" : f === "largo" ? "recap" : "short-15") ? "selected" : ""}>${e.nombre} · ${e.duracion} s</option>`).join("");
-    $("#s-musica").hidden = f !== "musica"; $("#s-voz").disabled = f === "musica"; };
-  $("#s-formato").addEventListener("change", pintarEst); pintarEst();
 });
-async function serieCrear() {
-  const f = $("#s-formato").value;
+function pintarNuevaSerie(d, f) {
+  const esMusica = f === "musica";
+  const ests = d.estructuras.filter(e => esMusica ? e.nombre.startsWith("loop") : f === "largo" ? (e.nombre.startsWith("recap") || (e.formato === "largo" && !e.nombre.startsWith("loop"))) : (e.formato === "short" && !e.nombre.startsWith("recap")));
+  const estDefault = esMusica ? "loop" : f === "largo" ? "recap" : "short-15";
+  const que = esMusica ? "music videos" : f === "largo" ? "largos" : "shorts";
+  $("#vista").innerHTML = `<div class="wrap"><h1>Nueva serie de ${que}</h1>
+    <p class="sub">Primero la ficha. Después, en la serie, cargás los personajes con su nombre y escribís la idea general nombrándolos («los tres amigos Pedro, Luis y Juan tienen aventuras juntos cuando terminan las clases»); de ahí GPT propone los capítulos.</p>
+    <div class="grid g2">
+      <div class="card"><h3>La ficha</h3>
+        <input id="s-titulo" placeholder="Título de la serie" style="margin-bottom:8px">
+        <div class="row" style="margin-bottom:8px">
+          <select id="s-estructura" style="max-width:280px">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
+          ${esMusica ? "" : `<select id="s-voz" style="max-width:240px"><option value="pablo">Voz en off: Pablo, argentino</option><option value="kate">Voz en off: Kate</option><option value="">Sin voz en off</option></select>`}
+          <select id="s-cont" style="max-width:280px"><option value="antologia">Antología (capítulos sueltos, mismo universo)</option><option value="serial">Serial (la historia sigue de un capítulo al otro)</option></select></div>
+        ${esMusica ? `<div class="row" style="margin-bottom:8px"><select id="s-genero" style="max-width:220px">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
+          <select id="s-mdur" style="max-width:170px">${[[60, "1 min"], [180, "3 min"], [300, "5 min"], [600, "10 min"]].map(([v, l]) => `<option value="${v}" ${v === 180 ? "selected" : ""}>pistas de ${l}</option>`).join("")}</select>
+          <input id="s-mtipo" placeholder="cómo suena la música de la serie (ánimo, instrumentos, tempo)" style="flex:1;min-width:240px"></div>` : ""}
+        <div class="row" style="margin-bottom:8px"><select id="s-estilo" style="max-width:320px">${d.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (al lado)</option></select>
+          <input id="s-estilo-libre" placeholder="estilo propio, en inglés (opcional)" style="flex:1;min-width:220px"></div>
+        <textarea id="s-idea" style="min-height:80px" placeholder="La idea general (opcional acá: conviene escribirla después de cargar los personajes, nombrándolos)."></textarea>
+        <div class="row" style="margin-top:10px"><button class="btn p" onclick="serieCrear('${f}')">Crear la serie</button><a class="btn" href="#/${esMusica ? "musica" : "nuevo/" + f}">volver</a><span class="tiny">gratis</span></div>
+        <div id="s-err" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
+      <div class="card"><h3>Cómo sigue</h3>
+        <ol class="muted" style="margin:0;padding-left:18px;line-height:1.7">
+          <li><b>Personajes</b>: nombre y cómo es (o una imagen). GPT lo pasa a la descripción de los prompts y dibuja la hoja de modelo. La aprobás. Se reusa en todos los capítulos.</li>
+          <li><b>La idea general</b>, nombrándolos: qué les pasa, tono, qué se repite.</li>
+          <li><b>Plan</b>: «proponé N capítulos». Aprobás, editás o descartás cada uno.</li>
+          <li><b>Guion</b> por capítulo: GPT lo escribe ${esMusica ? "como una escena para mirar en loop, más la pista" : "medido a la voz"}. Lo leés, lo tocás, lo aprobás.</li>
+          <li><b>Producir</b>: proyecto + ${esMusica ? "pista" : "voz"} + dibujos + ZIP + cola, solo. Gasta API (centavos), no GPU.</li>
+          <li><b>La cola</b> genera todos con una máquina y apaga.</li></ol></div>
+    </div></div>`;
+}
+async function serieCrear(f) {
   const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null,
     voz: f === "musica" ? null : ($("#s-voz").value || null), estilo: $("#s-estilo").value === "" ? null : Number($("#s-estilo").value), estilo_libre: $("#s-estilo-libre").value,
     continuidad: $("#s-cont").value, musica: f === "musica" ? {genero: $("#s-genero").value, duracion: Number($("#s-mdur").value), tipo: $("#s-mtipo").value} : null,
     duracion: f === "musica" ? 5.167 : null};
   if (!body.titulo) return $("#s-err").textContent = "Falta el título.";
-  if (body.idea.trim().length < 20) return $("#s-err").textContent = "Contá la idea general (al menos una frase).";
   try { const s = await api("/series", {method: "POST", body}); location.hash = `#/serie/${s.slug}`; } catch (e) { $("#s-err").textContent = e.message; }
 }
 let serieTimer = null;
@@ -501,27 +517,32 @@ function pintarSerie(s) {
         ${c.estado === "producido" ? `<button class="btn s" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">rehacer lo que falte</button>` : ""}
         ${!activo && c.estado !== "producido" ? `<button class="btn s" style="margin-left:auto" onclick="serieCap('${slug}',${c.n},{estado:'descartado'})">descartar</button>` : ""}
       </div></div>`; };
-  $("#vista").innerHTML = `<div class="wrap"><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.voz ? `<span class="pill">voz ${h(s.voz)}</span>` : ""}<a class="btn s" href="#/series" style="margin-left:auto">todas las series</a></h1>
+  const volver = s.formato === "musica" ? "#/musica" : `#/nuevo/${s.formato}`;
+  const nombres = pj.map(([, p]) => p.nombre);
+  const ejemplo = nombres.length ? `«${nombres.slice(0, 3).join(", ")} ${nombres.length > 1 ? "tienen" : "tiene"} aventuras juntos cuando terminan las clases…»` : "«los tres amigos Pedro, Luis y Juan tienen aventuras juntos cuando terminan las clases»";
+  $("#vista").innerHTML = `<div class="wrap"><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.voz ? `<span class="pill">voz ${h(s.voz)}</span>` : ""}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>` : ""}
-    <div class="grid g2" style="margin-bottom:14px">
-      <div class="card"><h3>La biblia</h3>
-        <label class="tiny">Idea general</label><textarea id="b-idea" style="min-height:90px;margin:4px 0 8px">${h(s.idea)}</textarea>
-        <label class="tiny">Notas del director (tono, qué no mostrar, reglas de la serie)</label><textarea id="b-notas" style="min-height:60px;margin:4px 0 8px">${h(s.notas || "")}</textarea>
-        <div class="tiny">Estilo visual: ${h(s.estilo.imagen.slice(0, 140))}${s.estilo.imagen.length > 140 ? "…" : ""}</div>
-        ${s.musica ? `<div class="tiny" style="margin-top:4px">Música: ${h(s.musica.genero)} · pistas de ${s.musica.duracion} s · ${h(s.musica.tipo || "")}</div>` : ""}
-        <div class="row" style="margin-top:8px"><button class="btn s" onclick="serieBiblia('${slug}')">guardar</button><button class="btn s d" style="margin-left:auto" onclick="serieBorrar('${slug}')">borrar la serie</button></div></div>
-      <div class="card"><h3>Nuevo personaje <span class="tiny" style="margin-left:auto">GPT lo pasa a la descripción de los prompts</span></h3>
-        <input id="p-nombre" placeholder="Nombre" style="margin-bottom:6px">
-        <textarea id="p-desc" style="min-height:70px" placeholder="Cómo es, en castellano: edad, cuerpo, cara, pelo y la ropa que va a llevar en toda la serie."></textarea>
-        <div class="row" style="margin-top:8px"><label class="btn s">imagen de referencia (opcional)<input type="file" id="p-ref" accept="image/*" hidden onchange="$('#p-refn').textContent=this.files[0]?.name||''"></label><span class="tiny" id="p-refn"></span>
-          <button class="btn p" style="margin-left:auto" onclick="seriePersonaje('${slug}')">agregar</button></div>
-        <hr style="border:0;border-top:1px solid var(--line);margin:12px 0">
-        <h3>Nueva locación</h3><div class="row"><input id="l-nombre" placeholder="Nombre" style="max-width:180px"><input id="l-desc" placeholder="qué lugar es, luz, época" style="flex:1;min-width:200px"><button class="btn" onclick="serieLocacion('${slug}')">agregar</button></div></div>
-    </div>
-    <h3 style="margin:18px 0 8px">Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
-    <div class="grid g3">${pj.map(ficha).join("") || `<div class="muted">Sin personajes. Agregá al menos uno y dibujale la hoja.</div>`}</div>
-    ${lc.length ? `<h3 style="margin:18px 0 8px">Locaciones <span class="pill">${lc.length}</span></h3><div class="grid g3">${lc.map(fichaLoc).join("")}</div>` : ""}
-    <h3 style="margin:26px 0 8px">Capítulos <span class="pill">${caps.length}</span>
+    <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
+    <div class="grid g3">
+      <div class="card" style="padding:12px"><b>Nuevo personaje</b><div class="tiny" style="margin-bottom:6px">GPT lo pasa a la descripción de los prompts y después le dibujás la hoja.</div>
+        <input id="p-nombre" placeholder="Nombre (así lo vas a nombrar en la idea)" style="margin-bottom:6px">
+        <textarea id="p-desc" style="min-height:90px" placeholder="Cómo es, en castellano: edad, cuerpo, cara, pelo y la ropa que va a llevar en toda la serie."></textarea>
+        <div class="row" style="margin-top:8px"><label class="btn s">imagen de referencia<input type="file" id="p-ref" accept="image/*" hidden onchange="$('#p-refn').textContent=this.files[0]?.name||''"></label><span class="tiny" id="p-refn"></span>
+          <button class="btn p s" style="margin-left:auto" onclick="seriePersonaje('${slug}')">agregar</button></div></div>
+      ${pj.map(ficha).join("")}</div>
+    <h3 style="margin:18px 0 8px">Locaciones fijas <span class="pill">${lc.length}</span><span class="tiny" style="margin-left:10px">opcional: los lugares que se repiten</span></h3>
+    <div class="grid g3">
+      <div class="card" style="padding:12px"><b>Nueva locación</b><input id="l-nombre" placeholder="Nombre" style="margin:6px 0"><input id="l-desc" placeholder="qué lugar es, luz, época"><div class="row" style="margin-top:8px"><button class="btn s" style="margin-left:auto" onclick="serieLocacion('${slug}')">agregar</button></div></div>
+      ${lc.map(fichaLoc).join("")}</div>
+    <h3 style="margin:26px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">2</b> La idea general</h3>
+    <div class="card" style="margin-bottom:14px">
+      <div class="tiny" style="margin-bottom:4px">Nombrá a los personajes por su nombre, por ejemplo ${h(ejemplo)}. De acá GPT propone los capítulos.</div>
+      <textarea id="b-idea" style="min-height:90px;margin:4px 0 8px" placeholder="De qué va la serie, tono, a quién le habla, qué se repite en cada capítulo.">${h(s.idea)}</textarea>
+      <label class="tiny">Notas del director (tono, qué no mostrar, reglas de la serie)</label><textarea id="b-notas" style="min-height:50px;margin:4px 0 8px">${h(s.notas || "")}</textarea>
+      <div class="tiny">Estilo visual: ${h(s.estilo.imagen.slice(0, 140))}${s.estilo.imagen.length > 140 ? "…" : ""}</div>
+      ${s.musica ? `<div class="tiny" style="margin-top:4px">Música: ${h(s.musica.genero)} · pistas de ${s.musica.duracion} s · ${h(s.musica.tipo || "")}</div>` : ""}
+      <div class="row" style="margin-top:8px"><button class="btn s p" onclick="serieBiblia('${slug}')">guardar la idea</button><button class="btn s d" style="margin-left:auto" onclick="serieBorrar('${slug}')">borrar la serie</button></div></div>
+    <h3 style="margin:26px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">3</b> Capítulos <span class="pill">${caps.length}</span>
       <span class="row" style="margin-left:auto;gap:6px"><input id="plan-n" type="number" min="1" max="50" value="10" style="width:70px"><input id="plan-pista" placeholder="pista para esta tanda (opcional)" style="width:260px"><button class="btn s p" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}')">proponer capítulos (GPT)</button></span></h3>
     ${aprobables ? `<div class="row" style="margin-bottom:10px"><button class="btn p" ${tarea ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">producir los ${aprobables} con guion aprobado</button><span class="tiny">traduce, hace la voz, dibuja, empaqueta y encola cada uno; después corrés la cola</span></div>` : ""}
     ${caps.map(filaCap).join("") || `<div class="muted">Sin capítulos. Proponé una tanda.</div>`}
@@ -1125,6 +1146,7 @@ ruta("/musica", async ([slug]) => {
   const paso = (n, t, ok) => `<span class="pill ${ok ? "ok" : ""}" style="margin-right:6px">${n} · ${t}</span>`;
   $("#vista").innerHTML = `<div class="wrap"><h1>Music video</h1>
     <p class="sub">Primero la música, después la escena. La app compone la pista con ElevenLabs Music (o subís la tuya), vos describís un lugar, y el video final dura exactamente lo que dura la música: la escena se repite en loop encima.</p>
+    <div id="series-seccion"></div>
     <div style="margin-bottom:14px">${paso(1, "música", bib.pistas.length)}${paso(2, "escena", ps.length)}${paso(3, "máquina y clips", p && p.estado.clips.hechos)}${paso(4, "video final", p && p.estado.masters.length)}</div>
     <div class="card" style="margin-bottom:14px"><h3>1 · La música</h3>
         <div class="grid g3" style="gap:12px">
@@ -1176,6 +1198,7 @@ la ciudad se queda quieta
     </div>` : ""}
     ${ps.length ? `<h3 style="margin:26px 0 10px">Escenas</h3><div class="grid g3">${ps.map(tarjetaProyecto).join("")}</div>` : ""}</div>`;
   $("#conletra") && letraToggle();
+  pintarSeriesSeccion("musica");
   $("#fpista").addEventListener("change", async (ev) => {
     const f = ev.target.files[0]; if (!f) return;
     toast("subiendo la pista…");

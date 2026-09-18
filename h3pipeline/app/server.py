@@ -1058,7 +1058,7 @@ def series_listar():
 class NuevaSerie(BaseModel):
     titulo: str
     formato: str = "short"            # short | largo | musica
-    idea: str
+    idea: str = ""                    # se puede escribir después, ya con los personajes cargados
     estructura: str | None = None
     duracion: float | None = None
     voz: str | None = "pablo"
@@ -1213,6 +1213,9 @@ def serie_planificar(slug: str, p: PedidoPlan):
     if tareas.corriendo(_slug_serie(slug)):
         raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
     n = max(1, min(50, p.n))
+    s = series.leer(slug)
+    if len((s.get("idea") or "").strip()) < 20:
+        raise HTTPException(422, "escribí primero la idea general de la serie (paso 2), nombrando a los personajes")
     args = ["-m", "h3pipeline.app.serie_tarea", "planificar", slug, str(n)] + ([p.pista] if p.pista.strip() else [])
     return {"tarea": tareas.lanzar(f"planificar {n} capítulos", args, _slug_serie(slug)).a_dict()}
 

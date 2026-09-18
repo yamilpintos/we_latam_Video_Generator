@@ -365,6 +365,8 @@ def planificar(slug: str, n: int, pista: str = "", log=print) -> dict:
     como `propuesto`; vos aprobás, editás o descartás."""
     s = leer(slug)
     n = max(1, min(50, int(n)))
+    if len((s.get("idea") or "").strip()) < 20:
+        raise ValueError("escribí primero la idea general de la serie (nombrando a los personajes)")
     hechos = [c for c in s["capitulos"] if c["estado"] != "descartado"]
     prev = "\n".join(f"  {c['n']}. {c['titulo']} — {c['premisa']}" for c in hechos) or "  (ninguno todavía)"
     serial = s["continuidad"] == "serial"
