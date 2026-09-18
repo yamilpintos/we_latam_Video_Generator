@@ -521,6 +521,9 @@ function pintarSerie(s) {
         <span class="tiny">${(c.personajes || []).map(p => s.personajes[p]?.nombre || p).join(", ")}${c.locacion ? " · " + h(c.locacion) : ""}</span></div>
       ${c.estado === "propuesto" ? `<textarea id="cp-${c.n}" style="min-height:60px;margin-top:6px;font-size:13px">${h(c.premisa)}</textarea>` : `<div class="muted" style="margin-top:6px">${h(c.premisa)}</div>`}
       ${c.musica ? `<div class="tiny" style="margin-top:4px">música: ${h(c.musica)}</div>` : ""}
+      ${(c.personajes || []).length && c.estado !== "producido" ? `<details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">ropa en este capítulo${Object.keys(c.vestuario || {}).length ? " · " + Object.entries(c.vestuario).map(([k, v]) => (s.personajes[k]?.nombre || k) + ": " + v).join(" · ").slice(0, 90) : " (con la ropa base)"}</summary>
+          ${(c.personajes || []).map(pid => `<div class="row" style="margin-top:4px"><span class="tiny" style="width:90px">${h(s.personajes[pid]?.nombre || pid)}</span><input id="cv-${c.n}-${pid}" value="${h((c.vestuario || {})[pid] || "")}" placeholder="qué lleva puesto en este capítulo, en inglés (vacío = ropa base)" style="flex:1;font-size:12px;padding:5px 8px"></div>`).join("")}
+          <button class="btn s" style="margin-top:6px" onclick="serieCapVestuario('${slug}',${c.n},${JSON.stringify(c.personajes).replace(/"/g, "&quot;")})">guardar la ropa</button></details>` : ""}
       ${c.nota ? `<div class="tiny" style="margin-top:4px;color:${c.estado === "error" ? "var(--bad)" : "var(--tx3)"}">${h(c.nota)}</div>` : ""}
       ${c.guion && !activo ? `<details ${c.estado === "guion" ? "open" : ""} style="margin-top:8px"><summary class="tiny" style="cursor:pointer">guion (${c.guion.length} caracteres) · leelo, tocalo y aprobalo</summary>
           <textarea id="cg-${c.n}" style="min-height:${c.estado === "guion" ? 200 : 120}px;margin-top:6px;font-size:13px;line-height:1.5" ${c.estado === "producido" ? "readonly" : ""}>${h(c.guion)}</textarea></details>` : ""}
@@ -626,6 +629,10 @@ async function seriePlan(slug, cuantos) {
 }
 async function serieCap(slug, n, cambios) {
   try { pintarSerie({...(await api(`/series/${slug}/capitulos/${n}`, {method: "PUT", body: cambios})), proyectos: {}, tarea: null, cola: {items: []}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
+}
+function serieCapVestuario(slug, n, pids) {
+  const vestuario = Object.fromEntries(pids.map(p => [p, $(`#cv-${n}-${p}`).value]));
+  serieCap(slug, n, {vestuario});
 }
 async function serieGuion(slug, n) {
   try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }

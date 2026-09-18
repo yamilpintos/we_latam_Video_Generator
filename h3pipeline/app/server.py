@@ -1241,6 +1241,7 @@ class EdicionCapitulo(BaseModel):
     locacion: str | None = None
     musica: str | None = None
     personajes: list[str] | None = None
+    vestuario: dict | None = None     # {id del personaje: ropa de este capítulo}
     estado: str | None = None         # aprobado | descartado | guion (aprobar guion) | propuesto
 
 

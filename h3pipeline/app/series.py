@@ -229,8 +229,12 @@ def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None 
         f"NOMBRE: {nombre.strip()}\nDESCRIPCIÓN DEL DIRECTOR (castellano): {descripcion.strip()}\n\n"
         "Devolvé JSON con:\n"
         "- \"descripcion\": UNA frase en inglés, 30-60 palabras, que empiece con el nombre y diga edad aparente, "
-        "cuerpo, cara, pelo, y el VESTUARIO COMPLETO y concreto (prendas, colores, accesorios) que va a llevar en toda la "
-        "serie. Es lo que se pega en cada prompt para que no cambie la ropa entre planos. Sin adjetivos vagos.\n"
+        "cuerpo, cara, pelo, y el VESTUARIO base concreto (prendas, colores) que va a llevar en toda la serie. Es lo que se "
+        "pega en cada prompt para que no cambie entre planos. Sin adjetivos vagos. REGLA: si por la idea de la serie o por "
+        "la descripción del director la ropa cambia según el capítulo (oficios distintos, disfraces, uniformes), el vestuario "
+        "base es NEUTRO y básico (por ejemplo una remera lisa y un jean) y SIN accesorios de oficio (nada de credenciales, "
+        "guardapolvos, herramientas): la ropa de cada capítulo se agrega después, capítulo por capítulo. La hoja de modelo "
+        "sostiene la cara; el texto de cada capítulo sostiene la ropa.\n"
         "- \"descripcion_es\": la misma, en castellano, para mostrarla.\n"
         "- \"voz\": cómo suena si habla (una frase en inglés: edad, timbre, ritmo, acento).",
         "Sos director de arte de una serie. Respondés sólo JSON.", log=log)
@@ -406,7 +410,8 @@ def planificar(slug: str, n: int, pista: str = "", log=print) -> dict:
               "Es una ANTOLOGÍA: cada capítulo se entiende solo; variá situaciones, tonos y qué personaje lleva la historia.\n")
            + (f"PISTA DEL DIRECTOR PARA ESTA TANDA: {pista.strip()}\n" if pista.strip() else "")
            + "\nDevolvé JSON: {\"capitulos\": [{\"titulo\": \"corto, en castellano, en MAYÚSCULAS\", \"premisa\": \"2-3 frases en castellano: qué pasa, qué se ve, con qué termina\", "
-             "\"personajes\": [ids de la serie que aparecen], \"locacion\": \"id de la serie o una descripción corta si es un lugar nuevo\""
+             "\"personajes\": [ids de la serie que aparecen], \"locacion\": \"id de la serie o una descripción corta si es un lugar nuevo\", "
+             "\"vestuario\": {\"id del personaje\": \"qué lleva puesto en ESTE capítulo, concreto, en inglés (prendas, colores, accesorios); vacío si va con su ropa base\"}"
            + (", \"musica\": \"cómo suena esta pista en particular, una frase\"" if s["formato"] == "musica" else "") + "}]}")
     r = _gpt(ins, "Sos showrunner de una serie de videos cortos generados con IA. Respondés sólo JSON.", log=log)
     caps = r.get("capitulos") or []
@@ -425,6 +430,7 @@ def planificar(slug: str, n: int, pista: str = "", log=print) -> dict:
         s["capitulos"].append({"n": sig, "titulo": str(c.get("titulo", f"CAPÍTULO {sig}")).strip()[:80],
                                "premisa": str(c.get("premisa", "")).strip(), "personajes": pers,
                                "locacion": str(c.get("locacion") or "").strip(), "musica": str(c.get("musica") or "").strip() or None,
+                               "vestuario": {k: str(v).strip() for k, v in (c.get("vestuario") or {}).items() if isinstance(c.get("vestuario"), dict) and str(v).strip()},
                                "estado": "propuesto", "guion": "", "resumen": "", "slug": None, "nota": "", "creado": time.time()})
         sig += 1
     log(f"{len(caps[:n])} capítulos propuestos")
@@ -448,6 +454,8 @@ def editar_capitulo(slug: str, n: int, **campos) -> dict:
             c[k] = str(campos[k]).strip()
     if "personajes" in campos and campos["personajes"] is not None:
         c["personajes"] = [p for p in campos["personajes"] if p in s["personajes"]]
+    if "vestuario" in campos and isinstance(campos["vestuario"], dict):
+        c["vestuario"] = {k: str(v).strip() for k, v in campos["vestuario"].items() if str(v).strip()}
     if "estado" in campos and campos["estado"] in ESTADOS_CAP:
         c["estado"] = campos["estado"]
     return guardar(s)
@@ -481,6 +489,8 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         if s["continuidad"] == "serial" and anteriores:
             ctx = "LO QUE PASÓ ANTES (en orden):\n" + "\n".join(f"  {x['n']}. {x['titulo']}: {x.get('resumen') or x['premisa']}" for x in anteriores[-8:]) + "\n\n"
         pers = ", ".join(f"{p} ({s['personajes'][p]['nombre']})" for p in c["personajes"] if p in s["personajes"]) or "los que hagan falta"
+        if c.get("vestuario"):
+            pers += ". ROPA EN ESTE CAPÍTULO: " + "; ".join(f"{s['personajes'][k]['nombre'] if k in s['personajes'] else k}: {v}" for k, v in c["vestuario"].items())
         if s["formato"] == "musica":
             ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\nLUGAR: {c.get('locacion') or 'a elección'}\n"
                    f"MÚSICA DE ESTE CAPÍTULO: {c.get('musica') or 'según el género de la serie'}\n\n"
@@ -542,11 +552,20 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
 
 # ───────────────────────────────────────────────────────────── producir
 
-def reparto(s: dict) -> dict:
+def reparto(s: dict, c: dict | None = None) -> dict:
     """Lo que el traductor tiene que respetar tal cual: ids, descripciones y
-    hojas de los personajes aprobados y las locaciones con imagen."""
-    pers = {pid: {"hoja": f"m_{pid}", "descripcion": p["descripcion"]}
-            for pid, p in s["personajes"].items() if p.get("hoja")}
+    hojas de los personajes aprobados y las locaciones con imagen. Con el
+    capítulo `c`, la descripción suma la ropa de ESE capítulo («vestuario»):
+    la hoja sostiene la cara, el texto sostiene la ropa."""
+    vest = (c or {}).get("vestuario") or {}
+    pers = {}
+    for pid, p in s["personajes"].items():
+        if not p.get("hoja"):
+            continue
+        desc = p["descripcion"].strip()
+        if vest.get(pid):
+            desc = desc.rstrip(".") + f". In this episode {p['nombre']} wears: {vest[pid].rstrip('.')}. This outfit replaces the base clothing in every shot."
+        pers[pid] = {"hoja": f"m_{pid}", "descripcion": desc}
     locs = {lid: {"imagen": f"l_{lid}", "descripcion": l["descripcion"]}
             for lid, l in s["locaciones"].items() if l.get("imagen")}
     voces = {pid: p["voz"] for pid, p in s["personajes"].items() if p.get("voz")} if s.get("modo") == "actuado" else {}
@@ -636,7 +655,7 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         es_musica = s["formato"] == "musica"
         actuado = s.get("modo") == "actuado" and not es_musica
         formato = "largo" if es_musica else s["formato"]
-        rep = reparto(s)
+        rep = reparto(s, c)
         pedido = {"guion": c["guion"], "formato": formato, "estructura": s["estructura"], "titulo": c["titulo"],
                   "estilo_imagen": s["estilo"]["imagen"], "estilo_video": s["estilo"].get("video", ""),
                   "cierre_video": s["estilo"].get("cierre", ""), "medio": s["estilo"].get("medio", ""),
