@@ -825,6 +825,31 @@ def masa(slug: str, motor: str = "openai", correr_cola: bool = False, apagar: bo
     return leer(slug)
 
 
+def guiones_todos(slug: str, log=print) -> dict:
+    """Aprueba todos los propuestos y escribe el guion de todos los que no lo
+    tienen. Para acá: los guiones se leen y después se produce (en masa o de
+    a uno). No gasta más que GPT."""
+    s = leer(slug)
+    if len((s.get("idea") or "").strip()) < 20:
+        raise RuntimeError("falta la idea general de la serie (paso 2)")
+    pend = [c["n"] for c in sorted(s["capitulos"], key=lambda c: c["n"])
+            if c["estado"] in ("propuesto", "aprobado", "error") and len(c.get("guion") or "") < 40]
+    log(f"{len(pend)} capítulo(s) sin guion")
+    hechos = 0
+    for n in pend:
+        try:
+            c = capitulo(leer(slug), n)
+            if c["estado"] in ("propuesto", "error"):
+                editar_capitulo(slug, n, estado="aprobado", nota="")
+            log(f"— capítulo {n}: guion")
+            escribir_guion(slug, n, log=log)
+            hechos += 1
+        except Exception as e:
+            log(f"!! capítulo {n}: {e}")
+    log(f"{hechos} guion(es) escritos; leelos y después «Producir en masa»")
+    return leer(slug)
+
+
 def producir_aprobados(slug: str, motor: str = "openai", log=print) -> dict:
     """Todos los capítulos con guion aprobado, uno tras otro. Uno que falla no
     frena a los demás."""

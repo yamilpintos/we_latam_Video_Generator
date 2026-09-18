@@ -1299,6 +1299,18 @@ def serie_capitulo_producir(slug: str, n: int, p: PedidoProducir):
     return {"tarea": tareas.lanzar(f"producir el capítulo {n}", args, _slug_serie(slug)).a_dict()}
 
 
+@app.post("/api/series/{slug}/guiones")
+def serie_guiones(slug: str):
+    """Aprueba todos los propuestos y escribe los guiones que falten (sólo GPT)."""
+    s = _serie_o_404(slug)
+    if not any(c["estado"] in ("propuesto", "aprobado", "error") and len(c.get("guion") or "") < 40 for c in s["capitulos"]):
+        raise HTTPException(409, "no hay capítulos sin guion")
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
+    args = ["-m", "h3pipeline.app.serie_tarea", "guiones", slug]
+    return {"tarea": tareas.lanzar("aprobar todo y escribir los guiones", args, _slug_serie(slug)).a_dict()}
+
+
 @app.post("/api/series/{slug}/masa")
 def serie_masa(slug: str, p: PedidoProducir):
     """Producción en masa: aprueba, escribe guiones, produce y encola todo lo que

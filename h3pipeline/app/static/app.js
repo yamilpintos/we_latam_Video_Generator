@@ -568,8 +568,9 @@ function pintarSerie(s) {
       <span class="row" style="margin-left:auto;gap:6px">${caps.length ? "" : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}', 1)" title="un solo capítulo para ver si la serie funciona antes de pedir más">1 piloto</button>`}<input id="plan-n" type="number" min="1" max="50" value="10" style="width:70px"><input id="plan-pista" placeholder="pista para esta tanda (opcional)" style="width:260px"><button class="btn s ${caps.length ? "p" : ""}" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}')">proponer capítulos (GPT)</button></span></h3>
     ${caps.length ? "" : `<div class="tiny" style="margin:-4px 0 10px">Conviene arrancar con <b>1 piloto</b>: lo aprobás, GPT escribe el guion, lo producís, lo generás con la cola y lo mirás. Si gusta, la serie ya quedó guardada con los personajes y el estilo: pedís diez más. Si no, la borrás.</div>`}
     ${caps.some(c => ["propuesto", "aprobado", "guion", "error"].includes(c.estado)) ? `<div class="card" style="margin-bottom:12px;padding:12px 16px;border-color:rgba(255,180,84,.35)"><div class="row">
+        ${caps.some(c => ["propuesto", "aprobado", "error"].includes(c.estado) && (c.guion || "").length < 40) ? `<button class="btn" ${tarea ? "disabled" : ""} onclick="serieGuiones('${slug}')">✎ Aprobar todos y escribir los guiones</button>` : ""}
         <button class="btn p" ${tarea || bloqueo ? "disabled" : ""} onclick="serieMasa('${slug}')">▶ Producir en masa</button>
-        <span class="muted">Todo solo, sin pasar por vos: aprueba los propuestos, escribe los guiones que falten, produce cada capítulo (guion → planos → ${s.modo === "actuado" ? "" : "voz → "}dibujos → ZIP) y los deja en la cola. Rehace los que quedaron en error. Con la casilla de la confirmación, además enciende la máquina y genera los videos.</span>
+        <span class="muted"><b>Aprobar todos y escribir los guiones</b> para leerlos antes (sólo GPT, sin dibujos). <b>Producir en masa</b>: todo solo, sin pasar por vos: aprueba los propuestos, escribe los guiones que falten, produce cada capítulo (guion → planos → ${s.modo === "actuado" ? "" : "voz → "}dibujos → ZIP) y los deja en la cola. Rehace los que quedaron en error. Con la casilla de la confirmación, además enciende la máquina y genera los videos.</span>
         ${aprobables ? `<button class="btn s" style="margin-left:auto" ${tarea ? "disabled" : ""} ${bloqueo ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">sólo los ${aprobables} con guion aprobado</button>` : ""}</div></div>` : ""}
     ${caps.map(filaCap).join("") || `<div class="muted">Sin capítulos. Proponé una tanda.</div>`}
     ${desc.length ? `<details style="margin-top:10px"><summary class="tiny" style="cursor:pointer">${desc.length} descartado(s)</summary>${desc.map(c => `<div class="tiny" style="margin-top:4px">${c.n}. ${h(c.titulo)} — ${h(c.premisa)} <button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">recuperar</button></div>`).join("")}</details>` : ""}
@@ -629,6 +630,9 @@ async function seriePlan(slug, cuantos) {
 }
 async function serieCap(slug, n, cambios) {
   try { pintarSerie({...(await api(`/series/${slug}/capitulos/${n}`, {method: "PUT", body: cambios})), proyectos: {}, tarea: null, cola: {items: []}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
+}
+async function serieGuiones(slug) {
+  try { const r = await api(`/series/${slug}/guiones`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("aprobando y escribiendo los guiones… (30-60 s cada uno)"); window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 function serieCapVestuario(slug, n, pids) {
   const vestuario = Object.fromEntries(pids.map(p => [p, $(`#cv-${n}-${p}`).value]));
