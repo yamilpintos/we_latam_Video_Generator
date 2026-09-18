@@ -541,10 +541,10 @@ function barraSerie(s) {
   const generando = cola.corriendo && m.fase === "lista";
   const etapas = [
     ["Guiones", conGuion, N, conGuion === N, "", conGuion < N ? "→ «Aprobar todos y escribir los guiones»" : "listos"],
-    ["Producidos", producidos, N, producidos === N, "", producidos < N ? (conGuion ? "→ «Producir en masa»" : "primero los guiones") : "listos"],
-    ["Máquina", m.fase === "lista" ? 1 : 0, 1, m.fase === "lista", FASE[m.fase] || m.fase || "apagada", m.fase && m.fase !== "apagada" && m.fase !== "fallo" ? `${usd(m.acumulado)} · ${m.minutos} min` : producidos ? "→ casilla «encender» o «Correr la cola»" : "se enciende al producir con la casilla"],
+    ["Producidos", producidos, N, producidos === N, "", producidos < N ? "→ «Producir en masa»" : "listos"],
+    ["Máquina", m.fase === "lista" ? 1 : 0, 1, m.fase === "lista", FASE[m.fase] || m.fase || "apagada", m.fase && m.fase !== "apagada" && m.fase !== "fallo" ? `${usd(m.acumulado)} · ${m.minutos} min` : "la enciende «Producir en masa»"],
     ["Videos", clipsHechos, clipsTotal || producidos * 3, clipsTotal > 0 && clipsHechos === clipsTotal, generando ? "🎬 generando ahora" : cola.corriendo ? "en cola" : "", generando ? "" : clipsTotal && clipsHechos === clipsTotal ? "bajados" : "los hace la máquina sola"],
-    ["Másters", masters, N, masters === N, "", masters < N && clipsHechos ? "→ Máster en cada proyecto" : ""]];
+    ["Másters", masters, N, masters === N, "", masters < N ? "salen solos al final" : "listos"]];
   const pct = Math.round((conGuion / N * 20) + (producidos / N * 25) + (m.fase === "lista" || clipsHechos ? 10 : m.fase && m.fase !== "apagada" && m.fase !== "fallo" ? 5 : 0) + (clipsTotal ? clipsHechos / clipsTotal * 35 : 0) + (masters / N * 10));
   // avisos cuando cambia la fase importante
   const clave = generando ? "generando" : cola.corriendo ? "cola" : m.fase;
@@ -562,6 +562,7 @@ function barraSerie(s) {
       : enCola ? `<div class="tiny" style="margin-top:10px">${enCola} capítulo(s) en la cola esperando que la corras (portada → La cola → Correr).</div>` : ""}</div>`;
 }
 function pintarSerie(s) {
+  window._serieActual = s;
   const slug = s.slug, tarea = s.tarea;
   const pj = Object.entries(s.personajes), lc = Object.entries(s.locaciones);
   const caps = s.capitulos.filter(c => c.estado !== "descartado"), desc = s.capitulos.filter(c => c.estado === "descartado");
@@ -635,7 +636,7 @@ function pintarSerie(s) {
     ${caps.some(c => ["propuesto", "aprobado", "guion", "error"].includes(c.estado)) ? `<div class="card" style="margin-bottom:12px;padding:12px 16px;border-color:rgba(255,180,84,.35)"><div class="row">
         ${caps.some(c => ["propuesto", "aprobado", "error"].includes(c.estado) && (c.guion || "").length < 40) ? `<button class="btn" ${tarea ? "disabled" : ""} onclick="serieGuiones('${slug}')">✎ Aprobar todos y escribir los guiones</button>` : ""}
         <button class="btn p" ${tarea || bloqueo ? "disabled" : ""} onclick="serieMasa('${slug}')">▶ Producir en masa</button>
-        <span class="muted"><b>Aprobar todos y escribir los guiones</b> para leerlos antes (sólo GPT, sin dibujos). <b>Producir en masa</b>: todo solo, sin pasar por vos: aprueba los propuestos, escribe los guiones que falten, produce cada capítulo (guion → planos → ${s.modo === "actuado" ? "" : "voz → "}dibujos → ZIP) y los deja en la cola. Rehace los que quedaron en error. Con la casilla de la confirmación, además enciende la máquina y genera los videos.</span>
+        <span class="muted"><b>Aprobar todos y escribir los guiones</b> para leerlos antes (sólo GPT, sin dibujos). <b>Producir en masa</b> es el último botón: aprueba los propuestos, escribe los guiones que falten, produce cada capítulo (guion → planos → ${s.modo === "actuado" ? "" : "voz → "}dibujos → ZIP) alquila la máquina, genera los videos, los baja, apaga y hace los másters. Sin tocar nada más. Si se corta, volvés a apretar y retoma.</span>
         ${aprobables ? `<button class="btn s" style="margin-left:auto" ${tarea ? "disabled" : ""} ${bloqueo ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">sólo los ${aprobables} con guion aprobado</button>` : ""}</div></div>` : ""}
     ${caps.map(filaCap).join("") || `<div class="muted">Sin capítulos. Proponé una tanda.</div>`}
     ${desc.length ? `<details style="margin-top:10px"><summary class="tiny" style="cursor:pointer">${desc.length} descartado(s)</summary>${desc.map(c => `<div class="tiny" style="margin-top:4px">${c.n}. ${h(c.titulo)} — ${h(c.premisa)} <button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">recuperar</button></div>`).join("")}</details>` : ""}
@@ -712,19 +713,25 @@ function serieProducir(slug, n, rehacer = false) {
   });
 }
 function serieMasa(slug) {
-  modal(`<h3>Producir en masa</h3><div class="muted" style="margin-bottom:12px">Todo lo que no esté descartado ni producido: se aprueba, se le escribe el guion si falta, se produce (guion → planos → voz → dibujos → ZIP) y va a la cola. Los que quedaron en error se rehacen desde el guion. Gasta API: unos centavos a un dólar por capítulo. Tarda 3-8 min por capítulo; podés cerrar la página.</div>
-    <label class="tiny" style="display:block;margin-bottom:6px"><input type="checkbox" id="masa-cola"> <b>y al terminar, encender la máquina y generar los videos</b> (alquila una 4×5090: ~$2-3 los primeros 7 shorts, después ~$0,25 por short)</label>
-    <label class="tiny" style="display:block;margin-bottom:14px;margin-left:22px"><input type="checkbox" id="masa-apagar" checked> apagar la máquina al terminar</label>
-    <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa</button></div>`);
+  const s = window._serieActual || {}; const caps = (s.capitulos || []).filter(c => c.estado !== "descartado");
+  const porHacer = caps.filter(c => c.estado !== "producido").length, sinVideo = caps.filter(c => !(c.slug && s.proyectos && s.proyectos[c.slug] && s.proyectos[c.slug].clips >= s.proyectos[c.slug].planos && s.proyectos[c.slug].planos)).length;
+  const planosPorCap = s.estructura === "short-15" ? 3 : s.estructura === "short-23" ? 5 : s.formato === "largo" ? 40 : 12;
+  const minGpu = 13 + sinVideo * (planosPorCap <= 4 ? 4.5 : planosPorCap <= 6 ? 8 : planosPorCap * 1.5);
+  const gpu = minGpu / 60 * 2.8, api = porHacer * 0.5;
+  modal(`<h3>Producir en masa · ${caps.length} capítulos</h3>
+    <div class="muted" style="margin-bottom:12px">Un solo botón y no hay que tocar nada más. En orden, todo solo:</div>
+    <ol class="muted" style="margin:0 0 12px;padding-left:18px;line-height:1.7">
+      <li>aprueba los propuestos y escribe los guiones que falten (GPT)</li>
+      <li>produce cada capítulo: planos, ${s.modo === "actuado" ? "" : "voz, "}dibujos, ZIP; rehace los que quedaron en error</li>
+      <li><b>alquila una 4×5090</b>, instala H3 y genera los videos; los baja y <b>apaga la máquina</b></li>
+      <li>hace el máster de cada capítulo</li></ol>
+    <div class="kpis" style="margin-bottom:12px"><div class="kpi"><div class="l">API (GPT, imágenes)</div><div class="v" style="font-size:18px">~${usd(api)}</div></div><div class="kpi"><div class="l">GPU (${sinVideo} videos)</div><div class="v" style="font-size:18px">~${usd(gpu)}</div></div><div class="kpi"><div class="l">tiempo total</div><div class="v" style="font-size:18px">~${Math.round(porHacer * 5 + minGpu + sinVideo * 2)} min</div></div></div>
+    <div class="tiny" style="margin-bottom:14px">Se puede cerrar la página: la barra «El proceso» y la carpeta en Proyectos muestran por dónde va, y te avisa cuando la máquina empieza a generar y cuando terminó. Si algo falla en el medio, volvés a apretar y retoma donde quedó.</div>
+    <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa · ~${usd(api + gpu)}</button></div>`);
   $("#masa-ok").onclick = async () => {
-    const cola = $("#masa-cola").checked, apagar = $("#masa-apagar").checked; cerrarModal(); pedirAvisos();
-    try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true, cola, apagar}}); seguirTarea(r.tarea, () => navegar()); toast(cola ? "produciendo en masa; al final enciende y genera" : "produciendo en masa…"); location.hash = `#/serie/${slug}`; window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
+    cerrarModal(); pedirAvisos();
+    try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => navegar()); toast("producción en masa lanzada: guiones → producir → máquina → videos → másters"); location.hash = `#/serie/${slug}`; window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
   };
-}
-function serieProducirTodos(slug, n) {
-  confirmar(`Producir ${n} capítulos`, `Uno tras otro: guion → planos → voz → dibujos → ZIP → cola. Gasta API (unos centavos a un dólar por capítulo en imágenes y voz), no GPU. Tarda 3-8 min por capítulo; podés cerrar la página.`, "Producir todos", async () => {
-    try { const r = await api(`/series/${slug}/producir-aprobados`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo los aprobados…"); window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
-  });
 }
 
 /* ─────────────────────────────────────────────── remasterizar: SD → 4K con FlashVSR en una A100 */

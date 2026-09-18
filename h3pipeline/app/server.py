@@ -1302,7 +1302,7 @@ class PedidoProducir(BaseModel):
     hasta: str = "cola"               # proyecto | dibujos | cola
     motor: str = "openai"
     rehacer: bool = False             # descartar el proyecto anterior y volver a traducir
-    cola: bool = False                # (masa) al terminar, encender la máquina y generar
+    cola: bool = True                 # (masa) encender la máquina, generar y masterizar (todo)
     apagar: bool = True               # (masa) apagar la máquina al final de la cola
 
 
@@ -1345,14 +1345,14 @@ def serie_masa(slug: str, p: PedidoProducir):
     s = _serie_o_404(slug)
     if not p.confirmar:
         raise HTTPException(400, "hace falta confirmar: true (gasta GPT, voz e imágenes; con cola, también GPU)")
-    if not any(c["estado"] in ("propuesto", "aprobado", "guion", "error") for c in s["capitulos"]):
-        raise HTTPException(409, "no hay capítulos por producir")
+    if not any(c["estado"] in ("propuesto", "aprobado", "guion", "error", "producido") for c in s["capitulos"]):
+        raise HTTPException(409, "no hay capítulos")
     if tareas.corriendo(_slug_serie(slug)):
         raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
     if p.cola and (tareas.corriendo("_cola") or tareas.corriendo("_maquina")):
         raise HTTPException(409, "la cola o la máquina ya tienen una tarea corriendo")
-    args = ["-m", "h3pipeline.app.serie_tarea", "masa", slug, "--motor", p.motor] + (["--cola"] if p.cola else []) + ([] if p.apagar else ["--no-apagar"])
-    return {"tarea": tareas.lanzar("producción en masa" + (" + cola" if p.cola else ""), args, _slug_serie(slug)).a_dict()}
+    args = ["-m", "h3pipeline.app.serie_tarea", "masa", slug, "--motor", p.motor] + ([] if p.cola else ["--sin-cola"]) + ([] if p.apagar else ["--no-apagar"])
+    return {"tarea": tareas.lanzar("producción en masa", args, _slug_serie(slug)).a_dict()}
 
 
 @app.post("/api/series/{slug}/producir-aprobados")

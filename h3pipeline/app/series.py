@@ -795,12 +795,50 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         raise
 
 
-def masa(slug: str, motor: str = "openai", correr_cola: bool = False, apagar: bool = True, log=print) -> dict:
-    """PRODUCCIÓN EN MASA, sin pasar por el usuario capítulo a capítulo: todo lo
-    que no esté descartado ni producido se aprueba, se le escribe el guion si
-    no lo tiene, se produce (rehaciendo lo que quedó mal) y va a la cola. Si
-    `correr_cola`, al final enciende la máquina y genera todo (eso alquila;
-    la confirmación la dio el usuario al apretar)."""
+def masterizar_todos(slug: str, log=print) -> int:
+    """El máster de cada capítulo con todos sus clips bajados: `montar` si no
+    hay voz en off (actuado: el audio de H3 es la pista), `mezclar` si la hay.
+    Devuelve cuántos salieron. Uno que falla no frena a los demás."""
+    from .. import montaje
+    s = leer(slug)
+    hechos = 0
+    for c in s["capitulos"]:
+        if c["estado"] != "producido" or not c.get("slug"):
+            continue
+        pc = maquina.MIS / c["slug"]
+        if not (pc / "proyecto.json").exists():
+            continue
+        if any(f.suffix == ".mp4" and "corte" not in f.name.lower() for f in pc.glob("*.mp4")):
+            hechos += 1
+            continue
+        try:
+            pr = Proyecto.cargar(pc / "proyecto.json")
+            planos = pr.construir()[1]["planos"]
+            faltan = montaje.faltantes(planos, pc / "clips") if (pc / "clips").exists() else ["(sin clips)"]
+        except Exception as e:
+            log(f"!! capítulo {c['n']}: no pude leer el proyecto ({e})")
+            continue
+        if faltan:
+            log(f"— capítulo {c['n']}: faltan {len(faltan)} clip(s); sin máster")
+            continue
+        que = "mezclar" if pr.voz else "montar"
+        log(f"— capítulo {c['n']}: máster ({que})")
+        try:
+            _python("-m", "h3pipeline", que, str(pc / "proyecto.json"), str(pc / "clips"), log=log)
+            hechos += 1
+            _estado(slug, c["n"], "producido", "máster listo")
+        except Exception as e:
+            log(f"!! capítulo {c['n']}: el máster falló: {e}")
+    return hechos
+
+
+def masa(slug: str, motor: str = "openai", correr_cola: bool = True, apagar: bool = True, log=print) -> dict:
+    """PRODUCCIÓN EN MASA: el último botón. Todo lo que no esté descartado ni
+    producido se aprueba, se le escribe el guion si no lo tiene, se produce
+    (rehaciendo lo que quedó mal) y va a la cola; después la cola enciende la
+    máquina, genera, baja y apaga; y al final sale el máster de cada capítulo.
+    Alquila GPU: la confirmación con el costo la dio el usuario al apretar.
+    Se puede volver a apretar en cualquier punto: retoma donde quedó."""
     s = leer(slug)
     if len((s.get("idea") or "").strip()) < 20:
         raise RuntimeError("falta la idea general de la serie (paso 2)")
@@ -826,14 +864,25 @@ def masa(slug: str, motor: str = "openai", correr_cola: bool = False, apagar: bo
             log(f"!! capítulo {n}: {e}")
             fallados.append(n)
     log(f"en masa: {len(hechos)} producidos, {len(fallados)} fallados" + (f" ({', '.join(map(str, fallados))})" if fallados else ""))
-    if correr_cola and hechos:
+    # los producidos de antes que quedaron fuera de la cola (p. ej. una corrida
+    # anterior sin cola) vuelven a entrar si todavía no tienen clips
+    for c in leer(slug)["capitulos"]:
+        if c["estado"] == "producido" and c.get("slug") and (maquina.MIS / c["slug"] / "proyecto.json").exists():
+            pc = maquina.MIS / c["slug"]
+            if any(pc.glob("*-para-vast.zip")) and not (pc / "clips").exists():
+                cola.agregar(c["slug"])
+    if correr_cola and cola.pendientes():
         from . import correr_cola as cc
         d = cola.leer()
         d["apagar_al_final"] = bool(apagar)
         cola.escribir(d)
-        log("=== la cola: enciendo la máquina y genero todo ===")
+        log(f"=== la cola: enciendo la máquina y genero {len(cola.pendientes())} capítulo(s) ===")
         rc = cc.main()
         log(f"cola terminada con código {rc}")
+    elif correr_cola:
+        log("la cola está vacía: nada que generar")
+    n = masterizar_todos(slug, log=log)
+    log(f"=== másters: {n} listos ===")
     return leer(slug)
 
 
