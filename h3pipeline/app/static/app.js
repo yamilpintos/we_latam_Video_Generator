@@ -130,6 +130,8 @@ ruta("/", async () => {
         <p>Escribís un prompt, ves la imagen, describís el movimiento y sale un clip de MiniMax. Para probar ideas antes de un guion.</p><span class="n">como un playground</span></div>
       <div class="puerta" onclick="location.hash='#/editar'"><span class="k">VIDEO → VIDEO · 2 A 15 S</span><h2>Editar</h2>
         <p>Subís un video y decís qué cambiar: la ropa, el fondo, un objeto, una frase. H3 lo rehace conservando encuadre y movimiento.</p><span class="n">referencia completa</span></div>
+      <div class="puerta" onclick="location.hash='#/remaster'"><span class="k">SD → 4K · PELÍCULAS</span><h2>Remasterizar</h2>
+        <p>Un capítulo o una película en definición estándar sale en 4K con FlashVSR. Analiza el origen gratis, te dice el costo y alquila una A100 aparte.</p><span class="n">otra máquina · 1× A100 80 GB</span></div>
     </div>
     <div class="card" id="maq" style="margin-top:34px"><h3>La máquina</h3><div class="muted">consultando…</div></div>
     <div class="card" id="cola" style="margin-top:14px"><h3>La cola</h3><div class="muted">consultando…</div></div>
@@ -406,6 +408,142 @@ async function editarGenerar(id) {
   toast(o.texto.trim().startsWith("subject_definitions:") ? "lanzando…" : "armando el prompt y lanzando… (15-40 s)");
   try { const t = await api("/editar/generar", {method: "POST", body: o}); toast(t.estado === "instalando_ref2va" ? "la máquina baja Ref2VA; el clip arranca solo después" : "edición lanzada en la máquina"); navegar(); }
   catch (e) { toast(e.message, true); }
+}
+
+/* ─────────────────────────────────────────────── remasterizar: SD → 4K con FlashVSR en una A100 */
+let remTimer = null;
+const FASES_REM = {apagada: ["apagada", ""], fallo: ["falló", "bad"], buscando: ["buscando una A100…", "warn"], arrancando: ["arrancando", "warn"],
+  instalando: ["instalando FlashVSR", "warn"], remasterizando: ["remasterizando", "warn"], codificando: ["codificando el 4K", "warn"],
+  bajando: ["bajando", "warn"], lista: ["viva, con salida sin bajar", "warn"]};
+const ESTADOS_REM = {origen: ["por preparar", ""], preparando: ["preparando la fuente", "warn"], preparado: ["fuente lista", "ok"],
+  alquilando: ["alquilando", "warn"], arrancando: ["arrancando la A100", "warn"], instalando: ["instalando FlashVSR", "warn"],
+  remasterizando: ["remasterizando", "warn"], codificando: ["codificando el 4K", "warn"], bajando: ["bajando el 4K", "warn"],
+  qc: ["control de calidad", "warn"], listo: ["listo", "ok"], sin_bajar: ["hecho, sin bajar", "bad"], error: ["error", "bad"]};
+const hms = (s) => { s = Math.max(0, Math.round(s || 0)); const hh = Math.floor(s / 3600), mm = Math.floor(s % 3600 / 60), ss = s % 60; return (hh ? hh + ":" : "") + String(mm).padStart(hh ? 2 : 1, "0") + ":" + String(ss).padStart(2, "0"); };
+ruta("/remaster", async () => {
+  const d = await api("/remaster");
+  const m = d.maquina || {fase: "apagada"};
+  const [ftxt, fcls] = FASES_REM[m.fase] || [m.fase, ""];
+  $("#vista").innerHTML = `<div class="wrap"><h1>Remasterizar <span class="pill ${fcls}">A100 ${h(ftxt)}${m.instancia && m.fase !== "apagada" ? " · " + m.instancia : ""}</span>${m.fase !== "apagada" && m.fase !== "fallo" ? `<span class="pill warn">${usd(m.acumulado)} · ${m.minutos} min</span> <button class="btn s d" onclick="remApagar()">apagar</button>` : ""}<span class="pill" style="margin-left:6px">saldo Vast ${usd(d.saldo)}</span></h1>
+    <p class="sub">Una película o un capítulo en definición estándar (DVD, máster de emisión, 576i/480p) a 4K con <b>FlashVSR v1.1</b>, el modelo que ganó las pruebas con jueces humanos de 2026. Corre en una <b>A100 de 80 GB aparte</b> de la máquina de H3. El análisis y la preparación son gratis; el alquiler se confirma con el costo a la vista. Medido: <b>1 minuto de A100 por segundo de video</b> (≈ $52 la hora de película); un origen pobre (menos de 5 Mb/s) inventa las caras lejanas.</p>
+    <div class="card" style="margin-bottom:14px"><h3>Nuevo origen</h3>
+      <div class="row"><label class="btn p">subir video<input type="file" id="rfile" accept="video/*,.mxf,.mpg,.vob,.ts" hidden></label>
+        <span class="tiny">hasta ~300 MB por el navegador. Para un máster grande:</span>
+        <input id="rruta" placeholder="ruta del archivo en este servidor, p. ej. remasterizado\\original\\capitulo.mxf" style="max-width:520px">
+        <button class="btn" onclick="remRuta()">analizar la ruta</button></div>
+      <div id="rerr" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
+    <div id="rtrabajos"></div></div>`;
+  $("#rfile").addEventListener("change", async (ev) => {
+    const f = ev.target.files[0]; if (!f) return;
+    if (f.size > 300 * 1024 * 1024) { $("#rerr").textContent = "el archivo pesa más de 300 MB: copialo a la carpeta del proyecto y pegá la ruta"; return; }
+    toast("subiendo y analizando… (puede tardar un minuto)");
+    const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+    try { await api("/remaster/origen", {method: "POST", body: {nombre: f.name, b64}}); toast("origen analizado"); navegar(); }
+    catch (e) { $("#rerr").textContent = e.message; }
+  });
+  pintarRemaster(d);
+});
+async function remRuta() {
+  const ruta = $("#rruta").value.trim(); if (!ruta) return;
+  toast("analizando… (sondeo + detección de entrelazado, 10-60 s)");
+  try { await api("/remaster/origen", {method: "POST", body: {ruta}}); toast("origen analizado"); navegar(); }
+  catch (e) { $("#rerr").textContent = e.message; }
+}
+function pintarRemaster(d) {
+  const ts = d.trabajos || [], m = d.maquina || {};
+  const libre = !d.ocupada && !d.tarea && (m.fase === "apagada" || m.fase === "fallo");
+  const secs = s => s == null ? "—" : `${Number(s).toFixed(1).replace(".", ",")} s`;
+  const barra = (t) => { const p = t.progreso || {}; const [etq] = ESTADOS_REM[t.estado] || [t.estado];
+    return `<div class="row" style="justify-content:space-between"><span class="pill warn"><i class="dot live"></i> ${etq}</span><span class="tiny">${p.total && p.hechos != null ? `${p.hechos} de ${p.total} cuadros` : ""}${m.inicio && m.fase !== "apagada" ? ` · ${usd(m.acumulado)} · ${m.minutos} min` : ""}</span></div>
+      <div class="bar" style="height:10px;margin-top:8px"><i style="width:${p.pct != null ? p.pct : 2}%"></i></div>
+      <div class="tiny mono" style="margin-top:6px;white-space:pre-wrap;opacity:.75">${h(p.ultimo || "esperando la primera señal…")}</div>
+      ${d.tarea ? `<pre class="pre" style="margin-top:8px;max-height:140px">${h(d.tarea.log)}</pre>` : ""}`; };
+  const sonda = (s) => `${s.w}×${s.h}${s.dar ? " (DAR " + s.dar + ")" : ""} · ${s.fps} fps · ${hms(s.dur)} · ${s.codec}${s.pix ? " " + s.pix : ""} · ${s.kbps ? (s.kbps / 1000).toFixed(1).replace(".", ",") + " Mb/s" : "bitrate ?"} · ${s.entrelazado ? "entrelazado " + s.campo.toUpperCase() : "progresivo"} · ${s.canales ? s.canales + " canal" + (s.canales > 1 ? "es" : "") + " de audio" : "sin audio"}`;
+  const avisos = (t) => (t.avisos || []).map(a => `<div class="pill ${a.nivel === "info" ? "" : a.nivel}" style="display:flex;white-space:normal;margin-top:6px;padding:8px 12px;line-height:1.35">${h(a.texto)}</div>`).join("");
+  const form = (t) => { const o = t.opciones, s = t.sonda; return `
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:8px">
+      <div><div class="tiny">desde (s)</div><input id="ri-${t.id}" type="number" min="0" step="0.1" value="${o.inicio || 0}"></div>
+      <div><div class="tiny">hasta (s, vacío = final)</div><input id="rf-${t.id}" type="number" min="0" step="0.1" value="${o.fin ?? ""}" placeholder="${Math.round(s.dur)}"></div>
+      <div><div class="tiny">recorte ancho:alto:x:y</div><input id="rc-${t.id}" value="${h(o.recorte || "")}" placeholder="sin recorte" title="saca el VBI y el blanking del máster; 720×608 IMX → 704:576:12:32"></div>
+      <div><div class="tiny">entrelazado</div><select id="rd-${t.id}"><option value="1" ${o.desentrelazar ? "selected" : ""}>desentrelazar (bwdif)</option><option value="0" ${!o.desentrelazar ? "selected" : ""}>ya es progresivo</option></select></div>
+      <div><div class="tiny">campo dominante</div><select id="rp-${t.id}">${["auto", "tff", "bff"].map(c => `<option value="${c}" ${o.campo === c ? "selected" : ""}>${c.toUpperCase()}</option>`).join("")}</select></div>
+    </div>
+    <div class="row" style="margin-top:10px"><button class="btn p" onclick="remPreparar('${t.id}')" ${d.tarea ? "disabled" : ""}>Preparar la fuente</button>
+      <span class="tiny">ffmpeg local, gratis: recorte + desentrelazado + x264 casi sin pérdida. ${t.fuente ? "Ya hay una fuente: prepararla de nuevo la reemplaza." : ""}</span></div>`; };
+  const estimado = (t) => `<div id="rest-${t.id}" class="card" style="margin-top:10px;padding:12px 14px;background:var(--panel2)"><div class="muted">consultando las A100 disponibles…</div></div>`;
+  const listo = (t) => { const s = t.salidas || {}; return `
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:8px;margin-top:6px"><div><div class="tiny">fuente (SD)</div><video controls preload="metadata" style="width:100%;border-radius:6px;background:#000" src="/api/remaster/archivo/fuentes/${t.fuente.split("/")[1]}"></video></div>
+      <div><div class="tiny">4K · ${t.final ? t.final.w + "×" + t.final.h : ""}</div><video controls preload="metadata" style="width:100%;border-radius:6px;background:#000" src="/api/remaster/archivo/salidas/${s["4k"].split("/")[1]}"></video></div></div>
+    ${t.qc && t.qc.length ? `<div class="tiny" style="margin-top:8px">control de calidad: origen (píxel tal cual) a la izquierda, 4K a la derecha; los dos últimos con zoom ×3 al centro</div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px;margin-top:4px">${t.qc.map(q => `<img src="/api/remaster/archivo/qc/${q.split("/")[1]}" style="width:100%;border-radius:6px;cursor:zoom-in" onclick="lightbox('/api/remaster/archivo/qc/${q.split("/")[1]}')">`).join("")}</div>` : ""}
+    <div class="row" style="margin-top:10px"><a class="btn p" href="/api/remaster/archivo/salidas/${s["4k"].split("/")[1]}" download>descargar 4K</a>
+      ${s.uhd ? `<a class="btn" href="/api/remaster/archivo/salidas/${s.uhd.split("/")[1]}" download>descargar UHD 3840×2160</a>` : `<button class="btn" onclick="remUhd('${t.id}')" ${d.tarea ? "disabled" : ""}>hacer versión UHD 3840×2160 (barras)</button>`}
+      <span class="tiny">${t.costo && t.costo.real != null ? `costó ${usd(t.costo.real)} (${t.costo.minutos} min de A100${t.costo.factor_medido ? `, ${t.costo.factor_medido}× tiempo real` : ""}; estimado ${usd(t.costo.estimado)})` : ""}</span></div>`; };
+  $("#rtrabajos").innerHTML = ts.map(t => { const [etq, cls] = ESTADOS_REM[t.estado] || [t.estado, ""]; const activo = ["preparando", "alquilando", "arrancando", "instalando", "remasterizando", "codificando", "bajando", "qc"].includes(t.estado);
+    return `<div class="card" style="margin-bottom:12px"><h3>${h(t.nombre)} <span class="tiny mono">${t.id}</span><span class="pill ${cls}">${activo ? '<i class="dot live"></i> ' : ""}${etq}</span></h3>
+    <div class="grid g2">
+      <div><div class="tiny" style="margin-bottom:6px">${sonda(t.sonda)}</div>
+        ${t.hoja ? `<img src="/api/remaster/archivo/hojas/${t.hoja.split("/")[1]}" style="width:100%;border-radius:6px;cursor:zoom-in" onclick="lightbox('/api/remaster/archivo/hojas/${t.hoja.split("/")[1]}')">` : ""}
+        ${avisos(t)}
+        ${t.fuente && t.hoja_fuente && t.estado !== "listo" ? `<div class="tiny" style="margin-top:8px">la fuente preparada: ${t.sonda_fuente ? t.sonda_fuente.w + "×" + t.sonda_fuente.h : ""} · ${secs(t.segundos_fuente)} · ${t.cuadros} cuadros → 4K ${t.final ? t.final.w + "×" + t.final.h : ""}</div><img src="/api/remaster/archivo/hojas/${t.hoja_fuente.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:4px;opacity:.9">` : ""}
+        <div class="tiny" style="margin-top:6px;opacity:.7">${h(t.origen)}</div></div>
+      <div>${activo ? barra(t)
+        : t.estado === "listo" ? listo(t)
+        : t.estado === "sin_bajar" ? `<div class="pill bad">hecho, sin bajar</div><div class="tiny" style="margin:6px 0">${h(t.nota)}</div><div class="row"><button class="btn p" onclick="remBajar('${t.id}')">bajar de nuevo</button><button class="btn d" onclick="remApagar()">apagar y perderlo</button></div>`
+        : (t.estado === "error" ? `<div class="pill bad">error</div><div class="tiny" style="margin:6px 0">${h(t.nota)}</div>` : "") + (t.nota && t.estado === "origen" ? `<div class="tiny" style="color:var(--bad)">${h(t.nota)}</div>` : "")
+          + form(t) + (t.fuente ? estimado(t) : "")}
+      </div></div>
+    ${!activo ? `<div class="row" style="justify-content:flex-end;margin-top:8px"><button class="btn s" onclick="remBorrar('${t.id}')">borrar</button></div>` : ""}</div>`; }).join("") || `<div class="muted">Nada todavía. Subí un video o pegá una ruta para analizarlo.</div>`;
+  ts.filter(t => t.fuente && !["preparando", "alquilando", "arrancando", "instalando", "remasterizando", "codificando", "bajando", "qc", "listo", "sin_bajar"].includes(t.estado)).forEach(t => remEstimar(t, libre));
+  clearTimeout(remTimer);
+  if (ts.some(t => t.estado !== "listo" && t.estado !== "error" && t.estado !== "origen" && t.estado !== "preparado" && t.estado !== "sin_bajar") || d.tarea)
+    remTimer = setTimeout(async () => { if (!$("#rtrabajos")) return; try { const d2 = await api("/remaster"); pintarRemaster(d2); } catch {} }, 10000);
+}
+async function remEstimar(t, libre) {
+  const box = $(`#rest-${t.id}`); if (!box) return;
+  try {
+    const e = await api(`/remaster/${t.id}/estimacion`);
+    const est = e.estimado, mejor = e.mejor;
+    box.innerHTML = `<div class="kpis"><div class="kpi"><div class="l">video</div><div class="v">${hms(e.segundos)}</div></div><div class="kpi"><div class="l">A100, estimado</div><div class="v">${est.minutos} min</div></div>
+        <div class="kpi"><div class="l">costo estimado</div><div class="v">${usd(est.costo)}</div></div><div class="kpi"><div class="l">tope (×1,5)</div><div class="v">${usd(est.tope)}</div></div></div>
+      <div class="tiny" style="margin-top:8px">${mejor ? `mejor A100 ahora: ${h(mejor.gpu)} ${Math.round(mejor.vram_gb)} GB · ${h(mejor.geo)} · $${mejor.dph}/h · ${mejor.inet} Mbps · fiab ${mejor.fiabilidad}` : "no hay ninguna A100 de 80 GB apta ahora (verificada, ≤ $1,30/h, fuera de China): probá en unos minutos"}${e.saldo != null ? ` · saldo ${usd(e.saldo)}` : ""}</div>
+      ${e.ofertas.length ? `<details style="margin-top:6px"><summary class="tiny" style="cursor:pointer">todas las ofertas (${e.ofertas.length})</summary><table style="margin-top:6px"><tr><th>placa</th><th>lugar</th><th class="num">$/h</th><th class="num">Mbps</th><th class="num">fiab</th><th class="num">estimado</th><th></th></tr>
+        ${e.ofertas.map(o => `<tr class="${o.apta ? "apta" : "noapta"}"><td>${h(o.gpu)} ${Math.round(o.vram_gb)} GB</td><td>${h(o.geo)}</td><td class="num">${o.dph}</td><td class="num">${o.inet}</td><td class="num">${o.fiabilidad}</td><td class="num">${usd(o.estimado)}</td><td>${o.apta ? `<button class="btn s" onclick="remCorrer('${t.id}', ${o.id}, ${o.estimado}, ${o.dph})">usar</button>` : `<span class="tiny">${h(o.motivos.join(", "))}</span>`}</td></tr>`).join("")}</table></details>` : ""}
+      <div class="row" style="margin-top:10px"><button class="btn p" ${libre && mejor ? "" : "disabled"} onclick="remCorrer('${t.id}', null, ${est.costo}, ${est.dph})">Remasterizar (alquila la A100)</button>
+        <span class="tiny">${!libre ? "hay otra tarea o una A100 encendida" : mejor ? "elige la de mayor fiabilidad; se destruye sola al terminar o al fallar" : "esperá a que aparezca una apta"}</span></div>`;
+  } catch (err) { box.innerHTML = `<div class="tiny" style="color:var(--bad)">${h(err.message)}</div>`; }
+}
+function remOpciones(id) {
+  return {inicio: Number($(`#ri-${id}`).value || 0), fin: $(`#rf-${id}`).value === "" ? null : Number($(`#rf-${id}`).value),
+          recorte: $(`#rc-${id}`).value.trim(), desentrelazar: $(`#rd-${id}`).value === "1", campo: $(`#rp-${id}`).value};
+}
+async function remPreparar(id) {
+  try { const r = await api(`/remaster/${id}/preparar`, {method: "POST", body: remOpciones(id)}); seguirTarea(r.tarea, () => navegar()); toast("preparando la fuente…"); navegar(); }
+  catch (e) { toast(e.message, true); }
+}
+function remCorrer(id, oferta, costo, dph) {
+  confirmar("Alquilar una A100 y remasterizar",
+    `Esto alquila una A100 de 80 GB a <b>$${dph}/h</b>, instala FlashVSR (~13 min), remasteriza a <b>1 min de máquina por segundo de video</b>, codifica el 4K en la máquina, lo baja y <b>destruye la instancia</b> sola al terminar o al fallar.<br><br>Costo estimado <b>${usd(costo)}</b>, tope ~${usd(costo * 1.5)}. Podés cerrar la página; la tarea sigue.`,
+    "Alquilar y remasterizar", async () => {
+      try { const r = await api(`/remaster/${id}/correr`, {method: "POST", body: {confirmar: true, oferta}}); seguirTarea(r.tarea, () => navegar()); toast("A100 alquilándose…"); navegar(); }
+      catch (e) { toast(e.message, true); }
+    });
+}
+async function remBajar(id) {
+  try { const r = await api(`/remaster/${id}/bajar`, {method: "POST"}); seguirTarea(r.tarea, () => navegar()); toast("bajando…"); navegar(); } catch (e) { toast(e.message, true); }
+}
+async function remUhd(id) {
+  try { const r = await api(`/remaster/${id}/uhd`, {method: "POST"}); seguirTarea(r.tarea, () => navegar()); toast("codificando la versión UHD…"); } catch (e) { toast(e.message, true); }
+}
+function remApagar() {
+  confirmar("Apagar la A100", "Destruye la instancia del remaster y deja de cobrar. Si había un trabajo en curso se pierde.", "Apagar", async () => {
+    try { const r = await api("/remaster/maquina/apagar", {method: "POST", body: {confirmar: true}}); toast(`apagada · ${usd(r.gasto_final)} en ${r.minutos} min`); estadoVast(); navegar(); } catch (e) { toast(e.message, true); }
+  }, true);
+}
+function remBorrar(id) {
+  confirmar("Borrar el trabajo", "Se borran la fuente preparada, las salidas y el QC de este trabajo. El archivo original no se toca si lo analizaste por ruta.", "Borrar", async () => {
+    try { await api(`/remaster/${id}`, {method: "DELETE"}); navegar(); } catch (e) { toast(e.message, true); }
+  }, true);
 }
 
 /* ─────────────────────────────────────────────── libre: el chat con H3 */

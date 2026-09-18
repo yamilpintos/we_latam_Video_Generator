@@ -1,0 +1,19 @@
+23:06:11 === corrida nocturna === entrada_mxf_19m16.mp4 → salida_mxf_flashvsr.mp4 · saldo 1.12
+23:06:12 la oferta preferida 36602059 no está; hay 3 A100 de 80 GB
+23:06:12 oferta 47195597: A100 PCIE 82 GB $0.873/h Oklahoma, US bajada 698 Mbps
+23:06:14 instancia 51374513 creada; cobrando desde ahora
+23:06:18   sin estado… 0.1 min
+23:06:40   loading… 0.4 min
+23:07:02   loading… 0.8 min
+23:07:27   lista en 1.2 min · ssh -p 40548 root@174.78.228.101
+23:07:27   subiendo setup-v2.sh (0 MB) a /workspace/prueba/
+23:07:35   subiendo infer_trozos.py (0 MB) a /workspace/prueba/
+23:07:43   subiendo entrada_mxf_19m16.mp4 (58 MB) a /workspace/prueba/
+23:09:03 setup lanzado
+23:21:58     + echo 'SETUP_OK en 770 s' | SETUP_OK en 770 s | diffsynth OK NVIDIA A100 80GB PCIe
+23:21:58 setup OK a los 16 min
+23:22:01 inferencia lanzada
+23:22:37     t = torch.from_numpy(np.asarray(img, np.uint8)).to(device=device, dtype=torch.float32)  # HWC |   0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:06<02:10,  6.89s/it] 10%|█         | 2/20 [00:09<01:17,  4.28s/it] 15%|█▌        | 3/20 [00:11<00:58,  3.42s/it] 20%|██        | 4/20 [
+23:23:10     t = torch.from_numpy(np.asarray(img, np.uint8)).to(device=device, dtype=torch.float32)  # HWC |   0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:06<02:10,  6.89s/it] 10%|█         | 2/20 [00:09<01:17,  4.28s/it] 15%|█▌        | 3/20 [00:11<00:58,  3.42s/it] 20%|██        | 4/20 [
+23:23:43     return F.conv3d( | RuntimeError: GET was unable to find an engine to execute this computation | [tiempo] modelo cargado en 6 s
+NOCTURNA_FIN rc=1

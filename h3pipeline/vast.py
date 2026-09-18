@@ -303,6 +303,42 @@ def crear(oferta: Oferta | int, *, confirmar: bool = False, disco_gb: int = DISC
     return r
 
 
+IMAGEN_CUDA124 = "vastai/base-image:cuda-12.4.1-cudnn-devel-ubuntu22.04-py311"
+_PORTAL = ("localhost:1111:11111:/:Instance Portal|localhost:8080:18080:/:Jupyter|"
+           "localhost:8080:8080:/terminals/1:Jupyter Terminal")
+
+
+def crear_con_imagen(oferta: Oferta | int, *, imagen: str, confirmar: bool = False,
+                     disco_gb: int = 60, etiqueta: str = "fabrica",
+                     clave: str | None = None) -> dict:
+    """Alquila con una imagen Docker propia, no con el template de ComfyUI.
+
+    Sirve para lo que no es H3 (el remaster con FlashVSR necesita CUDA 12.4 y
+    nada de ComfyUI). La trampa 2 de VAST.md era pasar `image` con un `onstart`
+    propio: el contenedor arrancaba sin sshd ni Jupyter. Replicando lo que trae
+    el template oficial —`onstart: entrypoint.sh`, el `runtype` y el `env` con
+    los puertos y `PORTAL_CONFIG`— una imagen propia arranca bien. Probado el
+    17 y el 18/9/2026 con `IMAGEN_CUDA124` en dos A100 (Chequia y Oklahoma).
+
+    **Empieza a cobrar apenas la instancia arranca.**
+    """
+    oid = oferta.id if isinstance(oferta, Oferta) else int(oferta)
+    if not confirmar:
+        raise ErrorVast(f"crear_con_imagen() no hace nada sin confirmar=True. "
+                        f"Alquilar la oferta {oid} empieza a cobrar de inmediato.")
+    env = {"-p 1111:1111": "1", "-p 8080:8080": "1", "OPEN_BUTTON_PORT": "1111",
+           "OPEN_BUTTON_TOKEN": "1", "JUPYTER_DIR": "/", "DATA_DIRECTORY": "/workspace/",
+           "PORTAL_CONFIG": _PORTAL}
+    cuerpo = {"client_id": "me", "image": imagen, "env": env, "disk": disco_gb, "label": etiqueta,
+              "onstart": "entrypoint.sh", "runtype": "jupyter_direc ssh_direc ssh_proxy",
+              "image_login": None, "python_utf8": False, "lang_utf8": False, "use_jupyter_lab": False,
+              "jupyter_dir": None, "cancel_unavail": False, "template_hash_id": None, "user": None}
+    r = _pedir(f"/asks/{oid}/", clave, metodo="PUT", cuerpo=cuerpo)
+    if not r.get("success", True):
+        raise ErrorVast(f"Vast no alquiló la oferta: {r}")
+    return r
+
+
 def autorizar_clave(instancia_id: int, clave_pub: str | None = None,
                     clave: str | None = None) -> dict:
     """Adjunta una clave pública **a la instancia**.

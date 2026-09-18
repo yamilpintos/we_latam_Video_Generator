@@ -86,3 +86,10 @@ mis-videos/_musica/
 
 # editar: videos subidos, hojas, clips
 mis-videos/_editar/
+
+# ── remasterizado (18/9): el máster de 22 GB, las entregas y las descargas a medias
+remasterizado/original/
+remasterizado/ENTREGA-*/
+*.part
+*.mxf
+mis-videos/_remaster/

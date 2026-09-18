@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import cola, editar, libre, maquina, tareas
+from . import cola, editar, libre, maquina, remaster, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -246,20 +246,10 @@ def _oferta_dict(o: vast.Oferta, planos: list[dict] | None, pasos: int = 8) -> d
     d = {"id": o.id, "gpu": o.gpu, "gpus": o.gpus, "vram_gb": o.vram_gb, "dph": round(o.dph, 3),
          "disco_gb": round(o.disco_gb), "inet": round(o.inet_down), "fiabilidad": round(o.fiabilidad, 4),
          "geo": o.geo, "verificacion": o.verificacion, "datacenter": o.datacenter}
-    motivos = []
-    if o.verificacion != "verified":
-        motivos.append("desverificada" if o.verificacion == "deverified" else "sin verificar")
-    if o.dph > 4.0:
-        motivos.append("precio absurdo")
-    if o.fiabilidad < 0.995:
-        motivos.append("fiabilidad < 0,995")
-    if "shanghai" in o.geo.lower():
-        motivos.append("Shanghái (colgó el 2/9)")
-    if o.inet_down < 800:
-        motivos.append("enlace < 800 Mbps")
-    if "5090" not in o.gpu:
-        motivos.append("no es 5090")
-    d["apta"] = not motivos
+    # Una sola definición de «apta» para toda la app (maquina.apta): hasta el
+    # 18/9 había dos copias y una dejaba pasar China continental.
+    ok, motivos = maquina.apta(o)
+    d["apta"] = ok
     d["motivos"] = motivos
     if planos:
         e = costos.estimar(planos, o.a_maquina(), pasos)
@@ -741,6 +731,10 @@ def estado_maquina():
         except Exception as e:
             out["existe"] = False
             out["error"] = str(e)
+            if isinstance(e, vast.ErrorVast) and "no existe" in str(e):
+                # Destruida desde otro lado: el estado pasa a apagada solo, y
+                # «Encender» vuelve a estar disponible (18/9).
+                out.update(maquina.desaparecida(m), existe=False)
             return out
         out["existe"] = True
         out["estado_vast"] = inst.get("actual_status")
@@ -1041,6 +1035,145 @@ def editar_archivo(carpeta: str, nombre: str):
     if carpeta not in ("fuentes", "assets", "clips"):
         raise HTTPException(404)
     f = editar.DIR / carpeta / Path(nombre).name
+    if not f.exists():
+        raise HTTPException(404)
+    return FileResponse(str(f), filename=f.name)
+
+
+# ─────────────────────────────────────────────────────── REMASTERIZAR (SD → 4K)
+# Otra máquina (1×A100 80 GB) y otro modelo (FlashVSR). Nada de acá toca la
+# 4×5090 de H3. Los pasos largos son tareas con slug `_remaster`.
+
+@app.get("/api/remaster")
+def remaster_estado():
+    return {"trabajos": remaster.refrescar(), "maquina": remaster.maquina_dict(), "saldo": _saldo(),
+            "ocupada": remaster.ocupada(),
+            "tarea": next((t.a_dict(lineas=6) for t in tareas.corriendo("_remaster")), None)}
+
+
+class OrigenRemaster(BaseModel):
+    nombre: str = ""
+    b64: str | None = None            # el archivo subido desde el navegador
+    ruta: str | None = None           # o una ruta en este servidor (másters de varios GB)
+
+
+@app.post("/api/remaster/origen")
+def remaster_origen(o: OrigenRemaster):
+    try:
+        return remaster.nuevo_origen(o.nombre, o.b64, o.ruta)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    except Exception as e:
+        raise HTTPException(500, f"no pude analizar el video: {e}")
+
+
+class OpcionesRemaster(BaseModel):
+    inicio: float = 0.0
+    fin: float | None = None
+    recorte: str = ""
+    desentrelazar: bool = True
+    campo: str = "auto"
+    variante: str = "full"
+
+
+@app.post("/api/remaster/{tid}/preparar")
+def remaster_preparar(tid: str, o: OpcionesRemaster):
+    """Guarda las opciones y lanza la preparación local (ffmpeg): gratis."""
+    try:
+        remaster.fijar_opciones(tid, **o.model_dump())
+    except KeyError:
+        raise HTTPException(404, "no existe ese trabajo")
+    except (ValueError, RuntimeError) as e:
+        raise HTTPException(422, str(e))
+    if tareas.corriendo("_remaster"):
+        raise HTTPException(409, "ya hay una tarea de remaster corriendo")
+    remaster.actualizar(tid, estado="preparando", nota="")
+    return {"tarea": tareas.lanzar("preparar fuente", ["-m", "h3pipeline.app.remasterizar", "preparar", tid], "_remaster").a_dict()}
+
+
+@app.get("/api/remaster/{tid}/estimacion")
+def remaster_estimacion(tid: str):
+    try:
+        return remaster.estimacion(tid)
+    except KeyError:
+        raise HTTPException(404, "no existe ese trabajo")
+    except Exception as e:
+        raise HTTPException(502, f"Vast no contestó: {e}")
+
+
+class CorrerRemaster(BaseModel):
+    confirmar: bool = False
+    oferta: int | None = None
+
+
+@app.post("/api/remaster/{tid}/correr")
+def remaster_correr(tid: str, c: CorrerRemaster):
+    if not c.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true (esto alquila una A100 y cobra)")
+    try:
+        t = remaster.trabajo(tid)
+    except KeyError:
+        raise HTTPException(404, "no existe ese trabajo")
+    if t["estado"] not in ("preparado", "error", "listo"):
+        raise HTTPException(409, f"el trabajo está en estado {t['estado']}")
+    if not t.get("fuente"):
+        raise HTTPException(409, "primero prepará la fuente")
+    if tareas.corriendo("_remaster") or remaster.ocupada():
+        raise HTTPException(409, "ya hay un remaster en curso")
+    m = remaster.sincronizar_maquina()
+    if m.get("fase") not in ("apagada", "fallo"):
+        raise HTTPException(409, f"ya hay una A100 en fase {m['fase']}; apagala primero")
+    args = ["-m", "h3pipeline.app.remasterizar", "correr", tid] + ([str(c.oferta)] if c.oferta else [])
+    remaster.actualizar(tid, estado="alquilando", nota="", qc=[], salidas={})
+    return {"tarea": tareas.lanzar("remasterizar en A100", args, "_remaster").a_dict()}
+
+
+@app.post("/api/remaster/{tid}/bajar")
+def remaster_bajar(tid: str):
+    if tareas.corriendo("_remaster"):
+        raise HTTPException(409, "ya hay una tarea de remaster corriendo")
+    return {"tarea": tareas.lanzar("bajar el 4K", ["-m", "h3pipeline.app.remasterizar", "bajar", tid], "_remaster").a_dict()}
+
+
+@app.post("/api/remaster/{tid}/uhd")
+def remaster_uhd(tid: str):
+    try:
+        t = remaster.trabajo(tid)
+    except KeyError:
+        raise HTTPException(404, "no existe ese trabajo")
+    if not (t.get("salidas") or {}).get("4k"):
+        raise HTTPException(409, "todavía no hay 4K bajado")
+    return {"tarea": tareas.lanzar("versión UHD", ["-m", "h3pipeline.app.remasterizar", "uhd", tid], "_remaster").a_dict()}
+
+
+@app.delete("/api/remaster/{tid}")
+def remaster_borrar(tid: str):
+    try:
+        remaster.borrar(tid)
+    except KeyError:
+        raise HTTPException(404, "no existe ese trabajo")
+    except RuntimeError as e:
+        raise HTTPException(409, str(e))
+    return {"ok": True}
+
+
+@app.post("/api/remaster/maquina/apagar")
+def remaster_apagar(a: Apagado):
+    if not a.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true")
+    for t in tareas.corriendo("_remaster"):
+        tareas.matar(t.id)
+    try:
+        return remaster.apagar(log=lambda *_: None)
+    except Exception as ex:
+        raise HTTPException(502, f"no pude destruir: {ex}")
+
+
+@app.get("/api/remaster/archivo/{carpeta}/{nombre}")
+def remaster_archivo(carpeta: str, nombre: str):
+    if carpeta not in ("hojas", "fuentes", "salidas", "qc", "logs"):
+        raise HTTPException(404)
+    f = remaster.DIR / carpeta / Path(nombre).name
     if not f.exists():
         raise HTTPException(404)
     return FileResponse(str(f), filename=f.name)

@@ -40,6 +40,10 @@ ZIP_SETUP = AQUI / "h3-setup.zip"
 REMOTO = AQUI.parent / "remoto"
 BYTES_MODELOS = 59e9          # perfil max, SOLO_FL=1 (COSTOS §12, VAST.md)
 TECHO_DPH = 4.0
+# La máquina del remaster (1×A100, app/remaster.py) es OTRA máquina, con su
+# propio estado: `adoptar()` no debe tomarla como la de H3. Se reconoce por la
+# etiqueta con que se alquila.
+ETIQUETA_REMASTER = "fabrica-remaster"
 
 
 # ───────────────────────────────────────────────────────────── estado
@@ -75,14 +79,30 @@ def sincronizar() -> dict:
     abierto la portada después de un redeploy."""
     adoptar()
     m = leer()
-    if m.get("fase") == "instalando" and m.get("instancia"):
+    if m.get("fase") in ("arrancando", "instalando", "lista") and m.get("instancia"):
         try:
             inst = vast.instancia(int(m["instancia"]))
-            if progreso_instalacion(inst)["listo"]:
-                m = escribir(fase="lista", lista_desde=time.time())
+        except vast.ErrorVast as e:
+            if "no existe" in str(e):
+                return desaparecida(m)
+            return m
         except Exception:
-            pass
+            return m
+        if m.get("fase") == "instalando" and progreso_instalacion(inst)["listo"]:
+            m = escribir(fase="lista", lista_desde=time.time())
     return m
+
+
+def desaparecida(m: dict) -> dict:
+    """El estado dice que hay máquina pero Vast ya no la tiene: la destruyeron
+    desde otro lado (la consola de Vast, otra copia de la app —Render y la PC
+    local tienen cada una su estado—, o expiró). Hasta el 18/9 el estado local
+    quedaba en «lista» con una instancia muerta, la portada la mostraba lista y
+    «Encender» daba 409 por «ya hay una máquina». Se pasa a apagada sin
+    inventar un gasto: no sabemos cuándo murió, así que `gasto_final` queda en
+    null y el motivo en `error`."""
+    return escribir(fase="apagada", fin=None, gasto_final=None, proyecto=None,
+                    error=f"la instancia {m.get('instancia')} ya no existe en Vast (destruida desde otro lado)")
 
 
 _adopcion: dict = {"t": 0}
@@ -102,7 +122,8 @@ def adoptar(cada: float = 60.0) -> dict | None:
     _adopcion["t"] = ahora
     try:
         vivas = [i for i in vast._pedir("/instances/").get("instances", [])
-                 if i.get("actual_status") in ("running", "loading", "created")]
+                 if i.get("actual_status") in ("running", "loading", "created")
+                 and not str(i.get("label") or "").startswith(ETIQUETA_REMASTER)]
     except Exception:
         return None
     if not vivas:
@@ -126,6 +147,15 @@ def gasto(d: dict) -> dict:
 
 # ───────────────────────────────────────────────────────────── ofertas
 
+def china_continental(geo: str) -> bool:
+    """«Zhejiang, CN», «Shanghai, CN» o «, CN» a secas: desde ahí no se bajan
+    los modelos (huggingface y github bloqueados, VAST.md trampa 17). Hong
+    Kong («…, HK») sí tiene salida. Hasta el 18/9 sólo se filtraba «shanghai»
+    y una Zhejiang pasaba por apta."""
+    g = (geo or "").strip().lower()
+    return g.endswith(", cn") or g == "cn" or "china" in g
+
+
 def apta(o: vast.Oferta) -> tuple[bool, list[str]]:
     motivos = []
     if o.verificacion != "verified":
@@ -134,8 +164,8 @@ def apta(o: vast.Oferta) -> tuple[bool, list[str]]:
         motivos.append("precio absurdo")
     if o.fiabilidad < 0.995:
         motivos.append("fiabilidad < 0,995")
-    if "shanghai" in o.geo.lower():
-        motivos.append("Shanghái")
+    if china_continental(o.geo):
+        motivos.append("China continental")
     if o.inet_down < 800:
         motivos.append("enlace < 800 Mbps")
     if "5090" not in o.gpu:
