@@ -561,6 +561,10 @@ function barraSerie(s) {
       : cola.corriendo ? `<div class="pill warn" style="margin-top:10px"><i class="dot live"></i> la cola corre: ${FASE[m.fase] || m.fase}${m.fase !== "lista" ? " (todavía no genera)" : ""}</div>`
       : enCola ? `<div class="tiny" style="margin-top:10px">${enCola} capítulo(s) en la cola esperando que la corras (portada → La cola → Correr).</div>` : ""}</div>`;
 }
+function verUltimoLog() {
+  const t = (window._serieActual || {}).ultima_tarea; if (!t) return;
+  modal(`<h3>Log de la última tarea</h3><div class="tiny" style="margin-bottom:8px">${h(t.nombre)} · ${t.estado} · ${mins(t.segundos)}</div><pre class="pre" style="max-height:60vh">${h(t.log)}</pre>`);
+}
 function pintarSerie(s) {
   window._serieActual = s;
   const slug = s.slug, tarea = s.tarea;
@@ -609,7 +613,7 @@ function pintarSerie(s) {
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>`
       : ""}
     ${barraSerie(s)}
-    ${!tarea && s.ultima_tarea ? `<div class="tiny" style="margin:-6px 0 14px 4px">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · <span class="pill ${s.ultima_tarea.estado === "ok" ? "ok" : "bad"}" style="padding:1px 8px">${s.ultima_tarea.estado === "ok" ? "terminó bien" : "falló"}</span> · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} · <a href="#" onclick="event.preventDefault();modal('<h3>Log de la última tarea</h3><pre class=pre style=max-height:60vh>' + h(${JSON.stringify(s.ultima_tarea.log).replace(/</g, "\u003c")}) + '</pre>')">ver el log</a></div>` : ""}
+    ${!tarea && s.ultima_tarea ? `<div class="tiny" style="margin:-6px 0 14px 4px">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · <span class="pill ${s.ultima_tarea.estado === "ok" ? "ok" : "bad"}" style="padding:1px 8px">${s.ultima_tarea.estado === "ok" ? "terminó bien" : "falló"}</span> · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} · <a href="#" onclick="event.preventDefault();verUltimoLog()">ver el log</a></div>` : ""}
     <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
     <div class="grid g3">
       <div class="card" style="padding:12px"><b>Nuevo personaje</b><div class="tiny" style="margin-bottom:6px">GPT lo pasa a la descripción de los prompts y después le dibujás la hoja.</div>
@@ -717,7 +721,7 @@ function serieMasa(slug) {
   const porHacer = caps.filter(c => c.estado !== "producido").length, sinVideo = caps.filter(c => !(c.slug && s.proyectos && s.proyectos[c.slug] && s.proyectos[c.slug].clips >= s.proyectos[c.slug].planos && s.proyectos[c.slug].planos)).length;
   const planosPorCap = s.estructura === "short-15" ? 3 : s.estructura === "short-23" ? 5 : s.formato === "largo" ? 40 : 12;
   const minGpu = 13 + sinVideo * (planosPorCap <= 4 ? 4.5 : planosPorCap <= 6 ? 8 : planosPorCap * 1.5);
-  const gpu = minGpu / 60 * 2.8, api = porHacer * 0.5;
+  const gpu = minGpu / 60 * 2.8, costoApi = porHacer * 0.5;   // (no llamarla `api`: tapa la función que habla con el servidor)
   modal(`<h3>Producir en masa · ${caps.length} capítulos</h3>
     <div class="muted" style="margin-bottom:12px">Un solo botón y no hay que tocar nada más. En orden, todo solo:</div>
     <ol class="muted" style="margin:0 0 12px;padding-left:18px;line-height:1.7">
@@ -725,9 +729,9 @@ function serieMasa(slug) {
       <li>produce cada capítulo: planos, ${s.modo === "actuado" ? "" : "voz, "}dibujos, ZIP; rehace los que quedaron en error</li>
       <li><b>alquila una 4×5090</b>, instala H3 y genera los videos; los baja y <b>apaga la máquina</b></li>
       <li>hace el máster de cada capítulo</li></ol>
-    <div class="kpis" style="margin-bottom:12px"><div class="kpi"><div class="l">API (GPT, imágenes)</div><div class="v" style="font-size:18px">~${usd(api)}</div></div><div class="kpi"><div class="l">GPU (${sinVideo} videos)</div><div class="v" style="font-size:18px">~${usd(gpu)}</div></div><div class="kpi"><div class="l">tiempo total</div><div class="v" style="font-size:18px">~${Math.round(porHacer * 5 + minGpu + sinVideo * 2)} min</div></div></div>
+    <div class="kpis" style="margin-bottom:12px"><div class="kpi"><div class="l">API (GPT, imágenes)</div><div class="v" style="font-size:18px">~${usd(costoApi)}</div></div><div class="kpi"><div class="l">GPU (${sinVideo} videos)</div><div class="v" style="font-size:18px">~${usd(gpu)}</div></div><div class="kpi"><div class="l">tiempo total</div><div class="v" style="font-size:18px">~${Math.round(porHacer * 5 + minGpu + sinVideo * 2)} min</div></div></div>
     <div class="tiny" style="margin-bottom:14px">Se puede cerrar la página: la barra «El proceso» y la carpeta en Proyectos muestran por dónde va, y te avisa cuando la máquina empieza a generar y cuando terminó. Si algo falla en el medio, volvés a apretar y retoma donde quedó.</div>
-    <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa · ~${usd(api + gpu)}</button></div>`);
+    <div class="row" style="justify-content:flex-end"><button class="btn" onclick="cerrarModal()">Cancelar</button><button class="btn p" id="masa-ok">Producir en masa · ~${usd(costoApi + gpu)}</button></div>`);
   $("#masa-ok").onclick = async () => {
     cerrarModal(); pedirAvisos();
     try { const r = await api(`/series/${slug}/masa`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => navegar()); toast("producción en masa lanzada: guiones → producir → máquina → videos → másters"); location.hash = `#/serie/${slug}`; window.scrollTo({top: 0, behavior: "smooth"}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
