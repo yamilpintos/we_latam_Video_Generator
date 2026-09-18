@@ -543,7 +543,8 @@ function pintarSerie(s) {
       ${s.musica ? `<div class="tiny" style="margin-top:4px">Música: ${h(s.musica.genero)} · pistas de ${s.musica.duracion} s · ${h(s.musica.tipo || "")}</div>` : ""}
       <div class="row" style="margin-top:8px"><button class="btn s p" onclick="serieBiblia('${slug}')">guardar la idea</button><button class="btn s d" style="margin-left:auto" onclick="serieBorrar('${slug}')">borrar la serie</button></div></div>
     <h3 style="margin:26px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">3</b> Capítulos <span class="pill">${caps.length}</span>
-      <span class="row" style="margin-left:auto;gap:6px"><input id="plan-n" type="number" min="1" max="50" value="10" style="width:70px"><input id="plan-pista" placeholder="pista para esta tanda (opcional)" style="width:260px"><button class="btn s p" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}')">proponer capítulos (GPT)</button></span></h3>
+      <span class="row" style="margin-left:auto;gap:6px">${caps.length ? "" : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}', 1)" title="un solo capítulo para ver si la serie funciona antes de pedir más">1 piloto</button>`}<input id="plan-n" type="number" min="1" max="50" value="10" style="width:70px"><input id="plan-pista" placeholder="pista para esta tanda (opcional)" style="width:260px"><button class="btn s ${caps.length ? "p" : ""}" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}')">proponer capítulos (GPT)</button></span></h3>
+    ${caps.length ? "" : `<div class="tiny" style="margin:-4px 0 10px">Conviene arrancar con <b>1 piloto</b>: lo aprobás, GPT escribe el guion, lo producís, lo generás con la cola y lo mirás. Si gusta, la serie ya quedó guardada con los personajes y el estilo: pedís diez más. Si no, la borrás.</div>`}
     ${aprobables ? `<div class="row" style="margin-bottom:10px"><button class="btn p" ${tarea ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">producir los ${aprobables} con guion aprobado</button><span class="tiny">traduce, hace la voz, dibuja, empaqueta y encola cada uno; después corrés la cola</span></div>` : ""}
     ${caps.map(filaCap).join("") || `<div class="muted">Sin capítulos. Proponé una tanda.</div>`}
     ${desc.length ? `<details style="margin-top:10px"><summary class="tiny" style="cursor:pointer">${desc.length} descartado(s)</summary>${desc.map(c => `<div class="tiny" style="margin-top:4px">${c.n}. ${h(c.titulo)} — ${h(c.premisa)} <button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">recuperar</button></div>`).join("")}</details>` : ""}
@@ -590,8 +591,8 @@ function serieLocacionQuitar(slug, id) {
 async function serieHojas(slug, ids, rehacer) {
   try { const r = await api(`/series/${slug}/hojas`, {method: "POST", body: {ids, rehacer, motor: "openai"}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("dibujando… (1-2 min por hoja)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
 }
-async function seriePlan(slug) {
-  const n = Number($("#plan-n").value || 10), pista = $("#plan-pista").value;
+async function seriePlan(slug, cuantos) {
+  const n = cuantos || Number($("#plan-n").value || 10), pista = $("#plan-pista").value;
   try { const r = await api(`/series/${slug}/planificar`, {method: "POST", body: {n, pista}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast(`GPT propone ${n} capítulos… (30-90 s)`); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
 }
 async function serieCap(slug, n, cambios) {
