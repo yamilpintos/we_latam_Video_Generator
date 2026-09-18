@@ -232,20 +232,33 @@ function apagarMaquina() {
 }
 
 /* ─────────────────────────────────────────────── proyectos */
+let proyTimer = null;
 ruta("/proyectos", async () => {
   const [ps, sd] = await Promise.all([api("/proyectos"), api("/series").catch(() => ({series: []}))]);
+  const detalles = await Promise.all(sd.series.map(s => api(`/series/${s.slug}`).catch(() => null)));
   const porSerie = {};
   ps.forEach(p => { if (p.serie?.slug) (porSerie[p.serie.slug] = porSerie[p.serie.slug] || []).push(p); });
   const sueltos = ps.filter(p => !p.serie?.slug);
-  const carpetas = sd.series.map(s => { const caps = (porSerie[s.slug] || []).sort((a, b) => (a.serie.capitulo || 0) - (b.serie.capitulo || 0));
-    const listos = caps.filter(p => p.estado?.zip && p.estado.clips.hechos < p.estado.clips.esperados).length, masters = caps.filter(p => p.estado?.masters?.length).length;
-    return `<div class="card" style="margin-bottom:14px;border-color:rgba(255,180,84,.35)"><h3><span style="color:var(--ac)">▣</span> ${h(s.titulo)} <span class="pill">serie · ${FORMATOS_SERIE[s.formato] || s.formato}</span><span class="tiny">${s.personajes} personajes · ${s.capitulos} capítulos · ${caps.length} carpetas · ${masters} másters</span>
-        <span class="row" style="margin-left:auto;gap:6px"><a class="btn s p" href="#/serie/${s.slug}">abrir la serie</a>${s.aprobados || s.capitulos > s.producidos ? `<button class="btn s" onclick="serieMasa('${s.slug}')">producir en masa</button>` : ""}${listos ? `<button class="btn s" onclick="encolarSerie(${JSON.stringify(caps.filter(p => p.estado?.zip && p.estado.clips.hechos < p.estado.clips.esperados).map(p => p.slug)).replace(/"/g, "&quot;")})">＋ ${listos} a la cola</button>` : ""}</span></h3>
-      ${caps.length ? `<div class="grid g3" style="margin-top:6px">${caps.map(tarjetaProyecto).join("")}</div>` : `<div class="tiny">Todavía no hay capítulos producidos: se producen desde la serie.</div>`}</div>`; }).join("");
-  $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Las series son carpetas con sus capítulos adentro. Abajo, los videos sueltos. El estado sale de lo que existe en cada carpeta de <code>mis-videos/</code>.</p>
+  let vivo = false;
+  const carpetas = sd.series.map((s, i) => { const d = detalles[i]; const caps = (porSerie[s.slug] || []).sort((a, b) => (a.serie.capitulo || 0) - (b.serie.capitulo || 0));
+    const listos = caps.filter(p => p.estado?.zip && p.estado.clips.hechos < p.estado.clips.esperados).map(p => p.slug), masters = caps.filter(p => p.estado?.masters?.length).length;
+    const enCurso = d && (d.tarea || d.cola?.corriendo || (d.maquina && !["apagada", "fallo"].includes(d.maquina.fase)) || d.capitulos.some(c => c.estado === "escribiendo" || c.estado === "produciendo"));
+    if (enCurso) vivo = true;
+    const ESTC = ESTADOS_CAP;
+    const filas = d ? d.capitulos.filter(c => c.estado !== "descartado").map(c => { const [etq, cls] = ESTC[c.estado] || [c.estado, ""]; const pr = c.slug && d.proyectos[c.slug]; const gen = pr && d.cola?.corriendo && d.maquina?.fase === "lista" && pr.en_cola;
+      return `<tr><td>${c.n}. ${h(c.titulo)}</td><td><span class="pill ${cls}">${["escribiendo", "produciendo"].includes(c.estado) ? '<i class="dot live"></i> ' : ""}${etq}</span></td>
+        <td class="tiny">${pr ? `${pr.assets} dibujos · ${pr.clips}/${pr.planos} clips${pr.masters.length ? " · <b>máster listo</b>" : gen ? ' · <span class="pill warn"><i class="dot live"></i> generando</span>' : pr.en_cola ? " · en la cola" : pr.zip ? " · ZIP listo" : ""}` : h(c.nota || "")}</td>
+        <td>${c.slug && pr ? `<a class="btn s" href="#/p/${c.slug}">abrir</a>` : ""}</td></tr>`; }).join("") : "";
+    return `<details class="card" ${enCurso || sd.series.length === 1 ? "open" : ""} style="margin-bottom:14px;border-color:rgba(255,180,84,.35)"><summary style="cursor:pointer;list-style:none"><h3 style="margin:0"><span style="color:var(--ac)">▣</span> ${h(s.titulo)} <span class="pill">serie · ${FORMATOS_SERIE[s.formato] || s.formato}</span>${enCurso ? '<span class="pill warn"><i class="dot live"></i> en curso</span>' : ""}<span class="tiny">${s.personajes} personajes · ${s.capitulos} capítulos · ${masters} másters</span>
+        <span class="row" style="margin-left:auto;gap:6px"><a class="btn s p" href="#/serie/${s.slug}" onclick="event.stopPropagation()">abrir la serie</a>${s.capitulos > s.producidos ? `<button class="btn s" onclick="event.stopPropagation();serieMasa('${s.slug}')">producir en masa</button>` : ""}${listos.length ? `<button class="btn s" onclick="event.stopPropagation();encolarSerie(${JSON.stringify(listos).replace(/"/g, "&quot;")})">＋ ${listos.length} a la cola</button>` : ""}</span></h3></summary>
+      <div style="margin-top:12px">${d ? barraSerie(d) : ""}
+      ${filas ? `<table><tr><th>capítulo</th><th>estado</th><th>avance</th><th></th></tr>${filas}</table>` : `<div class="tiny">Todavía no hay capítulos: se proponen desde la serie.</div>`}</div></details>`; }).join("");
+  $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Las series son carpetas con sus capítulos adentro y su barra del proceso; se refrescan solas mientras algo corre. Abajo, los videos sueltos.</p>
     <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Short</a><a class="btn" href="#/nuevo/largo">＋ Largo</a><a class="btn" href="#/nuevo/loop">＋ Loop</a><span class="tiny">serie nueva: desde Short, Largo o Music video</span></div>
     ${carpetas}
     ${sueltos.length ? `<details ${carpetas ? "" : "open"} style="margin-top:8px"><summary class="tiny" style="cursor:pointer;margin-bottom:8px">${sueltos.length} video${sueltos.length > 1 ? "s" : ""} suelto${sueltos.length > 1 ? "s" : ""} (fuera de series)</summary><div class="grid g3">${sueltos.map(tarjetaProyecto).join("")}</div></details>` : ""}</div>`;
+  clearTimeout(proyTimer);
+  if (vivo) proyTimer = setTimeout(() => { if (location.hash.replace(/^#/, "") === "/proyectos") navegar(); }, 15000);
 });
 async function encolarSerie(slugs) {
   try { for (const s of slugs) await api("/cola/agregar", {method: "POST", body: {slug: s}}); toast(`${slugs.length} en la cola`); navegar(); } catch (e) { toast(e.message, true); }
