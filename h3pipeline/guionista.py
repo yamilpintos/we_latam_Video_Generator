@@ -64,7 +64,7 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
                 estilo_video: str = "", cierre_video: str = "", medio: str = "",
                 voz: str | None = "kate", titulo: str = "", negativos: bool = True,
                 notas: str = "", duracion: float | None = None,
-                reparto: dict | None = None) -> str:
+                reparto: dict | None = None, actuado: bool = False) -> str:
     est = Estructura.cargar(estructura)
     if duracion and abs(est.duracion_objetivo - duracion) > 0.01:
         est = est.con_duracion(duracion)
@@ -88,6 +88,27 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
                  f"tiene lugar para {int(3 * v['cps'] * 0.92)} caracteres, no más. Esto es lo "
                  f"que más se falla: contá los caracteres. Declará "
                  f"`\"voces\": {{\"narrador\": \"{v['id']}\"}}`.")
+    elif voz is None and actuado:
+        # Series en modo ACTUADO (18/9/2026): nadie narra; cada personaje dice su
+        # línea en cámara y la genera H3 dentro del clip (regla 24: lo que nace y
+        # muere dentro del plano lo hace H3). El reescritor convierte esto en
+        # `(S1) … <d>[Spanish] …</d>` con la boca en sincronía y labios cerrados
+        # antes y después.
+        L.append("- MODO ACTUADO, SIN voz en off: no escribas `voz` ni `voces`. Los personajes hablan EN CÁMARA:")
+        L.append("  · el guion trae las líneas como `NOMBRE: texto`; cada línea va en el plano donde se dice, en "
+                 "`dialogo` (el texto LITERAL, sin el nombre), con `habla` = id del personaje que la dice y "
+                 "`voz_desc` = cómo suena su voz (usá la descripción de voz del reparto).")
+        L.append("  · UNA línea por plano y UN solo personaje hablando por plano; nunca dos alternando en el mismo "
+                 "clip. Si el guion tiene un ida y vuelta, son dos planos.")
+        L.append("  · La línea tiene que caber en el plano: como mucho 12 palabras / ~55 caracteres por plano de "
+                 f"{grilla.MINIMO:.2f} s, y `corta` ≥ 0,35 s por palabra + 1 s. Si no entra, partila en dos planos.")
+        L.append("  · En `ve` el que habla está de frente o tres cuartos, con la BOCA VISIBLE y libre (nada tapándola: "
+                 "ni manos, ni vaso, ni bufanda). En `mueve` decí que habla mirando a quien corresponde.")
+        L.append("  · Los planos sin línea llevan `dialogo` null y su `audio` de ambiente. Las reacciones (escuchar, "
+                 "mirar, callar) también son planos, sin diálogo.")
+        L.append("  · `personajes` del plano incluye siempre al que habla; `off` false.")
+        if reparto and reparto.get("voces"):
+            L.append("  · Voces del reparto (para `voz_desc`): " + json.dumps(reparto["voces"], ensure_ascii=False))
     elif voz is None:
         L.append("- NO hay voz en off: no escribas `voz`. El gancho lo cargan imagen, sonido y texto.")
     if duracion and duracion <= grilla.MAXIMO + 0.1:
@@ -245,13 +266,14 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
              estilo_video: str = "", cierre_video: str = "", medio: str = "",
              voz: str | None = "kate", titulo: str = "", negativos: bool = True,
              notas: str = "", reintentos: int = 2, log=print, duracion: float | None = None,
-             reparto: dict | None = None) -> dict:
+             reparto: dict | None = None, actuado: bool = False) -> dict:
     """Guion → proyecto validado. Devuelve {"proyecto", "avisos", "intentos", "instruccion"}."""
     if not guion or len(guion.strip()) < 40:
         raise ErrorGuionista("el guion está vacío o es demasiado corto")
     ins = instruccion(guion, formato=formato, estructura=estructura, estilo_imagen=estilo_imagen,
                       estilo_video=estilo_video, cierre_video=cierre_video, medio=medio, voz=voz,
-                      titulo=titulo, negativos=negativos, notas=notas, duracion=duracion, reparto=reparto)
+                      titulo=titulo, negativos=negativos, notas=notas, duracion=duracion, reparto=reparto,
+                      actuado=actuado)
     mensajes = [{"role": "system", "content": "Sos el director técnico de un pipeline de video con IA. "
                                               "Respondés sólo con JSON válido."},
                 {"role": "user", "content": ins}]

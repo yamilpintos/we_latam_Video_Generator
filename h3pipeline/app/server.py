@@ -692,6 +692,12 @@ def master(slug: str, m: Master):
             if otros:
                 args += ["--otros-loops", *[str(f) for f in otros]]
         return {"tarea": tareas.lanzar("máster (loop)", args, slug).a_dict()}
+    if not p.voz:
+        # Sin voz en off (series actuadas: los personajes hablan dentro del clip,
+        # el audio de H3 es la pista): `montar` concatena y escribe el SRT de los
+        # diálogos; `mezclar` exigiría pistas de ElevenLabs que no existen.
+        args = ["-m", "h3pipeline", "montar", str(c / "proyecto.json"), str(c / "clips")]
+        return {"tarea": tareas.lanzar("máster (actuado)", args, slug).a_dict()}
     args = ["-m", "h3pipeline", "mezclar", str(c / "proyecto.json"), str(c / "clips")]
     return {"tarea": tareas.lanzar("máster", args, slug).a_dict()}
 
@@ -1066,13 +1072,15 @@ class NuevaSerie(BaseModel):
     estilo_libre: str = ""
     continuidad: str = "antologia"    # antologia | serial
     musica: dict | None = None        # {genero, tipo, duracion} para music video
+    modo: str = "narrado"             # narrado (voz en off) | actuado (los personajes hablan en cámara)
 
 
 @app.post("/api/series")
 def series_crear(n: NuevaSerie):
     try:
         return series.crear(n.titulo, n.formato, n.idea, estructura=n.estructura, duracion=n.duracion, voz=n.voz,
-                            estilo=n.estilo, estilo_libre=n.estilo_libre, continuidad=n.continuidad, musica=n.musica)
+                            estilo=n.estilo, estilo_libre=n.estilo_libre, continuidad=n.continuidad, musica=n.musica,
+                            modo=n.modo)
     except ValueError as e:
         raise HTTPException(422, str(e))
 
@@ -1101,6 +1109,7 @@ class EdicionSerie(BaseModel):
     estructura: str | None = None
     estilo: dict | None = None        # {preset, libre}
     musica: dict | None = None
+    modo: str | None = None
 
 
 @app.put("/api/series/{slug}")

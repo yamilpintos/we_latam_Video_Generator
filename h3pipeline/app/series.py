@@ -93,9 +93,16 @@ def listar() -> list[dict]:
 
 def crear(titulo: str, formato: str, idea: str, *, estructura: str | None = None, duracion: float | None = None,
           voz: str | None = "pablo", estilo: int | None = 0, estilo_libre: str = "", continuidad: str = "antologia",
-          musica: dict | None = None) -> dict:
+          musica: dict | None = None, modo: str = "narrado") -> dict:
+    """`modo`: «narrado» (una voz en off fija cuenta; los personajes hablan poco) o
+    «actuado» (sin narrador: cada personaje dice sus líneas en cámara y las
+    genera H3 dentro del clip, una línea por plano)."""
     if formato not in FORMATOS:
         raise ValueError("formato: short, largo o musica")
+    if modo not in ("narrado", "actuado"):
+        modo = "narrado"
+    if modo == "actuado":
+        voz = None
     slug = _slug(titulo)
     if (carpeta(slug) / "serie.json").exists():
         raise ValueError(f"ya existe la serie {slug}")
@@ -112,6 +119,7 @@ def crear(titulo: str, formato: str, idea: str, *, estructura: str | None = None
          "estilo": {"preset": estilo if est else None, "libre": estilo_libre.strip(), "imagen": imagen,
                     "video": est["cabecera"] if est else "", "cierre": est["cierre"] if est else "",
                     "medio": est["medio"] if est else ""},
+         "modo": modo if formato != "musica" else "narrado",
          "idea": idea.strip(), "continuidad": continuidad if continuidad in ("antologia", "serial") else "antologia",
          "musica": {"genero": (musica or {}).get("genero", "lofi"), "tipo": (musica or {}).get("tipo", ""),
                     "duracion": int((musica or {}).get("duracion", 180))} if formato == "musica" else None,
@@ -128,6 +136,10 @@ def actualizar(slug: str, **campos) -> dict:
             if imagen:
                 s["estilo"] = {"preset": v.get("preset") if est else None, "libre": v.get("libre", "").strip(), "imagen": imagen,
                                "video": est["cabecera"] if est else "", "cierre": est["cierre"] if est else "", "medio": est["medio"] if est else ""}
+        elif k == "modo" and v in ("narrado", "actuado"):
+            s["modo"] = v
+            if v == "actuado":
+                s["voz"] = None
         elif k in ("titulo", "idea", "notas", "continuidad", "estructura", "voz", "duracion", "musica"):
             s[k] = v
     return guardar(s)
@@ -165,7 +177,11 @@ def biblia(s: dict) -> str:
          f"IDEA GENERAL: {s['idea']}",
          f"CONTINUIDAD: {'serial (cada capítulo continúa al anterior)' if s['continuidad'] == 'serial' else 'antología (capítulos independientes, mismo universo)'}",
          f"ESTILO VISUAL: {s['estilo']['imagen']}"]
-    if s.get("voz"):
+    if s.get("modo") == "actuado":
+        L.append("MODO ACTUADO: no hay narrador. Los personajes hablan en cámara, en castellano rioplatense, "
+                 "una línea corta por plano (máximo 12 palabras), un solo personaje hablando por plano. "
+                 "Las reacciones en silencio también cuentan como planos.")
+    elif s.get("voz"):
         v = guionista.VOCES[s["voz"]]
         L.append(f"VOZ EN OFF: {v['nombre']}, un solo narrador en toda la serie.")
     else:
@@ -175,7 +191,8 @@ def biblia(s: dict) -> str:
     if s["personajes"]:
         L.append("PERSONAJES (id → cómo son; usá estos ids exactos):")
         for pid, p in s["personajes"].items():
-            L.append(f"  - {pid}: {p['nombre']}. {p.get('descripcion_es') or p['descripcion']}")
+            L.append(f"  - {pid}: {p['nombre']}. {p.get('descripcion_es') or p['descripcion']}"
+                     + (f" Voz: {p['voz']}" if s.get("modo") == "actuado" and p.get("voz") else ""))
     if s["locaciones"]:
         L.append("LOCACIONES (id → qué son):")
         for lid, l in s["locaciones"].items():
@@ -456,6 +473,21 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "mínima y repetible. Nada abstracto, ninguna ventana con ciudad, nada que cambie de estado. Y una frase para la música.\n"
                    "Devolvé JSON: {\"guion\": \"la escena\", \"musica\": \"la descripción de la pista para el compositor, en castellano, una o dos frases: ánimo, instrumentos, tempo\", "
                    "\"resumen\": \"una línea\"}")
+        elif s.get("modo") == "actuado":
+            dur, _ = _presupuesto_caracteres(s)
+            planos = max(3, int(round(dur / 5.167)))
+            voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}" for p in c["personajes"] if p in s["personajes"])
+            ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\nLUGAR: {c.get('locacion') or 'a elección entre las locaciones de la serie'}\n"
+                   f"VOCES:\n{voces}\n\n"
+                   f"Escribí el GUION ACTUADO de este video de {dur:g} s, en castellano rioplatense: sin narrador, los personajes hablan en cámara. "
+                   f"El video son {planos} planos de 5 segundos: escribí como mucho {planos} líneas de diálogo, y dejá {max(1, planos // 4)} o más planos SIN "
+                   "diálogo para reacciones, silencios y acciones (son los que respiran).\n"
+                   "Cada línea la dice UN solo personaje, mide como mucho 12 palabras (unas 55 letras; se tiene que decir en 4 segundos) y va en su propia "
+                   "línea con el formato `NOMBRE: lo que dice`. Nunca dos personajes en el mismo renglón. Entre líneas, cuando haga falta, una acotación entre "
+                   "corchetes de qué se ve [así], nombrando a los personajes por su nombre; el que habla siempre está de frente y con la boca libre.\n"
+                   "Historia lineal y simple: un gancho en la primera línea, un giro o una imagen que se recuerde, un cierre que deje algo. "
+                   "Las líneas suenan a gente hablando, no a texto leído: cortas, con intención, con subtexto.\n"
+                   "Devolvé JSON: {\"guion\": \"el texto\", \"resumen\": \"dos líneas de qué pasó, para el capítulo siguiente\", \"lineas\": número de líneas de diálogo}")
         else:
             dur, chars = _presupuesto_caracteres(s)
             voz = (f"La voz en off es {guionista.VOCES[s['voz']]['nombre']}. El texto de la voz en off tiene que medir ENTRE {int(chars * 0.85)} Y {chars} CARACTERES "
@@ -478,7 +510,11 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         c.update(guion=guion, resumen=str(r.get("resumen", "")).strip(), estado="guion", nota="")
         if s["formato"] == "musica" and r.get("musica"):
             c["musica"] = str(r["musica"]).strip()
-        if s.get("voz") and s["formato"] != "musica":
+        if s.get("modo") == "actuado" and s["formato"] != "musica":
+            lineas = [l for l in guion.splitlines() if re.match(r"^\s*[A-ZÁÉÍÓÚÑ][\wÁÉÍÓÚÑáéíóúñ ]{1,30}:\s*\S", l)]
+            largas = [l for l in lineas if len(l.split(":", 1)[1].split()) > 12]
+            c["nota"] = f"{len(lineas)} líneas de diálogo" + (f" · {len(largas)} pasan de 12 palabras: acortalas o se parten en dos planos" if largas else "")
+        elif s.get("voz") and s["formato"] != "musica":
             dur, chars = _presupuesto_caracteres(s)
             c["nota"] = f"{len(guion)} caracteres (presupuesto ~{chars} para {dur:g} s)"
         log(f"guion escrito: {len(guion)} caracteres")
@@ -497,7 +533,8 @@ def reparto(s: dict) -> dict:
             for pid, p in s["personajes"].items() if p.get("hoja")}
     locs = {lid: {"imagen": f"l_{lid}", "descripcion": l["descripcion"]}
             for lid, l in s["locaciones"].items() if l.get("imagen")}
-    return {"personajes": pers, "locaciones": locs}
+    voces = {pid: p["voz"] for pid, p in s["personajes"].items() if p.get("voz")} if s.get("modo") == "actuado" else {}
+    return {"personajes": pers, "locaciones": locs, "voces": voces}
 
 
 def _python(*args: str, log=print, cwd: Path | None = None) -> None:
@@ -532,14 +569,16 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         # 1 · guion.json + traducir con el reparto fijo
         pc.mkdir(parents=True, exist_ok=True)
         es_musica = s["formato"] == "musica"
+        actuado = s.get("modo") == "actuado" and not es_musica
         formato = "largo" if es_musica else s["formato"]
         rep = reparto(s)
         pedido = {"guion": c["guion"], "formato": formato, "estructura": s["estructura"], "titulo": c["titulo"],
                   "estilo_imagen": s["estilo"]["imagen"], "estilo_video": s["estilo"].get("video", ""),
                   "cierre_video": s["estilo"].get("cierre", ""), "medio": s["estilo"].get("medio", ""),
-                  "voz": None if es_musica else s.get("voz"), "negativos": not es_musica,
+                  "voz": None if (es_musica or actuado) else s.get("voz"), "negativos": not es_musica,
                   "notas": f"Serie «{s['titulo']}», capítulo {c['n']}. " + (s.get("notas") or ""),
-                  "slug": pslug, "duracion": s.get("duracion") if es_musica else None, "serie": slug, "capitulo": c["n"]}
+                  "slug": pslug, "duracion": s.get("duracion") if es_musica else None, "serie": slug, "capitulo": c["n"],
+                  "actuado": actuado}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
         (pc / "guion.txt").write_text(c["guion"], encoding="utf-8")
         if not (pc / "proyecto.json").exists():
@@ -547,10 +586,25 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
                                    estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
                                    voz=pedido["voz"], titulo=c["titulo"], negativos=pedido["negativos"], notas=pedido["notas"],
-                                   duracion=pedido["duracion"], reparto=rep, log=log)
+                                   duracion=pedido["duracion"], reparto=rep, actuado=actuado, log=log)
             d = r["proyecto"]
             d["slug"] = pslug
-            d["serie"] = {"slug": slug, "capitulo": c["n"]}
+            d["serie"] = {"slug": slug, "capitulo": c["n"], "modo": s.get("modo", "narrado")}
+            if actuado:
+                # Sin narrador: nada de `voz`/`voces` de ElevenLabs. Cada línea la
+                # dice H3 en el clip: el que habla está en el plano, con su voz.
+                d.pop("voz", None)
+                d["voces"] = {}
+                for pl in d["planos"]:
+                    if not pl.get("dialogo"):
+                        continue
+                    quien = pl.get("habla") or pl.get("voz_de") or (pl.get("personajes") or [None])[0]
+                    if quien and quien not in (pl.get("personajes") or []):
+                        pl.setdefault("personajes", []).append(quien)
+                    pl["habla"] = quien
+                    pl["off"] = False
+                    if not pl.get("voz_desc") and quien in rep["voces"]:
+                        pl["voz_desc"] = rep["voces"][quien]
             # El reparto manda: mismas descripciones e ids que en toda la serie, y
             # las madres que ya existen no se vuelven a pedir.
             d.setdefault("personajes", {})
@@ -602,8 +656,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                 (pc / "musica-pedido.json").write_text(json.dumps(pm, ensure_ascii=False), encoding="utf-8")
                 log("componiendo la pista del capítulo (ElevenLabs Music)…")
                 _python("-m", "h3pipeline.app.componer", str(pc / "musica-pedido.json"), log=log)
-        # 4 · voz
-        elif s.get("voz"):
+        # 4 · voz (sólo narrado: en actuado la voz la genera H3 dentro del clip)
+        elif s.get("voz") and not actuado:
             log("voz en off (ElevenLabs)…")
             _python("-m", "h3pipeline", "voz", str(pc / "proyecto.json"), "--generar", log=log)
         # 5 · dibujos

@@ -450,13 +450,15 @@ function pintarNuevaSerie(d, f) {
         <input id="s-titulo" placeholder="Título de la serie" style="margin-bottom:8px">
         <div class="row" style="margin-bottom:8px">
           <select id="s-estructura" style="max-width:280px">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
-          ${esMusica ? "" : `<select id="s-voz" style="max-width:240px"><option value="pablo">Voz en off: Pablo, argentino</option><option value="kate">Voz en off: Kate</option><option value="">Sin voz en off</option></select>`}
+          ${esMusica ? "" : `<select id="s-modo" style="max-width:300px" onchange="$('#s-voz').style.display=this.value==='actuado'?'none':''"><option value="narrado">Narrado: una voz en off cuenta</option><option value="actuado">Actuado: los personajes hablan en cámara</option></select>
+          <select id="s-voz" style="max-width:240px"><option value="pablo">Voz en off: Pablo, argentino</option><option value="kate">Voz en off: Kate</option><option value="">Sin voz en off (sólo imagen y texto)</option></select>`}
           <select id="s-cont" style="max-width:280px"><option value="antologia">Antología (capítulos sueltos, mismo universo)</option><option value="serial">Serial (la historia sigue de un capítulo al otro)</option></select></div>
         ${esMusica ? `<div class="row" style="margin-bottom:8px"><select id="s-genero" style="max-width:220px">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
           <select id="s-mdur" style="max-width:170px">${[[60, "1 min"], [180, "3 min"], [300, "5 min"], [600, "10 min"]].map(([v, l]) => `<option value="${v}" ${v === 180 ? "selected" : ""}>pistas de ${l}</option>`).join("")}</select>
           <input id="s-mtipo" placeholder="cómo suena la música de la serie (ánimo, instrumentos, tempo)" style="flex:1;min-width:240px"></div>` : ""}
         <div class="row" style="margin-bottom:8px"><select id="s-estilo" style="max-width:320px">${d.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (al lado)</option></select>
           <input id="s-estilo-libre" placeholder="estilo propio, en inglés (opcional)" style="flex:1;min-width:220px"></div>
+        ${esMusica ? "" : `<div class="tiny" style="margin:-2px 0 8px"><b>Actuado</b>: sin narrador. GPT escribe el guion como diálogo («PEDRO: …», una línea corta por plano, un solo personaje hablando por plano) y cada línea baja al prompt de H3 con quién la dice, el texto literal, cómo suena su voz y la boca en sincronía. La voz la genera H3 dentro del clip.</div>`}
         <textarea id="s-idea" style="min-height:80px" placeholder="La idea general (opcional acá: conviene escribirla después de cargar los personajes, nombrándolos)."></textarea>
         <div class="row" style="margin-top:10px"><button class="btn p" onclick="serieCrear('${f}')">Crear la serie</button><a class="btn" href="#/${esMusica ? "musica" : "nuevo/" + f}">volver</a><span class="tiny">gratis</span></div>
         <div id="s-err" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
@@ -471,8 +473,9 @@ function pintarNuevaSerie(d, f) {
     </div></div>`;
 }
 async function serieCrear(f) {
-  const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null,
-    voz: f === "musica" ? null : ($("#s-voz").value || null), estilo: $("#s-estilo").value === "" ? null : Number($("#s-estilo").value), estilo_libre: $("#s-estilo-libre").value,
+  const modo = f === "musica" ? "narrado" : $("#s-modo").value;
+  const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null, modo,
+    voz: f === "musica" || modo === "actuado" ? null : ($("#s-voz").value || null), estilo: $("#s-estilo").value === "" ? null : Number($("#s-estilo").value), estilo_libre: $("#s-estilo-libre").value,
     continuidad: $("#s-cont").value, musica: f === "musica" ? {genero: $("#s-genero").value, duracion: Number($("#s-mdur").value), tipo: $("#s-mtipo").value} : null,
     duracion: f === "musica" ? 5.167 : null};
   if (!body.titulo) return $("#s-err").textContent = "Falta el título.";
@@ -493,6 +496,7 @@ function pintarSerie(s) {
       ${p.hoja ? `<img src="/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}?${p.creado}" style="width:100%;border-radius:6px;margin-top:6px;cursor:zoom-in;max-height:300px;object-fit:contain;background:#000" onclick="lightbox('/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}')">`
               : p.imagen_ref ? `<img src="/api/series/${slug}/archivo/refs/${p.imagen_ref.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:6px;opacity:.7;max-height:200px;object-fit:contain;background:#000" title="imagen de referencia; la hoja sale de acá">` : `<div class="tiny" style="margin-top:6px">sin hoja todavía</div>`}
       <div class="tiny" style="margin-top:6px">${h(p.descripcion_es || p.descripcion)}</div>
+      ${s.modo === "actuado" ? `<div class="tiny" style="margin-top:4px"><b>voz:</b> <input id="pv-${id}" value="${h(p.voz || "")}" placeholder="cómo suena (edad, timbre, ritmo, acento), en inglés" style="font-size:12px;padding:4px 8px;margin-top:2px"></div>` : ""}
       <details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">descripción para los prompts (inglés) · editar</summary><textarea id="pd-${id}" style="min-height:80px;font-size:12px;margin-top:4px">${h(p.descripcion)}</textarea><button class="btn s" style="margin-top:4px" onclick="seriePersonajeGuardar('${slug}','${id}')">guardar</button></details>
       <div class="row" style="margin-top:8px">${p.hoja ? `<button class="btn s ${p.aprobada ? "" : "p"}" onclick="seriePersonajeAprobar('${slug}','${id}',${!p.aprobada})">${p.aprobada ? "aprobada ✓ (desaprobar)" : "aprobar hoja"}</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],true)">otra hoja</button>` : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],false)">dibujar la hoja</button>`}
         <button class="btn s d" onclick="seriePersonajeQuitar('${slug}','${id}')">quitar</button></div></div>`;
@@ -520,7 +524,7 @@ function pintarSerie(s) {
   const volver = s.formato === "musica" ? "#/musica" : `#/nuevo/${s.formato}`;
   const nombres = pj.map(([, p]) => p.nombre);
   const ejemplo = nombres.length ? `«${nombres.slice(0, 3).join(", ")} ${nombres.length > 1 ? "tienen" : "tiene"} aventuras juntos cuando terminan las clases…»` : "«los tres amigos Pedro, Luis y Juan tienen aventuras juntos cuando terminan las clases»";
-  $("#vista").innerHTML = `<div class="wrap"><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.voz ? `<span class="pill">voz ${h(s.voz)}</span>` : ""}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
+  $("#vista").innerHTML = `<div class="wrap"><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.modo === "actuado" ? `<span class="pill ac">actuado · hablan los personajes</span>` : s.voz ? `<span class="pill">narrado · voz ${h(s.voz)}</span>` : s.formato === "musica" ? "" : `<span class="pill">sin voz</span>`}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>` : ""}
     <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
     <div class="grid g3">
@@ -571,7 +575,8 @@ async function seriePersonaje(slug) {
   try { await api(`/series/${slug}/personajes`, {method: "POST", body: {nombre, descripcion, b64}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
 }
 async function seriePersonajeGuardar(slug, id) {
-  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {descripcion: $(`#pd-${id}`).value}}); toast("guardado"); } catch (e) { toast(e.message, true); }
+  const v = $(`#pv-${id}`);
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {descripcion: $(`#pd-${id}`).value, voz: v ? v.value : null}}); toast("guardado"); } catch (e) { toast(e.message, true); }
 }
 async function seriePersonajeAprobar(slug, id, ok) {
   try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {aprobada: ok}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
