@@ -3,6 +3,11 @@
 Actualizado: **30 de agosto de 2026.** Este archivo es el mapa. Si venís de cero
 o volvés después de un tiempo, se lee éste y nada más hasta saber a dónde vas.
 
+> **Desde el 15/9/2026 el frente de trabajo es la web, La Fábrica.** Su estado
+> al día (puertas, qué está probado con plata y qué no, lo que falta) está en
+> **`h3pipeline/app/ESTADO-FABRICA.md`**; el método de H3 en
+> `h3pipeline/H3-OFICIAL.md`; los costos medidos en `COSTOS-H3.md` §15.
+
 El proyecto hace **videos generados con IA**, de punta a punta: de una idea a un
 MP4 con voz, música y ambiente, generando el video con **MiniMax H3** en una GPU
 alquilada por hora en **Vast.ai**.
