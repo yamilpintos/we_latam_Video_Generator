@@ -540,11 +540,11 @@ function barraSerie(s) {
   const FASE = {apagada: "apagada", buscando: "buscando una 4×5090…", arrancando: "arrancando", instalando: "instalando H3 (59 GB)", lista: "lista", fallo: "falló"};
   const generando = cola.corriendo && m.fase === "lista";
   const etapas = [
-    ["Guiones", conGuion, N, conGuion === N],
-    ["Producidos", producidos, N, producidos === N],
-    ["Máquina", m.fase === "lista" ? 1 : 0, 1, m.fase === "lista", FASE[m.fase] || m.fase || "apagada", m.fase && m.fase !== "apagada" ? `${usd(m.acumulado)} · ${m.minutos} min` : ""],
-    ["Videos", clipsHechos, clipsTotal || producidos * 3, clipsTotal > 0 && clipsHechos === clipsTotal, generando ? "🎬 generando ahora" : cola.corriendo ? "en cola" : ""],
-    ["Másters", masters, N, masters === N]];
+    ["Guiones", conGuion, N, conGuion === N, "", conGuion < N ? "→ «Aprobar todos y escribir los guiones»" : "listos"],
+    ["Producidos", producidos, N, producidos === N, "", producidos < N ? (conGuion ? "→ «Producir en masa»" : "primero los guiones") : "listos"],
+    ["Máquina", m.fase === "lista" ? 1 : 0, 1, m.fase === "lista", FASE[m.fase] || m.fase || "apagada", m.fase && m.fase !== "apagada" && m.fase !== "fallo" ? `${usd(m.acumulado)} · ${m.minutos} min` : producidos ? "→ casilla «encender» o «Correr la cola»" : "se enciende al producir con la casilla"],
+    ["Videos", clipsHechos, clipsTotal || producidos * 3, clipsTotal > 0 && clipsHechos === clipsTotal, generando ? "🎬 generando ahora" : cola.corriendo ? "en cola" : "", generando ? "" : clipsTotal && clipsHechos === clipsTotal ? "bajados" : "los hace la máquina sola"],
+    ["Másters", masters, N, masters === N, "", masters < N && clipsHechos ? "→ Máster en cada proyecto" : ""]];
   const pct = Math.round((conGuion / N * 20) + (producidos / N * 25) + (m.fase === "lista" || clipsHechos ? 10 : m.fase && m.fase !== "apagada" && m.fase !== "fallo" ? 5 : 0) + (clipsTotal ? clipsHechos / clipsTotal * 35 : 0) + (masters / N * 10));
   // avisos cuando cambia la fase importante
   const clave = generando ? "generando" : cola.corriendo ? "cola" : m.fase;
@@ -608,7 +608,7 @@ function pintarSerie(s) {
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>`
       : ""}
     ${barraSerie(s)}
-    ${!tarea && s.ultima_tarea ? `<details class="card" style="margin-bottom:14px;padding:10px 20px"><summary class="tiny" style="cursor:pointer">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · ${s.ultima_tarea.estado} · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} — ver el log</summary><pre class="pre" style="max-height:340px;margin-top:8px">${h(s.ultima_tarea.log)}</pre></details>` : ""}
+    ${!tarea && s.ultima_tarea ? `<div class="tiny" style="margin:-6px 0 14px 4px">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · <span class="pill ${s.ultima_tarea.estado === "ok" ? "ok" : "bad"}" style="padding:1px 8px">${s.ultima_tarea.estado === "ok" ? "terminó bien" : "falló"}</span> · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} · <a href="#" onclick="event.preventDefault();modal('<h3>Log de la última tarea</h3><pre class=pre style=max-height:60vh>' + h(${JSON.stringify(s.ultima_tarea.log).replace(/</g, "\u003c")}) + '</pre>')">ver el log</a></div>` : ""}
     <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
     <div class="grid g3">
       <div class="card" style="padding:12px"><b>Nuevo personaje</b><div class="tiny" style="margin-bottom:6px">GPT lo pasa a la descripción de los prompts y después le dibujás la hoja.</div>
