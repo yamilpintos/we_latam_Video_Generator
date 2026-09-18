@@ -63,7 +63,8 @@ def _prompt_base(formato_narrativo: str) -> str:
 def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
                 estilo_video: str = "", cierre_video: str = "", medio: str = "",
                 voz: str | None = "kate", titulo: str = "", negativos: bool = True,
-                notas: str = "", duracion: float | None = None) -> str:
+                notas: str = "", duracion: float | None = None,
+                reparto: dict | None = None) -> str:
     est = Estructura.cargar(estructura)
     if duracion and abs(est.duracion_objetivo - duracion) > 0.01:
         est = est.con_duracion(duracion)
@@ -109,6 +110,21 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
              "`texto` en castellano rioplatense.")
     if notas.strip():
         L.append(f"- Notas del director: {notas.strip()}")
+    if reparto and (reparto.get("personajes") or reparto.get("locaciones")):
+        # Series (18/9/2026): los personajes y locaciones fijos vienen de la serie,
+        # con sus hojas ya dibujadas y aprobadas. El traductor los usa tal cual.
+        L.append("")
+        L.append("## EL REPARTO FIJO DE LA SERIE (usalo TAL CUAL; no lo cambies ni lo reinventes)")
+        if reparto.get("personajes"):
+            L.append("- `personajes`: copiá EXACTAMENTE estas entradas (mismos ids, misma `hoja`, misma `descripcion`) "
+                     "para los que aparezcan en el video:")
+            L.append("  " + json.dumps(reparto["personajes"], ensure_ascii=False))
+            L.append("- Sus hojas de modelo (`m_<id>`) YA EXISTEN: NO las incluyas en `madre`. Referencialas en `refs` como siempre.")
+            L.append("- No inventes personajes con nombre nuevos. Extras sin nombre y sin hoja, sí.")
+        if reparto.get("locaciones"):
+            L.append("- `locaciones`: estas ya tienen imagen (`l_<id>`, NO va en `madre`); podés agregar locaciones nuevas "
+                     "con id nuevo y su madre:")
+            L.append("  " + json.dumps(reparto["locaciones"], ensure_ascii=False))
     L.append("")
     L.append("## LA HISTORIA (el guion del director; respetalo, no lo reescribas)")
     L.append("")
@@ -228,13 +244,14 @@ def _forzar_grilla(d: dict, segundos: float | None = None) -> None:
 def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
              estilo_video: str = "", cierre_video: str = "", medio: str = "",
              voz: str | None = "kate", titulo: str = "", negativos: bool = True,
-             notas: str = "", reintentos: int = 2, log=print, duracion: float | None = None) -> dict:
+             notas: str = "", reintentos: int = 2, log=print, duracion: float | None = None,
+             reparto: dict | None = None) -> dict:
     """Guion → proyecto validado. Devuelve {"proyecto", "avisos", "intentos", "instruccion"}."""
     if not guion or len(guion.strip()) < 40:
         raise ErrorGuionista("el guion está vacío o es demasiado corto")
     ins = instruccion(guion, formato=formato, estructura=estructura, estilo_imagen=estilo_imagen,
                       estilo_video=estilo_video, cierre_video=cierre_video, medio=medio, voz=voz,
-                      titulo=titulo, negativos=negativos, notas=notas, duracion=duracion)
+                      titulo=titulo, negativos=negativos, notas=notas, duracion=duracion, reparto=reparto)
     mensajes = [{"role": "system", "content": "Sos el director técnico de un pipeline de video con IA. "
                                               "Respondés sólo con JSON válido."},
                 {"role": "user", "content": ins}]

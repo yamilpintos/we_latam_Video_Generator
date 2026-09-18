@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import cola, editar, libre, maquina, remaster, tareas
+from . import cola, editar, libre, maquina, remaster, series, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -1035,6 +1035,267 @@ def editar_archivo(carpeta: str, nombre: str):
     if carpeta not in ("fuentes", "assets", "clips"):
         raise HTTPException(404)
     f = editar.DIR / carpeta / Path(nombre).name
+    if not f.exists():
+        raise HTTPException(404)
+    return FileResponse(str(f), filename=f.name)
+
+
+# ─────────────────────────────────────────────────────── SERIES (producción en masa)
+# La capa de arriba: personajes fijos + estilo + idea → lista de capítulos →
+# guiones → proyectos → cola. Lo que llama a una API corre como tarea con slug
+# `_serie:<slug>`; lo que gasta GPU es la cola de siempre.
+
+def _slug_serie(slug: str) -> str:
+    return f"_serie:{slug}"
+
+
+@app.get("/api/series")
+def series_listar():
+    return {"series": series.listar(), "estilos": [{"i": i, **e} for i, e in enumerate(web.ESTILOS)],
+            "voces": [{"clave": k, **v} for k, v in guionista.VOCES.items()], "estructuras": estructuras()}
+
+
+class NuevaSerie(BaseModel):
+    titulo: str
+    formato: str = "short"            # short | largo | musica
+    idea: str
+    estructura: str | None = None
+    duracion: float | None = None
+    voz: str | None = "pablo"
+    estilo: int | None = 0
+    estilo_libre: str = ""
+    continuidad: str = "antologia"    # antologia | serial
+    musica: dict | None = None        # {genero, tipo, duracion} para music video
+
+
+@app.post("/api/series")
+def series_crear(n: NuevaSerie):
+    try:
+        return series.crear(n.titulo, n.formato, n.idea, estructura=n.estructura, duracion=n.duracion, voz=n.voz,
+                            estilo=n.estilo, estilo_libre=n.estilo_libre, continuidad=n.continuidad, musica=n.musica)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+
+
+def _serie_o_404(slug: str) -> dict:
+    try:
+        return series.leer(slug)
+    except KeyError:
+        raise HTTPException(404, "no existe esa serie")
+
+
+@app.get("/api/series/{slug}")
+def serie_detalle(slug: str):
+    s = _serie_o_404(slug)
+    return {**s, "proyectos": series.estado_proyectos(s),
+            "tarea": next((t.a_dict(lineas=8) for t in tareas.corriendo(_slug_serie(slug))), None),
+            "cola": cola.leer()}
+
+
+class EdicionSerie(BaseModel):
+    titulo: str | None = None
+    idea: str | None = None
+    notas: str | None = None
+    continuidad: str | None = None
+    voz: str | None = None
+    estructura: str | None = None
+    estilo: dict | None = None        # {preset, libre}
+    musica: dict | None = None
+
+
+@app.put("/api/series/{slug}")
+def serie_editar(slug: str, e: EdicionSerie):
+    _serie_o_404(slug)
+    campos = {k: v for k, v in e.model_dump().items() if v is not None}
+    return series.actualizar(slug, **campos)
+
+
+@app.delete("/api/series/{slug}")
+def serie_borrar(slug: str):
+    _serie_o_404(slug)
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "hay una tarea de esta serie corriendo")
+    try:
+        series.borrar(slug)
+    except RuntimeError as ex:
+        raise HTTPException(409, str(ex))
+    return {"ok": True}
+
+
+class NuevoPersonaje(BaseModel):
+    nombre: str
+    descripcion: str
+    b64: str | None = None            # imagen de referencia (opcional)
+
+
+@app.post("/api/series/{slug}/personajes")
+def serie_personaje(slug: str, p: NuevoPersonaje):
+    _serie_o_404(slug)
+    try:
+        return series.agregar_personaje(slug, p.nombre, p.descripcion, p.b64, log=lambda *_: None)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    except Exception as e:
+        raise HTTPException(502, f"no pude describir al personaje: {e}")
+
+
+class EdicionPersonaje(BaseModel):
+    nombre: str | None = None
+    descripcion: str | None = None
+    descripcion_es: str | None = None
+    voz: str | None = None
+    aprobada: bool | None = None
+
+
+@app.put("/api/series/{slug}/personajes/{pid}")
+def serie_personaje_editar(slug: str, pid: str, e: EdicionPersonaje):
+    _serie_o_404(slug)
+    try:
+        if e.aprobada is not None:
+            series.aprobar_personaje(slug, pid, e.aprobada)
+        return series.editar_personaje(slug, pid, nombre=e.nombre, descripcion=e.descripcion, descripcion_es=e.descripcion_es, voz=e.voz)
+    except KeyError:
+        raise HTTPException(404, "no existe ese personaje")
+
+
+@app.delete("/api/series/{slug}/personajes/{pid}")
+def serie_personaje_quitar(slug: str, pid: str):
+    _serie_o_404(slug)
+    return series.quitar_personaje(slug, pid)
+
+
+class NuevaLocacion(BaseModel):
+    nombre: str
+    descripcion: str
+
+
+@app.post("/api/series/{slug}/locaciones")
+def serie_locacion(slug: str, l: NuevaLocacion):
+    _serie_o_404(slug)
+    try:
+        return series.agregar_locacion(slug, l.nombre, l.descripcion, log=lambda *_: None)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+    except Exception as e:
+        raise HTTPException(502, f"no pude describir la locación: {e}")
+
+
+@app.delete("/api/series/{slug}/locaciones/{lid}")
+def serie_locacion_quitar(slug: str, lid: str):
+    _serie_o_404(slug)
+    return series.quitar_locacion(slug, lid)
+
+
+class PedidoHojas(BaseModel):
+    ids: list[str] = []
+    motor: str = "openai"
+    rehacer: bool = False
+
+
+@app.post("/api/series/{slug}/hojas")
+def serie_hojas(slug: str, p: PedidoHojas):
+    """Dibuja las hojas de modelo y locaciones que faltan (una imagen por asset, ~$0,05-0,20 cada una)."""
+    _serie_o_404(slug)
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
+    args = ["-m", "h3pipeline.app.serie_tarea", "hojas", slug, "--motor", p.motor] + (["--rehacer"] if p.rehacer else []) + p.ids
+    return {"tarea": tareas.lanzar("hojas de modelo", args, _slug_serie(slug)).a_dict()}
+
+
+class PedidoPlan(BaseModel):
+    n: int = 10
+    pista: str = ""
+
+
+@app.post("/api/series/{slug}/planificar")
+def serie_planificar(slug: str, p: PedidoPlan):
+    _serie_o_404(slug)
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
+    n = max(1, min(50, p.n))
+    args = ["-m", "h3pipeline.app.serie_tarea", "planificar", slug, str(n)] + ([p.pista] if p.pista.strip() else [])
+    return {"tarea": tareas.lanzar(f"planificar {n} capítulos", args, _slug_serie(slug)).a_dict()}
+
+
+class EdicionCapitulo(BaseModel):
+    titulo: str | None = None
+    premisa: str | None = None
+    guion: str | None = None
+    locacion: str | None = None
+    musica: str | None = None
+    personajes: list[str] | None = None
+    estado: str | None = None         # aprobado | descartado | guion (aprobar guion) | propuesto
+
+
+@app.put("/api/series/{slug}/capitulos/{n}")
+def serie_capitulo_editar(slug: str, n: int, e: EdicionCapitulo):
+    _serie_o_404(slug)
+    try:
+        return series.editar_capitulo(slug, n, **{k: v for k, v in e.model_dump().items() if v is not None})
+    except KeyError:
+        raise HTTPException(404, "no existe ese capítulo")
+    except RuntimeError as ex:
+        raise HTTPException(409, str(ex))
+
+
+@app.post("/api/series/{slug}/capitulos/{n}/guion")
+def serie_capitulo_guion(slug: str, n: int):
+    s = _serie_o_404(slug)
+    try:
+        c = series.capitulo(s, n)
+    except KeyError:
+        raise HTTPException(404, "no existe ese capítulo")
+    if c["estado"] not in ("aprobado", "guion", "error"):
+        raise HTTPException(409, f"el capítulo está {c['estado']}; aprobalo primero")
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
+    args = ["-m", "h3pipeline.app.serie_tarea", "guion", slug, str(n)]
+    return {"tarea": tareas.lanzar(f"guion del capítulo {n}", args, _slug_serie(slug)).a_dict()}
+
+
+class PedidoProducir(BaseModel):
+    confirmar: bool = False
+    hasta: str = "cola"               # proyecto | dibujos | cola
+    motor: str = "openai"
+
+
+@app.post("/api/series/{slug}/capitulos/{n}/producir")
+def serie_capitulo_producir(slug: str, n: int, p: PedidoProducir):
+    """Guion aprobado → proyecto + voz + dibujos + ZIP + cola. Gasta API (GPT,
+    ElevenLabs, imágenes), no GPU: por eso pide confirmar."""
+    s = _serie_o_404(slug)
+    if not p.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true (gasta GPT, voz e imágenes)")
+    try:
+        c = series.capitulo(s, n)
+    except KeyError:
+        raise HTTPException(404, "no existe ese capítulo")
+    if c["estado"] not in ("guion", "error", "producido"):
+        raise HTTPException(409, f"el capítulo está {c['estado']}; primero el guion aprobado")
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
+    args = ["-m", "h3pipeline.app.serie_tarea", "producir", slug, str(n), "--hasta", p.hasta, "--motor", p.motor]
+    return {"tarea": tareas.lanzar(f"producir el capítulo {n}", args, _slug_serie(slug)).a_dict()}
+
+
+@app.post("/api/series/{slug}/producir-aprobados")
+def serie_producir_aprobados(slug: str, p: PedidoProducir):
+    s = _serie_o_404(slug)
+    if not p.confirmar:
+        raise HTTPException(400, "hace falta confirmar: true (gasta GPT, voz e imágenes)")
+    if not any(c["estado"] == "guion" for c in s["capitulos"]):
+        raise HTTPException(409, "no hay capítulos con guion aprobado")
+    if tareas.corriendo(_slug_serie(slug)):
+        raise HTTPException(409, "ya hay una tarea de esta serie corriendo")
+    args = ["-m", "h3pipeline.app.serie_tarea", "producir-aprobados", slug, "--motor", p.motor]
+    return {"tarea": tareas.lanzar("producir los aprobados", args, _slug_serie(slug)).a_dict()}
+
+
+@app.get("/api/series/{slug}/archivo/{carpeta}/{nombre}")
+def serie_archivo(slug: str, carpeta: str, nombre: str):
+    if carpeta not in ("assets", "refs"):
+        raise HTTPException(404)
+    f = series.carpeta(slug) / carpeta / Path(nombre).name
     if not f.exists():
         raise HTTPException(404)
     return FileResponse(str(f), filename=f.name)

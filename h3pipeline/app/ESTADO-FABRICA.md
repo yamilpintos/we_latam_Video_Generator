@@ -23,6 +23,7 @@ default `fabrica`; contraseña `FABRICA_PASSWORD`; cookie 30 días; `Salir`).
 
 | puerta | flujo | módulos | estado |
 |---|---|---|---|
+| **Series** (18/9) | la capa de producción en masa: biblia (idea, estilo, voz, formato, antología o serial) → personajes por texto o imagen (GPT los describe; OpenAI dibuja la hoja `m_<id>`; se aprueba) y locaciones → **plan** (GPT propone N capítulos; se aprueban/editan/descartan) → **guion** por capítulo (GPT, medido a la voz; se lee y aprueba) → **producir** (traducir con el **reparto fijo**, hojas copiadas, voz, dibujos, ZIP, cola; en music video compone la pista) → la cola genera | `series.py`, `serie_tarea.py`, `guionista.instruccion(reparto=)` | **sin probar con API** (GPT/imágenes): CRUD, endpoints y guardas probados en seco. Vive en `mis-videos/_series/<slug>/` |
 | **Short** | guion → `traducir` (GPT gpt-5.1, `guionista.py`) → proyecto → voz (ElevenLabs, densidad medida por voz) → dibujos (OpenAI por defecto; nano banana sin créditos) → máquina → clips → máster | `server.py`, `traducir.py`, `../guionista.py`, `../frames.py` | probado hasta el máster con proyectos anteriores; el corte a 15 s con 3-4 planos está armado |
 | **Largo** | igual, estructura `recap`, primero el audio | ídem | implementado, nunca corrió de punta a punta |
 | **Music video** | 1 música (biblioteca `mis-videos/_musica`, ElevenLabs Music: género, letra, hasta 30 min en piezas de 5 con fundido a silencio; o subir la propia) → 2 escena (`#/nuevo/loop`: una toma o varias del mismo lugar) → 3 máquina y clips → 4 video final (el loop se repite lo que dure la pista, sin recodificar) | `componer.py`, `musica.py`, `mis-videos/lofi-*/bucle.py` | 3 loops hechos (LLUVIA, KOI, INVERNADERO); piezas largas probadas sólo con tonos |
@@ -77,6 +78,10 @@ Transversales:
 2. **La cola con plata**, mirándola por el log de la tarea.
 3. **Una composición larga real** (10 min = 2 piezas) para oír el fundido.
 4. Un short entero desde la web con el reescritor (guion → máster) y medir.
+0. **Una serie de punta a punta con API** (~$1-3): crear, 2 personajes con hoja,
+   planificar 5, un guion, producir un capítulo hasta la cola; mirar que el
+   traductor respete el reparto (mismos ids/hojas, sin madres repetidas) y que
+   las caras se sostengan entre capítulos. Después la cola con plata (punto 2).
 5. **Remasterizar con plata desde la web**: los 30 s del máster (turno con la
    fuente ya preparada o uno nuevo con rango 0-30) → mirar que el estado, el
    avance (`escritos a/N`), la codificación en la máquina, la bajada y el QC

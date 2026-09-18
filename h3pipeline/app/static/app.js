@@ -120,6 +120,8 @@ ruta("/", async () => {
     <h1>Del guion al <span>máster</span>,<br>con la GPU cobrando lo justo.</h1>
     <p class="lead">Pegás tu guion. La app lo traduce a planos, dibuja los fotogramas, alquila la máquina, controla los clips y mezcla. Cada paso muestra lo que cuesta antes de gastarlo.</p>
     <div class="puertas">
+      <div class="puerta" onclick="location.hash='#/series'" style="border-color:rgba(255,180,84,.45)"><span class="k">PRODUCCIÓN EN MASA</span><h2>Series</h2>
+        <p>Personajes fijos con su hoja, un estilo, una idea. GPT propone la lista de capítulos, escribe cada guion que aprobás, y los capítulos se dibujan y entran a la cola solos.</p><span class="n">shorts, largos o music videos, por decenas</span></div>
       <div class="puerta" onclick="location.hash='#/nuevo/short'"><span class="k">VERTICAL · 15 A 90 S</span><h2>Short</h2>
         <p>Tu guion, en voz en off con subtítulos. Tres clips para una muestra de 15 s; doce para un minuto.</p><span class="n">${n(p => p.formato === "short" && !esLoop(p) && !esRecap(p))} proyectos</span></div>
       <div class="puerta" onclick="location.hash='#/nuevo/largo'"><span class="k">VERTICAL · 3 A 8 MIN</span><h2>Largo</h2>
@@ -408,6 +410,184 @@ async function editarGenerar(id) {
   toast(o.texto.trim().startsWith("subject_definitions:") ? "lanzando…" : "armando el prompt y lanzando… (15-40 s)");
   try { const t = await api("/editar/generar", {method: "POST", body: o}); toast(t.estado === "instalando_ref2va" ? "la máquina baja Ref2VA; el clip arranca solo después" : "edición lanzada en la máquina"); navegar(); }
   catch (e) { toast(e.message, true); }
+}
+
+/* ─────────────────────────────────────────────── series: producción en masa */
+const FORMATOS_SERIE = {short: "Shorts verticales", largo: "Largos (recap)", musica: "Music videos"};
+const ESTADOS_CAP = {propuesto: ["propuesto", ""], aprobado: ["aprobado · sin guion", "ac"], escribiendo: ["escribiendo el guion", "warn"], guion: ["guion listo", "ok"],
+  produciendo: ["produciendo", "warn"], producido: ["producido", "ok"], error: ["error", "bad"], descartado: ["descartado", ""]};
+ruta("/series", async () => {
+  const d = await api("/series");
+  const ests = (f) => d.estructuras.filter(e => f === "musica" ? e.nombre.startsWith("loop") : f === "largo" ? (e.nombre.startsWith("recap") || (e.formato === "largo" && !e.nombre.startsWith("loop"))) : (e.formato === "short" && !e.nombre.startsWith("recap")));
+  $("#vista").innerHTML = `<div class="wrap"><h1>Series</h1>
+    <p class="sub">La unidad deja de ser un video. Una serie tiene personajes fijos (con su hoja de modelo, así las caras no cambian), un estilo, una idea y una voz. De ahí GPT propone capítulos, vos aprobás la lista, GPT escribe cada guion, vos lo aprobás, y el capítulo se traduce, se dibuja, se empaqueta y entra a la cola solo. Después la cola genera todos con una máquina.</p>
+    <div class="grid g2">
+      <div class="card"><h3>Nueva serie</h3>
+        <input id="s-titulo" placeholder="Título de la serie" style="margin-bottom:8px">
+        <div class="row" style="margin-bottom:8px"><select id="s-formato" style="max-width:220px">${Object.entries(FORMATOS_SERIE).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}</select>
+          <select id="s-estructura" style="max-width:260px"></select>
+          <select id="s-voz" style="max-width:220px"><option value="pablo">Voz: Pablo, argentino</option><option value="kate">Voz: Kate</option><option value="">Sin voz en off</option></select>
+          <select id="s-cont" style="max-width:260px"><option value="antologia">Antología (capítulos sueltos)</option><option value="serial">Serial (la historia sigue)</option></select></div>
+        <div id="s-musica" class="row" hidden style="margin-bottom:8px"><select id="s-genero" style="max-width:200px">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
+          <select id="s-mdur" style="max-width:160px">${[[60, "1 min"], [180, "3 min"], [300, "5 min"], [600, "10 min"]].map(([v, l]) => `<option value="${v}" ${v === 180 ? "selected" : ""}>pistas de ${l}</option>`).join("")}</select>
+          <input id="s-mtipo" placeholder="cómo suena la música de la serie (ánimo, instrumentos, tempo)" style="flex:1;min-width:240px"></div>
+        <textarea id="s-idea" style="min-height:110px" placeholder="La idea general: de qué va la serie, tono, a quién le habla, qué se repite en cada capítulo. Ejemplo: «Un mecánico de pueblo cuenta en primera persona los casos raros que le llegan al taller. Melodrama con humor seco; siempre termina con una lección que no pidió»."></textarea>
+        <div class="row" style="margin-top:8px"><select id="s-estilo" style="max-width:320px">${d.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (abajo)</option></select>
+          <input id="s-estilo-libre" placeholder="estilo propio, en inglés (opcional)" style="flex:1;min-width:220px"></div>
+        <div class="row" style="margin-top:10px"><button class="btn p" onclick="serieCrear()">Crear la serie</button><span class="tiny">gratis; después cargás los personajes</span></div>
+        <div id="s-err" class="tiny" style="color:var(--bad);margin-top:6px"></div></div>
+      <div class="card"><h3>Cómo funciona</h3>
+        <ol class="muted" style="margin:0;padding-left:18px;line-height:1.7">
+          <li><b>Biblia</b>: idea, estilo, voz, formato. Una vez.</li>
+          <li><b>Personajes</b>: los describís (o subís una imagen) y GPT dibuja la hoja de modelo. La aprobás. Se reusa en todos los capítulos.</li>
+          <li><b>Plan</b>: «proponé 10 capítulos». Aprobás, editás o descartás cada uno.</li>
+          <li><b>Guion</b>: GPT lo escribe medido a la voz. Lo leés, lo tocás, lo aprobás.</li>
+          <li><b>Producir</b>: proyecto + voz + dibujos + ZIP + cola, solo. Gasta API (centavos por capítulo), no GPU.</li>
+          <li><b>La cola</b> genera todos con una máquina y apaga.</li></ol></div>
+    </div>
+    <h3 style="margin:26px 0 10px">Tus series</h3>
+    <div class="grid g3">${d.series.map(s => `<div class="card" style="cursor:pointer" onclick="location.hash='#/serie/${s.slug}'"><h3>${h(s.titulo)}<span class="pill">${FORMATOS_SERIE[s.formato] || s.formato}</span></h3>
+      <div class="muted">${s.personajes} personaje${s.personajes === 1 ? "" : "s"} · ${s.capitulos} capítulo${s.capitulos === 1 ? "" : "s"} · ${s.producidos} producido${s.producidos === 1 ? "" : "s"}${s.aprobados ? ` · ${s.aprobados} por producir` : ""}</div></div>`).join("") || `<div class="muted">Todavía no hay series.</div>`}</div></div>`;
+  const pintarEst = () => { const f = $("#s-formato").value; const es = ests(f); $("#s-estructura").innerHTML = es.map(e => `<option value="${e.nombre}" ${e.nombre === (f === "musica" ? "loop" : f === "largo" ? "recap" : "short-15") ? "selected" : ""}>${e.nombre} · ${e.duracion} s</option>`).join("");
+    $("#s-musica").hidden = f !== "musica"; $("#s-voz").disabled = f === "musica"; };
+  $("#s-formato").addEventListener("change", pintarEst); pintarEst();
+});
+async function serieCrear() {
+  const f = $("#s-formato").value;
+  const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null,
+    voz: f === "musica" ? null : ($("#s-voz").value || null), estilo: $("#s-estilo").value === "" ? null : Number($("#s-estilo").value), estilo_libre: $("#s-estilo-libre").value,
+    continuidad: $("#s-cont").value, musica: f === "musica" ? {genero: $("#s-genero").value, duracion: Number($("#s-mdur").value), tipo: $("#s-mtipo").value} : null,
+    duracion: f === "musica" ? 5.167 : null};
+  if (!body.titulo) return $("#s-err").textContent = "Falta el título.";
+  if (body.idea.trim().length < 20) return $("#s-err").textContent = "Contá la idea general (al menos una frase).";
+  try { const s = await api("/series", {method: "POST", body}); location.hash = `#/serie/${s.slug}`; } catch (e) { $("#s-err").textContent = e.message; }
+}
+let serieTimer = null;
+ruta("/serie", async ([slug]) => {
+  const s = await api(`/series/${slug}`);
+  pintarSerie(s);
+});
+function pintarSerie(s) {
+  const slug = s.slug, tarea = s.tarea;
+  const pj = Object.entries(s.personajes), lc = Object.entries(s.locaciones);
+  const caps = s.capitulos.filter(c => c.estado !== "descartado"), desc = s.capitulos.filter(c => c.estado === "descartado");
+  const aprobables = caps.filter(c => c.estado === "guion").length, sinHoja = pj.filter(([, p]) => !p.hoja).length;
+  const est = ESTADOS_CAP;
+  const ficha = ([id, p]) => `<div class="card" style="padding:10px"><div class="row" style="justify-content:space-between"><b>${h(p.nombre)}</b><span class="tiny mono">${id}</span></div>
+      ${p.hoja ? `<img src="/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}?${p.creado}" style="width:100%;border-radius:6px;margin-top:6px;cursor:zoom-in;max-height:300px;object-fit:contain;background:#000" onclick="lightbox('/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}')">`
+              : p.imagen_ref ? `<img src="/api/series/${slug}/archivo/refs/${p.imagen_ref.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:6px;opacity:.7;max-height:200px;object-fit:contain;background:#000" title="imagen de referencia; la hoja sale de acá">` : `<div class="tiny" style="margin-top:6px">sin hoja todavía</div>`}
+      <div class="tiny" style="margin-top:6px">${h(p.descripcion_es || p.descripcion)}</div>
+      <details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">descripción para los prompts (inglés) · editar</summary><textarea id="pd-${id}" style="min-height:80px;font-size:12px;margin-top:4px">${h(p.descripcion)}</textarea><button class="btn s" style="margin-top:4px" onclick="seriePersonajeGuardar('${slug}','${id}')">guardar</button></details>
+      <div class="row" style="margin-top:8px">${p.hoja ? `<button class="btn s ${p.aprobada ? "" : "p"}" onclick="seriePersonajeAprobar('${slug}','${id}',${!p.aprobada})">${p.aprobada ? "aprobada ✓ (desaprobar)" : "aprobar hoja"}</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],true)">otra hoja</button>` : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],false)">dibujar la hoja</button>`}
+        <button class="btn s d" onclick="seriePersonajeQuitar('${slug}','${id}')">quitar</button></div></div>`;
+  const fichaLoc = ([id, l]) => `<div class="card" style="padding:10px"><div class="row" style="justify-content:space-between"><b>${h(l.nombre)}</b><span class="tiny mono">${id}</span></div>
+      ${l.imagen ? `<img src="/api/series/${slug}/archivo/assets/${l.imagen.split("/")[1]}?${l.creado}" style="width:100%;border-radius:6px;margin-top:6px;cursor:zoom-in" onclick="lightbox('/api/series/${slug}/archivo/assets/${l.imagen.split("/")[1]}')">` : `<div class="tiny" style="margin-top:6px">sin imagen todavía</div>`}
+      <div class="tiny" style="margin-top:6px">${h(l.descripcion_es || l.descripcion)}</div>
+      <div class="row" style="margin-top:8px">${l.imagen ? `<button class="btn s" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],true)">otra imagen</button>` : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],false)">dibujar</button>`}<button class="btn s d" onclick="serieLocacionQuitar('${slug}','${id}')">quitar</button></div></div>`;
+  const filaCap = (c) => { const [etq, cls] = est[c.estado] || [c.estado, ""]; const pr = c.slug ? s.proyectos[c.slug] : null; const activo = c.estado === "escribiendo" || c.estado === "produciendo";
+    return `<div class="card" style="margin-bottom:10px;padding:12px 14px"><div class="row" style="justify-content:space-between"><div><b>${c.n}. ${h(c.titulo)}</b> <span class="pill ${cls}">${activo ? '<i class="dot live"></i> ' : ""}${etq}</span></div>
+        <span class="tiny">${(c.personajes || []).map(p => s.personajes[p]?.nombre || p).join(", ")}${c.locacion ? " · " + h(c.locacion) : ""}</span></div>
+      ${c.estado === "propuesto" ? `<textarea id="cp-${c.n}" style="min-height:60px;margin-top:6px;font-size:13px">${h(c.premisa)}</textarea>` : `<div class="muted" style="margin-top:6px">${h(c.premisa)}</div>`}
+      ${c.musica ? `<div class="tiny" style="margin-top:4px">música: ${h(c.musica)}</div>` : ""}
+      ${c.nota ? `<div class="tiny" style="margin-top:4px;color:${c.estado === "error" ? "var(--bad)" : "var(--tx3)"}">${h(c.nota)}</div>` : ""}
+      ${c.guion && !activo ? `<details ${c.estado === "guion" ? "open" : ""} style="margin-top:8px"><summary class="tiny" style="cursor:pointer">guion (${c.guion.length} caracteres) · leelo, tocalo y aprobalo</summary>
+          <textarea id="cg-${c.n}" style="min-height:${c.estado === "guion" ? 200 : 120}px;margin-top:6px;font-size:13px;line-height:1.5" ${c.estado === "producido" ? "readonly" : ""}>${h(c.guion)}</textarea></details>` : ""}
+      ${pr ? `<div class="row" style="margin-top:8px"><a class="btn s p" href="#/p/${c.slug}">abrir el proyecto</a><span class="tiny">${pr.planos} planos · ${pr.assets} dibujos · ${pr.clips} clips${pr.zip ? " · ZIP" : ""}${pr.en_cola ? " · en la cola" : ""}${pr.masters.length ? " · <b>máster listo</b>" : ""}</span></div>` : ""}
+      <div class="row" style="margin-top:8px">
+        ${c.estado === "propuesto" ? `<button class="btn s p" onclick="serieCap('${slug}',${c.n},{estado:'aprobado',premisa:$('#cp-${c.n}').value})">aprobar</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'descartado'})">descartar</button>` : ""}
+        ${c.estado === "aprobado" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieGuion('${slug}',${c.n})">escribir el guion (GPT)</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">volver a propuesto</button>` : ""}
+        ${c.estado === "guion" ? `<button class="btn s" onclick="serieCap('${slug}',${c.n},{guion:$('#cg-${c.n}').value})">guardar cambios del guion</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieGuion('${slug}',${c.n})">otro guion</button><button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">producir este capítulo</button>` : ""}
+        ${c.estado === "error" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">reintentar</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'guion'})">volver a guion</button>` : ""}
+        ${c.estado === "producido" ? `<button class="btn s" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">rehacer lo que falte</button>` : ""}
+        ${!activo && c.estado !== "producido" ? `<button class="btn s" style="margin-left:auto" onclick="serieCap('${slug}',${c.n},{estado:'descartado'})">descartar</button>` : ""}
+      </div></div>`; };
+  $("#vista").innerHTML = `<div class="wrap"><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.voz ? `<span class="pill">voz ${h(s.voz)}</span>` : ""}<a class="btn s" href="#/series" style="margin-left:auto">todas las series</a></h1>
+    ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>` : ""}
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card"><h3>La biblia</h3>
+        <label class="tiny">Idea general</label><textarea id="b-idea" style="min-height:90px;margin:4px 0 8px">${h(s.idea)}</textarea>
+        <label class="tiny">Notas del director (tono, qué no mostrar, reglas de la serie)</label><textarea id="b-notas" style="min-height:60px;margin:4px 0 8px">${h(s.notas || "")}</textarea>
+        <div class="tiny">Estilo visual: ${h(s.estilo.imagen.slice(0, 140))}${s.estilo.imagen.length > 140 ? "…" : ""}</div>
+        ${s.musica ? `<div class="tiny" style="margin-top:4px">Música: ${h(s.musica.genero)} · pistas de ${s.musica.duracion} s · ${h(s.musica.tipo || "")}</div>` : ""}
+        <div class="row" style="margin-top:8px"><button class="btn s" onclick="serieBiblia('${slug}')">guardar</button><button class="btn s d" style="margin-left:auto" onclick="serieBorrar('${slug}')">borrar la serie</button></div></div>
+      <div class="card"><h3>Nuevo personaje <span class="tiny" style="margin-left:auto">GPT lo pasa a la descripción de los prompts</span></h3>
+        <input id="p-nombre" placeholder="Nombre" style="margin-bottom:6px">
+        <textarea id="p-desc" style="min-height:70px" placeholder="Cómo es, en castellano: edad, cuerpo, cara, pelo y la ropa que va a llevar en toda la serie."></textarea>
+        <div class="row" style="margin-top:8px"><label class="btn s">imagen de referencia (opcional)<input type="file" id="p-ref" accept="image/*" hidden onchange="$('#p-refn').textContent=this.files[0]?.name||''"></label><span class="tiny" id="p-refn"></span>
+          <button class="btn p" style="margin-left:auto" onclick="seriePersonaje('${slug}')">agregar</button></div>
+        <hr style="border:0;border-top:1px solid var(--line);margin:12px 0">
+        <h3>Nueva locación</h3><div class="row"><input id="l-nombre" placeholder="Nombre" style="max-width:180px"><input id="l-desc" placeholder="qué lugar es, luz, época" style="flex:1;min-width:200px"><button class="btn" onclick="serieLocacion('${slug}')">agregar</button></div></div>
+    </div>
+    <h3 style="margin:18px 0 8px">Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
+    <div class="grid g3">${pj.map(ficha).join("") || `<div class="muted">Sin personajes. Agregá al menos uno y dibujale la hoja.</div>`}</div>
+    ${lc.length ? `<h3 style="margin:18px 0 8px">Locaciones <span class="pill">${lc.length}</span></h3><div class="grid g3">${lc.map(fichaLoc).join("")}</div>` : ""}
+    <h3 style="margin:26px 0 8px">Capítulos <span class="pill">${caps.length}</span>
+      <span class="row" style="margin-left:auto;gap:6px"><input id="plan-n" type="number" min="1" max="50" value="10" style="width:70px"><input id="plan-pista" placeholder="pista para esta tanda (opcional)" style="width:260px"><button class="btn s p" ${tarea ? "disabled" : ""} onclick="seriePlan('${slug}')">proponer capítulos (GPT)</button></span></h3>
+    ${aprobables ? `<div class="row" style="margin-bottom:10px"><button class="btn p" ${tarea ? "disabled" : ""} onclick="serieProducirTodos('${slug}',${aprobables})">producir los ${aprobables} con guion aprobado</button><span class="tiny">traduce, hace la voz, dibuja, empaqueta y encola cada uno; después corrés la cola</span></div>` : ""}
+    ${caps.map(filaCap).join("") || `<div class="muted">Sin capítulos. Proponé una tanda.</div>`}
+    ${desc.length ? `<details style="margin-top:10px"><summary class="tiny" style="cursor:pointer">${desc.length} descartado(s)</summary>${desc.map(c => `<div class="tiny" style="margin-top:4px">${c.n}. ${h(c.titulo)} — ${h(c.premisa)} <button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'propuesto'})">recuperar</button></div>`).join("")}</details>` : ""}
+    </div>`;
+  clearTimeout(serieTimer);
+  if (tarea || s.capitulos.some(c => c.estado === "escribiendo" || c.estado === "produciendo"))
+    serieTimer = setTimeout(async () => { if (!location.hash.startsWith(`#/serie/${slug}`)) return; try { pintarSerie(await api(`/series/${slug}`)); } catch {} }, 6000);
+}
+async function serieRefrescar(slug) { try { pintarSerie(await api(`/series/${slug}`)); } catch (e) { toast(e.message, true); } }
+async function serieBiblia(slug) {
+  try { await api(`/series/${slug}`, {method: "PUT", body: {idea: $("#b-idea").value, notas: $("#b-notas").value}}); toast("biblia guardada"); } catch (e) { toast(e.message, true); }
+}
+function serieBorrar(slug) {
+  confirmar("Borrar la serie", "Se borran la biblia, los personajes y sus hojas, y el plan. Los proyectos ya producidos en mis-videos/ quedan.", "Borrar", async () => {
+    try { await api(`/series/${slug}`, {method: "DELETE"}); location.hash = "#/series"; } catch (e) { toast(e.message, true); }
+  }, true);
+}
+async function seriePersonaje(slug) {
+  const nombre = $("#p-nombre").value.trim(), descripcion = $("#p-desc").value.trim();
+  if (!nombre || descripcion.length < 10) return toast("nombre y una descripción", true);
+  const f = $("#p-ref").files[0];
+  const b64 = f ? await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); }) : null;
+  toast("GPT describe al personaje… (10-20 s)");
+  try { await api(`/series/${slug}/personajes`, {method: "POST", body: {nombre, descripcion, b64}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+async function seriePersonajeGuardar(slug, id) {
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {descripcion: $(`#pd-${id}`).value}}); toast("guardado"); } catch (e) { toast(e.message, true); }
+}
+async function seriePersonajeAprobar(slug, id, ok) {
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {aprobada: ok}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+function seriePersonajeQuitar(slug, id) {
+  confirmar("Quitar el personaje", "Se borra su hoja también.", "Quitar", async () => { try { await api(`/series/${slug}/personajes/${id}`, {method: "DELETE"}); serieRefrescar(slug); } catch (e) { toast(e.message, true); } }, true);
+}
+async function serieLocacion(slug) {
+  const nombre = $("#l-nombre").value.trim(), descripcion = $("#l-desc").value.trim();
+  if (!nombre || descripcion.length < 5) return toast("nombre y descripción", true);
+  toast("GPT describe la locación…");
+  try { await api(`/series/${slug}/locaciones`, {method: "POST", body: {nombre, descripcion}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+function serieLocacionQuitar(slug, id) {
+  confirmar("Quitar la locación", "Se borra su imagen también.", "Quitar", async () => { try { await api(`/series/${slug}/locaciones/${id}`, {method: "DELETE"}); serieRefrescar(slug); } catch (e) { toast(e.message, true); } }, true);
+}
+async function serieHojas(slug, ids, rehacer) {
+  try { const r = await api(`/series/${slug}/hojas`, {method: "POST", body: {ids, rehacer, motor: "openai"}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("dibujando… (1-2 min por hoja)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+async function seriePlan(slug) {
+  const n = Number($("#plan-n").value || 10), pista = $("#plan-pista").value;
+  try { const r = await api(`/series/${slug}/planificar`, {method: "POST", body: {n, pista}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast(`GPT propone ${n} capítulos… (30-90 s)`); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+async function serieCap(slug, n, cambios) {
+  try { pintarSerie({...(await api(`/series/${slug}/capitulos/${n}`, {method: "PUT", body: cambios})), proyectos: {}, tarea: null, cola: {items: []}}); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+async function serieGuion(slug, n) {
+  try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+}
+function serieProducir(slug, n) {
+  confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,05-0,20 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola.", "Producir", async () => {
+    try { const r = await api(`/series/${slug}/capitulos/${n}/producir`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo… (3-8 min)"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  });
+}
+function serieProducirTodos(slug, n) {
+  confirmar(`Producir ${n} capítulos`, `Uno tras otro: guion → planos → voz → dibujos → ZIP → cola. Gasta API (unos centavos a un dólar por capítulo en imágenes y voz), no GPU. Tarda 3-8 min por capítulo; podés cerrar la página.`, "Producir todos", async () => {
+    try { const r = await api(`/series/${slug}/producir-aprobados`, {method: "POST", body: {confirmar: true}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo los aprobados…"); serieRefrescar(slug); } catch (e) { toast(e.message, true); }
+  });
 }
 
 /* ─────────────────────────────────────────────── remasterizar: SD → 4K con FlashVSR en una A100 */
