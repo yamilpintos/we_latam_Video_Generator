@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import mimetypes
 import re
 import time
@@ -120,6 +121,11 @@ MODELO_OPENAI = "gpt-image-1"
 # desde acá: hay que componer con el sujeto centrado y sin nada importante
 # pegado a los bordes laterales.
 TAMANO_OPENAI = {"9:16": "1024x1536", "16:9": "1536x1024"}
+# Calidad de gpt-image-1. El default de la API es «high» (~$0,25 por imagen a
+# 1024×1536): el 18/9 seis shorts costaron ~$8 sólo en fotogramas. Para un primer
+# fotograma que H3 después anima, y para las hojas de referencia, «medium»
+# (~$0,06) alcanza: pedido del usuario, 19/9. Se cambia con FRAMES_CALIDAD=high|medium|low.
+CALIDAD_OPENAI = os.environ.get("FRAMES_CALIDAD", "medium")
 
 
 def generar_openai(prompt: str, refs: list[Path], clave: str, aspecto: str | None = None,
@@ -136,7 +142,7 @@ def generar_openai(prompt: str, refs: list[Path], clave: str, aspecto: str | Non
         borde = "----h3-" + secrets.token_hex(12)
         partes = []
         for campo, valor in (("model", modelo), ("prompt", prompt),
-                             ("size", tam), ("n", "1")):
+                             ("size", tam), ("n", "1"), ("quality", CALIDAD_OPENAI)):
             partes += [f"--{borde}\r\n".encode(),
                        f'Content-Disposition: form-data; name="{campo}"\r\n\r\n'.encode(),
                        f"{valor}\r\n".encode()]
@@ -155,7 +161,7 @@ def generar_openai(prompt: str, refs: list[Path], clave: str, aspecto: str | Non
                      "Content-Type": f"multipart/form-data; boundary={borde}"})
     else:
         cuerpo = json.dumps({"model": modelo, "prompt": prompt,
-                             "size": tam, "n": 1}).encode()
+                             "size": tam, "n": 1, "quality": CALIDAD_OPENAI}).encode()
         req = urllib.request.Request(
             API_OPENAI + "/generations", data=cuerpo, method="POST",
             headers={"Authorization": f"Bearer {clave}",

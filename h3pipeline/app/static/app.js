@@ -626,7 +626,7 @@ function pintarSerie(s) {
       : ""}
     ${barraSerie(s)}
     ${!tarea && s.ultima_tarea ? `<div class="tiny" style="margin:-6px 0 14px 4px">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · <span class="pill ${s.ultima_tarea.estado === "ok" ? "ok" : "bad"}" style="padding:1px 8px">${s.ultima_tarea.estado === "ok" ? "terminó bien" : "falló"}</span> · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} · <a href="#" onclick="event.preventDefault();verUltimoLog()">ver el log</a></div>` : ""}
-    <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, ~$0,05-0,20)</span></h3>
+    <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, calidad media, ~$0,06)</span></h3>
     <div class="grid g3">
       <div class="card" style="padding:12px"><b>Nuevo personaje</b><div class="tiny" style="margin-bottom:6px">GPT lo pasa a la descripción de los prompts y después le dibujás la hoja.</div>
         <input id="p-nombre" placeholder="Nombre (así lo vas a nombrar en la idea)" style="margin-bottom:6px">
@@ -724,7 +724,7 @@ async function serieGuion(slug, n) {
   try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 function serieProducir(slug, n, rehacer = false) {
-  confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,05-0,20 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola." + (rehacer ? "<br><br>Se descarta el proyecto anterior y se vuelve a traducir con el reparto de la serie." : ""), "Producir", async () => {
+  confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,06 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola." + (rehacer ? "<br><br>Se descarta el proyecto anterior y se vuelve a traducir con el reparto de la serie." : ""), "Producir", async () => {
     try { const r = await api(`/series/${slug}/capitulos/${n}/producir`, {method: "POST", body: {confirmar: true, rehacer}}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("produciendo… (3-8 min)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
   });
 }
@@ -733,7 +733,7 @@ function serieMasa(slug) {
   const porHacer = caps.filter(c => c.estado !== "producido").length, sinVideo = caps.filter(c => !(c.slug && s.proyectos && s.proyectos[c.slug] && s.proyectos[c.slug].clips >= s.proyectos[c.slug].planos && s.proyectos[c.slug].planos)).length;
   const planosPorCap = s.estructura === "short-15" ? 3 : s.estructura === "short-23" ? 5 : s.formato === "largo" ? 40 : 12;
   const minGpu = 13 + sinVideo * (planosPorCap <= 4 ? 4.5 : planosPorCap <= 6 ? 8 : planosPorCap * 1.5);
-  const gpu = minGpu / 60 * 2.8, costoApi = porHacer * 0.5;   // (no llamarla `api`: tapa la función que habla con el servidor)
+  const gpu = minGpu / 60 * 2.8, costoApi = porHacer * (0.1 + planosPorCap * 0.06);   // (no llamarla `api`: tapa la función que habla con el servidor)
   modal(`<h3>Producir en masa · ${caps.length} capítulos</h3>
     <div class="muted" style="margin-bottom:12px">Un solo botón y no hay que tocar nada más. En orden, todo solo:</div>
     <ol class="muted" style="margin:0 0 12px;padding-left:18px;line-height:1.7">
@@ -909,7 +909,7 @@ ruta("/libre", async () => {
     <div class="card" style="margin-bottom:14px"><h3>Nuevo turno</h3>
       <textarea id="lp" style="min-height:80px" placeholder="Qué querés ver (en castellano o inglés): «un faro de piedra en una tormenta de noche, visto desde el mar, olas enormes, la lámpara girando»"></textarea>
       <div class="row" style="margin-top:8px"><select id="lasp" style="max-width:160px"><option value="16:9">16:9 horizontal</option><option value="9:16">9:16 vertical</option></select>
-        <select id="lmotor" style="max-width:220px"><option value="openai">OpenAI / GPT (~$0,25)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
+        <select id="lmotor" style="max-width:220px"><option value="openai">OpenAI / GPT (calidad media, ~$0,06)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
         <input id="lest" placeholder="estilo (opcional, en inglés): photorealistic, 35mm film grain…" style="flex:1;min-width:220px">
         <select id="lajuste" style="max-width:250px" title="qué hacer si la imagen subida no tiene la proporción del video"><option value="encajar">subida: entera, fondo desenfocado</option><option value="recortar">subida: recortar al centro</option></select>
         <label class="btn s">subir imagen<input type="file" id="lfile" accept="image/*" hidden></label>
@@ -1091,7 +1091,7 @@ async function pasoDibujos() {
   const vertical = P.formato === "short";
   $("#paso").innerHTML = `<div class="card" style="margin-bottom:14px"><h3>Dibujos ${as.length - faltan}/${as.length}
       <span class="pill ${faltan ? "warn" : barras ? "bad" : "ok"}">${faltan ? faltan + " faltan" : barras ? barras + " con barras" : "todos listos"}</span></h3>
-    <div class="row"><select id="motor" style="max-width:230px"><option value="openai">OpenAI / GPT (~$0,25)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
+    <div class="row"><select id="motor" style="max-width:230px"><option value="openai">OpenAI / GPT (calidad media, ~$0,06)</option><option value="nanobanana">nano banana (~$0,04, sin créditos hoy)</option></select>
       <button class="btn p" onclick="dibujar([])">${faltan ? "Dibujar los que faltan" : "Dibujar (nada nuevo)"}</button>
       <button class="btn" onclick="rehacerMarcados()">Rehacer los marcados</button>
       <button class="btn" ${faltan ? "disabled" : ""} onclick="empaquetar()">Empaquetar ZIP ${P.estado.zip ? `(${P.estado.zip_mb} MB, ya existe)` : ""}</button>
