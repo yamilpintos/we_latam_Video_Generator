@@ -95,6 +95,18 @@ async function navegar() {
 }
 window.addEventListener("hashchange", navegar);
 
+/* ─────────────────────────────────────────────── ¿este servidor guarda lo que produce? */
+async function alarmaDisco() {
+  try {
+    const s = await api("/salud");
+    let box = $("#alarma-disco");
+    if (!box) { box = document.createElement("div"); box.id = "alarma-disco"; $("#app").insertBefore(box, $("#vista")); }
+    if (s.persistente) { box.innerHTML = s.memoria_mb && s.memoria_mb < 1500 ? `<div style="background:rgba(255,207,90,.12);border-bottom:1px solid rgba(255,207,90,.4);padding:8px 28px;font-size:13px;color:var(--warn)">Este servidor tiene ${s.memoria_mb} MB de memoria: el máster puede quedarse sin memoria y reiniciarlo. Con disco persistente los datos se conservan, pero conviene un plan con 2 GB.</div>` : ""; return; }
+    box.innerHTML = `<div style="background:rgba(255,100,112,.14);border-bottom:2px solid var(--bad);padding:12px 28px;font-size:14px;color:var(--bad)"><b>⚠ ESTE SERVIDOR NO GUARDA NADA.</b> ${h(s.detalle)}. Cada reinicio de Render (memoria, deploy, mantenimiento) borra series, guiones, clips y másters: ya se perdieron dos series completas. <b>No produzcas acá</b> hasta montar el disco persistente (Render → el servicio → Disks → mount path <code>/app/mis-videos</code>). Mientras, producí en la app de tu PC.</div>`;
+  } catch {}
+}
+alarmaDisco();
+
 /* ─────────────────────────────────────────────── estado Vast en la barra */
 async function estadoVast() {
   const el = $("#vast-estado");

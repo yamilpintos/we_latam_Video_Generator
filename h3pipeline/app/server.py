@@ -277,6 +277,35 @@ def mesa():
 
 # ─────────────────────────────────────────────────────────────── proyectos
 
+@app.get("/api/salud")
+def salud():
+    """¿Este servidor GUARDA lo que produce? En Render, sin un disco persistente
+    montado en mis-videos/, cada reinicio (memoria, deploy, mantenimiento)
+    borra series, clips y másters: el 18 y el 19/9 se perdieron dos series
+    enteras así. Se detecta comparando el dispositivo de mis-videos/ con el de
+    la raíz del código: si es el mismo, mis-videos vive en el contenedor."""
+    import os
+    local = os.environ.get("FABRICA_HOST", "127.0.0.1") in ("127.0.0.1", "localhost")
+    persistente = True
+    detalle = "PC local: todo queda en el disco de esta máquina"
+    if not local:
+        try:
+            MIS.mkdir(parents=True, exist_ok=True)
+            persistente = os.stat(MIS).st_dev != os.stat(RAIZ).st_dev
+            detalle = ("mis-videos/ está en un disco aparte (persistente)" if persistente
+                       else "mis-videos/ vive DENTRO del contenedor: se borra en cada reinicio")
+        except Exception as e:
+            persistente, detalle = False, f"no pude comprobar el disco: {e}"
+    mem = None
+    try:
+        with open("/sys/fs/cgroup/memory.max") as f:
+            t = f.read().strip()
+            mem = None if t == "max" else round(int(t) / 1e6)
+    except Exception:
+        pass
+    return {"local": local, "persistente": persistente, "detalle": detalle, "memoria_mb": mem}
+
+
 @app.get("/api/estructuras")
 def estructuras():
     out = []
