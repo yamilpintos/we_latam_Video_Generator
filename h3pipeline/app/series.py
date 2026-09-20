@@ -355,8 +355,9 @@ def prompt_hoja(s: dict, p: dict) -> str:
     medio = s["estilo"].get("medio") or "live-action film"
     base = ("Photorealistic character reference photograph" if "live" in medio.lower() or "photo" in medio.lower()
             else f"Character reference sheet in the style of {medio}")
-    ref = (" The person must be the SAME person as in the reference image: same face, same features, same hair; "
-           "keep the identity exactly and only adjust pose and lighting to this reference format." if p.get("imagen_ref") else "")
+    ref = (" The character must be the SAME individual as in the reference image: same face, same features, same fur or hair, "
+           "same body; keep the identity exactly. Only the clothing described here changes: dress the character exactly as "
+           "described and do not keep any garment from the reference image that is not described." if p.get("imagen_ref") else "")
     return (f"{base}, {'vertical' if vertical else 'horizontal'} frame, plain dark grey background, even soft lighting. "
             f"{p['descripcion']} Shown from the knees up, neutral stance, facing camera, hands visible.{ref} "
             f"Every detail sharp and readable: this is the reference for every other shot. "
@@ -668,6 +669,39 @@ def _alias_de(s: dict, ids: list[str]) -> dict[str, str]:
     return out
 
 
+def hojas_de_capitulo(s: dict, c: dict, d: dict, formato: str) -> list[str]:
+    """La HOJA DEL CAPÍTULO (pedido del usuario, 20/9): la hoja de la serie es la
+    referencia de identidad; cuando el capítulo viste distinto al personaje, se
+    dibuja primero una hoja nueva del MISMO personaje con esa ropa, usando la de
+    la serie como referencia, y todos los fotogramas del capítulo referencian
+    ESA. Antes cada fotograma recibía la hoja neutra más un texto que decía «va
+    de cirujano», y el generador obedecía a veces al texto y a veces a la
+    imagen: cuatro monos distintos en un mismo capítulo. Devuelve los ids de las
+    hojas nuevas (van a `madre`, se generan antes que los fotogramas)."""
+    vest = c.get("vestuario") or {}
+    asp = "16:9" if formato == "largo" else "9:16"
+    nuevas = []
+    d.setdefault("madre", [])
+    for pid, ropa in vest.items():
+        pj = s["personajes"].get(pid)
+        if not pj or not pj.get("hoja") or not str(ropa).strip():
+            continue
+        usado = pid in d.get("personajes", {}) or any(pid in (pl.get("personajes") or []) for pl in d["planos"])
+        if not usado:
+            continue
+        hid = f"m_{pid}_ep"
+        desc = pj["descripcion"].rstrip(".") + f". Now wearing, for this episode: {str(ropa).rstrip('.')}. This outfit replaces the base clothing."
+        d["madre"] = [m for m in d["madre"] if m.get("id") != hid]
+        d["madre"].append({"id": hid, "aspecto": asp, "refs": [f"assets/m_{pid}.png"],
+                           "prompt": prompt_hoja(s, {**pj, "descripcion": desc, "imagen_ref": True})})
+        d.setdefault("personajes", {}).setdefault(pid, {"descripcion": desc})["hoja"] = hid
+        for pl in d["planos"]:
+            if pl.get("refs"):
+                pl["refs"] = [f"assets/{hid}.png" if r in (f"m_{pid}", f"assets/m_{pid}.png") else r for r in pl["refs"]]
+        nuevas.append(hid)
+    return nuevas
+
+
 def _proyecto_coincide(pc: Path, s: dict) -> bool:
     """¿El proyecto.json que ya existe usa el reparto de la serie? Si tiene
     personajes que no son de la serie (los inventó el traductor) hay que
@@ -802,6 +836,9 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             for mid in sorted(usadas):
                 d["madre"].append({"id": mid, "aspecto": asp, "refs": [],
                                    "prompt": f"(hoja de la serie «{s['titulo']}»: ya dibujada y aprobada; no se rehace)"})
+            nuevas = hojas_de_capitulo(s, c, d, formato)
+            if nuevas:
+                log("hoja(s) del capítulo (mismo personaje, con la ropa de este capítulo): " + ", ".join(nuevas))
             (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             p = Proyecto.cargar(pc / "proyecto.json")
             p.escribir(log=lambda *_: None)
