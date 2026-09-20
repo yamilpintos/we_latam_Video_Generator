@@ -573,7 +573,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "Devolvé JSON: {\"guion\": \"la escena\", \"musica\": \"la descripción de la pista para el compositor, en castellano, una o dos frases: ánimo, instrumentos, tempo\", "
                    "\"resumen\": \"una línea\"}")
         elif s.get("toma") == "una":
-            n = tomas_de(s, c)
+            nt = tomas_de(s, c)   # (no `n`: `n` es el número del capítulo; el 20/9 pisó los capítulos 1-4)
             voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}" for p in c["personajes"] if p in s["personajes"])
             actuado_txt = ("sin narrador: los personajes hablan en cámara. En cada toma, entre 3 y 4 líneas de diálogo, cada una de 5 a 9 palabras, "
                            "con el formato `NOMBRE: lo que dice`, una por renglón, en el orden en que se dicen; uno o dos personajes como mucho por toma, "
@@ -583,8 +583,8 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                            f"con voz en off ({guionista.VOCES[s['voz']]['nombre'] if s.get('voz') else 'sin voz'}): párrafos de la voz en off y entre corchetes qué se ve [así].")
             ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\nLUGAR: {c.get('locacion') or 'a elección entre las locaciones de la serie'}\n"
                    f"VOCES:\n{voces}\n\n"
-                   f"Escribí el GUION de este video de {round(n * 15)} segundos como {n} TOMA{'S' if n > 1 else ''} CONTINUA{'S' if n > 1 else ''} DE 15 SEGUNDOS, en castellano rioplatense, {actuado_txt}\n"
-                   f"Marcá cada toma con un renglón `[TOMA k]` (k de 1 a {n}). Cada toma es un solo lugar y un solo encuadre (cámara casi fija, plano medio o americano, "
+                   f"Escribí el GUION de este video de {round(nt * 15)} segundos como {nt} TOMA{'S' if nt > 1 else ''} CONTINUA{'S' if nt > 1 else ''} DE 15 SEGUNDOS, en castellano rioplatense, {actuado_txt}\n"
+                   f"Marcá cada toma con un renglón `[TOMA k]` (k de 1 a {nt}). Cada toma es un solo lugar y un solo encuadre (cámara casi fija, plano medio o americano, "
                    "los personajes de frente); entre tomas puede cambiar el encuadre o pasar un poco de tiempo, pero es la misma historia.\n"
                    "La historia completa tiene que entenderse sola: la primera línea ya plantea la situación, hay un giro, y la última línea remata "
                    "(chiste, revelación o vuelta de tuerca). Nada que necesite un antes o un después.\n"

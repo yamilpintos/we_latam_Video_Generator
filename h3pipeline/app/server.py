@@ -1309,8 +1309,13 @@ class EdicionCapitulo(BaseModel):
 @app.put("/api/series/{slug}/capitulos/{n}")
 def serie_capitulo_editar(slug: str, n: int, e: EdicionCapitulo):
     _serie_o_404(slug)
+    campos = {k: v for k, v in e.model_dump().items() if v is not None}
     try:
-        return series.editar_capitulo(slug, n, **{k: v for k, v in e.model_dump().items() if v is not None})
+        # Un capítulo que quedó «escribiendo»/«produciendo» sin ninguna tarea viva
+        # está huérfano (la tarea murió): se le puede fijar el estado a mano.
+        if campos.get("estado") and not tareas.corriendo(_slug_serie(slug)):
+            series._estado(slug, n, campos.pop("estado"))
+        return series.editar_capitulo(slug, n, **campos)
     except KeyError:
         raise HTTPException(404, "no existe ese capítulo")
     except RuntimeError as ex:
