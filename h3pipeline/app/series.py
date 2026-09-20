@@ -241,10 +241,14 @@ def biblia(s: dict) -> str:
 
 # ───────────────────────────────────────────────────────────── personajes y locaciones
 
-def tomas_de(s: dict) -> int:
-    """Cuántas tomas de 15 s tiene cada capítulo (1 a 4) cuando `toma` es «una»."""
+def tomas_de(s: dict, c: dict | None = None) -> int:
+    """Cuántas tomas de 15 s tiene un capítulo (1 a 4) cuando `toma` es «una»:
+    las del capítulo si las fijó (`c["tomas"]`, 20/9: «2 de 15, 2 de 30, 1 de 45
+    y 1 de 60»), si no las de la serie."""
     if s.get("toma") != "una":
         return 0
+    if c and c.get("tomas"):
+        return max(1, min(4, int(c["tomas"])))
     return max(1, min(4, int(round(float(s.get("duracion") or grilla.MAXIMO) / grilla.MAXIMO))))
 
 
@@ -287,6 +291,26 @@ def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None 
     s["personajes"][pid] = {"nombre": nombre.strip(), "pedido": descripcion.strip(),
                             "descripcion": str(r.get("descripcion", "")).strip(), "descripcion_es": str(r.get("descripcion_es", "")).strip(),
                             "voz": str(r.get("voz", "")).strip(), "imagen_ref": ref, "hoja": None, "aprobada": False, "creado": time.time()}
+    return guardar(s)
+
+
+def foto_personaje(slug: str, pid: str, b64: str) -> dict:
+    """Adjunta (o reemplaza) la foto de referencia de un personaje ya creado. La
+    hoja hay que rehacerla después («otra hoja») para que salga de la foto."""
+    from PIL import Image
+    import io
+    s = leer(slug)
+    p = s["personajes"].get(pid)
+    if not p:
+        raise KeyError(pid)
+    (carpeta(slug) / "refs").mkdir(parents=True, exist_ok=True)
+    if "," in b64[:64]:
+        b64 = b64.split(",", 1)[1]
+    im = Image.open(io.BytesIO(base64.b64decode(b64))).convert("RGB")
+    im.thumbnail((1536, 1536))
+    f = carpeta(slug) / "refs" / f"{pid}.png"
+    im.save(f, "PNG")
+    p["imagen_ref"] = f"refs/{pid}.png"
     return guardar(s)
 
 
@@ -503,6 +527,8 @@ def editar_capitulo(slug: str, n: int, **campos) -> dict:
         c["personajes"] = [p for p in campos["personajes"] if p in s["personajes"]]
     if "vestuario" in campos and isinstance(campos["vestuario"], dict):
         c["vestuario"] = {k: str(v).strip() for k, v in campos["vestuario"].items() if str(v).strip()}
+    if "tomas" in campos and campos["tomas"] is not None:
+        c["tomas"] = max(1, min(4, int(campos["tomas"])))
     if "estado" in campos and campos["estado"] in ESTADOS_CAP:
         c["estado"] = campos["estado"]
     return guardar(s)
@@ -547,7 +573,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "Devolvé JSON: {\"guion\": \"la escena\", \"musica\": \"la descripción de la pista para el compositor, en castellano, una o dos frases: ánimo, instrumentos, tempo\", "
                    "\"resumen\": \"una línea\"}")
         elif s.get("toma") == "una":
-            n = tomas_de(s)
+            n = tomas_de(s, c)
             voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}" for p in c["personajes"] if p in s["personajes"])
             actuado_txt = ("sin narrador: los personajes hablan en cámara. En cada toma, entre 3 y 4 líneas de diálogo, cada una de 5 a 9 palabras, "
                            "con el formato `NOMBRE: lo que dice`, una por renglón, en el orden en que se dicen; uno o dos personajes como mucho por toma, "
@@ -608,7 +634,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
             tomas = len(re.findall(r"^\s*\[TOMA\s*\d+\]", guion, re.M | re.I))
             c["nota"] = (f"{len(lineas)} líneas · {habladas} palabras habladas" + (f" · {tomas} toma(s)" if s.get("toma") == "una" else "")
                          + (f" · {len(largas)} pasan de {tope} palabras: acortalas" if largas else "")
-                         + (f" · más de {32 * max(1, tomas_de(s))} palabras: no entran, acortá" if s.get("toma") == "una" and habladas > 32 * max(1, tomas_de(s)) else ""))
+                         + (f" · más de {32 * max(1, tomas_de(s, c))} palabras: no entran, acortá" if s.get("toma") == "una" and habladas > 32 * max(1, tomas_de(s, c)) else ""))
         elif s.get("voz") and s["formato"] != "musica":
             dur, chars = _presupuesto_caracteres(s)
             c["nota"] = f"{len(guion)} caracteres (presupuesto ~{chars} para {dur:g} s)"
@@ -804,8 +830,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                   "cierre_video": s["estilo"].get("cierre", ""), "medio": s["estilo"].get("medio", ""),
                   "voz": None if (es_musica or actuado) else s.get("voz"), "negativos": not es_musica,
                   "notas": f"Serie «{s['titulo']}», capítulo {c['n']}. " + (s.get("notas") or ""),
-                  "slug": pslug, "duracion": s.get("duracion") if (es_musica or s.get("toma") == "una") else None, "serie": slug, "capitulo": c["n"],
-                  "actuado": actuado, "tomas": tomas_de(s)}
+                  "slug": pslug, "duracion": s.get("duracion") if es_musica else (round(tomas_de(s, c) * grilla.MAXIMO, 3) if s.get("toma") == "una" else None),
+                  "serie": slug, "capitulo": c["n"], "actuado": actuado, "tomas": tomas_de(s, c)}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
         (pc / "guion.txt").write_text(c["guion"], encoding="utf-8")
         if (pc / "proyecto.json").exists() and (rehacer or not _proyecto_coincide(pc, s)):
@@ -815,8 +841,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
                                    estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
                                    voz=pedido["voz"], titulo=c["titulo"], negativos=pedido["negativos"], notas=pedido["notas"],
-                                   duracion=pedido["duracion"], reparto=rep, actuado=actuado, tomas=tomas_de(s),
-                                   reintentos=1 if tomas_de(s) else 2, log=log)
+                                   duracion=pedido["duracion"], reparto=rep, actuado=actuado, tomas=tomas_de(s, c),
+                                   reintentos=1 if tomas_de(s, c) else 2, log=log)
             d = r["proyecto"]
             d["slug"] = pslug
             d["serie"] = {"slug": slug, "capitulo": c["n"], "modo": s.get("modo", "narrado")}
@@ -880,7 +906,7 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             nuevas = hojas_de_capitulo(s, c, d, formato)
             if nuevas:
                 log("hoja(s) del capítulo (mismo personaje, con la ropa de este capítulo): " + ", ".join(nuevas))
-            if tomas_de(s) > 1:
+            if tomas_de(s, c) > 1:
                 ne = encadenar_fotogramas(d, rep)
                 log(f"continuidad entre tomas: {ne} fotograma(s) referencian al anterior")
             (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

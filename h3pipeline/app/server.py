@@ -1211,6 +1211,7 @@ def serie_personaje(slug: str, p: NuevoPersonaje):
 
 
 class EdicionPersonaje(BaseModel):
+    b64: str | None = None            # foto de referencia nueva (después: «otra hoja»)
     nombre: str | None = None
     descripcion: str | None = None
     descripcion_es: str | None = None
@@ -1224,6 +1225,8 @@ def serie_personaje_editar(slug: str, pid: str, e: EdicionPersonaje):
     try:
         if e.aprobada is not None:
             series.aprobar_personaje(slug, pid, e.aprobada)
+        if e.b64:
+            series.foto_personaje(slug, pid, e.b64)
         return series.editar_personaje(slug, pid, nombre=e.nombre, descripcion=e.descripcion, descripcion_es=e.descripcion_es, voz=e.voz)
     except KeyError:
         raise HTTPException(404, "no existe ese personaje")
@@ -1299,6 +1302,7 @@ class EdicionCapitulo(BaseModel):
     musica: str | None = None
     personajes: list[str] | None = None
     vestuario: dict | None = None     # {id del personaje: ropa de este capítulo}
+    tomas: int | None = None          # 1-4 tomas de 15 s para ESTE capítulo (pisa el default de la serie)
     estado: str | None = None         # aprobado | descartado | guion (aprobar guion) | propuesto
 
 

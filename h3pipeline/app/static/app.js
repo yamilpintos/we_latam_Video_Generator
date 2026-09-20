@@ -604,6 +604,7 @@ function pintarSerie(s) {
       <div class="tiny" style="margin-top:6px">${h(p.descripcion_es || p.descripcion)}</div>
       ${s.modo === "actuado" ? `<div class="tiny" style="margin-top:4px"><b>voz:</b> <input id="pv-${id}" value="${h(p.voz || "")}" placeholder="cómo suena (edad, timbre, ritmo, acento), en inglés" style="font-size:12px;padding:4px 8px;margin-top:2px"></div>` : ""}
       <details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">descripción para los prompts (inglés) · editar</summary><textarea id="pd-${id}" style="min-height:80px;font-size:12px;margin-top:4px">${h(p.descripcion)}</textarea><button class="btn s" style="margin-top:4px" onclick="seriePersonajeGuardar('${slug}','${id}')">guardar</button></details>
+      <div class="row" style="margin-top:6px"><label class="btn s">${p.imagen_ref ? "cambiar la foto de referencia" : "⚠ subir la foto de referencia"}<input type="file" accept="image/*" hidden onchange="seriePersonajeFoto('${slug}','${id}',this)"></label>${p.imagen_ref ? "" : `<span class="tiny" style="color:var(--warn)">sin foto: la hoja salió sólo del texto</span>`}</div>
       <div class="row" style="margin-top:8px">${p.hoja ? `<button class="btn s ${p.aprobada ? "" : "p"}" onclick="seriePersonajeAprobar('${slug}','${id}',${!p.aprobada})">${p.aprobada ? "aprobada ✓ (desaprobar)" : "aprobar hoja"}</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],true)">otra hoja</button>` : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],false)">dibujar la hoja</button>`}
         <button class="btn s d" onclick="seriePersonajeQuitar('${slug}','${id}')">quitar</button></div></div>`;
   const fichaLoc = ([id, l]) => `<div class="card" style="padding:10px"><div class="row" style="justify-content:space-between"><b>${h(l.nombre)}</b><span class="tiny mono">${id}</span></div>
@@ -615,6 +616,7 @@ function pintarSerie(s) {
         <span class="tiny">${(c.personajes || []).map(p => s.personajes[p]?.nombre || p).join(", ")}${c.locacion ? " · " + h(c.locacion) : ""}</span></div>
       ${c.estado === "propuesto" ? `<textarea id="cp-${c.n}" style="min-height:60px;margin-top:6px;font-size:13px">${h(c.premisa)}</textarea>` : `<div class="muted" style="margin-top:6px">${h(c.premisa)}</div>`}
       ${c.musica ? `<div class="tiny" style="margin-top:4px">música: ${h(c.musica)}</div>` : ""}
+      ${s.toma === "una" && c.estado !== "producido" && !activo ? `<div class="row" style="margin-top:6px"><span class="tiny">duración de este capítulo:</span><select onchange="serieCap('${slug}',${c.n},{tomas:Number(this.value)})" style="max-width:200px;font-size:12px;padding:4px 8px">${[1, 2, 3, 4].map(k => `<option value="${k}" ${(c.tomas || Math.round((s.duracion || 15) / 15.083)) === k ? "selected" : ""}>${k * 15} s · ${k} toma${k > 1 ? "s" : ""}</option>`).join("")}</select></div>` : ""}
       ${(c.personajes || []).length && c.estado !== "producido" ? `<details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">ropa en este capítulo${Object.keys(c.vestuario || {}).length ? " · " + Object.entries(c.vestuario).map(([k, v]) => (s.personajes[k]?.nombre || k) + ": " + v).join(" · ").slice(0, 90) : " (con la ropa base)"}</summary>
           ${(c.personajes || []).map(pid => `<div class="row" style="margin-top:4px"><span class="tiny" style="width:90px">${h(s.personajes[pid]?.nombre || pid)}</span><input id="cv-${c.n}-${pid}" value="${h((c.vestuario || {})[pid] || "")}" placeholder="qué lleva puesto en este capítulo, en inglés (vacío = ropa base)" style="flex:1;font-size:12px;padding:5px 8px"></div>`).join("")}
           <button class="btn s" style="margin-top:6px" onclick="serieCapVestuario('${slug}',${c.n},${JSON.stringify(c.personajes).replace(/"/g, "&quot;")})">guardar la ropa</button></details>` : ""}
@@ -698,6 +700,11 @@ async function seriePersonaje(slug) {
   const b64 = f ? await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); }) : null;
   toast("GPT describe al personaje… (10-20 s)");
   try { await api(`/series/${slug}/personajes`, {method: "POST", body: {nombre, descripcion, b64}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }
+}
+async function seriePersonajeFoto(slug, id, input) {
+  const f = input.files[0]; if (!f) return;
+  const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(f); });
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {b64}}); toast("foto guardada: ahora «otra hoja» para redibujarla desde la foto"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
 }
 async function seriePersonajeGuardar(slug, id) {
   const v = $(`#pv-${id}`);
