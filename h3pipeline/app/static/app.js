@@ -500,12 +500,15 @@ function pintarNuevaSerie(d, f) {
           <select id="s-estructura" style="max-width:280px">${ests.map(e => `<option value="${e.nombre}" ${e.nombre === estDefault ? "selected" : ""}>${e.nombre} · ${e.duracion} s${e.retencion ? " · retención " + Math.round(e.retencion * 100) + " %" : ""}</option>`).join("")}</select>
           ${esMusica ? "" : `<select id="s-modo" style="max-width:300px" onchange="$('#s-voz').style.display=this.value==='actuado'?'none':''"><option value="narrado">Narrado: una voz en off cuenta</option><option value="actuado">Actuado: los personajes hablan en cámara</option></select>
           <select id="s-voz" style="max-width:240px"><option value="pablo">Voz en off: Pablo, argentino</option><option value="kate">Voz en off: Kate</option><option value="">Sin voz en off (sólo imagen y texto)</option></select>`}
-          <select id="s-cont" style="max-width:280px"><option value="antologia">Antología (capítulos sueltos, mismo universo)</option><option value="serial">Serial (la historia sigue de un capítulo al otro)</option></select></div>
+          <select id="s-cont" style="max-width:280px"><option value="antologia">Antología (capítulos sueltos, mismo universo)</option><option value="serial">Serial (la historia sigue de un capítulo al otro)</option></select>
+          ${f === "short" ? `<select id="s-toma" style="max-width:300px"><option value="una">Tomas de 15 s (sin cortar frases)</option><option value="cortes">Con cortes (planos de 5 s)</option></select>
+          <select id="s-tomas" style="max-width:220px"><option value="1">15 s · 1 toma</option><option value="2">30 s · 2 tomas</option><option value="3">45 s · 3 tomas</option><option value="4">60 s · 4 tomas</option></select>` : ""}</div>
         ${esMusica ? `<div class="row" style="margin-bottom:8px"><select id="s-genero" style="max-width:220px">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
           <select id="s-mdur" style="max-width:170px">${[[60, "1 min"], [180, "3 min"], [300, "5 min"], [600, "10 min"]].map(([v, l]) => `<option value="${v}" ${v === 180 ? "selected" : ""}>pistas de ${l}</option>`).join("")}</select>
           <input id="s-mtipo" placeholder="cómo suena la música de la serie (ánimo, instrumentos, tempo)" style="flex:1;min-width:240px"></div>` : ""}
         <div class="row" style="margin-bottom:8px"><select id="s-estilo" style="max-width:320px">${d.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (al lado)</option></select>
           <input id="s-estilo-libre" placeholder="estilo propio, en inglés (opcional)" style="flex:1;min-width:220px"></div>
+        ${f === "short" ? `<div class="tiny" style="margin:-2px 0 8px"><b>Tomas de 15 s</b>: cada capítulo son 1 a 4 clips continuos de 15 s; cada toma lleva su bloque de diálogo completo (3-4 líneas) y el corte cae entre tomas, nunca en medio de una frase. Un clip de 15 s tarda ~17 min de GPU. <b>Con cortes</b>: planos de 5 s editados; para narrado con voz en off.</div>` : ""}
         ${esMusica ? "" : `<div class="tiny" style="margin:-2px 0 8px"><b>Actuado</b>: sin narrador. GPT escribe el guion como diálogo («PEDRO: …», una línea corta por plano, un solo personaje hablando por plano) y cada línea baja al prompt de H3 con quién la dice, el texto literal, cómo suena su voz y la boca en sincronía. La voz la genera H3 dentro del clip.</div>`}
         <textarea id="s-idea" style="min-height:80px" placeholder="La idea general (opcional acá: conviene escribirla después de cargar los personajes, nombrándolos)."></textarea>
         <div class="row" style="margin-top:10px"><button class="btn p" onclick="serieCrear('${f}')">Crear la serie</button><a class="btn" href="#/${esMusica ? "musica" : "nuevo/" + f}">volver</a><span class="tiny">gratis</span></div>
@@ -522,10 +525,11 @@ function pintarNuevaSerie(d, f) {
 }
 async function serieCrear(f) {
   const modo = f === "musica" ? "narrado" : $("#s-modo").value;
-  const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null, modo,
+  const toma = f === "short" ? $("#s-toma").value : null;
+  const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null, modo, toma,
     voz: f === "musica" || modo === "actuado" ? null : ($("#s-voz").value || null), estilo: $("#s-estilo").value === "" ? null : Number($("#s-estilo").value), estilo_libre: $("#s-estilo-libre").value,
     continuidad: $("#s-cont").value, musica: f === "musica" ? {genero: $("#s-genero").value, duracion: Number($("#s-mdur").value), tipo: $("#s-mtipo").value} : null,
-    duracion: f === "musica" ? 5.167 : null};
+    duracion: f === "musica" ? 5.167 : toma === "una" ? Number($("#s-tomas").value) * 15.083 : null};
   if (!body.titulo) return $("#s-err").textContent = "Falta el título.";
   try { const s = await api("/series", {method: "POST", body}); location.hash = `#/serie/${s.slug}`; } catch (e) { $("#s-err").textContent = e.message; }
 }
@@ -621,7 +625,7 @@ function pintarSerie(s) {
   const ejemplo = nombres.length ? `«${nombres.slice(0, 3).join(", ")} ${nombres.length > 1 ? "tienen" : "tiene"} aventuras juntos cuando terminan las clases…»` : "«los tres amigos Pedro, Luis y Juan tienen aventuras juntos cuando terminan las clases»";
   const bloqueo = !pj.length ? "Esta serie no tiene personajes. Cargá al menos uno en el paso 1 (nombre y cómo es), dibujale la hoja y aprobala. Sin eso no se puede producir: el traductor inventaría personajes con otras caras."
     : sinHoja ? `Falta dibujar la hoja de modelo de ${pj.filter(([, p]) => !p.hoja).map(([, p]) => p.nombre).join(", ")}. Sin hoja no se puede producir.` : "";
-  $("#vista").innerHTML = `<div class="wrap"><div id="serie-err">${bloqueo ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.6)"><div class="row"><span class="pill warn">antes de producir</span><span style="flex:1">${h(bloqueo)}</span></div></div>` : ""}</div><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.modo === "actuado" ? `<span class="pill ac">actuado · hablan los personajes</span>` : s.voz ? `<span class="pill">narrado · voz ${h(s.voz)}</span>` : s.formato === "musica" ? "" : `<span class="pill">sin voz</span>`}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
+  $("#vista").innerHTML = `<div class="wrap"><div id="serie-err">${bloqueo ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.6)"><div class="row"><span class="pill warn">antes de producir</span><span style="flex:1">${h(bloqueo)}</span></div></div>` : ""}</div><h1>${h(s.titulo)} <span class="pill">${FORMATOS_SERIE[s.formato] || s.formato} · ${h(s.estructura)}${s.duracion ? " · " + s.duracion + " s" : ""}</span><span class="pill">${s.continuidad === "serial" ? "serial" : "antología"}</span>${s.toma === "una" ? `<span class="pill ac">${Math.round((s.duracion || 15) / 15.083)} toma(s) de 15 s · ${Math.round(s.duracion || 15)} s</span>` : ""}${s.modo === "actuado" ? `<span class="pill ac">actuado · hablan los personajes</span>` : s.voz ? `<span class="pill">narrado · voz ${h(s.voz)}</span>` : s.formato === "musica" ? "" : `<span class="pill">sin voz</span>`}<a class="btn s" href="${volver}" style="margin-left:auto">volver a ${FORMATOS_SERIE[s.formato] || s.formato}</a></h1>
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>`
       : ""}
     ${barraSerie(s)}
@@ -731,8 +735,9 @@ function serieProducir(slug, n, rehacer = false) {
 function serieMasa(slug) {
   const s = window._serieActual || {}; const caps = (s.capitulos || []).filter(c => c.estado !== "descartado");
   const porHacer = caps.filter(c => c.estado !== "producido").length, sinVideo = caps.filter(c => !(c.slug && s.proyectos && s.proyectos[c.slug] && s.proyectos[c.slug].clips >= s.proyectos[c.slug].planos && s.proyectos[c.slug].planos)).length;
-  const planosPorCap = s.estructura === "short-15" ? 3 : s.estructura === "short-23" ? 5 : s.formato === "largo" ? 40 : 12;
-  const minGpu = 13 + sinVideo * (planosPorCap <= 4 ? 4.5 : planosPorCap <= 6 ? 8 : planosPorCap * 1.5);
+  const tomas = s.toma === "una" ? Math.max(1, Math.round((s.duracion || 15) / 15.083)) : 0;
+  const planosPorCap = tomas || (s.estructura === "short-15" ? 3 : s.estructura === "short-23" ? 5 : s.formato === "largo" ? 40 : 12);
+  const minGpu = 13 + (tomas ? Math.ceil(sinVideo * tomas / 4) * 18 : sinVideo * (planosPorCap <= 4 ? 4.5 : planosPorCap <= 6 ? 8 : planosPorCap * 1.5));
   const gpu = minGpu / 60 * 2.8, costoApi = porHacer * (0.1 + planosPorCap * 0.06);   // (no llamarla `api`: tapa la función que habla con el servidor)
   modal(`<h3>Producir en masa · ${caps.length} capítulos</h3>
     <div class="muted" style="margin-bottom:12px">Un solo botón y no hay que tocar nada más. En orden, todo solo:</div>

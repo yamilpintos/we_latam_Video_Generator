@@ -481,10 +481,13 @@ class Proyecto:
         # Dos personajes alternando en diez segundos es pedirle demasiado al
         # modelo: una línea, un personaje. El contraplano es otro plano.
         for p in planos:
-            if p["dialogo"] and len(p["personajes"]) > 1:
+            # Una toma de 15 s (20/9/2026) trae varios renglones con rótulo en un
+            # plano largo: ahí sí hay dos voces y más de 14 palabras a propósito.
+            varias = bool(p["dialogo"]) and "\n" in p["dialogo"] and float(p.get("segundos") or 0) >= 10
+            if p["dialogo"] and len(p["personajes"]) > 1 and not varias:
                 avisos.append(f"{p['id']} tiene diálogo y {len(p['personajes'])} personajes: "
                               f"una sola voz por plano")
-            if p["dialogo"] and len(p["dialogo"].split()) > 14:
+            if p["dialogo"] and len(p["dialogo"].split()) > 14 and not varias:
                 avisos.append(f"{p['id']}: la línea tiene {len(p['dialogo'].split())} palabras; "
                               f"por encima de ~12 no entra cómoda en el plano")
 

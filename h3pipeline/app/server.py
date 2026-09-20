@@ -1126,6 +1126,7 @@ class NuevaSerie(BaseModel):
     continuidad: str = "antologia"    # antologia | serial
     musica: dict | None = None        # {genero, tipo, duracion} para music video
     modo: str = "narrado"             # narrado (voz en off) | actuado (los personajes hablan en cámara)
+    toma: str | None = None           # shorts: una (tomas de 15 s; duracion = 15/30/45/60) | cortes (planos de 5 s)
 
 
 @app.post("/api/series")
@@ -1133,7 +1134,7 @@ def series_crear(n: NuevaSerie):
     try:
         return series.crear(n.titulo, n.formato, n.idea, estructura=n.estructura, duracion=n.duracion, voz=n.voz,
                             estilo=n.estilo, estilo_libre=n.estilo_libre, continuidad=n.continuidad, musica=n.musica,
-                            modo=n.modo)
+                            modo=n.modo, toma=n.toma)
     except ValueError as e:
         raise HTTPException(422, str(e))
 
@@ -1170,6 +1171,7 @@ class EdicionSerie(BaseModel):
     estilo: dict | None = None        # {preset, libre}
     musica: dict | None = None
     modo: str | None = None
+    toma: str | None = None
 
 
 @app.put("/api/series/{slug}")

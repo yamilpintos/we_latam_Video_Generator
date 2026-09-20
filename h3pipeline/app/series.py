@@ -33,7 +33,7 @@ import sys
 import time
 from pathlib import Path
 
-from .. import config, frames, guionista, reescritor, web
+from .. import config, frames, grilla, guionista, reescritor, web
 from ..estructura import Estructura
 from ..proyecto import Proyecto
 from . import cola, maquina
@@ -103,16 +103,28 @@ def listar() -> list[dict]:
 
 def crear(titulo: str, formato: str, idea: str, *, estructura: str | None = None, duracion: float | None = None,
           voz: str | None = "pablo", estilo: int | None = 0, estilo_libre: str = "", continuidad: str = "antologia",
-          musica: dict | None = None, modo: str = "narrado") -> dict:
+          musica: dict | None = None, modo: str = "narrado", toma: str | None = None) -> dict:
     """`modo`: «narrado» (una voz en off fija cuenta; los personajes hablan poco) o
     «actuado» (sin narrador: cada personaje dice sus líneas en cámara y las
-    genera H3 dentro del clip, una línea por plano)."""
+    genera H3 dentro del clip). `toma` (shorts): «una» = TOMAS DE 15 s, cada
+    una un clip continuo con su bloque de diálogo adentro (1 toma = 15 s,
+    2 = 30, 3 = 45, 4 = 60; `duracion` lo dice); el corte cae entre tomas,
+    nunca en medio de una frase (pedido del usuario, 20/9: con planos de 4 s
+    cada línea salía cortada y no se entendía nada). «cortes» = planos de 5,17 s
+    editados, lo de siempre para narrado."""
     if formato not in FORMATOS:
         raise ValueError("formato: short, largo o musica")
     if modo not in ("narrado", "actuado"):
         modo = "narrado"
     if modo == "actuado":
         voz = None
+    if toma not in ("una", "cortes"):
+        toma = "una" if (modo == "actuado" and formato == "short") else "cortes"
+    if formato != "short":
+        toma = "cortes"
+    if toma == "una":
+        n = max(1, min(4, int(round(float(duracion or grilla.MAXIMO) / grilla.MAXIMO))))
+        duracion = round(n * grilla.MAXIMO, 3)
     slug = _slug(titulo)
     if (carpeta(slug) / "serie.json").exists():
         raise ValueError(f"ya existe la serie {slug}")
@@ -125,6 +137,7 @@ def crear(titulo: str, formato: str, idea: str, *, estructura: str | None = None
     s = {"slug": slug, "titulo": titulo.strip(), "creado": time.time(), "formato": formato,
          "estructura": estructura or FORMATOS[formato],
          "duracion": duracion if duracion else (5.167 if formato == "musica" else None),
+         "toma": toma,
          "voz": voz if voz in guionista.VOCES else None,
          "estilo": {"preset": estilo if est else None, "libre": estilo_libre.strip(), "imagen": imagen,
                     "video": est["cabecera"] if est else "", "cierre": est["cierre"] if est else "",
@@ -150,6 +163,13 @@ def actualizar(slug: str, **campos) -> dict:
             s["modo"] = v
             if v == "actuado":
                 s["voz"] = None
+        elif k == "toma" and v in ("una", "cortes") and s["formato"] == "short":
+            s["toma"] = v
+            if v == "una":
+                n = max(1, min(4, int(round(float(s.get("duracion") or grilla.MAXIMO) / grilla.MAXIMO))))
+                s["duracion"] = round(n * grilla.MAXIMO, 3)
+            else:
+                s["duracion"] = None
         elif k in ("titulo", "idea", "notas", "continuidad", "estructura", "voz", "duracion", "musica"):
             s[k] = v
     return guardar(s)
@@ -187,7 +207,14 @@ def biblia(s: dict) -> str:
          f"IDEA GENERAL: {s['idea']}",
          f"CONTINUIDAD: {'serial (cada capítulo continúa al anterior)' if s['continuidad'] == 'serial' else 'antología (capítulos independientes, mismo universo)'}",
          f"ESTILO VISUAL: {s['estilo']['imagen']}"]
-    if s.get("modo") == "actuado":
+    if s.get("toma") == "una":
+        n = tomas_de(s)
+        L.append(f"TOMAS DE 15 SEGUNDOS: cada capítulo son {n} toma{'s' if n > 1 else ''} continua{'s' if n > 1 else ''} de 15 s "
+                 f"({round(n * 15)} s en total), cámara casi fija en cada una, y el corte sólo entre tomas. "
+                 + ("Sin narrador: los personajes hablan en cámara, 3 a 4 líneas cortas por toma, uno o dos personajes que se turnan. "
+                    if s.get("modo") == "actuado" else "")
+                 + "La historia entera tiene que entenderse sola: planteo, giro y remate.")
+    elif s.get("modo") == "actuado":
         L.append("MODO ACTUADO: no hay narrador. Los personajes hablan en cámara, en castellano rioplatense, "
                  "una línea corta por plano (máximo 12 palabras), un solo personaje hablando por plano. "
                  "Las reacciones en silencio también cuentan como planos.")
@@ -213,6 +240,13 @@ def biblia(s: dict) -> str:
 
 
 # ───────────────────────────────────────────────────────────── personajes y locaciones
+
+def tomas_de(s: dict) -> int:
+    """Cuántas tomas de 15 s tiene cada capítulo (1 a 4) cuando `toma` es «una»."""
+    if s.get("toma") != "una":
+        return 0
+    return max(1, min(4, int(round(float(s.get("duracion") or grilla.MAXIMO) / grilla.MAXIMO))))
+
 
 def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None = None, log=print) -> dict:
     """Alta de un personaje. La descripción se escribe en castellano; GPT la pasa
@@ -511,6 +545,23 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "mínima y repetible. Nada abstracto, ninguna ventana con ciudad, nada que cambie de estado. Y una frase para la música.\n"
                    "Devolvé JSON: {\"guion\": \"la escena\", \"musica\": \"la descripción de la pista para el compositor, en castellano, una o dos frases: ánimo, instrumentos, tempo\", "
                    "\"resumen\": \"una línea\"}")
+        elif s.get("toma") == "una":
+            n = tomas_de(s)
+            voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}" for p in c["personajes"] if p in s["personajes"])
+            actuado_txt = ("sin narrador: los personajes hablan en cámara. En cada toma, entre 3 y 4 líneas de diálogo, cada una de 5 a 9 palabras, "
+                           "con el formato `NOMBRE: lo que dice`, una por renglón, en el orden en que se dicen; uno o dos personajes como mucho por toma, "
+                           "que se turnan sin pisarse. Todo lo hablado de una toma dura menos de 10 segundos a ritmo normal (unas 30 palabras por toma, no más); "
+                           "el resto son pausas, gestos y reacciones, que también contás entre corchetes [así]."
+                           if s.get("modo") == "actuado" else
+                           f"con voz en off ({guionista.VOCES[s['voz']]['nombre'] if s.get('voz') else 'sin voz'}): párrafos de la voz en off y entre corchetes qué se ve [así].")
+            ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\nLUGAR: {c.get('locacion') or 'a elección entre las locaciones de la serie'}\n"
+                   f"VOCES:\n{voces}\n\n"
+                   f"Escribí el GUION de este video de {round(n * 15)} segundos como {n} TOMA{'S' if n > 1 else ''} CONTINUA{'S' if n > 1 else ''} DE 15 SEGUNDOS, en castellano rioplatense, {actuado_txt}\n"
+                   f"Marcá cada toma con un renglón `[TOMA k]` (k de 1 a {n}). Cada toma es un solo lugar y un solo encuadre (cámara casi fija, plano medio o americano, "
+                   "los personajes de frente); entre tomas puede cambiar el encuadre o pasar un poco de tiempo, pero es la misma historia.\n"
+                   "La historia completa tiene que entenderse sola: la primera línea ya plantea la situación, hay un giro, y la última línea remata "
+                   "(chiste, revelación o vuelta de tuerca). Nada que necesite un antes o un después.\n"
+                   "Devolvé JSON: {\"guion\": \"el texto con los [TOMA k]\", \"resumen\": \"una línea de qué pasó\", \"lineas\": número de líneas de diálogo, \"palabras_habladas\": número}")
         elif s.get("modo") == "actuado":
             dur, _ = _presupuesto_caracteres(s)
             planos = max(3, int(round(dur / 5.167)))
@@ -549,9 +600,14 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         if s["formato"] == "musica" and r.get("musica"):
             c["musica"] = str(r["musica"]).strip()
         if s.get("modo") == "actuado" and s["formato"] != "musica":
-            lineas = [l for l in guion.splitlines() if re.match(r"^\s*[A-ZÁÉÍÓÚÑ][\wÁÉÍÓÚÑáéíóúñ ]{1,30}:\s*\S", l)]
-            largas = [l for l in lineas if len(l.split(":", 1)[1].split()) > 12]
-            c["nota"] = f"{len(lineas)} líneas de diálogo" + (f" · {len(largas)} pasan de 12 palabras: acortalas o se parten en dos planos" if largas else "")
+            lineas = [l for l in guion.splitlines() if re.match(r"^\s*[A-ZÁÉÍÓÚÑ][\wÁÉÍÓÚÑáéíóúñ ]{1,30}:\s*\S", l) and not l.strip().upper().startswith("[TOMA")]
+            tope = 9 if s.get("toma") == "una" else 12
+            largas = [l for l in lineas if len(l.split(":", 1)[1].split()) > tope]
+            habladas = sum(len(l.split(":", 1)[1].split()) for l in lineas)
+            tomas = len(re.findall(r"^\s*\[TOMA\s*\d+\]", guion, re.M | re.I))
+            c["nota"] = (f"{len(lineas)} líneas · {habladas} palabras habladas" + (f" · {tomas} toma(s)" if s.get("toma") == "una" else "")
+                         + (f" · {len(largas)} pasan de {tope} palabras: acortalas" if largas else "")
+                         + (f" · más de {32 * max(1, tomas_de(s))} palabras: no entran, acortá" if s.get("toma") == "una" and habladas > 32 * max(1, tomas_de(s)) else ""))
         elif s.get("voz") and s["formato"] != "musica":
             dur, chars = _presupuesto_caracteres(s)
             c["nota"] = f"{len(guion)} caracteres (presupuesto ~{chars} para {dur:g} s)"
@@ -673,8 +729,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                   "cierre_video": s["estilo"].get("cierre", ""), "medio": s["estilo"].get("medio", ""),
                   "voz": None if (es_musica or actuado) else s.get("voz"), "negativos": not es_musica,
                   "notas": f"Serie «{s['titulo']}», capítulo {c['n']}. " + (s.get("notas") or ""),
-                  "slug": pslug, "duracion": s.get("duracion") if es_musica else None, "serie": slug, "capitulo": c["n"],
-                  "actuado": actuado}
+                  "slug": pslug, "duracion": s.get("duracion") if (es_musica or s.get("toma") == "una") else None, "serie": slug, "capitulo": c["n"],
+                  "actuado": actuado, "tomas": tomas_de(s)}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
         (pc / "guion.txt").write_text(c["guion"], encoding="utf-8")
         if (pc / "proyecto.json").exists() and (rehacer or not _proyecto_coincide(pc, s)):
@@ -684,7 +740,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
                                    estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
                                    voz=pedido["voz"], titulo=c["titulo"], negativos=pedido["negativos"], notas=pedido["notas"],
-                                   duracion=pedido["duracion"], reparto=rep, actuado=actuado, log=log)
+                                   duracion=pedido["duracion"], reparto=rep, actuado=actuado, tomas=tomas_de(s),
+                                   reintentos=1 if tomas_de(s) else 2, log=log)
             d = r["proyecto"]
             d["slug"] = pslug
             d["serie"] = {"slug": slug, "capitulo": c["n"], "modo": s.get("modo", "narrado")}

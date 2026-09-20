@@ -64,7 +64,7 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
                 estilo_video: str = "", cierre_video: str = "", medio: str = "",
                 voz: str | None = "kate", titulo: str = "", negativos: bool = True,
                 notas: str = "", duracion: float | None = None,
-                reparto: dict | None = None, actuado: bool = False) -> str:
+                reparto: dict | None = None, actuado: bool = False, tomas: int = 0) -> str:
     est = Estructura.cargar(estructura)
     if duracion and abs(est.duracion_objetivo - duracion) > 0.01:
         est = est.con_duracion(duracion)
@@ -98,20 +98,42 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
         L.append("  · el guion trae las líneas como `NOMBRE: texto`; cada línea va en el plano donde se dice, en "
                  "`dialogo` (el texto LITERAL, sin el nombre), con `habla` = id del personaje que la dice y "
                  "`voz_desc` = cómo suena su voz (usá la descripción de voz del reparto).")
-        L.append("  · UNA línea por plano y UN solo personaje hablando por plano; nunca dos alternando en el mismo "
-                 "clip. Si el guion tiene un ida y vuelta, son dos planos.")
-        L.append("  · La línea tiene que caber en el plano: como mucho 12 palabras / ~55 caracteres por plano de "
-                 f"{grilla.MINIMO:.2f} s, y `corta` ≥ 0,35 s por palabra + 1 s. Si no entra, partila en dos planos.")
+        if not tomas:
+            L.append("  · UNA línea por plano y UN solo personaje hablando por plano; nunca dos alternando en el mismo "
+                     "clip. Si el guion tiene un ida y vuelta, son dos planos.")
+            L.append("  · La línea tiene que caber en el plano: como mucho 12 palabras / ~55 caracteres por plano de "
+                     f"{grilla.MINIMO:.2f} s, y `corta` ≥ 0,35 s por palabra + 1 s. Si no entra, partila en dos planos.")
         L.append("  · En `ve` el que habla está de frente o tres cuartos, con la BOCA VISIBLE y libre (nada tapándola: "
                  "ni manos, ni vaso, ni bufanda). En `mueve` decí que habla mirando a quien corresponde.")
-        L.append("  · Los planos sin línea llevan `dialogo` null y su `audio` de ambiente. Las reacciones (escuchar, "
-                 "mirar, callar) también son planos, sin diálogo.")
+        if not tomas:
+            L.append("  · Los planos sin línea llevan `dialogo` null y su `audio` de ambiente. Las reacciones (escuchar, "
+                     "mirar, callar) también son planos, sin diálogo.")
         L.append("  · `personajes` del plano incluye siempre al que habla; `off` false.")
+        L.append("  · En los planos con diálogo, `corta` = `segundos` (el plano ENTERO, sin recorte): H3 arranca a hablar "
+                 "recién al segundo y si el montaje recorta, la frase sale cortada (pasó en los seis shorts del 19/9).")
         if reparto and reparto.get("voces"):
             L.append("  · Voces del reparto (para `voz_desc`): " + json.dumps(reparto["voces"], ensure_ascii=False))
     elif voz is None:
         L.append("- NO hay voz en off: no escribas `voz`. El gancho lo cargan imagen, sonido y texto.")
-    if duracion and duracion <= grilla.MAXIMO + 0.1:
+    if tomas:
+        # Series por TOMAS DE 15 s (20/9/2026): cada plano es un clip continuo de
+        # 15,08 s con su bloque de diálogo adentro; el corte cae entre tomas, nunca
+        # en medio de una frase. Dentro de un clip H3 sostiene la voz y los turnos.
+        seg = grilla.MAXIMO
+        L.append(f"- SON {tomas} TOMA(S) DE 15 SEGUNDOS: exactamente {tomas} plano(s), cada uno con `segundos`: {seg:.2f}, "
+                 f"SIN `corta` y sin `usa` (se usan enteros, en orden). El plano k es la [TOMA k] del guion. Cámara casi fija o con un "
+                 f"movimiento mínimo y lento; plano medio o americano, los personajes de frente o tres cuartos con la boca visible.")
+        if actuado:
+            L.append("- TODO el diálogo de cada toma va en el `dialogo` de su plano, en varios renglones con rótulo, en el orden en que se "
+                     "dice, textual: `\"dialogo\": \"MONKY: primera línea\\nPACIENTE: segunda línea\\nMONKY: remate\"`. El rótulo es el "
+                     "NOMBRE del personaje (no se dice). `habla` = id del que más habla en esa toma; `personajes` = todos los que aparecen; "
+                     "`voz_desc` = la voz del que más habla; `off` false.")
+        L.append("- En `mueve` contá la toma completa en orden: quién habla primero y qué hace mientras, la pausa, la reacción del otro, "
+                 "quién remata, y que las bocas se cierran cuando cada uno termina. Las acotaciones [entre corchetes] del guion van ahí.")
+        L.append("- La ley de tramos de abajo se cumple en espíritu (gancho al principio, remate al final), no plano por plano: "
+                 "los planos son largos a propósito.")
+        L.append(f"- `duracion_objetivo`: {duracion}.")
+    elif duracion and duracion <= grilla.MAXIMO + 0.1:
         L.append(f"- ES UN LOOP DE UNA SOLA ESCENA: exactamente UN plano, con `segundos`: "
                  f"{grilla.encajar(duracion)[1]:.2f}, sin `corta` ni `usa`. Elegí el encuadre que mejor "
                  f"aguante mirarse en bucle: un solo movimiento lento y cíclico (lluvia, vapor, fuego, agua, "
@@ -238,6 +260,20 @@ def _validar(d: dict, cps_voz: float | None = None) -> tuple[list[str], str | No
     return avisos, None
 
 
+def _forzar_tomas(d: dict, n: int) -> None:
+    """Tomas de 15 s: exactamente `n` planos de 15,08 s enteros, sin corta ni usa.
+    Si el modelo mandó más planos, se quedan los primeros n; si mandó menos, se
+    avisa por el validador (queda corto, no se inventa)."""
+    planos = list(d.get("planos") or [])[:n]
+    for p in planos:
+        p["segundos"] = grilla.MAXIMO
+        p.pop("corta", None)
+        p.pop("usa", None)
+        p.pop("sigue_de", None)
+    d["planos"] = planos
+    d["duracion_objetivo"] = round(n * grilla.MAXIMO, 3)
+
+
 def _forzar_grilla(d: dict, segundos: float | None = None) -> None:
     """Lo que no se negocia se corrige acá, sin gastar otra llamada: todos los
     planos generan 5,17 s y ningún corte pasa de 4,8. Excepción: el loop de UNA
@@ -266,14 +302,14 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
              estilo_video: str = "", cierre_video: str = "", medio: str = "",
              voz: str | None = "kate", titulo: str = "", negativos: bool = True,
              notas: str = "", reintentos: int = 2, log=print, duracion: float | None = None,
-             reparto: dict | None = None, actuado: bool = False) -> dict:
+             reparto: dict | None = None, actuado: bool = False, tomas: int = 0) -> dict:
     """Guion → proyecto validado. Devuelve {"proyecto", "avisos", "intentos", "instruccion"}."""
     if not guion or len(guion.strip()) < 40:
         raise ErrorGuionista("el guion está vacío o es demasiado corto")
     ins = instruccion(guion, formato=formato, estructura=estructura, estilo_imagen=estilo_imagen,
                       estilo_video=estilo_video, cierre_video=cierre_video, medio=medio, voz=voz,
                       titulo=titulo, negativos=negativos, notas=notas, duracion=duracion, reparto=reparto,
-                      actuado=actuado)
+                      actuado=actuado, tomas=tomas)
     mensajes = [{"role": "system", "content": "Sos el director técnico de un pipeline de video con IA. "
                                               "Respondés sólo con JSON válido."},
                 {"role": "user", "content": ins}]
@@ -304,8 +340,11 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
             d["voces"] = {}
         if not negativos:
             d["negativos"] = False
-        una_escena = bool(duracion) and duracion <= grilla.MAXIMO + 0.1
-        _forzar_grilla(d, duracion if una_escena else None)
+        una_escena = bool(duracion) and duracion <= grilla.MAXIMO + 0.1 and not tomas
+        if tomas:
+            _forzar_tomas(d, tomas)
+        else:
+            _forzar_grilla(d, duracion if una_escena else None)
         avisos, fatal = _validar(d, VOCES[voz]["cps"] if voz and voz in VOCES else None)
         log(f"    {'ERROR ' + fatal if fatal else str(len(avisos)) + ' aviso(s)'}")
         if not fatal and not avisos:

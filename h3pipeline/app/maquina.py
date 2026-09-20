@@ -370,9 +370,18 @@ def generar_proyecto(slug: str, log=print) -> dict:
     vast.subir(inst, zip_)
     vast.ejecutar(inst, f"export PATH=/venv/main/bin:$PATH && cd /workspace/refs && unzip -oq {zip_.name} && "
                         f"sed -i 's/\\r$//' *.sh *.py && cp planos.json /root/planos.json", timeout=180)
+    planos = p.construir()[1]["planos"]
+    if any(float(x.get("segundos") or 0) > 6.0 for x in planos):
+        # Clips largos (tomas de 15 s, 20/9): sólo entran con la VRAM limpia.
+        # La placa 0 se reinicia por supervisor; las 1-3 se matan (en una
+        # llamada ssh aparte, patrón con corchete: VAST.md trampa 14) y
+        # lanzar.sh las vuelve a levantar de cero.
+        log("clips de más de 6 s: reinicio ComfyUI en las cuatro placas antes de generar")
+        vast.ejecutar(inst, "supervisorctl restart comfyui >/dev/null 2>&1 || true", timeout=90)
+        vast.ejecutar(inst, "pkill -f '[m]ain.py --disable-auto-launch --port 1819' || true", timeout=30)
+        time.sleep(20)
     vast.lanzar(inst, "export PATH=/venv/main/bin:$PATH && cd /workspace/refs && PASOS=8 GPUS=4 bash lanzar.sh",
                 log=vast.LOG_CORRIDA)
-    planos = p.construir()[1]["planos"]
     est = costos.estimar(planos, costos.Maquina(dph=float(m.get("dph", 2.0))))
     (c / "corrida.json").write_text(json.dumps(
         {"instancia": int(m["instancia"]), "dph": float(m.get("dph", 0)), "inicio": time.time(),
