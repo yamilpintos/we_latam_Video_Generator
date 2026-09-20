@@ -235,7 +235,11 @@ def generar_storyboard(storyboard: dict, destino: Path, raiz: Path, force: bool 
             continue
         refs = [Path(r) if Path(r).is_absolute() else Path(raiz) / r
                 for r in a.get("refs", storyboard.get("refs", []))]
-        faltan = [r for r in refs if not r.exists()]
+        # Una referencia puede ser OTRO asset de este mismo lote (continuidad entre
+        # tomas, 20/9: el fotograma 2 se dibuja mirando el 1): se difiere hasta
+        # que exista. Sólo es error si no está ni va a estar.
+        del_lote = {destino / f"{x['id']}.png" for x in storyboard["assets"]}
+        faltan = [r for r in refs if not r.exists() and r not in del_lote]
         if faltan:
             raise FileNotFoundError(f"{a['id']}: faltan referencias {faltan}")
         pendientes.append((a, salida, refs))
@@ -263,9 +267,19 @@ def generar_storyboard(storyboard: dict, destino: Path, raiz: Path, force: bool 
         log(f"      {a['id']}: {salida.stat().st_size // 1024} KB en {time.time() - t0:.0f}s")
         return a["id"], salida
 
-    with ThreadPoolExecutor(max(1, hilos)) as ex:
-        for aid, salida in ex.map(uno, pendientes):
-            (hechos.append(salida) if salida else bloqueados.append(aid))
+    # Por tandas: primero los que tienen todas sus referencias, en paralelo; los
+    # que dependen de otro del lote esperan a la tanda siguiente.
+    while pendientes:
+        listos = [x for x in pendientes if all(r.exists() for r in x[2])]
+        if not listos:
+            for a, _s, refs in pendientes:
+                bloqueados.append(a["id"])
+                log(f"      {a['id']}: su referencia no llegó a existir ({[r.name for r in refs if not r.exists()]})")
+            break
+        pendientes = [x for x in pendientes if x not in listos]
+        with ThreadPoolExecutor(max(1, hilos)) as ex:
+            for aid, salida in ex.map(uno, listos):
+                (hechos.append(salida) if salida else bloqueados.append(aid))
     return hechos, bloqueados
 
 

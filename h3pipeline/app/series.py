@@ -708,6 +708,41 @@ def hojas_de_capitulo(s: dict, c: dict, d: dict, formato: str) -> list[str]:
     return nuevas
 
 
+CONTINUIDAD = (" CONTINUITY WITH THE PREVIOUS TAKE: one of the reference images is the first frame of the previous take of this same "
+               "scene. Keep the SAME room, the same furniture and props in the same places, the same light and colour, and the "
+               "character wearing exactly the same; the action simply continues a few moments later, possibly from a different angle.")
+
+
+def encadenar_fotogramas(d: dict, rep_: dict) -> int:
+    """Tomas de 15 s (20/9): el primer fotograma de la toma k se dibuja con el de
+    la toma k-1 como referencia, más la cláusula de continuidad en `ve`. Así
+    el set, los objetos y la luz se sostienen de toma en toma (la identidad ya
+    la sostiene la hoja del capítulo). `frames` los dibuja en orden."""
+    planos = d.get("planos") or []
+    n = 0
+    for k in range(1, len(planos)):
+        ant, pl = planos[k - 1], planos[k]
+        if pl.get("sigue_de") or pl.get("clip_de") or pl.get("dibujo"):
+            continue
+        refs = list(pl.get("refs") or [])
+        if not refs:
+            loc = pl.get("loc")
+            if loc and loc in d.get("locaciones", {}):
+                refs.append(d["locaciones"][loc]["imagen"])
+            for x in (pl.get("personajes") or []):
+                h = d.get("personajes", {}).get(x, {}).get("hoja")
+                if h and h not in refs:
+                    refs.append(h)
+        prev = f"sb_{ant['id']}"
+        if prev not in refs and f"assets/{prev}.png" not in refs:
+            refs.append(prev)
+        pl["refs"] = refs
+        if "CONTINUITY WITH THE PREVIOUS TAKE" not in (pl.get("ve") or ""):
+            pl["ve"] = (pl.get("ve") or "").rstrip() + CONTINUIDAD
+        n += 1
+    return n
+
+
 def _proyecto_coincide(pc: Path, s: dict) -> bool:
     """¿El proyecto.json que ya existe usa el reparto de la serie? Si tiene
     personajes que no son de la serie (los inventó el traductor) hay que
@@ -845,6 +880,9 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             nuevas = hojas_de_capitulo(s, c, d, formato)
             if nuevas:
                 log("hoja(s) del capítulo (mismo personaje, con la ropa de este capítulo): " + ", ".join(nuevas))
+            if tomas_de(s) > 1:
+                ne = encadenar_fotogramas(d, rep)
+                log(f"continuidad entre tomas: {ne} fotograma(s) referencian al anterior")
             (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             p = Proyecto.cargar(pc / "proyecto.json")
             p.escribir(log=lambda *_: None)

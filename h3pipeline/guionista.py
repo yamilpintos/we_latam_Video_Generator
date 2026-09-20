@@ -130,6 +130,9 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
                      "`voz_desc` = la voz del que más habla; `off` false.")
         L.append("- En `mueve` contá la toma completa en orden: quién habla primero y qué hace mientras, la pausa, la reacción del otro, "
                  "quién remata, y que las bocas se cierran cuando cada uno termina. Las acotaciones [entre corchetes] del guion van ahí.")
+        L.append("- CONTINUIDAD: el `ve` de cada toma a partir de la segunda describe el MISMO lugar que la anterior, con los mismos "
+                 "muebles y objetos en el mismo sitio, la misma luz y la misma ropa, unos segundos después; puede cambiar el ángulo "
+                 "o el tamaño de plano, no el set. Las cuatro tomas de un capítulo tienen la misma `loc`.")
         L.append("- La ley de tramos de abajo se cumple en espíritu (gancho al principio, remate al final), no plano por plano: "
                  "los planos son largos a propósito.")
         L.append(f"- `duracion_objetivo`: {duracion}.")
