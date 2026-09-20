@@ -788,6 +788,20 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                     d["locaciones"][lid] = dict(l)
             existentes = {v["hoja"] for v in rep["personajes"].values()} | {v["imagen"] for v in rep["locaciones"].values()}
             d["madre"] = [m for m in (d.get("madre") or []) if m.get("id") not in existentes]
+            # Las hojas y locaciones de la serie se declaran igual (el PNG ya está y
+            # `frames` lo saltea): sin la declaración el validador avisaba «assets
+            # madre usados pero no declarados» en cada capítulo.
+            usadas = set()
+            for pl in d["planos"]:
+                for x in (pl.get("personajes") or []):
+                    if x in rep["personajes"]:
+                        usadas.add(rep["personajes"][x]["hoja"])
+                if pl.get("loc") in rep["locaciones"]:
+                    usadas.add(rep["locaciones"][pl["loc"]]["imagen"])
+            asp = "16:9" if formato == "largo" else "9:16"
+            for mid in sorted(usadas):
+                d["madre"].append({"id": mid, "aspecto": asp, "refs": [],
+                                   "prompt": f"(hoja de la serie «{s['titulo']}»: ya dibujada y aprobada; no se rehace)"})
             (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             p = Proyecto.cargar(pc / "proyecto.json")
             p.escribir(log=lambda *_: None)

@@ -264,7 +264,8 @@ ruta("/proyectos", async () => {
     return `<details class="card" ${enCurso || sd.series.length === 1 ? "open" : ""} style="margin-bottom:14px;border-color:rgba(255,180,84,.35)"><summary style="cursor:pointer;list-style:none"><h3 style="margin:0"><span style="color:var(--ac)">▣</span> ${h(s.titulo)} <span class="pill">serie · ${FORMATOS_SERIE[s.formato] || s.formato}</span>${enCurso ? '<span class="pill warn"><i class="dot live"></i> en curso</span>' : ""}<span class="tiny">${s.personajes} personajes · ${s.capitulos} capítulos · ${masters} másters</span>
         <span class="row" style="margin-left:auto;gap:6px"><a class="btn s p" href="#/serie/${s.slug}" onclick="event.stopPropagation()">abrir la serie</a>${s.capitulos > s.producidos ? `<button class="btn s" onclick="event.stopPropagation();serieMasa('${s.slug}')">producir en masa</button>` : ""}${listos.length ? `<button class="btn s" onclick="event.stopPropagation();encolarSerie(${JSON.stringify(listos).replace(/"/g, "&quot;")})">＋ ${listos.length} a la cola</button>` : ""}</span></h3></summary>
       <div style="margin-top:12px">${d ? barraSerie(d) : ""}
-      ${filas ? `<table><tr><th>capítulo</th><th>estado</th><th>avance</th><th></th></tr>${filas}</table>` : `<div class="tiny">Todavía no hay capítulos: se proponen desde la serie.</div>`}</div></details>`; }).join("");
+      ${filas ? `<table><tr><th>capítulo</th><th>estado</th><th>avance</th><th></th></tr>${filas}</table>` : `<div class="tiny">Todavía no hay capítulos: se proponen desde la serie.</div>`}
+      ${d ? galeriaSerie(d, true) : ""}</div></details>`; }).join("");
   $("#vista").innerHTML = `<div class="wrap"><h1>Proyectos</h1><p class="sub">Las series son carpetas con sus capítulos adentro y su barra del proceso; se refrescan solas mientras algo corre. Abajo, los videos sueltos.</p>
     <div class="row" style="margin-bottom:16px"><a class="btn p" href="#/nuevo/short">＋ Short</a><a class="btn" href="#/nuevo/largo">＋ Largo</a><a class="btn" href="#/nuevo/loop">＋ Loop</a><span class="tiny">serie nueva: desde Short, Largo o Music video</span></div>
     ${carpetas}
@@ -581,6 +582,15 @@ function verUltimoLog() {
   const t = (window._serieActual || {}).ultima_tarea; if (!t) return;
   modal(`<h3>Log de la última tarea</h3><div class="tiny" style="margin-bottom:8px">${h(t.nombre)} · ${t.estado} · ${mins(t.segundos)}</div><pre class="pre" style="max-height:60vh">${h(t.log)}</pre>`);
 }
+function galeriaSerie(s, compacta = false) {
+  const caps = s.capitulos.filter(c => c.estado !== "descartado" && c.slug && s.proyectos[c.slug] && s.proyectos[c.slug].masters.length).sort((a, b) => a.n - b.n);
+  if (!caps.length) return "";
+  const v = (c) => { const m = s.proyectos[c.slug].masters[0]; const url = `/api/proyectos/${c.slug}/archivo/${encodeURIComponent(m)}`;
+    return `<div class="card" style="padding:10px"><div class="row" style="justify-content:space-between;margin-bottom:6px"><b>${c.n}. ${h(c.titulo)}</b><a class="btn s" href="${url}" download="${h((String(c.n).padStart(2, "0")) + " - " + c.titulo)}.mp4">descargar</a></div>
+      <video controls preload="metadata" style="width:100%;border-radius:8px;background:#000;${s.formato === "short" ? "aspect-ratio:9/16;max-height:520px" : "aspect-ratio:16/9"}" src="${url}"></video></div>`; };
+  return `<h3 style="margin:${compacta ? 12 : 22}px 0 8px">🎬 Videos <span class="pill ok">${caps.length}</span><span class="tiny" style="margin-left:10px">los másters terminados; «descargar» los guarda con su número y título</span></h3>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(${s.formato === "short" ? 240 : 340}px,1fr));gap:12px">${caps.map(v).join("")}</div>`;
+}
 function pintarSerie(s) {
   window._serieActual = s;
   const slug = s.slug, tarea = s.tarea;
@@ -629,6 +639,7 @@ function pintarSerie(s) {
     ${tarea ? `<div class="card" style="margin-bottom:14px;border-color:rgba(255,207,90,.4)"><h3><i class="dot live" style="color:var(--warn)"></i> ${h(tarea.nombre)} <span class="tiny">${mins(tarea.segundos)}</span><button class="btn s" style="margin-left:auto" onclick="matar('${tarea.id}')">parar</button></h3><pre class="pre" style="max-height:160px">${h(tarea.log)}</pre></div>`
       : ""}
     ${barraSerie(s)}
+    ${galeriaSerie(s)}
     ${!tarea && s.ultima_tarea ? `<div class="tiny" style="margin:-6px 0 14px 4px">última tarea: <b>${h(s.ultima_tarea.nombre)}</b> · <span class="pill ${s.ultima_tarea.estado === "ok" ? "ok" : "bad"}" style="padding:1px 8px">${s.ultima_tarea.estado === "ok" ? "terminó bien" : "falló"}</span> · ${mins(s.ultima_tarea.segundos)} · ${fmtHora(s.ultima_tarea.inicio)} · <a href="#" onclick="event.preventDefault();verUltimoLog()">ver el log</a></div>` : ""}
     <h3 style="margin:18px 0 8px"><b style="display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#1a1205;font-size:12px">1</b> Personajes <span class="pill">${pj.length}</span>${sinHoja ? `<button class="btn s p" style="margin-left:10px" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',[],false)">dibujar las ${sinHoja} hojas que faltan</button>` : ""}<span class="tiny" style="margin-left:10px">una imagen por hoja (OpenAI, calidad media, ~$0,06)</span></h3>
     <div class="grid g3">
