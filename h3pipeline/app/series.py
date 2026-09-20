@@ -692,7 +692,13 @@ def hojas_de_capitulo(s: dict, c: dict, d: dict, formato: str) -> list[str]:
         hid = f"m_{pid}_ep"
         desc = pj["descripcion"].rstrip(".") + f". Now wearing, for this episode: {str(ropa).rstrip('.')}. This outfit replaces the base clothing."
         d["madre"] = [m for m in d["madre"] if m.get("id") != hid]
-        d["madre"].append({"id": hid, "aspecto": asp, "refs": [f"assets/m_{pid}.png"],
+        # Referencias: la hoja de la serie y, si el personaje nació de una foto
+        # subida, la foto original también (se copia al capítulo como m_<id>_foto):
+        # así la fidelidad no se degrada de copia en copia.
+        refs = [f"assets/m_{pid}.png"]
+        if pj.get("imagen_ref") and (carpeta(s["slug"]) / pj["imagen_ref"]).exists():
+            refs.append(f"assets/m_{pid}_foto.png")
+        d["madre"].append({"id": hid, "aspecto": asp, "refs": refs,
                            "prompt": prompt_hoja(s, {**pj, "descripcion": desc, "imagen_ref": True})})
         d.setdefault("personajes", {}).setdefault(pid, {"descripcion": desc})["hoja"] = hid
         for pl in d["planos"]:
@@ -856,6 +862,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             if p.get("hoja") and not (pc / "assets" / f"m_{pid}.png").exists():
                 shutil.copy(carpeta(slug) / p["hoja"], pc / "assets" / f"m_{pid}.png")
                 copiadas += 1
+            if p.get("imagen_ref") and (carpeta(slug) / p["imagen_ref"]).exists() and not (pc / "assets" / f"m_{pid}_foto.png").exists():
+                shutil.copy(carpeta(slug) / p["imagen_ref"], pc / "assets" / f"m_{pid}_foto.png")
         for lid, l in s["locaciones"].items():
             if l.get("imagen") and not (pc / "assets" / f"l_{lid}.png").exists():
                 shutil.copy(carpeta(slug) / l["imagen"], pc / "assets" / f"l_{lid}.png")
