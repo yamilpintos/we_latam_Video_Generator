@@ -186,6 +186,11 @@ def actualizar(slug: str, **campos) -> dict:
                 s["duracion"] = round(n * grilla.MAXIMO, 3)
             else:
                 s["duracion"] = None
+        elif k == "duracion" and s["formato"] == "largo":
+            # Largos: la duración la elige el director (21/9: «hacelo de 8 minutos»);
+            # la estructura se estira a esa duración (Estructura.con_duracion).
+            n = max(6, min(200, int(round(float(v or 300) / grilla.MINIMO))))
+            s["duracion"] = round(n * grilla.MINIMO, 3)
         elif k in ("titulo", "idea", "notas", "continuidad", "estructura", "voz", "duracion", "musica"):
             s[k] = v
     return guardar(s)
@@ -1158,7 +1163,7 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                   "cierre_video": s["estilo"].get("cierre", ""), "medio": s["estilo"].get("medio", ""),
                   "voz": None if (es_musica or actuado) else s.get("voz"), "negativos": not es_musica,
                   "notas": f"Serie «{s['titulo']}», capítulo {c['n']}. " + (s.get("notas") or "") + (" " + REGLA_SHORTS if s.get("formato") == "short" else ""),
-                  "slug": pslug, "duracion": s.get("duracion") if es_musica else (round(tomas_de(s, c) * grilla.MAXIMO, 3) if s.get("toma") == "una" else None),
+                  "slug": pslug, "duracion": s.get("duracion") if es_musica else (round(tomas_de(s, c) * grilla.MAXIMO, 3) if s.get("toma") == "una" else (float(s["duracion"]) if s.get("duracion") else None)),
                   "serie": slug, "capitulo": c["n"], "actuado": actuado, "tomas": tomas_de(s, c)}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
         if (pc / "proyecto.json").exists():

@@ -1172,6 +1172,7 @@ class EdicionSerie(BaseModel):
     musica: dict | None = None
     modo: str | None = None
     toma: str | None = None
+    duracion: float | None = None     # largos: segundos totales (la estructura se estira)
 
 
 @app.put("/api/series/{slug}")

@@ -83,9 +83,9 @@ def elegir(genero: str | None, evitar: list[str] | None = None, semilla: str | N
     Devuelve el id o None si el banco está vacío para ese género."""
     vs = listar()
     g = (genero or "").lower()[:1]
+    # Sin voz del género pedido NO se cruza (el 21/9 Marta, de 68, quedó con la
+    # voz del mono): mejor sin preset, que la describa el texto.
     del_genero = [v for v in vs if v.get("genero") == g] if g in ("m", "f") else vs
-    if not del_genero:
-        del_genero = vs
     if not del_genero:
         return None
     libres = [v for v in del_genero if v["id"] not in set(evitar or [])] or del_genero
