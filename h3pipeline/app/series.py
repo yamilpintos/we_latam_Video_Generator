@@ -1188,11 +1188,21 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         (pc / "guion.txt").write_text(c["guion"], encoding="utf-8")
         if not (pc / "proyecto.json").exists():
             log(f"traduciendo el guion del capítulo {c['n']} ({len(c['guion'])} caracteres)…")
-            r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
-                                   estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
-                                   voz=pedido["voz"], titulo=c["titulo"], negativos=pedido["negativos"], notas=pedido["notas"],
-                                   duracion=pedido["duracion"], reparto=rep, actuado=actuado, tomas=tomas_de(s, c),
-                                   reintentos=1 if tomas_de(s, c) else 2, log=log)
+            if formato == "largo" and not actuado and pedido["voz"]:
+                # Largos narrados (21/9): la voz por código y los planos por párrafo
+                # (`narrado.py`). El traductor general devolvió 20 planos y una
+                # línea de voz para 8 minutos, tres veces.
+                from .. import narrado
+                r = narrado.traducir_narrado(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
+                                             estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
+                                             voz=pedido["voz"], titulo=c["titulo"], notas=pedido["notas"], duracion=pedido["duracion"],
+                                             reparto=rep, log=log)
+            else:
+              r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
+                                     estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
+                                     voz=pedido["voz"], titulo=c["titulo"], negativos=pedido["negativos"], notas=pedido["notas"],
+                                     duracion=pedido["duracion"], reparto=rep, actuado=actuado, tomas=tomas_de(s, c),
+                                     reintentos=1 if tomas_de(s, c) else 2, log=log)
             d = r["proyecto"]
             d["slug"] = pslug
             d["serie"] = {"slug": slug, "capitulo": c["n"], "modo": s.get("modo", "narrado")}

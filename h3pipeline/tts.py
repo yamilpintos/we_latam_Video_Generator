@@ -109,22 +109,31 @@ def _palabras(al: dict) -> list[tuple[str, float, float]]:
 
 def duracion_util(mp3: Path) -> float:
     """Segundos de audio **sin** el silencio de los extremos. Es la que importa:
-    v3 mete hasta 200 ms al inicio y eso se recorta antes de montar."""
-    import numpy as np
-    import soundfile as sf
+    v3 mete hasta 200 ms al inicio y eso se recorta antes de montar.
+    Python puro (21/9: en Render no hay numpy ni soundfile y el primer largo
+    murió acá con ModuleNotFoundError)."""
+    import wave
+    from array import array
     with tempfile.TemporaryDirectory() as td:
         w = Path(td) / "d.wav"
         subprocess.run([config.ffmpeg(), "-y", "-v", "error", "-i", str(mp3),
-                        "-ac", "1", "-ar", str(SR), "-c:a", "pcm_f32le", str(w)],
+                        "-ac", "1", "-ar", str(SR), "-c:a", "pcm_s16le", str(w)],
                        check=True, stdin=subprocess.DEVNULL)
-        x, _ = sf.read(w, dtype="float32")
+        with wave.open(str(w), "rb") as f:
+            datos = f.readframes(f.getnframes())
+    x = array("h")
+    x.frombytes(datos[: len(datos) - len(datos) % 2])
     if not len(x):
         return 0.0
-    pico = float(abs(x).max())
+    pico = max(abs(v) for v in x)
     if pico <= 0:
         return 0.0
-    idx = np.where(abs(x) > pico * (10 ** (UMBRAL_DB / 20)))[0]
-    return float(idx[-1] - idx[0]) / SR if len(idx) else len(x) / SR
+    umbral = pico * (10 ** (UMBRAL_DB / 20))
+    primero = next((i for i, v in enumerate(x) if abs(v) > umbral), None)
+    if primero is None:
+        return len(x) / SR
+    ultimo = next(i for i in range(len(x) - 1, -1, -1) if abs(x[i]) > umbral)
+    return float(ultimo - primero) / SR
 
 
 def _puntaje(factor: float) -> float:
