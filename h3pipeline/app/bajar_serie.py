@@ -48,7 +48,11 @@ def main() -> int:
     for cap in sorted(serie["capitulos"], key=lambda x: x["n"]):
         if not cap.get("slug"):
             continue
-        est = json.loads(pedir(base, f"/api/proyectos/{cap['slug']}", auth)).get("estado", {})
+        try:
+            est = json.loads(pedir(base, f"/api/proyectos/{cap['slug']}", auth)).get("estado", {})
+        except Exception as e:
+            print(f"  {cap['n']:02d} {cap['titulo']}: el proyecto no responde ({str(e)[:60]}); lo salteo")
+            continue
         masters = [m for m in est.get("masters", []) if m.lower().endswith(".mp4")]
         if not masters:
             print(f"  {cap['n']:02d} {cap['titulo']}: sin máster todavía")
