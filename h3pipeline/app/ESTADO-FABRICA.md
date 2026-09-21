@@ -86,6 +86,21 @@ Hoy el banco tiene UNA voz (Monky, del capítulo 07). Para llenarlo:
 `casting_voces.py armar` → frames → empaquetar → cola → `cosechar` (~$3).
 **Sin probar en GPU** con clips de 15 s (VRAM, #15738).
 
+## Frases de cine y la boca manda el corte (21/9)
+
+Para largos (y shorts) **actuados con planos de 5 s**, lo que hizo funcionar la
+réplica y faltaba en la web: (1) el guion y el traductor exigen líneas de 3 a 7
+palabras, una por plano (`guionista.MAX_PALABRAS_LINEA`, `_forzar_actuado`,
+`series._lineas_largas` con un reintento); el plano hablado se genera entero.
+(2) Al hacer el máster, `montar` mide dónde habla de verdad cada clip
+(`voz_clip.py`: energía en la banda de voz en Python puro + Whisper de OpenAI
+palabra por palabra, ~$0,0005 por clip, caché `<clip>.voz.json`) y corre el
+corte a la voz con 0,35 s antes y 0,40 s después (`montaje.ajustar_usa_por_voz`).
+Las tomas de 15 s no se recortan, pero el SRT ya sale **línea por línea** con
+los tiempos medidos. Probado con 4 clips de la réplica y el máster del cap. 07.
+Modo recomendado para un Largo actuado: modo actuado + «con cortes» (planos de
+5 s), NO tomas de 15 s.
+
 ## Lo que falta, en orden
 
 0b. **Piloto de voz de referencia** (~$1-2): rehacer el capítulo 12 del mono (o

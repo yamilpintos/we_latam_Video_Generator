@@ -588,6 +588,16 @@ RE_ROTULO = re.compile(r"^\s*([A-Za-zÁÉÍÓÚÑáéíóúñ][\wÁÉÍÓÚÑá�
 MAX_LINEAS_TOMA, MAX_PALABRAS_TOMA = 4, 32
 
 
+def _lineas_largas(guion: str, tope: int) -> list[str]:
+    """Las líneas «NOMBRE: texto» del guion que pasan de `tope` palabras."""
+    out = []
+    for l in guion.splitlines():
+        m = re.match(r"^\s*([^\[\]:\n]{1,40}):\s*(.+)$", l)
+        if m and m.group(1).strip().upper() not in ("ESCENA", "TOMA") and len(m.group(2).split()) > tope:
+            out.append(l.strip())
+    return out
+
+
 def parsear_tomas(guion: str, s: dict) -> dict:
     """El guion de una serie por tomas, desarmado: {"escena": str, "tomas": [{"lineas": [{"nombre", "id", "texto"}],
     "acotaciones": [...], "palabras": n}]}. Las líneas salen de `NOMBRE: texto`; el id se resuelve por
@@ -736,9 +746,11 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    f"Escribí el GUION ACTUADO de este video de {dur:g} s, en castellano rioplatense: sin narrador, los personajes hablan en cámara. "
                    f"El video son {planos} planos de 5 segundos: escribí como mucho {planos} líneas de diálogo, y dejá {max(1, planos // 4)} o más planos SIN "
                    "diálogo para reacciones, silencios y acciones (son los que respiran).\n"
-                   "Cada línea la dice UN solo personaje, mide como mucho 12 palabras (unas 55 letras; se tiene que decir en 4 segundos) y va en su propia "
-                   "línea con el formato `NOMBRE: lo que dice`. Nunca dos personajes en el mismo renglón. Entre líneas, cuando haga falta, una acotación entre "
-                   "corchetes de qué se ve [así], nombrando a los personajes por su nombre; el que habla siempre está de frente y con la boca libre.\n"
+                   f"FRASES DE CINE: cada línea la dice UN solo personaje y mide de 3 a {guionista.MAX_PALABRAS_LINEA - 1} palabras (NUNCA más de "
+                   f"{guionista.MAX_PALABRAS_LINEA}; se dice en 2 segundos). Réplica y contrarréplica cortas, con intención y subtexto, como en una película: "
+                   "lo que no entra en una frase corta se dice en la siguiente o no se dice. Cada línea va en su propio renglón con el formato `NOMBRE: lo que dice`. "
+                   "Nunca dos personajes en el mismo renglón. Entre líneas, cuando haga falta, una acotación entre corchetes de qué se ve [así], nombrando a los "
+                   "personajes por su nombre; el que habla siempre está de frente y con la boca libre.\n"
                    "Historia lineal y simple: un gancho en la primera línea, un giro o una imagen que se recuerde, un cierre que deje algo. "
                    "Las líneas suenan a gente hablando, no a texto leído: cortas, con intención, con subtexto.\n"
                    "Devolvé JSON: {\"guion\": \"el texto\", \"resumen\": \"dos líneas de qué pasó, para el capítulo siguiente\", \"lineas\": número de líneas de diálogo}")
@@ -775,6 +787,20 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                 if probs:
                     log("  sigue sin cumplir (" + "; ".join(probs) + ") → recorto por código")
                     guion = _recortar_tomas(guion, s, nt)
+        elif s.get("modo") == "actuado" and s["formato"] != "musica":
+            # Frases de cine (21/9): las líneas que pasan del tope se devuelven UNA vez
+            # al modelo para que las parta; si insiste, quedan y el traductor las parte.
+            largas = _lineas_largas(guion, guionista.MAX_PALABRAS_LINEA)
+            if largas:
+                log(f"  {len(largas)} línea(s) pasan de {guionista.MAX_PALABRAS_LINEA} palabras → le pido que las parta")
+                r2 = _gpt(ins + "\n\nTU VERSIÓN ANTERIOR:\n" + guion + "\n\nESTAS LÍNEAS PASAN DE "
+                          f"{guionista.MAX_PALABRAS_LINEA} PALABRAS:\n- " + "\n- ".join(largas[:12])
+                          + "\nPartí cada una en dos o tres renglones cortos del mismo personaje (misma historia, mismas palabras si se puede). Devolvé el mismo JSON.",
+                          "Sos guionista de una serie de videos con IA. Respondés sólo JSON.", log=log)
+                g2 = str(r2.get("guion", "")).strip()
+                if len(g2) >= 40 and len(_lineas_largas(g2, guionista.MAX_PALABRAS_LINEA)) < len(largas):
+                    guion = g2
+                    r["resumen"] = r2.get("resumen", r.get("resumen", ""))
         s = leer(slug)
         c = capitulo(s, n)
         c.update(guion=guion, resumen=str(r.get("resumen", "")).strip(), estado="guion", nota="")
@@ -782,7 +808,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
             c["musica"] = str(r["musica"]).strip()
         if s.get("modo") == "actuado" and s["formato"] != "musica":
             lineas = [f"{ln['nombre']}: {ln['texto']}" for tm in parsear_tomas(guion, s)["tomas"] for ln in tm["lineas"]]
-            tope = 9 if s.get("toma") == "una" else 12
+            tope = 9 if s.get("toma") == "una" else guionista.MAX_PALABRAS_LINEA
             largas = [l for l in lineas if len(l.split(":", 1)[1].split()) > tope]
             habladas = sum(len(l.split(":", 1)[1].split()) for l in lineas)
             tomas = len(re.findall(r"^\s*\[TOMA\s*\d+\]", guion, re.M | re.I))

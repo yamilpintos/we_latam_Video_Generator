@@ -501,6 +501,11 @@ def main(argv=None) -> int:
             print("!! faltan clips: " + " ".join(faltan))
             return 1
         salida = Path(a.salida or p.raiz / f"{p.slug}.mp4")
+        if any(x.get("dialogo") for x in planos):
+            print("la boca manda el corte: midiendo la voz de cada clip hablado…")
+            idioma = json.loads((p.raiz / "proyecto.json").read_text(encoding="utf-8")).get("idioma", "es") if (p.raiz / "proyecto.json").exists() else "es"
+            nc = montaje.ajustar_usa_por_voz(planos, Path(a.clips), idioma=idioma)
+            print(f"{nc} corte(s) corridos a la voz")
         if any(x.get("usa") for x in planos):
             montaje.recortar_y_concatenar(planos, Path(a.clips), salida)
         else:

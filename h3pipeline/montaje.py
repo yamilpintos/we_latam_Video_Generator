@@ -86,6 +86,57 @@ def faltantes(planos: list[dict], carpeta: Path) -> list[str]:
                    if buscar_clip(carpeta, clip_fuente(p)) is None})
 
 
+AIRE_ANTES, AIRE_DESPUES = 0.35, 0.40     # s alrededor de la voz medida
+MIN_TRAMO_HABLADO = 1.4                   # s: un plano hablado nunca queda más corto
+FPS = 24
+
+
+def _cuadro(t: float) -> float:
+    return round(round(t * FPS) / FPS, 3)
+
+
+def ajustar_usa_por_voz(planos: list[dict], carpeta: Path, idioma: str = "es", log=print) -> int:
+    """LA BOCA MANDA EL CORTE (réplica, REGLAS 48/63; a la web el 21/9). En cada
+    plano con diálogo se mide dónde habla de verdad el clip (`voz_clip`) y el
+    tramo `usa` se corre a la voz, con aire antes y después. Las tomas largas
+    (≥ 10 s) no se recortan —son una toma continua— pero igual se miden para
+    los subtítulos por línea. Devuelve cuántos `usa` cambiaron."""
+    from . import voz_clip
+    n = 0
+    for p in planos:
+        if not p.get("dialogo") or p.get("clip_de"):
+            continue
+        clip = buscar_clip(carpeta, clip_fuente(p))
+        if not clip:
+            continue
+        try:
+            v = voz_clip.medir(clip, p["dialogo"], idioma)
+        except Exception as e:
+            log(f"  {p['id']}: no pude medir la voz ({e}); queda el corte del plan")
+            continue
+        p["voz_medida"] = v
+        seg = float(p.get("segundos") or v["dur"] or 0) or v["dur"]
+        if v["fuente"] == "nada":
+            log(f"  {p['id']}: sin voz detectable en el clip; queda el corte del plan")
+            continue
+        if seg >= 10 or p.get("usa_manual"):
+            log(f"  {p['id']}: voz {v['ini']:.2f}-{v['fin']:.2f} s ({v['fuente']}); toma entera, sin recorte")
+            continue
+        ini = max(0.0, v["ini"] - AIRE_ANTES)
+        fin = min(seg, v["fin"] + AIRE_DESPUES)
+        if fin - ini < MIN_TRAMO_HABLADO:
+            falta = MIN_TRAMO_HABLADO - (fin - ini)
+            fin = min(seg, fin + falta)
+            ini = max(0.0, ini - max(0.0, MIN_TRAMO_HABLADO - (fin - ini)))
+        nuevo = [_cuadro(ini), _cuadro(fin)]
+        viejo = list(p.get("usa") or [0.0, seg])
+        if abs(nuevo[0] - viejo[0]) > 0.02 or abs(nuevo[1] - viejo[1]) > 0.02:
+            n += 1
+        p["usa"] = nuevo
+        log(f"  {p['id']}: voz {v['ini']:.2f}-{v['fin']:.2f} s ({v['fuente']}) → corte {nuevo[0]:.2f}-{nuevo[1]:.2f} (plan {viejo[0]:.2f}-{viejo[1]:.2f})")
+    return n
+
+
 def _lista(partes: list[Path], ruta: Path) -> None:
     ruta.write_text("".join(f"file '{x.as_posix()}'\n" for x in partes), encoding="utf-8")
 
@@ -237,13 +288,25 @@ def _srt_t(s: float) -> str:
 def srt(planos: list[dict], ruta: Path) -> int:
     """Subtítulos a partir de las duraciones: como nosotros elegimos cuánto dura
     cada plano, el tiempo de cada línea es una suma. No hace falta Whisper."""
+    from . import voz_clip
     lineas, t0, n = [], 0.0, 0
     for p in planos:
+        usa_ini = p["usa"][0] if p.get("usa") else 0.0
         dur = (p["usa"][1] - p["usa"][0]) if p.get("usa") else p["segundos"]
         if p.get("dialogo"):
-            n += 1
-            # Entra un poco después del corte y sale un poco antes del siguiente.
-            lineas.append(f"{n}\n{_srt_t(t0 + 0.4)} --> {_srt_t(t0 + dur - 0.3)}\n{p['dialogo']}\n")
+            v = p.get("voz_medida")
+            if v and v.get("fuente") != "nada":
+                # Con la voz medida, cada línea entra cuando se dice (21/9: antes
+                # una toma de 4 líneas salía como un solo bloque de 15 s).
+                for a, b, texto in voz_clip.lineas_en_tiempo(v, p["dialogo"]):
+                    a_, b_ = t0 + max(0.0, a - usa_ini) - 0.1, t0 + max(0.0, b - usa_ini) + 0.25
+                    a_, b_ = max(t0, a_), min(t0 + dur, max(b_, a_ + 0.6))
+                    n += 1
+                    lineas.append(f"{n}\n{_srt_t(a_)} --> {_srt_t(b_)}\n{texto}\n")
+            else:
+                n += 1
+                # Entra un poco después del corte y sale un poco antes del siguiente.
+                lineas.append(f"{n}\n{_srt_t(t0 + 0.4)} --> {_srt_t(t0 + dur - 0.3)}\n{p['dialogo']}\n")
         t0 += dur
     Path(ruta).write_text("\n".join(lineas), encoding="utf-8-sig")
     return n

@@ -101,8 +101,10 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
         if not tomas:
             L.append("  · UNA línea por plano y UN solo personaje hablando por plano; nunca dos alternando en el mismo "
                      "clip. Si el guion tiene un ida y vuelta, son dos planos.")
-            L.append("  · La línea tiene que caber en el plano: como mucho 12 palabras / ~55 caracteres por plano de "
-                     f"{grilla.MINIMO:.2f} s, y `corta` ≥ 0,35 s por palabra + 1 s. Si no entra, partila en dos planos.")
+            L.append(f"  · FRASES DE CINE: cada línea mide de 3 a {MAX_PALABRAS_LINEA} palabras (NUNCA más de {MAX_PALABRAS_LINEA}, ~2 segundos "
+                     f"habladas) en su plano de {grilla.MINIMO:.2f} s. Si el guion trae una línea más larga, PARTILA en dos planos "
+                     "consecutivos del mismo personaje (la frase sigue), sin cambiar las palabras. El montaje después corta cada "
+                     "clip alrededor de la voz medida, así que el plano entero se genera y la frase nunca sale cortada.")
         L.append("  · En `ve` el que habla está de frente o tres cuartos, con la BOCA VISIBLE y libre (nada tapándola: "
                  "ni manos, ni vaso, ni bufanda). En `mueve` decí que habla mirando a quien corresponde.")
         if not tomas:
@@ -274,6 +276,33 @@ def _validar(d: dict, cps_voz: float | None = None) -> tuple[list[str], str | No
     return avisos, None
 
 
+MAX_PALABRAS_LINEA = 7     # actuado con planos de 5 s: frases de cine (~2 s habladas)
+
+
+def _forzar_actuado(d: dict) -> list[str]:
+    """Actuado con planos de 5 s (21/9): el plano hablado se genera ENTERO
+    (`corta` = `segundos`, sin `usa`): el corte lo pone el montaje siguiendo a la
+    voz medida. Devuelve avisos por las líneas que pasan del tope de palabras
+    (el validador se los devuelve al modelo para que las parta en dos planos)."""
+    avisos = []
+    for p in d.get("planos") or []:
+        if not p.get("dialogo") or p.get("clip_de") or p.get("sigue_de"):
+            continue
+        p.pop("corta", None)
+        p.pop("usa", None)
+        p["off"] = False
+        for l in str(p["dialogo"]).splitlines():
+            if not l.strip():
+                continue
+            n = len(l.split(":", 1)[-1].split())
+            if n > MAX_PALABRAS_LINEA:
+                avisos.append(f"{p.get('id', '?')}: la línea tiene {n} palabras; máximo {MAX_PALABRAS_LINEA} en un plano de "
+                              f"{grilla.MINIMO:.2f} s: partila en dos planos consecutivos del mismo personaje, sin cambiar las palabras")
+        if "\n" in str(p["dialogo"]).strip():
+            avisos.append(f"{p.get('id', '?')}: tiene {len(str(p['dialogo']).strip().splitlines())} líneas; una línea por plano")
+    return avisos
+
+
 def _forzar_tomas(d: dict, n: int) -> None:
     """Tomas de 15 s: exactamente `n` planos de 15,08 s enteros, sin corta ni usa.
     Si el modelo mandó más planos, se quedan los primeros n; si mandó menos, se
@@ -362,7 +391,9 @@ def traducir(guion: str, *, formato: str, estructura: str, estilo_imagen: str,
             _forzar_tomas(d, tomas)
         else:
             _forzar_grilla(d, duracion if una_escena else None)
+        avisos_actuado = _forzar_actuado(d) if (actuado and not tomas and not una_escena) else []
         avisos, fatal = _validar(d, VOCES[voz]["cps"] if voz and voz in VOCES else None)
+        avisos = list(avisos) + avisos_actuado
         log(f"    {'ERROR ' + fatal if fatal else str(len(avisos)) + ' aviso(s)'}")
         if not fatal and not avisos:
             break
