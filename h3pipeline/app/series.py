@@ -922,12 +922,13 @@ def aplicar_tomas(s: dict, c: dict, d: dict, rep_: dict, log=print) -> None:
             frente = " The speaking character faces the camera (front or three-quarter view), face and mouth clearly visible, from the very first frame."
             if "faces the camera" not in (pl.get("ve") or ""):
                 pl["ve"] = (pl.get("ve") or "").rstrip() + frente
-        seg = float(pl.get("segundos") or grilla.MAXIMO)
+        seg = _num(pl.get("segundos"), grilla.MAXIMO) or grilla.MAXIMO
         cortes = []
         for ct in (pl.get("cortes") or []):
-            try:
-                tt = float(ct.get("t"))
-            except Exception:
+            if not isinstance(ct, dict):
+                continue
+            tt = _num(ct.get("t"), -1)
+            if tt < 0:
                 continue
             if 2.5 <= tt <= seg - 2.5 and all(abs(tt - x["t"]) >= 3.0 for x in cortes) and len(cortes) < 2:
                 cortes.append({"t": round(tt, 2), "tamano": str(ct.get("tamano") or "PM"), "ve": str(ct.get("ve") or "").strip()})
@@ -938,6 +939,17 @@ def aplicar_tomas(s: dict, c: dict, d: dict, rep_: dict, log=print) -> None:
             if base and base[:40] not in (pl.get("audio") or ""):
                 pl["audio"] = (base.rstrip(".") + ". " + (pl.get("audio") or "").strip()).strip()
     log("tomas: diálogo copiado del guion en " + ", ".join(f"{pl['id']} ({len(lineas_de_texto(pl.get('dialogo')))} líneas, {len(pl.get('cortes') or [])} cortes)" for pl in planos))
+
+
+def _num(x, default: float = 0.0) -> float:
+    """Un número aunque GPT lo haya mandado como lista o texto (el 21/9 el capítulo
+    12 cayó con «float() argument must be ... not 'list'» antes de dibujar)."""
+    if isinstance(x, (list, tuple)):
+        x = x[0] if x else default
+    try:
+        return float(x)
+    except (TypeError, ValueError):
+        return float(default)
 
 
 def lineas_de_texto(texto: str | None) -> list[str]:
@@ -956,7 +968,7 @@ def chequear_capitulo(s: dict, c: dict, d: dict) -> list[str]:
         if len(planos) != nt:
             e.append(f"son {nt} toma(s) y el proyecto tiene {len(planos)} plano(s)")
         for pl in planos:
-            if abs(float(pl.get("segundos") or 0) - grilla.MAXIMO) > 0.05:
+            if abs(_num(pl.get("segundos")) - grilla.MAXIMO) > 0.05:
                 e.append(f"{pl['id']}: dura {pl.get('segundos')} s y una toma es {grilla.MAXIMO:.2f}")
             if s.get("modo") == "actuado":
                 ls = lineas_de_texto(pl.get("dialogo"))

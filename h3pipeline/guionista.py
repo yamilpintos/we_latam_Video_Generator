@@ -281,6 +281,9 @@ def _forzar_tomas(d: dict, n: int) -> None:
     planos = list(d.get("planos") or [])[:n]
     for p in planos:
         p["segundos"] = grilla.MAXIMO
+        for k in ("corta", "usa", "ventana_dialogo"):
+            if isinstance(p.get(k), list):
+                p.pop(k, None)
         p.pop("corta", None)
         p.pop("usa", None)
         p.pop("sigue_de", None)
