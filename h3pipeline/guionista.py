@@ -130,6 +130,10 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
                      "`voz_desc` = la voz del que más habla; `off` false.")
         L.append("- En `mueve` contá la toma completa en orden: quién habla primero y qué hace mientras, la pausa, la reacción del otro, "
                  "quién remata, y que las bocas se cierran cuando cada uno termina. Las acotaciones [entre corchetes] del guion van ahí.")
+        L.append("- FÍSICA EN `ve`: cada objeto está apoyado sobre una superficie real y plana (mesa, escritorio, piso, "
+                 "estante) o en una mano; nada sobre atriles, bordes finos, aire o superficies inclinadas. Si el guion pone "
+                 "un objeto en un lugar imposible, en `ve` va en el lugar creíble más cercano (el 21/9 una banana quedó "
+                 "flotando sobre un atril).")
         L.append("- CONTINUIDAD: el `ve` de cada toma a partir de la segunda describe el MISMO lugar que la anterior, con los mismos "
                  "muebles y objetos en el mismo sitio, la misma luz y la misma ropa, unos segundos después; puede cambiar el ángulo "
                  "o el tamaño de plano, no el set. Las cuatro tomas de un capítulo tienen la misma `loc`.")
