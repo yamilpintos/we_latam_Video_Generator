@@ -19,7 +19,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from .. import config, costos, guionista, montaje, tts, vast, voz as vozmod, web
+from .. import config, costos, guionista, montaje, tts, vast, voces, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
 from . import cola, editar, libre, maquina, remaster, series, tareas
@@ -1155,7 +1155,7 @@ def serie_detalle(slug: str):
     if pasadas:
         t = tareas.obtener(pasadas[0]["id"])
         ultima = t.a_dict(lineas=60) if t else None
-    return {**s, "proyectos": series.estado_proyectos(s),
+    return {**s, "proyectos": series.estado_proyectos(s), "banco_voces": _banco_voces(),
             "tarea": next((t.a_dict(lineas=8) for t in tareas.corriendo(_slug_serie(slug))), None),
             "ultima_tarea": ultima, "cola": {**cola.leer(), "corriendo": bool(tareas.corriendo("_cola")) or cola.leer().get("corriendo", False)},
             "maquina": {**{k: m.get(k) for k in ("fase", "instancia", "dph", "proyecto", "error")}, **maquina.gasto(m)}}
@@ -1216,6 +1216,8 @@ class EdicionPersonaje(BaseModel):
     descripcion: str | None = None
     descripcion_es: str | None = None
     voz: str | None = None
+    voz_id: str | None = None         # preset del banco de voces ("" = sin voz de referencia)
+    genero: str | None = None         # m | f | n
     aprobada: bool | None = None
 
 
@@ -1227,9 +1229,66 @@ def serie_personaje_editar(slug: str, pid: str, e: EdicionPersonaje):
             series.aprobar_personaje(slug, pid, e.aprobada)
         if e.b64:
             series.foto_personaje(slug, pid, e.b64)
-        return series.editar_personaje(slug, pid, nombre=e.nombre, descripcion=e.descripcion, descripcion_es=e.descripcion_es, voz=e.voz)
+        return series.editar_personaje(slug, pid, nombre=e.nombre, descripcion=e.descripcion, descripcion_es=e.descripcion_es, voz=e.voz,
+                                       voz_id=e.voz_id, genero=e.genero)
     except KeyError:
         raise HTTPException(404, "no existe ese personaje")
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+
+
+# ─────────────────────────────────────────────────────────────── EL BANCO DE VOCES
+# Presets de timbre para Ref2VA (21/9): la misma voz en todos los clips de un
+# personaje. Se asignan al azar por género al crear el personaje y quedan fijas.
+
+def _banco_voces() -> list[dict]:
+    return [{k: v.get(k) for k in ("id", "nombre", "genero", "descripcion", "segundos", "origen", "origen_carpeta")} for v in voces.listar()]
+
+
+@app.get("/api/voces")
+def voces_listar():
+    return {"voces": _banco_voces(), **voces.resumen()}
+
+
+@app.get("/api/voces/{vid}.wav")
+def voces_audio(vid: str):
+    v = voces.ver(Path(vid).name)
+    if not v:
+        raise HTTPException(404)
+    return FileResponse(v["ruta"], media_type="audio/wav", filename=v["archivo"])
+
+
+class ExtraerVoz(BaseModel):
+    proyecto: str                     # slug del proyecto que tiene el clip (o el máster)
+    archivo: str                      # nombre del mp4 dentro del proyecto o de clips/
+    inicio: float
+    fin: float
+    id: str
+    nombre: str = ""
+    genero: str = "m"
+    descripcion: str = ""
+
+
+@app.post("/api/voces/extraer")
+def voces_extraer(e: ExtraerVoz):
+    """Saca la voz de un clip ya generado (2-15 s limpios) y la guarda como preset."""
+    c = _carpeta(e.proyecto)
+    f = c / Path(e.archivo).name
+    if not f.exists():
+        f = c / "clips" / Path(e.archivo).name
+    if not f.exists():
+        raise HTTPException(404, "no está ese clip")
+    try:
+        return voces.extraer(f, e.inicio, e.fin, e.id, e.genero, e.nombre, e.descripcion)
+    except ValueError as ex:
+        raise HTTPException(422, str(ex))
+
+
+@app.delete("/api/voces/{vid}")
+def voces_quitar(vid: str):
+    if not voces.quitar(Path(vid).name):
+        raise HTTPException(404)
+    return {"ok": True}
 
 
 @app.delete("/api/series/{slug}/personajes/{pid}")

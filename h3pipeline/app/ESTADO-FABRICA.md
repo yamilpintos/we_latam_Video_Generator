@@ -71,7 +71,27 @@ Transversales:
   la máquina (x264 crf 15 al tamaño de pantalla, p. ej. 2880×2160 para 4:3)
   porque la cruda ×4 de un capítulo pesa decenas de GB.
 
+## El banco de voces (21/9)
+
+H3 no recuerda voces entre clips: en el capítulo 11 de «El mono monky» (tres
+tomas de 15 s) el mono cambió de voz en la última. Ahora cada personaje de una
+serie actuada tiene una **voz de referencia** del banco (`h3pipeline/voces/`,
+`voces.py`): se asigna al azar por género al crearlo (o al producir, si no
+tenía) y queda fija toda la serie; en la ficha se ve, se escucha y se cambia.
+Cada plano hablado va en **Ref2VA** (`aplicar_voces`: `<Picture 1>` primer
+fotograma, `<Picture 2>` hoja del capítulo, `<Audio 1>` la voz, `guia0`); el
+reescritor escribe el I2VA y `a_ref2va()` lo envuelve sin otra llamada; la
+cola instala Ref2VA en la máquina cuando hace falta (`asegurar_ref2va`, 24 GB).
+Hoy el banco tiene UNA voz (Monky, del capítulo 07). Para llenarlo:
+`casting_voces.py armar` → frames → empaquetar → cola → `cosechar` (~$3).
+**Sin probar en GPU** con clips de 15 s (VRAM, #15738).
+
 ## Lo que falta, en orden
+
+0b. **Piloto de voz de referencia** (~$1-2): rehacer el capítulo 12 del mono (o
+   una toma de 15 s) con `voz_id` puesto y mirar (a) que no reviente la VRAM,
+   (b) que la voz sea la del 07, (c) que no balbucee antes ni después de la
+   línea. Después, el casting de 20 voces (~$3) y recién ahí producir en masa.
 
 1. **Probar Editar en GPU** (clip corto, un cambio, sin subtítulos quemados).
    Puede quedarse sin memoria con video de referencia en 32 GB (#15738).

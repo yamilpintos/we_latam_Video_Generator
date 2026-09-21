@@ -371,13 +371,17 @@ def plano(api, out, p, idx, w, h):
             entradas["ref_videos.ref_video_0"] = ["331", 0]
             if p.get("ref_video_audio"):
                 entradas["ref_video_audios.ref_video_audio_0"] = ["331", 1]
-        if p.get("voz_ref"):
-            ruta = os.path.join(ASSETS, os.path.basename(p["voz_ref"]))
+        vozs = p.get("voz_ref") or []
+        if isinstance(vozs, str):
+            vozs = [vozs]
+        for j, voz in enumerate(vozs[:3]):     # el modelo acepta hasta 3 audios
+            ruta = os.path.join(ASSETS, os.path.basename(voz))
             if not os.path.exists(ruta):
-                print(f"  X  {p['id']}: falta la voz {os.path.basename(p['voz_ref'])}")
+                print(f"  X  {p['id']}: falta la voz {os.path.basename(voz)}")
                 return None, None
-            wf["310"] = {"class_type": "LoadAudio", "inputs": {"audio": subir(api, ruta)}}
-            entradas["ref_audios.ref_audio_0"] = ["310", 0]
+            nid = str(310 + j)
+            wf[nid] = {"class_type": "LoadAudio", "inputs": {"audio": subir(api, ruta)}}
+            entradas[f"ref_audios.ref_audio_{j}"] = [nid, 0]
         wf["136"] = {"class_type": "MiniMaxH3ReferenceToVideo", "inputs": entradas}
         if p.get("guia0") and dibujo:
             # Ancla dura: la misma imagen como fotograma 0 del eje del video (el

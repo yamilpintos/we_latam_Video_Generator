@@ -370,7 +370,10 @@ def pedido_de_plano(d: dict, p: dict, raiz: Path) -> dict:
     if not segundos:
         segundos = grilla.encajar(max(grilla.MINIMO, float(p.get("corta") or 8.0) + 0.5))[1]
     img = raiz / "assets" / f"sb_{p.get('id', '')}.png"
-    return {"modo": "i2va", "duracion": round(float(segundos), 3), "aspecto": aspecto,
+    ref2va = bool(p.get("modo") == "ref2va" and p.get("voz_ref") and dialogo)
+    return {"modo": "ref2va" if ref2va else "i2va", "duracion": round(float(segundos), 3), "aspecto": aspecto,
+            "voz_ref": bool(ref2va), "hoja_ref": bool(ref2va and p.get("refs_extra")),
+            "habla_desc": (dialogo or {}).get("quien") if ref2va else None,
             "estilo": p.get("cabecera") or d.get("estilo_video") or d.get("estilo_imagen") or "",
             "medio": d.get("medio", "") if formato != "short" else "",
             "tamano": etiqueta, "primer_fotograma": p.get("ve", ""), "personajes": personajes,
@@ -402,12 +405,68 @@ def completar(ruta_json: Path, log=print, forzar: bool = False, solo: list[str] 
             continue
         log(f"  {pid}: reescribiendo ({pedido['duracion']:.2f} s{', con dibujo' if pedido['imagen'] else ''})…")
         r = reescribir(pedido, log=log)
+        if pedido.get("modo") == "ref2va":
+            # La MISMA voz en todos los clips (21/9): el prompt I2VA validado se
+            # envuelve en las seis secciones de Ref2VA con <Picture 2> (la hoja)
+            # y <Audio 1> (la voz de referencia). Determinista: sin otra llamada.
+            r["prompt"] = a_ref2va(r["prompt"], pedido)
+            r["origen"] += " → ref2va"
         p["prompt_h3"] = r["prompt"]
         p["prompt_h3_de"] = h
         p["prompt_h3_origen"] = r["origen"]
         hechos += 1
         ruta_json.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return hechos
+
+
+# ═══════════════════════════════════════════════ VOZ DE REFERENCIA (Ref2VA)
+
+def _seccion(t: str, desde: str, hasta: str | None) -> str:
+    cuerpo = t.split(desde, 1)[-1] if desde in t else ""
+    if hasta and hasta in cuerpo:
+        cuerpo = cuerpo.split(hasta, 1)[0]
+    return cuerpo.strip()
+
+
+def a_ref2va(prompt_i2va: str, p: dict) -> str:
+    """Del prompt I2VA (una imagen = primer fotograma) al formato de referencia
+    completa de Ref2VA, sin modelo: <Picture 1> sigue siendo el primer fotograma,
+    <Picture 2> es la hoja de la cara del que habla (si viaja), <Audio 1> es su
+    voz de referencia. El cuerpo del [Shot …] se conserva tal cual; sólo se le
+    cuelga al hablante (S1) «using the voice timbre referenced from <Audio 1>»."""
+    t = prompt_i2va.strip()
+    cuerpo = _seccion(t, "integrated_multimodal_description:", "overall_soundscape:")
+    sonido = _seccion(t, "overall_soundscape:", "non_diegetic_music:") or (p.get("audio") or "Quiet room tone with the small physical sounds of what moves in the frame.")
+    musica = _seccion(t, "non_diegetic_music:", None) or "N/A"
+    d = p.get("dialogo") or {}
+    lengua = IDIOMAS.get(d.get("idioma", "es"), "Spanish")
+    quien = (p.get("habla_desc") or d.get("quien") or "the character who speaks on screen").strip().rstrip(".")
+    donde = "as shown in <Picture 2> and in <Picture 1>" if p.get("hoja_ref") else "as shown in <Picture 1>"
+    marca = "using the voice timbre referenced from <Audio 1>"
+    if marca not in cuerpo:
+        if "(S1)" in cuerpo:
+            cuerpo = cuerpo.replace("(S1)", f"(S1), {marca},", 1)
+        elif "<d>" in cuerpo:
+            cuerpo = cuerpo.replace("<d>", f"{marca}: <d>", 1)
+    # El estilo abre la descripción (la guía pide una o dos frases antes del [Shot 1]).
+    estilo = (p.get("estilo") or "Live-action, cinematic").strip().rstrip(".")
+    desc = f"The target video is a {estilo[0].lower() + estilo[1:]} scene, {p.get('aspecto', '9:16')} frame, {float(p.get('duracion') or 0):.0f} seconds long.\n{cuerpo}"
+    cortes = p.get("cortes") or []
+    tramo = (f"one continuous scene edited in camera with {len(cortes)} internal cut(s)" if cortes
+             else "one single continuous take")
+    sujetos = [
+        f"<Picture 1> is the first frame of [Shot 1], showing {(p.get('primer_fotograma') or 'the scene exactly as it starts').strip().rstrip('.')}.",
+        f"<Subject 1> is {quien}, {donde}.",
+        f"<Audio 1> is the voice-timbre reference for <Subject 1> (S1), containing a spoken {lengua} vocal layer.",
+    ]
+    resumen = (f"[keyframe completion + reference generation + audio reference] The target video begins from <Picture 1> and "
+               f"continues as {tramo} in which <Subject 1> speaks {marca}. Every other character keeps the voice described in the text.")
+    retencion = [
+        "<Picture 1> ([Shot 1] first frame): fully_preserved - the composition, framing, lens, lighting, set, props and the position of everyone in the frame are kept.",
+        f"<Subject 1> (appears in [Shot 1]): fully_preserved - the face, hair, skin or fur details and the clothes are kept exactly{' as in <Picture 2>' if p.get('hoja_ref') else ''}.",
+        "<Audio 1>: reference - the target speaker follows <Audio 1>'s voice timbre, pitch and manner of speaking, and says only the lines written in the description.",
+    ]
+    return prompts.oficial_ref2va(sujetos, resumen, retencion, desc, sonido, musica)
 
 
 # ═══════════════════════════════════════════════ EDICIÓN DE UN VIDEO (Ref2VA)

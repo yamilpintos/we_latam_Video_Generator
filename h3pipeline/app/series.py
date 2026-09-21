@@ -33,7 +33,7 @@ import sys
 import time
 from pathlib import Path
 
-from .. import config, frames, grilla, guionista, reescritor, web
+from .. import config, frames, grilla, guionista, reescritor, voces, web
 from ..estructura import Estructura
 from ..proyecto import Proyecto
 from . import cola, maquina
@@ -292,7 +292,9 @@ def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None 
         "guardapolvos, herramientas): la ropa de cada capítulo se agrega después, capítulo por capítulo. La hoja de modelo "
         "sostiene la cara; el texto de cada capítulo sostiene la ropa.\n"
         "- \"descripcion_es\": la misma, en castellano, para mostrarla.\n"
-        "- \"voz\": cómo suena si habla (una frase en inglés: edad, timbre, ritmo, acento).",
+        "- \"voz\": cómo suena si habla (una frase en inglés: edad, timbre, ritmo, acento).\n"
+        "- \"genero\": \"m\" si la voz que le corresponde es masculina, \"f\" si es femenina (también para animales, robots o "
+        "criaturas: decidí por cómo debería sonar).",
         "Sos director de arte de una serie. Respondés sólo JSON.", log=log)
     ref = None
     if b64:
@@ -308,8 +310,27 @@ def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None 
         ref = f"refs/{pid}.png"
     s["personajes"][pid] = {"nombre": nombre.strip(), "pedido": descripcion.strip(),
                             "descripcion": str(r.get("descripcion", "")).strip(), "descripcion_es": str(r.get("descripcion_es", "")).strip(),
-                            "voz": str(r.get("voz", "")).strip(), "imagen_ref": ref, "hoja": None, "aprobada": False, "creado": time.time()}
+                            "voz": str(r.get("voz", "")).strip(), "imagen_ref": ref, "hoja": None, "aprobada": False, "creado": time.time(),
+                            "genero": (str(r.get("genero", "")).strip().lower()[:1] or "n"), "voz_id": None}
+    # La voz del banco (21/9): al azar según el género, distinta de las que ya
+    # usan los otros personajes de la serie, y fija para toda la serie.
+    s["personajes"][pid]["voz_id"] = voces.elegir(s["personajes"][pid]["genero"],
+                                                  evitar=[q.get("voz_id") for q in s["personajes"].values() if q.get("voz_id")])
     return guardar(s)
+
+
+def asignar_voces_faltantes(s: dict) -> list[str]:
+    """Personajes sin voz del banco (los creados antes del banco, o cuando el banco
+    estaba vacío): se les asigna una ahora, y queda para toda la serie."""
+    nuevos = []
+    for pid, p in s["personajes"].items():
+        if p.get("voz_id") and voces.ver(p["voz_id"]):
+            continue
+        vid = voces.elegir(p.get("genero") or "n", evitar=[q.get("voz_id") for q in s["personajes"].values() if q.get("voz_id")])
+        if vid:
+            p["voz_id"] = vid
+            nuevos.append(f"{p['nombre']} → {vid}")
+    return nuevos
 
 
 def foto_personaje(slug: str, pid: str, b64: str) -> dict:
@@ -358,6 +379,13 @@ def editar_personaje(slug: str, pid: str, **campos) -> dict:
     for k in ("nombre", "descripcion", "descripcion_es", "voz"):
         if k in campos and campos[k] is not None:
             p[k] = str(campos[k]).strip()
+    if campos.get("genero") in ("m", "f", "n"):
+        p["genero"] = campos["genero"]
+    if "voz_id" in campos and campos["voz_id"] is not None:
+        vid = str(campos["voz_id"]).strip()
+        if vid and not voces.ver(vid):
+            raise ValueError(f"no existe la voz {vid} en el banco")
+        p["voz_id"] = vid or None
     return guardar(s)
 
 
@@ -789,8 +817,14 @@ def reparto(s: dict, c: dict | None = None) -> dict:
         pers[pid] = {"hoja": f"m_{pid}", "descripcion": desc}
     locs = {lid: {"imagen": f"l_{lid}", "descripcion": l["descripcion"]}
             for lid, l in s["locaciones"].items() if l.get("imagen")}
-    voces = {pid: p["voz"] for pid, p in s["personajes"].items() if p.get("voz")} if s.get("modo") == "actuado" else {}
-    return {"personajes": pers, "locaciones": locs, "voces": voces}
+    vdesc = {pid: p["voz"] for pid, p in s["personajes"].items() if p.get("voz")} if s.get("modo") == "actuado" else {}
+    vref = {}
+    if s.get("modo") == "actuado":
+        for pid, p in s["personajes"].items():
+            v = voces.ver(p.get("voz_id"))
+            if v:
+                vref[pid] = {"id": v["id"], "ruta": v["ruta"], "nombre": v.get("nombre", v["id"])}
+    return {"personajes": pers, "locaciones": locs, "voces": vdesc, "voces_ref": vref}
 
 
 def _python(*args: str, log=print, cwd: Path | None = None) -> None:
@@ -941,6 +975,41 @@ def aplicar_tomas(s: dict, c: dict, d: dict, rep_: dict, log=print) -> None:
     log("tomas: diálogo copiado del guion en " + ", ".join(f"{pl['id']} ({len(lineas_de_texto(pl.get('dialogo')))} líneas, {len(pl.get('cortes') or [])} cortes)" for pl in planos))
 
 
+def aplicar_voces(s: dict, d: dict, rep_: dict, pc: Path, log=print) -> int:
+    """LA MISMA VOZ EN TODOS LOS CLIPS (pedido del usuario, 21/9: «eso jamás puede
+    pasar»). Cada plano con diálogo cuyo hablante tiene una voz del banco se
+    genera en Ref2VA: <Picture 1> = su primer fotograma, <Picture 2> = la hoja
+    del capítulo (la cara), <Audio 1> = la voz de referencia; `guia0` ancla el
+    primer cuadro (REGLAS 75). El WAV se copia a assets/ del capítulo para que
+    viaje en el ZIP. Devuelve cuántos planos quedaron en Ref2VA."""
+    vref = rep_.get("voces_ref") or {}
+    if not vref:
+        return 0
+    (pc / "assets").mkdir(parents=True, exist_ok=True)
+    n = 0
+    for pl in d.get("planos") or []:
+        if not pl.get("dialogo") or pl.get("clip_de"):
+            continue
+        quien = pl.get("habla") or pl.get("voz_de")
+        v = vref.get(quien)
+        if not v:
+            continue
+        nombre = f"voz_{quien}.wav"
+        destino = pc / "assets" / nombre
+        if not destino.exists() or destino.stat().st_size != Path(v["ruta"]).stat().st_size:
+            shutil.copy(v["ruta"], destino)
+        hoja = (d.get("personajes", {}).get(quien) or {}).get("hoja") or f"m_{quien}"
+        pl["modo"] = "ref2va"
+        pl["voz_ref"] = f"assets/{nombre}"
+        pl["voz_id"] = v["id"]
+        pl["refs_extra"] = [f"assets/{hoja}.png"]
+        pl["guia0"] = True
+        n += 1
+    if n:
+        log(f"voz de referencia (Ref2VA): {n} plano(s) con " + ", ".join(sorted({f"{q} = {v['nombre']}" for q, v in vref.items()})))
+    return n
+
+
 def _num(x, default: float = 0.0) -> float:
     """Un número aunque GPT lo haya mandado como lista o texto (el 21/9 el capítulo
     12 cayó con «float() argument must be ... not 'list'» antes de dibujar)."""
@@ -977,6 +1046,11 @@ def chequear_capitulo(s: dict, c: dict, d: dict) -> list[str]:
                 palabras = sum(len(l.split(":", 1)[-1].split()) for l in ls)
                 if palabras > MAX_PALABRAS_TOMA + 4:
                     e.append(f"{pl['id']}: {palabras} palabras habladas en 15 s (máximo {MAX_PALABRAS_TOMA})")
+    for pl in planos:
+        if pl.get("modo") == "ref2va" and pl.get("voz_ref"):
+            pslug = c.get("slug")
+            if pslug and not (maquina.MIS / pslug / Path(pl["voz_ref"]).name).exists() and not (maquina.MIS / pslug / "assets" / Path(pl["voz_ref"]).name).exists():
+                e.append(f"{pl['id']}: falta el archivo de la voz de referencia {Path(pl['voz_ref']).name}")
     vest = c.get("vestuario") or {}
     for pid in vest:
         if pid in s["personajes"] and s["personajes"][pid].get("hoja"):
@@ -1035,6 +1109,14 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
     sin_aprobar = [p["nombre"] for p in s["personajes"].values() if p.get("hoja") and not p.get("aprobada")]
     if sin_aprobar:
         log(f"aviso: hojas sin aprobar ({', '.join(sin_aprobar)}); se usan igual")
+    if s.get("modo") == "actuado":
+        nuevos = asignar_voces_faltantes(s)
+        if nuevos:
+            guardar(s)
+            log("voces del banco asignadas (quedan fijas para toda la serie): " + "; ".join(nuevos))
+        sin_voz = [p["nombre"] for p in s["personajes"].values() if not p.get("voz_id")]
+        if sin_voz:
+            log(f"aviso: sin voz de referencia en el banco para {', '.join(sin_voz)}: su voz la describe el texto y puede cambiar entre clips")
     _estado(slug, n, "produciendo", "")
     pslug = c.get("slug") or f"{slug}-{c['n']:02d}-{_slug(c['titulo'])[:24]}"
     pc = maquina.MIS / pslug
@@ -1148,6 +1230,8 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                 log(f"continuidad entre tomas: {ne} fotograma(s) referencian al anterior")
             if tomas_de(s, c):
                 aplicar_tomas(s, c, d, rep, log=log)
+            if actuado:
+                aplicar_voces(s, d, rep, pc, log=log)
             problemas = chequear_capitulo(s, c, d)
             if problemas:
                 raise RuntimeError("control antes de gastar: " + "; ".join(problemas))
@@ -1162,6 +1246,13 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         else:
             log("proyecto.json ya existía y pasa el control: no se vuelve a traducir")
             d = json.loads((pc / "proyecto.json").read_text(encoding="utf-8"))
+            if actuado and aplicar_voces(s, d, rep, pc, log=log):
+                # La voz pudo asignarse después de traducir: se guarda y el
+                # reescritor rehace sólo los prompts cuya huella cambió.
+                (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                nprom = reescritor.completar(pc / "proyecto.json", log=lambda *_: None)
+                if nprom:
+                    log(f"prompts H3 rehechos en formato Ref2VA: {nprom}")
             problemas = chequear_capitulo(s, c, d)
             if problemas:
                 raise RuntimeError("control antes de gastar: " + "; ".join(problemas))

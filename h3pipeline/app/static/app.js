@@ -603,7 +603,13 @@ function pintarSerie(s) {
       ${p.hoja ? `<img src="/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}?${p.creado}" style="width:100%;border-radius:6px;margin-top:6px;cursor:zoom-in;max-height:300px;object-fit:contain;background:#000" onclick="lightbox('/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}')">`
               : p.imagen_ref ? `<img src="/api/series/${slug}/archivo/refs/${p.imagen_ref.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:6px;opacity:.7;max-height:200px;object-fit:contain;background:#000" title="imagen de referencia; la hoja sale de acá">` : `<div class="tiny" style="margin-top:6px">sin hoja todavía</div>`}
       <div class="tiny" style="margin-top:6px">${h(p.descripcion_es || p.descripcion)}</div>
-      ${s.modo === "actuado" ? `<div class="tiny" style="margin-top:4px"><b>voz:</b> <input id="pv-${id}" value="${h(p.voz || "")}" placeholder="cómo suena (edad, timbre, ritmo, acento), en inglés" style="font-size:12px;padding:4px 8px;margin-top:2px"></div>` : ""}
+      ${s.modo === "actuado" ? `<div class="tiny" style="margin-top:6px"><b>voz de referencia</b> (la misma en todos sus clips):
+        <div class="row" style="margin-top:2px;gap:6px"><select id="pvid-${id}" style="font-size:12px;padding:4px 8px;max-width:220px" onchange="seriePersonajeVoz('${slug}','${id}',this.value)">
+          <option value="" ${!p.voz_id ? "selected" : ""}>— sin preset: la describe el texto (puede cambiar entre clips)</option>
+          ${(s.banco_voces || []).map(v => `<option value="${v.id}" ${p.voz_id === v.id ? "selected" : ""}>${v.genero === "f" ? "♀" : v.genero === "m" ? "♂" : "•"} ${h(v.nombre)} · ${v.segundos} s</option>`).join("")}</select>
+          ${p.voz_id ? `<audio controls preload="none" src="/api/voces/${p.voz_id}.wav" style="height:26px;max-width:180px"></audio>` : ""}</div>
+        ${!(s.banco_voces || []).length ? `<span style="color:var(--warn)">el banco de voces está vacío: sin preset la voz puede cambiar entre tomas</span>` : ""}
+        <div style="margin-top:4px"><b>cómo suena</b> (texto, para el prompt): <input id="pv-${id}" value="${h(p.voz || "")}" placeholder="edad, timbre, ritmo, acento, en inglés" style="font-size:12px;padding:4px 8px;margin-top:2px"></div></div>` : ""}
       <details style="margin-top:4px"><summary class="tiny" style="cursor:pointer">descripción para los prompts (inglés) · editar</summary><textarea id="pd-${id}" style="min-height:80px;font-size:12px;margin-top:4px">${h(p.descripcion)}</textarea><button class="btn s" style="margin-top:4px" onclick="seriePersonajeGuardar('${slug}','${id}')">guardar</button></details>
       <div class="row" style="margin-top:6px"><label class="btn s">${p.imagen_ref ? "cambiar la foto de referencia" : "⚠ subir la foto de referencia"}<input type="file" accept="image/*" hidden onchange="seriePersonajeFoto('${slug}','${id}',this)"></label>${p.imagen_ref ? "" : `<span class="tiny" style="color:var(--warn)">sin foto: la hoja salió sólo del texto</span>`}</div>
       <div class="row" style="margin-top:8px">${p.hoja ? `<button class="btn s ${p.aprobada ? "" : "p"}" onclick="seriePersonajeAprobar('${slug}','${id}',${!p.aprobada})">${p.aprobada ? "aprobada ✓ (desaprobar)" : "aprobar hoja"}</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],true)">otra hoja</button>` : `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieHojas('${slug}',['${id}'],false)">dibujar la hoja</button>`}
@@ -711,6 +717,9 @@ async function seriePersonajeFoto(slug, id, input) {
 async function seriePersonajeGuardar(slug, id) {
   const v = $(`#pv-${id}`);
   try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {descripcion: $(`#pd-${id}`).value, voz: v ? v.value : null}}); toast("guardado"); } catch (e) { serieError(e.message); }
+}
+async function seriePersonajeVoz(slug, id, vid) {
+  try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {voz_id: vid}}); toast(vid ? "voz asignada: queda fija para toda la serie" : "sin voz de referencia"); navegar(); } catch (e) { serieError(e.message); }
 }
 async function seriePersonajeAprobar(slug, id, ok) {
   try { await api(`/series/${slug}/personajes/${id}`, {method: "PUT", body: {aprobada: ok}}); serieRefrescar(slug); } catch (e) { serieError(e.message); }

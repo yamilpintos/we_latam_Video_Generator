@@ -6,6 +6,7 @@ Enciende si hace falta (y caza si no hay 5090), espera la instalación, y por
 cada proyecto pendiente: genera → espera los clips → baja. Al final apaga si la
 cola lo pide. Todo queda en `cola.json`, `maquina.json` y este log.
 """
+import json
 import time
 
 from .. import vast
@@ -14,6 +15,42 @@ from . import cola, maquina
 
 def log(s: str) -> None:
     print(f"[{time.strftime('%H:%M:%S')}] {s}", flush=True)
+
+
+def necesita_ref2va(slug: str) -> bool:
+    """¿Algún plano del proyecto va en Ref2VA (voz de referencia, edición)?"""
+    try:
+        d = json.loads((maquina.MIS / slug / "proyecto.json").read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    return any(pl.get("modo") == "ref2va" for pl in d.get("planos") or [])
+
+
+def asegurar_ref2va(log=print, minutos: int = 40) -> None:
+    """La máquina se instala sólo con FL2VA (59 GB). Si un proyecto de la cola
+    lleva voz de referencia hace falta el modelo Ref2VA (24 GB + LoRA): setup.sh
+    es idempotente y con SOLO_FL=0 agrega lo que falta. Espera a que esté."""
+    from . import editar
+    m = maquina.leer()
+    inst = vast.instancia(int(m["instancia"]))
+    if editar.ref2va_presente(inst):
+        return
+    log("la cola lleva voz de referencia: instalo Ref2VA en la máquina (24 GB, ~5 min a 1 Gbps)")
+    editar.instalar_ref2va(inst, log=log)
+    t0 = time.time()
+    while time.time() - t0 < minutos * 60:
+        time.sleep(30)
+        if editar.ref2va_presente(inst):
+            log("Ref2VA instalado")
+            # Los ComfyUI ya levantados no conocen el modelo nuevo: se reinician
+            # (la placa 0 por supervisor, las otras las relanza lanzar.sh).
+            vast.ejecutar(inst, "supervisorctl restart comfyui >/dev/null 2>&1 || true", timeout=90)
+            vast.ejecutar(inst, "pkill -f '[m]ain.py --disable-auto-launch --port 1819' || true", timeout=30)
+            time.sleep(20)
+            return
+        pr = editar.progreso_ref2va(inst)
+        log(f"  Ref2VA: {pr.get('gb') or 0} de 23,9 GB")
+    raise RuntimeError("Ref2VA no terminó de bajar en 40 min")
 
 
 def main() -> int:
@@ -54,6 +91,8 @@ def main() -> int:
         for slug in cola.pendientes():
             cola.marcar(slug, "generando")
             try:
+                if necesita_ref2va(slug):
+                    asegurar_ref2va(log)
                 maquina.generar_proyecto(slug, log=log)
                 ok = maquina.esperar_clips(slug, log=log)
                 cola.marcar(slug, "bajando", "" if ok else "clips incompletos")

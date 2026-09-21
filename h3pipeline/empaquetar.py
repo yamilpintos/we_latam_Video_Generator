@@ -79,7 +79,8 @@ def empaquetar(proyecto: Proyecto, destino: Path | None = None,
         # normalizar —el nodo las escala conservando su aspecto— y la voz de
         # referencia va como está (ya viene a 32 kHz estéreo y múltiplo de 800
         # muestras, ver voz_ref.py).
-        for extra in list(p.get("refs_extra") or []) + ([p["voz_ref"]] if p.get("voz_ref") else []):
+        vozs = p.get("voz_ref") or []
+        for extra in list(p.get("refs_extra") or []) + ([vozs] if isinstance(vozs, str) else list(vozs)):
             src_x = origen / Path(extra).name
             if not src_x.exists():
                 faltan.append(f"{p['id']} ({Path(extra).name})")
