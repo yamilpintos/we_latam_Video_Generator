@@ -1041,9 +1041,26 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                   "slug": pslug, "duracion": s.get("duracion") if es_musica else (round(tomas_de(s, c) * grilla.MAXIMO, 3) if s.get("toma") == "una" else None),
                   "serie": slug, "capitulo": c["n"], "actuado": actuado, "tomas": tomas_de(s, c)}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
+        if (pc / "proyecto.json").exists():
+            motivo = ""
+            if rehacer:
+                motivo = "se pidió rehacer"
+            elif not _proyecto_coincide(pc, s):
+                motivo = "usa personajes que no son de la serie"
+            elif (pc / "guion.txt").exists() and (pc / "guion.txt").read_text(encoding="utf-8").strip() != c["guion"].strip():
+                motivo = "el guion cambió"
+            else:
+                try:
+                    viejo_d = json.loads((pc / "proyecto.json").read_text(encoding="utf-8"))
+                    probs = chequear_capitulo(s, c, viejo_d)
+                    if probs:
+                        motivo = "no pasa el control: " + "; ".join(probs[:2])
+                except Exception as e:
+                    motivo = f"no se pudo leer: {e}"
+            if motivo:
+                log(f"proyecto anterior descartado ({motivo})")
+                _limpiar_proyecto(pc, log=log)
         (pc / "guion.txt").write_text(c["guion"], encoding="utf-8")
-        if (pc / "proyecto.json").exists() and (rehacer or not _proyecto_coincide(pc, s)):
-            _limpiar_proyecto(pc, log=log)
         if not (pc / "proyecto.json").exists():
             log(f"traduciendo el guion del capítulo {c['n']} ({len(c['guion'])} caracteres)…")
             r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
@@ -1131,7 +1148,11 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             nprom = reescritor.completar(pc / "proyecto.json", log=lambda *_: None)
             log(f"prompts H3 en formato oficial: {nprom}")
         else:
-            log("proyecto.json ya existía: no se vuelve a traducir")
+            log("proyecto.json ya existía y pasa el control: no se vuelve a traducir")
+            d = json.loads((pc / "proyecto.json").read_text(encoding="utf-8"))
+            problemas = chequear_capitulo(s, c, d)
+            if problemas:
+                raise RuntimeError("control antes de gastar: " + "; ".join(problemas))
         # 2 · las hojas de la serie, tal cual, a los assets del capítulo
         (pc / "assets").mkdir(exist_ok=True)
         copiadas = 0
