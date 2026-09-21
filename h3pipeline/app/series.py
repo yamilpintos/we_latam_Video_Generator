@@ -730,7 +730,7 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         if s["formato"] == "musica" and r.get("musica"):
             c["musica"] = str(r["musica"]).strip()
         if s.get("modo") == "actuado" and s["formato"] != "musica":
-            lineas = [l for l in guion.splitlines() if re.match(r"^\s*[A-ZÁÉÍÓÚÑ][\wÁÉÍÓÚÑáéíóúñ ]{1,30}:\s*\S", l) and not l.strip().upper().startswith("[TOMA")]
+            lineas = [f"{ln['nombre']}: {ln['texto']}" for tm in parsear_tomas(guion, s)["tomas"] for ln in tm["lineas"]]
             tope = 9 if s.get("toma") == "una" else 12
             largas = [l for l in lineas if len(l.split(":", 1)[1].split()) > tope]
             habladas = sum(len(l.split(":", 1)[1].split()) for l in lineas)
@@ -894,6 +894,11 @@ def aplicar_tomas(s: dict, c: dict, d: dict, rep_: dict, log=print) -> None:
                 for x in ids:
                     if x not in (pl.get("personajes") or []):
                         pl.setdefault("personajes", []).append(x)
+            # El que habla se ve de frente desde el primer cuadro (la toma 2 del
+            # piloto salió de espaldas y hablaba desde el segundo cero, 21/9).
+            frente = " The speaking character faces the camera (front or three-quarter view), face and mouth clearly visible, from the very first frame."
+            if "faces the camera" not in (pl.get("ve") or ""):
+                pl["ve"] = (pl.get("ve") or "").rstrip() + frente
         seg = float(pl.get("segundos") or grilla.MAXIMO)
         cortes = []
         for ct in (pl.get("cortes") or []):
