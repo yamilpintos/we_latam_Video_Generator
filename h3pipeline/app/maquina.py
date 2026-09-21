@@ -25,7 +25,7 @@ import time
 import zipfile
 from pathlib import Path
 
-from .. import costos, vast
+from .. import costos, montaje, vast
 from ..proyecto import Proyecto
 
 AQUI = Path(__file__).resolve().parent
@@ -397,13 +397,56 @@ def fuentes(slug: str) -> list[str]:
     return [x["id"] for x in p.construir()[1]["planos"] if not x.get("clip_de")]
 
 
-def esperar_clips(slug: str, log=print, minutos: int = 90) -> bool:
+def clips_locales(slug: str) -> list[str]:
+    """Ids de los planos que ya tienen clip bajado en mis-videos/<slug>/clips/."""
+    c = MIS / slug / "clips"
+    if not c.exists():
+        return []
+    return [x for x in fuentes(slug) if montaje.buscar_clip(c, x)]
+
+
+def plazo_minutos(slug: str, dph: float | None = None) -> int:
+    """Cuánto esperar los clips: 2,5× el tiempo de pared estimado más 30 min,
+    nunca menos de 90. El 21/9 un largo de 83 planos (115 min reales) murió
+    contra un plazo fijo de 90 con 62 clips hechos, y la cola destruyó la
+    máquina sin bajarlos."""
+    try:
+        p = Proyecto.cargar(MIS / slug / "proyecto.json")
+        est = costos.estimar(p.construir()[1]["planos"], costos.Maquina(dph=float(dph or leer().get("dph") or 2.7)))
+        return max(90, int(est.minutos_pared * 2.5 + 30))
+    except Exception:
+        return 120
+
+
+def relanzar(slug: str, log=print) -> None:
+    """Vuelve a lanzar los runners en la máquina: cada uno saltea los clips que
+    ya existen (`runner.py`: «ya está») y lanzar.sh levanta las placas caídas."""
+    m = leer()
+    inst = vast.instancia(int(m["instancia"]))
+    vast.ejecutar(inst, "pkill -f '[r]unner.py --gpu' || true", timeout=30)
+    time.sleep(5)
+    vast.lanzar(inst, "export PATH=/venv/main/bin:$PATH && cd /workspace/refs && PASOS=8 GPUS=4 bash lanzar.sh",
+                log=vast.LOG_CORRIDA)
+    log(f"{slug}: runners relanzados para lo que falta")
+
+
+def esperar_clips(slug: str, log=print, minutos: int | None = None, estancado: int = 30) -> bool:
+    """Espera los clips. `minutos` None = plazo proporcional (`plazo_minutos`).
+    Si pasan `estancado` minutos sin un clip nuevo, vuelve False antes del
+    plazo: alguna placa se murió y conviene relanzar en vez de seguir pagando."""
     m = leer()
     inst = vast.instancia(int(m["instancia"]))
     p = Proyecto.cargar(MIS / slug / "proyecto.json")
     planos = p.construir()[1]["planos"]
-    total = len(fuentes(slug))
+    # Segunda vuelta (sólo los que faltan): el objetivo son los planos SIN clip local.
+    locales = set(clips_locales(slug))
+    objetivo = [x for x in fuentes(slug) if x not in locales]
+    total = len(objetivo)
+    if minutos is None:
+        minutos = plazo_minutos(slug, m.get("dph"))
+        log(f"  plazo para {total} clips: {minutos} min")
     t0, previo = time.time(), -1
+    ultimo_avance = time.time()
     while time.time() - t0 < minutos * 60:
         try:
             prog = vast.progreso(inst, planos, p.slug)
@@ -411,21 +454,27 @@ def esperar_clips(slug: str, log=print, minutos: int = 90) -> bool:
             log(f"  (sin respuesta: {e})")
             time.sleep(60)
             continue
-        n = len(prog["hechos"])
+        n = len([h for h in prog["hechos"] if h in objetivo])
         if n != previo:
             log(f"  {slug}: {n}/{total} clips")
             previo = n
+            ultimo_avance = time.time()
         if n >= total:
             return True
+        if time.time() - ultimo_avance > estancado * 60:
+            log(f"!! {slug}: {estancado} min sin un clip nuevo ({n}/{total}): alguna placa se murió")
+            return False
         time.sleep(45)
     log(f"!! {slug}: se agotó el plazo con {previo}/{total}")
     return False
 
 
-def bajar(slug: str, log=print) -> bool:
+def bajar(slug: str, log=print, parcial: bool = False) -> bool:
+    """Baja los clips. Con `parcial`, baja lo que haya aunque falten planos:
+    nunca más destruir una máquina con clips sin bajar (21/9)."""
     m = leer()
     r = subprocess.run([sys.executable, "-X", "utf8", "-u", "-m", "h3pipeline", "bajar",
-                        str(MIS / slug / "proyecto.json"), str(m["instancia"])],
+                        str(MIS / slug / "proyecto.json"), str(m["instancia"])] + (["--parcial"] if parcial else []),
                        cwd=str(RAIZ), capture_output=True, text=True, encoding="utf-8", errors="replace")
     for linea in (r.stdout or "").splitlines()[-6:]:
         log("  " + linea)

@@ -7,6 +7,8 @@ cada proyecto pendiente: genera → espera los clips → baja. Al final apaga si
 cola lo pide. Todo queda en `cola.json`, `maquina.json` y este log.
 """
 import json
+import subprocess
+import sys
 import time
 
 from .. import vast
@@ -88,22 +90,52 @@ def main() -> int:
             if maquina.leer().get("fase") != "lista":
                 log("!! la máquina no llegó a lista")
                 return 1
+        bajada_fallida = False
         for slug in cola.pendientes():
             cola.marcar(slug, "generando")
             try:
                 if necesita_ref2va(slug):
                     asegurar_ref2va(log)
+                # Segunda vuelta de un proyecto con clips ya bajados: sólo los que faltan.
+                hechos = maquina.clips_locales(slug)
+                if hechos:
+                    faltan = [x for x in maquina.fuentes(slug) if x not in hechos]
+                    if not faltan:
+                        log(f"{slug}: ya tiene todos los clips; nada que generar")
+                        cola.marcar(slug, "bajado", "")
+                        continue
+                    log(f"{slug}: {len(hechos)} clips ya bajados; se reempaquetan sólo los {len(faltan)} que faltan")
+                    r = subprocess.run([sys.executable, "-X", "utf8", "-u", "-m", "h3pipeline", "empaquetar",
+                                        str(maquina.MIS / slug / "proyecto.json"), "--sin-reescribir", "--solo", *faltan],
+                                       cwd=str(maquina.RAIZ), capture_output=True, text=True, encoding="utf-8", errors="replace")
+                    if r.returncode:
+                        raise RuntimeError("no pude reempaquetar los que faltan: " + (r.stdout or "")[-300:])
                 maquina.generar_proyecto(slug, log=log)
                 ok = maquina.esperar_clips(slug, log=log)
-                cola.marcar(slug, "bajando", "" if ok else "clips incompletos")
-                if maquina.bajar(slug, log=log):
-                    cola.marcar(slug, "bajado", "" if ok else "parcial")
+                if not ok:
+                    # Una placa muerta o el plazo corto: se relanzan los runners UNA
+                    # vez (saltean lo hecho) y se espera otra mitad del plazo.
+                    maquina.relanzar(slug, log=log)
+                    ok = maquina.esperar_clips(slug, log=log, minutos=max(45, maquina.plazo_minutos(slug) // 2))
+                cola.marcar(slug, "bajando", "" if ok else "clips incompletos: bajo lo que hay")
+                if maquina.bajar(slug, log=log, parcial=not ok):
+                    if ok:
+                        cola.marcar(slug, "bajado", "")
+                    else:
+                        n = len(maquina.clips_locales(slug))
+                        t = len(maquina.fuentes(slug))
+                        cola.marcar(slug, "error", f"faltan {t - n} de {t} clips (bajados {n}); volvé a correr la cola: rehace sólo los que faltan")
                 else:
-                    cola.marcar(slug, "error", "la bajada falló")
+                    cola.marcar(slug, "error", "la bajada falló: la máquina sigue encendida con los clips adentro")
+                    raise RuntimeError("bajada fallida")
             except Exception as e:
                 log(f"!! {slug}: {e}")
-                cola.marcar(slug, "error", str(e)[:200])
-        if cola.leer().get("apagar_al_final", True):
+                if "bajada fallida" in str(e):
+                    bajada_fallida = True
+                    log("!! NO apago la máquina: tiene clips sin bajar. Bajalos o apagala desde la web.")
+                else:
+                    cola.marcar(slug, "error", str(e)[:200])
+        if cola.leer().get("apagar_al_final", True) and not bajada_fallida:
             r = maquina.apagar(log=log)
             log(f"máquina apagada · gastó ${r.get('gasto_final')} en {r.get('minutos')} min")
         else:
