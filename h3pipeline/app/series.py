@@ -48,11 +48,16 @@ ACTIVOS_CAP = ("escribiendo", "produciendo")
 # incontrolable. Se la lee GPT al planificar, al escribir el guion y al
 # traducir, y se muestra en la página de la serie.
 REGLA_SHORTS = (
-    "REGLA DE LOS SHORTS (no negociable): cada capítulo pasa en UNA SOLA LOCACIÓN, sin cambios de lugar ni viajes; "
-    "UNA sola situación, que se entiende con la primera frase; el personaje principal habla A CÁMARA (o a alguien fuera de cuadro) "
-    "desde un encuadre base fijo; los humanos secundarios sólo se oyen o están desenfocados al fondo; los objetos son 1 o 2, "
-    "apoyados sobre una mesa o en la mano; nada de coreografías, persecuciones, multitudes ni efectos. La gracia está en lo que dice "
-    "y en cómo reacciona, no en lo que pasa alrededor. Simple, repetible, mismo formato en todos los capítulos.")
+    "REGLA DE LOS SHORTS (no negociable): historias MUY simples y reproducibles. Un video de 15 s pasa en UNA sola escena "
+    "(un lugar, un encuadre base); uno de 30 s en como máximo 2 escenas; uno de 45 s en como máximo 3; uno de 60 s en como máximo 4: "
+    "nunca más de UNA escena por toma de 15 s, y menos es mejor. UNA sola situación, que se entiende con la primera frase; el personaje "
+    "principal habla A CÁMARA (o a alguien fuera de cuadro) desde un encuadre base fijo; los humanos secundarios sólo se oyen o están "
+    "desenfocados al fondo; los objetos son 1 o 2, apoyados sobre una mesa o en la mano; nada de coreografías, persecuciones, multitudes "
+    "ni efectos. La gracia está en lo que dice y en cómo reacciona, no en lo que pasa alrededor. Simple, repetible, mismo formato en todos.")
+
+
+def escenas_max(tomas: int) -> int:
+    return max(1, min(4, int(tomas or 1)))
 
 
 # ───────────────────────────────────────────────────────────── archivo
@@ -476,7 +481,8 @@ def planificar(slug: str, n: int, pista: str = "", log=print) -> dict:
     dur = Estructura.cargar(s["estructura"]).duracion_objetivo if s["formato"] != "musica" else None
     ins = (f"{biblia(s)}\n\nCAPÍTULOS QUE YA EXISTEN (no los repitas ni en tema ni en título):\n{prev}\n\n"
            f"Proponé {n} capítulos NUEVOS" + (f", numerados a continuación del {hechos[-1]['n']}" if hechos else "") + ".\n"
-           + ("Cada capítulo: UNA sola locación (la nombrás en `locacion`), UNA situación simple que se entiende de entrada, el personaje a cámara; nada que requiera cambiar de lugar ni más de dos objetos.\n" if s.get("formato") == "short" else "")
+           + ("Cada capítulo: una locación principal (la nombrás en `locacion`), UNA situación simple que se entiende de entrada, el personaje a cámara; "
+              "como máximo una escena por cada 15 s de video (15 s = 1 escena; 60 s = hasta 4) y no más de dos objetos.\n" if s.get("formato") == "short" else "")
            + (f"Cada capítulo es un video de ~{dur:g} s con voz en off: una historia lineal, simple, con UN giro o UNA imagen que se recuerde (regla de oro: el guion es la voz en off contada primero como historia; los planos la sirven).\n" if dur else
               "Cada capítulo es un music video: una pista nueva del género de la serie y UNA escena del mismo universo (un lugar, una hora, una luz, qué se mueve despacio; se mira en loop).\n")
            + ("Es un SERIAL: cada premisa continúa la anterior y deja algo abierto para la siguiente; la primera nueva sigue al último capítulo existente.\n" if serial else
@@ -686,8 +692,9 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "  [ESCENA] una línea: el lugar, la hora, la luz, los 2-3 objetos clave y qué lleva puesto cada personaje. Es lo que se repite igual en todas las tomas.\n"
                    f"  [TOMA 1] … [TOMA {nt}]: cada toma es UN lugar y UN encuadre base (cámara casi fija); entre tomas puede cambiar el ángulo o pasar un momento, "
                    "pero es la misma escena, la misma ropa y los mismos objetos.\n"
-                   "SIMPLE Y REPRODUCIBLE: una sola locación para todas las tomas, el mismo encuadre base (el personaje de frente, a cámara), "
-                   "una sola situación, 1 o 2 objetos apoyados en una mesa o en la mano; sin cambios de lugar, sin coreografías, sin multitudes.\n"
+                   f"SIMPLE Y REPRODUCIBLE: como máximo {escenas_max(nt)} escena(s) en todo el video (una por toma como mucho; con una sola alcanza), "
+                   "cada toma en un solo lugar con un encuadre base fijo (el personaje de frente, a cámara), una sola situación, 1 o 2 objetos "
+                   "apoyados en una mesa o en la mano; sin coreografías, sin multitudes, sin viajes.\n"
                    "ES UNA ESCENA, NO UNA LISTA DE MOMENTOS: la PRIMERA línea de diálogo plantea la situación en una frase (quién es, dónde está, qué quiere o "
                    "qué problema tiene), después UN giro, y la ÚLTIMA línea remata (chiste, revelación o vuelta de tuerca). Todo tiene que entenderse sin ningún "
                    "antes ni después. Una acción por toma, que se pueda ver.\n"
