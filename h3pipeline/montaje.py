@@ -338,9 +338,14 @@ ESTILO_SUB = ("FontName=Arial,FontSize=11,Bold=1,PrimaryColour=&H00FFFFFF,"
               "MarginV=85,MarginL=12,MarginR=12")
 
 
+ESCALA_1080 = (1920, 1080)      # largos: H3 entrega 1344×768; YouTube lo lista como 720p
+
+
 def quemar_srt(video: Path, srt_: Path, salida: Path, estilo: str = ESTILO_SUB,
-               log=print) -> Path:
-    """Quema el SRT sobre el video (recodifica el video, copia el audio).
+               log=print, escala: tuple[int, int] | None = None) -> Path:
+    """Quema el SRT sobre el video (recodifica el video, copia el audio). Con
+    `escala` primero reescala (lanczos) y recién después quema los subtítulos,
+    así el texto se dibuja nítido al tamaño final (21/9: largos a 1080p).
 
     Se corre con `cwd` en la carpeta del SRT y se pasa sólo el nombre: el
     filtro `subtitles` de ffmpeg se atraganta con los `:` y `\\` de una ruta
@@ -349,6 +354,8 @@ def quemar_srt(video: Path, srt_: Path, salida: Path, estilo: str = ESTILO_SUB,
     import subprocess
     video, srt_, salida = Path(video).resolve(), Path(srt_).resolve(), Path(salida).resolve()
     filtro = f"subtitles=filename='{srt_.name}':force_style='{estilo}'"
+    if escala:
+        filtro = f"scale={escala[0]}:{escala[1]}:flags=lanczos," + filtro
     r = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
                         "-i", str(video), "-vf", filtro,
                         "-c:v", "libx264", "-preset", "medium", "-crf", "17",

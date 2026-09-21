@@ -120,6 +120,7 @@ def main(argv=None) -> int:
     s.add_argument("--musica", help="mp3 de la música; default <proyecto>/musica.mp3 si existe")
     s.add_argument("--sin-subtitulos", action="store_true",
                    help="no quemar los subtítulos de la voz en off")
+    s.add_argument("--sin-1080", action="store_true", help="largos: no reescalar a 1920×1080")
     s.add_argument("--salida")
 
     s = sub.add_parser("alquilar", help="alquila una oferta y sube el paquete · COBRA")
@@ -490,7 +491,8 @@ def main(argv=None) -> int:
         n = montaje.srt_voz(subs, srt_)
         print(f"{n} subtítulos en {srt_.name}")
         if not a.sin_subtitulos:
-            montaje.quemar_srt(mezclado, srt_, salida)
+            # Largos a 1080p: H3 entrega 1344×768 y YouTube lo listaría como 720p.
+            montaje.quemar_srt(mezclado, srt_, salida, escala=montaje.ESCALA_1080 if (p.formato == "largo" and not a.sin_1080) else None)
         print(f"\nMÁSTER: {salida}")
         return 0
 
