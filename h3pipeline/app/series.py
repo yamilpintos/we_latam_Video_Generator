@@ -43,6 +43,17 @@ FORMATOS = {"short": "short-15", "largo": "recap", "musica": "loop"}
 ESTADOS_CAP = ("propuesto", "aprobado", "escribiendo", "guion", "produciendo", "producido", "error", "descartado")
 ACTIVOS_CAP = ("escribiendo", "produciendo")
 
+# La regla de los shorts (pedido del usuario, 21/9): producción en masa =
+# historias SIMPLES y reproducibles. Cuantas más locaciones y más trama, más
+# incontrolable. Se la lee GPT al planificar, al escribir el guion y al
+# traducir, y se muestra en la página de la serie.
+REGLA_SHORTS = (
+    "REGLA DE LOS SHORTS (no negociable): cada capítulo pasa en UNA SOLA LOCACIÓN, sin cambios de lugar ni viajes; "
+    "UNA sola situación, que se entiende con la primera frase; el personaje principal habla A CÁMARA (o a alguien fuera de cuadro) "
+    "desde un encuadre base fijo; los humanos secundarios sólo se oyen o están desenfocados al fondo; los objetos son 1 o 2, "
+    "apoyados sobre una mesa o en la mano; nada de coreografías, persecuciones, multitudes ni efectos. La gracia está en lo que dice "
+    "y en cómo reacciona, no en lo que pasa alrededor. Simple, repetible, mismo formato en todos los capítulos.")
+
 
 # ───────────────────────────────────────────────────────────── archivo
 
@@ -207,6 +218,8 @@ def biblia(s: dict) -> str:
          f"IDEA GENERAL: {s['idea']}",
          f"CONTINUIDAD: {'serial (cada capítulo continúa al anterior)' if s['continuidad'] == 'serial' else 'antología (capítulos independientes, mismo universo)'}",
          f"ESTILO VISUAL: {s['estilo']['imagen']}"]
+    if s.get("formato") == "short":
+        L.append(REGLA_SHORTS)
     if s.get("toma") == "una":
         n = tomas_de(s)
         L.append(f"TOMAS DE 15 SEGUNDOS: cada capítulo son {n} toma{'s' if n > 1 else ''} continua{'s' if n > 1 else ''} de 15 s "
@@ -463,6 +476,7 @@ def planificar(slug: str, n: int, pista: str = "", log=print) -> dict:
     dur = Estructura.cargar(s["estructura"]).duracion_objetivo if s["formato"] != "musica" else None
     ins = (f"{biblia(s)}\n\nCAPÍTULOS QUE YA EXISTEN (no los repitas ni en tema ni en título):\n{prev}\n\n"
            f"Proponé {n} capítulos NUEVOS" + (f", numerados a continuación del {hechos[-1]['n']}" if hechos else "") + ".\n"
+           + ("Cada capítulo: UNA sola locación (la nombrás en `locacion`), UNA situación simple que se entiende de entrada, el personaje a cámara; nada que requiera cambiar de lugar ni más de dos objetos.\n" if s.get("formato") == "short" else "")
            + (f"Cada capítulo es un video de ~{dur:g} s con voz en off: una historia lineal, simple, con UN giro o UNA imagen que se recuerde (regla de oro: el guion es la voz en off contada primero como historia; los planos la sirven).\n" if dur else
               "Cada capítulo es un music video: una pista nueva del género de la serie y UNA escena del mismo universo (un lugar, una hora, una luz, qué se mueve despacio; se mira en loop).\n")
            + ("Es un SERIAL: cada premisa continúa la anterior y deja algo abierto para la siguiente; la primera nueva sigue al último capítulo existente.\n" if serial else
@@ -672,6 +686,8 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "  [ESCENA] una línea: el lugar, la hora, la luz, los 2-3 objetos clave y qué lleva puesto cada personaje. Es lo que se repite igual en todas las tomas.\n"
                    f"  [TOMA 1] … [TOMA {nt}]: cada toma es UN lugar y UN encuadre base (cámara casi fija); entre tomas puede cambiar el ángulo o pasar un momento, "
                    "pero es la misma escena, la misma ropa y los mismos objetos.\n"
+                   "SIMPLE Y REPRODUCIBLE: una sola locación para todas las tomas, el mismo encuadre base (el personaje de frente, a cámara), "
+                   "una sola situación, 1 o 2 objetos apoyados en una mesa o en la mano; sin cambios de lugar, sin coreografías, sin multitudes.\n"
                    "ES UNA ESCENA, NO UNA LISTA DE MOMENTOS: la PRIMERA línea de diálogo plantea la situación en una frase (quién es, dónde está, qué quiere o "
                    "qué problema tiene), después UN giro, y la ÚLTIMA línea remata (chiste, revelación o vuelta de tuerca). Todo tiene que entenderse sin ningún "
                    "antes ni después. Una acción por toma, que se pueda ver.\n"
@@ -1014,7 +1030,7 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                   "estilo_imagen": s["estilo"]["imagen"], "estilo_video": s["estilo"].get("video", ""),
                   "cierre_video": s["estilo"].get("cierre", ""), "medio": s["estilo"].get("medio", ""),
                   "voz": None if (es_musica or actuado) else s.get("voz"), "negativos": not es_musica,
-                  "notas": f"Serie «{s['titulo']}», capítulo {c['n']}. " + (s.get("notas") or ""),
+                  "notas": f"Serie «{s['titulo']}», capítulo {c['n']}. " + (s.get("notas") or "") + (" " + REGLA_SHORTS if s.get("formato") == "short" else ""),
                   "slug": pslug, "duracion": s.get("duracion") if es_musica else (round(tomas_de(s, c) * grilla.MAXIMO, 3) if s.get("toma") == "una" else None),
                   "serie": slug, "capitulo": c["n"], "actuado": actuado, "tomas": tomas_de(s, c)}
         (pc / "guion.json").write_text(json.dumps(pedido, ensure_ascii=False, indent=2), encoding="utf-8")
