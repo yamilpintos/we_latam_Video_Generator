@@ -133,6 +133,13 @@ def instruccion(guion: str, *, formato: str, estructura: str, estilo_imagen: str
         L.append("- CONTINUIDAD: el `ve` de cada toma a partir de la segunda describe el MISMO lugar que la anterior, con los mismos "
                  "muebles y objetos en el mismo sitio, la misma luz y la misma ropa, unos segundos después; puede cambiar el ángulo "
                  "o el tamaño de plano, no el set. Las cuatro tomas de un capítulo tienen la misma `loc`.")
+        L.append("- CORTES INTERNOS: cada plano lleva `cortes`: una lista de 1 o 2 cortes que H3 hace DENTRO del mismo clip "
+                 "(misma escena, mismo personaje, misma voz), cada uno {\"t\": segundos del corte (entre 3.0 y 12.0, y al menos 3 s "
+                 "entre cortes), \"tamano\": \"PP|PM|PG|PD\", \"ve\": \"qué se ve tras el corte, en inglés: tamaño y ángulo nuevos, "
+                 "el mismo lugar y la misma ropa\"}. Cada corte aporta algo nuevo (acercarse a la cara en la línea clave, abrir "
+                 "al remate, un detalle del objeto); nunca el mismo encuadre. Los tiempos caen ENTRE líneas de diálogo, no en medio de una.")
+        L.append("- SONIDO: el `audio` de ambiente se escribe UNA vez, igual en todos los planos (mismo lugar, mismo aire); "
+                 "los sonidos propios de cada toma se suman después de ese ambiente común.")
         L.append("- La ley de tramos de abajo se cumple en espíritu (gancho al principio, remate al final), no plano por plano: "
                  "los planos son largos a propósito.")
         L.append(f"- `duracion_objetivo`: {duracion}.")

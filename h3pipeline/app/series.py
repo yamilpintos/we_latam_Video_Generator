@@ -536,6 +536,87 @@ def editar_capitulo(slug: str, n: int, **campos) -> dict:
 
 # ───────────────────────────────────────────────────────────── el guion
 
+RE_ROTULO = re.compile(r"^\s*([A-Za-zÁÉÍÓÚÑáéíóúñ][\wÁÉÍÓÚÑáéíóúñ ._-]{0,30}?)\s*[:：]\s*(\S.*)$")   # el rótulo puede ir en minúscula («monky el mono:»)
+MAX_LINEAS_TOMA, MAX_PALABRAS_TOMA = 4, 32
+
+
+def parsear_tomas(guion: str, s: dict) -> dict:
+    """El guion de una serie por tomas, desarmado: {"escena": str, "tomas": [{"lineas": [{"nombre", "id", "texto"}],
+    "acotaciones": [...], "palabras": n}]}. Las líneas salen de `NOMBRE: texto`; el id se resuelve por
+    nombre o por id de la serie. Lo que está entre corchetes son acotaciones."""
+    por_nombre = {_id(p["nombre"]): pid for pid, p in s["personajes"].items()}
+    escena, tomas, actual = "", [], None
+    for cruda in (guion or "").splitlines():
+        l = cruda.strip()
+        if not l:
+            continue
+        m = re.match(r"^\[?\s*TOMA\s*(\d+)\s*\]?\s*:?\s*$", l, re.I)
+        if m:
+            actual = {"lineas": [], "acotaciones": [], "palabras": 0}
+            tomas.append(actual)
+            continue
+        m = re.match(r"^\[?\s*ESCENA\s*\]?\s*:?\s*(.*)$", l, re.I)
+        if m and actual is None:
+            escena = m.group(1).strip()
+            continue
+        if actual is None:
+            actual = {"lineas": [], "acotaciones": [], "palabras": 0}
+            tomas.append(actual)
+        if l.startswith("[") and l.endswith("]"):
+            actual["acotaciones"].append(l.strip("[]").strip())
+            continue
+        m = RE_ROTULO.match(l)
+        if m and not re.search(r"[.!?¿¡]", m.group(1)):
+            nombre, texto = m.group(1).strip(), m.group(2).strip()
+            xid = _id(nombre)
+            pid = xid if xid in s["personajes"] else por_nombre.get(xid) or _alias_de(s, [xid]).get(xid)
+            actual["lineas"].append({"nombre": s["personajes"][pid]["nombre"] if pid else nombre, "id": pid, "texto": texto})
+            actual["palabras"] += len(texto.split())
+        else:
+            actual["acotaciones"].append(l)
+    return {"escena": escena, "tomas": tomas}
+
+
+def _problemas_tomas(parsed: dict, n: int) -> list[str]:
+    e = []
+    if len(parsed["tomas"]) != n:
+        e.append(f"tiene {len(parsed['tomas'])} toma(s) y son {n}")
+    for k, tm in enumerate(parsed["tomas"], 1):
+        if not tm["lineas"]:
+            e.append(f"la toma {k} no tiene ninguna línea de diálogo")
+        if len(tm["lineas"]) > MAX_LINEAS_TOMA:
+            e.append(f"la toma {k} tiene {len(tm['lineas'])} líneas (máximo {MAX_LINEAS_TOMA})")
+        if tm["palabras"] > MAX_PALABRAS_TOMA:
+            e.append(f"la toma {k} tiene {tm['palabras']} palabras habladas (máximo {MAX_PALABRAS_TOMA}: no entran en 15 s)")
+        for ln in tm["lineas"]:
+            if len(ln["texto"].split()) > 10:
+                e.append(f"la toma {k}: «{ln['texto'][:40]}…» tiene {len(ln['texto'].split())} palabras (máximo 10 por línea)")
+    return e
+
+
+def _recortar_tomas(guion: str, s: dict, n: int) -> str:
+    """Último recurso cuando GPT no acortó: se quedan las primeras líneas de cada toma
+    hasta el presupuesto. Se reescribe el guion con el mismo formato."""
+    parsed = parsear_tomas(guion, s)
+    out = []
+    if parsed["escena"]:
+        out.append(f"[ESCENA] {parsed['escena']}")
+    for k, tm in enumerate(parsed["tomas"][:n], 1):
+        out.append(f"[TOMA {k}]")
+        palabras, lineas = 0, 0
+        for ln in tm["lineas"]:
+            w = len(ln["texto"].split())
+            if w > 10:
+                continue          # una línea que no entra en un aliento se va entera
+            if lineas >= MAX_LINEAS_TOMA or palabras + w > MAX_PALABRAS_TOMA + 2:
+                break
+            out.append(f"{ln['nombre']}: {ln['texto']}")
+            palabras += w; lineas += 1
+        for a in tm["acotaciones"][:2]:
+            out.append(f"[{a}]")
+    return "\n".join(out)
+
+
 def _presupuesto_caracteres(s: dict) -> tuple[float, int]:
     est = Estructura.cargar(s["estructura"])
     dur = float(s.get("duracion") or est.duracion_objetivo)
@@ -575,20 +656,26 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         elif s.get("toma") == "una":
             nt = tomas_de(s, c)   # (no `n`: `n` es el número del capítulo; el 20/9 pisó los capítulos 1-4)
             voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}" for p in c["personajes"] if p in s["personajes"])
-            actuado_txt = ("sin narrador: los personajes hablan en cámara. En cada toma, entre 3 y 4 líneas de diálogo, cada una de 5 a 9 palabras, "
-                           "con el formato `NOMBRE: lo que dice`, una por renglón, en el orden en que se dicen; uno o dos personajes como mucho por toma, "
-                           "que se turnan sin pisarse. Todo lo hablado de una toma dura menos de 10 segundos a ritmo normal (unas 30 palabras por toma, no más); "
-                           "el resto son pausas, gestos y reacciones, que también contás entre corchetes [así]."
+            ropa = "; ".join(f"{s['personajes'][k]['nombre'] if k in s['personajes'] else k}: {v}" for k, v in (c.get("vestuario") or {}).items())
+            actuado_txt = ("SIN narrador: los personajes hablan en cámara. En cada toma, entre 2 y 4 líneas de diálogo, cada una de 4 a 9 palabras "
+                           "(nunca más de 10), con el formato `NOMBRE: lo que dice`, una por renglón, en el orden en que se dicen; uno o dos personajes "
+                           "por toma, que se turnan sin pisarse. TOPE DURO: 32 palabras habladas por toma (contalas); el resto son pausas y gestos, "
+                           "que van entre corchetes [así], nombrando a los personajes."
                            if s.get("modo") == "actuado" else
                            f"con voz en off ({guionista.VOCES[s['voz']]['nombre'] if s.get('voz') else 'sin voz'}): párrafos de la voz en off y entre corchetes qué se ve [así].")
-            ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\nLUGAR: {c.get('locacion') or 'a elección entre las locaciones de la serie'}\n"
-                   f"VOCES:\n{voces}\n\n"
-                   f"Escribí el GUION de este video de {round(nt * 15)} segundos como {nt} TOMA{'S' if nt > 1 else ''} CONTINUA{'S' if nt > 1 else ''} DE 15 SEGUNDOS, en castellano rioplatense, {actuado_txt}\n"
-                   f"Marcá cada toma con un renglón `[TOMA k]` (k de 1 a {nt}). Cada toma es un solo lugar y un solo encuadre (cámara casi fija, plano medio o americano, "
-                   "los personajes de frente); entre tomas puede cambiar el encuadre o pasar un poco de tiempo, pero es la misma historia.\n"
-                   "La historia completa tiene que entenderse sola: la primera línea ya plantea la situación, hay un giro, y la última línea remata "
-                   "(chiste, revelación o vuelta de tuerca). Nada que necesite un antes o un después.\n"
-                   "Devolvé JSON: {\"guion\": \"el texto con los [TOMA k]\", \"resumen\": \"una línea de qué pasó\", \"lineas\": número de líneas de diálogo, \"palabras_habladas\": número}")
+            ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\n"
+                   f"LUGAR: {c.get('locacion') or 'a elección entre las locaciones de la serie'}\n" + (f"ROPA EN ESTE CAPÍTULO: {ropa}\n" if ropa else "")
+                   + f"VOCES:\n{voces}\n\n"
+                   f"Escribí el GUION de este video de {round(nt * 15)} segundos como {nt} TOMA{'S' if nt > 1 else ''} CONTINUA{'S' if nt > 1 else ''} DE 15 SEGUNDOS, "
+                   f"en castellano rioplatense, {actuado_txt}\n"
+                   "FORMATO EXACTO:\n"
+                   "  [ESCENA] una línea: el lugar, la hora, la luz, los 2-3 objetos clave y qué lleva puesto cada personaje. Es lo que se repite igual en todas las tomas.\n"
+                   f"  [TOMA 1] … [TOMA {nt}]: cada toma es UN lugar y UN encuadre base (cámara casi fija); entre tomas puede cambiar el ángulo o pasar un momento, "
+                   "pero es la misma escena, la misma ropa y los mismos objetos.\n"
+                   "ES UNA ESCENA, NO UNA LISTA DE MOMENTOS: la PRIMERA línea de diálogo plantea la situación en una frase (quién es, dónde está, qué quiere o "
+                   "qué problema tiene), después UN giro, y la ÚLTIMA línea remata (chiste, revelación o vuelta de tuerca). Todo tiene que entenderse sin ningún "
+                   "antes ni después. Una acción por toma, que se pueda ver.\n"
+                   "Devolvé JSON: {\"guion\": \"el texto con [ESCENA] y los [TOMA k]\", \"resumen\": \"una línea de qué pasó\", \"lineas\": número, \"palabras_habladas\": número}")
         elif s.get("modo") == "actuado":
             dur, _ = _presupuesto_caracteres(s)
             planos = max(3, int(round(dur / 5.167)))
@@ -621,6 +708,22 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
         guion = str(r.get("guion", "")).strip()
         if len(guion) < 40:
             raise RuntimeError("el guion salió vacío")
+        if s.get("toma") == "una" and s.get("modo") == "actuado":
+            nt = tomas_de(s, c)
+            probs = _problemas_tomas(parsear_tomas(guion, s), nt)
+            if probs:
+                log("  el guion no cumple: " + "; ".join(probs) + " → le pido que lo corrija")
+                r2 = _gpt(ins + "\n\nTU VERSIÓN ANTERIOR:\n" + guion + "\n\nNO CUMPLE: " + "; ".join(probs)
+                          + ". Reescribila cumpliendo TODO (mismo formato, misma historia, menos palabras). Devolvé el mismo JSON.",
+                          "Sos guionista de una serie de videos con IA. Respondés sólo JSON.", log=log)
+                g2 = str(r2.get("guion", "")).strip()
+                if len(g2) >= 40:
+                    guion = g2
+                    r["resumen"] = r2.get("resumen", r.get("resumen", ""))
+                probs = _problemas_tomas(parsear_tomas(guion, s), nt)
+                if probs:
+                    log("  sigue sin cumplir (" + "; ".join(probs) + ") → recorto por código")
+                    guion = _recortar_tomas(guion, s, nt)
         s = leer(slug)
         c = capitulo(s, n)
         c.update(guion=guion, resumen=str(r.get("resumen", "")).strip(), estado="guion", nota="")
@@ -769,6 +872,83 @@ def encadenar_fotogramas(d: dict, rep_: dict) -> int:
     return n
 
 
+def aplicar_tomas(s: dict, c: dict, d: dict, rep_: dict, log=print) -> None:
+    """Lo que NO se le deja a GPT en una serie por tomas (20/9, capítulo 7 salió con
+    `dialogo: null`): el diálogo de cada plano se copia LITERAL del bloque [TOMA k]
+    del guion; `habla`/`voz_desc` se deducen; los `cortes` internos se sanean; el
+    ambiente sonoro del plano 1 se repite en todos."""
+    parsed = parsear_tomas(c.get("guion") or "", s)
+    planos = d.get("planos") or []
+    for k, pl in enumerate(planos):
+        tm = parsed["tomas"][k] if k < len(parsed["tomas"]) else None
+        pl.setdefault("dialogo", None)
+        if tm and tm["lineas"]:
+            pl["dialogo"] = "\n".join(f"{ln['nombre']}: {ln['texto']}" for ln in tm["lineas"])
+            ids = [ln["id"] for ln in tm["lineas"] if ln["id"]]
+            if ids:
+                habla = max(set(ids), key=ids.count)
+                pl["habla"] = habla
+                pl["off"] = False
+                if rep_.get("voces", {}).get(habla):
+                    pl["voz_desc"] = rep_["voces"][habla]
+                for x in ids:
+                    if x not in (pl.get("personajes") or []):
+                        pl.setdefault("personajes", []).append(x)
+        seg = float(pl.get("segundos") or grilla.MAXIMO)
+        cortes = []
+        for ct in (pl.get("cortes") or []):
+            try:
+                tt = float(ct.get("t"))
+            except Exception:
+                continue
+            if 2.5 <= tt <= seg - 2.5 and all(abs(tt - x["t"]) >= 3.0 for x in cortes) and len(cortes) < 2:
+                cortes.append({"t": round(tt, 2), "tamano": str(ct.get("tamano") or "PM"), "ve": str(ct.get("ve") or "").strip()})
+        pl["cortes"] = sorted(cortes, key=lambda x: x["t"])
+    if planos:
+        base = (planos[0].get("audio") or "").strip()
+        for pl in planos[1:]:
+            if base and base[:40] not in (pl.get("audio") or ""):
+                pl["audio"] = (base.rstrip(".") + ". " + (pl.get("audio") or "").strip()).strip()
+    log("tomas: diálogo copiado del guion en " + ", ".join(f"{pl['id']} ({len(lineas_de_texto(pl.get('dialogo')))} líneas, {len(pl.get('cortes') or [])} cortes)" for pl in planos))
+
+
+def lineas_de_texto(texto: str | None) -> list[str]:
+    return [l for l in (texto or "").splitlines() if l.strip()]
+
+
+def chequear_capitulo(s: dict, c: dict, d: dict) -> list[str]:
+    """El control antes de gastar: lo que hoy habría frenado el capítulo 7 (20/9).
+    Devuelve problemas; si hay alguno, no se dibuja ni se encola."""
+    e = []
+    planos = d.get("planos") or []
+    if not planos:
+        return ["el proyecto no tiene planos"]
+    nt = tomas_de(s, c)
+    if nt:
+        if len(planos) != nt:
+            e.append(f"son {nt} toma(s) y el proyecto tiene {len(planos)} plano(s)")
+        for pl in planos:
+            if abs(float(pl.get("segundos") or 0) - grilla.MAXIMO) > 0.05:
+                e.append(f"{pl['id']}: dura {pl.get('segundos')} s y una toma es {grilla.MAXIMO:.2f}")
+            if s.get("modo") == "actuado":
+                ls = lineas_de_texto(pl.get("dialogo"))
+                if not ls:
+                    e.append(f"{pl['id']}: quedó sin diálogo")
+                palabras = sum(len(l.split(":", 1)[-1].split()) for l in ls)
+                if palabras > MAX_PALABRAS_TOMA + 4:
+                    e.append(f"{pl['id']}: {palabras} palabras habladas en 15 s (máximo {MAX_PALABRAS_TOMA})")
+    vest = c.get("vestuario") or {}
+    for pid in vest:
+        if pid in s["personajes"] and s["personajes"][pid].get("hoja"):
+            hid = f"m_{pid}_ep"
+            if not any(m.get("id") == hid for m in d.get("madre") or []):
+                e.append(f"falta la hoja del capítulo {hid} en madre")
+            for pl in planos:
+                if pid in (pl.get("personajes") or []) and pl.get("refs") is not None and not any(hid in r for r in pl["refs"]):
+                    e.append(f"{pl['id']}: no referencia la hoja del capítulo {hid}")
+    return e
+
+
 def _proyecto_coincide(pc: Path, s: dict) -> bool:
     """¿El proyecto.json que ya existe usa el reparto de la serie? Si tiene
     personajes que no son de la serie (los inventó el traductor) hay que
@@ -909,6 +1089,11 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
             if tomas_de(s, c) > 1:
                 ne = encadenar_fotogramas(d, rep)
                 log(f"continuidad entre tomas: {ne} fotograma(s) referencian al anterior")
+            if tomas_de(s, c):
+                aplicar_tomas(s, c, d, rep, log=log)
+            problemas = chequear_capitulo(s, c, d)
+            if problemas:
+                raise RuntimeError("control antes de gastar: " + "; ".join(problemas))
             (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             p = Proyecto.cargar(pc / "proyecto.json")
             p.escribir(log=lambda *_: None)

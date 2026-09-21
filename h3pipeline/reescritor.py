@@ -58,7 +58,7 @@ non_diegetic_music: N/A
 
 RULES
 1. Everything in English, except the words inside <d>…</d>, which stay exactly in their original language.
-2. ONE shot: a single [Shot 1] with no timestamp. Never add [Shot 2] unless the request explicitly asks for a cut.
+2. ONE shot: a single [Shot 1] with no timestamp. Never add [Shot 2] unless the request lists INTERNAL CUTS. When it does, write one extra shot per listed cut, in order, each starting with its exact time: "[Shot 2] At 00:05.000, the camera cuts to a close-up of …". Same place, same character(s) with the same clothing, same light and same voices across every shot: it is one continuous scene edited in camera. Each cut introduces new information (a new shot size, angle, state or object), as the listed cut says. If a line of dialogue is spoken across a cut, put <scenetrans> at the connecting points in both parts and say the audio continues uninterrupted across the cut. Keep the first-frame instruction line exactly as it is: <Picture 1> anchors [Shot 1] only.
 3. First anchor the first frame: state the visual style (Live-action / 2D-animated / 3D CG / photorealistic…), the shot size, and describe concretely what the image shows (people with clothing and position, objects, place, time of day, light). When an image is attached, describe THAT image faithfully; the video must preserve its identity, clothing, framing and layout. Only then describe the action in time, with the phrases "Early in the clip…", "As the clip progresses…", "Throughout the remainder of the clip…". Match the total action to the requested duration.
 4. Camera: motion type + amplitude + speed written as prose, using this vocabulary: Zoom In/Out, Push In/Pull Out, Pan Left/Right, Truck Left/Right, Tilt Up/Down, Pedestal Up/Down, Arc Shot, Tracking Shot, Static Shot, Shake Slightly/Strongly, POV, Roll; "with small/large amplitude", "at slow/fast speed". Example: "The camera pushes in with small amplitude at slow speed toward her hands." If no camera move is requested, say the camera holds a static shot throughout.
 5. Speech. Each speaker gets a stable ID (S1), (S2). The first time a speaker appears, describe the voice: age, gender, pitch, timbre, pace, accent. Put the ID, action and delivery OUTSIDE <d>. Inside <d> put only the language tag and the literal line: <d>[Spanish] Cuéntame.</d>. Copy every line VERBATIM, word for word, same punctuation, in the given order. Do not translate, shorten, merge or add lines.
@@ -132,6 +132,11 @@ def pedido_texto(p: dict) -> str:
         L.append(f"What happens during the clip: {p['accion']}")
     if p.get("camara"):
         L.append(f"Camera: {p['camara']}")
+    if p.get("cortes"):
+        L.append("INTERNAL CUTS inside this single clip (one continuous scene edited in camera: same place, same character, same "
+                 "clothing, same voice; the story simply continues): "
+                 + "; ".join(f"at {float(c['t']):.1f} s the camera cuts to {c.get('tamano', 'a new shot')}: {c.get('ve', '')}".rstrip(": ") for c in p["cortes"])
+                 + ". Number them [Shot 2], [Shot 3]… with exactly those times (mm:ss.mmm). Put each dialogue line in the shot where it is spoken.")
     if p.get("quieto"):
         L.append("The scene is still: everything stays as in the first frame; only the motion described above happens. Write this positively.")
     if p.get("audio"):
@@ -189,8 +194,12 @@ def validar(prompt: str, p: dict) -> list[str]:
             e.append(f"missing field {campo}")
     if "[Shot 1]" not in t:
         e.append("missing [Shot 1]")
-    if re.search(r"\[Shot [2-9]\]", t) and not p.get("multi_shot"):
+    cuerpo = t.split("integrated_multimodal_description:", 1)[-1].split("overall_soundscape:", 1)[0]
+    n_shots = len(re.findall(r"\[Shot [1-9]\]", cuerpo))   # sólo el cuerpo: la línea de instrucción también dice [Shot 1]
+    if n_shots > 1 and not p.get("cortes"):
         e.append("only one shot is allowed: remove [Shot 2] and later")
+    if p.get("cortes") and n_shots != len(p["cortes"]) + 1:
+        e.append(f"there must be exactly {len(p['cortes']) + 1} shots ([Shot 1] plus one per internal cut); found {n_shots}")
     d = p.get("dialogo")
     lineas = lineas_de(d) if d else []
     if lineas:
@@ -367,6 +376,7 @@ def pedido_de_plano(d: dict, p: dict, raiz: Path) -> dict:
             "tamano": etiqueta, "primer_fotograma": p.get("ve", ""), "personajes": personajes,
             "accion": p.get("mueve", ""), "camara": p.get("camara", ""), "audio": p.get("audio") or d.get("solo_sonidos", ""),
             "dialogo": dialogo, "quieto": not d.get("negativos", True), "musica_aparte": True,
+            "cortes": [c for c in (p.get("cortes") or []) if isinstance(c, dict) and c.get("t")],
             "notas": p.get("notas_h3", ""), "imagen": str(img) if img.exists() else None}
 
 
