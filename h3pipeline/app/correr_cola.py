@@ -9,6 +9,7 @@ cola lo pide. Todo queda en `cola.json`, `maquina.json` y este log.
 import json
 import subprocess
 import sys
+import threading
 import time
 
 from .. import vast
@@ -17,6 +18,59 @@ from . import cola, maquina
 
 def log(s: str) -> None:
     print(f"[{time.strftime('%H:%M:%S')}] {s}", flush=True)
+
+
+# ── el máster de cada capítulo, en paralelo con la generación del siguiente ──
+# 22/9: en una tanda de largos los másters (~17 min cada uno en el procesador de
+# Render) se hacían todos al final, uno atrás de otro. Ahora el de cada capítulo
+# de serie arranca apenas bajan sus clips, mientras la máquina genera el
+# siguiente (~85 min): queda escondido y al final sólo falta el del último.
+_masters: list[threading.Thread] = []
+
+
+def _masterizar(slug: str) -> None:
+    from ..proyecto import Proyecto
+    from .. import montaje
+    pc = maquina.MIS / slug
+    try:
+        d = json.loads((pc / "proyecto.json").read_text(encoding="utf-8"))
+        if not d.get("serie"):
+            return          # los proyectos sueltos se masterizan a mano, con sus opciones
+        pr = Proyecto.cargar(pc / "proyecto.json")
+        planos = pr.construir()[1]["planos"]
+        if pr.estructura_resuelta().nombre.startswith("loop"):
+            return
+        if montaje.faltantes(planos, pc / "clips"):
+            log(f"  máster de {slug}: faltan clips, queda para después")
+            return
+        # Un máster más nuevo que todos los clips ya está hecho: no se repite.
+        clips_ = list((pc / "clips").glob("*.mp4"))
+        hechos = [f for f in pc.glob("*.mp4") if "corte" not in f.name and "sin subs" not in f.name]
+        if hechos and clips_ and max(f.stat().st_mtime for f in hechos) > max(f.stat().st_mtime for f in clips_):
+            return
+        que = "mezclar" if pr.voz else "montar"
+        log(f"  máster de {slug} en paralelo ({que})…")
+        t0 = time.time()
+        r = subprocess.run([sys.executable, "-X", "utf8", "-u", "-m", "h3pipeline", que, str(pc / "proyecto.json"), str(pc / "clips")],
+                           cwd=str(maquina.RAIZ), capture_output=True, text=True, encoding="utf-8", errors="replace")
+        (pc / "master.log").write_text((r.stdout or "") + (r.stderr or ""), encoding="utf-8")
+        log(f"  máster de {slug}: {'listo' if r.returncode == 0 else 'FALLÓ (ver master.log)'} en {int(time.time() - t0) // 60} min")
+    except Exception as e:
+        log(f"  máster de {slug}: no pude ({e})")
+
+
+def masterizar_en_paralelo(slug: str) -> None:
+    t = threading.Thread(target=_masterizar, args=(slug,), daemon=False)
+    t.start()
+    _masters.append(t)
+
+
+def esperar_masters() -> None:
+    vivos = [t for t in _masters if t.is_alive()]
+    if vivos:
+        log(f"esperando {len(vivos)} máster(s) que siguen armándose…")
+    for t in _masters:
+        t.join()
 
 
 def necesita_ref2va(slug: str) -> bool:
@@ -103,6 +157,7 @@ def main() -> int:
                     if not faltan:
                         log(f"{slug}: ya tiene todos los clips; nada que generar")
                         cola.marcar(slug, "bajado", "")
+                        masterizar_en_paralelo(slug)
                         continue
                     log(f"{slug}: {len(hechos)} clips ya bajados; se reempaquetan sólo los {len(faltan)} que faltan")
                     r = subprocess.run([sys.executable, "-X", "utf8", "-u", "-m", "h3pipeline", "empaquetar",
@@ -121,6 +176,7 @@ def main() -> int:
                 if maquina.bajar(slug, log=log, parcial=not ok):
                     if ok:
                         cola.marcar(slug, "bajado", "")
+                        masterizar_en_paralelo(slug)
                     else:
                         n = len(maquina.clips_locales(slug))
                         t = len(maquina.fuentes(slug))
@@ -140,6 +196,8 @@ def main() -> int:
             log(f"máquina apagada · gastó ${r.get('gasto_final')} en {r.get('minutos')} min")
         else:
             log("la máquina queda encendida (la cola pidió no apagar). Acordate de apagarla.")
+        # La máquina ya se apagó: acá sólo se espera lo que queda de másters.
+        esperar_masters()
         return 0
     finally:
         d = cola.leer()
