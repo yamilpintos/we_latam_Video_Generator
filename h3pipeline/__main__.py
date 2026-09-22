@@ -363,12 +363,7 @@ def main(argv=None) -> int:
         inst = vast.instancia(a.id)
         planos = p.construir()[1]["planos"]
         pr = vast.progreso(inst, planos, p.slug)
-        destino_ = Path(a.destino or p.raiz / "clips")
-        # Lo que ya está bajado de una corrida anterior no se pide (21/9: la
-        # segunda vuelta genera sólo los planos que faltaban).
-        faltan = [x["id"] for x in planos if not x.get("clip_de") and x["id"] not in pr["hechos"]
-                  and not (destino_.exists() and montaje.buscar_clip(destino_, x["id"]))]
-        ya_locales = destino_.exists() and any(montaje.buscar_clip(destino_, x["id"]) for x in planos if not x.get("clip_de"))
+        faltan = [x["id"] for x in planos if x["id"] not in pr["hechos"]]
         print(f"{len(pr['hechos'])}/{pr['total']} clips"
               + (f" · falta: {' '.join(faltan)}" if faltan else " · TODOS")
               + (" · MP4 final montado" if pr["final"] else ""))
@@ -397,7 +392,13 @@ def main(argv=None) -> int:
         inst = vast.instancia(a.id)
         planos = p.construir()[1]["planos"]
         pr = vast.progreso(inst, planos, p.slug)
-        faltan = [x["id"] for x in planos if x["id"] not in pr["hechos"]]
+        destino_ = Path(a.destino or p.raiz / "clips")
+        # Lo que ya está bajado de una corrida anterior no se pide (21/9: la
+        # segunda vuelta generó sólo los 12 planos de diálogo y `bajar` exigía
+        # los 80 que ya estaban en clips/). Los `clip_de` no tienen clip propio.
+        faltan = [x["id"] for x in planos if not x.get("clip_de") and x["id"] not in pr["hechos"]
+                  and not (destino_.exists() and montaje.buscar_clip(destino_, x["id"]))]
+        ya_locales = destino_.exists() and any(montaje.buscar_clip(destino_, x["id"]) for x in planos if not x.get("clip_de"))
         if faltan and not a.parcial:
             print(f"!! faltan {len(faltan)} planos: {' '.join(faltan)}")
             print("   Miralo con `seguir`, o bajá lo que haya con --parcial.")
