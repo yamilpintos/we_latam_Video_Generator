@@ -502,6 +502,7 @@ function pintarNuevaSerie(d, f) {
           ${esMusica ? "" : `<select id="s-modo" style="max-width:300px" onchange="$('#s-voz').style.display=this.value==='actuado'?'none':''"><option value="narrado">Narrado: una voz en off cuenta</option><option value="actuado">Actuado: los personajes hablan en cámara</option></select>
           <select id="s-voz" style="max-width:240px"><option value="pablo">Voz en off: Pablo, argentino</option><option value="kate">Voz en off: Kate</option><option value="">Sin voz en off (sólo imagen y texto)</option></select>`}
           <select id="s-cont" style="max-width:280px"><option value="antologia">Antología (capítulos sueltos, mismo universo)</option><option value="serial">Serial (la historia sigue de un capítulo al otro)</option></select>
+          ${f === "largo" ? `<select id="s-toma-largo" style="max-width:340px"><option value="escenas">Actuado por escenas (un dibujo por escena) — recomendado</option><option value="cortes">Plano por plano (un dibujo por plano)</option></select>` : ""}
           ${f === "short" ? `<select id="s-toma" style="max-width:300px"><option value="una">Tomas de 15 s (sin cortar frases)</option><option value="cortes">Con cortes (planos de 5 s)</option></select>
           <select id="s-tomas" style="max-width:220px"><option value="1">15 s · 1 toma</option><option value="2">30 s · 2 tomas</option><option value="3">45 s · 3 tomas</option><option value="4">60 s · 4 tomas</option></select>` : ""}</div>
         ${esMusica ? `<div class="row" style="margin-bottom:8px"><select id="s-genero" style="max-width:220px">${GENEROS_MUSICA.map(([v, l]) => `<option value="${v}">${l}</option>`).join("")}</select>
@@ -509,6 +510,7 @@ function pintarNuevaSerie(d, f) {
           <input id="s-mtipo" placeholder="cómo suena la música de la serie (ánimo, instrumentos, tempo)" style="flex:1;min-width:240px"></div>` : ""}
         <div class="row" style="margin-bottom:8px"><select id="s-estilo" style="max-width:320px">${d.estilos.map(e => `<option value="${e.i}">${h(e.nombre)}</option>`).join("")}<option value="">Estilo propio (al lado)</option></select>
           <input id="s-estilo-libre" placeholder="estilo propio, en inglés (opcional)" style="flex:1;min-width:220px"></div>
+        ${f === "largo" ? `<div class="tiny" style="margin:-2px 0 8px"><b>Por escenas</b> (sólo actuado): una escena es un lugar y un encuadre, y todos sus clips salen del MISMO dibujo, asi la cara del personaje no cambia. Medido: 7,2 s por encuadre plano-por-plano contra 35,6 s por escenas, y 19 dibujos en vez de 79. Es lo que hace que la historia se entienda. <b>Plano por plano</b>: el metodo viejo, un dibujo por cada 5 segundos.</div>` : ""}
         ${f === "short" ? `<div class="tiny" style="margin:-2px 0 8px"><b>Regla de los shorts</b>: muy simple; como máximo una escena por toma de 15 s, una situación, el personaje a cámara, 1-2 objetos. Se aplica sola en todos los capítulos.</div>` : ""}
         ${f === "short" ? `<div class="tiny" style="margin:-2px 0 8px"><b>Tomas de 15 s</b>: cada capítulo son 1 a 4 clips continuos de 15 s; cada toma lleva su bloque de diálogo completo (3-4 líneas) y el corte cae entre tomas, nunca en medio de una frase. Un clip de 15 s tarda ~17 min de GPU. <b>Con cortes</b>: planos de 5 s editados; para narrado con voz en off.</div>` : ""}
         ${esMusica ? "" : `<div class="tiny" style="margin:-2px 0 8px"><b>Actuado</b>: sin narrador. GPT escribe el guion como diálogo («PEDRO: …», una línea corta por plano, un solo personaje hablando por plano) y cada línea baja al prompt de H3 con quién la dice, el texto literal, cómo suena su voz y la boca en sincronía. La voz la genera H3 dentro del clip.</div>`}
@@ -527,7 +529,7 @@ function pintarNuevaSerie(d, f) {
 }
 async function serieCrear(f) {
   const modo = f === "musica" ? "narrado" : $("#s-modo").value;
-  const toma = f === "short" ? $("#s-toma").value : null;
+  const toma = f === "short" ? $("#s-toma").value : (f === "largo" && $("#s-toma-largo") ? $("#s-toma-largo").value : null);
   const body = {titulo: $("#s-titulo").value.trim(), formato: f, idea: $("#s-idea").value, estructura: $("#s-estructura").value || null, modo, toma,
     voz: f === "musica" || modo === "actuado" ? null : ($("#s-voz").value || null), estilo: $("#s-estilo").value === "" ? null : Number($("#s-estilo").value), estilo_libre: $("#s-estilo-libre").value,
     continuidad: $("#s-cont").value, musica: f === "musica" ? {genero: $("#s-genero").value, duracion: Number($("#s-mdur").value), tipo: $("#s-mtipo").value} : null,

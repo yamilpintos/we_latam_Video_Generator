@@ -1137,6 +1137,7 @@ class NuevaSerie(BaseModel):
     musica: dict | None = None        # {genero, tipo, duracion} para music video
     modo: str = "narrado"             # narrado (voz en off) | actuado (los personajes hablan en cámara)
     toma: str | None = None           # shorts: una (tomas de 15 s; duracion = 15/30/45/60) | cortes (planos de 5 s)
+                                      # largos actuados: escenas (un dibujo por escena, 22/9) | cortes (uno por plano)
 
 
 @app.post("/api/series")

@@ -43,6 +43,10 @@ from .proyecto import Proyecto, ProyectoInvalido
 
 SEGUNDOS = round(grilla.MINIMO, 3)      # 5,167 s: el escalón seguro con referencias
 MAX_PALABRAS = 14                       # una línea más larga no entra hablada en 5,17 s
+# Cuánto ocupa una línea EN EL VIDEO TERMINADO. No son los 5,167 s del clip:
+# el montaje recorta cada uno a la voz medida y se lleva las pausas muertas.
+# Medido en «LA SANGRE ENCUENTRA EL CAMINO»: 70 líneas → 249,3 s.
+SEG_POR_LINEA_MONTADA = 3.56
 TAMANOS = ("PGE", "PG", "PA", "PM", "PP", "PD")
 
 
@@ -70,18 +74,32 @@ class Escena:
 
 
 def parsear(texto: str, alias: dict[str, str]) -> list[Escena]:
-    """Del guion en markdown a escenas. `alias` mapea el rótulo del guion
-    (ROSA, ANTONIO) al id del personaje en el reparto."""
+    """Del guion a escenas. Acepta las dos formas que se escriben:
+
+        ## ESCENA 1 · El campo seco, atardecer      (markdown, a mano)
+        [ESCENA 1] El campo seco, atardecer         (la que devuelve GPT)
+
+    y debajo `[TOMA k]` con las líneas `NOMBRE: lo que dice`. `alias` mapea el
+    rótulo del guion (ROSA, ANTONIO) al id del personaje en el reparto."""
     escenas: list[Escena] = []
     for linea in texto.splitlines():
         l = linea.strip()
+        cab = None
         if l.startswith("## "):
-            cuerpo = l[3:].strip()
-            m = re.match(r"^ESCENA\s+\d+\s*[·.\-:]\s*(.+)$", cuerpo, re.I)
-            escenas.append(Escena(titulo=cuerpo, lugar=(m.group(1) if m else cuerpo).strip()))
+            cab = l[3:].strip()
+        else:
+            m = re.match(r"^\[ESCENA[^\]]*\]\s*(.*)$", l, re.I)
+            if m:
+                cab = m.group(1).strip() or f"ESCENA {len(escenas) + 1}"
+        if cab is not None:
+            m = re.match(r"^ESCENA\s+\d+\s*[·.\-:]\s*(.+)$", cab, re.I)
+            lugar = (m.group(1) if m else cab).strip()
+            escenas.append(Escena(titulo=cab, lugar=lugar))
         elif re.match(r"^\[TOMA\b", l, re.I):
-            if escenas:
-                escenas[-1].tomas.append(Toma())
+            if not escenas:
+                # Guion de una sola escena que arranca directo en [TOMA 1].
+                escenas.append(Escena(titulo="ESCENA 1", lugar=""))
+            escenas[-1].tomas.append(Toma())
         elif ":" in l and escenas and escenas[-1].tomas:
             rotulo, dicho = l.split(":", 1)
             rotulo, dicho = rotulo.strip(), dicho.strip()

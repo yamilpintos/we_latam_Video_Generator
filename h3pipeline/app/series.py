@@ -33,7 +33,7 @@ import sys
 import time
 from pathlib import Path
 
-from .. import config, frames, grilla, guionista, reescritor, voces, web
+from .. import config, escenas, frames, grilla, guionista, reescritor, voces, web
 from ..estructura import Estructura
 from ..proyecto import Proyecto
 from . import cola, maquina
@@ -127,16 +127,22 @@ def crear(titulo: str, formato: str, idea: str, *, estructura: str | None = None
     2 = 30, 3 = 45, 4 = 60; `duracion` lo dice); el corte cae entre tomas,
     nunca en medio de una frase (pedido del usuario, 20/9: con planos de 4 s
     cada línea salía cortada y no se entendía nada). «cortes» = planos de 5,17 s
-    editados, lo de siempre para narrado."""
+    editados, lo de siempre para narrado. «escenas» (LARGOS ACTUADOS, 22/9) = el
+    método por escenas: una escena es un lugar y un encuadre, y todos sus clips
+    arrancan del MISMO dibujo, así la cara no cambia. Es el default de un largo
+    actuado desde que «LA SANGRE ENCUENTRA EL CAMINO» pasó de 7,2 a 35,6 s por
+    encuadre contra los 43,9 de los canales de referencia."""
     if formato not in FORMATOS:
         raise ValueError("formato: short, largo o musica")
     if modo not in ("narrado", "actuado"):
         modo = "narrado"
     if modo == "actuado":
         voz = None
-    if toma not in ("una", "cortes"):
-        toma = "una" if (modo == "actuado" and formato == "short") else "cortes"
-    if formato != "short":
+    if toma not in ("una", "cortes", "escenas"):
+        toma = ("una" if formato == "short" else "escenas") if modo == "actuado" else "cortes"
+    if formato == "short" and toma == "escenas":
+        toma = "una"
+    if formato == "musica" or (formato == "largo" and modo != "actuado"):
         toma = "cortes"
     if toma == "una":
         n = max(1, min(4, int(round(float(duracion or grilla.MAXIMO) / grilla.MAXIMO))))
@@ -180,7 +186,8 @@ def actualizar(slug: str, **campos) -> dict:
             s["modo"] = v
             if v == "actuado":
                 s["voz"] = None
-        elif k == "toma" and v in ("una", "cortes") and s["formato"] == "short":
+        elif k == "toma" and ((v in ("una", "cortes") and s["formato"] == "short")
+                              or (v in ("escenas", "cortes") and s["formato"] == "largo" and s.get("modo") == "actuado")):
             s["toma"] = v
             if v == "una":
                 n = max(1, min(4, int(round(float(s.get("duracion") or grilla.MAXIMO) / grilla.MAXIMO))))
@@ -719,6 +726,47 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                    "mínima y repetible. Nada abstracto, ninguna ventana con ciudad, nada que cambie de estado. Y una frase para la música.\n"
                    "Devolvé JSON: {\"guion\": \"la escena\", \"musica\": \"la descripción de la pista para el compositor, en castellano, una o dos frases: ánimo, instrumentos, tempo\", "
                    "\"resumen\": \"una línea\"}")
+        elif s.get("toma") == "escenas":
+            # LARGO ACTUADO POR ESCENAS (22/9). El guion se escribe en escenas y
+            # tomas porque así lo lee `escenas.traducir_escenas`: cada TOMA es un
+            # dibujo y cada línea un clip. La cuenta de líneas sale de lo medido
+            # en LA SANGRE ENCUENTRA EL CAMINO, no de la grilla: el montaje
+            # recorta cada clip a la voz, así que una línea ocupa ~3,6 s finales.
+            n_lineas = max(12, int(round(float(s.get("duracion") or 300) / escenas.SEG_POR_LINEA_MONTADA)))
+            n_escenas = max(4, min(12, int(round(float(s.get("duracion") or 300) / 35))))
+            voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}"
+                              for p in c["personajes"] if p in s["personajes"])
+            ropa = "; ".join(f"{s['personajes'][k]['nombre'] if k in s['personajes'] else k}: {v}"
+                             for k, v in (c.get("vestuario") or {}).items())
+            ins = (f"{biblia(s)}\n\n{ctx}CAPÍTULO {c['n']}: «{c['titulo']}»\nPREMISA: {c['premisa']}\nPERSONAJES: {pers}\n"
+                   + (f"ROPA EN ESTE CAPÍTULO: {ropa}\n" if ropa else "") + f"VOCES:\n{voces}\n\n"
+                   f"Escribí el GUION ACTUADO de este video de {float(s.get('duracion') or 300):g} segundos, en castellano rioplatense. "
+                   "SIN NARRADOR: la historia entera la cuentan los personajes hablando en cámara.\n\n"
+                   "FORMATO EXACTO, sin nada más:\n"
+                   "  [ESCENA 1] el lugar, la hora y la luz, en una línea corta\n"
+                   "  [TOMA 1]\n"
+                   "  NOMBRE: lo que dice\n"
+                   "  NOMBRE: lo que dice\n"
+                   "  [TOMA 2]\n"
+                   "  NOMBRE: lo que dice\n"
+                   "  [ESCENA 2] otro lugar…\n\n"
+                   "REGLAS:\n"
+                   f"- {n_escenas} escenas en total, y en total {n_lineas} líneas de diálogo (contalas).\n"
+                   "- UNA ESCENA ES UN SOLO LUGAR. Si la historia cambia de lugar, es otra escena. Dos personajes que están "
+                   "lejos uno del otro NUNCA van en la misma escena (si él está en la ciudad y ella en el pueblo, son dos escenas).\n"
+                   "- Cada escena tiene 2 o 3 TOMAS, y cada toma entre 3 y 5 líneas. Una toma es un encuadre: el corte entre "
+                   "tomas es para acercarse o alejarse, no para cambiar de lugar.\n"
+                   f"- Cada línea la dice UN solo personaje, va en su propio renglón como `NOMBRE: lo que dice`, y mide de 3 a "
+                   f"{escenas.MAX_PALABRAS - 2} palabras (nunca más de {escenas.MAX_PALABRAS}: se dice en 5 segundos). "
+                   "Nunca dos personajes en el mismo renglón. Sin acotaciones entre corchetes: sólo diálogo.\n"
+                   "- Como máximo 2 personajes hablando por escena.\n\n"
+                   "LA HISTORIA TIENE QUE CERRAR. Planteá en la primera escena qué le falta al protagonista y qué lo obliga a "
+                   "moverse; en el medio que le vaya mal y que alguien lo humille o lo rechace; que haya UN giro que dé vuelta "
+                   "todo (una revelación, un encuentro, un secreto que sale); y que la última escena resuelva lo que se planteó "
+                   "en la primera, con una línea final que sea la moraleja dicha por un personaje. El que mira tiene que "
+                   "entender todo sin ningún antes ni después.\n"
+                   "Devolvé JSON: {\"guion\": \"el texto con [ESCENA k] y [TOMA k]\", \"resumen\": \"una línea de qué pasó\", "
+                   "\"lineas\": número de líneas de diálogo, \"palabras_habladas\": número}")
         elif s.get("toma") == "una":
             nt = tomas_de(s, c)   # (no `n`: `n` es el número del capítulo; el 20/9 pisó los capítulos 1-4)
             voces = "\n".join(f"  - {s['personajes'][p]['nombre']}: {s['personajes'][p].get('voz') or 'voz a definir'}" for p in c["personajes"] if p in s["personajes"])
@@ -820,6 +868,17 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
             largas = [l for l in lineas if len(l.split(":", 1)[1].split()) > tope]
             habladas = sum(len(l.split(":", 1)[1].split()) for l in lineas)
             tomas = len(re.findall(r"^\s*\[TOMA\s*\d+\]", guion, re.M | re.I))
+            if s.get("toma") == "escenas":
+                # Lo que le importa al director al leer el guion: cuántas escenas
+                # son (= cuántos lugares se dibujan) y cuánto va a durar el video
+                # terminado, que no son las líneas × 5,17 sino × 3,56 (el montaje
+                # recorta cada clip a la voz medida).
+                n_esc = len(re.findall(r"^\s*(?:\[ESCENA|##\s*ESCENA)", guion, re.M | re.I))
+                dur_est = len(lineas) * escenas.SEG_POR_LINEA_MONTADA
+                c["nota"] = (f"{n_esc} escenas · {tomas} dibujos · {len(lineas)} líneas · "
+                             f"~{int(dur_est) // 60}:{int(dur_est) % 60:02d} de video"
+                             + (f" · {len(largas)} pasan de {tope} palabras: acortalas" if largas else ""))
+                return guardar(s)
             c["nota"] = (f"{len(lineas)} líneas · {habladas} palabras habladas" + (f" · {tomas} toma(s)" if s.get("toma") == "una" else "")
                          + (f" · {len(largas)} pasan de {tope} palabras: acortalas" if largas else "")
                          + (f" · más de {32 * max(1, tomas_de(s, c))} palabras: no entran, acortá" if s.get("toma") == "una" and habladas > 32 * max(1, tomas_de(s, c)) else ""))
@@ -848,7 +907,7 @@ def reparto(s: dict, c: dict | None = None) -> dict:
         desc = p["descripcion"].strip()
         if vest.get(pid):
             desc = desc.rstrip(".") + f". In this episode {p['nombre']} wears: {vest[pid].rstrip('.')}. This outfit replaces the base clothing in every shot."
-        pers[pid] = {"hoja": f"m_{pid}", "descripcion": desc}
+        pers[pid] = {"hoja": f"m_{pid}", "nombre": p["nombre"], "descripcion": desc}
     locs = {lid: {"imagen": f"l_{lid}", "descripcion": l["descripcion"]}
             for lid, l in s["locaciones"].items() if l.get("imagen")}
     vdesc = {pid: p["voz"] for pid, p in s["personajes"].items() if p.get("voz")} if s.get("modo") == "actuado" else {}
@@ -1201,6 +1260,17 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                                              estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
                                              voz=pedido["voz"], titulo=c["titulo"], notas=pedido["notas"], duracion=pedido["duracion"],
                                              reparto=rep, log=log)
+            elif formato == "largo" and actuado and s.get("toma") == "escenas":
+                # LARGO ACTUADO POR ESCENAS (22/9): un dibujo por toma, varios
+                # clips por dibujo. Es lo que llevó «LA SANGRE ENCUENTRA EL
+                # CAMINO» de 7,2 a 35,6 s por encuadre, contra los 43,9 de los
+                # canales de referencia.
+                r = escenas.traducir_escenas(c["guion"], rep, titulo=c["titulo"],
+                                             estilo_imagen=s["estilo"]["imagen"], estilo_video=pedido["estilo_video"],
+                                             cierre_video=pedido["cierre_video"], medio=pedido["medio"],
+                                             notas=pedido["notas"], locaciones=rep.get("locaciones"), log=log)
+                log(f"por escenas: {r['clips']} clips con {r['dibujos']} dibujo(s) "
+                    f"({r['clips'] / max(1, r['dibujos']):.1f} clips por dibujo)")
             else:
               r = guionista.traducir(c["guion"], formato=formato, estructura=s["estructura"], estilo_imagen=s["estilo"]["imagen"],
                                      estilo_video=pedido["estilo_video"], cierre_video=pedido["cierre_video"], medio=pedido["medio"],
