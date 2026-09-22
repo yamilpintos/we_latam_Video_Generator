@@ -87,6 +87,21 @@ def faltantes(planos: list[dict], carpeta: Path) -> list[str]:
 
 
 AIRE_ANTES, AIRE_DESPUES = 0.35, 0.40     # s alrededor de la voz medida
+
+# SINCRONÍA LABIAL (22/9): en «EL CAMIÓN DE MI PADRE» (con diálogos) la voz
+# llegaba ~150 ms DESPUÉS de que la boca empezaba a moverse (medido con YuNet:
+# movimiento de la zona de la boca contra la envolvente de la voz, correlación
+# cruzada, mediana de 10 planos). ~40 ms los agrega el recorte (re-encode de
+# cada tramo) y el resto viene de los clips. Pasado ~125 ms de voz tarde se
+# nota (ITU-R BT.1359). En los planos con diálogo en cámara el audio se toma
+# `ADELANTO_VOZ` s más adelante que la imagen, y el SRT y el realce se corren igual.
+import os as _os
+ADELANTO_VOZ = float(_os.environ.get("H3_ADELANTO_VOZ", "0.12"))
+
+
+def adelanto(p: dict) -> float:
+    """Cuánto se adelanta el audio de este plano en el corte (sólo diálogo en cámara)."""
+    return ADELANTO_VOZ if (p.get("dialogo") and not p.get("off")) else 0.0
 MIN_TRAMO_HABLADO = 1.4                   # s: un plano hablado nunca queda más corto
 FPS = 24
 
@@ -153,10 +168,20 @@ def recortar_y_concatenar(planos: list[dict], carpeta: Path, salida: Path, log=p
             ini, fin = p.get("usa") or (0.0, p["segundos"])
             dur = fin - ini
             parte = tmp / f"{p['id']}.mp4"
-            # -ss antes de -i busca rápido; -t después fija la duración exacta.
-            _ffmpeg("-ss", str(ini), "-i", str(buscar_clip(carpeta, clip_fuente(p))), "-t", str(dur),
-                    "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p",
-                    "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
+            fuente = str(buscar_clip(carpeta, clip_fuente(p)))
+            ad = adelanto(p)
+            if ad:
+                # Diálogo en cámara: el audio sale `ad` s más adelante que la
+                # imagen (sincronía labial); `apad` rellena la cola que falta.
+                _ffmpeg("-ss", str(ini), "-i", fuente, "-ss", str(ini + ad), "-i", fuente, "-t", str(dur),
+                        "-map", "0:v:0", "-map", "1:a:0", "-af", "apad",
+                        "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
+            else:
+                # -ss antes de -i busca rápido; -t después fija la duración exacta.
+                _ffmpeg("-ss", str(ini), "-i", fuente, "-t", str(dur),
+                        "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
             partes.append(parte)
             log(f"  {p['id']:<5} {ini:4.1f}-{fin:<4.1f} → {t:5.1f}-{t + dur:<5.1f} "
                 f"{p.get('funcion', '')[:44]}")
@@ -298,7 +323,7 @@ def srt(planos: list[dict], ruta: Path) -> int:
     from . import voz_clip
     lineas, t0, n = [], 0.0, 0
     for p in planos:
-        usa_ini = p["usa"][0] if p.get("usa") else 0.0
+        usa_ini = (p["usa"][0] + adelanto(p)) if p.get("usa") else 0.0
         dur = (p["usa"][1] - p["usa"][0]) if p.get("usa") else p["segundos"]
         if p.get("dialogo"):
             v = p.get("voz_medida")
