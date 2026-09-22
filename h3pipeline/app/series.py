@@ -160,6 +160,7 @@ def crear(titulo: str, formato: str, idea: str, *, estructura: str | None = None
                     "medio": est["medio"] if est else ""},
          "modo": modo if formato != "musica" else "narrado",
          "idea": idea.strip(), "continuidad": continuidad if continuidad in ("antologia", "serial") else "antologia",
+         "dialogos": formato == "largo" and modo != "actuado",
          "musica": {"genero": (musica or {}).get("genero", "lofi"), "tipo": (musica or {}).get("tipo", ""),
                     "duracion": int((musica or {}).get("duracion", 180))} if formato == "musica" else None,
          "personajes": {}, "locaciones": {}, "capitulos": [], "notas": ""}
@@ -186,6 +187,8 @@ def actualizar(slug: str, **campos) -> dict:
                 s["duracion"] = round(n * grilla.MAXIMO, 3)
             else:
                 s["duracion"] = None
+        elif k == "dialogos":
+            s["dialogos"] = bool(v)
         elif k == "duracion" and s["formato"] == "largo":
             # Largos: la duración la elige el director (21/9: «hacelo de 8 minutos»);
             # la estructura se estira a esa duración (Estructura.con_duracion).
@@ -1272,6 +1275,30 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
                 log(f"continuidad entre tomas: {ne} fotograma(s) referencian al anterior")
             if tomas_de(s, c):
                 aplicar_tomas(s, c, d, rep, log=log)
+            if not actuado and formato == "largo" and s.get("voz") and s.get("dialogos", True):
+                # Los personajes dicen sus citas en cámara (22/9): las citas cortas
+                # de la voz en off pasan a planos D con su voz del banco. Si algo
+                # falla, el capítulo sigue siendo 100 % narrado.
+                try:
+                    from .. import dialogos as _dlg
+                    nuevos = asignar_voces_faltantes(s)
+                    if nuevos:
+                        guardar(s)
+                        log("voces del banco asignadas: " + "; ".join(nuevos))
+                        rep = reparto(s, c)
+                    for pid_, pj_ in s["personajes"].items():
+                        if pid_ in d.get("personajes", {}):
+                            d["personajes"][pid_]["nombre"] = pj_["nombre"]
+                    citas = _dlg.citas_del_proyecto(d, guionista.VOCES[s["voz"]]["cps"])
+                    if citas:
+                        hab = _dlg.hablantes_por_gpt(citas, c.get("guion") or "", d["personajes"], None, log=log)
+                        r_ = _dlg.insertar(d, hab, guionista.VOCES[s["voz"]]["cps"], log=log)
+                        log(f"diálogos en cámara: {r_.get('dialogos', 0)} de {len(citas)} citas")
+                        for pid2, nom2, txt2 in r_.get("detalle", []):
+                            log(f"  {pid2} {nom2}: «{txt2}»")
+                        aplicar_voces(s, d, rep, pc, log=log)
+                except Exception as e:
+                    log(f"aviso: sin diálogos en cámara ({e}); el capítulo queda narrado")
             if actuado:
                 aplicar_voces(s, d, rep, pc, log=log)
             problemas = chequear_capitulo(s, c, d)

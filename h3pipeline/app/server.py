@@ -1183,6 +1183,7 @@ class EdicionSerie(BaseModel):
     modo: str | None = None
     toma: str | None = None
     duracion: float | None = None     # largos: segundos totales (la estructura se estira)
+    dialogos: bool | None = None      # largos narrados: los personajes dicen sus citas en cámara
 
 
 @app.put("/api/series/{slug}")

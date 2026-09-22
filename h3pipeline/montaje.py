@@ -172,6 +172,14 @@ def _tramo_exacto(fuente: str, ini: float, dur: float, parte: Path) -> int:
     return n
 
 
+def _segundos_audio(archivo: Path) -> float:
+    """Segundos de audio CONTADOS EN MUESTRAS (no por marcas de tiempo): es lo que
+    ve el filtro al mezclar, y lo que se corría antes."""
+    r = subprocess.run([config.ffmpeg(), "-hide_banner", "-loglevel", "error", "-i", str(archivo),
+                        "-vn", "-ac", "1", "-ar", "8000", "-f", "s16le", "-"], capture_output=True)
+    return len(r.stdout) / 2 / 8000
+
+
 def _pegar(partes: list[Path], salida: Path, tmp: Path) -> None:
     """Pega los tramos (video copiado) y codifica el audio UNA sola vez."""
     lista = tmp / "orden.txt"
@@ -208,7 +216,14 @@ def recortar_y_concatenar(planos: list[dict], carpeta: Path, salida: Path, log=p
                 f"{p.get('funcion', '')[:44]}")
             t += dur
         _pegar(partes, salida, tmp)
-        log(f"\n{Path(salida).name}   {t:.1f} s   {Path(salida).stat().st_size / 1e6:.1f} MB")
+        # Control: el audio pegado tiene que durar lo mismo que la suma de los
+        # tramos (22/9: el relleno del AAC atrasaba la voz hasta 3 s y nadie avisaba).
+        dif = _segundos_audio(Path(salida)) - t
+        if abs(dif) > 0.15:
+            raise ErrorMontaje(f"el audio del corte quedó {dif:+.2f} s respecto del video "
+                               f"({t:.2f} s): la voz saldría corrida")
+        log(f"\n{Path(salida).name}   {t:.1f} s   {Path(salida).stat().st_size / 1e6:.1f} MB "
+            f"· audio {dif:+.3f} s")
         return Path(salida)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
