@@ -685,6 +685,16 @@ def clips(slug: str):
     return out
 
 
+@app.get("/api/proyectos/{slug}/clip/{nombre}")
+def clip_crudo(slug: str, nombre: str):
+    """Un clip tal como lo bajó la máquina (clips/<id>_*.mp4), para verlo o revisarlo."""
+    c = _carpeta(slug) / "clips"
+    f = montaje.buscar_clip(c, Path(nombre).stem.split("_")[0]) if c.exists() else None
+    if not f:
+        raise HTTPException(404)
+    return FileResponse(str(f), media_type="video/mp4", filename=f.name)
+
+
 @app.post("/api/proyectos/{slug}/tiras")
 def tiras(slug: str):
     """Diez cuadros por clip (2 por segundo): es el control que encontró todo
