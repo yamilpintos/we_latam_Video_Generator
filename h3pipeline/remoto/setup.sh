@@ -167,6 +167,15 @@ esac
 
 add "$CO" "vae/minimax_h3_video_vae_fp16.safetensors"
 add "$CO" "vae/minimax_h3_audio_vae_fp32.safetensors"
+# El VAE de video que pide la PLANTILLA de Ref2VA (22/9/2026). La plantilla
+# oficial `video_minimax_h3_r2v.json` trae `minimax_h3_video_vae_int8_convrot`
+# fijo en su VAELoader, no el fp16 de la de FL2VA. Sin este archivo ComfyUI
+# rechaza el workflow entero con «HTTP 400 · value_not_in_list» y las cuatro
+# placas se quedan girando sin generar nada. No saltó antes porque hasta el
+# primer largo actuado todos los videos iban por FL2VA, que usa otra plantilla.
+if [ "$SOLO_FL" != "1" ]; then
+  add "$CO" "vae/minimax_h3_video_vae_int8_convrot.safetensors"
+fi
 if [ "$TURBO" = "1" ]; then
   # Las de 8 pasos entrenadas a 768p (shift 6/3), las que usa runner.py desde
   # el 14/9. La FL2VA 4-step 768p queda por si se vuelve atrás.

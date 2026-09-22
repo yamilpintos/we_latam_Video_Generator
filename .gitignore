@@ -96,3 +96,7 @@ mis-videos/_remaster/
 
 # El banco de voces de fábrica (presets para Ref2VA) viaja con el código
 !h3pipeline/voces/*.wav
+
+# Videos de referencia bajados de otros canales (material de estudio, pesado)
+mis-videos/referencia-fb/
+mis-videos/casting-voces/

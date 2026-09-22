@@ -477,6 +477,13 @@ class Proyecto:
             fuente_a, fuente_b = a.get("clip_de") or a["id"], b.get("clip_de") or b["id"]
             if fuente_a == fuente_b:
                 continue
+            # Dos planos que arrancan del MISMO dibujo son la misma toma vista
+            # dos veces, no dos encuadres seguidos: es el método por escenas
+            # (22/9, `escenas.py`), donde un dibujo sostiene varios clips para
+            # que la cara no cambie. Repetir tamaño, locación y reparto ahí es
+            # exactamente lo que se busca.
+            if a.get("first_frame") and a["first_frame"] == b.get("first_frame"):
+                continue
             if (a["loc"] and a["tipo"] == b["tipo"] and a["loc"] == b["loc"]
                     and a["personajes"] == b["personajes"]):
                 avisos.append(f"salto de eje: {a['id']} y {b['id']} son los dos {a['tipo']} "
