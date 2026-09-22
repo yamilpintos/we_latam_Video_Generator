@@ -17,6 +17,11 @@ from pathlib import Path
 
 from . import config
 
+# 22/9: el máster de un largo de 7 min tardaba ~40 min en el único procesador de
+# Render. `veryfast` codifica 1,75× más rápido que `medium` con SSIM 0,993 contra
+# él (medido en 20 s del camión); YouTube recomprime igual.
+PRESET = "veryfast"
+
 
 class ErrorMontaje(RuntimeError):
     pass
@@ -175,12 +180,12 @@ def recortar_y_concatenar(planos: list[dict], carpeta: Path, salida: Path, log=p
                 # imagen (sincronía labial); `apad` rellena la cola que falta.
                 _ffmpeg("-ss", str(ini), "-i", fuente, "-ss", str(ini + ad), "-i", fuente, "-t", str(dur),
                         "-map", "0:v:0", "-map", "1:a:0", "-af", "apad",
-                        "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p",
+                        "-c:v", "libx264", "-preset", PRESET, "-crf", "17", "-pix_fmt", "yuv420p",
                         "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
             else:
                 # -ss antes de -i busca rápido; -t después fija la duración exacta.
                 _ffmpeg("-ss", str(ini), "-i", fuente, "-t", str(dur),
-                        "-c:v", "libx264", "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p",
+                        "-c:v", "libx264", "-preset", PRESET, "-crf", "17", "-pix_fmt", "yuv420p",
                         "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
             partes.append(parte)
             log(f"  {p['id']:<5} {ini:4.1f}-{fin:<4.1f} → {t:5.1f}-{t + dur:<5.1f} "
@@ -390,7 +395,7 @@ def quemar_srt(video: Path, srt_: Path, salida: Path, estilo: str = ESTILO_SUB,
         filtro = f"scale={escala[0]}:{escala[1]}:flags=lanczos," + filtro
     r = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
                         "-i", str(video), "-vf", filtro,
-                        "-c:v", "libx264", "-preset", "medium", "-crf", "17",
+                        "-c:v", "libx264", "-preset", PRESET, "-crf", "17",
                         "-pix_fmt", "yuv420p", "-c:a", "copy", str(salida)],
                        capture_output=True, text=True, cwd=str(srt_.parent))
     if r.returncode:
