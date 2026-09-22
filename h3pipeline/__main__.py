@@ -363,7 +363,12 @@ def main(argv=None) -> int:
         inst = vast.instancia(a.id)
         planos = p.construir()[1]["planos"]
         pr = vast.progreso(inst, planos, p.slug)
-        faltan = [x["id"] for x in planos if x["id"] not in pr["hechos"]]
+        destino_ = Path(a.destino or p.raiz / "clips")
+        # Lo que ya está bajado de una corrida anterior no se pide (21/9: la
+        # segunda vuelta genera sólo los planos que faltaban).
+        faltan = [x["id"] for x in planos if not x.get("clip_de") and x["id"] not in pr["hechos"]
+                  and not (destino_.exists() and montaje.buscar_clip(destino_, x["id"]))]
+        ya_locales = destino_.exists() and any(montaje.buscar_clip(destino_, x["id"]) for x in planos if not x.get("clip_de"))
         print(f"{len(pr['hechos'])}/{pr['total']} clips"
               + (f" · falta: {' '.join(faltan)}" if faltan else " · TODOS")
               + (" · MP4 final montado" if pr["final"] else ""))
@@ -397,7 +402,7 @@ def main(argv=None) -> int:
             print(f"!! faltan {len(faltan)} planos: {' '.join(faltan)}")
             print("   Miralo con `seguir`, o bajá lo que haya con --parcial.")
             return 1
-        if not faltan and not pr["final"]:
+        if not faltan and not pr["final"] and not ya_locales:
             print("montando en la máquina…")
             print(vast.ejecutar(
                 inst, "export PATH=/venv/main/bin:$PATH && "
@@ -440,6 +445,9 @@ def main(argv=None) -> int:
             print()
             print("Para sintetizar: agregá --generar (gasta créditos de ElevenLabs).")
             return 0
+        # Las líneas «boca» sin voz de ElevenLabs las dice H3 dentro del clip
+        # (diálogos en cámara de un largo narrado): no se sintetizan acá.
+        lineas = [x for x in lineas if x.tipo == "off" or x.voz_id]
         sin_voz = [x for x in lineas if not x.voz_id]
         if sin_voz:
             print()
@@ -460,6 +468,11 @@ def main(argv=None) -> int:
         if faltan:
             print("!! faltan clips: " + " ".join(faltan))
             return 1
+        # 0. Diálogos en cámara (largo narrado, 21/9): la boca manda el corte.
+        realces, subs_dlg = [], []
+        if any(x.get("dialogo") for x in planos):
+            print("diálogos en cámara: midiendo la voz de cada plano hablado…")
+            montaje.ajustar_usa_por_voz(planos, clips, idioma=getattr(p, "idioma", "es") or "es")
         # 1. El corte: los clips en orden, recortados a `usa` si hace falta.
         corte = p.raiz / f"{p.slug}-corte.mp4"
         if any(x.get("usa") for x in planos):
@@ -479,13 +492,28 @@ def main(argv=None) -> int:
                 print(f"  (sintetizada ahora: {x.id})")
             voces.append((x.t, r["mp3"]))
             subs.append((x.t, x.t + r["tabla"][0]["dur"], vozmod.limpiar(r["texto"])))
+        if any(x.get("dialogo") for x in planos):
+            from . import voz_clip
+            lt_ = dict(zip((x["id"] for x in planos), p.estructura_resuelta().linea_de_tiempo(planos)))
+            for x in planos:
+                v = x.get("voz_medida")
+                if not x.get("dialogo") or not v or v.get("fuente") == "nada":
+                    continue
+                t0 = lt_[x["id"]][0]
+                u0 = (x.get("usa") or [0.0])[0]
+                realces.append((max(0.0, t0 + v["ini"] - u0 - 0.15), t0 + v["fin"] - u0 + 0.35))
+                for a_, b_, texto in voz_clip.lineas_en_tiempo(v, x["dialogo"]):
+                    txt = texto.split(":", 1)[1].strip() if ":" in texto[:40] else texto
+                    subs_dlg.append((max(t0, t0 + a_ - u0 - 0.1), t0 + b_ - u0 + 0.25, txt))
+            subs += subs_dlg
+            print(f"  {len(realces)} diálogo(s) en cámara con el audio de H3 al frente")
         # 3. Música, si hay.
         musica_ = Path(a.musica) if a.musica else p.raiz / "musica.mp3"
         musica_ = musica_ if musica_.exists() else None
         # 4. Las tres capas + máster a -14 LUFS.
         salida = Path(a.salida or p.raiz / f"{p.titulo} - final.mp4")
         mezclado = salida if a.sin_subtitulos else salida.with_name(salida.stem + " (sin subs).mp4")
-        montaje.mezclar(corte, voces, mezclado, musica=musica_)
+        montaje.mezclar(corte, voces, mezclado, musica=musica_, realces=realces)
         # 5. Los subtítulos de la voz, con los tiempos medidos, quemados.
         srt_ = p.raiz / f"{p.slug}.srt"
         n = montaje.srt_voz(subs, srt_)

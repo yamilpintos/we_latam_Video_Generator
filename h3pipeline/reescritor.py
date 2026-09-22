@@ -369,7 +369,7 @@ def pedido_de_plano(d: dict, p: dict, raiz: Path) -> dict:
     segundos = p.get("segundos")
     if not segundos:
         segundos = grilla.encajar(max(grilla.MINIMO, float(p.get("corta") or 8.0) + 0.5))[1]
-    img = raiz / "assets" / f"sb_{p.get('id', '')}.png"
+    img = raiz / "assets" / (p.get("dibujo") or f"sb_{p.get('id', '')}.png")
     ref2va = bool(p.get("modo") == "ref2va" and p.get("voz_ref") and dialogo)
     return {"modo": "ref2va" if ref2va else "i2va", "duracion": round(float(segundos), 3), "aspecto": aspecto,
             "voz_ref": bool(ref2va), "hoja_ref": bool(ref2va and p.get("refs_extra")),

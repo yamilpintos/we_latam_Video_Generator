@@ -224,6 +224,10 @@ class Proyecto:
                 fin = round(real, 3)
             return length, real, [round(ini, 2), round(fin, 2)]
         length, real = grilla.encajar(float(p.get("segundos") or p.get("corta") or 8.0))
+        if p.get("usa"):
+            # Largo con un plano partido (diálogos insertados, 21/9): se usa un tramo.
+            ini, fin = float(p["usa"][0]), min(float(p["usa"][1]), real)
+            return length, real, [round(ini, 3), round(fin, 3)]
         return length, real, None
 
     def construir(self) -> tuple[dict, dict]:

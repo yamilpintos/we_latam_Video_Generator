@@ -850,7 +850,8 @@ def reparto(s: dict, c: dict | None = None) -> dict:
             for lid, l in s["locaciones"].items() if l.get("imagen")}
     vdesc = {pid: p["voz"] for pid, p in s["personajes"].items() if p.get("voz")} if s.get("modo") == "actuado" else {}
     vref = {}
-    if s.get("modo") == "actuado":
+    # Actuado, o narrado con diálogos actuados (21/9): quien habla en cámara usa su voz del banco.
+    if s.get("modo") == "actuado" or s.get("formato") == "largo":
         for pid, p in s["personajes"].items():
             v = voces.ver(p.get("voz_id"))
             if v:
@@ -1351,6 +1352,73 @@ def producir(slug: str, n: int, hasta: str = "cola", motor: str = "openai", log=
         capitulo(s3, n)["slug"] = pslug if (pc / "proyecto.json").exists() else None
         guardar(s3)
         raise
+
+
+def dialogos_capitulo(slug: str, n: int, correr: bool = True, apagar: bool = True, log=print) -> dict:
+    """LOS PERSONAJES DICEN SUS CITAS en un largo narrado ya producido (21/9):
+    las citas cortas de la voz en off pasan a planos nuevos donde el personaje
+    habla en cámara con su voz del banco (Ref2VA), usando dibujos ya hechos. Los
+    clips existentes no se tocan: la cola genera sólo los planos D, y después
+    se rehace el máster. Se puede repetir: siempre parte del proyecto original
+    (`proyecto.sin-dialogos.json`)."""
+    from .. import dialogos
+    s = leer(slug)
+    c = capitulo(s, n)
+    if not c.get("slug"):
+        raise RuntimeError("el capítulo todavía no se produjo")
+    if not s.get("voz"):
+        raise RuntimeError("sólo para series narradas (con voz en off)")
+    pc = maquina.MIS / c["slug"]
+    orig = pc / "proyecto.sin-dialogos.json"
+    if orig.exists():
+        d = json.loads(orig.read_text(encoding="utf-8"))
+    else:
+        d = json.loads((pc / "proyecto.json").read_text(encoding="utf-8"))
+        orig.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    nuevos = asignar_voces_faltantes(s)
+    if nuevos:
+        guardar(s)
+        log("voces del banco asignadas (fijas para toda la serie): " + "; ".join(nuevos))
+    for pid, pj in s["personajes"].items():
+        if pid in d.get("personajes", {}):
+            d["personajes"][pid]["nombre"] = pj["nombre"]
+    cps = guionista.VOCES[s["voz"]]["cps"]
+    citas = dialogos.citas_del_proyecto(d, cps)
+    log(f"citas en la voz en off: {len(citas)}")
+    if not citas:
+        return {"dialogos": 0}
+    hab = dialogos.hablantes_por_gpt(citas, c.get("guion") or "", d["personajes"], None, log=log)
+    for ct in citas:
+        log(f"  «{ct['texto'][:60]}» ({ct['palabras']} palabras) → {hab.get(ct['texto'])}")
+    r = dialogos.insertar(d, hab, cps, log=log)
+    log(f"planos de diálogo: {r['dialogos']} · planos en total: {r.get('planos')} · líneas de narración: {r.get('voz')}")
+    for pid_, nom, txt in r.get("detalle", []):
+        log(f"  {pid_} {nom}: «{txt}»")
+    rep = reparto(s, c)
+    n_ref = aplicar_voces(s, d, rep, pc, log=log)
+    (pc / "proyecto.json").write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    Proyecto.cargar(pc / "proyecto.json").escribir(log=lambda *_: None)
+    nprom = reescritor.completar(pc / "proyecto.json", log=lambda *_: None)
+    log(f"prompts H3 nuevos: {nprom} · en Ref2VA con voz: {n_ref}")
+    # El máster viejo (sin diálogos) se aparta para que se rehaga.
+    viejo = pc / "_sin-dialogos"
+    viejo.mkdir(exist_ok=True)
+    for f in list(pc.glob("*.mp4")) + list(pc.glob("*.srt")):
+        f.replace(viejo / f.name)
+    cola.agregar(c["slug"])
+    cola.marcar(c["slug"], "pendiente", "diálogos: sólo los planos D")
+    if not correr:
+        return r
+    from . import correr_cola as cc
+    dq = cola.leer()
+    dq["apagar_al_final"] = bool(apagar)
+    cola.escribir(dq)
+    log("=== la cola: genero sólo los planos de diálogo ===")
+    rc = cc.main()
+    log(f"cola terminada con código {rc}")
+    nm = masterizar_todos(slug, log=log)
+    log(f"=== másters: {nm} listos ===")
+    return r
 
 
 def masterizar_todos(slug: str, log=print) -> int:

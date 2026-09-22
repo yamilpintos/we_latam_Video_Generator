@@ -7,6 +7,7 @@
     python -X utf8 -u -m h3pipeline.app.serie_tarea producir-aprobados <serie> [--motor openai]
     python -X utf8 -u -m h3pipeline.app.serie_tarea guiones    <serie>                      # aprueba todo y escribe los guiones que falten
     python -X utf8 -u -m h3pipeline.app.serie_tarea masa       <serie> [--sin-cola] [--no-apagar]   # TODO solo: guiones, producir, máquina, videos, másters (alquila)
+    python -X utf8 -u -m h3pipeline.app.serie_tarea dialogos   <serie> <n> [--sin-cola]     # largo narrado: los personajes dicen sus citas (alquila)
 """
 import sys
 
@@ -50,6 +51,8 @@ def main() -> int:
         elif que == "masa":
             motor = _opt(resto, "--motor", "openai")
             series.masa(slug, motor=motor, correr_cola="--sin-cola" not in resto, apagar="--no-apagar" not in resto, log=log)
+        elif que == "dialogos":
+            series.dialogos_capitulo(slug, int(resto[0]), correr="--sin-cola" not in resto, apagar="--no-apagar" not in resto, log=log)
         elif que == "producir-aprobados":
             motor = _opt(resto, "--motor", "openai")
             series.producir_aprobados(slug, motor=motor, log=log)

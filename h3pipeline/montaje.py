@@ -196,7 +196,8 @@ def concatenar(planos: list[dict], carpeta: Path, salida: Path, log=print) -> Pa
 
 def mezclar(video: Path, voces: list[tuple[float, Path]], salida: Path,
             musica: Path | None = None, ambiente_db: float = -6.0,
-            musica_db: float = -19.0, voz_db: float = 2.0, log=print) -> Path:
+            musica_db: float = -19.0, voz_db: float = 2.0, log=print,
+            realces: list[tuple[float, float]] | None = None, realce_db: float = 9.0) -> Path:
     """Las tres capas de audio, en su lugar.
 
         1. lo que generó H3   viento, estática, metal. **No se descarta**: es lo
@@ -239,7 +240,13 @@ def mezclar(video: Path, voces: list[tuple[float, Path]], salida: Path,
     n_copias = 3 if musica else 2
     f.append(f"[voz]asplit={n_copias}" + "".join(f"[voz{k}]" for k in range(1, n_copias + 1)))
 
-    f.append("[0:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo[amb0]")
+    # Donde un personaje habla en cámara (largo narrado con diálogos, 21/9) el
+    # audio de H3 ES la voz: se sube `realce_db` en esas ventanas.
+    realce = ""
+    if realces:
+        expr = "+".join(f"between(t\\,{a:.2f}\\,{b:.2f})" for a, b in realces)
+        realce = f",volume={realce_db}dB:enable='{expr}'"
+    f.append(f"[0:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo{realce}[amb0]")
     f.append("[amb0][voz1]sidechaincompress=threshold=0.02:ratio=12:"
              "attack=25:release=350:makeup=1[ambd]")
     f.append(f"[ambd]volume={ambiente_db}dB[amb]")

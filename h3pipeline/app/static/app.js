@@ -603,7 +603,7 @@ function pintarSerie(s) {
       ${p.hoja ? `<img src="/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}?${p.creado}" style="width:100%;border-radius:6px;margin-top:6px;cursor:zoom-in;max-height:300px;object-fit:contain;background:#000" onclick="lightbox('/api/series/${slug}/archivo/assets/${p.hoja.split("/")[1]}')">`
               : p.imagen_ref ? `<img src="/api/series/${slug}/archivo/refs/${p.imagen_ref.split("/")[1]}" style="width:100%;border-radius:6px;margin-top:6px;opacity:.7;max-height:200px;object-fit:contain;background:#000" title="imagen de referencia; la hoja sale de acá">` : `<div class="tiny" style="margin-top:6px">sin hoja todavía</div>`}
       <div class="tiny" style="margin-top:6px">${h(p.descripcion_es || p.descripcion)}</div>
-      ${s.modo === "actuado" ? `<div class="tiny" style="margin-top:6px"><b>voz de referencia</b> (la misma en todos sus clips):
+      ${s.modo === "actuado" || s.formato === "largo" ? `<div class="tiny" style="margin-top:6px"><b>voz de referencia</b> (la misma en todos sus clips):
         <div class="row" style="margin-top:2px;gap:6px"><select id="pvid-${id}" style="font-size:12px;padding:4px 8px;max-width:220px" onchange="seriePersonajeVoz('${slug}','${id}',this.value)">
           <option value="" ${!p.voz_id ? "selected" : ""}>— sin preset: la describe el texto (puede cambiar entre clips)</option>
           ${(s.banco_voces || []).map(v => `<option value="${v.id}" ${p.voz_id === v.id ? "selected" : ""}>${v.genero === "f" ? "♀" : v.genero === "m" ? "♂" : "•"} ${h(v.nombre)} · ${v.segundos} s</option>`).join("")}</select>
@@ -637,6 +637,7 @@ function pintarSerie(s) {
         ${c.estado === "guion" ? `<button class="btn s" onclick="serieCap('${slug}',${c.n},{guion:$('#cg-${c.n}').value})">guardar cambios del guion</button><button class="btn s" ${tarea ? "disabled" : ""} onclick="serieGuion('${slug}',${c.n})">otro guion</button><button class="btn s p" ${tarea || bloqueo ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">producir este capítulo</button>` : ""}
         ${c.estado === "error" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n},true)">rehacer desde el guion</button><button class="btn s" onclick="serieCap('${slug}',${c.n},{estado:'guion'})">volver a guion</button>` : ""}
         ${c.estado === "producido" ? `<button class="btn s" ${tarea ? "disabled" : ""} onclick="serieProducir('${slug}',${c.n})">rehacer lo que falte</button>` : ""}
+        ${c.estado === "producido" && s.formato === "largo" && s.voz && s.modo !== "actuado" ? `<button class="btn s p" ${tarea ? "disabled" : ""} onclick="serieDialogos('${slug}',${c.n})" title="las citas entre comillas las dicen los personajes en cámara, con su voz del banco; se generan sólo esos planos, con dibujos ya hechos">que hablen los personajes</button>` : ""}
         ${!activo && c.estado !== "producido" ? `<button class="btn s" style="margin-left:auto" onclick="serieCap('${slug}',${c.n},{estado:'descartado'})">descartar</button>` : ""}
       </div></div>`; };
   const volver = s.formato === "musica" ? "#/musica" : `#/nuevo/${s.formato}`;
@@ -759,6 +760,11 @@ function serieCapVestuario(slug, n, pids) {
 }
 async function serieGuion(slug, n) {
   try { const r = await api(`/series/${slug}/capitulos/${n}/guion`, {method: "POST"}); seguirTarea(r.tarea, () => serieRefrescar(slug)); toast("GPT escribe el guion… (30-60 s)"); serieRefrescar(slug); } catch (e) { serieError(e.message); }
+}
+function serieDialogos(slug, n) {
+  confirmar("Que hablen los personajes", "Las citas cortas entre comillas de la voz en off pasan a planos nuevos donde el personaje la dice en cámara, con su voz del banco (la que ves en su ficha, fija para toda la serie). Se usan dibujos ya hechos y los clips que ya están no se tocan: <b>alquila la máquina sólo para esos planos</b> (unos 12 clips de 5 s, ~$1,50 con la instalación de Ref2VA), la apaga y rehace el máster.", "Hacerlo", async () => {
+    try { const d = await api(`/series/${slug}/capitulos/${n}/dialogos`, {method: "POST", body: {confirmar: true, cola: true, apagar: true}}); toast("en marcha: mirá el log de la serie"); navegar(); } catch (e) { serieError(e.message); }
+  });
 }
 function serieProducir(slug, n, rehacer = false) {
   confirmar("Producir el capítulo", "Traduce el guion a planos (GPT), hace la voz (ElevenLabs), dibuja los fotogramas (una imagen por plano, ~$0,06 cada una), arma el ZIP y lo pone en la cola. <b>No alquila GPU</b>: eso lo hacés después corriendo la cola." + (rehacer ? "<br><br>Se descarta el proyecto anterior y se vuelve a traducir con el reparto de la serie." : ""), "Producir", async () => {
