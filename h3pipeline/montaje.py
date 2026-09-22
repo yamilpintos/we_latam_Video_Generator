@@ -93,20 +93,15 @@ def faltantes(planos: list[dict], carpeta: Path) -> list[str]:
 
 AIRE_ANTES, AIRE_DESPUES = 0.35, 0.40     # s alrededor de la voz medida
 
-# SINCRONÍA LABIAL (22/9): en «EL CAMIÓN DE MI PADRE» (con diálogos) la voz
-# llegaba ~150 ms DESPUÉS de que la boca empezaba a moverse (medido con YuNet:
-# movimiento de la zona de la boca contra la envolvente de la voz, correlación
-# cruzada, mediana de 10 planos). ~40 ms los agrega el recorte (re-encode de
-# cada tramo) y el resto viene de los clips. Pasado ~125 ms de voz tarde se
-# nota (ITU-R BT.1359). En los planos con diálogo en cámara el audio se toma
-# `ADELANTO_VOZ` s más adelante que la imagen, y el SRT y el realce se corren igual.
-import os as _os
-ADELANTO_VOZ = float(_os.environ.get("H3_ADELANTO_VOZ", "0.12"))
-
-
+# SINCRONÍA (22/9): H3 entrega cada clip con la voz ya en sincronía con la boca
+# (medido: 0 ms en los clips crudos). Imagen y sonido de cada clip se cortan
+# JUNTOS, con exactamente la misma duración, y nunca se separan (pedido del
+# usuario: «cortá el video con el audio, no por separado»). El atraso que se oía
+# en los diálogos del camión (0,2 s al principio, 3 s al final) era de montaje:
+# cada tramo AAC traía ~30 ms de relleno del codificador y al mezclar se sumaban.
 def adelanto(p: dict) -> float:
-    """Cuánto se adelanta el audio de este plano en el corte (sólo diálogo en cámara)."""
-    return ADELANTO_VOZ if (p.get("dialogo") and not p.get("off")) else 0.0
+    """Compatibilidad: ya no se adelanta nada."""
+    return 0.0
 MIN_TRAMO_HABLADO = 1.4                   # s: un plano hablado nunca queda más corto
 FPS = 24
 
@@ -161,67 +156,69 @@ def _lista(partes: list[Path], ruta: Path) -> None:
     ruta.write_text("".join(f"file '{x.as_posix()}'\n" for x in partes), encoding="utf-8")
 
 
+FPS_H3 = 24
+MUESTRAS_POR_CUADRO = 48000 // FPS_H3      # 2000
+
+
+def _tramo_exacto(fuente: str, ini: float, dur: float, parte: Path) -> int:
+    """Un tramo del clip con imagen y sonido JUNTOS y del mismo largo exacto:
+    N cuadros de video y N×2000 muestras de audio PCM (sin el relleno que agrega
+    AAC, que al pegar 92 tramos atrasaba la voz hasta 3 s). Devuelve N."""
+    n = max(1, int(round(dur * FPS_H3)))
+    _ffmpeg("-ss", f"{ini:.3f}", "-i", fuente, "-frames:v", str(n),
+            "-af", f"aresample=48000,apad,atrim=end_sample={n * MUESTRAS_POR_CUADRO}",
+            "-c:v", "libx264", "-preset", PRESET, "-crf", "17", "-pix_fmt", "yuv420p", "-r", str(FPS_H3),
+            "-c:a", "pcm_s16le", "-ar", "48000", "-ac", "2", str(parte))
+    return n
+
+
+def _pegar(partes: list[Path], salida: Path, tmp: Path) -> None:
+    """Pega los tramos (video copiado) y codifica el audio UNA sola vez."""
+    lista = tmp / "orden.txt"
+    _lista(partes, lista)
+    salida = Path(salida)
+    salida.parent.mkdir(parents=True, exist_ok=True)
+    _ffmpeg("-f", "concat", "-safe", "0", "-i", str(lista), "-c:v", "copy",
+            "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(salida))
+
+
 def recortar_y_concatenar(planos: list[dict], carpeta: Path, salida: Path, log=print) -> Path:
-    """Para el short: de cada clip se toma el tramo `usa` y se pegan en orden."""
+    """De cada clip se toma el tramo `usa` (o el clip entero) y se pegan en orden.
+    Cada tramo dura un número entero de cuadros y su audio exactamente lo mismo."""
     faltan = faltantes(planos, carpeta)
     if faltan:
         raise ErrorMontaje(f"faltan clips en {carpeta}: {' '.join(faltan)}")
-    tmp = Path(tempfile.mkdtemp(prefix="h3short_"))
+    tmp = Path(tempfile.mkdtemp(prefix="h3corte_"))
     partes, t = [], 0.0
     try:
-        for p in planos:
+        for k, p in enumerate(planos):
             ini, fin = p.get("usa") or (0.0, p["segundos"])
-            dur = fin - ini
-            parte = tmp / f"{p['id']}.mp4"
-            fuente = str(buscar_clip(carpeta, clip_fuente(p)))
-            ad = adelanto(p)
-            if ad:
-                # Diálogo en cámara: el audio sale `ad` s más adelante que la
-                # imagen (sincronía labial); `apad` rellena la cola que falta.
-                _ffmpeg("-ss", str(ini), "-i", fuente, "-ss", str(ini + ad), "-i", fuente, "-t", str(dur),
-                        "-map", "0:v:0", "-map", "1:a:0", "-af", "apad",
-                        "-c:v", "libx264", "-preset", PRESET, "-crf", "17", "-pix_fmt", "yuv420p",
-                        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
-            else:
-                # -ss antes de -i busca rápido; -t después fija la duración exacta.
-                _ffmpeg("-ss", str(ini), "-i", fuente, "-t", str(dur),
-                        "-c:v", "libx264", "-preset", PRESET, "-crf", "17", "-pix_fmt", "yuv420p",
-                        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(parte))
+            if p.get("usa"):
+                # El tramo se redondea a cuadros ACÁ, en el mismo plano: la línea de
+                # tiempo de la narración se calcula después con estos mismos `usa`
+                # y así coincide con el video al cuadro.
+                n_ = max(1, int(round((float(fin) - float(ini)) * FPS_H3)))
+                p["usa"] = [round(float(ini), 4), round(float(ini) + n_ / FPS_H3, 4)]
+                ini, fin = p["usa"]
+            parte = tmp / f"{k:03d}_{p['id']}.mkv"
+            n = _tramo_exacto(str(buscar_clip(carpeta, clip_fuente(p))), float(ini), float(fin) - float(ini), parte)
+            dur = n / FPS_H3
             partes.append(parte)
-            log(f"  {p['id']:<5} {ini:4.1f}-{fin:<4.1f} → {t:5.1f}-{t + dur:<5.1f} "
+            log(f"  {p['id']:<5} {float(ini):4.1f}-{float(fin):<4.1f} → {t:5.1f}-{t + dur:<5.1f} "
                 f"{p.get('funcion', '')[:44]}")
             t += dur
-        lista = tmp / "orden.txt"
-        _lista(partes, lista)
-        salida = Path(salida)
-        salida.parent.mkdir(parents=True, exist_ok=True)
-        _ffmpeg("-f", "concat", "-safe", "0", "-i", str(lista), "-c", "copy", str(salida))
-        log(f"\n{salida.name}   {t:.1f} s   {salida.stat().st_size / 1e6:.1f} MB")
-        return salida
+        _pegar(partes, salida, tmp)
+        log(f"\n{Path(salida).name}   {t:.1f} s   {Path(salida).stat().st_size / 1e6:.1f} MB")
+        return Path(salida)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
 
 def concatenar(planos: list[dict], carpeta: Path, salida: Path, log=print) -> Path:
-    """Para el largo: los planos enteros, uno tras otro. El video se copia tal
-    cual; el audio se recodifica a una sola pista continua, que es lo que evita
-    el chasquido en cada corte al concatenar decenas de pistas sueltas."""
-    faltan = faltantes(planos, carpeta)
-    if faltan:
-        raise ErrorMontaje(f"faltan clips en {carpeta}: {' '.join(faltan)}")
-    partes = [buscar_clip(carpeta, p["id"]) for p in planos]
-    salida = Path(salida)
-    salida.parent.mkdir(parents=True, exist_ok=True)
-    lista = salida.with_suffix(".orden.txt")
-    _lista(partes, lista)
-    try:
-        _ffmpeg("-f", "concat", "-safe", "0", "-i", str(lista),
-                "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", str(salida))
-    finally:
-        lista.unlink(missing_ok=True)
-    seg = sum(p["segundos"] for p in planos)
-    log(f"{salida.name}   {len(planos)} planos   {int(seg // 60)}:{seg % 60:04.1f}")
-    return salida
+    """Para el largo: los planos enteros, uno tras otro. Va por el mismo camino
+    exacto que el recorte (22/9): pegar clips crudos con su AAC arrastraba el
+    relleno del codificador y el sonido se corría ~30 ms por clip."""
+    return recortar_y_concatenar(planos, carpeta, salida, log=log)
 
 
 def mezclar(video: Path, voces: list[tuple[float, Path]], salida: Path,
@@ -328,7 +325,7 @@ def srt(planos: list[dict], ruta: Path) -> int:
     from . import voz_clip
     lineas, t0, n = [], 0.0, 0
     for p in planos:
-        usa_ini = (p["usa"][0] + adelanto(p)) if p.get("usa") else 0.0
+        usa_ini = p["usa"][0] if p.get("usa") else 0.0
         dur = (p["usa"][1] - p["usa"][0]) if p.get("usa") else p["segundos"]
         if p.get("dialogo"):
             v = p.get("voz_medida")

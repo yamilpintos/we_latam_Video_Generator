@@ -501,8 +501,7 @@ def main(argv=None) -> int:
                 if not x.get("dialogo") or not v or v.get("fuente") == "nada":
                     continue
                 t0 = lt_[x["id"]][0]
-                # el audio del plano sale ADELANTO_VOZ antes (sincronía labial)
-                u0 = (x.get("usa") or [0.0])[0] + (montaje.adelanto(x) if x.get("usa") else 0.0)
+                u0 = (x.get("usa") or [0.0])[0]
                 realces.append((max(0.0, t0 + v["ini"] - u0 - 0.15), t0 + v["fin"] - u0 + 0.35))
                 for a_, b_, texto in voz_clip.lineas_en_tiempo(v, x["dialogo"]):
                     txt = texto.split(":", 1)[1].strip() if ":" in texto[:40] else texto

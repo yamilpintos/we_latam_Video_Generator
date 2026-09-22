@@ -41,6 +41,8 @@ PASO = 0.01            # s por ventana de energía
 UMBRAL_DB = 18.0       # sobre el piso (percentil 20)
 MIN_TRAMO = 0.06       # s
 HUECO = 0.25           # s entre palabras que se unen
+MIN_VOZ = 0.15         # s: un tramo más corto es un chasquido, no voz
+VERSION = 2            # sube cuando cambia cómo se mide: invalida los .voz.json viejos
 
 
 def _wav(clip: Path, destino: Path) -> None:
@@ -135,7 +137,7 @@ def medir(clip: Path, dialogo: str | None = None, idioma: str = "es", cache: boo
     if cache and guardado.exists():
         try:
             v = json.loads(guardado.read_text(encoding="utf-8"))
-            if v.get("dialogo") == (dialogo or "") and v.get("fin"):
+            if v.get("dialogo") == (dialogo or "") and v.get("fin") and v.get("version") == VERSION:
                 return v
         except Exception:
             pass
@@ -153,28 +155,35 @@ def medir(clip: Path, dialogo: str | None = None, idioma: str = "es", cache: boo
             tmp.parent.rmdir()
         except OSError:
             pass
-    lineas = [l for l in (dialogo or "").splitlines() if l.strip()]
-    n_total = sum(_n_palabras(l) for l in lineas) or (len(w) if w else 0)
+    # 22/9, «EL CAMIÓN DE MI PADRE»: en clips que empiezan en silencio, los
+    # tiempos de palabra de Whisper salen ~0,4-1,3 s ANTES de la voz real, y un
+    # chasquido corto se tomaba por voz: el plano mostraba casi 2 s al personaje
+    # callado y le cortaba el final («Tomás, ven…»). Ahora manda la ENERGÍA:
+    # tramos de voz de ≥ 0,15 s; Whisper sólo descarta lo que está claramente
+    # antes de su primera palabra o después de la última.
     fuente = "energía"
-    if not tr and not w:
+    voz_tr = [(a, b) for a, b in tr if b - a >= MIN_VOZ]
+    if w:
+        w0, w1 = w[0][1], w[-1][2]
+        dentro = [(a, b) for a, b in voz_tr if b >= w0 - 0.6 and a <= w1 + 0.6]
+        if dentro:
+            voz_tr = dentro
+            fuente = "energía+whisper"
+    if voz_tr:
+        ini, fin = voz_tr[0][0], voz_tr[-1][1]
+        if w and w[-1][2] > fin + 0.3:
+            fin = min(dur, w[-1][2])        # cola suave bajo el umbral
+    elif w:
+        ini, fin = w[0][1], w[-1][2]
+        fuente = "whisper"
+    elif tr:
+        ini, fin = tr[0][0], tr[-1][1]
+    else:
         ini, fin = 0.0, dur
         fuente = "nada"
-    elif w:
-        fuente = "whisper+energía" if tr else "whisper"
-        fin_palabra = w[min(n_total, len(w)) - 1][2] if n_total else w[-1][2]
-        w0 = w[0][1]
-        if tr:
-            cand = [a for a, b in tr if a <= w0 + 0.05] or [tr[0][0]]
-            ini = cand[-1]
-            if w0 > 0.3:
-                ini = max(ini, w0 - 0.4)
-            fin = max(fin_palabra, min(max([b for a, b in tr if a < fin_palabra] or [fin_palabra]), fin_palabra + 0.3))
-        else:
-            ini, fin = w0, fin_palabra
-    else:
-        ini, fin = tr[0][0], tr[-1][1]
     v = {"ini": round(max(0.0, ini), 2), "fin": round(min(dur, fin), 2), "dur": round(dur, 3), "tramos": tr,
-         "palabras": [(p, round(a, 2), round(b, 2)) for p, a, b in w], "fuente": fuente, "dialogo": dialogo or ""}
+         "palabras": [(p, round(a, 2), round(b, 2)) for p, a, b in w], "fuente": fuente, "dialogo": dialogo or "",
+         "version": VERSION}
     if cache:
         try:
             guardado.write_text(json.dumps(v, ensure_ascii=False), encoding="utf-8")
@@ -196,6 +205,11 @@ def lineas_en_tiempo(v: dict, dialogo: str) -> list[tuple[float, float, str]]:
     if not lineas:
         return []
     w = v.get("palabras") or []
+    if w and w[0][1] < v["ini"]:
+        # Whisper adelanta los tiempos cuando el clip empieza en silencio: se
+        # corren todas sus palabras para que la primera caiga donde empieza la voz.
+        d = v["ini"] - w[0][1]
+        w = [(p, min(v["fin"], a + d), min(v["fin"], b + d)) for p, a, b in w]
     out, k = [], 0
     if w:
         for l in lineas:
