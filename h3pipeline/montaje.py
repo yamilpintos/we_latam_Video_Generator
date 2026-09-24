@@ -11,6 +11,7 @@ Dos detalles que costaron:
 from __future__ import annotations
 
 import shutil
+import os
 import subprocess
 import tempfile
 from pathlib import Path
@@ -91,7 +92,15 @@ def faltantes(planos: list[dict], carpeta: Path) -> list[str]:
                    if buscar_clip(carpeta, clip_fuente(p)) is None})
 
 
-AIRE_ANTES, AIRE_DESPUES = 0.35, 0.40     # s alrededor de la voz medida
+# Aire alrededor de la voz medida. NO es cosmético: es el 19 % de un largo
+# actuado. Medido en «LA SANGRE ENCUENTRA EL CAMINO» (22/9): H3 habla a 152
+# palabras/min, igual que los canales de referencia (151), pero el video
+# terminado daba 123 porque sólo el 81 % era voz. Los 47 s restantes eran estos
+# bordes, 0,75 s por clip × 70 clips. Con 0,15/0,20 el mismo video da ~139.
+# Bajarlo más empieza a comerse el ataque de las consonantes suaves, porque la
+# voz se mide por energía y un arranque flojo se detecta tarde.
+AIRE_ANTES = float(os.environ.get("MONTAJE_AIRE_ANTES", "0.15"))
+AIRE_DESPUES = float(os.environ.get("MONTAJE_AIRE_DESPUES", "0.20"))
 
 # SINCRONÍA (22/9): H3 entrega cada clip con la voz ya en sincronía con la boca
 # (medido: 0 ms en los clips crudos). Imagen y sonido de cada clip se cortan

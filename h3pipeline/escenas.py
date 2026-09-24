@@ -49,6 +49,15 @@ MAX_PALABRAS = 14                       # una línea más larga no entra hablada
 SEG_POR_LINEA_MONTADA = 3.56
 TAMANOS = ("PGE", "PG", "PA", "PM", "PP", "PD")
 
+# Lo que se le pega al `ve` de la toma 2 en adelante de una escena, junto con el
+# dibujo de la toma anterior como referencia. Es el mismo texto que usa el modo
+# de tomas de 15 s (`app/series.py`), que ya lo tenía resuelto.
+CONTINUIDAD = (" CONTINUITY WITH THE PREVIOUS TAKE: one of the reference images is the first frame of the "
+               "previous take of this same scene. Keep the SAME place, the same objects in the same places, "
+               "the same light, the same time of day and the same weather, and the characters wearing exactly "
+               "the same; only the camera distance or angle changes, and the action continues a few seconds "
+               "later. Do not move the sun, do not add or remove anything from the background.")
+
 
 @dataclass
 class Linea:
@@ -233,6 +242,7 @@ def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imag
             loc = next(iter(locaciones), None)
 
         mueves = {str(c.get("id")): c for c in r["clips"] if isinstance(c, dict)}
+        cabeza_anterior = None          # la cabeza de la toma anterior de ESTA escena
         for j, (t, grupo) in enumerate(zip(e.tomas, ids)):
             tv = r["tomas"][j] if isinstance(r["tomas"][j], dict) else {}
             tipo = str(tv.get("tipo") or "PM").upper()
@@ -254,9 +264,21 @@ def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imag
                     # El mismo dibujo que la cabeza de la toma: ni storyboard ni
                     # generación aparte. Es lo que baja 79 dibujos a ~19.
                     p["dibujo"] = f"sb_{cabeza}.png"
+                elif cabeza_anterior:
+                    # CONTINUIDAD ENTRE TOMAS (22/9). Medido en «LA SANGRE
+                    # ENCUENTRA EL CAMINO»: los cortes que comparten dibujo dan
+                    # un salto visual de 8, y los que estrenan dibujo, de 42 —
+                    # el sol se corría de lugar y el alambrado cambiaba dentro
+                    # de la misma escena. Pasa: cada toma se dibujaba sola desde
+                    # la locación, sin mirar la anterior. Ahora la toma k recibe
+                    # el dibujo de la k-1 como referencia y la cláusula que le
+                    # dice que es el mismo lugar unos segundos después.
+                    p["refs"] = [f"sb_{cabeza_anterior}"] + p["refs"]
+                    p["ve"] = p["ve"].rstrip() + CONTINUIDAD
                 if j == 0:
                     p["interrupcion"] = True        # arranca escena: lugar y luz nuevos
                 planos.append(p)
+            cabeza_anterior = cabeza
         log(f"  escena {i + 1}/{len(escenas)}: {len(e.tomas)} dibujo(s), {e.clips} clips · loc {loc}")
 
     usados = {q for p in planos for q in p["personajes"]}
