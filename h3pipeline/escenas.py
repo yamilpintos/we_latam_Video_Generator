@@ -49,6 +49,18 @@ MAX_PALABRAS = 14                       # una línea más larga no entra hablada
 SEG_POR_LINEA_MONTADA = 3.56
 TAMANOS = ("PGE", "PG", "PA", "PM", "PP", "PD")
 
+# EL RITMO DEL HABLA SE PIDE, Y H3 OBEDECE. La guía oficial
+# (docs/VIDEO_PROMPT_WRITING_GUIDE_base_en.md §4.4) lista «speaking rate» entre
+# lo que hay que declarar de cada hablante, y sus ejemplos lo escriben así:
+# «says in a casual young male voice with a playful tone and an easy
+# conversational pace».
+#
+# En «LA SANGRE ENCUENTRA EL CAMINO» (22/9) este campo iba VACÍO, así que el
+# reescritor se inventó una descripción y eligió «measured pace» —pausado— en
+# los 70 clips. Por eso las voces salieron lentas: se lo pedimos nosotros.
+# Medido: 152 palabras/min con «measured».
+RITMO_VOZ = "a brisk, natural conversational pace"
+
 # Lo que se le pega al `ve` de la toma 2 en adelante de una escena, junto con el
 # dibujo de la toma anterior como referencia. Es el mismo texto que usa el modo
 # de tomas de 15 s (`app/series.py`), que ya lo tenía resuelto.
@@ -187,7 +199,7 @@ def _pedido(e: Escena, ids: list[list[str]], reparto: dict, locaciones: dict,
 
 def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imagen: str = "",
                      estilo_video: str = "", cierre_video: str = "", medio: str = "",
-                     notas: str = "", por_dibujo: int | None = None,
+                     notas: str = "", ritmo_voz: str = RITMO_VOZ, por_dibujo: int | None = None,
                      por_dibujo_por_escena: dict[int, int] | None = None,
                      locaciones: dict | None = None, clave: str | None = None,
                      log=print) -> dict:
@@ -259,7 +271,8 @@ def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imag
                      "ve": str(tv.get("ve") or "").strip(),
                      "mueve": str(c.get("mueve") or "").strip(),
                      "audio": str(c.get("audio") or "").strip(),
-                     "dialogo": l.texto, "habla": l.quien, "off": False}
+                     "dialogo": l.texto, "habla": l.quien, "off": False,
+                     "voz_desc": ", ".join(x for x in ((reparto.get("voces") or {}).get(l.quien), ritmo_voz) if x)}
                 if pid_ != cabeza:
                     # El mismo dibujo que la cabeza de la toma: ni storyboard ni
                     # generación aparte. Es lo que baja 79 dibujos a ~19.
