@@ -121,9 +121,15 @@ def adoptar(cada: float = 60.0) -> dict | None:
         return None
     _adopcion["t"] = ahora
     try:
+        # Sólo se adopta lo que PODRÍA ser nuestro. H3 corre en 4×5090 de 32 GB;
+        # una máquina de una sola placa es de otra cosa. El 24/9 había un
+        # 1×RTX 4090 etiquetado «dubai-motor» (el motor de doblaje) y esta
+        # función lo habría tomado como la máquina de la fábrica: la app lo
+        # habría mostrado como propio y, al terminar una cola, lo destruía.
         vivas = [i for i in vast._pedir("/instances/").get("instances", [])
                  if i.get("actual_status") in ("running", "loading", "created")
-                 and not str(i.get("label") or "").startswith(ETIQUETA_REMASTER)]
+                 and not str(i.get("label") or "").startswith(ETIQUETA_REMASTER)
+                 and int(i.get("num_gpus") or 0) >= 2]
     except Exception:
         return None
     if not vivas:

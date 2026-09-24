@@ -646,7 +646,16 @@ def destruir(instancia_id: int, *, confirmar: bool = False, clave: str | None = 
     if not confirmar:
         raise ErrorVast(f"destruir() no hace nada sin confirmar=True. "
                         f"La instancia {instancia_id} y todo su disco se pierden.")
-    return _pedir(f"/instances/{instancia_id}/", clave, metodo="DELETE", cuerpo={})
+    try:
+        return _pedir(f"/instances/{instancia_id}/", clave, metodo="DELETE", cuerpo={})
+    except ErrorVast as e:
+        # Destruir algo que ya no está ES el resultado buscado. Vast contesta 404
+        # `no_such_instance`, y hasta el 24/9 eso reventaba la corrida entera: la
+        # cola arrancó, quiso limpiar la instancia de la corrida anterior (que el
+        # usuario ya había destruido) y murió antes de alquilar nada.
+        if "404" in str(e) or "no_such_instance" in str(e) or "no existe" in str(e):
+            return {"success": True, "ya_no_existia": True}
+        raise
 
 
 def ssh_de(inst: dict) -> str:
