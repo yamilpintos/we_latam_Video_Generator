@@ -309,7 +309,10 @@ def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None 
         "- \"descripcion_es\": la misma, en castellano, para mostrarla.\n"
         "- \"voz\": cómo suena si habla (una frase en inglés: edad, timbre, ritmo, acento).\n"
         "- \"genero\": \"m\" si la voz que le corresponde es masculina, \"f\" si es femenina (también para animales, robots o "
-        "criaturas: decidí por cómo debería sonar).",
+        "criaturas: decidí por cómo debería sonar).\n"
+        "- \"edad\": \"joven\" (hasta 30), \"adulto\" (30 a 55) o \"mayor\" (más de 55), por cómo TIENE QUE SONAR la voz. "
+        "El banco tiene voces de las tres franjas y sin esto elige sólo por género: el 24/9 un hacendado de 45 al que el "
+        "pueblo le teme quedó con voz de pibe de 20.",
         "Sos director de arte de una serie. Respondés sólo JSON.", log=log)
     ref = None
     if b64:
@@ -326,12 +329,25 @@ def agregar_personaje(slug: str, nombre: str, descripcion: str, b64: str | None 
     s["personajes"][pid] = {"nombre": nombre.strip(), "pedido": descripcion.strip(),
                             "descripcion": str(r.get("descripcion", "")).strip(), "descripcion_es": str(r.get("descripcion_es", "")).strip(),
                             "voz": str(r.get("voz", "")).strip(), "imagen_ref": ref, "hoja": None, "aprobada": False, "creado": time.time(),
-                            "genero": (str(r.get("genero", "")).strip().lower()[:1] or "n"), "voz_id": None}
+                            "genero": (str(r.get("genero", "")).strip().lower()[:1] or "n"),
+                            "edad": (str(r.get("edad", "")).strip().lower() or None), "voz_id": None}
     # La voz del banco (21/9): al azar según el género, distinta de las que ya
     # usan los otros personajes de la serie, y fija para toda la serie.
     s["personajes"][pid]["voz_id"] = voces.elegir(s["personajes"][pid]["genero"],
-                                                  evitar=[q.get("voz_id") for q in s["personajes"].values() if q.get("voz_id")])
+                                                  evitar=[q.get("voz_id") for q in s["personajes"].values() if q.get("voz_id")],
+                                                  edad=s["personajes"][pid].get("edad"))
     return guardar(s)
+
+
+def _edad_de(descripcion: str) -> str | None:
+    """La franja de edad leída de la descripción en inglés («a 45-year-old…»,
+    «Elisa, 32, …»), para los personajes creados antes de que se pidiera."""
+    m = (re.search(r"(\d{1,2})[\s-]*year[\s-]*old", descripcion, re.I)
+         or re.search(r",\s*(\d{1,2})\s*,", descripcion))
+    if not m:
+        return None
+    n = int(m.group(1))
+    return "joven" if n <= 30 else ("adulto" if n <= 55 else "mayor")
 
 
 def asignar_voces_faltantes(s: dict) -> list[str]:
@@ -341,7 +357,8 @@ def asignar_voces_faltantes(s: dict) -> list[str]:
     for pid, p in s["personajes"].items():
         if p.get("voz_id") and voces.ver(p["voz_id"]):
             continue
-        vid = voces.elegir(p.get("genero") or "n", evitar=[q.get("voz_id") for q in s["personajes"].values() if q.get("voz_id")])
+        vid = voces.elegir(p.get("genero") or "n", edad=p.get("edad") or _edad_de(p.get("descripcion") or ""),
+                           evitar=[q.get("voz_id") for q in s["personajes"].values() if q.get("voz_id")])
         if vid:
             p["voz_id"] = vid
             nuevos.append(f"{p['nombre']} → {vid}")
