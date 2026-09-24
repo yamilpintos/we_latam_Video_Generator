@@ -127,9 +127,21 @@ def ajustar_usa_por_voz(planos: list[dict], carpeta: Path, idioma: str = "es", l
     los subtítulos por línea. Devuelve cuántos `usa` cambiaron."""
     from . import voz_clip
     n = 0
+    # UNA CADENA ES UNA SOLA TOMA, Y NO SE LE TOCAN LAS JUNTURAS (24/9, pedido
+    # del usuario: «no cortes nada, el silencio es parte de la toma»). El clip
+    # encadenado nace del ÚLTIMO CUADRO del anterior: si al anterior le cortamos
+    # la cola, el siguiente arranca en un cuadro que nadie vio y la juntura
+    # salta. Es lo que arruinó CONTRAMANO (1,29 s perdidos entre S05 y S06).
+    #
+    #   cabeza de cadena → se recorta el ARRANQUE, la cola queda entera
+    #   eslabón del medio → no se toca nada
+    #   último de cadena → se recorta la COLA, el arranque queda entero
+    con_cola_atada = {p.get("sigue_de") for p in planos if p.get("sigue_de")}
     for p in planos:
         if not p.get("dialogo") or p.get("clip_de"):
             continue
+        ata_cola = p["id"] in con_cola_atada       # otro clip nace de su último cuadro
+        ata_inicio = bool(p.get("sigue_de"))       # nace del último cuadro de otro
         clip = buscar_clip(carpeta, clip_fuente(p))
         if not clip:
             continue
@@ -146,8 +158,12 @@ def ajustar_usa_por_voz(planos: list[dict], carpeta: Path, idioma: str = "es", l
         if seg >= 10 or p.get("usa_manual"):
             log(f"  {p['id']}: voz {v['ini']:.2f}-{v['fin']:.2f} s ({v['fuente']}); toma entera, sin recorte")
             continue
-        ini = max(0.0, v["ini"] - AIRE_ANTES)
-        fin = min(seg, v["fin"] + AIRE_DESPUES)
+        if ata_inicio and ata_cola:
+            log(f"  {p['id']}: eslabón del medio de una toma continua; se usa entero")
+            p["usa"] = [0.0, _cuadro(seg)]
+            continue
+        ini = 0.0 if ata_inicio else max(0.0, v["ini"] - AIRE_ANTES)
+        fin = _cuadro(seg) if ata_cola else min(seg, v["fin"] + AIRE_DESPUES)
         if fin - ini < MIN_TRAMO_HABLADO:
             falta = MIN_TRAMO_HABLADO - (fin - ini)
             fin = min(seg, fin + falta)

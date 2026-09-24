@@ -7,20 +7,24 @@ del personaje. A los 79 dibujos el protagonista tenía cuatro caras. Los videos
 de referencia cambian de imagen **cada 44 segundos** y su protagonista es el
 mismo señor durante 5:46.
 
-La solución NO es encadenar (`sigue_de`). Encadenar tiene dos techos medidos:
-máximo 3 eslabones —al cuarto la identidad se degrada, REGLAS §38— y máximo
-5,9 s por eslabón en 32 GB. Encima el montaje corta la cola del clip anterior
-y rompe la juntura (1,29 s perdidos en CONTRAMANO).
+La solución tiene dos capas:
 
-La solución es `dibujo`: **varios planos arrancan del MISMO dibujo**. Cada clip
-está a UNA generación del dibujo, igual que un plano suelto, así que no hay
-degradación por más clips que cuelguen de él; se generan todos en paralelo, y
-una falla no arrastra a nadie. El precio es que cada clip vuelve a la pose
-inicial: por eso la escena se escribe con la cámara quieta y los personajes
-parados, que es exactamente como están compuestos los videos de referencia.
+1 · `dibujo` — varios clips arrancan del MISMO dibujo, así la cara no se vuelve
+    a tirar a los dados. Cada clip está a UNA generación del dibujo.
+2 · `sigue_de` — dentro de una toma, cada clip arranca en el ÚLTIMO CUADRO del
+    anterior, así que el cuerpo queda donde estaba y no hay corte: es una toma
+    continua de verdad. Tope de 3 eslabones (REGLAS §38) y 5,9 s cada uno.
 
-    escena = un lugar, un encuadre, varios clips de 5,17 s
-    toma   = el grupo de clips que comparten UN dibujo
+La capa 2 es lo que pidió el usuario el 24/9 («no cortes nada, el silencio es
+parte de la toma»). Su precio es que el montaje NO puede recortarle los bordes
+de adentro a la cadena —ahí está la juntura, y recortarla fue lo que arruinó
+CONTRAMANO—, así que las pausas de la toma quedan y la escena dura más. El
+silencio adentro de una toma continua no molesta: es como se ve una escena
+filmada de verdad.
+
+    escena = un lugar, un encuadre
+    toma   = los clips que comparten UN dibujo
+    cadena = hasta 3 clips seguidos que son UNA toma continua (~15,5 s)
 
 La voz no se escribe por código como en `narrado`: acá cada línea del guion es
 un clip y H3 la dice en cámara (Ref2VA con la voz del banco). El guion entra
@@ -60,6 +64,16 @@ TAMANOS = ("PGE", "PG", "PA", "PM", "PP", "PD")
 # los 70 clips. Por eso las voces salieron lentas: se lo pedimos nosotros.
 # Medido: 152 palabras/min con «measured».
 RITMO_VOZ = "a brisk, natural conversational pace"
+
+# CUÁNTOS CLIPS SEGUIDOS SON UNA SOLA TOMA. Cada clip después del primero
+# arranca en el ÚLTIMO CUADRO del anterior (`sigue_de`), así que el cuerpo está
+# exactamente donde quedó y no hay corte: es una toma continua de verdad.
+# El tope es 3 y no es negociable: al cuarto eslabón la cara está a tres
+# generaciones del dibujo y ya derivó (h3pipeline/REGLAS.md §38, medido).
+# Con 3 son ~15,5 s de toma continua por dibujo.
+# `encadenar=1` vuelve al método de «LA SANGRE»: todos del mismo dibujo, con
+# corte entre clips.
+ENCADENAR = 3
 
 # Lo que se le pega al `ve` de la toma 2 en adelante de una escena, junto con el
 # dibujo de la toma anterior como referencia. Es el mismo texto que usa el modo
@@ -199,7 +213,8 @@ def _pedido(e: Escena, ids: list[list[str]], reparto: dict, locaciones: dict,
 
 def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imagen: str = "",
                      estilo_video: str = "", cierre_video: str = "", medio: str = "",
-                     notas: str = "", ritmo_voz: str = RITMO_VOZ, por_dibujo: int | None = None,
+                     notas: str = "", ritmo_voz: str = RITMO_VOZ, encadenar: int = ENCADENAR,
+                     por_dibujo: int | None = None,
                      por_dibujo_por_escena: dict[int, int] | None = None,
                      locaciones: dict | None = None, clave: str | None = None,
                      log=print) -> dict:
@@ -273,9 +288,20 @@ def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imag
                      "audio": str(c.get("audio") or "").strip(),
                      "dialogo": l.texto, "habla": l.quien, "off": False,
                      "voz_desc": ", ".join(x for x in ((reparto.get("voces") or {}).get(l.quien), ritmo_voz) if x)}
-                if pid_ != cabeza:
-                    # El mismo dibujo que la cabeza de la toma: ni storyboard ni
-                    # generación aparte. Es lo que baja 79 dibujos a ~19.
+                k_en_toma = grupo.index(pid_)
+                if pid_ != cabeza and encadenar > 1 and k_en_toma % encadenar:
+                    # TOMA CONTINUA (24/9, pedido del usuario: «no cortes nada,
+                    # el silencio es parte de la toma»). Este clip arranca en el
+                    # ÚLTIMO CUADRO del anterior, así que el cuerpo está donde
+                    # quedó y no hay corte: es una sola toma. El montaje tiene
+                    # prohibido recortarle los bordes de adentro (ver
+                    # `montaje.ajustar_usa_por_voz`), porque ahí está la juntura.
+                    # Tope de 3 por cadena: al cuarto eslabón la cara ya derivó
+                    # dos generaciones del dibujo (REGLAS §38).
+                    p["sigue_de"] = grupo[k_en_toma - 1]
+                elif pid_ != cabeza:
+                    # Arranque de cadena dentro de la misma toma: no hereda
+                    # movimiento, pero sí el dibujo, así la cara no cambia.
                     p["dibujo"] = f"sb_{cabeza}.png"
                 elif cabeza_anterior:
                     # CONTINUIDAD ENTRE TOMAS (22/9). Medido en «LA SANGRE
@@ -323,8 +349,8 @@ def revisar(d: dict) -> list[str]:
     if len(pd) > max(1, len(planos) // 20):
         avisos.append(f"{len(pd)} insertos de objeto (PD) en {len(planos)} planos: el tope es 1 cada 20")
     for a, b in zip(planos, planos[1:]):
-        if b.get("dibujo"):
-            continue        # comparten dibujo a propósito: no es un corte
+        if b.get("dibujo") or b.get("sigue_de"):
+            continue        # misma toma a propósito (mismo dibujo o encadenado): no es un corte
         if (a.get("tipo"), a.get("loc"), tuple(a.get("personajes") or [])) == \
            (b.get("tipo"), b.get("loc"), tuple(b.get("personajes") or [])):
             avisos.append(f"{a['id']}→{b['id']}: mismo tipo, misma locación y mismo reparto (es un brinco, no un corte)")
