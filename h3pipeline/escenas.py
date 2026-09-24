@@ -138,12 +138,19 @@ def parsear(texto: str, alias: dict[str, str]) -> list[Escena]:
         elif ":" in l and escenas and escenas[-1].tomas:
             rotulo, dicho = l.split(":", 1)
             rotulo, dicho = rotulo.strip(), dicho.strip()
-            if not dicho or len(rotulo.split()) > 3 or rotulo != rotulo.upper():
-                continue          # prosa, no una línea de diálogo
-            quien = alias.get(rotulo) or alias.get(rotulo.title()) or ""
-            if not quien:
+            if not dicho or len(rotulo.split()) > 3:
+                continue          # prosa larga, no una línea de diálogo
+            # El rótulo se busca en el reparto SIN mirar mayúsculas: el 24/9 el
+            # guionista escribió `elisa:` en minúscula (que es como se llama el
+            # id) y el parser, que exigía MAYÚSCULAS, tiró el guion entero.
+            quien = alias.get(rotulo.upper()) or ""
+            if quien:
+                escenas[-1].tomas[-1].lineas.append(Linea(quien, dicho))
+            elif len(rotulo.split()) == 1 and rotulo == rotulo.upper() and rotulo.isalpha():
+                # UN NOMBRE SOLO EN MAYÚSCULAS que no está en el reparto: es un
+                # personaje que nadie dibujó, no prosa. Mejor frenar que hacer
+                # un video donde alguien habla sin cara.
                 raise ErrorGuionista(f"«{rotulo}» no está en el reparto: agregalo o corregí el rótulo")
-            escenas[-1].tomas[-1].lineas.append(Linea(quien, dicho))
     return [e for e in escenas if e.clips]
 
 
