@@ -460,9 +460,18 @@ def prompt_hoja(s: dict, p: dict) -> str:
     ref = (" The character must be the SAME individual as in the reference image: same face, same features, same fur or hair, "
            "same body; keep the identity exactly. Only the clothing described here changes: dress the character exactly as "
            "described and do not keep any garment from the reference image that is not described." if p.get("imagen_ref") else "")
+    # LA CARA TIENE QUE SER GRANDE. «Shown from the knees up» lo ignoraba: el
+    # 24/9, las tres hojas de «LA PANADERÍA DE ELISA» salieron de cuerpo entero
+    # con la cara en 65 px, el 11,6 % de la altura. Esa imagen es lo único que
+    # sostiene la identidad en todo el video, y con una cara de 65 px el modelo
+    # no tiene de dónde copiar. La ropa no se pierde: va en el texto que se
+    # inyecta en TODOS los prompts.
     return (f"{base}, {'vertical' if vertical else 'horizontal'} frame, plain dark grey background, even soft lighting. "
-            f"{p['descripcion']} Shown from the knees up, neutral stance, facing camera, hands visible.{ref} "
-            f"Every detail sharp and readable: this is the reference for every other shot. "
+            f"{p['descripcion']} FRAMING: a WAIST-UP portrait, standing close to the camera, neutral stance, facing "
+            f"camera, hands visible at the bottom edge. The HEAD IS LARGE IN THE FRAME: it fills at least a third of "
+            f"the image height, from the top of the hair to the chin. Do NOT show the full body, do NOT show the legs "
+            f"or the feet, do NOT leave the figure small in the middle of the frame.{ref} "
+            f"The FACE is the point: eyes, nose, mouth, skin and hair sharp and perfectly readable at full resolution. "
             f"Style: {s['estilo']['imagen']} This is a single film frame, not a poster: no text, no borders, no titles, no watermark.")
 
 
