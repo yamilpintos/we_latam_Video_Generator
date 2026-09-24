@@ -1,0 +1,5 @@
+# El módulo `locucion` no necesita NADA fuera de la librería estándar de Python
+# (urllib) más ffmpeg y ffprobe en el PATH. Lo de abajo es sólo para la API.
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pydantic>=2.6
