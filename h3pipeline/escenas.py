@@ -75,6 +75,28 @@ RITMO_VOZ = "a brisk, natural conversational pace"
 # corte entre clips.
 ENCADENAR = 3
 
+# Las descripciones de voz que escribe el director de arte al crear el
+# personaje traen su propio ritmo, y casi siempre es lento: «calm measured
+# rhythm», «slow thoughtful rhythm», «measured and economical speech». Si se
+# pega `RITMO_VOZ` detrás, el prompt se contradice y gana lo primero. Estas
+# palabras marcan el pedazo de la descripción que habla del ritmo, para sacarlo
+# antes de poner el que queremos.
+# Sólo los SUSTANTIVOS del ritmo: son los que fijan la velocidad. Un adjetivo
+# lento pegado a otra cosa («slightly drawn-out vowels», «unhurried consonants»)
+# describe el acento, y sacar esa cláusula entera le borraba el acento
+# rioplatense al personaje; ésos los pisa el ritmo explícito del final.
+RITMO_PALABRAS = ("rhythm", "pace", "tempo", "cadence", "delivery", "speech",
+                  "speaking rate", "diction")
+
+
+def voz_con_ritmo(descripcion: str, ritmo: str) -> str:
+    """La descripción de voz del personaje SIN sus cláusulas de ritmo, más el
+    ritmo que queremos. Lo que define quién es —edad, registro, timbre,
+    acento— se conserva entero."""
+    partes = [t.strip(" .") for t in re.split(r"[,;]", descripcion or "") if t.strip(" .")]
+    quedan = [t for t in partes if not any(w in t.lower() for w in RITMO_PALABRAS)]
+    return ", ".join([*quedan, ritmo]).strip(" ,.") + "."
+
 # Lo que se le pega al `ve` de la toma 2 en adelante de una escena, junto con el
 # dibujo de la toma anterior como referencia. Es el mismo texto que usa el modo
 # de tomas de 15 s (`app/series.py`), que ya lo tenía resuelto.
@@ -294,7 +316,7 @@ def traducir_escenas(guion: str, reparto: dict, *, titulo: str = "", estilo_imag
                      "mueve": str(c.get("mueve") or "").strip(),
                      "audio": str(c.get("audio") or "").strip(),
                      "dialogo": l.texto, "habla": l.quien, "off": False,
-                     "voz_desc": ", ".join(x for x in ((reparto.get("voces") or {}).get(l.quien), ritmo_voz) if x)}
+                     "voz_desc": voz_con_ritmo((reparto.get("voces") or {}).get(l.quien) or "", ritmo_voz)}
                 k_en_toma = grupo.index(pid_)
                 if pid_ != cabeza and encadenar > 1 and k_en_toma % encadenar:
                     # TOMA CONTINUA (24/9, pedido del usuario: «no cortes nada,
