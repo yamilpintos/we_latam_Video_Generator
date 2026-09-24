@@ -629,6 +629,33 @@ RE_ROTULO = re.compile(r"^\s*([A-Za-zÁÉÍÓÚÑáéíóúñ][\wÁÉÍÓÚÑá�
 MAX_LINEAS_TOMA, MAX_PALABRAS_TOMA = 4, 32
 
 
+def _problemas_escenas(guion: str, s: dict) -> list[str]:
+    """Lo que un guion por escenas tiene que cumplir para que el video dure lo
+    pedido. Se chequea por código porque GPT no cuenta: el primer guion (24/9)
+    salió con 236 líneas donde entraban 84."""
+    objetivo = max(12, int(round(float(s.get("duracion") or 300) / escenas.SEG_POR_LINEA_MONTADA)))
+    n_esc = len(re.findall(r"^\s*(?:\[ESCENA|##\s*ESCENA)", guion, re.M | re.I))
+    n_tom = len(re.findall(r"^\s*\[TOMA", guion, re.M | re.I))
+    lineas = [l for l in guion.splitlines() if RE_ROTULO.match(l)]
+    probs = []
+    if not n_esc or not n_tom or not lineas:
+        return ["el guion no tiene el formato [ESCENA k] / [TOMA k] / NOMBRE: texto"]
+    if not 0.75 * objetivo <= len(lineas) <= 1.25 * objetivo:
+        probs.append(f"tiene {len(lineas)} líneas de diálogo y el video pide {objetivo} "
+                     f"(±25 %): con {len(lineas)} dura {len(lineas) * escenas.SEG_POR_LINEA_MONTADA / 60:.0f} min "
+                     f"y no {float(s.get('duracion') or 300) / 60:.0f}")
+    por_toma = len(lineas) / n_tom
+    if not 2.5 <= por_toma <= 5.5:
+        probs.append(f"cada toma tiene {por_toma:.1f} líneas y tienen que ser de 3 a 5")
+    por_escena = n_tom / n_esc
+    if not 1.5 <= por_escena <= 3.5:
+        probs.append(f"cada escena tiene {por_escena:.1f} tomas y tienen que ser 2 o 3")
+    cortas = [l for l in lineas if len(l.split(":", 1)[1].split()) < 3]
+    if len(cortas) > len(lineas) * 0.25:
+        probs.append(f"{len(cortas)} líneas tienen menos de 3 palabras: son frases partidas, no líneas")
+    return probs
+
+
 def _lineas_largas(guion: str, tope: int) -> list[str]:
     """Las líneas «NOMBRE: texto» del guion que pasan de `tope` palabras."""
     out = []
@@ -869,12 +896,41 @@ def escribir_guion(slug: str, n: int, log=print) -> dict:
                 if probs:
                     log("  sigue sin cumplir (" + "; ".join(probs) + ") → recorto por código")
                     guion = _recortar_tomas(guion, s, nt)
+        elif s.get("toma") == "escenas":
+            # EL LARGO IMPORTA, Y GPT NO CUENTA (24/9). El primer guion por
+            # escenas salió con 236 líneas para un video de 5 minutos —14 min de
+            # video— y 7,2 líneas por toma cuando el pedido decía 3 a 5. Pedirlo
+            # en el texto no alcanza: se chequea y se pide de nuevo, diciéndole
+            # los números que sacó.
+            for intento in range(2):
+                probs = _problemas_escenas(guion, s)
+                if not probs:
+                    break
+                log("  el guion no cumple: " + "; ".join(probs) + " → le pido que lo corrija")
+                r2 = _gpt(ins + "\n\nTU VERSIÓN ANTERIOR:\n" + guion + "\n\nNO CUMPLE: " + "; ".join(probs)
+                          + ". Reescribila cumpliendo TODO: la MISMA historia y el mismo final, pero con esa "
+                            "cantidad de escenas, tomas y líneas. No partas una frase en dos renglones para "
+                            "llegar al número: cada línea es una frase entera. Devolvé el mismo JSON.",
+                          "Sos guionista de una serie de videos con IA. Respondés sólo JSON.", log=log)
+                g2 = str(r2.get("guion", "")).strip()
+                if len(g2) >= 40 and len(_problemas_escenas(g2, s)) < len(probs):
+                    guion = g2
+                    r["resumen"] = r2.get("resumen", r.get("resumen", ""))
+            probs = _problemas_escenas(guion, s)
+            if probs:
+                log("  sigue sin cumplir (" + "; ".join(probs) + "); queda así, revisalo antes de producir")
         elif s.get("modo") == "actuado" and s["formato"] != "musica":
             # Frases de cine (21/9): las líneas que pasan del tope se devuelven UNA vez
             # al modelo para que las parta; si insiste, quedan y el traductor las parte.
-            largas = _lineas_largas(guion, guionista.MAX_PALABRAS_LINEA)
+            # El tope depende del modo: en «cortes» cada línea es medio plano de
+            # 5,17 s y tiene que ser una frase de cine (7 palabras). En «escenas»
+            # la línea ocupa el clip entero y entran 14 (`escenas.MAX_PALABRAS`);
+            # con el tope de 7, el 24/9 rechazó 93 líneas de un guion que estaba
+            # bien y lo dejó picado.
+            tope_lineas = escenas.MAX_PALABRAS if s.get("toma") == "escenas" else guionista.MAX_PALABRAS_LINEA
+            largas = _lineas_largas(guion, tope_lineas)
             if largas:
-                log(f"  {len(largas)} línea(s) pasan de {guionista.MAX_PALABRAS_LINEA} palabras → le pido que las parta")
+                log(f"  {len(largas)} línea(s) pasan de {tope_lineas} palabras → le pido que las parta")
                 r2 = _gpt(ins + "\n\nTU VERSIÓN ANTERIOR:\n" + guion + "\n\nESTAS LÍNEAS PASAN DE "
                           f"{guionista.MAX_PALABRAS_LINEA} PALABRAS:\n- " + "\n- ".join(largas[:12])
                           + "\nPartí cada una en dos o tres renglones cortos del mismo personaje (misma historia, mismas palabras si se puede). Devolvé el mismo JSON.",
