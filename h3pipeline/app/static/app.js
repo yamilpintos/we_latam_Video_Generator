@@ -146,13 +146,31 @@ ruta("/", async () => {
         <p>Un capítulo o una película en definición estándar sale en 4K con FlashVSR. Analiza el origen gratis, te dice el costo y alquila una A100 aparte.</p><span class="n">otra máquina · 1× A100 80 GB</span></div>
       <div class="puerta" onclick="location.href='/remusical/'"><span class="k">VIDEO · MÚSICA NUEVA</span><h2>ReMusical</h2>
         <p>Cambia la música de un video por otra del mismo estilo, compuesta por Eleven Music, conservando la voz y el ambiente. Desde tu Drive, un video o una serie entera; el resultado vuelve a una carpeta <b>re-musical/</b>.</p><span class="n" id="rm-estado">consultando…</span></div>
+      <div class="puerta" onclick="location.href='/doblaje/'"><span class="k">VIDEO · OTRO IDIOMA</span><h2>Doblaje</h2>
+        <p>Dobla los videos de tu Drive con ElevenLabs Dubbing v2 y deja la voz y el fondo al nivel del original, separando pistas en una GPU de Vast que se alquila y se apaga sola. Costo a la vista, topes de créditos y verificación de que no quede el idioma original.</p><span class="n" id="db-estado">consultando…</span></div>
     </div>
     <div class="card" id="maq" style="margin-top:34px"><h3>La máquina</h3><div class="muted">consultando…</div></div>
     <div class="card" id="cola" style="margin-top:14px"><h3>La cola</h3><div class="muted">consultando…</div></div>
     <div class="stats"><div><b>${ps.length}</b>proyectos</div><div><b>${masters}</b>másters</div><div><b>5,17 s</b>por clip, sin excepción</div><div><b>4× 5090</b>verificada o se espera</div></div>
   </section>`;
-  pintarMaquina(); pintarCola(); pintarReMusical();
+  pintarMaquina(); pintarCola(); pintarReMusical(); pintarDoblaje();
 });
+
+/* ─────────────────────────────────────────────── Doblaje (herramienta montada en /doblaje/) */
+async function pintarDoblaje() {
+  const el = $("#db-estado"); if (!el) return;
+  try {
+    const d = await api("/doblaje");
+    if (!d.montada) { el.textContent = "sin arrancar: faltan dependencias"; el.style.color = "var(--bad)"; return; }
+    const partes = [d.google_configurado ? "Drive conectable" : "Drive sin configurar (Google OAuth)",
+                    d.eleven ? "ElevenLabs OK" : "falta ELEVENLABS_API_KEY",
+                    d.gpu ? `GPU de Vast ${d.gpu_modo} (${d.gpu_fase})` : (d.pistas ? "pistas en CPU" : "sin GPU: nivel por mezcla"),
+                    d.pausa ? "GASTO PAUSADO" : null,
+                    d.activos ? `${d.activos} en curso` : null].filter(Boolean);
+    el.textContent = partes.join(" · ");
+    if (d.pausa) el.style.color = "var(--bad)";
+  } catch { el.textContent = "sin respuesta"; }
+}
 
 /* ─────────────────────────────────────────────── ReMusical (herramienta montada en /remusical/) */
 async function pintarReMusical() {
