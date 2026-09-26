@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voces, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import cola, editar, libre, maquina, remaster, remusical_mount, series, tareas
+from . import cola, doblaje_mount, editar, libre, maquina, remaster, remusical_mount, series, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -39,6 +39,13 @@ if REMUSICAL is not None:
     app.mount("/remusical", REMUSICAL, name="remusical")
 else:
     print(f"!! ReMusical no se pudo montar: {REMUSICAL_ERROR.splitlines()[0]}")
+
+# Doblaje: la herramienta entera (herramientas/doblaje) montada en /doblaje/.
+DOBLAJE, DOBLAJE_ERROR = doblaje_mount.cargar()
+if DOBLAJE is not None:
+    app.mount("/doblaje", DOBLAJE, name="doblaje")
+else:
+    print(f"!! Doblaje no se pudo montar: {DOBLAJE_ERROR.splitlines()[0]}")
 
 
 # ─────────────────────────────────────────────────────────────── acceso
@@ -287,6 +294,23 @@ def mesa():
 def remusical_estado():
     """Qué ve la puerta de ReMusical en la portada: montada o no, y qué le falta."""
     return remusical_mount.estado(REMUSICAL_ERROR)
+
+
+@app.get("/api/doblaje")
+def doblaje_estado():
+    """Qué ve la puerta de Doblaje en la portada: montada o no, y qué le falta."""
+    return doblaje_mount.estado(DOBLAJE_ERROR)
+
+
+if DOBLAJE is None:
+    @app.get("/doblaje/", response_class=HTMLResponse)
+    @app.get("/doblaje", response_class=HTMLResponse)
+    def doblaje_caido():
+        return f"""<!doctype html><meta charset="utf-8"><title>Doblaje</title>
+<body style="font-family:system-ui;max-width:720px;margin:60px auto;padding:0 20px;color:#eee;background:#111">
+<h1>Doblaje no arrancó</h1><p>La herramienta está en <code>herramientas/doblaje/</code> pero no se pudo importar.
+Instalá sus dependencias y reiniciá La Fábrica:</p><pre style="background:#000;padding:12px;border-radius:8px">pip install -r herramientas/doblaje/requirements.txt</pre>
+<pre style="white-space:pre-wrap;color:#f88">{DOBLAJE_ERROR}</pre><p><a href="/" style="color:#9cf">← La Fábrica</a></p>"""
 
 
 if REMUSICAL is None:

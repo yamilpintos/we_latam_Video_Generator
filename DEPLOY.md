@@ -21,6 +21,8 @@ en cada deploy.
 | `nanobanana` | clave de Gemini para nano banana; opcional (hoy sin créditos; OpenAI es el default) | no |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | ReMusical: el cliente OAuth «Aplicación web» de Google Cloud para leer y escribir el Drive del usuario. Redirección a registrar: `https://<servicio>.onrender.com/remusical/auth/callback` (local: `http://127.0.0.1:8787/remusical/auth/callback`) | sólo para ReMusical |
 | `VAST_API_KEY`, `GOOGLE_SA_JSON_B64`, `S3_ENDPOINT` / `S3_KEY` / `S3_SECRET` / `S3_BUCKET` | ReMusical, pestaña Tandas (una serie entera a una GPU de Vast; resultados a un bucket R2). Detalle en `herramientas/remusical/.env.example` | sólo para Tandas |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Doblaje: el mismo cliente OAuth que ReMusical. Redirección a registrar además: `https://<servicio>.onrender.com/doblaje/auth/callback` (local: `http://127.0.0.1:8787/doblaje/auth/callback`) | sólo para Doblaje |
+| `DOBLAJE_GPU`, `DOBLAJE_GPU_USD_TOPE_DIA`, `DOBLAJE_MAX_CR_POR_TRABAJO`, `DOBLAJE_MAX_CR_POR_DIA`, `DOBLAJE_RESERVA_CR` | Doblaje: la GPU de Vast (`auto` alquila sola para separar por pistas y se apaga sola; `manual`; `off`) y los topes de créditos de ElevenLabs. Usa `VAST_API_KEY` y `VAST_SSH_PRIVATE_KEY` de arriba. Todas opcionales; defaults y el resto en `herramientas/doblaje/.env.example` | no |
 | `FABRICA_HOST` | `0.0.0.0` en un servidor (el Dockerfile ya lo pone) | ya está |
 | `PORT` | lo pone Render | ya está |
 

@@ -105,5 +105,9 @@ mis-videos/casting-voces/
 #    los clips de la DEMO (8,5 MB, datos reales de una corrida) viajan con el código
 herramientas/remusical/_trabajo/
 herramientas/remusical/.env
+# ── Doblaje (herramientas/doblaje): su trabajo (en Render, mis-videos/_doblaje) y su .env quedan afuera
+herramientas/doblaje/_trabajo/
+herramientas/doblaje/.env
+mis-videos/_doblaje/
 !herramientas/remusical/remusical/static/demo/*.mp4
 !herramientas/remusical/remusical/static/demo/*.jpg

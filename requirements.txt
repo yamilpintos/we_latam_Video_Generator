@@ -12,3 +12,8 @@ google-auth
 google-auth-oauthlib
 requests
 boto3
+
+# Doblaje (herramientas/doblaje): la web sobre Drive + ElevenLabs Dubbing v2; ssh/SFTP a la GPU de Vast
+# por paramiko (se alquila e instala sola); numpy para la verificación acústica y la mezcla por pistas.
+paramiko
+numpy

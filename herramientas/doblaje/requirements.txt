@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+google-api-python-client
+google-auth
+google-auth-oauthlib
+# verificación acústica (opcional: sin esto dobla igual, pero no verifica)
+numpy
+# ssh a la GPU de vast.ai (gpu_vast.py); Render no trae el cliente ssh
+paramiko
