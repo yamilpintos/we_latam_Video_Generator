@@ -1,0 +1,8 @@
+_trabajo/
+.env
+*.wav
+*.flac
+*.mp4
+*.mov
+__pycache__/
+*.pyc

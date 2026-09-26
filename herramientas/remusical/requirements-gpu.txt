@@ -1,0 +1,13 @@
+# La imagen Docker (GPU): todo en un Python 3.11.
+torch
+torchaudio
+transformers
+librosa
+soundfile
+scipy
+numpy
+audio-separator[gpu]
+requests
+boto3
+google-api-python-client
+google-auth

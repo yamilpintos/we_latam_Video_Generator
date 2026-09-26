@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReMusical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F3F4F6; --panel:#FFFFFF; --ink:#151A21; --ink2:#4A5563; --mute:#7C8794;
+  --line:#E2E6EB; --line2:#CBD2DA; --accent:#E4572E; --accent2:#C4451F; --accent-soft:#FDE9E2;
+  --ok:#1E8E5A; --ok-soft:#E3F5EC; --warn:#B7791F; --warn-soft:#FBF1DC; --bad:#B3261E; --bad-soft:#F9E3E1;
+  --sel:#2F6FED; --sel-soft:#E6EEFD; --surface-2:#F6F7F9;
+  --r:12px; --shadow:0 1px 2px rgba(20,26,33,.06),0 8px 24px -12px rgba(20,26,33,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,"Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:Sora,Manrope,sans-serif;margin:0;letter-spacing:-.01em}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px}
+button:focus-visible,a:focus-visible,.card:focus-visible{outline:3px solid var(--sel);outline-offset:2px}
+.top{background:var(--ink);color:#fff;padding:0 28px;height:64px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:12px;font-family:Sora;font-weight:700;font-size:1.25rem;color:#fff;text-decoration:none}
+.logo svg{width:34px;height:34px}
+.top .sp{flex:1}
+.top .lnk{color:#fff;opacity:.8;text-decoration:none;font-weight:600;font-size:.9rem;padding:8px 12px;border-radius:8px}
+.top .lnk:hover{opacity:1;background:rgba(255,255,255,.1)}
+.chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px 6px 8px;font-size:.88rem}
+.chip .av{width:24px;height:24px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:700;font-size:.75rem}
+.chip button{background:transparent;color:#fff;opacity:.7;padding:2px 4px}
+.chip button:hover{opacity:1}
+main{max-width:1280px;margin:0 auto;padding:28px;display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+main.uno{grid-template-columns:1fr}
+@media(max-width:980px){main{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.panel h2{font-size:1.05rem;font-weight:600;padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.panel h2 .n{margin-left:auto;font-family:Manrope;font-weight:600;font-size:.8rem;color:var(--mute)}
+.body{padding:20px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;font-weight:700;border-radius:10px;transition:transform .08s,background .15s;text-decoration:none}
+.btn:active{transform:translateY(1px)}
+.btn.g{background:#fff;color:var(--ink);border:1px solid var(--line2);box-shadow:var(--shadow)}
+.btn.g:hover{background:#F8F9FB}
+.btn.p{background:var(--accent);color:#fff;justify-content:center;padding:14px 22px;font-size:1rem}
+.btn.p:hover{background:var(--accent2)}
+.btn.p:disabled{background:#D9DDE3;color:#8A93A0;cursor:not-allowed}
+.btn.w{width:100%}
+/* ---- landing ---- */
+.landing{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;align-items:stretch}
+@media(max-width:900px){.landing{grid-template-columns:1fr}}
+.hero-demo{position:relative;overflow:hidden;border-radius:var(--r);background:#14191F;color:#fff;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;box-shadow:var(--shadow)}
+.hero-demo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero-demo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,25,31,.1) 20%,rgba(20,25,31,.92) 100%)}
+.hero-demo > *{position:relative;z-index:1}
+.hero-demo .eyebrow{font-family:Sora;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#F4B4A0;font-weight:600;margin-bottom:8px}
+.hero-demo h1{font-size:1.9rem;font-weight:700;margin-bottom:8px}
+.hero-demo p{color:#D6DBE1;max-width:48ch;margin:0 0 18px}
+.hero-demo .meta{display:flex;gap:14px;font-size:.82rem;color:#B9C1CA;margin-bottom:16px}
+.side-card{display:flex;flex-direction:column;gap:14px;padding:26px}
+.side-card h2{padding:0;border:0;font-size:1.25rem}
+.side-card p{color:var(--ink2);margin:0}
+.side-card ol{padding-left:20px;color:var(--ink2);margin:0;font-size:.9rem}
+.side-card li{margin:6px 0}
+.side-card code{background:#F0F2F5;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.85em}
+details summary{cursor:pointer;font-weight:600;color:var(--sel)}
+/* ---- migas + grillas ---- */
+.migas{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:12px 20px;border-bottom:1px solid var(--line);font-size:.92rem}
+.migas button{background:transparent;color:var(--sel);padding:4px 6px;font-weight:600}
+.migas button:hover{background:var(--sel-soft)}
+.migas .cur{font-weight:700;padding:4px 6px}
+.migas .sep{color:var(--mute)}
+.migas .atajos{margin-left:auto;display:flex;gap:6px}
+.migas .atajos button{color:var(--ink2);border:1px solid var(--line);font-weight:600;font-size:.82rem}
+.sec{font-family:Sora;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:4px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+.grid.v{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:0;text-align:left;cursor:pointer;transition:border-color .12s,box-shadow .12s,transform .08s;overflow:hidden;position:relative}
+.card:hover{border-color:var(--line2);box-shadow:var(--shadow);transform:translateY(-1px)}
+.card.f{display:flex;align-items:center;gap:10px;padding:12px}
+.card.f svg{flex:none;width:28px;height:28px;color:#F4B740}
+.card.f .nm{font-weight:600;font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card.v .th{aspect-ratio:16/9;background:#1D232B;display:grid;place-items:center;overflow:hidden}
+.card.v .th img{width:100%;height:100%;object-fit:cover}
+.card.v .th svg{width:36px;height:36px;color:#5B6572}
+.card.v .meta{padding:10px 12px}
+.card.v .nm{font-weight:600;font-size:.88rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card.v .dur{color:var(--mute);font-size:.8rem;margin-top:4px;font-variant-numeric:tabular-nums}
+.card.v .tick{position:absolute;top:8px;left:8px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.92);border:2px solid #fff;display:grid;place-items:center;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.card.v .tick svg{width:14px;height:14px;opacity:0}
+.card.v.on{border-color:var(--sel);box-shadow:0 0 0 3px var(--sel-soft)}
+.card.v.on .tick{background:var(--sel);border-color:#fff}
+.card.v.on .tick svg{opacity:1;color:#fff}
+.empty{color:var(--mute);padding:28px;text-align:center}
+.spin{display:inline-block;width:18px;height:18px;border:2.5px solid var(--line2);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* ---- lateral ---- */
+.side{position:sticky;top:88px;display:flex;flex-direction:column;gap:20px}
+.sel-list{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow:auto;margin-bottom:14px}
+.sel-list div{display:flex;align-items:center;gap:8px;font-size:.86rem;background:var(--sel-soft);border-radius:8px;padding:6px 10px}
+.sel-list div span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sel-list button{background:transparent;color:var(--ink2);padding:0 4px;font-size:1rem}
+.opt{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--ink2);margin:6px 0 16px}
+.opt input{margin-top:3px}
+.hint{font-size:.8rem;color:var(--mute);margin-top:10px;line-height:1.45}
+/* ---- trabajos ---- */
+.jobs{display:flex;flex-direction:column}
+.job{padding:14px 20px;border-bottom:1px solid var(--line)}
+.job:last-child{border-bottom:0}
+.job .h{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.job .nm{font-weight:600;font-size:.88rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st{font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.st.cola{background:#EEF0F3;color:var(--ink2)}.st.proc{background:var(--sel-soft);color:var(--sel)}
+.st.listo{background:var(--ok-soft);color:var(--ok)}.st.revisar{background:var(--warn-soft);color:var(--warn)}
+.st.error,.st.interrumpido{background:var(--bad-soft);color:var(--bad)}.st.sin_musica{background:#EEF0F3;color:var(--mute)}
+.bar{height:6px;background:#EDEFF2;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .6s}
+.job.listo .bar i{background:var(--ok)}
+.job .et{font-size:.8rem;color:var(--ink2);margin-top:6px;display:flex;justify-content:space-between}
+.job .lg{font-family:ui-monospace,Consolas,monospace;font-size:.72rem;color:var(--mute);margin-top:6px;white-space:pre-wrap;max-height:64px;overflow:hidden}
+.job a{color:var(--sel);font-weight:600;font-size:.82rem;text-decoration:none}
+.job a:hover{text-decoration:underline}
+.job .g{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.job .g span{font-size:.7rem;padding:2px 7px;border-radius:6px;background:var(--ok-soft);color:var(--ok)}
+.job .g span.x{background:var(--bad-soft);color:var(--bad)}
+.gasto{display:flex;align-items:center;gap:10px;padding:10px 20px;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--ink2);background:var(--surface-2)}
+.gasto b{font-variant-numeric:tabular-nums}
+.gasto .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+.gasto.on .dot{background:var(--accent);animation:pulso 1.2s infinite}
+@keyframes pulso{50%{opacity:.35}}
+.gasto button{margin-left:auto;background:var(--bad-soft);color:var(--bad);font-weight:700;font-size:.78rem;padding:6px 10px}
+.job .cancel{background:transparent;color:var(--bad);font-weight:700;font-size:.8rem;padding:2px 6px;margin-left:8px}
+/* ---- tandas ---- */
+.nav{display:flex;gap:4px;background:rgba(255,255,255,.08);border-radius:9px;padding:3px}
+.nav button{background:transparent;color:#fff;opacity:.65;font-weight:600;font-size:.86rem;padding:7px 14px;border-radius:7px}
+.nav button.on{background:rgba(255,255,255,.16);opacity:1}
+.falta{display:flex;flex-direction:column;gap:10px;padding:18px 20px;background:var(--warn-soft);border:1px solid #EED9AE;border-radius:10px;margin-bottom:18px}
+.falta h3{font-family:Sora;font-size:.98rem;margin:0}
+.falta ul{margin:0;padding-left:18px;color:var(--ink2);font-size:.88rem}
+.falta li{margin:4px 0}
+.falta code{background:#fff;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.85em}
+.falta .ok{color:var(--ok)}
+.eps{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;max-height:340px;overflow-y:auto}
+.ep{display:flex;align-items:center;gap:12px;background:#fff;padding:10px 14px;cursor:pointer}
+.ep:hover{background:var(--surface-2)}
+.ep input{width:17px;height:17px;flex:none;accent-color:var(--sel)}
+.ep .nm{flex:1;font-size:.9rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ep .meta{font-size:.8rem;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.est{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:14px 0}
+.est div{background:#fff;padding:12px 14px}
+.est .k{font-family:Sora;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.est .v{font-family:Sora;font-size:1.25rem;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+.est .v small{font-size:.72rem;color:var(--mute);font-weight:500}
+.est div.ac .v{color:var(--accent2)}
+.cfg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.cfg label{display:flex;flex-direction:column;gap:5px;font-size:.8rem;color:var(--ink2);font-weight:600}
+.cfg input,.cfg select{font:inherit;padding:9px 11px;border:1px solid var(--line2);border-radius:8px;font-size:.9rem}
+.tanda{padding:14px 20px;border-bottom:1px solid var(--line)}
+.tanda:last-child{border-bottom:0}
+.tanda .h{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.tanda .nm{font-weight:700;font-size:.92rem;flex:1}
+.tanda .d{font-size:.8rem;color:var(--ink2);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.tanda .acc{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.tanda .acc button,.tanda .acc a{font-size:.8rem;font-weight:600;padding:6px 11px;border-radius:7px;text-decoration:none;border:1px solid var(--line2);background:#fff;color:var(--ink)}
+.tanda .acc button.mal{color:var(--bad);border-color:#E9C4C1}
+.dl{display:flex;flex-direction:column;gap:5px;margin-top:9px;max-height:200px;overflow:auto}
+.dl a{font-size:.82rem;color:var(--sel);text-decoration:none;display:flex;justify-content:space-between;gap:10px;padding:5px 9px;background:var(--sel-soft);border-radius:6px}
+.ofertas{font-size:.8rem;color:var(--mute);margin-top:8px;font-variant-numeric:tabular-nums}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;box-shadow:var(--shadow);font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+.toast.on{opacity:1}
+/* ---- DEMO ---- */
+.demo{display:flex;flex-direction:column;gap:22px}
+.demo .cab{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.demo .cab h2{padding:0;border:0;font-size:1.3rem}
+.tag{font-family:Sora;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent2)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.demo .cab .sp{flex:1}
+.etapas{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.etapa{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 12px 10px;display:flex;flex-direction:column;gap:8px;transition:border-color .3s,background .3s}
+.etapa .ic{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:#EEF0F3;color:var(--mute);font-weight:700;font-size:.8rem}
+.etapa .t{font-size:.82rem;font-weight:600;color:var(--mute)}
+.etapa.on{border-color:var(--accent);background:var(--accent-soft)}
+.etapa.on .ic{background:var(--accent);color:#fff}
+.etapa.on .t{color:var(--accent2)}
+.etapa.ok .ic{background:var(--ok);color:#fff}
+.etapa.ok .t{color:var(--ink)}
+.linea{position:relative;height:44px;background:#EDEFF2;border-radius:8px;overflow:hidden}
+.linea .reg{position:absolute;top:0;bottom:0;background:var(--accent);opacity:0;transition:opacity .5s}
+.linea .reg.on{opacity:.85}
+.linea .reg.pista{background:transparent;border-left:2px solid #fff;opacity:1}
+.linea .cur{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);opacity:0}
+.linea .cur.on{opacity:1}
+.linea .lbl{position:absolute;bottom:4px;font-size:.66rem;color:var(--ink2);font-variant-numeric:tabular-nums;font-weight:600}
+.linea .lbl.r{right:6px}.linea .lbl.l{left:6px}
+.curva{display:flex;align-items:flex-end;gap:1px;height:44px;position:absolute;inset:0;padding:0 0 0 0;pointer-events:none}
+.curva i{flex:1;background:rgba(21,26,33,.18);display:block;transform-origin:bottom;transform:scaleY(0);transition:transform .25s}
+.curva i.on{transform:scaleY(1)}
+.pistas{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.pista{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:5px;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.pista.on{opacity:1;transform:none}
+.pista .h{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.pista .h b{color:var(--ink);font-family:Sora;font-weight:600}
+.pista .chips{display:flex;flex-wrap:wrap;gap:4px}
+.pista .chips span{font-size:.72rem;padding:2px 7px;border-radius:6px;background:#EEF0F3;color:var(--ink2)}
+.pista .chips span.g{background:var(--sel-soft);color:var(--sel)}
+.pista .chips span.t{background:var(--accent-soft);color:var(--accent2)}
+.pista .tk{font-size:.74rem;color:var(--mute);min-height:1.1em}
+.pista .tk.ok{color:var(--ok);font-weight:600}
+.guardas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.guarda{display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;opacity:.45;transition:opacity .3s}
+.guarda.on{opacity:1}
+.guarda .ic{flex:none;width:22px;height:22px;border-radius:50%;background:#EEF0F3;display:grid;place-items:center;font-size:.7rem;font-weight:700;color:var(--mute)}
+.guarda.ok .ic{background:var(--ok);color:#fff}
+.guarda .t{font-size:.82rem;font-weight:600}
+.guarda .d{font-size:.72rem;color:var(--mute);line-height:1.35}
+.reloj{font-family:ui-monospace,Consolas,monospace;font-size:.8rem;color:var(--mute);display:flex;gap:16px;flex-wrap:wrap}
+.reloj b{color:var(--ink)}
+.resumen{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi .k{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-family:Sora;font-weight:600}
+.kpi .v{font-family:Sora;font-size:1.4rem;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:.8rem;color:var(--mute);font-weight:500;margin-left:4px}
+.kpi.ac .v{color:var(--accent2)}
+.ab{display:grid;grid-template-columns:1fr 280px;gap:16px}
+@media(max-width:900px){.ab{grid-template-columns:1fr}}
+.ab video{width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;display:block}
+.ab .ctl{display:flex;flex-direction:column;gap:10px}
+.ab .puntos{display:flex;flex-direction:column;gap:6px}
+.ab .puntos button{text-align:left;background:#fff;border:1.5px solid var(--line);padding:10px 12px;font-weight:600;font-size:.88rem;display:flex;justify-content:space-between}
+.ab .puntos button.on{border-color:var(--sel);background:var(--sel-soft)}
+.ab .puntos button small{color:var(--mute);font-weight:500}
+.sw{display:grid;grid-template-columns:1fr 1fr;background:#EEF0F3;border-radius:10px;padding:4px;gap:4px}
+.sw button{padding:12px 8px;font-weight:700;background:transparent;color:var(--ink2);border-radius:8px;font-size:.92rem}
+.sw button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.sw button.on.nu{background:var(--accent);color:#fff}
+.ab .nota{font-size:.78rem;color:var(--mute);line-height:1.45}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="./">
+    <svg viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15" stroke="#E4572E" stroke-width="2.5"/><path d="M8 17h2l2-6 3 12 3-9 2 5 2-2h4" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    ReMusical
+  </a>
+  <div class="nav" id="nav" hidden>
+    <button id="navVideo" class="on" onclick="irA('video')">Un video</button>
+    <button id="navTandas" onclick="irA('tandas')">Tandas</button>
+  </div>
+  <div class="sp"></div>
+  <a class="lnk" id="volverFabrica" href="../" hidden>← La Fábrica</a>
+  <a class="lnk" href="#" onclick="demoAbrir();return false">Demo</a>
+  <div id="user"></div>
+</header>
+
+<main id="main"></main>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtDur = s => { if(!s) return ''; s=Math.round(s); const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60; return (h?h+':':'')+String(m).padStart(h?2:1,'0')+':'+String(x).padStart(2,'0'); };
+const fmtGB = b => b>=1e9 ? (b/1e9).toFixed(2)+' GB' : (b/1e6).toFixed(0)+' MB';
+const mm = s => Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+let cfg={}, yo={}, carpeta=null, sel=new Map(), cargando=false, pollTimer=null;
+let VISTA='video', tcfg={}, tprep=null, tsel=new Set(), tandaTimer=null;
+const ICO_FOLDER = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h4l2 2h7A2.5 2.5 0 0 1 21 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/></svg>';
+const ICO_VIDEO = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h11a2 2 0 0 1 2 2v2.4l4-2.4v10l-4-2.4V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>';
+const ICO_TICK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+const GOOGLE_SVG = '<svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C41.1 35.4 44 30 44 24c0-1.2-.1-2.4-.4-3.5z"/></svg>';
+
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); setTimeout(()=>t.classList.remove('on'),2600); }
+async function api(url, opt){ const r = await fetch(url, opt); if(r.status===401){ yo={conectado:false}; render(); throw new Error('no conectado'); } if(!r.ok){ throw new Error((await r.json()).detail || r.statusText); } return r.json(); }
+
+async function init(){
+  try{ cfg = await api('api/config'); yo = await api('api/me'); }catch(e){ cfg={}; yo={conectado:false}; }
+  const q=new URLSearchParams(location.search);
+  if(q.get('demo')==='1'){ await demoAbrir(); if(q.get('auto')==='1') demoCorrer(); return; }
+  render();
+  if(yo.conectado){ navegar('root'); pollTrabajos(); }
+}
+
+function render(){
+  $('#user').innerHTML = yo.conectado ? `<span class="chip"><span class="av">${esc((yo.nombre||yo.email||'?')[0].toUpperCase())}</span>${esc(yo.email)}<button title="Desconectar" onclick="salir()">✕</button></span>` : '';
+  const m = $('#main');
+  if(!yo.conectado){
+    m.className='uno';
+    const setup = cfg.google_configurado
+      ? `<a class="btn g" href="auth/login">${GOOGLE_SVG}Conectar Google Drive</a>`
+      : `<details><summary>Para usarlo con tu Drive hace falta configurar Google (una vez)</summary><ol style="margin-top:10px">
+          <li>En <a href="https://console.cloud.google.com/apis/credentials" target="_blank">Google Cloud → Credenciales</a>, habilitá <b>Google Drive API</b>.</li>
+          <li>Pantalla de consentimiento: tipo <b>Externo</b>, tu mail como usuario de prueba.</li>
+          <li>Credenciales → <b>ID de cliente OAuth</b> → Aplicación web → URI de redirección: <code>${esc(cfg.callback||'')}</code></li>
+          <li>Copiá ID y secreto a <code>.env</code> (<code>GOOGLE_CLIENT_ID</code>, <code>GOOGLE_CLIENT_SECRET</code>) y reiniciá.</li></ol></details>`;
+    m.innerHTML = `<div class="landing">
+      <div class="hero-demo">
+        <img src="demo/portada.jpg" alt="">
+        <div class="eyebrow">Demo · sin registrarse</div>
+        <h1>Mirá cómo le cambia la música a un video real</h1>
+        <p>Un episodio de 27 minutos con música casi continua. ReMusical encuentra las 20 pistas, las reemplaza por otras del mismo estilo y conserva la voz y el ambiente. El proceso real tardó 4 h 24; acá lo ves en un minuto.</p>
+        <div class="meta"><span>▶ Viajero Errante 147 · La ruta de la seda</span><span>27:02</span><span>4,1 GB</span></div>
+        <div><button class="btn p" onclick="demoAbrir()">Probar la demo</button></div>
+      </div>
+      <div class="panel side-card">
+        <h2>Con tus propios videos</h2>
+        <p>Conectás tu Google Drive, elegís una carpeta y los videos que quieras. El resultado se guarda al lado del original, en una carpeta <b>re-musical</b>, con la voz aislada, la música original y la nueva.</p>
+        ${setup}
+        <p class="hint">Nada de esto hace falta para la demo.</p>
+      </div>
+    </div>`;
+    return;
+  }
+  $('#nav').hidden = !cfg.tandas;
+  if(VISTA==='tandas'){ renderTandas(); return; }
+  $('#navVideo').className='on'; $('#navTandas').className='';
+  m.className='';
+  m.innerHTML = `
+    <section class="panel" id="drive">
+      <div class="migas" id="migas"></div>
+      <div class="body" id="contenido"><div class="empty"><span class="spin"></span></div></div>
+    </section>
+    <aside class="side">
+      <div class="panel"><h2>Selección <span class="n" id="seln">0 videos</span></h2><div class="body">
+        <div class="sel-list" id="sellist"></div>
+        <label class="opt"><input type="checkbox" id="completo"><span>Guardar también las pistas separadas del video <b>entero</b> (voz y ambiente completos). Tarda bastante más.</span></label>
+        <button class="btn p w" id="go" disabled onclick="musicalizar()">Musicalizar</button>
+        <p class="hint">El resultado se guarda en una carpeta <b>re-musical</b> dentro de la carpeta de cada video, con el mismo nombre y el prefijo <b>re-musical</b>. Se suben también la voz aislada, la música original y la nueva.</p>
+      </div></div>
+      <div class="panel"><h2>Trabajos <span class="n" id="jobn"></span></h2>
+        <div id="gasto" class="gasto" hidden></div>
+        <div class="jobs" id="jobs"><div class="empty" style="padding:18px">Todavía no hay trabajos.</div></div></div>
+    </aside>`;
+  renderSel();
+}
+
+async function navegar(id){
+  if(cargando) return; cargando=true;
+  $('#contenido').innerHTML='<div class="empty"><span class="spin"></span></div>';
+  try{
+    carpeta = await api('api/carpeta?id='+encodeURIComponent(id));
+    const migas = carpeta.migas.map((m,i)=> i<carpeta.migas.length-1 ? `<button onclick="navegar('${m.id}')">${esc(m.nombre)}</button><span class="sep">›</span>` : `<span class="cur">${esc(m.nombre)}</span>`).join('');
+    const usar = VISTA==='tandas' && carpeta.migas.length>1
+      ? `<button style="color:#fff;background:var(--sel);border:0" onclick="tandaUsar('${carpeta.migas[carpeta.migas.length-1].id}')">Usar esta carpeta →</button>` : '';
+    $('#migas').innerHTML = migas + `<span class="atajos">${usar}<button onclick="navegar('root')">Mi unidad</button><button onclick="navegar('compartidos')">Compartido conmigo</button></span>`;
+    let h='';
+    if(carpeta.carpetas.length){ h+=`<div class="sec">Carpetas</div><div class="grid">`+carpeta.carpetas.map(c=>`<button class="card f" onclick="navegar('${c.id}')">${ICO_FOLDER}<span class="nm" title="${esc(c.nombre)}">${esc(c.nombre)}</span></button>`).join('')+`</div>`; }
+    if(carpeta.videos.length && VISTA==='tandas'){
+      h+=`<div class="sec">${carpeta.videos.length} video${carpeta.videos.length===1?'':'s'} acá adentro <span style="font-weight:500;letter-spacing:0;text-transform:none;color:var(--mute)">· si es la serie que buscás, tocá «Usar esta carpeta»</span></div><div class="eps">`
+        + carpeta.videos.map(v=>`<div class="ep" style="cursor:default"><span class="nm">${esc(v.nombre)}</span><span class="meta">${fmtDur(v.duracion_s)}${v.tamano?' · '+fmtGB(v.tamano):''}</span></div>`).join('')+`</div>`;
+    } else if(carpeta.videos.length){
+      h+=`<div class="sec">Videos <span style="font-weight:500;letter-spacing:0;text-transform:none;color:var(--mute)">· tocá para elegir</span></div><div class="grid v">`+carpeta.videos.map(v=>`
+        <button class="card v ${sel.has(v.id)?'on':''}" data-id="${v.id}" onclick="toggle('${v.id}')" title="${esc(v.nombre)}">
+          <div class="th">${v.miniatura?`<img src="${esc(v.miniatura)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:ICO_VIDEO}</div>
+          <div class="tick">${ICO_TICK}</div>
+          <div class="meta"><div class="nm">${esc(v.nombre)}</div><div class="dur">${fmtDur(v.duracion_s)}${v.duracion_s&&v.tamano?' · ':''}${v.tamano?fmtGB(v.tamano):''}</div></div>
+        </button>`).join('')+`</div>`;
+    }
+    if(!h) h='<div class="empty">Esta carpeta no tiene subcarpetas ni videos.</div>';
+    $('#contenido').innerHTML=h;
+  }catch(e){ $('#contenido').innerHTML=`<div class="empty">No se pudo leer la carpeta: ${esc(e.message)}</div>`; }
+  cargando=false;
+}
+function toggle(id){
+  const v = carpeta.videos.find(x=>x.id===id); if(!v) return;
+  if(sel.has(id)) sel.delete(id); else sel.set(id, v);
+  document.querySelectorAll(`.card.v[data-id="${id}"]`).forEach(c=>c.classList.toggle('on', sel.has(id)));
+  renderSel();
+}
+function renderSel(){
+  if(!$('#seln')) return;
+  const n=sel.size; $('#seln').textContent = n===1?'1 video':n+' videos';
+  $('#sellist').innerHTML = [...sel.values()].map(v=>`<div><span title="${esc(v.nombre)}">${esc(v.nombre)}</span><button onclick="toggle('${v.id}')" title="Quitar">✕</button></div>`).join('');
+  const b=$('#go'); b.disabled = n===0; b.textContent = n ? `Musicalizar ${n===1?'1 video':n+' videos'}` : 'Musicalizar';
+}
+async function musicalizar(){
+  const ids=[...sel.keys()]; if(!ids.length) return;
+  $('#go').disabled=true; $('#go').innerHTML='<span class="spin" style="border-top-color:#fff;border-color:rgba(255,255,255,.35)"></span>';
+  try{
+    await api('api/musicalizar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({videos:ids, separar_completo:$('#completo').checked})});
+    toast(`${ids.length===1?'Video enviado':ids.length+' videos enviados'} a la cola`);
+    sel.clear(); document.querySelectorAll('.card.v.on').forEach(c=>c.classList.remove('on'));
+    renderSel(); pollTrabajos();
+  }catch(e){ toast('No se pudo enviar: '+e.message); renderSel(); }
+}
+async function pollTrabajos(){
+  clearTimeout(pollTimer);
+  try{
+    if(VISTA!=='video' || !$('#jobs')) return;
+    const d = await api('api/trabajos'); const ts=d.trabajos;
+    $('#jobn').textContent = ts.length? ts.filter(t=>t.estado==='procesando'||t.estado==='en cola').length+' activos' : '';
+    $('#jobs').innerHTML = ts.length ? ts.map(t=>{
+      const cls={'en cola':'cola','procesando':'proc','listo':'listo','revisar':'revisar','error':'error','interrumpido':'interrumpido','sin_musica':'sin_musica','cancelado':'error'}[t.estado]||'cola';
+      const lbl={'en cola':'en cola','procesando':'procesando','listo':'listo','revisar':'revisar','error':'error','interrumpido':'interrumpido','sin_musica':'sin música','cancelado':'cancelado'}[t.estado]||t.estado;
+      const activo = t.estado==='procesando'||t.estado==='en cola';
+      const link = t.carpeta_salida_id ? `<a href="https://drive.google.com/drive/folders/${t.carpeta_salida_id}" target="_blank">Abrir carpeta re-musical ↗</a>` : (activo ? `<button class="cancel" onclick="cancelar('${t.id}')" title="Cancela el trabajo y corta el gasto en Replicate">✕ Cancelar</button>` : (t.usd_gpu!=null?`<span style="color:var(--mute)">GPU ${t.gpu_s}s · USD ${t.usd_gpu}</span>`:''));
+      const g = t.informe&&t.informe.guardas ? `<div class="g">${t.informe.guardas.map(x=>`<span class="${x.ok?'':'x'}" title="${esc(x.detalle)}">${x.ok?'✓':'✕'} ${esc(x.nombre)}</span>`).join('')}</div>` : '';
+      const reg = t.informe&&t.informe.regiones_finales ? `${t.informe.regiones_finales.length} pista${t.informe.regiones_finales.length===1?'':'s'} de música` : '';
+      return `<div class="job ${cls}"><div class="h"><span class="nm" title="${esc(t.nombre)}">${esc(t.nombre)}</span><span class="st ${cls}">${lbl}</span></div>
+        <div class="bar"><i style="width:${Math.round((t.progreso||0)*100)}%"></i></div>
+        <div class="et"><span>${esc(t.etapa||'')}${reg?' · '+reg:''}</span>${link}</div>
+        ${g}${t.error?`<div class="lg">${esc(t.error)}</div>`:(t.estado==='procesando'&&t.log&&t.log.length?`<div class="lg">${esc(t.log.slice(-2).join('\n'))}</div>`:'')}</div>`;
+    }).join('') : '<div class="empty" style="padding:18px">Todavía no hay trabajos.</div>';
+    const activos = ts.some(t=>t.estado==='procesando'||t.estado==='en cola');
+    if(cfg.modo==='replicate') gastoReplicate();
+    pollTimer = setTimeout(pollTrabajos, activos?3000:15000);
+  }catch(e){ pollTimer=setTimeout(pollTrabajos,8000); }
+}
+async function gastoReplicate(){
+  const g=$('#gasto'); if(!g) return;
+  try{
+    const d = await api('api/replicate/estado');
+    if(!d.activo){ g.hidden=true; return; }
+    g.hidden=false;
+    if(d.error){ g.className='gasto'; g.innerHTML=`<span class="dot"></span>No pude consultar Replicate: ${esc(d.error)}`; return; }
+    g.className = 'gasto'+(d.corriendo?' on':'');
+    g.innerHTML = d.corriendo
+      ? `<span class="dot"></span><span><b>${d.corriendo}</b> instancia${d.corriendo===1?'':'s'} corriendo en Replicate · <b>~USD ${d.usd_por_min.toFixed(2)}/min</b></span><button onclick="panico()">Cancelar TODO</button>`
+      : `<span class="dot"></span>Replicate en reposo: <b>USD 0/min</b> · corte automático a los ${cfg.limites.max_min+5} min · máx ${cfg.limites.max_simultaneos} a la vez, ${cfg.limites.max_por_dia}/día`;
+  }catch(e){ g.hidden=true; }
+}
+async function cancelar(id){
+  if(!confirm('¿Cancelar este trabajo? Se corta la predicción en Replicate y deja de cobrar.')) return;
+  try{ await api('api/trabajos/'+id+'/cancelar',{method:'POST'}); toast('Trabajo cancelado'); pollTrabajos(); }
+  catch(e){ toast('No se pudo cancelar: '+e.message); }
+}
+async function panico(){
+  if(!confirm('Esto cancela TODAS las predicciones que estén corriendo en la cuenta de Replicate (también las de otros usuarios de esta web). ¿Seguro?')) return;
+  try{ const r=await api('api/replicate/cancelar_todo',{method:'POST'}); toast(`${r.canceladas.length} cancelada${r.canceladas.length===1?'':'s'}${r.fallas.length?' · '+r.fallas.length+' fallaron':''}`); pollTrabajos(); }
+  catch(e){ toast('Falló: '+e.message); }
+}
+async function salir(){ await fetch('auth/logout',{method:'POST'}); yo={conectado:false}; clearTimeout(pollTimer); render(); }
+
+/* ====================== TANDAS (una serie entera en Vast) ======================
+   Tres pasos, en este orden y sin saltearse ninguno:
+     1. elegir la carpeta de la serie en TU Drive
+     2. ver los episodios, marcar los que van, y VER EL COSTO antes de gastar
+     3. confirmar: se alquila la máquina, procesa y se destruye sola
+   El paso 2 es el que importa: nada se lanza sin que el número esté a la vista. */
+function irA(v){
+  VISTA=v; tsel.clear();
+  clearTimeout(pollTimer); clearTimeout(tandaTimer);   // apagar el sondeo de la vista que se deja
+  render();
+  if(v==='video'){ navegar(carpeta&&carpeta.migas?carpeta.migas[carpeta.migas.length-1].id:'root'); pollTrabajos(); }
+}
+
+async function renderTandas(){
+  $('#navVideo').className=''; $('#navTandas').className='on';
+  const m=$('#main'); m.className='';
+  m.innerHTML = `
+    <section class="panel" id="drive">
+      <div class="migas" id="migas"></div>
+      <div class="body" id="contenido"><div class="empty"><span class="spin"></span></div></div>
+    </section>
+    <aside class="side">
+      <div id="tconf"></div>
+      <div class="panel"><h2>La tanda <span class="n" id="tn"></span></h2><div class="body" id="tbody">
+        <p class="hint">Elegí la carpeta de una serie en el panel de la izquierda para ver los episodios y cuánto cuesta.</p>
+      </div></div>
+      <div class="panel"><h2>Tandas <span class="n" id="tandan"></span></h2>
+        <div id="tandas"><div class="empty" style="padding:18px">Todavía no hay tandas.</div></div></div>
+    </aside>`;
+  try{ tcfg = await api('api/tandas/config'); }catch(e){ tcfg={error:e.message}; }
+  pintarConfig();
+  if(tprep) pintarEpisodios(); else navegar(carpeta&&carpeta.migas?carpeta.migas[carpeta.migas.length-1].id:'root');
+  pollTandas();
+}
+
+function pintarConfig(){
+  const c=$('#tconf'); if(!c) return;
+  if(tcfg.listo){ c.innerHTML=''; return; }
+  const f=[];
+  if(!tcfg.vast)   f.push('<li><b>Vast.ai</b>: falta <code>VAST_API_KEY</code>. Es donde corre la GPU.</li>');
+  if(!tcfg.eleven) f.push('<li><b>ElevenLabs</b>: falta <code>ELEVENLABS_API_KEY</code>. Es quien compone la música.</li>');
+  if(!tcfg.bucket) f.push('<li><b>Bucket</b> (Cloudflare R2): faltan <code>S3_ENDPOINT</code>, <code>S3_KEY</code>, <code>S3_SECRET</code>, <code>S3_BUCKET</code>. Ahí quedan los resultados para bajarlos.</li>');
+  if(!tcfg.sa)     f.push(`<li><b>Cuenta de servicio de Google</b>: falta <code>GOOGLE_SA_JSON_B64</code>. Es la que lee los videos${tcfg.error_sa?' ('+esc(tcfg.error_sa)+')':''}.</li>`);
+  c.innerHTML = `<div class="falta"><h3>Falta configurar ${f.length} cosa${f.length===1?'':'s'}</h3><ul>${f.join('')}</ul>
+    ${tcfg.email_sa?`<div style="font-size:.85rem;color:var(--ink2)">La carpeta de la serie tiene que estar compartida como <b>Lector</b> con:<br><code>${esc(tcfg.email_sa)}</code></div>`:''}
+    <div style="font-size:.82rem;color:var(--mute)">Se configuran una sola vez, en el <code>.env</code> o en las variables de Render.</div></div>`;
+}
+
+async function tandaUsar(id){
+  tprep=null; tsel.clear();
+  $('#tbody').innerHTML='<div class="empty"><span class="spin"></span><div style="margin-top:8px;font-size:.85rem">Viendo si la cuenta de servicio llega a la carpeta y qué máquinas hay libres…</div></div>';
+  try{
+    const d = await api('api/tandas/preparar?carpeta='+encodeURIComponent(id));
+    if(!d.ok){
+      $('#tbody').innerHTML = `<div class="falta" style="margin:0"><h3>La cuenta de servicio no ve esta carpeta</h3>
+        <div style="font-size:.86rem;color:var(--ink2)">${esc((d.drive&&d.drive.error)||'sin detalle')}</div>
+        ${d.drive&&d.drive.ayuda?`<div style="font-size:.85rem"><b>${esc(d.drive.ayuda)}</b></div>`:''}
+        ${tcfg.email_sa?`<div style="font-size:.85rem">Compartila como <b>Lector</b> con <code>${esc(tcfg.email_sa)}</code> y probá de nuevo.</div>`:''}
+        <div><button class="btn g" onclick="tandaUsar('${id}')">Reintentar</button></div></div>`;
+      return;
+    }
+    tprep = d; tprep.id = id;
+    d.videos.forEach(v=>tsel.add(v.id));
+    pintarEpisodios();
+  }catch(e){ $('#tbody').innerHTML=`<p class="hint">No pude preparar la tanda: ${esc(e.message)}</p>`; }
+}
+
+function estimarCli(){
+  const K=tprep.constantes, frac=(+$('#frac').value)/100, gpus=+$('#gpus').value;
+  const dur = tprep.videos.filter(v=>tsel.has(v.id)).reduce((a,v)=>a+(v.duracion_s||0),0);
+  const minV=dur/60, minM=minV*frac;
+  const usdE = minM*K.cr_por_min_musica*K.usd_por_credito;
+  const hGpu = (minV*K.gpu_min_por_min)/60/Math.max(1,gpus);
+  const usdG = hGpu*(+$('#tope').value || tprep.usd_h || 0.45);
+  return {minV, minM, usdE, usdG, usd:usdE+usdG, horas:hGpu};
+}
+
+function pintarEstimacion(){
+  if(!tprep || !$('#est')) return;
+  const e=estimarCli(), n=tsel.size;
+  $('#tn').textContent = n===1?'1 episodio':n+' episodios';
+  $('#fracv').textContent = $('#frac').value+'%';
+  $('#est').innerHTML = `
+    <div><div class="k">Video</div><div class="v">${e.minV.toFixed(0)}<small> min</small></div></div>
+    <div><div class="k">Música a componer</div><div class="v">${e.minM.toFixed(0)}<small> min</small></div></div>
+    <div><div class="k">ElevenLabs</div><div class="v">${e.usdE.toFixed(2)}<small> USD</small></div></div>
+    <div><div class="k">GPU en Vast</div><div class="v">${e.usdG.toFixed(2)}<small> USD</small></div></div>
+    <div class="ac"><div class="k">Total estimado</div><div class="v">${e.usd.toFixed(2)}<small> USD</small></div></div>
+    <div><div class="k">Reloj</div><div class="v">${e.horas<1?(e.horas*60).toFixed(0)+'<small> min</small>':e.horas.toFixed(1)+'<small> h</small>'}</div></div>`;
+  const b=$('#tgo'); b.disabled = !n || !tcfg.listo;
+  b.textContent = !tcfg.listo ? 'Falta configurar' : (n ? `Lanzar ${n===1?'1 episodio':n+' episodios'} · ~USD ${e.usd.toFixed(2)}` : 'Elegí al menos un episodio');
+  const p=+$('#max_usd').value;
+  $('#avisoTope').innerHTML = (p && e.usdG > p*0.9)
+    ? `<span style="color:var(--warn)">⚠ El tope de gasto (USD ${p}) está muy cerca del costo de GPU estimado: la tanda podría cortarse por la mitad.</span>` : '';
+}
+
+function tandaTick(id){ if(tsel.has(id)) tsel.delete(id); else tsel.add(id); pintarEstimacion();
+  document.querySelectorAll(`.ep[data-id="${id}"] input`).forEach(i=>i.checked=tsel.has(id)); }
+function tandaTodos(v){ tsel.clear(); if(v) tprep.videos.forEach(x=>tsel.add(x.id));
+  document.querySelectorAll('.ep input').forEach(i=>i.checked=v); pintarEstimacion(); }
+
+function pintarEpisodios(){
+  const nom = tprep.carpeta || 'la carpeta';
+  $('#migas').innerHTML = `<span class="cur">${esc(nom)}</span><span class="atajos"><button onclick="tprep=null;tsel.clear();render()">← Elegir otra carpeta</button></span>`;
+  $('#contenido').innerHTML = tprep.videos.length ? `
+    <div class="sec">Episodios <span style="font-weight:500;letter-spacing:0;text-transform:none;color:var(--mute)">· destildá los que no van</span>
+      <span style="float:right;text-transform:none;letter-spacing:0"><button style="background:transparent;color:var(--sel);font-weight:600;font-size:.8rem;padding:0 6px" onclick="tandaTodos(true)">todos</button><button style="background:transparent;color:var(--sel);font-weight:600;font-size:.8rem;padding:0 6px" onclick="tandaTodos(false)">ninguno</button></span></div>
+    <div class="eps">${tprep.videos.map(v=>`
+      <label class="ep" data-id="${v.id}"><input type="checkbox" ${tsel.has(v.id)?'checked':''} onchange="tandaTick('${v.id}')">
+        <span class="nm" title="${esc(v.nombre)}">${esc(v.nombre)}</span>
+        <span class="meta">${fmtDur(v.duracion_s)}${v.bytes?' · '+fmtGB(v.bytes):''}</span></label>`).join('')}</div>
+    ${tprep.ofertas&&tprep.ofertas.length&&tprep.ofertas[0].usd_h!=null ? `<div class="ofertas">Máquinas verificadas ahora mismo: ${tprep.ofertas.map(o=>`${o.num_gpus}× ${esc(o.gpu)} · USD ${o.usd_h.toFixed(3)}/h · ${esc(o.pais||'?')}`).join(' — ')}</div>`
+      : `<div class="ofertas">No pude consultar precios de Vast ahora; la estimación usa USD ${(tprep.usd_h||0.45).toFixed(2)}/h.</div>`}
+    ${tprep.bucket&&!tprep.bucket.ok?`<div class="ofertas" style="color:var(--bad)">El bucket no responde: ${esc(tprep.bucket.error||'')}. Los resultados no tendrían dónde ir.</div>`:''}`
+    : '<div class="empty">Esta carpeta no tiene videos que la cuenta de servicio pueda leer.</div>';
+
+  $('#tbody').innerHTML = `
+    <div class="est" id="est"></div>
+    <label style="display:flex;flex-direction:column;gap:5px;font-size:.8rem;color:var(--ink2);font-weight:600">
+      Cuánto del video tiene música: <span id="fracv" style="color:var(--accent2)"></span>
+      <input type="range" id="frac" min="10" max="100" step="5" value="50" oninput="pintarEstimacion()">
+      <span style="font-weight:500;color:var(--mute);font-size:.78rem">Es lo único que no se sabe de antemano. El costo real se mide video por video.</span>
+    </label>
+    <div class="cfg">
+      <label>GPUs por máquina<select id="gpus" onchange="pintarEstimacion()"><option>1</option><option>2</option><option selected>4</option><option>8</option></select></label>
+      <label>Tope USD/hora<input type="number" id="tope" value="0.60" step="0.05" min="0.05" onchange="pintarEstimacion()"></label>
+      <label>Gasto máx. GPU (USD)<input type="number" id="max_usd" value="50" step="5" min="1" onchange="pintarEstimacion()"></label>
+      <label>Horas máx.<input type="number" id="max_horas" value="12" step="1" min="1"></label>
+    </div>
+    <label class="opt"><input type="checkbox" id="tsolo_dc" checked><span>Sólo <b>datacenters verificados</b> de Vast (más caro, pero no es la PC de un desconocido).</span></label>
+    <label class="opt"><input type="checkbox" id="tcompleto"><span>Guardar también las pistas separadas del video entero.</span></label>
+    <div id="avisoTope" style="font-size:.82rem;margin:8px 0"></div>
+    <button class="btn p w" id="tgo" onclick="tandaLanzar()">Lanzar</button>
+    <p class="hint">La máquina se destruye sola al terminar, y también si se pasa del tope, de las horas o si se queda muda. Los resultados quedan en el bucket con un link para bajarlos.</p>`;
+  pintarEstimacion();
+}
+
+async function tandaLanzar(){
+  const e=estimarCli(), n=tsel.size;
+  if(!n) return;
+  if(!confirm(`Vas a procesar ${n} episodio${n===1?'':'s'}.\n\nEstimado: USD ${e.usd.toFixed(2)} (USD ${e.usdE.toFixed(2)} de música + USD ${e.usdG.toFixed(2)} de GPU).\nLa máquina se corta sola a las ${$('#max_horas').value} h o a los USD ${$('#max_usd').value} de GPU.\n\n¿Lanzo?`)) return;
+  const b=$('#tgo'); b.disabled=true; b.innerHTML='<span class="spin" style="border-top-color:#fff;border-color:rgba(255,255,255,.35)"></span>';
+  try{
+    await api('api/tandas/crear',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      carpeta: tprep.id, nombre: tprep.carpeta || 'tanda',
+      archivos: [...tsel], usuario: yo.email||'',
+      opciones:{separar_completo:$('#tcompleto').checked},
+      nube:{gpus:+$('#gpus').value, tope_usd_h:+$('#tope').value, max_usd:+$('#max_usd').value,
+            max_horas:+$('#max_horas').value, solo_datacenter:$('#tsolo_dc').checked}})});
+    toast('Tanda lanzada: buscando máquina en Vast');
+    tprep=null; tsel.clear(); render();
+  }catch(err){ toast('No se pudo lanzar: '+err.message); pintarEstimacion(); }
+}
+
+const T_LBL={preparando:'preparando',procesando:'procesando',lista:'lista',incompleta:'incompleta',error:'error',cancelada:'cancelada',interrumpida:'interrumpida'};
+async function pollTandas(){
+  clearTimeout(tandaTimer);
+  if(VISTA!=='tandas' || !$('#tandas')) return;
+  try{
+    const d = await api('api/tandas'); const ts=d.tandas;
+    const act = ts.filter(t=>t.estado==='preparando'||t.estado==='procesando').length;
+    $('#tandan').textContent = act ? act+' activa'+(act===1?'':'s') : '';
+    $('#tandas').innerHTML = ts.length ? ts.map(t=>{
+      const activo = t.estado==='preparando'||t.estado==='procesando';
+      const col = {lista:'var(--ok)',error:'var(--bad)',incompleta:'var(--warn)',cancelada:'var(--mute)',interrumpida:'var(--warn)'}[t.estado]||'var(--sel)';
+      const tan = (t.resumen&&t.resumen.tanda)||{};
+      const r = t.resumen||{};
+      return `<div class="tanda">
+        <div class="h"><span class="nm">${esc(t.nombre)}</span>
+          <span style="font-size:.78rem;font-weight:700;color:${col}">${activo?'<span class="spin" style="width:12px;height:12px;border-width:2px"></span> ':''}${esc(T_LBL[t.estado]||t.estado)}</span></div>
+        <div class="d"><span>${t.videos} episodio${t.videos===1?'':'s'}</span><span>${esc(t.creado)}</span>
+          ${tan.listos!=null?`<span>${tan.listos} listos${tan.fallados?' · '+tan.fallados+' fallaron':''}</span>`:''}
+          ${r.usd_gpu!=null?`<span>GPU USD ${(+r.usd_gpu).toFixed(2)}</span>`:''}
+          ${t.instancia?`<span>instancia ${esc(String(t.instancia))}</span>`:''}</div>
+        ${t.error?`<div class="lg">${esc(t.error)}</div>`:(t.log&&t.log.length?`<div class="lg">${esc(t.log.slice(-2).join('\n'))}</div>`:'')}
+        <div class="acc">
+          ${activo?`<button class="mal" onclick="tandaCancelar('${t.id}')">✕ Cancelar y destruir la máquina</button>`:''}
+          ${(t.estado==='lista'||t.estado==='incompleta')?`<button onclick="tandaDescargas('${t.id}')">Ver descargas</button><button class="mal" onclick="tandaBorrar('${t.id}')">Borrar del bucket</button>`:''}
+        </div>
+        <div class="dl" id="dl-${t.id}"></div></div>`;
+    }).join('') : '<div class="empty" style="padding:18px">Todavía no hay tandas.</div>';
+    tandaTimer = setTimeout(pollTandas, act?5000:20000);
+  }catch(e){ tandaTimer=setTimeout(pollTandas,10000); }
+}
+
+async function tandaDescargas(id){
+  const c=$('#dl-'+id); c.innerHTML='<span class="spin"></span>';
+  try{
+    const d = await api('api/tandas/'+id+'/descargas');
+    c.innerHTML = d.archivos.length
+      ? d.archivos.map(a=>`<a href="${esc(a.url)}" target="_blank" download><span>${esc(a.archivo)}</span><span>${fmtGB(a.bytes||0)}</span></a>`).join('')
+        + '<div style="font-size:.76rem;color:var(--mute);margin-top:4px">Los links vencen en 24 h. Bajalos y después borrá del bucket.</div>'
+      : '<div style="font-size:.82rem;color:var(--mute)">El bucket está vacío para esta tanda.</div>';
+  }catch(e){ c.innerHTML=`<div style="font-size:.82rem;color:var(--bad)">${esc(e.message)}</div>`; }
+}
+async function tandaCancelar(id){
+  if(!confirm('Esto DESTRUYE la máquina en Vast: deja de cobrar al instante y se pierde lo que estaba a medio procesar. ¿Seguro?')) return;
+  try{ const r=await api('api/tandas/'+id+'/cancelar',{method:'POST'}); toast(`Cancelada · ${r.destruidas.length} instancia${r.destruidas.length===1?'':'s'} destruida${r.destruidas.length===1?'':'s'}`); pollTandas(); }
+  catch(e){ toast('No se pudo cancelar: '+e.message); }
+}
+async function tandaBorrar(id){
+  if(!confirm('¿Borrar los resultados del bucket? Asegurate de haberlos bajado: no se recuperan.')) return;
+  try{ const r=await api('api/tandas/'+id+'/archivos',{method:'DELETE'}); toast(`${r.borrados} archivo${r.borrados===1?'':'s'} borrado${r.borrados===1?'':'s'}`); pollTandas(); }
+  catch(e){ toast('No se pudo borrar: '+e.message); }
+}
+
+/* =========================== DEMO =========================== */
+let D=null, demoTimers=[], demoVel=1;
+const ETAPAS_DEMO=[['audio','Audio'],['mapa','Buscar la música'],['separar','Separar voz y música'],['componer','Componer'],['montar','Montar'],['controlar','Controlar'],['listo','Listo']];
+function esperar(ms){ return new Promise(r=>{ const t=setTimeout(r, ms/demoVel); demoTimers.push(t); }); }
+function demoCancelar(){ demoTimers.forEach(clearTimeout); demoTimers=[]; }
+
+async function demoAbrir(){
+  demoCancelar(); clearTimeout(pollTimer);
+  const m=$('#main'); m.className='uno';
+  m.innerHTML='<div class="panel"><div class="empty"><span class="spin"></span></div></div>';
+  try{ D = D || await (await fetch('demo/demo.json')).json(); }catch(e){ m.innerHTML='<div class="panel"><div class="empty">La demo no está disponible en este servidor.</div></div>'; return; }
+  m.innerHTML = `<div class="panel demo"><div class="body demo">
+    <div class="cab"><span class="tag">Demo</span><h2>Elegí el video</h2><span class="sp"></span><span class="hint" style="margin:0">Sin credenciales, sin costo.</span></div>
+    <div class="grid v" style="margin:0;max-width:520px">
+      <button class="card v on" id="demoCard" onclick="this.classList.toggle('on');$('#demoGo').disabled=!this.classList.contains('on')">
+        <div class="th"><img src="demo/miniatura.jpg" alt=""></div><div class="tick">${ICO_TICK}</div>
+        <div class="meta"><div class="nm">${esc(D.video.nombre)}</div><div class="dur">${fmtDur(D.video.duracion_s)} · ${D.video.tamano_gb} GB</div></div>
+      </button>
+    </div>
+    <div><button class="btn p" id="demoGo" onclick="demoCorrer()">Musicalizar 1 video</button></div>
+  </div></div>`;
+}
+
+async function demoCorrer(){
+  const m=$('#main'); const dur=D.video.duracion_s; const n=D.curva.length;
+  m.innerHTML = `<div class="panel"><div class="body demo">
+    <div class="cab"><span class="tag">Demo</span><h2>${esc(D.video.titulo)}</h2><span class="sp"></span><button class="btn g" style="padding:8px 14px" onclick="demoVel=demoVel===1?3:1;this.textContent=demoVel===1?'⏩ Acelerar':'⏵ Normal'">⏩ Acelerar</button></div>
+    <div class="etapas" id="etapas">${ETAPAS_DEMO.map(([k,t],i)=>`<div class="etapa" id="et-${k}"><div class="ic">${i+1}</div><div class="t">${t}</div></div>`).join('')}</div>
+    <div class="reloj"><span>tiempo real <b id="rl">0:00</b></span><span>en la corrida real <b id="rr">0 min</b> de 264</span><span id="rmsg" style="color:var(--ink2)"></span></div>
+    <div>
+      <div class="sec" id="lineaTit">Mapa de música</div>
+      <div class="linea" id="linea">
+        <div class="curva" id="curva">${D.curva.map(v=>`<i style="height:${Math.round(v*100)}%"></i>`).join('')}</div>
+        ${D.regiones.map((r,i)=>`<div class="reg" id="reg-${i}" style="left:${r.inicio/dur*100}%;width:${(r.fin-r.inicio)/dur*100}%"></div>`).join('')}
+        <div class="cur" id="cursor"></div>
+        <span class="lbl l">0:00</span><span class="lbl r">${fmtDur(dur)}</span>
+      </div>
+    </div>
+    <div id="bloque"></div>
+  </div></div>`;
+  const t0=Date.now(); const reloj=setInterval(()=>{ const s=(Date.now()-t0)/1000*demoVel; $('#rl').textContent=mm(s); }, 500); demoTimers.push(reloj);
+  const et=(k,estado)=>{ const e=$('#et-'+k); if(!e) return; e.classList.remove('on'); if(estado==='on') e.classList.add('on'); if(estado==='ok'){ e.classList.add('ok'); e.querySelector('.ic').textContent='✓'; } };
+  const real=(min,msg)=>{ $('#rr').textContent=min+' min'; $('#rmsg').textContent=msg||''; };
+
+  // 1 audio
+  et('audio','on'); real(1,'extrayendo el audio del MP4'); await esperar(2500); et('audio','ok');
+  // 2 mapa: el cursor recorre el video y las regiones se encienden
+  et('mapa','on'); real(3,'AudioSet clasifica cada segundo: ¿música, motor, viento, habla?');
+  const cur=$('#cursor'); cur.classList.add('on'); const bars=document.querySelectorAll('#curva i');
+  for(let i=0;i<n;i++){ cur.style.left=(i/n*100)+'%'; bars[i].classList.add('on'); const t=i/n*dur; D.regiones.forEach((r,j)=>{ if(t>=r.inicio) $('#reg-'+j).classList.add('on'); }); if(i%4===0) real(3+Math.round(i/n*46),'AudioSet clasifica cada segundo: ¿música, motor, viento, habla?'); await esperar(11000/n); }
+  cur.classList.remove('on'); et('mapa','ok'); real(50, `${D.regiones.length} regiones de música · ${Math.round(D.resultado.musica_s/dur*100)}% del video`);
+  $('#lineaTit').textContent=`Mapa de música · ${D.regiones.length} regiones, ${Math.round(D.resultado.musica_s/60)} min de ${Math.round(dur/60)}`;
+  await esperar(1200);
+  // 3 separar
+  et('separar','on'); real(50,'BS-Roformer separa la voz de la música, sólo dentro de las regiones');
+  $('#bloque').innerHTML=`<div class="sec">Separando voz y música</div><div class="bar" style="height:10px"><i id="sepbar" style="width:0%"></i></div><p class="hint" id="sepmsg">2 trozos, 1615 s de audio, en paralelo…</p>`;
+  for(let i=1;i<=20;i++){ $('#sepbar').style.width=(i*5)+'%'; real(50+Math.round(i/20*172)); await esperar(450); }
+  $('#sepmsg').textContent='voz y música separadas · 2 h 52 en la corrida real'; et('separar','ok'); await esperar(900);
+  // 4 componer: las pistas aparecen con su estilo
+  et('componer','on'); real(222,'cada región larga se parte donde cambia la música; a cada pista se le pide una nueva del mismo estilo');
+  D.pistas.forEach((p,i)=>{ const d=document.createElement('div'); d.className='reg pista on'; d.style.left=(p.inicio/dur*100)+'%'; d.style.width=(Math.max(0,p.fin-p.inicio)/dur*100)+'%'; $('#linea').appendChild(d); });
+  $('#bloque').innerHTML=`<div class="sec">Pistas · <span id="pistasN">0</span> de ${D.pistas.length}</div><div class="pistas" id="pistas">${D.pistas.map((p,i)=>`<div class="pista" id="p-${i}"><div class="h"><b>${i+1}</b><span>${mm(p.inicio)} – ${mm(p.fin)}</span><span>${Math.round(p.fin-p.inicio)}s</span>${p.contiguo?'<span title="crossfade con la anterior">⟷</span>':''}</div><div class="chips">${p.instrumentos.map(x=>`<span>${esc(x)}</span>`).join('')}${p.generos.map(x=>`<span class="g">${esc(x)}</span>`).join('')}${p.tempo?`<span class="t">${p.tempo} bpm</span>`:''}</div><div class="tk" id="tk-${i}"></div></div>`).join('')}</div>`;
+  for(let i=0;i<D.pistas.length;i++){ const p=D.pistas[i]; $('#p-'+i).classList.add('on'); $('#pistasN').textContent=i+1; $('#tk-'+i).textContent='generando…'; real(222+Math.round(i/D.pistas.length*30)); await esperar(700); $('#tk-'+i).textContent='midiendo contra la original…'; await esperar(350); const t=$('#tk-'+i); t.textContent=`✓ ${p.elegido} elegido`; t.classList.add('ok'); }
+  et('componer','ok'); await esperar(800);
+  // 5 montar
+  et('montar','on'); real(255,'la música nueva va a −21 dB con ducking bajo la narración; crossfade entre pistas contiguas'); await esperar(2500); et('montar','ok');
+  // 6 controlar
+  et('controlar','on'); real(257,'seis guardas deciden solas si sale o se rechaza');
+  $('#bloque').innerHTML=`<div class="sec">Guardas</div><div class="guardas">${D.guardas.map(g=>`<div class="guarda" id="g-${g.n}"><div class="ic">${g.n}</div><div><div class="t">${esc(g.nombre)}</div><div class="d">${esc(g.detalle)}</div></div></div>`).join('')}</div>`;
+  for(const g of D.guardas){ const e=$('#g-'+g.n); e.classList.add('on'); await esperar(900); e.classList.add('ok'); e.querySelector('.ic').textContent='✓'; }
+  et('controlar','ok'); real(262,'exportando MP4 y pistas'); await esperar(1500);
+  // 7 listo
+  et('listo','ok'); real(264,'ENTREGABLE'); clearInterval(reloj);
+  demoResultado();
+}
+
+function demoResultado(){
+  const r=D.resultado, dur=D.video.duracion_s;
+  const res=document.createElement('div');
+  res.innerHTML=`
+    <div class="cab" style="margin-top:6px"><span class="tag ok">Entregable</span><h2 style="font-size:1.1rem">6 de 6 guardas · listo para entregar</h2></div>
+    <div class="resumen">
+      <div class="kpi"><div class="k">Pistas reemplazadas</div><div class="v">${r.n_pistas}</div></div>
+      <div class="kpi"><div class="k">Música nueva</div><div class="v">${Math.round(r.musica_s/60)}<small>min de ${Math.round(dur/60)}</small></div></div>
+      <div class="kpi ac"><div class="k">Costo del video</div><div class="v">USD ${(r.usd_1take+r.usd_gpu).toFixed(2)}</div></div>
+      <div class="kpi"><div class="k">En la nube</div><div class="v">~15<small>min</small></div></div>
+    </div>
+    <div class="sec">Escuchá la diferencia · el video es el mismo, sólo cambia la música</div>
+    <div class="ab">
+      <video id="abv" controls playsinline preload="auto"></video>
+      <div class="ctl">
+        <div class="sw"><button id="swO" class="on" onclick="demoSw('orig')">Original</button><button id="swN" class="nu" onclick="demoSw('nueva')">Con música nueva</button></div>
+        <div class="puntos" id="puntos">${D.comparar.map((c,i)=>`<button class="${i===0?'on':''}" onclick="demoPunto(${i})">${esc(c.titulo)}<small>${esc(c.t)}</small></button>`).join('')}</div>
+        <p class="nota">Cambiá entre Original y Con música nueva mientras se reproduce: sigue desde el mismo punto. La voz y el ambiente son idénticos; sólo cambia la música.</p>
+      </div>
+    </div>`;
+  $('#bloque').after(res);
+  demoAB={punto:0, cual:'orig'}; demoCargar(false);
+  res.scrollIntoView({behavior:'smooth', block:'start'});
+}
+let demoAB={punto:0,cual:'orig'};
+function demoCargar(seguir){
+  const v=$('#abv'); const t=seguir?v.currentTime:0; const playing=seguir&&!v.paused;
+  v.src=`demo/${D.comparar[demoAB.punto].id}_${demoAB.cual}.mp4`;
+  v.addEventListener('loadedmetadata', ()=>{ v.currentTime=t; if(playing) v.play(); }, {once:true});
+}
+function demoSw(c){ if(demoAB.cual===c) return; demoAB.cual=c; $('#swO').classList.toggle('on',c==='orig'); $('#swN').classList.toggle('on',c==='nueva'); demoCargar(true); }
+function demoPunto(i){ demoAB.punto=i; document.querySelectorAll('#puntos button').forEach((b,j)=>b.classList.toggle('on',i===j)); demoCargar(false); $('#abv').play().catch(()=>{}); }
+
+init();
+</script>
+<script>
+// Montada dentro de La Fábrica (/remusical/) se muestra la vuelta; sola en :8765 no hay adónde volver.
+if (location.pathname.replace(/\/+$/, "") !== "") document.getElementById("volverFabrica").hidden = false;
+</script>
+</body>
+</html>

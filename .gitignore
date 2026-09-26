@@ -100,3 +100,10 @@ mis-videos/_remaster/
 # Videos de referencia bajados de otros canales (material de estudio, pesado)
 mis-videos/referencia-fb/
 mis-videos/casting-voces/
+
+# ── ReMusical (herramientas/remusical): su carpeta de trabajo y su .env quedan afuera;
+#    los clips de la DEMO (8,5 MB, datos reales de una corrida) viajan con el código
+herramientas/remusical/_trabajo/
+herramientas/remusical/.env
+!herramientas/remusical/remusical/static/demo/*.mp4
+!herramientas/remusical/remusical/static/demo/*.jpg

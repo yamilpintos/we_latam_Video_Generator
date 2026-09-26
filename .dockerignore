@@ -44,3 +44,5 @@ h3pipeline/app/h3-setup.zip
 *.log
 # (18/9) los proyectos históricos del repo no van al contenedor: en Render viven en el disco
 mis-videos/
+# ReMusical: la carpeta de trabajo (cachés de separación) no entra al contenedor
+herramientas/remusical/_trabajo/

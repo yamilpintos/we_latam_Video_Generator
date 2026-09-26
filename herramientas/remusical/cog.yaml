@@ -1,0 +1,27 @@
+# Contenedor de ReMusical para Replicate. Se construye y publica desde GitHub Actions
+# (.github/workflows/replicate.yml) — no hace falta Docker en Windows.
+#
+# Un solo Python (3.11) con TODO adentro: AudioSet, BS-Roformer, Eleven Music, Drive.
+# Los modelos se descargan al construir la imagen, así el arranque en frío no los baja.
+build:
+  gpu: true
+  cuda: "12.1"
+  python_version: "3.11"
+  system_packages:
+    - ffmpeg
+    - libsndfile1
+  python_packages:
+    - torch
+    - torchaudio
+    - transformers
+    - librosa
+    - soundfile
+    - scipy
+    - numpy
+    - audio-separator[gpu]
+    - google-api-python-client
+    - google-auth
+  run:
+    - python -c "from transformers import AutoFeatureExtractor, ASTForAudioClassification; M='MIT/ast-finetuned-audioset-10-10-0.4593'; AutoFeatureExtractor.from_pretrained(M); ASTForAudioClassification.from_pretrained(M)"
+    - python -c "from audio_separator.separator import Separator; Separator().load_model(model_filename='model_bs_roformer_ep_317_sdr_12.9755.ckpt')"
+predict: "predict.py:Predictor"

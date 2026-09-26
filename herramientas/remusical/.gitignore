@@ -1,0 +1,6 @@
+.env
+_trabajo/
+_web.log
+_web_*.png
+__pycache__/
+*.pyc

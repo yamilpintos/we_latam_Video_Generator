@@ -1,0 +1,18 @@
+# Python 3.14 (motor + web)
+numpy
+scipy
+soundfile
+librosa
+torch
+transformers
+fastapi
+uvicorn
+google-api-python-client
+google-auth
+google-auth-oauthlib
+
+# Python 3.11, aparte (separación): pip install "audio-separator[cpu]"
+
+# tandas con bucket S3 (Backblaze B2 / MinIO / AWS) y Vast.ai
+boto3
+requests

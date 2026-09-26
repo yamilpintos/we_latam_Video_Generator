@@ -3,3 +3,12 @@ uvicorn[standard]>=0.30
 pydantic>=2
 Pillow>=10
 python-multipart>=0.0.9   # el formulario de /login
+
+# ReMusical (herramientas/remusical): la web sobre Google Drive y las tandas en Vast + bucket.
+# El motor (torch, transformers, librosa…) NO va acá: procesa en la PC o en la GPU alquilada;
+# en la PC se instala con `pip install -r herramientas/remusical/requirements.txt`.
+google-api-python-client
+google-auth
+google-auth-oauthlib
+requests
+boto3

@@ -1,0 +1,784 @@
+{
+ "video": {
+  "nombre": "VIAJERO_ERRANTE_147_La ruta de la seda P5.mp4",
+  "titulo": "Viajero Errante 147 · La ruta de la seda",
+  "duracion_s": 1621.89,
+  "tamano_gb": 4.1
+ },
+ "regiones": [
+  {
+   "inicio": 0.0,
+   "fin": 226.0,
+   "etiqueta": "INTRO"
+  },
+  {
+   "inicio": 245.0,
+   "fin": 259.0,
+   "etiqueta": "CAMA"
+  },
+  {
+   "inicio": 290.0,
+   "fin": 741.0,
+   "etiqueta": "CAMA"
+  },
+  {
+   "inicio": 747.0,
+   "fin": 767.0,
+   "etiqueta": "CAMA"
+  },
+  {
+   "inicio": 774.0,
+   "fin": 784.0,
+   "etiqueta": "CAMA"
+  },
+  {
+   "inicio": 799.0,
+   "fin": 810.0,
+   "etiqueta": "CAMA"
+  },
+  {
+   "inicio": 832.0,
+   "fin": 864.0,
+   "etiqueta": "CAMA"
+  },
+  {
+   "inicio": 870.0,
+   "fin": 1621.0,
+   "etiqueta": "OUTRO"
+  }
+ ],
+ "curva": [
+  0.61,
+  0.46,
+  0.49,
+  0.49,
+  0.48,
+  0.57,
+  0.53,
+  0.59,
+  0.51,
+  0.54,
+  0.55,
+  0.49,
+  0.54,
+  0.59,
+  0.6,
+  0.52,
+  0.6,
+  0.52,
+  0.5,
+  0.44,
+  0.52,
+  0.53,
+  0.52,
+  0.51,
+  0.48,
+  0.45,
+  0.44,
+  0.43,
+  0.45,
+  0.44,
+  0.49,
+  0.45,
+  0.43,
+  0.4,
+  0.47,
+  0.45,
+  0.47,
+  0.42,
+  0.47,
+  0.42,
+  0.4,
+  0.46,
+  0.41,
+  0.48,
+  0.34,
+  0.23,
+  0.19,
+  0.2,
+  0.1,
+  0.39,
+  0.46,
+  0.49,
+  0.05,
+  0.04,
+  0.07,
+  0.13,
+  0.07,
+  0.02,
+  0.44,
+  0.51,
+  0.41,
+  0.37,
+  0.43,
+  0.43,
+  0.43,
+  0.4,
+  0.49,
+  0.37,
+  0.4,
+  0.44,
+  0.41,
+  0.43,
+  0.44,
+  0.32,
+  0.41,
+  0.44,
+  0.5,
+  0.44,
+  0.48,
+  0.41,
+  0.53,
+  0.46,
+  0.42,
+  0.4,
+  0.42,
+  0.43,
+  0.34,
+  0.5,
+  0.45,
+  0.39,
+  0.42,
+  0.45,
+  0.44,
+  0.41,
+  0.48,
+  0.45,
+  0.58,
+  0.54,
+  0.51,
+  0.48,
+  0.46,
+  0.4,
+  0.42,
+  0.38,
+  0.11,
+  0.35,
+  0.48,
+  0.42,
+  0.42,
+  0.46,
+  0.46,
+  0.47,
+  0.46,
+  0.25,
+  0.5,
+  0.39,
+  0.42,
+  0.5,
+  0.45,
+  0.38,
+  0.63,
+  0.62,
+  0.57,
+  0.47,
+  0.45,
+  0.45,
+  0.38,
+  0.39,
+  0.36,
+  0.43,
+  0.33,
+  0.34,
+  0.38,
+  0.36,
+  0.39,
+  0.42,
+  0.38,
+  0.42,
+  0.35,
+  0.41,
+  0.4,
+  0.41,
+  0.4,
+  0.42,
+  0.43,
+  0.43,
+  0.56,
+  0.39,
+  0.23,
+  0.23,
+  0.24,
+  0.28,
+  0.32,
+  0.29,
+  0.17,
+  0.31,
+  0.32,
+  0.14,
+  0.13,
+  0.12,
+  0.37,
+  0.3,
+  0.09,
+  0.21,
+  0.12,
+  0.3,
+  0.21,
+  0.56,
+  0.58,
+  0.56,
+  0.52,
+  0.5,
+  0.44,
+  0.21,
+  0.34,
+  0.04,
+  0.06,
+  0.38,
+  0.53,
+  0.45,
+  0.41,
+  0.46,
+  0.43,
+  0.5,
+  0.2,
+  0.42,
+  0.5,
+  0.49,
+  0.5,
+  0.47,
+  0.41,
+  0.42,
+  0.44,
+  0.47,
+  0.45,
+  0.46,
+  0.38,
+  0.45,
+  0.46,
+  0.46,
+  0.36,
+  0.39,
+  0.48,
+  0.46,
+  0.5,
+  0.54,
+  0.62,
+  0.46,
+  0.51,
+  0.51,
+  0.51,
+  0.51,
+  0.49,
+  0.56,
+  0.55,
+  0.49,
+  0.41,
+  0.43,
+  0.39,
+  0.51,
+  0.5,
+  0.45,
+  0.47,
+  0.46,
+  0.49,
+  0.47,
+  0.54,
+  0.49,
+  0.47,
+  0.42,
+  0.42,
+  0.39,
+  0.47,
+  0.4,
+  0.39,
+  0.36,
+  0.46,
+  0.45,
+  0.39,
+  0.46,
+  0.35,
+  0.36,
+  0.44,
+  0.42,
+  0.41,
+  0.41,
+  0.56,
+  0.49,
+  0.42,
+  0.46,
+  0.5,
+  0.54,
+  0.41,
+  0.36,
+  0.59,
+  0.54,
+  0.58,
+  0.52,
+  0.43,
+  0.45,
+  0.49,
+  0.45,
+  0.48,
+  0.54,
+  0.48,
+  0.44,
+  0.42,
+  0.63,
+  0.45,
+  0.49,
+  0.37,
+  0.45,
+  0.41,
+  0.37,
+  0.37,
+  0.4,
+  0.48,
+  0.42,
+  0.4,
+  0.44,
+  0.45,
+  0.41,
+  0.59,
+  0.71,
+  0.77,
+  0.69,
+  0.72,
+  0.37,
+  0.37,
+  0.39,
+  0.47,
+  0.4,
+  0.47,
+  0.41,
+  0.52,
+  0.46,
+  0.42,
+  0.44,
+  0.37,
+  0.46,
+  0.43,
+  0.45,
+  0.49,
+  0.51,
+  0.46,
+  0.42,
+  0.45,
+  0.45,
+  0.41,
+  0.44,
+  0.39,
+  0.39,
+  0.47,
+  0.48,
+  0.49,
+  0.5,
+  0.51,
+  0.47,
+  0.46,
+  0.55,
+  0.48,
+  0.48,
+  0.46,
+  0.47
+ ],
+ "pistas": [
+  {
+   "inicio": 0.0,
+   "fin": 84.0,
+   "etiqueta": "INTRO",
+   "contiguo": false,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica"
+   ],
+   "generos": [
+    "country"
+   ],
+   "tempo": 122,
+   "takes": 3,
+   "elegido": "take1"
+  },
+  {
+   "inicio": 84.0,
+   "fin": 226.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "guitarra eléctrica",
+    "contrabajo"
+   ],
+   "generos": [
+    "rock and roll",
+    "rock progresivo"
+   ],
+   "tempo": 122,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 245.0,
+   "fin": 259.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "contrabajo",
+    "timbales",
+    "cello"
+   ],
+   "generos": [
+    "tensión"
+   ],
+   "tempo": 120,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 290.0,
+   "fin": 382.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 120,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 382.0,
+   "fin": 486.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "violín",
+    "guitarra",
+    "mandolina"
+   ],
+   "generos": [
+    "clásica",
+    "tradicional"
+   ],
+   "tempo": 88,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 486.0,
+   "fin": 614.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "guitarra eléctrica",
+    "batería"
+   ],
+   "generos": [
+    "rock and roll"
+   ],
+   "tempo": 141,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 614.0,
+   "fin": 741.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "violín",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "rock and roll",
+    "rock"
+   ],
+   "tempo": 115,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 747.0,
+   "fin": 767.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [],
+   "tempo": 94,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 774.0,
+   "fin": 784.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 156,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 799.0,
+   "fin": 810.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 122,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 832.0,
+   "fin": 864.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "batería",
+    "tambor",
+    "bombo"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 122,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 870.0,
+   "fin": 1034.0,
+   "etiqueta": "CAMA",
+   "contiguo": false,
+   "instrumentos": [
+    "batería",
+    "tambor",
+    "guitarra"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 122,
+   "takes": 3,
+   "elegido": "take1"
+  },
+  {
+   "inicio": 1034.0,
+   "fin": 1134.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "cascabeles"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 102,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 1134.0,
+   "fin": 1206.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "electrónica"
+   ],
+   "tempo": 106,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 1206.0,
+   "fin": 1274.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 106,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 1274.0,
+   "fin": 1334.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 122,
+   "takes": 3,
+   "elegido": "take1"
+  },
+  {
+   "inicio": 1334.0,
+   "fin": 1410.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra"
+   ],
+   "generos": [
+    "country",
+    "rock and roll"
+   ],
+   "tempo": 137,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 1410.0,
+   "fin": 1454.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "orquesta",
+    "guitarra"
+   ],
+   "generos": [
+    "funk"
+   ],
+   "tempo": 141,
+   "takes": 3,
+   "elegido": "take3"
+  },
+  {
+   "inicio": 1454.0,
+   "fin": 1558.0,
+   "etiqueta": "CAMA",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra",
+    "guitarra acústica",
+    "guitarra eléctrica"
+   ],
+   "generos": [
+    "electrónica"
+   ],
+   "tempo": 107,
+   "takes": 3,
+   "elegido": "take2"
+  },
+  {
+   "inicio": 1558.0,
+   "fin": 1621.0,
+   "etiqueta": "OUTRO",
+   "contiguo": true,
+   "instrumentos": [
+    "guitarra"
+   ],
+   "generos": [
+    "rock and roll",
+    "épica"
+   ],
+   "tempo": 80,
+   "takes": 3,
+   "elegido": "take3"
+  }
+ ],
+ "guardas": [
+  {
+   "n": 1,
+   "nombre": "alcance",
+   "detalle": "fuera de las regiones -240 dBFS (límite -60)"
+  },
+  {
+   "n": 2,
+   "nombre": "voz intacta",
+   "detalle": "peor desfase 0.00 ms (límite 1,00)"
+  },
+  {
+   "n": 3,
+   "nombre": "región completa",
+   "detalle": "p(música) 0.270 justo despues de la región 7 (741-747s) (límite 0.3)"
+  },
+  {
+   "n": 4,
+   "nombre": "música presente",
+   "detalle": "p(música) mínima 0.324 en región 19 (límite 0.3)"
+  },
+  {
+   "n": 5,
+   "nombre": "nivel",
+   "detalle": "desvío mediano +1.0 dB sobre 788 tramos (límite ±3.0)"
+  },
+  {
+   "n": 6,
+   "nombre": "pico",
+   "detalle": "-1.65 dBFS dentro de las regiones"
+  }
+ ],
+ "resultado": {
+  "estado": "ENTREGABLE",
+  "musica_s": 1515.0,
+  "n_pistas": 20,
+  "minutos_reales": 57,
+  "creditos_3takes": 77442,
+  "usd_3takes": 14.12,
+  "usd_1take": 4.7,
+  "usd_gpu": 0.7
+ },
+ "comparar": [
+  {
+   "id": "intro",
+   "titulo": "Intro",
+   "t": "0:00"
+  },
+  {
+   "id": "borde1",
+   "titulo": "Cambio de pista",
+   "t": "6:16"
+  },
+  {
+   "id": "borde2",
+   "titulo": "Cambio de pista",
+   "t": "17:07"
+  },
+  {
+   "id": "outro",
+   "titulo": "Outro",
+   "t": "26:45"
+  }
+ ]
+}

@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from .. import config, costos, guionista, montaje, tts, vast, voces, voz as vozmod, web
 from ..estructura import Estructura, disponibles
 from ..proyecto import Proyecto, ProyectoInvalido
-from . import cola, editar, libre, maquina, remaster, series, tareas
+from . import cola, editar, libre, maquina, remaster, remusical_mount, series, tareas
 
 RAIZ = Path(__file__).resolve().parents[2]
 MIS = RAIZ / "mis-videos"
@@ -31,6 +31,14 @@ STATIC = AQUI / "static"
 
 app = FastAPI(title="La Fábrica", docs_url="/api/docs")
 app.mount("/static", StaticFiles(directory=str(STATIC)), name="static")
+
+# ReMusical: la herramienta entera (herramientas/remusical) montada en /remusical/.
+# Pasa por la misma puerta de entrada (login) que el resto; sus URLs las calcula ella.
+REMUSICAL, REMUSICAL_ERROR = remusical_mount.cargar()
+if REMUSICAL is not None:
+    app.mount("/remusical", REMUSICAL, name="remusical")
+else:
+    print(f"!! ReMusical no se pudo montar: {REMUSICAL_ERROR.splitlines()[0]}")
 
 
 # ─────────────────────────────────────────────────────────────── acceso
@@ -85,7 +93,7 @@ async def _contrasena(request, call_next):
     ruta = request.url.path
     if ruta in ("/login", "/logout") or ruta.startswith("/static/") or _autorizado(request):
         return await call_next(request)
-    if ruta.startswith("/api/"):
+    if ruta.startswith("/api/") or "/api/" in ruta:          # también /remusical/api/…
         return JSONResponse({"detail": "sesión vencida: volvé a entrar"}, status_code=401)
     destino = ruta + (("?" + request.url.query) if request.url.query else "")
     return RedirectResponse(f"/login?next={destino}", status_code=302)
@@ -273,6 +281,23 @@ def portada():
 def mesa():
     """La Mesa de Armado de siempre, regenerada desde el módulo cada vez."""
     return web.generar().read_text(encoding="utf-8")
+
+
+@app.get("/api/remusical")
+def remusical_estado():
+    """Qué ve la puerta de ReMusical en la portada: montada o no, y qué le falta."""
+    return remusical_mount.estado(REMUSICAL_ERROR)
+
+
+if REMUSICAL is None:
+    @app.get("/remusical/", response_class=HTMLResponse)
+    @app.get("/remusical", response_class=HTMLResponse)
+    def remusical_caida():
+        return f"""<!doctype html><meta charset="utf-8"><title>ReMusical</title>
+<body style="font-family:system-ui;max-width:720px;margin:60px auto;padding:0 20px;color:#eee;background:#111">
+<h1>ReMusical no arrancó</h1><p>La herramienta está en <code>herramientas/remusical/</code> pero no se pudo importar.
+Instalá sus dependencias y reiniciá La Fábrica:</p><pre style="background:#000;padding:12px;border-radius:8px">pip install -r herramientas/remusical/requirements.txt</pre>
+<pre style="white-space:pre-wrap;color:#f88">{REMUSICAL_ERROR}</pre><p><a href="/" style="color:#9cf">← La Fábrica</a></p>"""
 
 
 # ─────────────────────────────────────────────────────────────── proyectos

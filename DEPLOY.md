@@ -19,6 +19,8 @@ en cada deploy.
 | `VAST_SSH_PRIVATE_KEY` | la clave privada `~/.ssh/id_ed25519` de tu PC, entera, con los saltos de línea (Render acepta multilínea). Es la que Vast conoce | sí |
 | `VAST_SSH_PUBLIC_KEY` | el contenido de `~/.ssh/id_ed25519.pub` | sí |
 | `nanobanana` | clave de Gemini para nano banana; opcional (hoy sin créditos; OpenAI es el default) | no |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | ReMusical: el cliente OAuth «Aplicación web» de Google Cloud para leer y escribir el Drive del usuario. Redirección a registrar: `https://<servicio>.onrender.com/remusical/auth/callback` (local: `http://127.0.0.1:8787/remusical/auth/callback`) | sólo para ReMusical |
+| `VAST_API_KEY`, `GOOGLE_SA_JSON_B64`, `S3_ENDPOINT` / `S3_KEY` / `S3_SECRET` / `S3_BUCKET` | ReMusical, pestaña Tandas (una serie entera a una GPU de Vast; resultados a un bucket R2). Detalle en `herramientas/remusical/.env.example` | sólo para Tandas |
 | `FABRICA_HOST` | `0.0.0.0` en un servidor (el Dockerfile ya lo pone) | ya está |
 | `PORT` | lo pone Render | ya está |
 
