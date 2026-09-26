@@ -16,6 +16,10 @@ yamilpintos30-sy/We_latam_Factory (main + rama `hosting-y-musica` del
 compañero) y `generator` = yamilpintos/we_latam_Video_Generator (el que
 despliega Render). Cada `git push` a los dos.
 
+URL en producción: https://we-latam-video-generator.onrender.com. **Para sumar una
+herramienta nueva: [`docs/AGREGAR_HERRAMIENTA.md`](../../docs/AGREGAR_HERRAMIENTA.md)**
+(los dos caminos, el contrato, las reglas de la casa y el checklist; ReMusical es el ejemplo).
+
 Entrada: pantalla de login propia (`/login`; usuario `FABRICA_USUARIO`,
 default `fabrica`; contraseña `FABRICA_PASSWORD`; cookie 30 días; `Salir`).
 

@@ -1,5 +1,8 @@
 # Proyecto de video generado con IA
 
+> **¿Venís a sumar una herramienta a la web?** Leé [docs/AGREGAR_HERRAMIENTA.md](docs/AGREGAR_HERRAMIENTA.md):
+> dónde está alojada, cómo está armada y los dos caminos para colgar la tuya.
+>
 > **Empezá por [ESTADO-PROYECTO.md](ESTADO-PROYECTO.md).** Es el mapa al día:
 > las dos mitades del proyecto (el módulo `h3pipeline/` con su página, y la
 > operación en Vast.ai), qué está verificado, los números medidos y qué falta.
